@@ -46,19 +46,19 @@ export const PersonalTraining: React.FC = () => {
 
       <div className="bg-white">
         {/* Hero */}
-        <section className="bg-brand-light py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-brand-primary">Personal Trainer in Christchurch</h1>
-            <p className="text-xl font-bold text-brand-black mb-2 uppercase tracking-wider">Hybrid Personal Training</p>
-            <p className="text-xl text-brand-gray max-w-2xl mx-auto leading-relaxed mb-8">
-              In-person sessions for coaching and precision, plus app-based homework so your training doesn’t fall apart when life gets busy. This is for people who want to do things properly — without making training their second job.
+        <section className="bg-brand-light py-24 px-6">
+          <div className="max-w-5xl mx-auto text-center">
+            <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 text-brand-black uppercase tracking-tighter leading-none">Personal Trainer <br/>in Christchurch</h1>
+            <div className="inline-block bg-brand-orange text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs mb-8">Hybrid Personal Training</div>
+            <p className="text-xl text-brand-gray max-w-2xl mx-auto leading-relaxed mb-10 font-light">
+              In-person sessions for coaching and precision, plus app-based homework so your training doesn’t fall apart when life gets busy.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4">
               <Link to="/contact">
-                <Button>Apply for Hybrid Coaching</Button>
+                <Button size="lg">Apply for Hybrid</Button>
               </Link>
               <Link to="/assessment">
-                <Button variant="secondary">Take the Diagnostic</Button>
+                <Button variant="outline" size="lg">Take Diagnostic</Button>
               </Link>
             </div>
           </div>
@@ -66,131 +66,113 @@ export const PersonalTraining: React.FC = () => {
 
         {/* Local SEO Block */}
         <section className="py-12 px-6 border-b border-gray-100">
-          <div className="max-w-3xl mx-auto text-center bg-gray-50 p-6 rounded-2xl flex items-center justify-center gap-3 text-sm md:text-base text-brand-gray">
-            <MapPin className="text-brand-orange shrink-0" />
+          <div className="max-w-3xl mx-auto text-center bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col md:flex-row items-center justify-center gap-4 text-sm md:text-base text-brand-gray">
+            <div className="bg-brand-light p-3 rounded-full"><MapPin className="text-brand-orange shrink-0" /></div>
             <p>
-              I’m based in <strong>Addington</strong> and coach out of Get Me Fitter. I work with clients across nearby suburbs including Merivale, Fendalton, Ilam, Riccarton, Cashmere, Somerfield, Sumner, and Halswell.
+              Based in <strong>Addington</strong> at Get Me Fitter. Supporting clients across Merivale, Fendalton, Ilam, Riccarton, Cashmere, Somerfield, Sumner, and Halswell.
             </p>
           </div>
         </section>
 
         {/* Who this is for */}
-        <section className="py-20 px-6">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <section className="py-24 px-6">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-brand-primary">Who This Is For</h2>
-              <p className="text-lg text-brand-gray mb-6">Hybrid tends to be the best fit if:</p>
+              <h2 className="text-5xl font-display font-bold mb-8 text-brand-black uppercase tracking-tighter">Who This Is For</h2>
               
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-gray">You’ve got a bit of history (pain, injuries, stop-start training).</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-gray">You want confidence in your technique and your plan.</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-gray">You want training that fits around work, family, travel — whatever season you’re in.</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                  <span className="text-brand-gray">You like straight-up coaching and a clear direction.</span>
-                </li>
+              <ul className="space-y-6">
+                {[
+                  "You’ve got a bit of history (pain, injuries, stop-start training).",
+                  "You want confidence in your technique and your plan.",
+                  "You want training that fits around work, family, and travel.",
+                  "You like straight-up coaching and a clear direction."
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start group">
+                    <div className="w-8 h-8 rounded-full border border-brand-orange flex items-center justify-center mr-4 shrink-0 group-hover:bg-brand-orange transition-colors">
+                      <Check className="text-brand-orange w-4 h-4 group-hover:text-white" />
+                    </div>
+                    <span className="text-brand-gray text-lg pt-1">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             
-            <div className="relative h-[500px] bg-gray-100 rounded-[2rem] overflow-hidden">
+            <div className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl">
                <img 
                 src={mainImage} 
                 alt="Personal Trainer Christchurch technique coaching" 
-                className="absolute inset-0 w-full h-full object-cover grayscale"
+                className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
               />
             </div>
           </div>
         </section>
 
         {/* How It Works */}
-        <section className="py-20 px-6 bg-brand-light">
-          <div className="max-w-5xl mx-auto">
-             <h2 className="text-3xl font-bold mb-12 text-center text-brand-primary">How Hybrid Personal Training Works</h2>
+        <section className="py-24 px-6 bg-brand-light">
+          <div className="max-w-6xl mx-auto">
+             <h2 className="text-5xl font-display font-bold mb-16 text-center text-brand-black uppercase tracking-tighter">How Hybrid Works</h2>
              <div className="grid md:grid-cols-3 gap-8">
-               <div className="bg-white p-8 rounded-2xl shadow-sm">
-                 <div className="bg-brand-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mb-4">1</div>
-                 <h3 className="font-bold text-xl mb-3 text-brand-black">We train together in person</h3>
-                 <p className="text-sm text-brand-gray">Coaching, technique, smart loading, and real-time adjustments. We make every rep count.</p>
-               </div>
-               <div className="bg-white p-8 rounded-2xl shadow-sm">
-                 <div className="bg-brand-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mb-4">2</div>
-                 <h3 className="font-bold text-xl mb-3 text-brand-black">You’ve got homework in the app</h3>
-                 <p className="text-sm text-brand-gray">Short, clear sessions that support what we’re doing — not random extras. You follow the plan.</p>
-               </div>
-               <div className="bg-white p-8 rounded-2xl shadow-sm">
-                 <div className="bg-brand-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mb-4">3</div>
-                 <h3 className="font-bold text-xl mb-3 text-brand-black">We keep it sustainable</h3>
-                 <p className="text-sm text-brand-gray">We’ll push when it makes sense, and pull back when your recovery needs it. Longevity is the goal.</p>
-               </div>
+               {[
+                 { step: "01", title: "In-Person", desc: "Coaching, technique, smart loading, and real-time adjustments. We make every rep count." },
+                 { step: "02", title: "In-App", desc: "Short, clear sessions that support what we’re doing — not random extras. You follow the plan." },
+                 { step: "03", title: "Sustainable", desc: "We’ll push when it makes sense, and pull back when your recovery needs it." }
+               ].map((item, i) => (
+                 <div key={i} className="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow">
+                   <span className="text-6xl font-display font-bold text-brand-light mb-6 block">{item.step}</span>
+                   <h3 className="font-display text-3xl font-bold mb-4 text-brand-black uppercase">{item.title}</h3>
+                   <p className="text-brand-gray leading-relaxed">{item.desc}</p>
+                 </div>
+               ))}
              </div>
           </div>
         </section>
 
         {/* My Approach */}
-        <section className="py-20 px-6">
+        <section className="py-24 px-6 bg-brand-black text-white">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-brand-primary">My Coaching Approach</h2>
-            <p className="text-xl text-brand-gray mb-12 font-medium">
+            <h2 className="text-5xl font-display font-bold mb-8 uppercase tracking-tighter">My Approach</h2>
+            <p className="text-2xl text-gray-400 mb-16 font-light max-w-2xl">
               I’m not here to turn the gym into a circus. I’m here to help you build a body that works.
             </p>
-            <div className="space-y-6">
-               <div className="flex gap-4">
-                 <Target className="text-brand-orange shrink-0" size={24} />
-                 <div>
-                   <h3 className="font-bold text-lg mb-1">Minimum Effective Dose</h3>
-                   <p className="text-brand-gray">So you can stay consistent without living in the gym.</p>
+            <div className="space-y-8">
+               {[
+                 { icon: Target, title: "Minimum Effective Dose", text: "So you can stay consistent without living in the gym." },
+                 { icon: UserCheck, title: "Planned Progress", text: "So you’re not guessing. Every week builds on the last." },
+                 { icon: ShieldCheck, title: "Recovery Guardrails", text: "So training supports your life, not competes with it." }
+               ].map((item, i) => (
+                 <div key={i} className="flex gap-6 items-start border-b border-white/10 pb-8 last:border-0">
+                   <div className="bg-white/10 p-4 rounded-full"><item.icon className="text-brand-orange" size={24} /></div>
+                   <div>
+                     <h3 className="font-display text-2xl font-bold mb-2 uppercase">{item.title}</h3>
+                     <p className="text-gray-400">{item.text}</p>
+                   </div>
                  </div>
-               </div>
-               <div className="flex gap-4">
-                 <UserCheck className="text-brand-orange shrink-0" size={24} />
-                 <div>
-                   <h3 className="font-bold text-lg mb-1">Planned Progress</h3>
-                   <p className="text-brand-gray">So you’re not guessing. Every week builds on the last.</p>
-                 </div>
-               </div>
-               <div className="flex gap-4">
-                 <ShieldCheck className="text-brand-orange shrink-0" size={24} />
-                 <div>
-                   <h3 className="font-bold text-lg mb-1">Recovery Guardrails</h3>
-                   <p className="text-brand-gray">So training supports your life, not competes with it.</p>
-                 </div>
-               </div>
+               ))}
             </div>
           </div>
         </section>
 
         {/* What You Get */}
-        <section className="bg-brand-primary text-white py-20 px-6 rounded-t-[3rem] mt-[-2rem] relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">What's Included</h2>
-              <p className="text-gray-300">A complete system for results.</p>
-            </div>
+        <section className="bg-white py-24 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl font-display font-bold mb-6 text-brand-black uppercase tracking-tighter">Included</h2>
+            <div className="w-24 h-1 bg-brand-orange mx-auto mb-12"></div>
             
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-3xl mx-auto text-lg">
-               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> 1:1 in-person sessions (Weekly/Fortnightly)</li>
-               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> App programming + exercise demos</li>
-               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> Training progressions + substitutions</li>
-               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> Support between sessions</li>
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-3xl mx-auto text-lg text-left mb-16">
+               <li className="flex items-center"><Check size={24} className="mr-4 text-brand-orange" /> 1:1 In-Person Sessions</li>
+               <li className="flex items-center"><Check size={24} className="mr-4 text-brand-orange" /> Full App Programming</li>
+               <li className="flex items-center"><Check size={24} className="mr-4 text-brand-orange" /> Technique Video Library</li>
+               <li className="flex items-center"><Check size={24} className="mr-4 text-brand-orange" /> Support Between Sessions</li>
             </div>
 
-            <div className="mt-16 text-center">
-               <p className="text-xl font-medium mb-8">If you want coaching that’s honest, thoughtful, and tailored to you — apply below.</p>
+            <div className="bg-brand-light p-10 rounded-[2.5rem] inline-block w-full max-w-2xl">
+               <p className="text-xl font-bold mb-8">If you want coaching that’s honest, thoughtful, and tailored to you.</p>
                <div className="flex flex-col md:flex-row justify-center gap-4">
                  <Link to="/contact">
-                   <Button variant="primary" className="bg-brand-lime text-brand-primary hover:bg-white">Apply for Hybrid Coaching</Button>
+                   <Button size="lg" fullWidth>Apply for Hybrid</Button>
                  </Link>
                  <Link to="/assessment">
-                   <Button variant="outline" className="text-white border-white hover:bg-white hover:text-brand-primary">Take the Diagnostic</Button>
+                   <Button variant="outline" size="lg" fullWidth>Take Diagnostic</Button>
                  </Link>
                </div>
             </div>

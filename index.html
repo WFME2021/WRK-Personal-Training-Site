@@ -19,20 +19,26 @@
             },
             colors: {
               brand: {
-                black: '#1c1c1c',   // Keep for body text legibility
-                primary: '#256F5D', // Dark Green - Heritage Brand Color
-                green: '#71DE86',   // Mid Green
-                lime: '#A1EA93',    // Lime Accent (Legacy)
-                orange: '#F77300',  // NEW: Primary Action Color
+                black: '#000000',   // Pure Black
+                primary: '#111111', // Almost Black (for soft contrast)
+                orange: '#FF5500',  // High-Impact Orange
                 white: '#ffffff', 
-                light: '#f2f2f2', 
-                gray: '#555555',
-                sage: '#A1EA93',    // Alias
+                light: '#F4F4F4',   // Very light gray for backgrounds
+                gray: '#666666',    // Body text
+                darkgray: '#333333',
+                // Remapped legacy colors to safety
+                green: '#111111',   // Map green to black
+                lime: '#FF5500',    // Map lime to orange
               }
             },
             borderRadius: {
-              '4xl': '2rem',
-              '5xl': '2.5rem',
+              '4xl': '2.5rem',
+              '5xl': '3rem',
+            },
+            fontSize: {
+              '10xl': '10rem',
+              '11xl': '12rem',
+              'massive': '14vw',
             }
           }
         }
@@ -42,7 +48,7 @@
       body {
         font-family: 'Inter', sans-serif;
         background-color: #ffffff;
-        color: #1c1c1c;
+        color: #111111;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }

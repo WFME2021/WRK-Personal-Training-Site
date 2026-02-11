@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Smartphone, Video, MessageSquare, Check, ScanBarcode, LineChart, Utensils, Globe } from 'lucide-react';
+import { Smartphone, Video, MessageSquare, Check, Utensils, Globe, ArrowRight } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
-  const { workoutLogImage, videoImage } = pageContent.onlineCoaching;
+  const { workoutLogImage } = pageContent.onlineCoaching;
 
   const faqs = [
     {
@@ -45,136 +45,110 @@ export const OnlineCoaching: React.FC = () => {
       />
 
       <div className="bg-white">
-        {/* Hero */}
-        <section className="bg-brand-primary text-white py-24 px-6 rounded-b-[3rem]">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6">Online Personal Trainer <br/><span className="text-brand-lime">(NZ-Wide)</span></h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed font-bold uppercase tracking-wider mb-4">
+        {/* Hero - Black Background */}
+        <section className="bg-brand-black text-white py-24 px-6 rounded-b-[3rem]">
+          <div className="max-w-5xl mx-auto text-center">
+            <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none">
+              Online Personal Trainer <br/><span className="text-brand-orange">NZ-Wide</span>
+            </h1>
+            <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-gray-400">
               Structure + Accountability
             </p>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12 font-light">
               If you’re capable but life gets in the way, online coaching gives you what most people actually need: a good plan, a steady hand on the wheel, and someone who keeps you consistent.
             </p>
-            <div className="flex flex-col md:flex-row justify-center gap-4">
+            <div className="flex flex-col md:flex-row justify-center gap-6">
               <Link to="/contact">
-                <Button className="bg-brand-lime text-brand-primary hover:bg-white">Apply for Online Coaching</Button>
+                <Button className="bg-white text-brand-black hover:bg-brand-orange hover:text-white px-10 py-5">Apply for Online</Button>
               </Link>
               <Link to="/assessment">
-                <Button variant="outline" className="text-white border-white hover:bg-white hover:text-brand-primary">Take the Diagnostic</Button>
+                <Button variant="outline" className="text-white border-white hover:bg-white hover:text-brand-black px-10 py-5">Take Diagnostic</Button>
               </Link>
             </div>
           </div>
         </section>
 
         {/* Who it's for */}
-        <section className="py-24 px-6">
-          <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
-             <div className="order-2 lg:order-1 flex justify-center gap-8 relative">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-light rounded-full z-0 blur-3xl opacity-50"></div>
-                <div className="relative z-10 w-[280px] md:w-[320px] aspect-[9/19.5] bg-black rounded-[3rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden transform -rotate-3">
-                   <img src={workoutLogImage} alt="Online personal training app interface" className="w-full h-full object-cover" />
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
+             <div className="order-2 lg:order-1 flex justify-center relative">
+                <div className="relative z-10 w-[300px] md:w-[350px] bg-brand-light rounded-[3rem] p-4 shadow-2xl transform -rotate-2">
+                   <div className="overflow-hidden rounded-[2.5rem] border-4 border-white">
+                      <img src={workoutLogImage} alt="Online personal training app interface" className="w-full h-full object-cover" />
+                   </div>
                 </div>
              </div>
 
              <div className="order-1 lg:order-2">
-                <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8 text-brand-primary">
+                <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-10 text-brand-black">
                   Who It's For
                 </h2>
-                <p className="text-brand-gray text-lg mb-6">Online coaching is a strong fit if:</p>
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                     <span className="text-brand-gray">You already train (or you’re ready to) but consistency is patchy.</span>
-                  </li>
-                  <li className="flex items-start">
-                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                     <span className="text-brand-gray">Work, stress, travel, and family make your weeks unpredictable.</span>
-                  </li>
-                  <li className="flex items-start">
-                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                     <span className="text-brand-gray">You want guidance and accountability without in-person sessions.</span>
-                  </li>
-                  <li className="flex items-start">
-                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
-                     <span className="text-brand-gray">You want to feel confident you’re doing the right things.</span>
-                  </li>
-                </ul>
+                <div className="space-y-6">
+                  {[
+                    "You already train (or you’re ready to) but consistency is patchy.",
+                    "Work, stress, travel, and family make your weeks unpredictable.",
+                    "You want guidance and accountability without in-person sessions.",
+                    "You want to feel confident you’re doing the right things."
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start">
+                       <Check className="text-brand-orange mr-4 mt-1 shrink-0" size={24} />
+                       <span className="text-brand-gray text-lg">{item}</span>
+                    </div>
+                  ))}
+                </div>
              </div>
           </div>
         </section>
 
         {/* How It Works */}
         <section className="py-24 px-6 bg-brand-light">
-          <div className="max-w-4xl mx-auto">
-             <h2 className="text-3xl font-bold mb-12 text-center text-brand-primary">How It Works</h2>
+          <div className="max-w-6xl mx-auto">
+             <h2 className="text-5xl font-display font-bold mb-16 text-center text-brand-black uppercase tracking-tighter">How It Works</h2>
              <div className="grid md:grid-cols-4 gap-6">
-               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">01</span>
-                  <h3 className="font-bold text-lg mb-2">You Tell Me</h3>
-                  <p className="text-sm text-brand-gray">Your goal, schedule, and constraints. I need to know the reality of your week.</p>
-               </div>
-               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">02</span>
-                  <h3 className="font-bold text-lg mb-2">I Build</h3>
-                  <p className="text-sm text-brand-gray">Your plan in the app. Based on what you can actually do, not a fantasy perfect week.</p>
-               </div>
-               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">03</span>
-                  <h3 className="font-bold text-lg mb-2">You Execute</h3>
-                  <p className="text-sm text-brand-gray">You complete the workouts, track your weights, and check in. I adjust as we go.</p>
-               </div>
-               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">04</span>
-                  <h3 className="font-bold text-lg mb-2">We Progress</h3>
-                  <p className="text-sm text-brand-gray">You keep moving forward, even when the week isn’t perfect. Consistency wins.</p>
-               </div>
+               {[
+                 { step: "01", title: "You Tell Me", desc: "Your goal, schedule, and constraints. I need to know the reality of your week." },
+                 { step: "02", title: "I Build", desc: "Your plan in the app. Based on what you can actually do, not a fantasy." },
+                 { step: "03", title: "You Execute", desc: "You complete the workouts, track your weights, and check in. I adjust as we go." },
+                 { step: "04", title: "We Progress", desc: "You keep moving forward, even when the week isn’t perfect. Consistency wins." }
+               ].map((item, i) => (
+                 <div key={i} className="bg-white p-8 rounded-[2rem] shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+                    <span className="text-4xl font-display font-bold text-brand-orange mb-6 block">{item.step}</span>
+                    <h3 className="font-display text-2xl font-bold mb-3 uppercase">{item.title}</h3>
+                    <p className="text-sm text-brand-gray leading-relaxed">{item.desc}</p>
+                 </div>
+               ))}
              </div>
           </div>
         </section>
 
         {/* What You Get */}
-        <section className="py-20 px-6">
+        <section className="py-24 px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-12 text-brand-primary">What You Get</h2>
-            <div className="grid md:grid-cols-2 gap-8 text-left max-w-3xl mx-auto">
-               <div className="flex gap-4">
-                 <Smartphone className="text-brand-orange shrink-0" size={24} />
-                 <div>
-                   <h3 className="font-bold text-lg">App-Based Training Plan</h3>
-                   <p className="text-sm text-brand-gray">Gym, home, or travel friendly. Your program lives in your pocket.</p>
+            <h2 className="text-5xl font-display font-bold mb-12 text-brand-black uppercase tracking-tighter">What You Get</h2>
+            <div className="grid md:grid-cols-2 gap-10 text-left max-w-4xl mx-auto">
+               {[
+                 { icon: Smartphone, title: "App-Based Plan", text: "Gym, home, or travel friendly." },
+                 { icon: MessageSquare, title: "Regular Check-Ins", text: "We review, check form, and update." },
+                 { icon: Globe, title: "Exercise Swaps", text: "Fallback sessions for busy weeks." },
+                 { icon: Utensils, title: "Nutrition Support", text: "Guidelines you can stick to." }
+               ].map((item, i) => (
+                 <div key={i} className="flex gap-6 p-6 border border-gray-100 rounded-2xl hover:border-brand-black transition-colors">
+                   <item.icon className="text-brand-orange shrink-0" size={32} />
+                   <div>
+                     <h3 className="font-display text-xl font-bold uppercase mb-1">{item.title}</h3>
+                     <p className="text-brand-gray">{item.text}</p>
+                   </div>
                  </div>
-               </div>
-               <div className="flex gap-4">
-                 <MessageSquare className="text-brand-orange shrink-0" size={24} />
-                 <div>
-                   <h3 className="font-bold text-lg">Regular Check-Ins</h3>
-                   <p className="text-sm text-brand-gray">We review your week, check your form, and update the plan.</p>
-                 </div>
-               </div>
-               <div className="flex gap-4">
-                 <Globe className="text-brand-orange shrink-0" size={24} />
-                 <div>
-                   <h3 className="font-bold text-lg">Exercise Swaps</h3>
-                   <p className="text-sm text-brand-gray">Busy week? Injury flare up? I provide fallback sessions and swaps.</p>
-                 </div>
-               </div>
-               <div className="flex gap-4">
-                 <Utensils className="text-brand-orange shrink-0" size={24} />
-                 <div>
-                   <h3 className="font-bold text-lg">Supportive Nutrition</h3>
-                   <p className="text-sm text-brand-gray">Guidelines you can stick to. Simple, not obsessive.</p>
-                 </div>
-               </div>
+               ))}
             </div>
             
-            <div className="mt-16 p-8 bg-brand-light rounded-3xl inline-block">
-               <p className="text-xl font-bold text-brand-black mb-6">If you want consistency without overcomplicating it, this is your lane.</p>
-               <div className="flex flex-col md:flex-row justify-center gap-4">
+            <div className="mt-20">
+               <div className="flex flex-col md:flex-row justify-center gap-6">
                  <Link to="/contact">
-                   <Button>Apply for Online Coaching</Button>
+                   <Button size="lg" className="px-12">Apply for Online</Button>
                  </Link>
                  <Link to="/42-day-reset">
-                   <Button variant="secondary">Start with the 42-Day Reset ($47)</Button>
+                   <Button variant="outline" size="lg">Start 42-Day Reset ($47)</Button>
                  </Link>
                </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Briefcase, Users, BatteryCharging, Trophy, BarChart, Smartphone } from 'lucide-react';
+import { Briefcase, Users, BatteryCharging, Trophy, Smartphone } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
@@ -38,117 +38,97 @@ export const CorporateWellness: React.FC = () => {
 
       <div className="bg-white">
         {/* Hero */}
-        <section className="bg-brand-light py-24 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="text-xs font-bold tracking-widest uppercase text-brand-gray mb-4 block">Precision Wellness</span>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-brand-primary">Wellness for real people with real workloads.</h1>
-            <p className="text-xl text-brand-gray max-w-2xl mx-auto leading-relaxed mb-8">
-               This isn’t a generic “health kick.” Precision Wellness is about helping teams feel better, move better, and build sustainable habits — in a way that fits modern work and real-life stress.
+        <section className="bg-brand-light py-24 px-6 rounded-b-[3rem]">
+          <div className="max-w-5xl mx-auto text-center">
+            <span className="text-xs font-bold tracking-[0.3em] uppercase text-brand-orange mb-6 block">Precision Wellness</span>
+            <h1 className="text-5xl md:text-8xl font-display font-bold mb-8 text-brand-black uppercase tracking-tighter leading-none">
+              Wellness for real people <br/>with real workloads.
+            </h1>
+            <p className="text-xl text-brand-gray max-w-2xl mx-auto leading-relaxed mb-10 font-light">
+               This isn’t a generic “health kick.” Precision Wellness is about helping teams feel better, move better, and build sustainable habits.
             </p>
-            <div className="flex flex-col md:flex-row justify-center gap-4">
+            <div className="flex flex-col md:flex-row justify-center gap-6">
               <Link to="/contact" state={{ fromCorporate: true }}>
-                 <Button>Enquire About Precision Wellness</Button>
+                 <Button className="px-10 py-5">Enquire Now</Button>
               </Link>
               <a href="#options">
-                 <Button variant="secondary">See Program Options</Button>
+                 <Button variant="outline" className="px-10 py-5">See Options</Button>
               </a>
             </div>
           </div>
         </section>
 
         {/* Why Most Fail */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto">
-             <h2 className="text-3xl font-bold mb-8 text-brand-primary text-center">Why most programs don't stick</h2>
-             <p className="text-lg text-brand-gray text-center mb-12 max-w-2xl mx-auto">
-               Most corporate wellness fails because it asks too much, too vaguely. People get a burst of motivation, then real life kicks in.
-             </p>
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+             <h2 className="text-4xl md:text-5xl font-display font-bold mb-16 text-brand-black text-center uppercase tracking-tighter">Why most programs fail</h2>
              
              <div className="grid md:grid-cols-4 gap-6 text-center">
-               <div className="bg-gray-50 p-6 rounded-2xl">
-                 <h3 className="font-bold text-lg text-brand-black mb-2">Clear</h3>
-                 <p className="text-sm text-brand-gray">Not vague advice. Specific actions.</p>
-               </div>
-               <div className="bg-gray-50 p-6 rounded-2xl">
-                 <h3 className="font-bold text-lg text-brand-black mb-2">Practical</h3>
-                 <p className="text-sm text-brand-gray">Fits into a workday, doesn't dominate it.</p>
-               </div>
-               <div className="bg-gray-50 p-6 rounded-2xl">
-                 <h3 className="font-bold text-lg text-brand-black mb-2">Low-friction</h3>
-                 <p className="text-sm text-brand-gray">Easy to access, easy to do.</p>
-               </div>
-               <div className="bg-gray-50 p-6 rounded-2xl">
-                 <h3 className="font-bold text-lg text-brand-black mb-2">Useful</h3>
-                 <p className="text-sm text-brand-gray">Actually improves how they feel.</p>
-               </div>
+               {[
+                 { title: "Clear", desc: "Not vague advice. Specific actions." },
+                 { title: "Practical", desc: "Fits into a workday, doesn't dominate it." },
+                 { title: "Low-friction", desc: "Easy to access, easy to do." },
+                 { title: "Useful", desc: "Actually improves how they feel." }
+               ].map((item, i) => (
+                 <div key={i} className="bg-brand-black p-8 rounded-3xl text-white hover:bg-brand-orange transition-colors duration-300 group">
+                   <h3 className="font-display text-2xl font-bold mb-3 uppercase">{item.title}</h3>
+                   <p className="text-sm text-gray-400 group-hover:text-white">{item.desc}</p>
+                 </div>
+               ))}
              </div>
           </div>
         </section>
 
         {/* What Precision Wellness Means */}
-        <section className="py-20 px-6 bg-brand-primary text-white rounded-[3rem] mx-4">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-24 px-6 bg-brand-light">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">What "Precision Wellness" Means</h2>
-              <p className="text-gray-300">It means we focus on what moves the needle.</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 uppercase tracking-tighter">Precision Wellness</h2>
+              <p className="text-brand-gray text-xl">We focus on what moves the needle.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12">
-               <div className="flex gap-4">
-                 <Smartphone className="text-brand-lime shrink-0" size={24} />
-                 <div>
-                   <h3 className="text-lg font-bold">Simple Movement Frameworks</h3>
-                   <p className="text-gray-300 text-sm">Routines people can repeat without a gym.</p>
+            <div className="grid md:grid-cols-2 gap-8">
+               {[
+                 { icon: Smartphone, title: "Simple Movement Frameworks", text: "Routines people can repeat without a gym." },
+                 { icon: BatteryCharging, title: "Strength & Resilience Basics", text: "For bodies that sit, travel, and carry stress." },
+                 { icon: Trophy, title: "Recovery & Energy Habits", text: "That don’t require a personality transplant." },
+                 { icon: Users, title: "Optional Deeper Support", text: "For the individuals who want to go further." }
+               ].map((item, i) => (
+                 <div key={i} className="bg-white p-8 rounded-[2rem] shadow-sm flex gap-6 items-start">
+                   <div className="bg-brand-light p-3 rounded-full"><item.icon className="text-brand-orange shrink-0" size={24} /></div>
+                   <div>
+                     <h3 className="text-xl font-display font-bold uppercase mb-2">{item.title}</h3>
+                     <p className="text-brand-gray text-sm">{item.text}</p>
+                   </div>
                  </div>
-               </div>
-               <div className="flex gap-4">
-                 <BatteryCharging className="text-brand-lime shrink-0" size={24} />
-                 <div>
-                   <h3 className="text-lg font-bold">Strength & Resilience Basics</h3>
-                   <p className="text-gray-300 text-sm">For bodies that sit, travel, and carry stress.</p>
-                 </div>
-               </div>
-               <div className="flex gap-4">
-                 <Trophy className="text-brand-lime shrink-0" size={24} />
-                 <div>
-                   <h3 className="text-lg font-bold">Recovery & Energy Habits</h3>
-                   <p className="text-gray-300 text-sm">That don’t require a personality transplant.</p>
-                 </div>
-               </div>
-               <div className="flex gap-4">
-                 <Users className="text-brand-lime shrink-0" size={24} />
-                 <div>
-                   <h3 className="text-lg font-bold">Optional Deeper Support</h3>
-                   <p className="text-gray-300 text-sm">For the individuals who want to go further.</p>
-                 </div>
-               </div>
+               ))}
             </div>
           </div>
         </section>
 
         {/* Options */}
-        <section id="options" className="py-24 px-6 bg-brand-light">
+        <section id="options" className="py-24 px-6 bg-white">
           <div className="max-w-5xl mx-auto">
-             <h2 className="text-3xl font-bold mb-12 text-center text-brand-primary">Program Options</h2>
+             <h2 className="text-4xl md:text-5xl font-display font-bold mb-16 text-center text-brand-black uppercase tracking-tighter">Options</h2>
              <div className="grid md:grid-cols-3 gap-8">
                
-               <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                 <h3 className="font-bold text-xl mb-4 text-brand-black">1. Precision Reset</h3>
-                 <p className="text-sm font-bold text-brand-gray uppercase tracking-wider mb-6">4–6 Weeks</p>
-                 <p className="text-brand-gray text-sm mb-6">A simple challenge-style structure with education and daily actions to build momentum.</p>
+               <div className="bg-brand-light p-10 rounded-[2.5rem] border border-gray-100">
+                 <h3 className="font-display text-3xl font-bold mb-2 text-brand-black uppercase">Reset</h3>
+                 <p className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-8">4–6 Weeks</p>
+                 <p className="text-brand-gray text-sm leading-relaxed">A simple challenge-style structure with education and daily actions to build momentum.</p>
                </div>
 
-               <div className="bg-white p-8 rounded-2xl shadow-sm border-2 border-brand-primary relative">
-                 <div className="absolute top-0 right-0 bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">Popular</div>
-                 <h3 className="font-bold text-xl mb-4 text-brand-black">2. Precision Foundations</h3>
-                 <p className="text-sm font-bold text-brand-gray uppercase tracking-wider mb-6">Ongoing</p>
-                 <p className="text-brand-gray text-sm mb-6">Monthly sessions + resources + accountability prompts. Keeping wellness top of mind.</p>
+               <div className="bg-brand-black p-10 rounded-[2.5rem] text-white relative shadow-xl transform md:-translate-y-4">
+                 <div className="absolute top-6 right-6 bg-brand-orange text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Popular</div>
+                 <h3 className="font-display text-3xl font-bold mb-2 uppercase">Foundations</h3>
+                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">Ongoing</p>
+                 <p className="text-gray-300 text-sm leading-relaxed">Monthly sessions + resources + accountability prompts. Keeping wellness top of mind.</p>
                </div>
 
-               <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                 <h3 className="font-bold text-xl mb-4 text-brand-black">3. Executive Support</h3>
-                 <p className="text-sm font-bold text-brand-gray uppercase tracking-wider mb-6">Leadership</p>
-                 <p className="text-brand-gray text-sm mb-6">For leadership teams: targeted, time-efficient, and practical health management.</p>
+               <div className="bg-brand-light p-10 rounded-[2.5rem] border border-gray-100">
+                 <h3 className="font-display text-3xl font-bold mb-2 text-brand-black uppercase">Executive</h3>
+                 <p className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-8">Leadership</p>
+                 <p className="text-brand-gray text-sm leading-relaxed">For leadership teams: targeted, time-efficient, and practical health management.</p>
                </div>
 
              </div>
@@ -156,19 +136,19 @@ export const CorporateWellness: React.FC = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 text-center">
-           <div className="max-w-3xl mx-auto bg-gray-50 rounded-3xl p-12">
-             <h2 className="text-2xl font-bold mb-6 text-brand-primary">Let's build something useful.</h2>
-             <p className="text-brand-gray mb-8 text-lg">
-               Tell me your team size, goals, and what “better” looks like — and I’ll recommend the right setup.
+        <section className="py-24 px-6 text-center bg-brand-black rounded-t-[3rem] text-white">
+           <div className="max-w-3xl mx-auto">
+             <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 uppercase tracking-tighter">Let's build something useful.</h2>
+             <p className="text-gray-400 mb-12 text-xl font-light">
+               Tell me your team size, goals, and what “better” looks like.
              </p>
              <Link to="/contact" state={{ fromCorporate: true }}>
-               <Button size="lg">Enquire About Precision Wellness</Button>
+               <Button size="lg" className="bg-brand-orange hover:bg-white hover:text-brand-black text-white px-12 py-6 text-xl border-none">Enquire Now</Button>
              </Link>
            </div>
         </section>
 
-        <FAQ items={faqs} title="Corporate Wellness FAQs" />
+        <FAQ items={faqs} title="Corporate FAQs" />
       </div>
     </>
   );
