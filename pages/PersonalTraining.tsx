@@ -1,144 +1,204 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Check, Target, UserCheck, BarChart3, Clock, Brain } from 'lucide-react';
+import { Check, Target, UserCheck, ShieldCheck, MapPin } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
+import { SeoHead } from '../components/SeoHead';
+import { FAQ } from '../components/FAQ';
 
 export const PersonalTraining: React.FC = () => {
   const { pageContent } = useContent();
   const { mainImage } = pageContent.personalTraining;
 
+  const faqs = [
+    {
+      question: "Do you offer personal training in Addington?",
+      answer: "Yes. My base is at Get Me Fitter in Addington, Christchurch. It's a private facility perfect for focused training away from commercial gym crowds."
+    },
+    {
+      question: "What is 'Hybrid' Personal Training?",
+      answer: "Hybrid means we combine in-person sessions (for technique and coaching) with a digital app program (for your other workouts). It ensures you have guidance all week, not just for the hour you see me."
+    },
+    {
+      question: "How often should I see a personal trainer?",
+      answer: "For Hybrid coaching, most clients see me once a week or once a fortnight to refine technique and check progress, then complete the rest of their sessions using the app plan."
+    },
+    {
+      question: "Can you help if I’ve had injuries or pain?",
+      answer: "Absolutely. This is a key focus of my work. We don't just 'work around' injury; we rebuild your capacity and confidence so you can trust your body again."
+    },
+    {
+      question: "What if I'm a beginner?",
+      answer: "Then this is the best place to start. Learning proper technique from day one saves you years of frustration and injury risk later on."
+    },
+    {
+      question: "How long are the sessions?",
+      answer: "Sessions are 60 minutes, focused entirely on you. No mobile phones (unless filming form), no distractions."
+    }
+  ];
+
   return (
-    <div className="bg-white">
-      {/* Hero */}
-      <section className="bg-brand-light py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-brand-primary">In-Person Coaching</h1>
-          <p className="text-xl text-brand-gray max-w-2xl mx-auto">
-            Hands-on coaching. Expert programming. Real accountability. For busy professionals in Christchurch who want results without the guesswork.
-          </p>
-          <div className="mt-8">
-            <Link to="/contact">
-              <Button>Book Free Consultation</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+    <>
+      <SeoHead 
+        title="Personal Trainer Christchurch | Hybrid 1:1 Coaching | WRK"
+        description="1:1 personal training in Christchurch (Addington). In-person coaching plus app homework so training fits real life. Honest coaching, smart progress."
+      />
 
-      {/* Main Content */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-6 text-brand-primary">Precision over guesswork.</h2>
-            <p className="text-brand-gray text-lg mb-6 leading-relaxed">
-              This isn't group fitness where you're one of 20 people getting zero attention. This is 1-on-1 coaching where every session is designed specifically for you.
+      <div className="bg-white">
+        {/* Hero */}
+        <section className="bg-brand-light py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-brand-primary">Personal Trainer in Christchurch</h1>
+            <p className="text-xl font-bold text-brand-black mb-2 uppercase tracking-wider">Hybrid Personal Training</p>
+            <p className="text-xl text-brand-gray max-w-2xl mx-auto leading-relaxed mb-8">
+              In-person sessions for coaching and precision, plus app-based homework so your training doesn’t fall apart when life gets busy. This is for people who want to do things properly — without making training their second job.
             </p>
-            <p className="text-brand-gray text-lg mb-8 leading-relaxed">
-              Before we load you with weight, we assess how you move. Got tight hips from sitting at a desk? Old shoulder injury? We address it properly before it becomes a bigger problem.
+            <div className="flex flex-col md:flex-row justify-center gap-4">
+              <Link to="/contact">
+                <Button>Apply for Hybrid Coaching</Button>
+              </Link>
+              <Link to="/assessment">
+                <Button variant="secondary">Take the Diagnostic</Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Local SEO Block */}
+        <section className="py-12 px-6 border-b border-gray-100">
+          <div className="max-w-3xl mx-auto text-center bg-gray-50 p-6 rounded-2xl flex items-center justify-center gap-3 text-sm md:text-base text-brand-gray">
+            <MapPin className="text-brand-orange shrink-0" />
+            <p>
+              I’m based in <strong>Addington</strong> and coach out of Get Me Fitter. I work with clients across nearby suburbs including Merivale, Fendalton, Ilam, Riccarton, Cashmere, Somerfield, Sumner, and Halswell.
             </p>
+          </div>
+        </section>
+
+        {/* Who this is for */}
+        <section className="py-20 px-6">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6 text-brand-primary">Who This Is For</h2>
+              <p className="text-lg text-brand-gray mb-6">Hybrid tends to be the best fit if:</p>
+              
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                  <span className="text-brand-gray">You’ve got a bit of history (pain, injuries, stop-start training).</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                  <span className="text-brand-gray">You want confidence in your technique and your plan.</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                  <span className="text-brand-gray">You want training that fits around work, family, travel — whatever season you’re in.</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                  <span className="text-brand-gray">You like straight-up coaching and a clear direction.</span>
+                </li>
+              </ul>
+            </div>
             
-            <div className="grid gap-6">
-              {[
-                { icon: Target, title: "Custom Program Design", text: "Built around your goals, schedule, and limitations. Not a template." },
-                { icon: UserCheck, title: "Real-Time Feedback", text: "We correct your form instantly. No wondering if you're doing it right." },
-                { icon: Clock, title: "Accountability That Works", text: "Sessions are scheduled. You show up or you waste money. Simple." },
-                { icon: BarChart3, title: "Progressive Programming", text: "We adjust every 4 weeks. No doing the same workout for months." }
-              ].map((item, i) => (
-                <div key={i} className="flex items-start">
-                  <div className="bg-brand-lime p-3 rounded-full mr-4">
-                    <item.icon size={20} className="text-brand-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-brand-primary">{item.title}</h3>
-                    <p className="text-sm text-brand-gray">{item.text}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-[500px] bg-gray-100 rounded-[2rem] overflow-hidden">
+               <img 
+                src={mainImage} 
+                alt="Personal Trainer Christchurch technique coaching" 
+                className="absolute inset-0 w-full h-full object-cover grayscale"
+              />
             </div>
           </div>
-          
-          <div className="relative h-[600px] bg-gray-100 rounded-[2rem] overflow-hidden">
-             <img 
-              src={mainImage} 
-              alt="Trainer adjusting weights" 
-              className="absolute inset-0 w-full h-full object-cover grayscale"
-            />
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Who This Is For */}
-      <section className="py-20 px-6 bg-brand-light">
-        <div className="max-w-5xl mx-auto">
-           <h2 className="text-3xl font-bold mb-12 text-center text-brand-primary">Is This Right For You?</h2>
-           <div className="grid md:grid-cols-2 gap-12">
-             <div className="bg-white p-8 rounded-[2rem] shadow-sm">
-               <h3 className="font-bold text-xl mb-6 text-brand-primary flex items-center">
-                 <Check className="mr-2 text-brand-green" /> This IS for you if:
-               </h3>
-               <ul className="space-y-4 text-brand-gray">
-                 <li className="flex items-start"><span className="mr-3 text-brand-green">✓</span>You used to be fit but fell out of shape due to career/family.</li>
-                 <li className="flex items-start"><span className="mr-3 text-brand-green">✓</span>You want an evidence-based approach, not fitness industry BS.</li>
-                 <li className="flex items-start"><span className="mr-3 text-brand-green">✓</span>You have 2-3 hours per week to commit (not 10).</li>
-                 <li className="flex items-start"><span className="mr-3 text-brand-green">✓</span>You want expert eyes on your form to prevent injury.</li>
-               </ul>
+        {/* How It Works */}
+        <section className="py-20 px-6 bg-brand-light">
+          <div className="max-w-5xl mx-auto">
+             <h2 className="text-3xl font-bold mb-12 text-center text-brand-primary">How Hybrid Personal Training Works</h2>
+             <div className="grid md:grid-cols-3 gap-8">
+               <div className="bg-white p-8 rounded-2xl shadow-sm">
+                 <div className="bg-brand-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mb-4">1</div>
+                 <h3 className="font-bold text-xl mb-3 text-brand-black">We train together in person</h3>
+                 <p className="text-sm text-brand-gray">Coaching, technique, smart loading, and real-time adjustments. We make every rep count.</p>
+               </div>
+               <div className="bg-white p-8 rounded-2xl shadow-sm">
+                 <div className="bg-brand-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mb-4">2</div>
+                 <h3 className="font-bold text-xl mb-3 text-brand-black">You’ve got homework in the app</h3>
+                 <p className="text-sm text-brand-gray">Short, clear sessions that support what we’re doing — not random extras. You follow the plan.</p>
+               </div>
+               <div className="bg-white p-8 rounded-2xl shadow-sm">
+                 <div className="bg-brand-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mb-4">3</div>
+                 <h3 className="font-bold text-xl mb-3 text-brand-black">We keep it sustainable</h3>
+                 <p className="text-sm text-brand-gray">We’ll push when it makes sense, and pull back when your recovery needs it. Longevity is the goal.</p>
+               </div>
              </div>
+          </div>
+        </section>
 
-             <div className="bg-brand-primary text-white p-8 rounded-[2rem] shadow-sm">
-               <h3 className="font-bold text-xl mb-6 flex items-center">
-                 <span className="mr-2 text-brand-lime">✗</span> This is NOT for you if:
-               </h3>
-               <ul className="space-y-4 text-gray-300">
-                 <li className="flex items-start"><span className="mr-3 text-brand-lime">•</span>You want a quick fix or a 30-day transformation.</li>
-                 <li className="flex items-start"><span className="mr-3 text-brand-lime">•</span>You are looking for the cheapest option.</li>
-                 <li className="flex items-start"><span className="mr-3 text-brand-lime">•</span>You need someone to scream at you to get motivated.</li>
-                 <li className="flex items-start"><span className="mr-3 text-brand-lime">•</span>You prefer complete independence (try Online Coaching).</li>
-               </ul>
-             </div>
-           </div>
-        </div>
-      </section>
-
-      {/* Pricing / Options - Background updated to brand-primary */}
-      <section className="bg-brand-primary text-white py-20 px-6 rounded-t-[3rem] mt-[-2rem] relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Investment & Commitment</h2>
-          <p className="text-gray-300 mb-12 max-w-2xl mx-auto">
-            We operate on a monthly membership basis. No contracts, but we recommend committing to at least 12 weeks to see significant progress.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8 text-left">
-            <div className="border border-brand-green/30 p-8 hover:border-brand-lime transition-colors rounded-2xl">
-              <h3 className="text-xl font-bold mb-2">Weekly Coaching</h3>
-              <p className="text-gray-300 text-sm mb-6">Perfect for building a foundation.</p>
-              <ul className="space-y-3 mb-8 text-gray-300 text-sm">
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> 1 x 60min Session per week</li>
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> Full App Programming (3-4 days)</li>
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> Nutritional Guidelines</li>
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> Quarterly Review</li>
-              </ul>
-              <Link to="/contact">
-                <Button variant="secondary" fullWidth>Enquire Now</Button>
-              </Link>
-            </div>
-
-            <div className="border border-brand-light bg-brand-primary/50 p-8 rounded-2xl relative">
-              <div className="absolute top-0 right-0 bg-brand-lime text-brand-primary text-xs font-bold px-3 py-1 uppercase tracking-wider transform translate-x-2 -translate-y-2 rounded-bl-lg">Most Popular</div>
-              <h3 className="text-xl font-bold mb-2">Hybrid Coaching</h3>
-              <p className="text-gray-300 text-sm mb-6">Accelerated results and higher accountability.</p>
-              <ul className="space-y-3 mb-8 text-gray-300 text-sm">
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> 2 x 60min Sessions per week</li>
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> Full App Programming</li>
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> Advanced Nutrition Coaching</li>
-                <li className="flex items-center"><Check size={16} className="mr-3 text-brand-lime" /> 24/7 Support Access</li>
-              </ul>
-              <Link to="/contact">
-                <Button variant="primary" className="bg-brand-lime text-brand-primary hover:bg-white" fullWidth>Enquire Now</Button>
-              </Link>
+        {/* My Approach */}
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-brand-primary">My Coaching Approach</h2>
+            <p className="text-xl text-brand-gray mb-12 font-medium">
+              I’m not here to turn the gym into a circus. I’m here to help you build a body that works.
+            </p>
+            <div className="space-y-6">
+               <div className="flex gap-4">
+                 <Target className="text-brand-orange shrink-0" size={24} />
+                 <div>
+                   <h3 className="font-bold text-lg mb-1">Minimum Effective Dose</h3>
+                   <p className="text-brand-gray">So you can stay consistent without living in the gym.</p>
+                 </div>
+               </div>
+               <div className="flex gap-4">
+                 <UserCheck className="text-brand-orange shrink-0" size={24} />
+                 <div>
+                   <h3 className="font-bold text-lg mb-1">Planned Progress</h3>
+                   <p className="text-brand-gray">So you’re not guessing. Every week builds on the last.</p>
+                 </div>
+               </div>
+               <div className="flex gap-4">
+                 <ShieldCheck className="text-brand-orange shrink-0" size={24} />
+                 <div>
+                   <h3 className="font-bold text-lg mb-1">Recovery Guardrails</h3>
+                   <p className="text-brand-gray">So training supports your life, not competes with it.</p>
+                 </div>
+               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* What You Get */}
+        <section className="bg-brand-primary text-white py-20 px-6 rounded-t-[3rem] mt-[-2rem] relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">What's Included</h2>
+              <p className="text-gray-300">A complete system for results.</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-3xl mx-auto text-lg">
+               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> 1:1 in-person sessions (Weekly/Fortnightly)</li>
+               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> App programming + exercise demos</li>
+               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> Training progressions + substitutions</li>
+               <li className="flex items-center"><Check size={20} className="mr-4 text-brand-lime" /> Support between sessions</li>
+            </div>
+
+            <div className="mt-16 text-center">
+               <p className="text-xl font-medium mb-8">If you want coaching that’s honest, thoughtful, and tailored to you — apply below.</p>
+               <div className="flex flex-col md:flex-row justify-center gap-4">
+                 <Link to="/contact">
+                   <Button variant="primary" className="bg-brand-lime text-brand-primary hover:bg-white">Apply for Hybrid Coaching</Button>
+                 </Link>
+                 <Link to="/assessment">
+                   <Button variant="outline" className="text-white border-white hover:bg-white hover:text-brand-primary">Take the Diagnostic</Button>
+                 </Link>
+               </div>
+            </div>
+          </div>
+        </section>
+
+        <FAQ items={faqs} title="Hybrid Coaching FAQs" />
+      </div>
+    </>
   );
 };

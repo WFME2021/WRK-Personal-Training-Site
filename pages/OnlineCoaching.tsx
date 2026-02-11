@@ -3,205 +3,186 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { Smartphone, Video, MessageSquare, Check, ScanBarcode, LineChart, Utensils, Globe } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
+import { SeoHead } from '../components/SeoHead';
+import { FAQ } from '../components/FAQ';
 
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
-  const { workoutLogImage, videoImage, macroImage, nutritionLogImage } = pageContent.onlineCoaching;
+  const { workoutLogImage, videoImage } = pageContent.onlineCoaching;
+
+  const faqs = [
+    {
+      question: "Can you build a plan around a busy schedule or travel?",
+      answer: "Yes. That is the primary problem I solve. I build plans that fit your available days, and I create specific 'hotel/travel' workouts so you don't lose momentum when you're away."
+    },
+    {
+      question: "Do I need a gym membership?",
+      answer: "No. I build the plan based on the equipment you have. If you have a home gym or just a pair of dumbbells, we can make it work."
+    },
+    {
+      question: "How do form checks work?",
+      answer: "You film your key lifts (I'll show you how) and upload them to the app. I review them and send you a video or voice note with specific cues to fix your technique."
+    },
+    {
+      question: "Is there a minimum commitment?",
+      answer: "I generally recommend 3 months minimum. It takes time to build strength and see real physiological adaptation. Quick fixes don't exist here."
+    },
+    {
+      question: "What's the difference between Hybrid and Online?",
+      answer: "Hybrid includes in-person sessions with me in Christchurch. Online is 100% remote, meaning you train on your own time, but with my programming and accountability."
+    },
+    {
+      question: "Do you work with beginners online?",
+      answer: "Yes, provided you are willing to learn. I will be heavy on video review initially to ensure you are safe and moving well."
+    }
+  ];
 
   return (
-    <div className="bg-white">
-      {/* Hero - Dark Green Background */}
-      <section className="bg-brand-primary text-white py-24 px-6 rounded-b-[3rem]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-6">Online <br/><span className="text-brand-lime">Coaching</span></h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Custom programming. Expert coaching. Remote accountability. For people who need flexibility without sacrificing results.
-          </p>
-          <div className="mt-8">
-            <Link to="/contact">
-              <Button className="bg-brand-lime text-brand-primary hover:bg-white">Book Free Strategy Call</Button>
-            </Link>
+    <>
+      <SeoHead 
+        title="Online Personal Trainer NZ | Coaching + Check-Ins | WRK"
+        description="Online coaching across NZ. App-based training plan, regular check-ins, and adjustments around work, stress and travel. Apply for online coaching."
+      />
+
+      <div className="bg-white">
+        {/* Hero */}
+        <section className="bg-brand-primary text-white py-24 px-6 rounded-b-[3rem]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6">Online Personal Trainer <br/><span className="text-brand-lime">(NZ-Wide)</span></h1>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed font-bold uppercase tracking-wider mb-4">
+              Structure + Accountability
+            </p>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">
+              If you’re capable but life gets in the way, online coaching gives you what most people actually need: a good plan, a steady hand on the wheel, and someone who keeps you consistent.
+            </p>
+            <div className="flex flex-col md:flex-row justify-center gap-4">
+              <Link to="/contact">
+                <Button className="bg-brand-lime text-brand-primary hover:bg-white">Apply for Online Coaching</Button>
+              </Link>
+              <Link to="/assessment">
+                <Button variant="outline" className="text-white border-white hover:bg-white hover:text-brand-primary">Take the Diagnostic</Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Feature Block 1: Training */}
-      <section className="py-24 px-6 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
-           <div className="order-2 lg:order-1 flex justify-center gap-8 relative">
-              {/* Decorative Circle */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-light rounded-full z-0 blur-3xl opacity-50"></div>
-              
-              {/* Phone 1: Workout Log */}
-              <div className="relative z-10 w-[280px] md:w-[320px] aspect-[9/19.5] bg-black rounded-[3rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden transform -rotate-6 mt-12">
-                 <img 
-                  src={workoutLogImage} 
-                  alt="Workout Session Log with Personal Best" 
-                  className="w-full h-full object-cover" 
-                 />
-                 {/* Mock Status Bar */}
-                 <div className="absolute top-0 w-full h-6 bg-black z-20"></div>
-              </div>
-
-              {/* Phone 2: Video */}
-              <div className="relative z-10 w-[280px] md:w-[320px] aspect-[9/19.5] bg-black rounded-[3rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden transform rotate-3 -mt-12">
-                 <img 
-                  src={videoImage} 
-                  alt="Exercise Video Description" 
-                  className="w-full h-full object-cover" 
-                 />
-              </div>
-           </div>
-
-           <div className="order-1 lg:order-2">
-              <div className="inline-block bg-brand-lime px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 text-brand-primary">Training</div>
-              <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-6 leading-none text-brand-primary">
-                Expert Coaching <br/> No Commute.
-              </h2>
-              <p className="text-brand-gray text-lg mb-8 leading-relaxed">
-                This isn't "buy a generic program and hope for the best." It's custom programming designed specifically for your equipment and schedule, with regular check-ins and form reviews.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-brand-primary text-white p-3 rounded-full mr-4 shrink-0">
-                     <Video size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Video Form Reviews</h3>
-                    <p className="text-sm text-brand-gray">Film your lifts, send them to me. I'll review and give feedback so you know your depth is good and you're safe.</p>
-                  </div>
+        {/* Who it's for */}
+        <section className="py-24 px-6">
+          <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
+             <div className="order-2 lg:order-1 flex justify-center gap-8 relative">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-light rounded-full z-0 blur-3xl opacity-50"></div>
+                <div className="relative z-10 w-[280px] md:w-[320px] aspect-[9/19.5] bg-black rounded-[3rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden transform -rotate-3">
+                   <img src={workoutLogImage} alt="Online personal training app interface" className="w-full h-full object-cover" />
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-brand-primary text-white p-3 rounded-full mr-4 shrink-0">
-                     <Globe size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Training Anywhere</h3>
-                    <p className="text-sm text-brand-gray">Travel frequently? We build hotel workouts. Home gym? We adapt to what you have.</p>
-                  </div>
-                </div>
-              </div>
-           </div>
-        </div>
-      </section>
+             </div>
 
-      {/* Feature Block 2: Nutrition - Dark Green Background */}
-      <section className="py-24 px-6 bg-brand-primary text-white rounded-[3rem] mx-4">
-        <div className="max-w-[1600px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
-           <div>
-              <div className="inline-block bg-white text-brand-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Nutrition</div>
-              <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-6 leading-none">
-                Fuel Your <br/> Performance.
-              </h2>
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                Strategies for busy schedules, eating out, and staying on track. Not rigid meal plans—flexible strategies you can actually sustain.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-brand-lime text-brand-primary p-3 rounded-full mr-4 shrink-0">
-                     <ScanBarcode size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Barcode Scanner</h3>
-                    <p className="text-sm text-gray-300">Log food instantly from our massive verified database.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-brand-lime text-brand-primary p-3 rounded-full mr-4 shrink-0">
-                     <Utensils size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Macro Breakdown</h3>
-                    <p className="text-sm text-gray-300">Visualise your Protein, Fats, and Carbs with the daily dashboard.</p>
-                  </div>
-                </div>
-              </div>
-           </div>
-
-           <div className="flex justify-center gap-8 relative">
-              {/* Phone 3: Nutrition Dashboard */}
-              <div className="relative z-10 w-[280px] md:w-[320px] aspect-[9/19.5] bg-white rounded-[3rem] border-[8px] border-brand-primary shadow-2xl overflow-hidden transform rotate-3 mt-8">
-                 <img 
-                  src={macroImage} 
-                  alt="Nutrition Macros Pie Chart" 
-                  className="w-full h-full object-cover" 
-                 />
-              </div>
-
-              {/* Phone 4: Scanner / Log */}
-              <div className="relative z-10 w-[280px] md:w-[320px] aspect-[9/19.5] bg-white rounded-[3rem] border-[8px] border-brand-primary shadow-2xl overflow-hidden transform -rotate-3 -mt-8 hidden md:block">
-                 <img 
-                  src={nutritionLogImage} 
-                  alt="Daily Nutrition Log" 
-                  className="w-full h-full object-cover" 
-                 />
-              </div>
-           </div>
-        </div>
-      </section>
-
-      {/* Pricing Table */}
-       <section className="py-24 px-6 bg-brand-light">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl uppercase font-bold mb-4 text-brand-primary">Choose Your Level</h2>
-            <p className="text-brand-gray">Three tiers based on the level of support you need.</p>
+             <div className="order-1 lg:order-2">
+                <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8 text-brand-primary">
+                  Who It's For
+                </h2>
+                <p className="text-brand-gray text-lg mb-6">Online coaching is a strong fit if:</p>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                     <span className="text-brand-gray">You already train (or you’re ready to) but consistency is patchy.</span>
+                  </li>
+                  <li className="flex items-start">
+                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                     <span className="text-brand-gray">Work, stress, travel, and family make your weeks unpredictable.</span>
+                  </li>
+                  <li className="flex items-start">
+                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                     <span className="text-brand-gray">You want guidance and accountability without in-person sessions.</span>
+                  </li>
+                  <li className="flex items-start">
+                     <Check className="text-brand-orange mr-3 mt-1 shrink-0" />
+                     <span className="text-brand-gray">You want to feel confident you’re doing the right things.</span>
+                  </li>
+                </ul>
+             </div>
           </div>
+        </section>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+        {/* How It Works */}
+        <section className="py-24 px-6 bg-brand-light">
+          <div className="max-w-4xl mx-auto">
+             <h2 className="text-3xl font-bold mb-12 text-center text-brand-primary">How It Works</h2>
+             <div className="grid md:grid-cols-4 gap-6">
+               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">01</span>
+                  <h3 className="font-bold text-lg mb-2">You Tell Me</h3>
+                  <p className="text-sm text-brand-gray">Your goal, schedule, and constraints. I need to know the reality of your week.</p>
+               </div>
+               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">02</span>
+                  <h3 className="font-bold text-lg mb-2">I Build</h3>
+                  <p className="text-sm text-brand-gray">Your plan in the app. Based on what you can actually do, not a fantasy perfect week.</p>
+               </div>
+               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">03</span>
+                  <h3 className="font-bold text-lg mb-2">You Execute</h3>
+                  <p className="text-sm text-brand-gray">You complete the workouts, track your weights, and check in. I adjust as we go.</p>
+               </div>
+               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <span className="text-4xl font-display font-bold text-brand-lime mb-4 block">04</span>
+                  <h3 className="font-bold text-lg mb-2">We Progress</h3>
+                  <p className="text-sm text-brand-gray">You keep moving forward, even when the week isn’t perfect. Consistency wins.</p>
+               </div>
+             </div>
+          </div>
+        </section>
+
+        {/* What You Get */}
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-12 text-brand-primary">What You Get</h2>
+            <div className="grid md:grid-cols-2 gap-8 text-left max-w-3xl mx-auto">
+               <div className="flex gap-4">
+                 <Smartphone className="text-brand-orange shrink-0" size={24} />
+                 <div>
+                   <h3 className="font-bold text-lg">App-Based Training Plan</h3>
+                   <p className="text-sm text-brand-gray">Gym, home, or travel friendly. Your program lives in your pocket.</p>
+                 </div>
+               </div>
+               <div className="flex gap-4">
+                 <MessageSquare className="text-brand-orange shrink-0" size={24} />
+                 <div>
+                   <h3 className="font-bold text-lg">Regular Check-Ins</h3>
+                   <p className="text-sm text-brand-gray">We review your week, check your form, and update the plan.</p>
+                 </div>
+               </div>
+               <div className="flex gap-4">
+                 <Globe className="text-brand-orange shrink-0" size={24} />
+                 <div>
+                   <h3 className="font-bold text-lg">Exercise Swaps</h3>
+                   <p className="text-sm text-brand-gray">Busy week? Injury flare up? I provide fallback sessions and swaps.</p>
+                 </div>
+               </div>
+               <div className="flex gap-4">
+                 <Utensils className="text-brand-orange shrink-0" size={24} />
+                 <div>
+                   <h3 className="font-bold text-lg">Supportive Nutrition</h3>
+                   <p className="text-sm text-brand-gray">Guidelines you can stick to. Simple, not obsessive.</p>
+                 </div>
+               </div>
+            </div>
             
-            {/* Starter */}
-            <div className="bg-white rounded-[2rem] p-8 border border-gray-100 flex flex-col">
-               <h3 className="font-display text-3xl font-bold mb-4 text-brand-primary">Starter</h3>
-               <p className="text-sm text-brand-gray mb-6">For people who know how to train, just need expert programming.</p>
-               <div className="flex-grow space-y-4 mb-8">
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> Custom Training Program</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> Monthly Check-in</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> Basic Nutrition Guidance</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> App Access</li>
+            <div className="mt-16 p-8 bg-brand-light rounded-3xl inline-block">
+               <p className="text-xl font-bold text-brand-black mb-6">If you want consistency without overcomplicating it, this is your lane.</p>
+               <div className="flex flex-col md:flex-row justify-center gap-4">
+                 <Link to="/contact">
+                   <Button>Apply for Online Coaching</Button>
+                 </Link>
+                 <Link to="/42-day-reset">
+                   <Button variant="secondary">Start with the 42-Day Reset ($47)</Button>
+                 </Link>
                </div>
-               <Link to="/contact">
-                 <Button variant="outline" fullWidth>Apply for Starter</Button>
-               </Link>
             </div>
-
-            {/* Premium */}
-            <div className="bg-brand-primary text-white rounded-[2rem] p-8 border border-brand-primary flex flex-col relative transform lg:-translate-y-4 shadow-xl">
-               <div className="absolute top-0 right-0 bg-brand-lime text-brand-primary px-4 py-1 rounded-bl-xl font-bold text-xs uppercase tracking-wider">Most Popular</div>
-               <h3 className="font-display text-3xl font-bold mb-4">Premium</h3>
-               <p className="text-sm text-gray-300 mb-6">Regular accountability and full nutrition coaching.</p>
-               <div className="flex-grow space-y-4 mb-8">
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-lime"/> Everything in Starter</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-lime"/> Weekly Check-ins</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-lime"/> Full Nutrition Coaching</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-lime"/> Unlimited Video Form Reviews</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-lime"/> Priority Messaging</li>
-               </div>
-               <Link to="/contact">
-                 <Button variant="primary" className="bg-brand-lime text-brand-primary hover:bg-white" fullWidth>Apply for Premium</Button>
-               </Link>
-            </div>
-
-            {/* Elite */}
-            <div className="bg-white rounded-[2rem] p-8 border border-gray-100 flex flex-col">
-               <h3 className="font-display text-3xl font-bold mb-4 text-brand-primary">Elite</h3>
-               <p className="text-sm text-brand-gray mb-6">Premium coaching with bi-weekly video calls.</p>
-               <div className="flex-grow space-y-4 mb-8">
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> Everything in Premium</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> Bi-weekly Video Calls (30m)</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> Advanced Periodization</li>
-                 <li className="flex items-center text-sm"><Check size={16} className="mr-2 text-brand-green"/> Same-day Messaging</li>
-               </div>
-               <Link to="/contact">
-                 <Button variant="outline" fullWidth>Apply for Elite</Button>
-               </Link>
-            </div>
-
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        <FAQ items={faqs} title="Online Coaching FAQs" />
+      </div>
+    </>
   );
 };

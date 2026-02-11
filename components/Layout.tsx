@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight } from 'lucide-react';
-import { BRAND_NAME, TAGLINE, NAVIGATION_LINKS, LOCATION } from '../constants';
+import { Menu, X } from 'lucide-react';
+import { BRAND_NAME, NAVIGATION_LINKS, LOCATION } from '../constants';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,18 +83,23 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         {children}
       </main>
 
-      {/* Footer - Updated to Black with Orange Accents */}
+      {/* Footer - Updated with NAP for Local SEO */}
       <footer className="bg-brand-black text-white py-20 border-t border-brand-black rounded-t-[3rem] mt-12">
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
               <h3 className="text-3xl font-display font-bold uppercase tracking-tighter mb-6">WRK<span className="text-brand-orange">.</span></h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Structured, professional coaching for those who demand high ROI from their time and effort.
+                Personal Training for people who show up. Structured, professional coaching for those who demand high ROI.
               </p>
-              <p className="text-brand-orange text-sm font-medium">
-                {LOCATION}
-              </p>
+              
+              {/* NAP (Name, Address, Phone) for Local SEO */}
+              <address className="not-italic text-sm text-gray-400 space-y-2">
+                <p className="font-bold text-brand-orange">WRK Personal Training</p>
+                <p>Based at Get Me Fitter</p>
+                <p>Addington, Christchurch, New Zealand</p>
+                <p className="mt-2"><a href="mailto:coach@wrkpersonaltraining.com" className="hover:text-white">coach@wrkpersonaltraining.com</a></p>
+              </address>
             </div>
             
             <div>
