@@ -5,8 +5,9 @@ export const LOCATION = "Christchurch, New Zealand";
 
 export const NAVIGATION_LINKS = [
   { label: "Home", path: "/" },
-  { label: "Philosophy", path: "/#philosophy" },
+  { label: "Philosophy", path: "/philosophy" },
   { label: "Services", path: "/#services" },
   { label: "Journal", path: "/blog" },
+  { label: "Tools", path: "/tools" },
   { label: "Start Assessment", path: "/assessment", isPrimary: true },
 ];

@@ -16,13 +16,24 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     <div className="min-h-screen flex flex-col bg-white text-brand-black selection:bg-brand-orange selection:text-white">
       <header className="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-          <Link to="/" className="block hover:opacity-80 transition-opacity">
-            {/* Logo - Ensure 'logo.png' is in your public folder */}
-            <img 
-              src="/logo.png" 
-              alt="WRK Personal Training" 
-              className="h-8 md:h-10 w-auto object-contain"
-            />
+          <Link to="/" className="block hover:opacity-80 transition-opacity" aria-label="Home">
+            {/* WRK Logo - Vector SVG */}
+            <svg 
+              viewBox="0 0 134 34" 
+              className="h-8 md:h-10 w-auto" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg" 
+              aria-label="WRK Personal Training"
+            >
+              {/* W */}
+              <path d="M2 2H12.5L17.5 26L22.5 2H32L37 26L42 2H52.5L43 32H33L27.5 10L22 32H12L2 2Z" fill="#000000"/>
+              {/* R */}
+              <path d="M59 2H72C80 2 84 6 84 12C84 16 82 19 78 21L86 32H75L68 22H67V32H59V2Z M67 16H71C74 16 75 15 75 12C75 9 74 8 71 8H67V16Z" fill="#000000"/>
+              {/* K */}
+              <path d="M92 2H100V15L109 2H120L108 17L121 32H110L100 20V32H92V2Z" fill="#000000"/>
+              {/* Dot */}
+              <rect x="124" y="22" width="10" height="10" fill="#FF5500"/>
+            </svg>
           </Link>
 
           {/* Desktop Nav */}
@@ -91,7 +102,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
-              {/* Footer Logo - using same text style or image if preferred, keeping text for now as per instructions to only change top left, but I will make it match the brand style */}
+              {/* Footer Logo - Matching the Header SVG style via Text */}
               <h3 className="text-4xl font-display font-bold uppercase tracking-tighter mb-6">WRK<span className="text-brand-orange">.</span></h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
                 Personal Training for people who show up. No hype. No guilt. Just work.

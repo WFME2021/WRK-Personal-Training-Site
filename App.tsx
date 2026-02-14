@@ -1,7 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
+import { Philosophy } from './pages/Philosophy';
 import { Assessment } from './pages/Assessment';
 import { Results } from './pages/Results';
 import { Contact } from './pages/Contact';
@@ -12,13 +13,15 @@ import { Challenge42 } from './pages/Challenge42';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { Admin } from './pages/Admin';
+import { Tools } from './pages/Tools';
 import { ContentProvider } from './context/ContentContext';
 
 // ScrollToTop component to handle scroll position on route change
 const ScrollToTop = () => {
-  const { pathname } = React.useMemo(() => ({ pathname: window.location.hash }), []);
+  const { pathname } = useLocation();
   
   React.useEffect(() => {
+    // Immediate scroll to top
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -33,6 +36,7 @@ const App: React.FC = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/philosophy" element={<Philosophy />} />
             <Route path="/assessment" element={<Assessment />} />
             <Route path="/results" element={<Results />} />
             <Route path="/contact" element={<Contact />} />
@@ -46,6 +50,9 @@ const App: React.FC = () => {
             {/* Blog Routes */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            
+            {/* Tools Route */}
+            <Route path="/tools" element={<Tools />} />
             
             {/* Admin Route */}
             <Route path="/admin" element={<Admin />} />

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Smartphone, Video, MessageSquare, Check, Utensils, Globe, ArrowRight } from 'lucide-react';
+import { Smartphone, Video, MessageSquare, Check, Utensils, Globe, ArrowRight, Zap, Moon, Droplets } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
-  const { workoutLogImage } = pageContent.onlineCoaching;
+  const { workoutLogImage, habitsImage } = pageContent.onlineCoaching;
 
   const faqs = [
     {
@@ -121,8 +121,57 @@ export const OnlineCoaching: React.FC = () => {
           </div>
         </section>
 
+        {/* NEW SECTION: Habits & Lifestyle */}
+        <section className="py-24 px-6 bg-white overflow-hidden">
+           <div className="max-w-[1400px] mx-auto">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                 <div>
+                    <span className="text-brand-orange font-bold uppercase tracking-widest text-xs mb-4 block">Beyond The Gym</span>
+                    <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-8 text-brand-black">
+                      Habits & <br/>Lifestyle
+                    </h2>
+                    <p className="text-xl text-brand-gray mb-10 leading-relaxed font-light">
+                       Training is just 1 hour of your day. The other 23 hours dictate your results. 
+                       We track the "big rocks" that actually improve performance—without the obsession.
+                    </p>
+                    
+                    <div className="space-y-8">
+                       {[
+                         { icon: Moon, title: "Sleep Hygiene", desc: "Tracking simple metrics to improve recovery." },
+                         { icon: Droplets, title: "Hydration", desc: "Daily targets to keep energy stable." },
+                         { icon: Zap, title: "Energy Management", desc: "Subjective scoring to prevent burnout." }
+                       ].map((item, i) => (
+                         <div key={i} className="flex gap-6 items-start">
+                            <div className="bg-brand-light p-3 rounded-full shrink-0">
+                               <item.icon className="text-brand-black" size={24} />
+                            </div>
+                            <div>
+                               <h3 className="font-display text-xl font-bold uppercase mb-1">{item.title}</h3>
+                               <p className="text-brand-gray text-sm">{item.desc}</p>
+                            </div>
+                         </div>
+                       ))}
+                    </div>
+                 </div>
+                 
+                 <div className="relative mt-12 lg:mt-0">
+                    <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
+                      <img 
+                        src={habitsImage} 
+                        alt="Habit tracking interface showing daily goals" 
+                        className="w-full h-auto object-cover" 
+                      />
+                    </div>
+                    {/* Decorative Elements */}
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-orange/10 rounded-full blur-3xl -z-10"></div>
+                    <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-brand-black/5 rounded-full blur-3xl -z-10"></div>
+                 </div>
+              </div>
+           </div>
+        </section>
+
         {/* What You Get */}
-        <section className="py-24 px-6">
+        <section className="py-24 px-6 bg-brand-light">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl font-display font-bold mb-12 text-brand-black uppercase tracking-tighter">What You Get</h2>
             <div className="grid md:grid-cols-2 gap-10 text-left max-w-4xl mx-auto">
@@ -132,7 +181,7 @@ export const OnlineCoaching: React.FC = () => {
                  { icon: Globe, title: "Exercise Swaps", text: "Fallback sessions for busy weeks." },
                  { icon: Utensils, title: "Nutrition Support", text: "Guidelines you can stick to." }
                ].map((item, i) => (
-                 <div key={i} className="flex gap-6 p-6 border border-gray-100 rounded-2xl hover:border-brand-black transition-colors">
+                 <div key={i} className="flex gap-6 p-6 bg-white border border-gray-100 rounded-2xl hover:border-brand-black transition-colors shadow-sm">
                    <item.icon className="text-brand-orange shrink-0" size={32} />
                    <div>
                      <h3 className="font-display text-xl font-bold uppercase mb-1">{item.title}</h3>
