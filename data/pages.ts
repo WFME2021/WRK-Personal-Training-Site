@@ -3,6 +3,7 @@ export interface PageContent {
     heroImage: string;
     ptImage: string;
     onlineImage: string;
+    corporateImage: string;
   };
   personalTraining: {
     mainImage: string;
@@ -24,6 +25,7 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
     heroImage: 'https://picsum.photos/seed/fitness_hero/1920/1080?grayscale',
     ptImage: 'https://picsum.photos/seed/pt/800/1000?grayscale',
     onlineImage: 'https://picsum.photos/seed/online/800/1000?grayscale',
+    corporateImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop&grayscale',
   },
   personalTraining: {
     mainImage: 'https://picsum.photos/id/49/800/1000?grayscale',
@@ -52,6 +54,7 @@ export const FIELD_LABELS: Record<string, string> = {
   heroImage: 'Hero / Header Image',
   ptImage: 'In-Person Training Card Image',
   onlineImage: 'Online Coaching Card Image',
+  corporateImage: 'Corporate Wellness Card Image',
   mainImage: 'Main Feature Image',
   heroBackground: 'Background Image',
   workoutLogImage: 'Phone Screen: Session Log',

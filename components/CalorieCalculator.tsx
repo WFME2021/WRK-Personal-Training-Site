@@ -412,10 +412,16 @@ export const CalorieCalculator: React.FC = () => {
                  </div>
 
                  {/* 5. CTA */}
-                 <div className="pt-2">
+                 <div className="pt-6 mt-4 border-t border-white/10 text-center">
+                     <h4 className="font-display text-xl font-bold uppercase text-white mb-2">
+                        Need help putting this roadmap into action?
+                     </h4>
+                     <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">
+                        Take the 2-minute diagnostic to see which training option is right for your schedule and goals.
+                     </p>
                      <Link to="/assessment">
-                        <Button fullWidth size="lg" className="bg-brand-orange hover:bg-white hover:text-brand-orange text-white border-none text-sm md:text-base">
-                           Want the full WRK Performance Blueprint? <ArrowRight size={18} className="ml-2" />
+                        <Button fullWidth size="lg" className="bg-brand-orange hover:bg-white hover:text-brand-orange text-white border-none text-sm md:text-base group">
+                           Find Your Training Option <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                         </Button>
                      </Link>
                  </div>

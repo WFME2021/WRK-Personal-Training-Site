@@ -7,7 +7,7 @@ export const NAVIGATION_LINKS = [
   { label: "Home", path: "/" },
   { label: "Philosophy", path: "/philosophy" },
   { label: "Services", path: "/#services" },
-  { label: "Journal", path: "/blog" },
+  { label: "Blog", path: "/blog" },
   { label: "Tools", path: "/tools" },
   { label: "Start Assessment", path: "/assessment", isPrimary: true },
 ];

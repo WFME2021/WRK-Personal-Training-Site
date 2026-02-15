@@ -8,7 +8,7 @@ import { FAQ } from '../components/FAQ';
 
 export const Home: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage, ptImage, onlineImage } = pageContent.home;
+  const { heroImage, ptImage, onlineImage, corporateImage } = pageContent.home;
 
   const faqs = [
     {
@@ -176,9 +176,9 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-2 gap-8">
               
-              {/* Service Card 1 */}
+              {/* Service Card 1: Hybrid */}
               <Link to="/personal-training" className="group block">
                 <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative">
                    <img src={ptImage} alt="Hybrid Personal Training" className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
@@ -192,7 +192,7 @@ export const Home: React.FC = () => {
                 <p className="text-brand-gray font-medium max-w-sm">In-person sessions + app homework. Precision coaching.</p>
               </Link>
 
-              {/* Service Card 2 */}
+              {/* Service Card 2: Online */}
               <Link to="/online-coaching" className="group block lg:mt-24">
                 <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative">
                    <img src={onlineImage} alt="Online Coaching" className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
@@ -206,7 +206,7 @@ export const Home: React.FC = () => {
                 <p className="text-brand-gray font-medium max-w-sm">Structure, consistency, and guidance anywhere.</p>
               </Link>
 
-               {/* Service Card 3 */}
+               {/* Service Card 3: 42 Day Reset */}
               <Link to="/42-day-reset" className="group block">
                 <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative bg-brand-black flex items-center justify-center">
                    <h4 className="font-display text-[12rem] font-bold text-white opacity-10 leading-none">42</h4>
@@ -217,6 +217,24 @@ export const Home: React.FC = () => {
                 </div>
                 <h3 className="font-display text-4xl uppercase font-bold mb-2 group-hover:text-brand-orange transition-colors">42-Day Reset</h3>
                 <p className="text-brand-gray font-medium max-w-sm">Self-guided app plan. Rebuild momentum.</p>
+              </Link>
+
+              {/* Service Card 4: Corporate Wellness */}
+              <Link to="/corporate-wellness" className="group block lg:mt-24">
+                <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative">
+                   {corporateImage ? (
+                     <img src={corporateImage} alt="Corporate Wellness" className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                   ) : (
+                     <div className="w-full h-full bg-slate-900"></div>
+                   )}
+                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                   <div className="absolute top-8 right-8 bg-white text-brand-black px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Teams</div>
+                   <div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20 group-hover:bg-brand-orange group-hover:border-brand-orange transition-colors">
+                     <ArrowUpRight className="text-white" size={32} />
+                   </div>
+                </div>
+                <h3 className="font-display text-4xl uppercase font-bold mb-2 group-hover:text-brand-orange transition-colors">Corporate Performance</h3>
+                <p className="text-brand-gray font-medium max-w-sm">High-ROI wellness strategies for high-performing teams.</p>
               </Link>
 
             </div>

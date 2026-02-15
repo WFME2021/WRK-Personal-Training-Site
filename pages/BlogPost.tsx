@@ -51,7 +51,7 @@ export const BlogPost: React.FC = () => {
         <header className="bg-brand-light py-20 px-6">
           <div className="max-w-3xl mx-auto">
             <Link to="/blog" className="inline-flex items-center text-sm font-medium text-brand-gray hover:text-brand-black mb-8 transition-colors group">
-              <ArrowLeft size={16} className="mr-2 transition-transform group-hover:-translate-x-1" /> Back to Journal
+              <ArrowLeft size={16} className="mr-2 transition-transform group-hover:-translate-x-1" /> Back to Blog
             </Link>
             
             <div className="flex flex-wrap items-center gap-4 text-sm mb-6">

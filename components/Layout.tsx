@@ -130,7 +130,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <h4 className="font-bold uppercase tracking-widest text-xs text-brand-orange mb-8">Company</h4>
               <ul className="space-y-4 text-sm font-medium text-gray-400">
                 <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link to="/blog" className="hover:text-white transition-colors">Journal</Link></li>
+                <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
                 <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
               </ul>
             </div>

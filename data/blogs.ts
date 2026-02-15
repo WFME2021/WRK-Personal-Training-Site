@@ -21,10 +21,10 @@ export interface BlogPost {
 }
 
 const DEFAULT_AUTHOR: Author = {
-  name: "James Wilson",
-  role: "Head Coach & Founder",
-  bio: "James is a movement specialist with over 12 years of experience working with corporate professionals and athletes.",
-  avatarUrl: "https://picsum.photos/seed/james/200/200"
+  name: "Hayden Richards",
+  role: "Founder & Head Coach",
+  bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+  avatarUrl: "https://picsum.photos/seed/hayden/200/200"
 };
 
 // This acts as our initial "posts.json" data
