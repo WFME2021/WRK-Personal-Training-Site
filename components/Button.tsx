@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -23,17 +24,17 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variants = {
-    // Primary: Black BG, White Text (Dominant)
-    primary: "bg-brand-black text-white hover:bg-brand-orange hover:text-white border border-transparent shadow-lg",
+    // Primary: Accent BG, White Text (High Contrast in both modes)
+    primary: "bg-accent text-white hover:bg-text-primary hover:text-primary border border-transparent shadow-lg",
     
-    // Black: Alias for Primary
-    black: "bg-brand-black text-white hover:bg-brand-orange hover:text-white border border-transparent shadow-lg",
+    // Black: Alias for specific dark action, uses text-primary in dark mode (white), dark in light
+    black: "bg-text-primary text-primary hover:bg-accent hover:text-white border border-transparent shadow-lg",
 
-    // Secondary: Orange BG
-    secondary: "bg-brand-orange text-white hover:bg-brand-black hover:text-white border border-transparent shadow-md",
+    // Secondary: Secondary BG (Cards), Text Primary
+    secondary: "bg-secondary text-text-primary hover:bg-accent hover:text-white border border-border hover:border-accent shadow-md",
     
-    // Outline: Black Border
-    outline: "border-2 border-brand-black text-brand-black hover:bg-brand-black hover:text-white"
+    // Outline: Border only
+    outline: "border-2 border-text-primary text-text-primary hover:bg-text-primary hover:text-primary"
   };
 
   return (

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '../components/Button';
@@ -48,15 +49,15 @@ export const Contact: React.FC = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
-        <div className="bg-green-50 p-6 rounded-full mb-6">
-          <Check size={48} className="text-green-600" />
+      <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center bg-primary transition-colors duration-300">
+        <div className="bg-green-500/10 p-6 rounded-full mb-6 border border-green-500/20">
+          <Check size={48} className="text-green-500" />
         </div>
-        <h1 className="text-3xl font-bold mb-4">Application Received</h1>
-        <p className="text-brand-gray max-w-lg mb-8">
+        <h1 className="text-3xl font-bold mb-4 text-text-primary">Application Received</h1>
+        <p className="text-text-secondary max-w-lg mb-8">
           Thank you for applying. We have received your details and assessment results. We review all applications within 24 hours and will be in touch via email to schedule your consultation.
         </p>
-        <a href="/" className="text-sm font-semibold border-b border-brand-black pb-1 hover:opacity-70">
+        <a href="/" className="text-sm font-semibold border-b border-text-primary pb-1 hover:opacity-70 text-text-primary">
           Return Home
         </a>
       </div>
@@ -64,19 +65,19 @@ export const Contact: React.FC = () => {
   }
 
   return (
-    <div className="py-20 px-6">
+    <div className="py-20 px-6 bg-primary transition-colors duration-300 min-h-screen">
       <div className="max-w-2xl mx-auto">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">Application for Coaching</h1>
-          <p className="text-brand-gray">
+          <h1 className="text-4xl font-bold mb-4 text-text-primary">Application for Coaching</h1>
+          <p className="text-text-secondary">
             Please complete the form below. We prioritize clients who are ready to commit to a structured process.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8 bg-white p-8 md:p-12 border border-gray-200 shadow-sm">
+        <form onSubmit={handleSubmit} className="space-y-8 bg-secondary p-8 md:p-12 border border-border shadow-sm rounded-2xl">
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-medium text-brand-gray">Full Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-text-secondary">Full Name</label>
               <input
                 id="name"
                 name="name"
@@ -84,11 +85,11 @@ export const Contact: React.FC = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-brand-black outline-none transition-shadow"
+                className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-brand-gray">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-medium text-text-secondary">Email Address</label>
               <input
                 id="email"
                 name="email"
@@ -96,13 +97,13 @@ export const Contact: React.FC = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-brand-black outline-none transition-shadow"
+                className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="phone" className="block text-sm font-medium text-brand-gray">Phone Number</label>
+            <label htmlFor="phone" className="block text-sm font-medium text-text-secondary">Phone Number</label>
             <input
               id="phone"
               name="phone"
@@ -110,12 +111,12 @@ export const Contact: React.FC = () => {
               required
               value={formData.phone}
               onChange={handleChange}
-              className="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-brand-black outline-none transition-shadow"
+              className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="block text-sm font-medium text-brand-gray">Your Goals / Current Situation</label>
+            <label htmlFor="message" className="block text-sm font-medium text-text-secondary">Your Goals / Current Situation</label>
             <textarea
               id="message"
               name="message"
@@ -123,18 +124,18 @@ export const Contact: React.FC = () => {
               required
               value={formData.message}
               onChange={handleChange}
-              className="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-brand-black outline-none transition-shadow"
+              className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
             ></textarea>
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="referralSource" className="block text-sm font-medium text-brand-gray">How did you hear about us?</label>
+            <label htmlFor="referralSource" className="block text-sm font-medium text-text-secondary">How did you hear about us?</label>
             <select
               id="referralSource"
               name="referralSource"
               value={formData.referralSource}
               onChange={handleChange}
-              className="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-brand-black outline-none bg-white"
+              className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none cursor-pointer"
             >
               <option value="">Select an option</option>
               <option value="Google Search">Google Search</option>
@@ -148,7 +149,7 @@ export const Contact: React.FC = () => {
             {isSubmitting ? 'Submitting...' : 'Submit Application'}
           </Button>
           
-          <p className="text-xs text-center text-gray-400 mt-4">
+          <p className="text-xs text-center text-text-secondary mt-4">
             Your information is private and will strictly be used for coaching application purposes.
           </p>
         </form>

@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Search } from 'lucide-react';
@@ -60,7 +61,7 @@ export const Blog: React.FC = () => {
         schema={collectionSchema}
       />
       
-      <div className="bg-white min-h-screen">
+      <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-24 px-6">
           {/* Background Image with Overlay */}
@@ -70,12 +71,12 @@ export const Blog: React.FC = () => {
               alt="Gym background" 
               className="w-full h-full object-cover grayscale contrast-125"
             />
-            <div className="absolute inset-0 bg-brand-black/80 mix-blend-multiply"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-black/80 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto w-full text-center pt-12">
-            <span className="inline-block py-1 px-3 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.3em] mb-6">
+            <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-6">
               The Repository
             </span>
             <h1 className="font-display text-6xl md:text-8xl font-bold text-white mb-6 uppercase tracking-tighter leading-none">
@@ -92,7 +93,7 @@ export const Blog: React.FC = () => {
                 placeholder="Search articles..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-orange focus:bg-white/20 transition-all"
+                className="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white/20 transition-all"
               />
               <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
             </div>
@@ -101,15 +102,15 @@ export const Blog: React.FC = () => {
 
         <div className="max-w-5xl mx-auto px-6 py-24">
           {/* Category Pills */}
-          <nav className="flex flex-wrap gap-3 mb-16 border-b border-gray-100 pb-8 justify-center" aria-label="Blog categories">
+          <nav className="flex flex-wrap gap-3 mb-16 border-b border-border pb-8 justify-center" aria-label="Blog categories">
             {categories.map(category => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200 rounded-full ${
                   selectedCategory === category
-                    ? 'bg-brand-black text-white shadow-lg'
-                    : 'bg-gray-100 text-brand-gray hover:bg-gray-200'
+                    ? 'bg-text-primary text-primary shadow-lg'
+                    : 'bg-secondary text-text-secondary hover:bg-border hover:text-text-primary'
                 }`}
               >
                 {category}
@@ -122,34 +123,34 @@ export const Blog: React.FC = () => {
             {filteredPosts.map((post) => (
               <article key={post.id} className="group cursor-pointer flex flex-col h-full">
                 <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
-                  <div className="relative overflow-hidden mb-6 aspect-[16/10] bg-gray-100 rounded-2xl">
+                  <div className="relative overflow-hidden mb-6 aspect-[16/10] bg-secondary rounded-2xl border border-border">
                     <img 
                       src={post.imageUrl} 
                       alt={post.title}
                       loading="lazy"
                       className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                     />
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-black shadow-sm rounded-full">
+                    <div className="absolute top-4 left-4 bg-secondary/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-text-primary shadow-sm rounded-full border border-border">
                       {post.category}
                     </div>
                   </div>
                   
                   <div className="flex flex-col flex-grow">
-                    <div className="flex items-center text-xs font-bold uppercase tracking-wider text-brand-gray mb-3 space-x-4">
+                    <div className="flex items-center text-xs font-bold uppercase tracking-wider text-text-secondary mb-3 space-x-4">
                       <time dateTime={post.isoDate}>{post.date}</time>
-                      <span className="w-1 h-1 bg-brand-orange rounded-full"></span>
+                      <span className="w-1 h-1 bg-accent rounded-full"></span>
                       <span className="flex items-center"><Clock size={12} className="mr-1" /> {getReadTime(post.content)} min read</span>
                     </div>
                     
-                    <h2 className="text-3xl font-display font-bold group-hover:text-brand-orange transition-colors leading-none mb-4 text-brand-black uppercase">
+                    <h2 className="text-3xl font-display font-bold group-hover:text-accent transition-colors leading-none mb-4 text-text-primary uppercase">
                       {post.title}
                     </h2>
                     
-                    <p className="text-brand-gray line-clamp-3 leading-relaxed mb-6 flex-grow">
+                    <p className="text-text-secondary line-clamp-3 leading-relaxed mb-6 flex-grow">
                       {post.excerpt}
                     </p>
                     
-                    <div className="pt-2 flex items-center text-xs font-bold uppercase tracking-widest border-b-2 border-transparent group-hover:border-brand-black inline-flex self-start transition-all">
+                    <div className="pt-2 flex items-center text-xs font-bold uppercase tracking-widest border-b-2 border-transparent group-hover:border-text-primary inline-flex self-start transition-all text-text-primary">
                       Read Article <ArrowRight size={14} className="ml-2" />
                     </div>
                   </div>
@@ -159,11 +160,11 @@ export const Blog: React.FC = () => {
           </div>
 
           {filteredPosts.length === 0 && (
-            <div className="py-20 text-center border border-dashed border-gray-300 rounded-3xl">
-              <p className="text-brand-gray mb-4 text-lg">No articles found matching "{searchQuery}"</p>
+            <div className="py-20 text-center border border-dashed border-border rounded-3xl bg-secondary">
+              <p className="text-text-secondary mb-4 text-lg">No articles found matching "{searchQuery}"</p>
               <button 
                 onClick={() => { setSearchQuery(''); setSelectedCategory('All'); }}
-                className="text-brand-black font-bold uppercase tracking-widest text-sm underline hover:text-brand-orange transition-colors"
+                className="text-text-primary font-bold uppercase tracking-widest text-sm underline hover:text-accent transition-colors"
               >
                 Clear filters
               </button>

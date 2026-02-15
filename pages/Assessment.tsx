@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { 
   GoalType, ConstraintType, FrequencyType, EnvironmentType, InjuryType, SupportType, OfferType, AssessmentData 
 } from '../types';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 export const Assessment: React.FC = () => {
   const navigate = useNavigate();
@@ -133,20 +134,20 @@ export const Assessment: React.FC = () => {
   // Render Intro Screen
   if (currentStepData.isIntro) {
     return (
-      <div className="min-h-[85vh] flex flex-col items-center justify-center py-12 px-6 bg-brand-light">
+      <div className="min-h-[85vh] flex flex-col items-center justify-center py-12 px-6 bg-primary transition-colors duration-300">
         <div className="max-w-xl w-full text-center">
-          <span className="text-xs font-bold tracking-widest uppercase text-brand-orange mb-4 block">
+          <span className="text-xs font-bold tracking-widest uppercase text-accent mb-4 block">
              Diagnostic Tool
           </span>
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-2 text-brand-black">
+          <h1 className="text-4xl md:text-5xl font-display font-bold mb-2 text-text-primary">
             {currentStepData.title}
           </h1>
-          <p className="text-xl font-bold text-brand-primary mb-6">{currentStepData.subtitle}</p>
-          <p className="text-lg text-brand-gray mb-8 leading-relaxed">
+          <p className="text-xl font-bold text-text-primary mb-6">{currentStepData.subtitle}</p>
+          <p className="text-lg text-text-secondary mb-8 leading-relaxed">
             {currentStepData.description}
           </p>
-          <div className="bg-white p-4 rounded-xl border border-gray-100 mb-10 inline-block">
-             <p className="text-sm font-medium text-brand-gray italic">
+          <div className="bg-secondary p-4 rounded-xl border border-border mb-10 inline-block shadow-sm">
+             <p className="text-sm font-medium text-text-secondary italic">
                "{currentStepData.micro}"
              </p>
           </div>
@@ -160,23 +161,23 @@ export const Assessment: React.FC = () => {
 
   // Render Question Screens
   return (
-    <div className="min-h-[85vh] flex flex-col items-center justify-center py-12 px-6 bg-white">
+    <div className="min-h-[85vh] flex flex-col items-center justify-center py-12 px-6 bg-secondary transition-colors duration-300">
       <div className="w-full max-w-xl">
         {/* Progress */}
         <div className="mb-8 flex items-center justify-between">
           <button 
             onClick={handleBack} 
-            className="text-sm font-bold text-brand-gray hover:text-brand-black flex items-center transition-colors"
+            className="text-sm font-bold text-text-secondary hover:text-text-primary flex items-center transition-colors"
           >
             <ArrowLeft size={14} className="mr-1" /> Back
           </button>
-          <span className="text-xs font-bold tracking-widest uppercase text-brand-gray/50">
+          <span className="text-xs font-bold tracking-widest uppercase text-text-secondary/50">
             Question {currentStep} of {steps.length - 1}
           </span>
         </div>
 
         {/* Question Header */}
-        <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-brand-black leading-tight">
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-text-primary leading-tight">
           {currentStepData.title}
         </h2>
 
@@ -186,19 +187,19 @@ export const Assessment: React.FC = () => {
             <button
               key={option}
               onClick={() => handleNext(currentStepData.key as keyof AssessmentData, option)}
-              className="group p-5 text-left border-2 border-gray-100 rounded-xl transition-all duration-200 hover:border-brand-black hover:bg-gray-50 active:scale-[0.99] flex items-center justify-between"
+              className="group p-5 text-left border-2 border-border rounded-xl transition-all duration-200 hover:border-accent hover:bg-primary active:scale-[0.99] flex items-center justify-between"
             >
-              <span className="font-bold text-lg text-brand-black group-hover:text-brand-primary transition-colors">
+              <span className="font-bold text-lg text-text-primary group-hover:text-accent transition-colors">
                 {option}
               </span>
-              <div className="w-5 h-5 rounded-full border-2 border-gray-200 group-hover:border-brand-orange group-hover:bg-brand-orange/20"></div>
+              <div className="w-5 h-5 rounded-full border-2 border-border group-hover:border-accent group-hover:bg-accent/20"></div>
             </button>
           ))}
         </div>
 
         {/* Microcopy */}
         {currentStepData.micro && (
-           <p className="text-sm text-brand-gray italic border-l-2 border-brand-orange pl-4">
+           <p className="text-sm text-text-secondary italic border-l-2 border-accent pl-4">
              {currentStepData.micro}
            </p>
         )}

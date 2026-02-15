@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
@@ -15,6 +16,7 @@ import { BlogPost } from './pages/BlogPost';
 import { Admin } from './pages/Admin';
 import { Tools } from './pages/Tools';
 import { ContentProvider } from './context/ContentContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 // ScrollToTop component to handle scroll position on route change
 const ScrollToTop = () => {
@@ -30,36 +32,38 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   return (
-    <ContentProvider>
-      <Router>
-        <ScrollToTop />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/philosophy" element={<Philosophy />} />
-            <Route path="/assessment" element={<Assessment />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/contact" element={<Contact />} />
-            
-            {/* Service Routes */}
-            <Route path="/personal-training" element={<PersonalTraining />} />
-            <Route path="/online-coaching" element={<OnlineCoaching />} />
-            <Route path="/corporate-wellness" element={<CorporateWellness />} />
-            <Route path="/42-day-reset" element={<Challenge42 />} />
-            
-            {/* Blog Routes */}
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            
-            {/* Tools Route */}
-            <Route path="/tools" element={<Tools />} />
-            
-            {/* Admin Route */}
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </ContentProvider>
+    <ThemeProvider>
+      <ContentProvider>
+        <Router>
+          <ScrollToTop />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/philosophy" element={<Philosophy />} />
+              <Route path="/assessment" element={<Assessment />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/contact" element={<Contact />} />
+              
+              {/* Service Routes */}
+              <Route path="/personal-training" element={<PersonalTraining />} />
+              <Route path="/online-coaching" element={<OnlineCoaching />} />
+              <Route path="/corporate-wellness" element={<CorporateWellness />} />
+              <Route path="/42-day-reset" element={<Challenge42 />} />
+              
+              {/* Blog Routes */}
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              
+              {/* Tools Route */}
+              <Route path="/tools" element={<Tools />} />
+              
+              {/* Admin Route */}
+              <Route path="/admin" element={<Admin />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </ContentProvider>
+    </ThemeProvider>
   );
 };
 

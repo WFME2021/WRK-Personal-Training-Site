@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link, Navigate } from 'react-router-dom';
 import { AssessmentData, OfferType, FrequencyType, EnvironmentType, InjuryType } from '../types';
@@ -126,15 +127,15 @@ export const Results: React.FC = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
       
-      {/* Header */}
-      <header className="bg-brand-black text-white pt-32 pb-16 px-6 rounded-b-[3rem]">
+      {/* Header - Inverse Scheme */}
+      <header className="bg-text-primary text-primary pt-32 pb-16 px-6 rounded-b-[3rem]">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-brand-orange font-bold uppercase tracking-[0.2em] text-xs mb-6">Diagnostic Complete</p>
-          <h1 className="font-display text-5xl md:text-7xl font-bold mb-8 uppercase tracking-tighter">Executive Summary</h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Based on your goal of <span className="text-white font-bold">{assessment.goal}</span> and your constraint of <span className="text-white font-bold">{assessment.constraint}</span>.
+          <p className="text-accent font-bold uppercase tracking-[0.2em] text-xs mb-6">Diagnostic Complete</p>
+          <h1 className="font-display text-5xl md:text-7xl font-bold mb-8 uppercase tracking-tighter text-primary">Executive Summary</h1>
+          <p className="text-primary/70 text-lg max-w-2xl mx-auto">
+            Based on your goal of <span className="text-primary font-bold">{assessment.goal}</span> and your constraint of <span className="text-primary font-bold">{assessment.constraint}</span>.
           </p>
         </div>
       </header>
@@ -142,62 +143,62 @@ export const Results: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6 py-16 -mt-12 relative z-10 space-y-12">
         
         {/* 1. Executive Summary Card */}
-        <div className="bg-white shadow-2xl rounded-[2rem] p-10 border border-gray-100">
-           <h2 className="font-display text-3xl font-bold mb-8 text-brand-black border-b border-gray-100 pb-6 uppercase tracking-tight">
+        <div className="bg-secondary shadow-2xl rounded-[2rem] p-10 border border-border">
+           <h2 className="font-display text-3xl font-bold mb-8 text-text-primary border-b border-border pb-6 uppercase tracking-tight">
              {offer.headline}
            </h2>
            <div className="space-y-6 mb-10">
-             <p className="text-brand-gray font-medium">Based on your answers, the fastest path forward is a simple execution system:</p>
+             <p className="text-text-secondary font-medium">Based on your answers, the fastest path forward is a simple execution system:</p>
              <ul className="space-y-4">
                {offer.summary.map((item, i) => (
                  <li key={i} className="flex items-start">
-                   <CheckCircle2 size={24} className="text-brand-orange mr-4 shrink-0" />
-                   <span className="text-brand-black text-lg">{item}</span>
+                   <CheckCircle2 size={24} className="text-accent mr-4 shrink-0" />
+                   <span className="text-text-primary text-lg">{item}</span>
                  </li>
                ))}
              </ul>
            </div>
-           <div className="bg-brand-light p-6 rounded-2xl border-l-4 border-brand-orange">
-             <p className="text-sm font-bold text-brand-black uppercase tracking-wide">Translation</p>
-             <p className="text-brand-gray mt-1">{offer.translation}</p>
+           <div className="bg-primary p-6 rounded-2xl border-l-4 border-accent">
+             <p className="text-sm font-bold text-text-primary uppercase tracking-wide">Translation</p>
+             <p className="text-text-secondary mt-1">{offer.translation}</p>
            </div>
         </div>
 
         {/* 2. Weekly Strategy */}
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-brand-light p-8 rounded-[2rem]">
-            <div className="flex items-center gap-3 mb-6 text-brand-black">
+          <div className="bg-secondary border border-border p-8 rounded-[2rem]">
+            <div className="flex items-center gap-3 mb-6 text-text-primary">
                <Calendar size={24} />
                <h3 className="font-display text-2xl font-bold uppercase">Weekly Strategy</h3>
             </div>
-            <h4 className="font-bold text-lg mb-4">{strategy.title}</h4>
+            <h4 className="font-bold text-lg mb-4 text-text-primary">{strategy.title}</h4>
             <ul className="space-y-3 mb-6">
                {strategy.points.map((pt, i) => (
-                 <li key={i} className="text-brand-gray text-sm flex items-start">
-                   <span className="mr-3 text-brand-orange">•</span> {pt}
+                 <li key={i} className="text-text-secondary text-sm flex items-start">
+                   <span className="mr-3 text-accent">•</span> {pt}
                  </li>
                ))}
             </ul>
-            <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Recommended for: {assessment.frequency}</p>
+            <p className="text-[10px] text-text-secondary uppercase tracking-widest font-bold">Recommended for: {assessment.frequency}</p>
           </div>
 
-          <div className="bg-brand-light p-8 rounded-[2rem]">
-            <div className="flex items-center gap-3 mb-6 text-brand-black">
+          <div className="bg-secondary border border-border p-8 rounded-[2rem]">
+            <div className="flex items-center gap-3 mb-6 text-text-primary">
                <ShieldCheck size={24} />
                <h3 className="font-display text-2xl font-bold uppercase">Guardrails</h3>
             </div>
             <ul className="space-y-4">
-               <li className="text-sm text-brand-gray">
-                 <strong className="block text-brand-black mb-1 font-bold uppercase text-xs tracking-wider">Stress/Sleep Rule</strong>
+               <li className="text-sm text-text-secondary">
+                 <strong className="block text-text-primary mb-1 font-bold uppercase text-xs tracking-wider">Stress/Sleep Rule</strong>
                  If sleep is poor 2 nights in a row → reduce volume (fewer sets), keep technique.
                </li>
-               <li className="text-sm text-brand-gray">
-                 <strong className="block text-brand-black mb-1 font-bold uppercase text-xs tracking-wider">Intensity Rule</strong>
+               <li className="text-sm text-text-secondary">
+                 <strong className="block text-text-primary mb-1 font-bold uppercase text-xs tracking-wider">Intensity Rule</strong>
                  Stop sets with 1–2 reps in reserve. No grinding reps this block.
                </li>
                {assessment.injury !== InjuryType.NONE && (
-                 <li className="text-sm text-brand-gray bg-white p-3 rounded-xl border border-red-100">
-                    <strong className="block text-red-600 mb-1 font-bold uppercase text-xs tracking-wider">Injury Logic</strong>
+                 <li className="text-sm text-text-secondary bg-primary p-3 rounded-xl border border-red-500/20">
+                    <strong className="block text-red-500 mb-1 font-bold uppercase text-xs tracking-wider">Injury Logic</strong>
                     Pain scale 0-3/10 is acceptable. 4+ means modify immediately.
                  </li>
                )}
@@ -205,39 +206,39 @@ export const Results: React.FC = () => {
           </div>
         </div>
 
-        {/* 3. 7 Day Plan Template */}
-        <div className="bg-brand-black text-white p-10 rounded-[2rem]">
+        {/* 3. 7 Day Plan Template - Inverse Scheme */}
+        <div className="bg-text-primary text-primary p-10 rounded-[2rem]">
            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-             <h3 className="font-display text-3xl font-bold uppercase tracking-tight">Your Next 7 Days</h3>
-             <span className="text-[10px] font-bold bg-white text-brand-black px-3 py-1 rounded-full uppercase tracking-widest">{templates.title}</span>
+             <h3 className="font-display text-3xl font-bold uppercase tracking-tight text-primary">Your Next 7 Days</h3>
+             <span className="text-[10px] font-bold bg-primary text-text-primary px-3 py-1 rounded-full uppercase tracking-widest">{templates.title}</span>
            </div>
            
            <div className="grid md:grid-cols-3 gap-8">
              {/* Day 1 */}
-             <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
-               <span className="text-xs font-bold text-brand-orange uppercase mb-4 block tracking-widest">Day 1</span>
+             <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
+               <span className="text-xs font-bold text-accent uppercase mb-4 block tracking-widest">Day 1</span>
                <ul className="space-y-3">
                  {templates.day1.length > 0 ? templates.day1.map((ex, i) => (
-                   <li key={i} className="text-sm text-gray-300 border-b border-white/10 pb-2 last:border-0">{ex}</li>
-                 )) : <li className="text-sm text-gray-500">Rest or Active Recovery</li>}
+                   <li key={i} className="text-sm text-primary/80 border-b border-primary/10 pb-2 last:border-0">{ex}</li>
+                 )) : <li className="text-sm text-primary/60">Rest or Active Recovery</li>}
                </ul>
              </div>
              {/* Day 2 */}
-             <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
-               <span className="text-xs font-bold text-brand-orange uppercase mb-4 block tracking-widest">Day 2</span>
+             <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
+               <span className="text-xs font-bold text-accent uppercase mb-4 block tracking-widest">Day 2</span>
                <ul className="space-y-3">
                  {templates.day2.length > 0 ? templates.day2.map((ex, i) => (
-                   <li key={i} className="text-sm text-gray-300 border-b border-white/10 pb-2 last:border-0">{ex}</li>
-                 )) : <li className="text-sm text-gray-500">Rest or Active Recovery</li>}
+                   <li key={i} className="text-sm text-primary/80 border-b border-primary/10 pb-2 last:border-0">{ex}</li>
+                 )) : <li className="text-sm text-primary/60">Rest or Active Recovery</li>}
                </ul>
              </div>
              {/* Day 3 */}
-             <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
-               <span className="text-xs font-bold text-brand-orange uppercase mb-4 block tracking-widest">Day 3</span>
+             <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
+               <span className="text-xs font-bold text-accent uppercase mb-4 block tracking-widest">Day 3</span>
                <ul className="space-y-3">
                  {templates.day3.length > 0 ? templates.day3.map((ex, i) => (
-                   <li key={i} className="text-sm text-gray-300 border-b border-white/10 pb-2 last:border-0">{ex}</li>
-                 )) : <li className="text-sm text-gray-500">Rest or Active Recovery</li>}
+                   <li key={i} className="text-sm text-primary/80 border-b border-primary/10 pb-2 last:border-0">{ex}</li>
+                 )) : <li className="text-sm text-primary/60">Rest or Active Recovery</li>}
                </ul>
              </div>
            </div>
@@ -246,38 +247,38 @@ export const Results: React.FC = () => {
         {/* 4. Scoreboard & Nutrition */}
         <div className="grid md:grid-cols-2 gap-8">
            {/* Scoreboard */}
-           <div className="bg-white border border-gray-200 p-8 rounded-[2rem]">
-              <div className="flex items-center gap-3 mb-6 text-brand-black">
+           <div className="bg-secondary border border-border p-8 rounded-[2rem]">
+              <div className="flex items-center gap-3 mb-6 text-text-primary">
                  <BarChart3 size={24} />
                  <h3 className="font-display text-2xl font-bold uppercase">Scoreboard</h3>
               </div>
               <ul className="space-y-4">
-                <li className="flex justify-between items-center border-b border-gray-100 pb-3">
-                  <span className="text-sm font-medium text-brand-gray">Sessions Completed</span>
-                  <span className="text-brand-black font-bold">Target: {assessment.frequency}</span>
+                <li className="flex justify-between items-center border-b border-border pb-3">
+                  <span className="text-sm font-medium text-text-secondary">Sessions Completed</span>
+                  <span className="text-text-primary font-bold">Target: {assessment.frequency}</span>
                 </li>
-                <li className="flex justify-between items-center border-b border-gray-100 pb-3">
-                  <span className="text-sm font-medium text-brand-gray">Sleep Average</span>
-                  <span className="text-brand-black font-bold">Aim upward</span>
+                <li className="flex justify-between items-center border-b border-border pb-3">
+                  <span className="text-sm font-medium text-text-secondary">Sleep Average</span>
+                  <span className="text-text-primary font-bold">Aim upward</span>
                 </li>
-                 <li className="flex justify-between items-center border-b border-gray-100 pb-3">
-                  <span className="text-sm font-medium text-brand-gray">Consistency Score</span>
-                  <span className="text-brand-black font-bold">Did I execute?</span>
+                 <li className="flex justify-between items-center border-b border-border pb-3">
+                  <span className="text-sm font-medium text-text-secondary">Consistency Score</span>
+                  <span className="text-text-primary font-bold">Did I execute?</span>
                 </li>
               </ul>
            </div>
 
            {/* Nutrition */}
-           <div className="bg-white border border-gray-200 p-8 rounded-[2rem]">
-             <div className="flex items-center gap-3 mb-6 text-brand-black">
+           <div className="bg-secondary border border-border p-8 rounded-[2rem]">
+             <div className="flex items-center gap-3 mb-6 text-text-primary">
                  <Activity size={24} />
                  <h3 className="font-display text-2xl font-bold uppercase">Nutrition</h3>
               </div>
-              <h4 className="font-bold text-xs uppercase tracking-widest text-brand-orange mb-4">Level 1: Simple (Start Here)</h4>
+              <h4 className="font-bold text-xs uppercase tracking-widest text-accent mb-4">Level 1: Simple (Start Here)</h4>
               <ul className="space-y-3 mb-6">
-                <li className="flex items-center text-sm"><CheckCircle2 size={16} className="mr-3 text-brand-black"/> Protein with 2 meals/day</li>
-                <li className="flex items-center text-sm"><CheckCircle2 size={16} className="mr-3 text-brand-black"/> 2L+ water (more if training)</li>
-                <li className="flex items-center text-sm"><CheckCircle2 size={16} className="mr-3 text-brand-black"/> 1 fruit + 1 veg daily</li>
+                <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={16} className="mr-3 text-text-primary"/> Protein with 2 meals/day</li>
+                <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={16} className="mr-3 text-text-primary"/> 2L+ water (more if training)</li>
+                <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={16} className="mr-3 text-text-primary"/> 1 fruit + 1 veg daily</li>
               </ul>
            </div>
         </div>
@@ -285,12 +286,12 @@ export const Results: React.FC = () => {
         {/* 5. GATED CONTENT SECTION */}
         <div className="my-16">
           {!isUnlocked ? (
-            <div className="bg-gray-50 p-10 md:p-16 rounded-[3rem] text-center border border-gray-100">
-               <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm text-brand-black">
+            <div className="bg-primary p-10 md:p-16 rounded-[3rem] text-center border border-border">
+               <div className="bg-secondary w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm text-text-primary border border-border">
                  <Lock size={32} />
                </div>
-               <h2 className="font-display text-4xl font-bold mb-6 text-brand-black uppercase tracking-tight">Unlock the Deeper Roadmap</h2>
-               <p className="text-brand-gray max-w-xl mx-auto mb-10 text-lg">
+               <h2 className="font-display text-4xl font-bold mb-6 text-text-primary uppercase tracking-tight">Unlock the Deeper Roadmap</h2>
+               <p className="text-text-secondary max-w-xl mx-auto mb-10 text-lg">
                  Enter your name and email to instantly unlock the <strong>4-Week Progression Model</strong>, <strong>Warm-up Protocols</strong>, <strong>Exercise Swap Bank</strong>, and <strong>Level 3 Nutrition Guide</strong>.
                </p>
                
@@ -301,7 +302,7 @@ export const Results: React.FC = () => {
                    placeholder="First Name"
                    value={name}
                    onChange={(e) => setName(e.target.value)}
-                   className="w-full p-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-black"
+                   className="w-full p-4 rounded-full border border-border bg-secondary text-text-primary focus:outline-none focus:ring-2 focus:ring-accent placeholder-text-secondary"
                  />
                  <input 
                    type="email" 
@@ -309,7 +310,7 @@ export const Results: React.FC = () => {
                    placeholder="Email Address"
                    value={email}
                    onChange={(e) => setEmail(e.target.value)}
-                   className="w-full p-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-black"
+                   className="w-full p-4 rounded-full border border-border bg-secondary text-text-primary focus:outline-none focus:ring-2 focus:ring-accent placeholder-text-secondary"
                  />
                  <Button fullWidth size="lg" disabled={isSubmitting} className="w-full">
                    {isSubmitting ? 'Unlocking...' : 'Unlock My Roadmap'}
@@ -319,15 +320,15 @@ export const Results: React.FC = () => {
           ) : (
             <div className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
               <div className="text-center mb-12">
-                 <div className="inline-flex items-center gap-2 bg-brand-black text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                 <div className="inline-flex items-center gap-2 bg-text-primary text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
                    <Unlock size={14} /> Roadmap Unlocked
                  </div>
-                 <h2 className="font-display text-5xl font-bold uppercase tracking-tighter">The Deeper Protocols</h2>
+                 <h2 className="font-display text-5xl font-bold uppercase tracking-tighter text-text-primary">The Deeper Protocols</h2>
               </div>
 
               {/* 1. Progression Model */}
-              <div className="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-sm">
-                <h3 className="font-display text-3xl font-bold mb-8 text-brand-black uppercase">4-Week Progression</h3>
+              <div className="bg-secondary p-10 rounded-[2rem] border border-border shadow-sm">
+                <h3 className="font-display text-3xl font-bold mb-8 text-text-primary uppercase">4-Week Progression</h3>
                 <div className="grid md:grid-cols-4 gap-6">
                    {[
                      { week: "Week 1", title: "Baseline", desc: "Clean reps, 2 RIR." },
@@ -335,10 +336,10 @@ export const Results: React.FC = () => {
                      { week: "Week 3", title: "Intensity", desc: "Heavier, fewer reps." },
                      { week: "Week 4", title: "Beat KPI", desc: "Repeat best week." }
                    ].map((item, i) => (
-                     <div key={i} className="bg-brand-light p-6 rounded-2xl">
-                        <span className="block text-xs font-bold uppercase text-brand-orange mb-2">{item.week}</span>
-                        <strong className="block text-brand-black text-lg mb-2">{item.title}</strong>
-                        <p className="text-sm text-brand-gray">{item.desc}</p>
+                     <div key={i} className="bg-primary p-6 rounded-2xl border border-border">
+                        <span className="block text-xs font-bold uppercase text-accent mb-2">{item.week}</span>
+                        <strong className="block text-text-primary text-lg mb-2">{item.title}</strong>
+                        <p className="text-sm text-text-secondary">{item.desc}</p>
                      </div>
                    ))}
                 </div>
@@ -346,20 +347,20 @@ export const Results: React.FC = () => {
 
               {/* 2. Warm Ups & Swaps */}
               <div className="grid md:grid-cols-2 gap-8">
-                 <div className="bg-brand-light p-10 rounded-[2rem]">
-                    <h3 className="font-display text-2xl font-bold mb-6 text-brand-black uppercase">Warm-up Protocols</h3>
+                 <div className="bg-secondary border border-border p-10 rounded-[2rem]">
+                    <h3 className="font-display text-2xl font-bold mb-6 text-text-primary uppercase">Warm-up Protocols</h3>
                     <div className="space-y-8">
                        <div>
-                         <h4 className="font-bold text-sm uppercase tracking-wider mb-3">5-Minute Option</h4>
-                         <ul className="text-sm text-brand-gray space-y-2">
+                         <h4 className="font-bold text-sm uppercase tracking-wider mb-3 text-text-primary">5-Minute Option</h4>
+                         <ul className="text-sm text-text-secondary space-y-2">
                            <li>• 2 mins raise temp (walk/bike)</li>
                            <li>• 1 mobility drill</li>
                            <li>• 2 ramp sets</li>
                          </ul>
                        </div>
                        <div>
-                         <h4 className="font-bold text-sm uppercase tracking-wider mb-3">10-Minute Option</h4>
-                         <ul className="text-sm text-brand-gray space-y-2">
+                         <h4 className="font-bold text-sm uppercase tracking-wider mb-3 text-text-primary">10-Minute Option</h4>
+                         <ul className="text-sm text-text-secondary space-y-2">
                            <li>• 3 mins raise temp</li>
                            <li>• 2 mobility drills</li>
                            <li>• Activation</li>
@@ -369,32 +370,32 @@ export const Results: React.FC = () => {
                     </div>
                  </div>
                  
-                 <div className="bg-brand-light p-10 rounded-[2rem]">
-                    <h3 className="font-display text-2xl font-bold mb-6 text-brand-black uppercase">Swap Bank</h3>
+                 <div className="bg-secondary border border-border p-10 rounded-[2rem]">
+                    <h3 className="font-display text-2xl font-bold mb-6 text-text-primary uppercase">Swap Bank</h3>
                     <div className="space-y-4">
-                       <div className="text-sm pb-2 border-b border-gray-200">
-                         <strong>Squat</strong> <span className="text-brand-gray">→ Box Squat → Goblet Squat</span>
+                       <div className="text-sm pb-2 border-b border-border text-text-primary">
+                         <strong>Squat</strong> <span className="text-text-secondary">→ Box Squat → Goblet Squat</span>
                        </div>
-                       <div className="text-sm pb-2 border-b border-gray-200">
-                         <strong>Deadlift</strong> <span className="text-brand-gray">→ RDL → Hip Thrust</span>
+                       <div className="text-sm pb-2 border-b border-border text-text-primary">
+                         <strong>Deadlift</strong> <span className="text-text-secondary">→ RDL → Hip Thrust</span>
                        </div>
-                       <div className="text-sm pb-2 border-b border-gray-200">
-                         <strong>Bench</strong> <span className="text-brand-gray">→ DB Press → Push-up</span>
+                       <div className="text-sm pb-2 border-b border-border text-text-primary">
+                         <strong>Bench</strong> <span className="text-text-secondary">→ DB Press → Push-up</span>
                        </div>
-                       <div className="text-sm pt-2">
-                         <strong>Press</strong> <span className="text-brand-gray">→ Landmine → Incline</span>
+                       <div className="text-sm pt-2 text-text-primary">
+                         <strong>Press</strong> <span className="text-text-secondary">→ Landmine → Incline</span>
                        </div>
                     </div>
                  </div>
               </div>
 
-              {/* 3. Nutrition Level 3 */}
-              <div className="bg-brand-black text-white p-10 rounded-[2rem]">
-                 <h3 className="font-display text-3xl font-bold mb-8 text-brand-orange uppercase">Level 3 Nutrition</h3>
+              {/* 3. Nutrition Level 3 - Inverse */}
+              <div className="bg-text-primary text-primary p-10 rounded-[2rem]">
+                 <h3 className="font-display text-3xl font-bold mb-8 text-accent uppercase">Level 3 Nutrition</h3>
                  <div className="grid md:grid-cols-2 gap-12">
                     <div>
                        <h4 className="font-bold text-sm uppercase tracking-widest mb-4">Portion Guide</h4>
-                       <ul className="space-y-3 text-sm text-gray-400">
+                       <ul className="space-y-3 text-sm text-primary/70">
                          <li>• Protein: 1–2 palms per meal</li>
                          <li>• Veg: 1–2 fists</li>
                          <li>• Carbs: 1 cupped hand (more on training days)</li>
@@ -403,7 +404,7 @@ export const Results: React.FC = () => {
                     </div>
                     <div>
                        <h4 className="font-bold text-sm uppercase tracking-widest mb-4">Eating Out</h4>
-                       <ul className="space-y-3 text-sm text-gray-400">
+                       <ul className="space-y-3 text-sm text-primary/70">
                          <li>1. Start with protein + veg as base</li>
                          <li>2. Choose ONE add-on: carbs OR dessert OR alcohol</li>
                          <li>3. Stop at “satisfied,” not “stuffed”</li>
@@ -416,9 +417,9 @@ export const Results: React.FC = () => {
         </div>
 
         {/* 6. PRIMARY OFFER CTA */}
-        <div className="bg-brand-orange text-white p-12 md:p-20 rounded-[3rem] text-center shadow-2xl relative overflow-hidden">
+        <div className="bg-accent text-white p-12 md:p-20 rounded-[3rem] text-center shadow-2xl relative overflow-hidden">
            <div className="relative z-10">
-              <span className="text-brand-black font-bold uppercase tracking-widest text-sm mb-6 block">Recommended Next Step</span>
+              <span className="text-black/50 font-bold uppercase tracking-widest text-sm mb-6 block">Recommended Next Step</span>
               <h2 className="font-display text-5xl md:text-7xl font-bold mb-8 uppercase tracking-tighter leading-none">{offer.headline}</h2>
               <p className="text-xl text-white/90 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
                  {assessment.recommendedOffer === OfferType.RESET 
@@ -431,7 +432,7 @@ export const Results: React.FC = () => {
               
               <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
                  <Link to={offer.link} state={{ goal: assessment.goal, offer: assessment.recommendedOffer }}>
-                   <Button size="lg" className="bg-white text-brand-orange hover:bg-brand-black hover:text-white px-12 py-6 text-xl shadow-xl border-none w-full md:w-auto">
+                   <Button size="lg" className="bg-white text-accent hover:bg-black hover:text-white px-12 py-6 text-xl shadow-xl border-none w-full md:w-auto">
                      {offer.cta} <ArrowRight size={24} className="ml-2" />
                    </Button>
                  </Link>
