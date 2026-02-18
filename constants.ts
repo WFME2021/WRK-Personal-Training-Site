@@ -1,6 +1,7 @@
+
 export const BRAND_NAME = "WRK Personal Training";
 export const TAGLINE = "The right work, done well.";
-export const EMAIL_CONTACT = "coach@wrkpersonaltraining.com";
+export const EMAIL_CONTACT = "info@wrkpersonaltraining.co.nz";
 export const LOCATION = "Christchurch, New Zealand";
 
 export const NAVIGATION_LINKS = [

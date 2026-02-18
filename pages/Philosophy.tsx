@@ -9,7 +9,7 @@ export const Philosophy: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Philosophy | Intention Over Intensity | WRK"
+        title="Philosophy | Capacity Is Currency | WRK"
         description="The Right Work, Done Well. A training philosophy for high performers who value longevity as much as results."
       />
 
@@ -33,10 +33,10 @@ export const Philosophy: React.FC = () => {
               The Methodology
             </span>
             <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-widest text-text-primary leading-none mb-8">
-              Intention <br/> Over <span className="text-accent">Intensity.</span>
+              Capacity Is <br/><span className="text-accent">Currency.</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto font-light leading-relaxed mb-12">
-              The Right Work, Done Well. A philosophy for high performers who value longevity as much as results.
+              When you have capacity, you have options. When you don't, you have constraints.
             </p>
           </div>
         </section>
@@ -52,7 +52,7 @@ export const Philosophy: React.FC = () => {
                   <Target className="text-accent" size={32} />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-text-primary uppercase tracking-wider mb-4">
-                  Minimum Effective Dose
+                  Return on Investment
                 </h3>
                 <p className="text-text-secondary leading-relaxed">
                   We find the precise amount of work needed to trigger progress without burnout. More is not better; better is better. We focus on ROI for every rep.
@@ -65,7 +65,7 @@ export const Philosophy: React.FC = () => {
                   <Activity className="text-accent" size={32} />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-text-primary uppercase tracking-wider mb-4">
-                  Data Over Dogma
+                  Evidence Based
                 </h3>
                 <p className="text-text-secondary leading-relaxed">
                   We use physiology and bio-feedback, not fitness trends. If it doesn't improve performance or health markers, we don't do it.
@@ -78,10 +78,10 @@ export const Philosophy: React.FC = () => {
                   <Clock className="text-accent" size={32} />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-text-primary uppercase tracking-wider mb-4">
-                  Sustainability is Sophistication
+                  Resilience
                 </h3>
                 <p className="text-text-secondary leading-relaxed">
-                  Intensity is cheap. Consistency is expensive. We build systems that you can sustain for decades, not just a 6-week challenge.
+                  Intensity is cheap. Consistency is expensive. We build systems that you can sustain for decades, creating a body that supports your life.
                 </p>
               </div>
 

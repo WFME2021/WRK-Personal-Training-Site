@@ -15,6 +15,7 @@ import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { Admin } from './pages/Admin';
 import { Tools } from './pages/Tools';
+import { CalorieCalculatorPage } from './pages/CalorieCalculatorPage';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -54,8 +55,9 @@ const App: React.FC = () => {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               
-              {/* Tools Route */}
+              {/* Tools Routes */}
               <Route path="/tools" element={<Tools />} />
+              <Route path="/tools/calorie-calculator" element={<CalorieCalculatorPage />} />
               
               {/* Admin Route */}
               <Route path="/admin" element={<Admin />} />

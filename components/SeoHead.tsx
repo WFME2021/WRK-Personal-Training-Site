@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -21,7 +22,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
   authorName
 }) => {
   const location = useLocation();
-  const canonicalUrl = `https://wrkpersonaltraining.com${location.pathname}`;
+  const canonicalUrl = `https://www.wrkpersonaltraining.co.nz${location.pathname}`;
 
   useEffect(() => {
     // 1. Update Title

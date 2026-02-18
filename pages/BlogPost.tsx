@@ -30,7 +30,7 @@ export const BlogPost: React.FC = () => {
     "author": [{
       "@type": "Person",
       "name": post.author.name,
-      "url": "https://wrkpersonaltraining.com/about" // Assuming an about page or similar
+      "url": "https://www.wrkpersonaltraining.co.nz" // Updated to main site since /about isn't explicit yet
     }],
     "description": post.seoDescription || post.excerpt
   };

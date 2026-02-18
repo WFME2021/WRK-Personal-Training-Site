@@ -42,17 +42,17 @@ export const PersonalTraining: React.FC = () => {
     <>
       <SeoHead 
         title="Personal Trainer Christchurch | Hybrid 1:1 Coaching | WRK"
-        description="1:1 personal training in Christchurch (Addington). In-person coaching plus app homework so training fits real life. Honest coaching, smart progress."
+        description="1:1 personal training in Christchurch (Addington). Premium support for high performers who value their time. Hybrid coaching available."
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero */}
         <section className="bg-secondary py-24 px-6 border-b border-border">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter leading-none">Personal Trainer <br/>in Christchurch</h1>
+            <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter leading-none">Precision Coaching <br/>in Christchurch</h1>
             <div className="inline-block bg-accent text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs mb-8">Hybrid Personal Training</div>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-10 font-light">
-              In-person sessions for coaching and precision, plus app-based homework so your training doesn’t fall apart when life gets busy.
+              Premium support for those who value their time. We combine the technical precision of in-person coaching with the flexibility of a digital plan.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4">
               <Link to="/contact">
@@ -70,7 +70,7 @@ export const PersonalTraining: React.FC = () => {
           <div className="max-w-3xl mx-auto text-center bg-primary p-8 rounded-[2rem] border border-border shadow-sm flex flex-col md:flex-row items-center justify-center gap-4 text-sm md:text-base text-text-secondary">
             <div className="bg-secondary p-3 rounded-full border border-border"><MapPin className="text-accent shrink-0" /></div>
             <p>
-              Based in <strong>Addington</strong> at Get Me Fitter. Supporting clients across Merivale, Fendalton, Ilam, Riccarton, Cashmere, Somerfield, Sumner, and Halswell.
+              Based in <strong>Addington</strong> at Get Me Fitter. Private facility, free parking, no crowds.
             </p>
           </div>
         </section>
@@ -83,10 +83,10 @@ export const PersonalTraining: React.FC = () => {
               
               <ul className="space-y-6">
                 {[
-                  "You’ve got a bit of history (pain, injuries, stop-start training).",
-                  "You want confidence in your technique and your plan.",
-                  "You want training that fits around work, family, and travel.",
-                  "You like straight-up coaching and a clear direction."
+                  "You are the 'Anchor'—people rely on you to be consistent.",
+                  "You make decisions all day. Here, you want to outsource the thinking.",
+                  "You have a history of 'all or nothing' and need a sustainable middle ground.",
+                  "You want training that builds your energy, rather than stealing it."
                 ].map((item, i) => (
                   <li key={i} className="flex items-start group">
                     <div className="w-8 h-8 rounded-full border border-accent flex items-center justify-center mr-4 shrink-0 group-hover:bg-accent transition-colors">
@@ -114,9 +114,9 @@ export const PersonalTraining: React.FC = () => {
              <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">How Hybrid Works</h2>
              <div className="grid md:grid-cols-3 gap-8">
                {[
-                 { step: "01", title: "In-Person", desc: "Coaching, technique, smart loading, and real-time adjustments. We make every rep count." },
-                 { step: "02", title: "In-App", desc: "Short, clear sessions that support what we’re doing — not random extras. You follow the plan." },
-                 { step: "03", title: "Sustainable", desc: "We’ll push when it makes sense, and pull back when your recovery needs it." }
+                 { step: "01", title: "Precision", desc: "In-person sessions focus on technique, safety, and learning. We ensure you're doing the right work." },
+                 { step: "02", title: "Execution", desc: "You complete the rest of your weekly sessions via the app. On your time, at your gym or home." },
+                 { step: "03", title: "Sustainability", desc: "We manage the load. Push when you're capable, pull back when life gets heavy." }
                ].map((item, i) => (
                  <div key={i} className="bg-primary p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow border border-border">
                    <span className="text-6xl font-display font-bold text-secondary mb-6 block text-shadow-sm" style={{textShadow: '0 0 1px var(--border)'}}>{item.step}</span>
@@ -133,13 +133,13 @@ export const PersonalTraining: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-5xl font-display font-bold mb-8 uppercase tracking-tighter text-text-primary">My Approach</h2>
             <p className="text-2xl text-text-secondary mb-16 font-light max-w-2xl">
-              I’m not here to turn the gym into a circus. I’m here to help you build a body that works.
+              I’m not here to turn the gym into a circus. I’m here to help you build a body that works for the life you actually live.
             </p>
             <div className="space-y-8">
                {[
-                 { icon: Target, title: "Minimum Effective Dose", text: "So you can stay consistent without living in the gym." },
-                 { icon: UserCheck, title: "Planned Progress", text: "So you’re not guessing. Every week builds on the last." },
-                 { icon: ShieldCheck, title: "Recovery Guardrails", text: "So training supports your life, not competes with it." }
+                 { icon: Target, title: "Minimum Effective Dose", text: "We find the most efficient path to the result. No wasted time." },
+                 { icon: UserCheck, title: "Planned Progress", text: "You never have to guess. You walk in, open the plan, and execute." },
+                 { icon: ShieldCheck, title: "Recovery Guardrails", text: "We respect your stress load. Training supports your life, not competes with it." }
                ].map((item, i) => (
                  <div key={i} className="flex gap-6 items-start border-b border-border pb-8 last:border-0">
                    <div className="bg-secondary p-4 rounded-full border border-border"><item.icon className="text-accent" size={24} /></div>

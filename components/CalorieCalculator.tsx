@@ -229,7 +229,7 @@ export const CalorieCalculator: React.FC = () => {
                   <Beer size={18} />
                   <h3 className="font-bold text-xs uppercase tracking-widest">Party Fund</h3>
                 </div>
-                <span className="text-xl font-bold font-mono text-text-primary">{stats.alcoholDrinks} <span className="text-xs text-text-secondary font-sans font-normal uppercase">Drinks/Wk</span></span>
+                <span className="text-xl font-bold font-mono text-text-primary">{stats.alcoholDrinks} <span className="text-xs text-text-secondary font-sans font-normal uppercase">Drinks / Week</span></span>
              </div>
              
              <input 
@@ -247,7 +247,7 @@ export const CalorieCalculator: React.FC = () => {
                <span>Party Animal</span>
              </div>
              <p className="text-[10px] text-text-secondary mt-4 leading-relaxed">
-               Each drink (~130kcal) is automatically deducted from your Carb/Fat budget. Protein is protected.
+               Set your total drinks for the <strong>week</strong>. These calories are averaged daily and deducted from your Carb/Fat budget.
              </p>
           </div>
 

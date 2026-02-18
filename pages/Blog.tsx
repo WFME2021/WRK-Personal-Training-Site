@@ -41,13 +41,13 @@ export const Blog: React.FC = () => {
     "@type": "CollectionPage",
     "headline": "WRK Blog",
     "description": "Articles on strength training, longevity, and high-performance living.",
-    "url": "https://wrkpersonaltraining.com/blog",
+    "url": "https://www.wrkpersonaltraining.co.nz/blog",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": filteredPosts.map((post, index) => ({
         "@type": "ListItem",
         "position": index + 1,
-        "url": `https://wrkpersonaltraining.com/blog/${post.slug}`,
+        "url": `https://www.wrkpersonaltraining.co.nz/blog/${post.slug}`,
         "name": post.title
       }))
     }

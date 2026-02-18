@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { BRAND_NAME, NAVIGATION_LINKS, LOCATION } from '../constants';
+import { BRAND_NAME, NAVIGATION_LINKS, LOCATION, EMAIL_CONTACT } from '../constants';
 import { ThemeToggle } from './ThemeToggle';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -112,14 +112,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div className="col-span-1 md:col-span-1">
               <h3 className="text-4xl font-display font-bold uppercase tracking-tighter mb-6">WRK<span className="text-accent">.</span></h3>
               <p className="text-text-secondary text-sm leading-relaxed mb-6">
-                Personal Training for people who show up. No hype. No guilt. Just work.
+                Premium coaching for those who need to perform. Whether you run a company or a family, we build the capacity you need to keep showing up.
               </p>
               
               <address className="not-italic text-sm text-text-secondary space-y-2">
                 <p className="font-bold text-accent">WRK Personal Training</p>
                 <p>Based at Get Me Fitter</p>
                 <p>Addington, Christchurch, New Zealand</p>
-                <p className="mt-2"><a href="mailto:coach@wrkpersonaltraining.com" className="hover:text-text-primary transition-colors">coach@wrkpersonaltraining.com</a></p>
+                <p className="mt-2"><a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-text-primary transition-colors">{EMAIL_CONTACT}</a></p>
               </address>
             </div>
             

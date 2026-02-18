@@ -41,8 +41,8 @@ export const OnlineCoaching: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Online Personal Trainer NZ | Coaching + Check-Ins | WRK"
-        description="Online coaching across NZ. App-based training plan, regular check-ins, and adjustments around work, stress and travel. Apply for online coaching."
+        title="Online Personal Trainer NZ | Reliability Anywhere | WRK"
+        description="Online coaching for high performers. A training system that adapts to your reality, whether you're at home, the gym, or traveling."
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
@@ -50,13 +50,13 @@ export const OnlineCoaching: React.FC = () => {
         <section className="bg-secondary text-text-primary py-24 px-6 rounded-b-[3rem] border-b border-border">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none">
-              Online Personal Trainer <br/><span className="text-accent">NZ-Wide</span>
+              Reliability <br/><span className="text-accent">Anywhere.</span>
             </h1>
             <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
               Structure + Accountability
             </p>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed mb-12 font-light">
-              If you’re capable but life gets in the way, online coaching gives you what most people actually need: a good plan, a steady hand on the wheel, and someone who keeps you consistent.
+              The stability layer for a chaotic life. A training system that adapts to your reality, whether you're in a hotel room, a home gym, or between meetings.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-6">
               <Link to="/contact">
@@ -86,10 +86,10 @@ export const OnlineCoaching: React.FC = () => {
                 </h2>
                 <div className="space-y-6">
                   {[
-                    "You already train (or you’re ready to) but consistency is patchy.",
-                    "Work, stress, travel, and family make your weeks unpredictable.",
-                    "You want guidance and accountability without in-person sessions.",
-                    "You want to feel confident you’re doing the right things."
+                    "You travel, you parent, you lead. You need a plan that adapts.",
+                    "You want guidance and accountability without an appointment time.",
+                    "You want to feel confident you’re doing the right things.",
+                    "You are capable, but your schedule makes consistency hard."
                   ].map((item, i) => (
                     <div key={i} className="flex items-start">
                        <Check className="text-accent mr-4 mt-1 shrink-0" size={24} />
@@ -107,10 +107,10 @@ export const OnlineCoaching: React.FC = () => {
              <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">How It Works</h2>
              <div className="grid md:grid-cols-4 gap-6">
                {[
-                 { step: "01", title: "You Tell Me", desc: "Your goal, schedule, and constraints. I need to know the reality of your week." },
-                 { step: "02", title: "I Build", desc: "Your plan in the app. Based on what you can actually do, not a fantasy." },
-                 { step: "03", title: "You Execute", desc: "You complete the workouts, track your weights, and check in. I adjust as we go." },
-                 { step: "04", title: "We Progress", desc: "You keep moving forward, even when the week isn’t perfect. Consistency wins." }
+                 { step: "01", title: "Reality Check", desc: "We map out your goal, schedule, and constraints. I need to know the reality of your week." },
+                 { step: "02", title: "The Build", desc: "I build your plan in the app. Based on the equipment you have and the time you can spare." },
+                 { step: "03", title: "Execution", desc: "You complete the workouts, track your weights, and check in. I adjust as we go." },
+                 { step: "04", title: "Adaptation", desc: "You keep moving forward, even when the week isn’t perfect. Consistency wins." }
                ].map((item, i) => (
                  <div key={i} className="bg-primary p-8 rounded-[2rem] shadow-sm hover:shadow-lg transition-all duration-300 border border-border">
                     <span className="text-4xl font-display font-bold text-accent mb-6 block">{item.step}</span>
