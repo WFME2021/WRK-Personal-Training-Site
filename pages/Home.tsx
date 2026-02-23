@@ -84,14 +84,14 @@ export const Home: React.FC = () => {
               {/* Floating CTA */}
               <div className="absolute bottom-8 left-8 md:bottom-16 md:left-16 flex flex-col md:flex-row gap-4">
                 <Link to="/assessment">
-                  <button className="bg-primary text-text-primary px-10 py-5 rounded-full font-display font-bold uppercase tracking-widest text-sm md:text-base hover:bg-accent hover:text-white transition-all shadow-xl flex items-center gap-2 border border-border">
+                  <Button variant="primary" className="px-10 py-5 text-sm md:text-base flex items-center gap-2">
                     Start Diagnostic <ArrowRight size={20} />
-                  </button>
+                  </Button>
                 </Link>
                 <Link to="/contact">
-                  <button className="backdrop-blur-md bg-white/10 border border-white/50 text-white px-10 py-5 rounded-full font-display font-bold uppercase tracking-widest text-sm md:text-base hover:bg-white hover:text-black transition-all shadow-xl">
+                  <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-sm md:text-base">
                     Work Together
-                  </button>
+                  </Button>
                 </Link>
               </div>
             </div>

@@ -49,7 +49,7 @@ export const PersonalTraining: React.FC = () => {
         {/* Hero */}
         <section className="bg-secondary py-24 px-6 border-b border-border">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter leading-none">Precision Coaching <br/>in Christchurch</h1>
+            <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter leading-none">Personal Trainer <br/>Christchurch</h1>
             <div className="inline-block bg-accent text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs mb-8">Hybrid Personal Training</div>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-10 font-light">
               Premium support for those who value their time. We combine the technical precision of in-person coaching with the flexibility of a digital plan.
@@ -59,7 +59,7 @@ export const PersonalTraining: React.FC = () => {
                 <Button size="lg">Apply for Hybrid</Button>
               </Link>
               <Link to="/assessment">
-                <Button variant="outline" size="lg" className="border-text-primary text-text-primary hover:bg-text-primary hover:text-primary">Take Diagnostic</Button>
+                <Button variant="outline" size="lg">Take Diagnostic</Button>
               </Link>
             </div>
           </div>
@@ -173,7 +173,7 @@ export const PersonalTraining: React.FC = () => {
                    <Button size="lg" fullWidth>Apply for Hybrid</Button>
                  </Link>
                  <Link to="/assessment">
-                   <Button variant="outline" size="lg" fullWidth className="border-text-primary text-text-primary hover:bg-text-primary hover:text-primary">Take Diagnostic</Button>
+                   <Button variant="outline" size="lg" fullWidth>Take Diagnostic</Button>
                  </Link>
                </div>
             </div>

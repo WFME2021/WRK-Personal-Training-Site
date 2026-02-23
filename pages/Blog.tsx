@@ -72,7 +72,7 @@ export const Blog: React.FC = () => {
               className="w-full h-full object-cover grayscale contrast-125"
             />
             <div className="absolute inset-0 bg-black/80 mix-blend-multiply"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto w-full text-center pt-12">

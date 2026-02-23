@@ -60,10 +60,10 @@ export const OnlineCoaching: React.FC = () => {
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-6">
               <Link to="/contact">
-                <Button className="bg-text-primary text-primary hover:bg-accent hover:text-white px-10 py-5">Apply for Online</Button>
+                <Button variant="primary" className="px-10 py-5">Apply for Online</Button>
               </Link>
               <Link to="/assessment">
-                <Button variant="outline" className="text-text-primary border-text-primary hover:bg-text-primary hover:text-primary px-10 py-5">Take Diagnostic</Button>
+                <Button variant="outline" className="px-10 py-5">Take Diagnostic</Button>
               </Link>
             </div>
           </div>

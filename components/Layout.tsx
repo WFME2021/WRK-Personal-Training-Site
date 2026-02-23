@@ -139,6 +139,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <li><Link to="/" className="hover:text-text-primary transition-colors">Home</Link></li>
                 <li><Link to="/blog" className="hover:text-text-primary transition-colors">Blog</Link></li>
                 <li><Link to="/contact" className="hover:text-text-primary transition-colors">Contact</Link></li>
+                <li><a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-text-primary transition-colors">Email</a></li>
               </ul>
             </div>
 

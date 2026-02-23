@@ -276,9 +276,10 @@ export const CorporateWellness: React.FC = () => {
                       <Button 
                         type="button" 
                         fullWidth 
+                        variant="primary"
                         onClick={handleAuditNext}
                         disabled={!auditData.companyName || !auditData.teamSize}
-                        className="bg-accent hover:bg-text-primary hover:text-primary text-white border-none mt-4"
+                        className="mt-4"
                       >
                         Next Step <ArrowRight size={18} className="ml-2" />
                       </Button>
@@ -333,8 +334,9 @@ export const CorporateWellness: React.FC = () => {
                       <Button 
                         type="submit" 
                         fullWidth 
+                        variant="primary"
                         disabled={!auditData.email}
-                        className="bg-accent hover:bg-text-primary hover:text-primary text-white border-none mt-4 py-5 text-lg"
+                        className="mt-4 py-5 text-lg"
                       >
                         Unlock Deployment Roadmap <Unlock size={18} className="ml-2" />
                       </Button>
@@ -505,7 +507,7 @@ export const CorporateWellness: React.FC = () => {
                   <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Message</label>
                   <textarea rows={4} className="w-full bg-secondary border border-border text-text-primary rounded-lg p-3 focus:border-accent focus:outline-none"></textarea>
                 </div>
-                <Button fullWidth className="bg-accent hover:bg-text-primary hover:text-primary text-white border-none py-4">
+                <Button fullWidth variant="primary" className="py-4">
                   Send Enquiry
                 </Button>
               </form>

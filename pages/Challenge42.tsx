@@ -65,9 +65,9 @@ export const Challenge42: React.FC = () => {
             </p>
             
             <div className="flex flex-col md:flex-row justify-center gap-6 relative">
-              <Link to="/contact">
-                <Button size="lg" className="px-12">Start Now ($47)</Button>
-              </Link>
+              <a href="https://wrkpersonaltraining.mypthub.net/p/225904" target="_blank" rel="noopener noreferrer">
+                <Button variant="primary" size="lg" className="px-12">Start Now ($47)</Button>
+              </a>
               <Link to="/assessment">
                 <Button variant="outline" className="text-white border-white hover:bg-white hover:text-black">Diagnostic</Button>
               </Link>
@@ -132,9 +132,9 @@ export const Challenge42: React.FC = () => {
              <div className="bg-secondary p-16 rounded-[3rem] border border-border shadow-xl">
                <h3 className="text-3xl font-display font-bold mb-6 uppercase text-text-primary">Ready to start?</h3>
                <p className="text-text-secondary mb-10 text-lg">If you’re ready to start — start.</p>
-               <Link to="/contact">
-                 <Button size="lg" className="w-full md:w-auto px-16 py-6 text-xl">Start ($47)</Button>
-               </Link>
+               <a href="https://wrkpersonaltraining.mypthub.net/p/225904" target="_blank" rel="noopener noreferrer">
+                 <Button variant="primary" size="lg" className="w-full md:w-auto px-16 py-6 text-xl">Start ($47)</Button>
+               </a>
              </div>
            </div>
         </section>
