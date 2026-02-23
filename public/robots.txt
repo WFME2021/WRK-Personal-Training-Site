@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.wrkpersonaltraining.co.nz/sitemap.xml
