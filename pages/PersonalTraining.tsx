@@ -14,45 +14,56 @@ export const PersonalTraining: React.FC = () => {
   const faqs = [
     {
       question: "Do you offer personal training in Addington?",
-      answer: "Yes. My base is at Get Me Fitter in Addington, Christchurch. It's a private facility perfect for focused training away from commercial gym crowds."
+      answer: "Yes. Sessions run from Get Me Fitter (12 Show Place, Addington) — a private facility with free parking and no crowds."
     },
     {
       question: "What is 'Hybrid' Personal Training?",
-      answer: "Hybrid means we combine in-person sessions (for technique and coaching) with a digital app program (for your other workouts). It ensures you have guidance all week, not just for the hour you see me."
+      answer: "Hybrid means you get 1-on-1 coaching in person for precision (technique, safety, progression), plus app-based programming for the rest of your week so you can execute on your schedule — at the gym or at home."
     },
     {
       question: "How often should I see a personal trainer?",
-      answer: "For Hybrid coaching, most clients see me once a week or once a fortnight to refine technique and check progress, then complete the rest of their sessions using the app plan."
+      answer: "Most clients do 1–3 in-person sessions per week, depending on experience, schedule, and goals. We pick the minimum effective dose, then build consistency before adding more."
     },
     {
       question: "Can you help if I’ve had injuries or pain?",
-      answer: "Absolutely. This is a key focus of my work. We don't just 'work around' injury; we rebuild your capacity and confidence so you can trust your body again."
+      answer: "If you’re cleared to train, yes. We work around limitations, progress gradually, and build capacity where you’re currently fragile. If something needs clinical input, I’ll refer you to the right physio and we’ll coordinate."
     },
     {
       question: "What if I'm a beginner?",
-      answer: "Then this is the best place to start. Learning proper technique from day one saves you years of frustration and injury risk later on."
+      answer: "Perfect. Beginners usually get the fastest ROI because we remove guesswork. We start simple, build strong movement patterns, and make the plan realistic enough to stick."
     },
     {
       question: "How long are the sessions?",
-      answer: "Sessions are 60 minutes, focused entirely on you. No mobile phones (unless filming form), no distractions."
+      answer: "Sessions are 30 minutes. We focus on high-ROI work only—you’re not paying to warm up on a treadmill or wander around."
+    },
+    {
+      question: "Do you train clients from other suburbs?",
+      answer: "Yes — clients regularly come from Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington, and Halswell."
+    },
+    {
+      question: "Is this focused on fat loss, strength, or recomposition?",
+      answer: "All three. The plan is built around your goal, but the foundation is the same: progressive strength training, recovery guardrails, and nutrition habits you can actually maintain."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title="Personal Trainer Christchurch | Hybrid 1:1 Coaching | WRK"
-        description="1:1 personal training in Christchurch (Addington). Premium support for high performers who value their time. Hybrid coaching available."
+        title="Personal Trainer Christchurch | 1-on-1 Training (Addington) | WRK"
+        description="Premium 1-on-1 personal training in Addington, Christchurch at Get Me Fitter. Hybrid coaching combines in-person technique sessions with app programming for busy professionals and parents. Apply or take the diagnostic."
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero */}
         <section className="bg-secondary py-24 px-6 border-b border-border">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-5xl md:text-8xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter leading-none break-words">Personal Trainer <br/>Christchurch</h1>
-            <div className="inline-block bg-accent text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs mb-8">Hybrid Personal Training</div>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-10 font-light">
-              Premium support for those who value their time. We combine the technical precision of in-person coaching with the flexibility of a digital plan.
+            <h1 className="text-5xl md:text-8xl font-display font-bold mb-4 text-text-primary uppercase tracking-tighter leading-none break-words">Personal Trainer <br/>Christchurch</h1>
+            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-accent mb-8">Hybrid Personal Training</h2>
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-6 font-light">
+              Premium coaching for busy professionals and parents who want strength, fat loss, and body recomposition — without turning training into a second job. We combine the precision of 1-on-1 sessions with the flexibility of a plan you can execute around real life.
+            </p>
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto mb-10 font-medium">
+              Based at Get Me Fitter, 12 Show Place, Addington, Christchurch (private facility, free parking, no crowds). Clients from Addington, Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington & Halswell.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4">
               <Link to="/contact">
@@ -119,12 +130,39 @@ export const PersonalTraining: React.FC = () => {
                  { step: "03", title: "Sustainability", desc: "We manage the load. Push when you're capable, pull back when life gets heavy." }
                ].map((item, i) => (
                  <div key={i} className="bg-primary p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow border border-border">
-                   <span className="text-6xl font-display font-bold text-secondary mb-6 block text-shadow-sm" style={{textShadow: '0 0 1px var(--border)'}}>{item.step}</span>
+                   <span className="text-6xl font-display font-bold text-accent mb-6 block text-shadow-sm" style={{textShadow: '0 0 1px var(--border)'}}>{item.step}</span>
                    <h3 className="font-display text-3xl font-bold mb-4 text-text-primary uppercase">{item.title}</h3>
                    <p className="text-text-secondary leading-relaxed">{item.desc}</p>
                  </div>
                ))}
              </div>
+          </div>
+        </section>
+
+        {/* Results (Christchurch clients) */}
+        <section className="py-24 px-6 bg-primary border-b border-border">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">Results (Christchurch Clients)</h2>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {[
+                { quote: "I've added 20kg to my squat while running a business. The structure is exactly what I needed.", author: "David M.", role: "Business Owner" },
+                { quote: "Finally a trainer who understands that I can't live in the gym. Efficient, effective, and sustainable.", author: "Sarah K.", role: "Lawyer" },
+                { quote: "The hybrid model is a game changer. I get the coaching I need without being tied to a trainer's schedule 3x a week.", author: "James P.", role: "Engineer" }
+              ].map((testimonial, i) => (
+                <div key={i} className="bg-secondary p-8 rounded-[2rem] border border-border">
+                  <p className="text-lg text-text-primary mb-6 italic">"{testimonial.quote}"</p>
+                  <div>
+                    <p className="font-bold text-text-primary uppercase tracking-wider text-sm">{testimonial.author}</p>
+                    <p className="text-text-secondary text-xs uppercase tracking-widest mt-1">{testimonial.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link to="/assessment">
+                <Button variant="outline">Start Your Journey</Button>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -150,6 +188,19 @@ export const PersonalTraining: React.FC = () => {
                  </div>
                ))}
             </div>
+          </div>
+        </section>
+
+        {/* Investment Signal */}
+        <section className="py-24 px-6 bg-secondary border-t border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter">Investment</h2>
+            <p className="text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
+              Hybrid coaching is designed for people who value time, structure, and long-term reliability. Packages depend on weekly frequency and support level.
+            </p>
+            <p className="text-lg font-medium text-text-primary mb-12">
+              Start with the diagnostic and I’ll point you to the right option.
+            </p>
           </div>
         </section>
 
@@ -181,6 +232,19 @@ export const PersonalTraining: React.FC = () => {
         </section>
 
         <FAQ items={faqs} title="Hybrid Coaching FAQs" />
+
+        {/* Christchurch Relevance Block */}
+        <section className="py-24 px-6 bg-primary border-t border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-display font-bold mb-6 text-text-primary uppercase tracking-tighter">Personal Training in Christchurch (Addington)</h2>
+            <p className="text-lg text-text-secondary leading-relaxed mb-8">
+              WRK Personal Training operates from Get Me Fitter — 12 Show Place, Addington, Christchurch. If you’re looking for a personal trainer in Christchurch and want coaching that’s calm, precise, and sustainable, start with the diagnostic or apply.
+            </p>
+            <Link to="/contact">
+              <Button variant="outline">Enquire Now</Button>
+            </Link>
+          </div>
+        </section>
       </div>
     </>
   );
