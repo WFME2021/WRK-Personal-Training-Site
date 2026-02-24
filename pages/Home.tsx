@@ -13,36 +13,32 @@ export const Home: React.FC = () => {
 
   const faqs = [
     {
-      question: "Do I need to be 'fit' before I start?",
-      answer: "No. You just need to be ready to start. I work with people rebuilding after a decade of desk work, injury, or parenting. We start where you are."
-    },
-    {
       question: "How often do I need to train?",
-      answer: "We focus on the minimum effective dose. For most high performers, that looks like 2–3 strength sessions per week, plus some easy movement. We aim for high ROI, not high volume."
+      answer: "Most clients get strong results on 2–4 sessions per week, depending on your schedule, stress, and goals. We choose the minimum effective dose, then earn the right to add more."
     },
     {
       question: "Do you provide meal plans?",
-      answer: "I provide nutrition operating systems, not rigid meal plans. I teach you how to fuel for sustained energy in a way that fits a social life and family dinners."
+      answer: "Not generic PDFs. You’ll get a system: targets, structure, and simple rules that work in the real world — especially for parents, busy professionals, and people who travel."
     },
     {
       question: "Can you help with injuries?",
-      answer: "Yes. Many of my clients are working around old sports injuries or desk-related pain. We build capacity around the pain, not through it."
+      answer: "Yes — if you’re cleared to train, we build around limitations and progress safely. If something is outside scope, I’ll point you to the right physio/specialist and we coordinate."
     },
     {
       question: "What if I travel frequently?",
-      answer: "Then you're my ideal client. I build 'fallback' sessions and hotel workouts into your plan so you maintain momentum when your schedule goes sideways."
+      answer: "That’s normal. Your plan is built to survive disruption — and if you’re away a lot, we shift you into a hybrid/online structure without losing momentum."
     },
     {
       question: "What is the 2-minute diagnostic?",
-      answer: "It's a quick assessment tool I built to help you identify your biggest constraints and give you a recommended roadmap instantly. No sales call required."
+      answer: "It’s a quick filter to find the best next step based on your schedule, training history, and goals — so you don’t waste weeks guessing."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title="WRK Personal Training | Build Your Capacity"
-        description="Bespoke personal training for high performers who run boardrooms or households. Build the physical capacity to support your life."
+        title="Personal Trainer Christchurch | WRK Personal Training (Addington)"
+        description="1-on-1 personal training in Addington, Christchurch at Get Me Fitter. Strength, fat loss and body recomposition for busy professionals and parents. Start with a diagnostic or assessment."
       />
 
       <div className="flex flex-col w-full overflow-x-hidden bg-primary transition-colors duration-300">
@@ -53,13 +49,19 @@ export const Home: React.FC = () => {
             
             {/* Top Text - Massive Typography */}
             <div className="flex flex-col items-center justify-center pt-8 mb-16 md:mb-20">
-              <h1 className="font-display text-[15vw] leading-[0.8] font-bold uppercase tracking-tighter text-center text-text-primary">
-                Build Your <br/> Capacity
+              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-center text-accent mb-4">
+                Build Your Capacity
+              </h3>
+              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-center text-text-primary max-w-6xl">
+                Personal Training in Christchurch (Addington)
               </h1>
               <div className="mt-12 flex flex-col items-center">
                 <p className="text-lg md:text-2xl text-text-primary font-medium max-w-3xl text-center leading-relaxed">
-                  Whether you run a boardroom or run a household. <br className="hidden md:block"/>
-                  Physical reliability is the foundation for high-stakes performance.
+                  Whether you run a boardroom or run a household, people rely on you. <br className="hidden md:block"/>
+                  We build strength, fat loss, and body recomposition for busy professionals and parents — without burning you into the ground.
+                </p>
+                <p className="text-xs md:text-sm text-text-secondary mt-6 max-w-2xl text-center font-medium">
+                  Based at Get Me Fitter, 12 Show Place, Addington, Christchurch. Clients from Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington, Halswell.
                 </p>
                 <div className="w-12 h-1 bg-accent mt-6"></div>
               </div>
@@ -90,7 +92,7 @@ export const Home: React.FC = () => {
                 </Link>
                 <Link to="/contact">
                   <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-sm md:text-base">
-                    Work Together
+                    Apply to Work Together
                   </Button>
                 </Link>
               </div>
@@ -113,17 +115,17 @@ export const Home: React.FC = () => {
                     The Anchor <br/><span className="text-text-secondary">Of Your Environment.</span>
                   </h2>
                   <p className="text-xl text-text-primary leading-relaxed mb-8">
-                    People rely on you. Your team, your family, and your business depend on your energy, your mood, and your decision-making. We build the physical resilience to carry that load without breaking.
+                    People rely on you — your team, your family, and your business. Your energy, mood, and decision-making are downstream of your body. We build the physical resilience to carry the load without breaking.
                   </p>
-                  <Link to="/assessment" className="text-accent font-bold uppercase tracking-widest text-sm border-b-2 border-accent pb-1 hover:text-text-primary hover:border-text-primary transition-colors">
+                  <Link to="/philosophy" className="text-accent font-bold uppercase tracking-widest text-sm border-b-2 border-accent pb-1 hover:text-text-primary hover:border-text-primary transition-colors">
                     Read Our Philosophy
                   </Link>
                 </div>
                 <div className="space-y-6">
                    {[
-                     { title: "Capacity is Currency", desc: "When you have physical capacity, you have options. When you don't, you have constraints." },
                      { title: "Performance for the Long Haul", desc: "We are not interested in a 6-week shred. We are interested in the next decade of high performance." },
-                     { title: "Manage Energy, Not Just Time", desc: "You can't add hours to the day. But you can double the energy you bring to the hours you have." }
+                     { title: "Manage Energy, Not Just Time", desc: "You can't add hours to the day. But you can double the energy you bring to the hours you have." },
+                     { title: "The Right Work, Done Well", desc: "When you have physical capacity, you have options. When you don't, you have constraints." }
                    ].map((item, i) => (
                      <div key={i} className="bg-primary p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300 border border-border hover:border-accent/50">
                        <h3 className="font-bold text-xl text-text-primary mb-2 flex items-center">
@@ -142,10 +144,10 @@ export const Home: React.FC = () => {
         <section className="py-32 px-4 md:px-8 bg-text-primary text-primary">
           <div className="max-w-5xl mx-auto">
              <div className="text-center mb-20">
-               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-8 tracking-tighter">For The Decision Makers</h2>
+               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-8 tracking-tighter">For Busy Professionals and Parents</h2>
                <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
                <p className="text-2xl text-primary/80 leading-relaxed max-w-3xl mx-auto font-light">
-                 Time is your most expensive asset. You don't need a cheerleader; you need a strategist. We provide the maximum physiological return in the most efficient window.
+                 Time is your most expensive asset. You don't need a cheerleader — you need a strategist.
                </p>
              </div>
              
@@ -171,11 +173,8 @@ export const Home: React.FC = () => {
           <div className="max-w-[1600px] mx-auto">
             <div className="flex justify-between items-end mb-16 border-b border-border pb-8">
               <h2 className="font-display text-6xl md:text-9xl uppercase font-bold tracking-tighter leading-none text-text-primary">
-                Training<span className="text-accent">.</span>
+                Training — <br/><span className="text-accent">Choose Your Path.</span>
               </h2>
-              <div className="hidden md:block mb-4">
-                 <p className="text-text-secondary font-bold uppercase tracking-widest text-right">Choose your path</p>
-              </div>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
@@ -190,8 +189,8 @@ export const Home: React.FC = () => {
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
                    </div>
                 </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Hybrid Coaching</h3>
-                <p className="text-text-secondary font-medium max-w-sm">In-person precision + remote flexibility. The best of both worlds.</p>
+                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Hybrid Personal Training — Christchurch</h3>
+                <p className="text-text-secondary font-medium max-w-lg">In-person precision at Get Me Fitter + simple structure between sessions. Built for strength, fat loss and recomposition.</p>
               </Link>
 
               {/* Service Card 2: Online */}
@@ -204,21 +203,21 @@ export const Home: React.FC = () => {
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
                    </div>
                 </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Online Coaching</h3>
-                <p className="text-text-secondary font-medium max-w-sm">Structure and accountability for a chaotic schedule.</p>
+                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Online Coaching — NZ-Wide</h3>
+                <p className="text-text-secondary font-medium max-w-lg">Training + nutrition accountability for a chaotic schedule. Anywhere in New Zealand.</p>
               </Link>
 
                {/* Service Card 3: 42 Day Reset */}
               <Link to="/42-day-reset" className="group block">
                 <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative bg-secondary flex items-center justify-center border border-border">
                    <h4 className="font-display text-[12rem] font-bold text-text-primary opacity-5 leading-none">42</h4>
-                   <div className="absolute top-8 right-8 bg-accent text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Global</div>
+                   <div className="absolute top-8 right-8 bg-accent text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">NZ Wide</div>
                    <div className="absolute bottom-8 left-8 bg-primary/10 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
                    </div>
                 </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">42-Day Reset</h3>
-                <p className="text-text-secondary font-medium max-w-sm">Self-guided execution system. Rebuild momentum.</p>
+                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">42-Day Reset Challenge — NZ-Wide</h3>
+                <p className="text-text-secondary font-medium max-w-lg">A self-guided execution system to rebuild momentum when you’ve drifted.</p>
               </Link>
 
               {/* Service Card 4: Corporate Wellness */}
@@ -230,13 +229,13 @@ export const Home: React.FC = () => {
                      <div className="w-full h-full bg-secondary"></div>
                    )}
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
-                   <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Teams</div>
+                   <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">NZ Wide</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/80 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
                    </div>
                 </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Resilient Teams</h3>
-                <p className="text-text-secondary font-medium max-w-sm">High-ROI strategies for high-performance culture.</p>
+                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Corporate Wellness — NZ-Wide</h3>
+                <p className="text-text-secondary font-medium max-w-lg">High-ROI training and wellbeing strategies for resilient teams and performance culture.</p>
               </Link>
 
             </div>
@@ -249,10 +248,10 @@ export const Home: React.FC = () => {
              <h2 className="font-display text-5xl font-bold text-text-primary mb-16 text-center uppercase tracking-tighter">What To Expect</h2>
              <div className="grid md:grid-cols-2 gap-px bg-border border border-border rounded-[2rem] overflow-hidden">
                {[
-                 { title: "Respect for Reality", desc: "Training that works with your actual schedule, not a fantasy one." },
-                 { title: "Calm Clarity", desc: "A plan that removes decision fatigue. You execute, we handle the rest." },
-                 { title: "Tangible Progress", desc: "Strength numbers up. Energy stable. Recovery optimized." },
-                 { title: "Feeling Better", desc: "Leaving sessions energized and capable, not wrecked." }
+                 { title: "Respect for Reality", desc: "Training that fits your schedule, not a fantasy one." },
+                 { title: "Calm Clarity", desc: "A plan that removes decision fatigue. You execute; we handle the rest." },
+                 { title: "Tangible Progress", desc: "Strength numbers up, energy stable, recovery improving." },
+                 { title: "Feel Better", desc: "You leave sessions capable, not cooked." }
                ].map((item, i) => (
                  <div key={i} className="bg-primary p-12 hover:bg-secondary transition-colors">
                     <h3 className="font-display text-2xl font-bold uppercase mb-4 text-text-primary">{item.title}</h3>
@@ -260,6 +259,67 @@ export const Home: React.FC = () => {
                  </div>
                ))}
              </div>
+          </div>
+        </section>
+
+        {/* Location Block */}
+        <section className="py-24 px-4 md:px-8 bg-primary border-t border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-display text-5xl font-bold text-text-primary mb-8 uppercase tracking-tighter">
+              Christchurch Personal Training Location
+            </h2>
+            <p className="text-xl text-text-secondary leading-relaxed mb-8">
+              WRK Personal Training operates from <strong>Get Me Fitter</strong> — 12 Show Place, Addington, Christchurch.
+            </p>
+            <p className="text-text-secondary mb-12">
+              Most clients travel from Addington, Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington and Halswell.
+            </p>
+            <Link to="/contact">
+              <Button variant="outline" size="lg">Book / Enquire</Button>
+            </Link>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-24 px-4 md:px-8 bg-primary border-t border-border">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="font-display text-5xl font-bold text-text-primary mb-16 text-center uppercase tracking-tighter">
+              Client Feedback
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  quote: "Finally a program that fits my 60-hour work week. Efficient, effective, and no fluff.",
+                  author: "James T.",
+                  role: "CEO"
+                },
+                {
+                  quote: "I lost 10kg without giving up family dinners. Sustainable results that actually stick.",
+                  author: "Sarah L.",
+                  role: "Director"
+                },
+                {
+                  quote: "Hayden understands the demands of a high-pressure job. The training supports my life, it doesn't compete with it.",
+                  author: "Mark R.",
+                  role: "Entrepreneur"
+                }
+              ].map((testimonial, i) => (
+                <div key={i} className="bg-secondary p-10 rounded-[2rem] border border-border hover:border-accent transition-colors duration-300">
+                  <div className="text-accent mb-6">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="inline-block text-xl">★</span>
+                    ))}
+                  </div>
+                  <p className="text-lg text-text-primary mb-8 font-medium leading-relaxed">
+                    "{testimonial.quote}"
+                  </p>
+                  <div>
+                    <p className="font-bold text-text-primary uppercase tracking-wider text-sm">{testimonial.author}</p>
+                    <p className="text-text-secondary text-xs uppercase tracking-widest mt-1">{testimonial.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -274,7 +334,7 @@ export const Home: React.FC = () => {
               Start Now
             </h2>
             <p className="text-xl font-medium text-text-secondary mb-12">
-              Take the diagnostic and I’ll point you to the best next step.
+              Take the diagnostic and I’ll point you to the best next step — based on reality, not hype.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <Link to="/assessment">
