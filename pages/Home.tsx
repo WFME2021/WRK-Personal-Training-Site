@@ -31,14 +31,44 @@ export const Home: React.FC = () => {
     {
       question: "What is the 2-minute diagnostic?",
       answer: "It’s a quick filter to find the best next step based on your schedule, training history, and goals — so you don’t waste weeks guessing."
+    },
+    {
+      question: "Do you offer online coaching?",
+      answer: "Yes. If you’re not in Christchurch, our Online Coaching service covers all of NZ with the same level of programming and accountability."
+    },
+    {
+      question: "Where are you located?",
+      answer: "We are based at Get Me Fitter, 12 Show Place, Addington. It’s a private facility with free parking."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title="Personal Trainer Christchurch | WRK Personal Training (Addington)"
+        title="Christchurch Personal Trainer | WRK Personal Training (Addington)"
         description="1-on-1 personal training in Addington, Christchurch at Get Me Fitter. Strength, fat loss and body recomposition for busy professionals and parents. Start with a diagnostic or assessment."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "WRK Personal Training",
+          "image": heroImage,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "12 Show Place",
+            "addressLocality": "Addington",
+            "addressRegion": "Christchurch",
+            "postalCode": "8024",
+            "addressCountry": "NZ"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -43.543,
+            "longitude": 172.605
+          },
+          "url": "https://wrkpersonaltraining.co.nz",
+          "telephone": "+64210000000",
+          "priceRange": "$$"
+        }}
       />
 
       <div className="flex flex-col w-full overflow-x-hidden bg-primary transition-colors duration-300">
@@ -53,7 +83,7 @@ export const Home: React.FC = () => {
                 Build Your Capacity
               </h3>
               <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-center text-text-primary max-w-6xl">
-                Personal Training in Christchurch (Addington)
+                Christchurch Personal Trainer
               </h1>
               <div className="mt-12 flex flex-col items-center">
                 <p className="text-lg md:text-2xl text-text-primary font-medium max-w-3xl text-center leading-relaxed">

@@ -137,6 +137,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <h4 className="font-bold uppercase tracking-widest text-xs text-accent mb-8">Company</h4>
               <ul className="space-y-4 text-sm font-medium text-text-secondary">
                 <li><Link to="/" className="hover:text-text-primary transition-colors">Home</Link></li>
+                <li><Link to="/results" className="hover:text-text-primary transition-colors">Results</Link></li>
                 <li><Link to="/blog" className="hover:text-text-primary transition-colors">Blog</Link></li>
                 <li><Link to="/contact" className="hover:text-text-primary transition-colors">Contact</Link></li>
                 <li><a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-text-primary transition-colors">Email</a></li>

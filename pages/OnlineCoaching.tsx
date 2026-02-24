@@ -47,6 +47,46 @@ export const OnlineCoaching: React.FC = () => {
       <SeoHead 
         title="Online Personal Training NZ | Online Coaching (NZ-Wide) | WRK"
         description="Online personal training NZ-wide for busy professionals and parents. App-based training, fortnightly check-ins, form support, nutrition guidance, and travel-proof plans that adapt to real life. Apply or take the diagnostic."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Online Personal Training",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "WRK Personal Training"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "New Zealand"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Online Coaching Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Online Coaching"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
@@ -54,7 +94,7 @@ export const OnlineCoaching: React.FC = () => {
         <section className="bg-secondary text-text-primary py-24 px-6 rounded-b-[3rem] border-b border-border">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none">
-              Online Personal <br/><span className="text-accent">Training NZ</span>
+              Online Personal <br/><span className="text-accent">Training</span>
             </h1>
             <h2 className="font-bold uppercase tracking-[0.2em] mb-4 text-xl text-text-primary">
               Reliability. Anywhere.
@@ -63,10 +103,10 @@ export const OnlineCoaching: React.FC = () => {
               Structure + Accountability
             </p>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-              The stability layer for a chaotic life. Online coaching built for busy professionals and parents across New Zealand — a training system that adapts to your reality whether you’re in a hotel room, a home gym, or between meetings.
+              The stability layer for a chaotic life. NZ-wide online coaching built for busy professionals and parents — a training system that adapts to your reality whether you’re in a hotel room, a home gym, or between meetings.
             </p>
             <p className="text-sm font-medium text-text-secondary mb-12">
-              NZ-wide coaching. Gym, home, or travel-friendly programming.
+              NZ-wide coaching. Fortnightly check-ins. 12-week commitment for real results.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-6">
               <Link to="/contact">

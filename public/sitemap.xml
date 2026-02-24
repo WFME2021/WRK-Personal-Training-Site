@@ -2,11 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.wrkpersonaltraining.co.nz/</loc>
+    <lastmod>2024-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/philosophy</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/personal-training</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/online-coaching</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/corporate-wellness</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/42-day-reset</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/contact</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/results</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -16,34 +47,9 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/results</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/contact</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/philosophy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/personal-training</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/online-coaching</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/corporate-wellness</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/42-day-reset</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.wrkpersonaltraining.co.nz/blog</loc>

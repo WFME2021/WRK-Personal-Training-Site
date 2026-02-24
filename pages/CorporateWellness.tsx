@@ -70,9 +70,48 @@ export const CorporateWellness: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Corporate Wellness Programs NZ | Remote Workplace Wellbeing | WRK"
-        description="Remote corporate wellness NZ-wide: a personal trainer in every employee’s pocket. App-based training plans, nutrition resources, macro tracking, and a private company community with fortnightly coach access. Enquire today."
-        schema={faqSchema}
+        title="Wellbeing in the Workplace | Corporate Wellness Programs NZ | WRK"
+        description="Remote corporate wellbeing program (NZ-wide). A personal trainer in every employee’s pocket. App-based training, nutrition tools, and private company community. Enquire for annual packages."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Corporate Wellness Program",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "WRK Personal Training"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "New Zealand"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Corporate Wellness Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Annual Corporate Wellness Package"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
       />
 
       <div className="bg-primary min-h-screen text-text-primary font-sans transition-colors duration-300">
@@ -84,10 +123,10 @@ export const CorporateWellness: React.FC = () => {
           
           <div className="max-w-7xl mx-auto relative z-10 text-center">
             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-widest text-text-primary leading-none mb-6">
-              Corporate Wellness <br/><span className="text-accent">Programs NZ</span>
+              Wellbeing in the <br/><span className="text-accent">Workplace</span>
             </h1>
             <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
-              A personal trainer in every employee’s pocket.
+              Remote corporate wellbeing program (NZ-wide)
             </p>
             <p className="text-xl md:text-2xl text-text-secondary font-light max-w-3xl mx-auto mb-8 leading-relaxed">
               Generic wellness is a perk. Precision wellness is a strategy. <br/>

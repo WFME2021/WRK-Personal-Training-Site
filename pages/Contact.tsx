@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { ContactFormData } from '../types';
 import { submitApplication } from '../services/apiService';
 import { Check } from 'lucide-react';
+import { SeoHead } from '../components/SeoHead';
 
 export const Contact: React.FC = () => {
   const location = useLocation();
@@ -50,6 +51,10 @@ export const Contact: React.FC = () => {
   if (isSubmitted) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center bg-primary transition-colors duration-300">
+        <SeoHead 
+          title="Contact | WRK Personal Training"
+          description="Contact WRK Personal Training in Christchurch. Enquire about 1-on-1 training, online coaching, or corporate wellness."
+        />
         <div className="bg-green-500/10 p-6 rounded-full mb-6 border border-green-500/20">
           <Check size={48} className="text-green-500" />
         </div>
@@ -66,6 +71,31 @@ export const Contact: React.FC = () => {
 
   return (
     <div className="py-20 px-6 bg-primary transition-colors duration-300 min-h-screen">
+      <SeoHead 
+        title="Contact | WRK Personal Training"
+        description="Contact WRK Personal Training in Christchurch. Enquire about 1-on-1 training, online coaching, or corporate wellness."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "WRK Personal Training",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "12 Show Place",
+            "addressLocality": "Addington",
+            "addressRegion": "Christchurch",
+            "postalCode": "8024",
+            "addressCountry": "NZ"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -43.543,
+            "longitude": 172.605
+          },
+          "url": "https://wrkpersonaltraining.co.nz",
+          "telephone": "+64210000000",
+          "priceRange": "$$"
+        }}
+      />
       <div className="max-w-2xl mx-auto">
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold mb-4 text-text-primary">Application for Coaching</h1>

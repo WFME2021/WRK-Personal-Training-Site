@@ -50,9 +50,50 @@ export const Challenge42: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="42 Day Reset Challenge NZ | 42 Day Fitness Challenge (NZ-Wide) | WRK"
-        description="A 42 day reset challenge NZ-wide: self-guided training + simple nutrition support inside the WRK app. Built-in progression, fallback sessions for busy weeks, and beginner-friendly structure. One-time $47 NZD."
-        schema={faqSchema}
+        title="Fitness Challenge NZ | 42 Day Reset | WRK"
+        description="A 42 day fitness challenge NZ-wide: self-guided training + simple nutrition support inside the WRK app. Built-in progression, fallback sessions for busy weeks, and beginner-friendly structure. One-time $47 NZD."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Fitness Challenge",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "WRK Personal Training"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "New Zealand"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Fitness Challenges",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "42 Day Reset Challenge"
+                  },
+                  "price": "47.00",
+                  "priceCurrency": "NZD"
+                }
+              ]
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
@@ -68,8 +109,8 @@ export const Challenge42: React.FC = () => {
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
           </div>
           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-9xl font-display font-bold mb-6 uppercase tracking-tighter relative leading-none">42 Day Reset <br/>Challenge NZ</h1>
-            <h2 className="text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-8">The Circuit Breaker</h2>
+            <h1 className="text-5xl md:text-9xl font-display font-bold mb-6 uppercase tracking-tighter relative leading-none">Fitness <br/>Challenge</h1>
+            <h2 className="text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-8">42 Day Reset</h2>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-xl mx-auto font-light leading-relaxed relative">
               A simple, self-guided plan in the app to rebuild momentum, get stronger, and feel better in your body again — without overthinking it.

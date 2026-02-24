@@ -49,18 +49,58 @@ export const PersonalTraining: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Personal Trainer Christchurch | 1-on-1 Training (Addington) | WRK"
-        description="Premium 1-on-1 personal training in Addington, Christchurch at Get Me Fitter. Hybrid coaching combines in-person technique sessions with app programming for busy professionals and parents. Apply or take the diagnostic."
+        title="Personal Fitness Instructor | In-Person Coaching (Christchurch) | WRK"
+        description="Your personal fitness instructor in Christchurch. Premium 1-on-1 coaching at Get Me Fitter, Addington. Hybrid training for busy professionals. Apply now."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Personal Training",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "WRK Personal Training"
+            },
+            "areaServed": {
+              "@type": "City",
+              "name": "Christchurch"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Personal Training Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Hybrid Personal Training"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero */}
         <section className="bg-secondary py-24 px-6 border-b border-border">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-5xl md:text-8xl font-display font-bold mb-4 text-text-primary uppercase tracking-tighter leading-none break-words">Personal Trainer <br/>Christchurch</h1>
-            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-accent mb-8">Hybrid Personal Training</h2>
+            <h1 className="text-5xl md:text-8xl font-display font-bold mb-4 text-text-primary uppercase tracking-tighter leading-none break-words">Your Personal <br/>Fitness Instructor</h1>
+            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-accent mb-8">In-Person Coaching (Christchurch)</h2>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-6 font-light">
-              Premium coaching for busy professionals and parents who want strength, fat loss, and body recomposition — without turning training into a second job. We combine the precision of 1-on-1 sessions with the flexibility of a plan you can execute around real life.
+              Premium coaching for busy professionals and parents who want strength, fat loss, and body recomposition — without turning training into a second job. If you’re looking for a personal trainer in Christchurch, we combine the precision of 1-on-1 sessions with the flexibility of a plan you can execute around real life.
             </p>
             <p className="text-sm text-text-secondary max-w-2xl mx-auto mb-10 font-medium">
               Based at Get Me Fitter, 12 Show Place, Addington, Christchurch (private facility, free parking, no crowds). Clients from Addington, Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington & Halswell.
@@ -159,8 +199,8 @@ export const PersonalTraining: React.FC = () => {
               ))}
             </div>
             <div className="text-center">
-              <Link to="/assessment">
-                <Button variant="outline">Start Your Journey</Button>
+              <Link to="/results">
+                <Button variant="outline">See More Results</Button>
               </Link>
             </div>
           </div>
