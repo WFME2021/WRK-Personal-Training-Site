@@ -15,7 +15,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   }, [location]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-primary text-text-primary selection:bg-accent selection:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-primary text-text-primary selection:bg-accent selection:text-white transition-colors duration-300 overflow-x-hidden">
       <header className="fixed w-full top-0 z-50 bg-primary/90 backdrop-blur-md border-b border-border transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
           <Link to="/" className="block hover:opacity-80 transition-opacity" aria-label="Home">
