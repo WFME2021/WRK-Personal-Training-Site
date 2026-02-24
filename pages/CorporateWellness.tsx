@@ -1,65 +1,36 @@
-
 import React, { useState } from 'react';
 import { Button } from '../components/Button';
 import { 
   TrendingUp, Users, DollarSign, Activity, 
-  ArrowRight, Unlock, CheckCircle2, 
+  ArrowRight, CheckCircle2, 
   Plus, Minus, Building2, Mail, BarChart3, 
-  Zap, Shield, XCircle, AlertTriangle, Briefcase, Brain
+  Zap, Shield, AlertTriangle, Briefcase, Brain,
+  Smartphone, Utensils, MessageSquare, Lock, XCircle
 } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 
 export const CorporateWellness: React.FC = () => {
-  const [isUnlocked, setIsUnlocked] = useState(false);
-  const [auditStep, setAuditStep] = useState(1);
-  const [auditData, setAuditData] = useState({
-    companyName: '',
-    teamSize: '',
-    hurdle: '',
-    email: ''
-  });
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-
-  const handleAuditChange = (field: string, value: string) => {
-    setAuditData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleAuditNext = () => {
-    setAuditStep(prev => prev + 1);
-  };
-
-  const handleAuditSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsUnlocked(true);
-  };
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const scrollToEnquiry = () => {
+    document.getElementById('enquiry-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const stats = [
     { 
       value: "$46B", 
       label: "Lost Annually", 
-      desc: "NZ employers lose billions to presenteeism—employees working while unwell lose 6+ productive days/month.",
+      desc: "NZ employers lose billions to presenteeism—employees working while unwell.",
       icon: DollarSign
     },
     { 
-      value: "68+", 
-      label: "Days Lost", 
-      desc: "High mental health risk leads to over two months of productivity lost per year per employee.",
-      icon: Activity
-    },
-    { 
-      value: "+7.42%", 
-      label: "Performance", 
-      desc: "Active employees exhibit higher median job performance and a 56% reduction in sick leave.",
-      icon: TrendingUp
-    },
-    { 
-      value: "1 : 4.70", 
-      label: "ROI", 
-      desc: "Financial ROI: Up to a $4.70 return for every $1 invested in early-intervention wellness in NZ.",
+      value: "ROI", 
+      label: "Positive Return", 
+      desc: "Early-intervention workplace wellbeing has been estimated to return multiple dollars for every dollar invested.",
       icon: BarChart3
     }
   ];
@@ -67,403 +38,316 @@ export const CorporateWellness: React.FC = () => {
   const faqs = [
     {
       question: "Will HR have to manage this?",
-      answer: "No. We handle onboarding and programming directly with employees via their personal access link. Your team gets a dashboard; you get the results without the admin."
+      answer: "No. The system runs inside the app. HR’s job is simple: approve it, announce it, and let employees use it."
     },
     {
       question: "How do we handle different fitness levels?",
-      answer: "A marathon runner and a beginner use the same system but follow entirely different paths suited to their readiness. The 'Choice Engine' ensures relevance for every employee."
+      answer: "Programs are scalable. Beginners aren’t thrown into the deep end, and intermediate staff aren’t bored. Employees choose a track that fits."
     },
     {
       question: "Is employee data private?",
-      answer: "Yes. You receive aggregate reports on engagement trends and team health scores, but individual health data remains private between the coach and employee."
+      answer: "Yes. Individual health data is private. If you want reporting, it should be aggregated participation trends, not personal data."
     },
     {
       question: "Is this just a gym membership subsidy?",
-      answer: "No. Subsidies have low engagement (<15%) because they don't solve the problem of direction. We provide the plan, the coaching, and the accountability."
+      answer: "No. This is structure + execution. Employees get a plan, a community, and coach access — not just access to equipment."
     }
   ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
 
   return (
     <>
       <SeoHead 
-        title="Corporate Performance & Wellness | WRK"
-        description="Precision wellness for high-performance teams. Reduce presenteeism and improve ROI with data-driven corporate health strategies."
+        title="Corporate Wellness Programs NZ | Remote Workplace Wellbeing | WRK"
+        description="Remote corporate wellness NZ-wide: a personal trainer in every employee’s pocket. App-based training plans, nutrition resources, macro tracking, and a private company community with fortnightly coach access. Enquire today."
+        schema={faqSchema}
       />
 
-      <div className="bg-primary min-h-screen text-text-primary selection:bg-accent selection:text-white font-sans transition-colors duration-300">
+      <div className="bg-primary min-h-screen text-text-primary font-sans transition-colors duration-300">
         
-        {/* SECTION 1: THE DATA HOOK */}
+        {/* HERO */}
         <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-          {/* Background Gradient - Maps correctly in both modes via semantic tokens */}
+           {/* Background Gradient */}
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary to-secondary opacity-90 z-0"></div>
           
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center max-w-4xl mx-auto mb-20">
-              <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-8">
-                Market Insights
-              </span>
-              <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-widest text-text-primary leading-none mb-8">
-                The Cost of Inactivity <br/><span className="text-accent">Is Measurable.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-text-secondary font-light max-w-2xl mx-auto">
-                Generic wellness is a perk. Precision wellness is a strategy.
-              </p>
+          <div className="max-w-7xl mx-auto relative z-10 text-center">
+            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-widest text-text-primary leading-none mb-6">
+              Corporate Wellness <br/><span className="text-accent">Programs NZ</span>
+            </h1>
+            <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
+              A personal trainer in every employee’s pocket.
+            </p>
+            <p className="text-xl md:text-2xl text-text-secondary font-light max-w-3xl mx-auto mb-8 leading-relaxed">
+              Generic wellness is a perk. Precision wellness is a strategy. <br/>
+              WRK Corporate Wellness is a remote, app-based system that gives every employee structured training, nutrition tools, and a private company community — with fortnightly coach access and zero HR admin.
+            </p>
+            <div className="flex flex-col md:flex-row justify-center gap-4 mb-12">
+                <Button size="lg" onClick={scrollToEnquiry}>Send an Enquiry</Button>
+                <a href="#audit" className="inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-widest text-text-primary border border-border rounded-xl hover:bg-secondary transition-colors">
+                    Audit your team’s potential
+                </a>
             </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {stats.map((stat, i) => (
-                <div key={i} className="bg-secondary p-8 border border-border hover:border-accent/50 transition-colors duration-300 group rounded-3xl">
-                  <div className="flex justify-between items-start mb-6">
-                    <stat.icon className="text-accent group-hover:scale-110 transition-transform duration-300" size={32} />
-                    <span className="text-xs font-bold uppercase tracking-widest text-text-secondary">{stat.label}</span>
-                  </div>
-                  <h3 className="font-display text-4xl font-bold text-text-primary mb-4">{stat.value}</h3>
-                  <p className="text-sm text-text-secondary leading-relaxed border-t border-border pt-4 group-hover:border-accent/30 transition-colors">
-                    {stat.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p className="text-sm font-medium text-text-secondary">
+              NZ-wide • Remote delivery • Beginner to intermediate friendly
+            </p>
           </div>
         </section>
 
-        {/* SECTION 1.5: THE WELLNESS PARADOX */}
-        <section className="py-24 px-6 bg-secondary border-t border-border">
+        {/* MARKET INSIGHTS */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
           <div className="max-w-6xl mx-auto">
-             <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                   <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-6 leading-tight">
-                     Why Generic Programs <span className="text-accent">Fail to Stack Up.</span>
-                   </h2>
-                   <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-                     Most corporate wellness offerings rely on passive perks—gym discounts, fruit bowls, or one-off seminars. The data shows that these initiatives consistently fail the employees who need them most.
-                   </p>
-                   
-                   <div className="space-y-8">
-                      <div className="flex gap-4">
-                         <div className="bg-primary p-3 h-fit rounded-lg border border-border shrink-0 text-accent">
-                           <AlertTriangle size={24} />
-                         </div>
-                         <div>
-                            <h3 className="text-xl font-bold text-text-primary uppercase mb-2">The "Already Fit" Bias</h3>
-                            <p className="text-sm text-text-secondary">
-                              Voluntary programs typically see <span className="text-text-primary font-bold">12-18% engagement</span>. The participants are almost exclusively employees who are already healthy. The high-risk staff disengage due to intimidation or lack of clear direction.
-                            </p>
-                         </div>
-                      </div>
-
-                      <div className="flex gap-4">
-                         <div className="bg-primary p-3 h-fit rounded-lg border border-border shrink-0 text-accent">
-                           <Briefcase size={24} />
-                         </div>
-                         <div>
-                            <h3 className="text-xl font-bold text-text-primary uppercase mb-2">The Gym Subsidy Trap</h3>
-                            <p className="text-sm text-text-secondary">
-                              Paying for a gym membership doesn't ensure usage. It is a <span className="text-text-primary font-bold">passive asset</span>. Without a structured plan (what to do when they get there) and accountability, the subsidy becomes wasted budget.
-                            </p>
-                         </div>
-                      </div>
-
-                      <div className="flex gap-4">
-                         <div className="bg-primary p-3 h-fit rounded-lg border border-border shrink-0 text-accent">
-                           <Brain size={24} />
-                         </div>
-                         <div>
-                            <h3 className="text-xl font-bold text-text-primary uppercase mb-2">Information vs. Transformation</h3>
-                            <p className="text-sm text-text-secondary">
-                              "Lunch & Learns" provide information, but information rarely changes behavior. Transformation requires <span className="text-text-primary font-bold">application</span>. Employees need a daily system, not a quarterly presentation.
-                            </p>
-                         </div>
-                      </div>
-                   </div>
+             <div className="text-center mb-16">
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-6">
+                  The Cost of Inactivity <span className="text-accent">Is Measurable.</span>
+                </h2>
+                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                    {stats.map((stat, i) => (
+                        <div key={i} className="bg-primary p-8 rounded-3xl border border-border">
+                            <div className="flex items-center gap-4 mb-4">
+                                <stat.icon className="text-accent" size={32} />
+                                <span className="text-xs font-bold uppercase tracking-widest text-text-secondary">{stat.label}</span>
+                            </div>
+                            <h3 className="font-display text-4xl font-bold text-text-primary mb-2">{stat.value}</h3>
+                            <p className="text-sm text-text-secondary">{stat.desc}</p>
+                        </div>
+                    ))}
                 </div>
-
-                {/* VISUAL COMPARISON CARD */}
-                <div className="bg-primary p-8 rounded-[2.5rem] border border-border shadow-2xl relative">
-                   <div className="absolute top-0 right-0 bg-secondary text-xs font-bold uppercase tracking-widest text-text-secondary px-4 py-2 rounded-bl-xl border-l border-b border-border">The Reality Check</div>
-                   
-                   <div className="space-y-6 mt-4">
-                      <div className="border-b border-border pb-6">
-                         <div className="flex justify-between items-center mb-2">
-                            <span className="font-bold text-text-secondary uppercase text-sm">Standard Wellness</span>
-                            <XCircle className="text-text-secondary" size={20} />
-                         </div>
-                         <p className="text-2xl font-display text-text-secondary line-through decoration-accent/50">"Here is a free gym pass."</p>
-                         <p className="text-xs text-text-secondary mt-2">Result: Unused. Zero data. No ROI.</p>
-                      </div>
-
-                      <div className="border-b border-border pb-6">
-                         <div className="flex justify-between items-center mb-2">
-                            <span className="font-bold text-text-secondary uppercase text-sm">Generic Apps</span>
-                            <XCircle className="text-text-secondary" size={20} />
-                         </div>
-                         <p className="text-2xl font-display text-text-secondary line-through decoration-accent/50">"Here is a generic workout video."</p>
-                         <p className="text-xs text-text-secondary mt-2">Result: No accountability. High churn.</p>
-                      </div>
-
-                      <div className="bg-accent/10 -mx-4 -mb-4 p-6 rounded-b-[2rem] border-t border-accent/20">
-                         <div className="flex justify-between items-center mb-2">
-                            <span className="font-bold text-accent uppercase text-sm tracking-widest">The WRK Model</span>
-                            <CheckCircle2 className="text-accent" size={20} />
-                         </div>
-                         <p className="text-3xl font-display text-text-primary font-bold">"Here is your coach."</p>
-                         <p className="text-sm text-text-secondary mt-2">
-                           Result: <strong>We build the plan. We track the data. We ensure they show up.</strong>
-                         </p>
-                      </div>
-                   </div>
-                </div>
+                <p className="text-lg text-text-secondary max-w-2xl mx-auto font-medium">
+                    The point isn’t wellness theatre. The point is measurable capacity: energy, consistency, and resilience that shows up at work.
+                </p>
              </div>
           </div>
         </section>
 
-        {/* SECTION 2: THE PERFORMANCE AUDIT */}
-        <section className="py-24 px-6 bg-primary border-t border-border">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-4">
-                Audit Your Team's Potential
-              </h2>
-              <p className="text-text-secondary">Identify the gap between current performance and potential.</p>
-            </div>
-
-            <div className="bg-secondary rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-border relative overflow-hidden">
-              {!isUnlocked ? (
-                <form onSubmit={handleAuditSubmit} className="space-y-8 relative z-10">
-                  {/* Progress Bar */}
-                  <div className="w-full bg-primary h-1 rounded-full mb-8">
-                    <div 
-                      className="bg-accent h-1 rounded-full transition-all duration-500" 
-                      style={{ width: `${(auditStep / 3) * 100}%` }}
-                    ></div>
-                  </div>
-
-                  {auditStep === 1 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-300">
-                      <h3 className="text-2xl font-display font-bold text-text-primary uppercase">Step 1: The Basics</h3>
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Company Name</label>
-                        <div className="relative">
-                          <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-                          <input 
-                            type="text" 
-                            required
-                            value={auditData.companyName}
-                            onChange={(e) => handleAuditChange('companyName', e.target.value)}
-                            className="w-full bg-primary border border-border text-text-primary rounded-lg py-4 pl-12 pr-4 focus:outline-none focus:border-accent transition-colors"
-                            placeholder="e.g. Acme Corp"
-                          />
+        {/* WHY GENERIC PROGRAMS FAIL */}
+        <section className="py-24 px-6 bg-primary">
+            <div className="max-w-6xl mx-auto">
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-16 text-center">
+                    Why Generic Programs <br/>Don’t Stack Up
+                </h2>
+                <div className="grid md:grid-cols-3 gap-8">
+                    <div className="bg-secondary p-8 rounded-[2rem] border border-border">
+                        <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-6 text-accent border border-border">
+                            <AlertTriangle size={24} />
                         </div>
-                      </div>
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Estimated Team Size</label>
-                        <div className="relative">
-                          <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-                          <select 
-                            required
-                            value={auditData.teamSize}
-                            onChange={(e) => handleAuditChange('teamSize', e.target.value)}
-                            className="w-full bg-primary border border-border text-text-primary rounded-lg py-4 pl-12 pr-4 focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer"
-                          >
-                            <option value="">Select size...</option>
-                            <option value="1-10">1-10 Employees</option>
-                            <option value="11-50">11-50 Employees</option>
-                            <option value="51-200">51-200 Employees</option>
-                            <option value="201+">201+ Employees</option>
-                          </select>
+                        <h3 className="text-xl font-bold text-text-primary uppercase mb-4">The “Already Fit” Bias</h3>
+                        <p className="text-text-secondary leading-relaxed">
+                            Voluntary programs attract the people already doing fine. High-risk staff disengage early due to intimidation or lack of direction.
+                        </p>
+                    </div>
+                    <div className="bg-secondary p-8 rounded-[2rem] border border-border">
+                         <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-6 text-accent border border-border">
+                            <Briefcase size={24} />
                         </div>
-                      </div>
-                      <Button 
-                        type="button" 
-                        fullWidth 
-                        variant="primary"
-                        onClick={handleAuditNext}
-                        disabled={!auditData.companyName || !auditData.teamSize}
-                        className="mt-4"
-                      >
-                        Next Step <ArrowRight size={18} className="ml-2" />
-                      </Button>
+                        <h3 className="text-xl font-bold text-text-primary uppercase mb-4">The Gym Subsidy Trap</h3>
+                        <p className="text-text-secondary leading-relaxed">
+                            Access doesn’t equal execution. Without a plan and accountability, the budget becomes a sunk cost.
+                        </p>
                     </div>
-                  )}
-
-                  {auditStep === 2 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-300">
-                      <h3 className="text-2xl font-display font-bold text-text-primary uppercase">Step 2: Primary Hurdle</h3>
-                      <p className="text-text-secondary text-sm">What is the biggest barrier to your team's performance right now?</p>
-                      
-                      <div className="grid gap-3">
-                        {['Burnout / High Stress', 'Absenteeism / Sickness', 'Physical Health / Posture'].map((opt) => (
-                          <button
-                            key={opt}
-                            type="button"
-                            onClick={() => { handleAuditChange('hurdle', opt); handleAuditNext(); }}
-                            className="text-left p-4 bg-primary border border-border rounded-lg hover:border-accent transition-all group"
-                          >
-                            <span className="font-bold text-text-primary group-hover:text-accent transition-colors">{opt}</span>
-                          </button>
-                        ))}
-                      </div>
-                      <button 
-                        type="button" 
-                        onClick={() => setAuditStep(1)}
-                        className="text-text-secondary text-sm hover:text-text-primary transition-colors"
-                      >
-                        Back
-                      </button>
-                    </div>
-                  )}
-
-                  {auditStep === 3 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-300">
-                      <h3 className="text-2xl font-display font-bold text-text-primary uppercase">Step 3: Finalise</h3>
-                      <p className="text-text-secondary text-sm">Where should we send the deployment roadmap?</p>
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Work Email</label>
-                        <div className="relative">
-                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-                          <input 
-                            type="email" 
-                            required
-                            value={auditData.email}
-                            onChange={(e) => handleAuditChange('email', e.target.value)}
-                            className="w-full bg-primary border border-border text-text-primary rounded-lg py-4 pl-12 pr-4 focus:outline-none focus:border-accent transition-colors"
-                            placeholder="name@company.com"
-                          />
+                    <div className="bg-secondary p-8 rounded-[2rem] border border-border">
+                         <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-6 text-accent border border-border">
+                            <Brain size={24} />
                         </div>
-                      </div>
-                      <Button 
-                        type="submit" 
-                        fullWidth 
-                        variant="primary"
-                        disabled={!auditData.email}
-                        className="mt-4 py-5 text-lg"
-                      >
-                        Unlock Deployment Roadmap <Unlock size={18} className="ml-2" />
-                      </Button>
-                      <button 
-                        type="button" 
-                        onClick={() => setAuditStep(2)}
-                        className="text-text-secondary text-sm hover:text-text-primary transition-colors text-center w-full block mt-4"
-                      >
-                        Back
-                      </button>
+                        <h3 className="text-xl font-bold text-text-primary uppercase mb-4">Information vs Transformation</h3>
+                        <p className="text-text-secondary leading-relaxed">
+                            Information rarely changes behaviour. Transformation requires a daily system employees can actually follow.
+                        </p>
                     </div>
-                  )}
-                </form>
-              ) : (
-                <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
-                  <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 text-accent">
-                    <CheckCircle2 size={40} />
-                  </div>
-                  <h3 className="text-3xl font-display font-bold text-text-primary uppercase mb-4">Audit Complete</h3>
-                  <p className="text-text-secondary mb-8">
-                    The precision wellness model has been unlocked below.
-                  </p>
-                  <a href="#reveal" className="text-accent font-bold uppercase tracking-widest text-sm border-b border-accent pb-1">
-                    View Strategy
-                  </a>
                 </div>
-              )}
             </div>
-          </div>
         </section>
 
-        {/* SECTION 3: THE REVEAL */}
-        {isUnlocked && (
-          <div id="reveal" className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
-            <section className="py-24 px-6 bg-secondary">
-              <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                  <h2 className="font-display text-4xl md:text-6xl font-bold text-text-primary uppercase tracking-widest mb-6">
-                    Individual Support <br/><span className="text-accent">At Scale.</span>
-                  </h2>
-                  <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-                    One size fits no one. We provide three distinct pathways so every employee finds their entry point.
-                  </p>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-8 mb-20">
-                  {/* Pathway 1 */}
-                  <div className="bg-primary p-8 border-t-4 border-border hover:border-accent transition-colors duration-300 rounded-b-2xl">
-                    <h3 className="text-2xl font-display font-bold text-text-primary uppercase mb-2">Foundations</h3>
-                    <p className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-6">Reclaim</p>
-                    <p className="text-text-secondary leading-relaxed mb-6 min-h-[80px]">
-                      For desk-bound staff needing to reclaim their bodies. Simple, effective protocols to reduce pain and increase energy.
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-text-secondary opacity-50"/> Posture Correction</li>
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-text-secondary opacity-50"/> Mobility Routines</li>
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-text-secondary opacity-50"/> Fundamental Strength</li>
-                    </ul>
-                  </div>
-
-                  {/* Pathway 2 */}
-                  <div className="bg-primary p-8 border-t-4 border-accent transform md:-translate-y-4 shadow-2xl relative rounded-b-2xl">
-                    <div className="absolute top-0 right-0 bg-accent text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest rounded-bl-lg">Core</div>
-                    <h3 className="text-2xl font-display font-bold text-text-primary uppercase mb-2">Performance</h3>
-                    <p className="text-xs font-bold text-accent uppercase tracking-widest mb-6">Excel</p>
-                    <p className="text-text-secondary leading-relaxed mb-6 min-h-[80px]">
-                      For the corporate athlete. Advanced programming for those who want to push limits and maximize physical output.
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-accent"/> Advanced Strength</li>
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-accent"/> Conditioning</li>
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-accent"/> Hypertrophy</li>
-                    </ul>
-                  </div>
-
-                  {/* Pathway 3 */}
-                  <div className="bg-primary p-8 border-t-4 border-border hover:border-accent transition-colors duration-300 rounded-b-2xl">
-                    <h3 className="text-2xl font-display font-bold text-text-primary uppercase mb-2">Restoration</h3>
-                    <p className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-6">Recover</p>
-                    <p className="text-text-secondary leading-relaxed mb-6 min-h-[80px]">
-                      For high-stress periods. Protocols to down-regulate the nervous system, improve sleep, and manage load.
-                    </p>
-                    <ul className="space-y-3">
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-text-secondary opacity-50"/> Recovery Protocols</li>
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-text-secondary opacity-50"/> Sleep Hygiene</li>
-                      <li className="flex items-center text-sm text-text-secondary"><CheckCircle2 size={14} className="mr-2 text-text-secondary opacity-50"/> Stress Management</li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* The WRK Pillars Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    { icon: Users, title: "Self-Directed", desc: "Employees choose their own pathway based on interest and readiness." },
-                    { icon: Zap, title: "Coach-Backed", desc: "Automated guidance + human oversight ensures progress and safety." },
-                    { icon: CheckCircle2, title: "Zero Admin", desc: "We handle onboarding and support. HR stays hands-off." },
-                    { icon: Shield, title: "Privacy First", desc: "You get engagement data; employees get private coaching." }
-                  ].map((pillar, i) => (
-                    <div key={i} className="flex gap-4 p-6 bg-primary rounded-xl border border-border">
-                      <pillar.icon className="text-accent shrink-0" size={24} />
-                      <div>
-                        <h4 className="font-bold text-text-primary uppercase text-sm mb-1">{pillar.title}</h4>
-                        <p className="text-xs text-text-secondary leading-relaxed">{pillar.desc}</p>
-                      </div>
+        {/* THE WRK MODEL */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
+            <div className="max-w-5xl mx-auto">
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-16 text-center">The WRK Model</h2>
+                <div className="space-y-6">
+                    <div className="bg-primary p-8 rounded-3xl border border-border opacity-60">
+                        <div className="flex items-center gap-4 mb-2">
+                             <XCircle className="text-text-secondary" size={24} />
+                             <h3 className="font-bold text-text-secondary uppercase">Standard Wellness</h3>
+                        </div>
+                        <p className="text-2xl font-display text-text-secondary mb-2">“Here is a free gym pass.”</p>
+                        <p className="text-sm text-text-secondary">Result: Unused. No structure. No data.</p>
                     </div>
-                  ))}
+                    <div className="bg-primary p-8 rounded-3xl border border-border opacity-60">
+                        <div className="flex items-center gap-4 mb-2">
+                             <XCircle className="text-text-secondary" size={24} />
+                             <h3 className="font-bold text-text-secondary uppercase">Generic Apps</h3>
+                        </div>
+                        <p className="text-2xl font-display text-text-secondary mb-2">“Here is a workout video library.”</p>
+                        <p className="text-sm text-text-secondary">Result: High churn. No accountability.</p>
+                    </div>
+                    <div className="bg-primary p-10 rounded-3xl border border-accent shadow-lg transform scale-105 relative z-10">
+                        <div className="flex items-center gap-4 mb-2">
+                             <CheckCircle2 className="text-accent" size={24} />
+                             <h3 className="font-bold text-accent uppercase tracking-widest">WRK Corporate Wellness</h3>
+                        </div>
+                        <p className="text-3xl md:text-4xl font-display text-text-primary mb-4 font-bold">“Here is your coach + your plan.”</p>
+                        <p className="text-base text-text-secondary">Result: Structured programs, guided execution, private company community, and consistent support — without adding work to HR.</p>
+                    </div>
                 </div>
-              </div>
-            </section>
-          </div>
-        )}
+            </div>
+        </section>
 
-        {/* SECTION 4: THE FAQ */}
+        {/* WHAT EMPLOYEES GET */}
         <section className="py-24 px-6 bg-primary">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-6">What Employees Get</h2>
+                    <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+                        A training system that adapts to real people — different fitness levels, different goals, different constraints.
+                    </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-12">
+                    <div className="space-y-12">
+                        <div className="flex gap-6">
+                            <div className="bg-secondary p-4 rounded-2xl h-fit border border-border shrink-0">
+                                <Smartphone className="text-accent" size={32} />
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-display font-bold text-text-primary uppercase mb-4">Training Plans & Programs</h3>
+                                <p className="text-text-secondary mb-4">Employees can choose plans based on:</p>
+                                <ul className="space-y-2">
+                                    {['Beginner → Intermediate starting points', 'Strength / Cardio / Mobility focus', 'Home-based or gym-based options', 'Time-efficient sessions designed for real schedules'].map((item, i) => (
+                                        <li key={i} className="flex items-start text-sm text-text-secondary">
+                                            <CheckCircle2 size={16} className="text-accent mr-2 mt-1 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="flex gap-6">
+                            <div className="bg-secondary p-4 rounded-2xl h-fit border border-border shrink-0">
+                                <Utensils className="text-accent" size={32} />
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-display font-bold text-text-primary uppercase mb-4">Nutrition Tools</h3>
+                                <ul className="space-y-2">
+                                    <li className="flex items-start text-sm text-text-secondary">
+                                        <CheckCircle2 size={16} className="text-accent mr-2 mt-1 shrink-0" />
+                                        Nutritional resources to support fat loss, recomposition, and energy
+                                    </li>
+                                    <li className="flex items-start text-sm text-text-secondary">
+                                        <CheckCircle2 size={16} className="text-accent mr-2 mt-1 shrink-0" />
+                                        Ability to track calories and macros inside the app (optional, not obsessive)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="space-y-12">
+                         <div className="flex gap-6">
+                            <div className="bg-secondary p-4 rounded-2xl h-fit border border-border shrink-0">
+                                <Users className="text-accent" size={32} />
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-display font-bold text-text-primary uppercase mb-4">Company Community (Private)</h3>
+                                <p className="text-text-secondary mb-4">Every company gets a dedicated in-app community where employees can:</p>
+                                <ul className="space-y-2">
+                                    {['ask questions', 'connect with others', 'share wins', 'stay engaged without pressure'].map((item, i) => (
+                                        <li key={i} className="flex items-start text-sm text-text-secondary">
+                                            <CheckCircle2 size={16} className="text-accent mr-2 mt-1 shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="flex gap-6">
+                            <div className="bg-secondary p-4 rounded-2xl h-fit border border-border shrink-0">
+                                <MessageSquare className="text-accent" size={32} />
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-display font-bold text-text-primary uppercase mb-4">Fortnightly Coach Access</h3>
+                                <p className="text-text-secondary">
+                                    I answer questions and provide guidance every fortnight inside the company community — keeping support consistent without constant meetings.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* WHAT HR GETS */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
+            <div className="max-w-5xl mx-auto text-center">
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-8">What HR Gets</h2>
+                <p className="text-xl text-text-primary font-bold mb-4">Zero admin. Clear delivery. Strong engagement.</p>
+                <p className="text-lg text-text-secondary mb-12 max-w-2xl mx-auto">You don’t need to manage schedules, chase participation, or run sessions.</p>
+                
+                <div className="grid md:grid-cols-4 gap-6">
+                    {[
+                        { icon: Zap, text: "A simple rollout plan" },
+                        { icon: TrendingUp, text: "A scalable system" },
+                        { icon: Lock, text: "A private space" },
+                        { icon: CheckCircle2, text: "One annual package" }
+                    ].map((item, i) => (
+                        <div key={i} className="bg-primary p-6 rounded-2xl border border-border flex flex-col items-center justify-center gap-4">
+                            <item.icon className="text-accent" size={32} />
+                            <span className="font-bold text-text-primary uppercase text-sm">{item.text}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* ANNUAL PACKAGE */}
+        <section className="py-24 px-6 bg-primary">
+            <div className="max-w-4xl mx-auto bg-secondary rounded-[3rem] p-8 md:p-16 border border-border shadow-2xl text-center">
+                <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-6">Annual Corporate<br/>Wellness Package</h2>
+                <p className="text-xl text-text-secondary mb-12">One package. One system. Company-wide access.</p>
+                
+                <div className="grid md:grid-cols-2 gap-x-12 gap-y-4 text-left max-w-2xl mx-auto mb-12">
+                    {[
+                        "App access for employees",
+                        "Training plans and programs",
+                        "Home and gym options",
+                        "Nutrition resources + tracking",
+                        "Dedicated private community",
+                        "Fortnightly coach access"
+                    ].map((item, i) => (
+                        <div key={i} className="flex items-center text-text-secondary">
+                            <CheckCircle2 className="text-accent mr-3 shrink-0" size={20} />
+                            {item}
+                        </div>
+                    ))}
+                </div>
+                
+                <Button size="lg" onClick={scrollToEnquiry}>Send an Enquiry</Button>
+            </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-24 px-6 bg-secondary border-t border-border">
           <div className="max-w-3xl mx-auto">
             <h2 className="font-display text-4xl font-bold text-text-primary uppercase tracking-widest mb-12 text-center">
               Common Questions
             </h2>
             <div className="space-y-4">
               {faqs.map((item, index) => (
-                <div key={index} className="border border-border rounded-2xl overflow-hidden bg-secondary">
+                <div key={index} className="border border-border rounded-2xl overflow-hidden bg-primary">
                   <button 
                     onClick={() => toggleFaq(index)}
-                    className="w-full flex items-center justify-between p-6 text-left hover:bg-primary transition-colors"
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-secondary transition-colors"
                   >
                     <span className="font-bold text-lg text-text-primary pr-8">{item.question}</span>
-                    <span className={`p-2 rounded-full transition-colors ${openFaqIndex === index ? 'bg-accent text-white' : 'bg-primary text-text-secondary'}`}>
+                    <span className={`p-2 rounded-full transition-colors ${openFaqIndex === index ? 'bg-accent text-white' : 'bg-secondary text-text-secondary'}`}>
                       {openFaqIndex === index ? <Minus size={16} /> : <Plus size={16} />}
                     </span>
                   </button>
@@ -483,36 +367,47 @@ export const CorporateWellness: React.FC = () => {
           </div>
         </section>
 
-        {/* SECTION 5: THE FINAL CALL */}
-        <section className="py-24 px-6 bg-secondary border-t border-border">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-5xl md:text-7xl font-bold text-text-primary uppercase tracking-widest mb-8 leading-none">
-              Ready to put a Personal Trainer <br/><span className="text-accent">in every pocket?</span>
-            </h2>
-            <p className="text-xl text-text-secondary mb-12 font-light">
-              Precision wellness. Zero admin. Start the conversation today.
-            </p>
-            
-            <div className="max-w-xl mx-auto bg-primary p-8 rounded-[2.5rem] border border-border shadow-xl text-left">
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Name</label>
-                  <input type="text" className="w-full bg-secondary border border-border text-text-primary rounded-lg p-3 focus:border-accent focus:outline-none" />
+        {/* AUDIT + ENQUIRY */}
+        <section id="audit" className="py-24 px-6 bg-primary border-t border-border">
+            <div className="max-w-4xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-4">Audit Your Team’s Potential</h2>
+                    <p className="text-xl text-text-secondary">Identify the gap between current performance and potential.</p>
                 </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Company</label>
-                  <input type="text" className="w-full bg-secondary border border-border text-text-primary rounded-lg p-3 focus:border-accent focus:outline-none" />
+
+                <div id="enquiry-form" className="bg-secondary p-8 md:p-12 rounded-[2.5rem] border border-border shadow-xl">
+                    <form className="space-y-6">
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Name</label>
+                                <div className="relative">
+                                    <input type="text" className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 pl-4 focus:border-accent focus:outline-none" placeholder="Your Name" />
+                                </div>
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Company</label>
+                                <div className="relative">
+                                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
+                                    <input type="text" className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 pl-12 focus:border-accent focus:outline-none" placeholder="Company Name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                             <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Work Email</label>
+                             <div className="relative">
+                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
+                                <input type="email" className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 pl-12 focus:border-accent focus:outline-none" placeholder="name@company.com" />
+                             </div>
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Message</label>
+                            <p className="text-xs text-text-secondary mb-2">Include team size, primary goal (energy / strength / stress resilience / fat loss), and whether you want the company community active from day one.</p>
+                            <textarea rows={5} className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 focus:border-accent focus:outline-none"></textarea>
+                        </div>
+                        <Button fullWidth size="lg" variant="primary">Send Enquiry</Button>
+                    </form>
                 </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Message</label>
-                  <textarea rows={4} className="w-full bg-secondary border border-border text-text-primary rounded-lg p-3 focus:border-accent focus:outline-none"></textarea>
-                </div>
-                <Button fullWidth variant="primary" className="py-4">
-                  Send Enquiry
-                </Button>
-              </form>
             </div>
-          </div>
         </section>
 
       </div>
