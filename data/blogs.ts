@@ -24,7 +24,7 @@ const DEFAULT_AUTHOR: Author = {
   name: "Hayden Richards",
   role: "Founder & Head Coach",
   bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-  avatarUrl: "https://picsum.photos/seed/hayden/200/200"
+  avatarUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
 };
 
 // This acts as our initial "posts.json" data
@@ -38,7 +38,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "October 15, 2023",
     isoDate: "2023-10-15T08:00:00+13:00",
     category: "Recovery",
-    imageUrl: "https://picsum.photos/seed/sleep/800/600",
+    imageUrl: "https://images.unsplash.com/photo-1541781777631-fa182f3a4b3c?q=80&w=800&auto=format&fit=crop",
     author: DEFAULT_AUTHOR,
     seoTitle: "Sleep Optimization Guide | WRK Personal Training",
     seoDescription: "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
@@ -48,11 +48,11 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "strength-training-101",
     title: "Strength Training 101: The Big Four",
     excerpt: "You don't need a complex routine. You need to master the Squat, Bench, Deadlift, and Overhead Press.",
-    content: "<p>Complexity is the enemy of execution. When starting out, your focus should be entirely on the compound lifts.</p><h2>1. The Squat</h2><p>The king of all exercises. It trains the entire posterior chain and core.</p><img src='https://picsum.photos/seed/squat/800/400' alt='Athlete performing a back squat' /><p>Ensure your depth hits parallel and your chest stays up.</p><h2>2. The Deadlift</h2><p>The purest test of strength. Pick it up, put it down safely.</p>",
+    content: "<p>Complexity is the enemy of execution. When starting out, your focus should be entirely on the compound lifts.</p><h2>1. The Squat</h2><p>The king of all exercises. It trains the entire posterior chain and core.</p><img src='https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop' alt='Athlete performing a back squat' /><p>Ensure your depth hits parallel and your chest stays up.</p><h2>2. The Deadlift</h2><p>The purest test of strength. Pick it up, put it down safely.</p>",
     date: "November 02, 2023",
     isoDate: "2023-11-02T10:00:00+13:00",
     category: "Training",
-    imageUrl: "https://picsum.photos/seed/gym/800/600",
+    imageUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
     author: DEFAULT_AUTHOR,
     seoTitle: "Beginner Strength Training Guide | WRK Personal Training",
     seoDescription: "Master the big four compound lifts to build strength and longevity. A simple guide for beginners."
@@ -66,7 +66,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "December 10, 2023",
     isoDate: "2023-12-10T09:00:00+13:00",
     category: "Nutrition",
-    imageUrl: "https://picsum.photos/seed/food/800/600",
+    imageUrl: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
     author: DEFAULT_AUTHOR,
     seoTitle: "Nutrition Hacks for Busy Professionals | WRK",
     seoDescription: "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."

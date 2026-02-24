@@ -22,24 +22,24 @@ export interface PageContent {
 
 export const INITIAL_PAGE_CONTENT: PageContent = {
   home: {
-    heroImage: 'https://picsum.photos/seed/fitness_hero/1920/1080?grayscale',
-    ptImage: 'https://picsum.photos/seed/pt/800/1000?grayscale',
-    onlineImage: 'https://picsum.photos/seed/online/800/1000?grayscale',
-    corporateImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop&grayscale',
+    heroImage: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1920&auto=format&fit=crop',
+    ptImage: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop',
+    onlineImage: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop',
+    corporateImage: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop',
   },
   personalTraining: {
-    mainImage: 'https://picsum.photos/id/49/800/1000?grayscale',
+    mainImage: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop',
   },
   onlineCoaching: {
     // Converted Google Drive View Link to Direct Image Link
-    workoutLogImage: 'https://drive.google.com/uc?export=view&id=17qM7_h-PQ_Yppg47zloqx7OKsSHmaPjL',
-    videoImage: 'https://placehold.co/1170x2532/1c1c1c/FFF?text=Exercise+Video',
-    macroImage: 'https://placehold.co/1170x2532/1c1c1c/FFF?text=Macro+Dashboard',
-    nutritionLogImage: 'https://placehold.co/1170x2532/1c1c1c/FFF?text=Nutrition+Log',
-    habitsImage: 'https://drive.google.com/uc?export=view&id=17qM7_h-PQ_Yppg47zloqx7OKsSHmaPjL',
+    workoutLogImage: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=600&auto=format&fit=crop',
+    videoImage: 'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=600&auto=format&fit=crop',
+    macroImage: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop',
+    nutritionLogImage: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=600&auto=format&fit=crop',
+    habitsImage: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop',
   },
   challenge42: {
-    heroBackground: 'https://picsum.photos/id/73/1920/1080?grayscale&blur=2',
+    heroBackground: 'https://images.unsplash.com/photo-1552674605-469523f54050?q=80&w=1920&auto=format&fit=crop',
   }
 };
 
