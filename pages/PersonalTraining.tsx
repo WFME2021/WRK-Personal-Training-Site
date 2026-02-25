@@ -98,9 +98,9 @@ export const PersonalTraining: React.FC = () => {
         <section className="bg-secondary py-24 px-6 border-b border-border">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-5xl md:text-8xl font-display font-bold mb-4 text-text-primary uppercase tracking-tighter leading-none break-words">Your Personal <br/>Fitness Instructor</h1>
-            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-accent mb-8">In-Person Coaching (Christchurch)</h2>
+            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-accent mb-8">In-Person Precision. Real-World Adventure.</h2>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-6 font-light">
-              Premium coaching for busy professionals and parents who want strength, fat loss, and body recomposition — without turning training into a second job. If you’re looking for a personal trainer in Christchurch, we combine the precision of 1-on-1 sessions with the flexibility of a plan you can execute around real life.
+              For the high-performer who needs a body that works as hard as they do. We build the strength to dominate the boardroom and the capacity to own the weekend. If you’re looking for a personal trainer in Christchurch, this is precision coaching for a life lived at full speed.
             </p>
             <p className="text-sm text-text-secondary max-w-2xl mx-auto mb-10 font-medium">
               Based at Get Me Fitter, 12 Show Place, Addington, Christchurch (private facility, free parking, no crowds). Clients from Addington, Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington & Halswell.
@@ -135,8 +135,8 @@ export const PersonalTraining: React.FC = () => {
               <ul className="space-y-6">
                 {[
                   "You are the 'Anchor'—people rely on you to be consistent.",
-                  "You make decisions all day. Here, you want to outsource the thinking.",
-                  "You have a history of 'all or nothing' and need a sustainable middle ground.",
+                  "You make decisions all day. Here, you want to outsource the strategy.",
+                  "You want the physical capacity to say 'yes' to the ski trip, the hike, or the surf.",
                   "You want training that builds your energy, rather than stealing it."
                 ].map((item, i) => (
                   <li key={i} className="flex items-start group">
@@ -165,9 +165,9 @@ export const PersonalTraining: React.FC = () => {
              <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">How Hybrid Works</h2>
              <div className="grid md:grid-cols-3 gap-8">
                {[
-                 { step: "01", title: "Precision", desc: "In-person sessions focus on technique, safety, and learning. We ensure you're doing the right work." },
-                 { step: "02", title: "Execution", desc: "You complete the rest of your weekly sessions via the app. On your time, at your gym or home." },
-                 { step: "03", title: "Sustainability", desc: "We manage the load. Push when you're capable, pull back when life gets heavy." }
+                 { step: "01", title: "Precision", desc: "In-person sessions focus on technique, safety, and intensity. We ensure every rep contributes to the mission." },
+                 { step: "02", title: "Execution", desc: "You complete the rest of your weekly sessions via the app. On your time, at your gym or home. No excuses." },
+                 { step: "03", title: "Performance", desc: "We manage the load so you can perform at work and play hard on the weekend." }
                ].map((item, i) => (
                  <div key={i} className="bg-primary p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow border border-border">
                    <span className="text-6xl font-display font-bold text-accent mb-6 block text-shadow-sm" style={{textShadow: '0 0 1px var(--border)'}}>{item.step}</span>
@@ -211,7 +211,7 @@ export const PersonalTraining: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-5xl font-display font-bold mb-8 uppercase tracking-tighter text-text-primary">My Approach</h2>
             <p className="text-2xl text-text-secondary mb-16 font-light max-w-2xl">
-              I’m not here to turn the gym into a circus. I’m here to help you build a body that works for the life you actually live.
+              We don't train for Instagram. We train for reality. I’m here to help you build a body that is capable of handling whatever life throws at it.
             </p>
             <div className="space-y-8">
                {[

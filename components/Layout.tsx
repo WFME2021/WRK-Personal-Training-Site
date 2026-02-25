@@ -4,10 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { BRAND_NAME, NAVIGATION_LINKS, LOCATION, EMAIL_CONTACT } from '../constants';
 import { ThemeToggle } from './ThemeToggle';
+import { useTheme } from '../context/ThemeContext';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { theme } = useTheme();
 
   // Close menu on route change
   useEffect(() => {
@@ -19,23 +21,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       <header className="fixed w-full top-0 z-50 bg-primary/90 backdrop-blur-md border-b border-border transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
           <Link to="/" className="block hover:opacity-80 transition-opacity" aria-label="Home">
-            {/* WRK Logo - Vector SVG */}
-            <svg 
-              viewBox="0 0 134 34" 
-              className="h-8 md:h-10 w-auto" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg" 
-              aria-label="WRK Personal Training"
-            >
-              {/* W - Uses currentColor to adapt to theme */}
-              <path d="M2 2H12.5L17.5 26L22.5 2H32L37 26L42 2H52.5L43 32H33L27.5 10L22 32H12L2 2Z" className="fill-text-primary transition-colors duration-300"/>
-              {/* R */}
-              <path d="M59 2H72C80 2 84 6 84 12C84 16 82 19 78 21L86 32H75L68 22H67V32H59V2Z M67 16H71C74 16 75 15 75 12C75 9 74 8 71 8H67V16Z" className="fill-text-primary transition-colors duration-300"/>
-              {/* K */}
-              <path d="M92 2H100V15L109 2H120L108 17L121 32H110L100 20V32H92V2Z" className="fill-text-primary transition-colors duration-300"/>
-              {/* Dot - Uses Accent */}
-              <rect x="124" y="22" width="10" height="10" className="fill-accent transition-colors duration-300"/>
-            </svg>
+            <img 
+              src={theme === 'dark' 
+                ? "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-white-transparent.png" 
+                : "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-black-transparent.png"
+              }
+              alt="WRK Personal Training"
+              className="h-8 md:h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Nav */}

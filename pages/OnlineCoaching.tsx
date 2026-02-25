@@ -97,13 +97,13 @@ export const OnlineCoaching: React.FC = () => {
               Online Personal <br/><span className="text-accent">Training</span>
             </h1>
             <h2 className="font-bold uppercase tracking-[0.2em] mb-4 text-xl text-text-primary">
-              Reliability. Anywhere.
+              Freedom. Everywhere.
             </h2>
             <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
               Structure + Accountability
             </p>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-              The stability layer for a chaotic life. NZ-wide online coaching built for busy professionals and parents — a training system that adapts to your reality whether you’re in a hotel room, a home gym, or between meetings.
+              For the professional who refuses to let travel kill their momentum. We build a system that works in a hotel room, a home gym, or a high-end facility. Your location changes; your standards don't.
             </p>
             <p className="text-sm font-medium text-text-secondary mb-12">
               NZ-wide coaching. Fortnightly check-ins. 12-week commitment for real results.
@@ -137,8 +137,8 @@ export const OnlineCoaching: React.FC = () => {
                 <div className="space-y-6">
                   {[
                     "You travel, you parent, you lead. You need a plan that adapts.",
+                    "You want to be fit enough to surf on your holiday, not just sit on the beach.",
                     "You want guidance and accountability without an appointment time.",
-                    "You want to feel confident you’re doing the right things.",
                     "You’re capable, but your schedule makes consistency hard.",
                     "You want a system that survives disruption — not a plan that only works in perfect weeks."
                   ].map((item, i) => (
@@ -160,8 +160,8 @@ export const OnlineCoaching: React.FC = () => {
                {[
                  { step: "01", title: "Reality Check", desc: "We map out your goal, schedule, stress load, and constraints. I need the real week — not the ideal one." },
                  { step: "02", title: "The Build", desc: "I build your plan in the app based on the equipment you have and the time you can spare." },
-                 { step: "03", title: "Execution + Feedback", desc: "You complete the workouts, track your weights, and check in. I review your progress and adjust as we go." },
-                 { step: "04", title: "Adaptation", desc: "Busy week? Travel? Bad sleep? We pivot without losing momentum. Consistency wins." }
+                 { step: "03", title: "Execution", desc: "You complete the workouts, track your weights, and check in. I review your progress and adjust as we go." },
+                 { step: "04", title: "Agility", desc: "Busy week? Travel? Bad sleep? We pivot immediately. The mission continues." }
                ].map((item, i) => (
                  <div key={i} className="bg-primary p-8 rounded-[2rem] shadow-sm hover:shadow-lg transition-all duration-300 border border-border">
                     <span className="text-4xl font-display font-bold text-accent mb-6 block">{item.step}</span>

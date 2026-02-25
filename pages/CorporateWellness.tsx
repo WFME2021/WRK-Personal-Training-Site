@@ -123,14 +123,14 @@ export const CorporateWellness: React.FC = () => {
           
           <div className="max-w-7xl mx-auto relative z-10 text-center">
             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-widest text-text-primary leading-none mb-6">
-              Wellbeing in the <br/><span className="text-accent">Workplace</span>
+              High-Performance <br/><span className="text-accent">Culture</span>
             </h1>
             <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
               Remote corporate wellbeing program (NZ-wide)
             </p>
             <p className="text-xl md:text-2xl text-text-secondary font-light max-w-3xl mx-auto mb-8 leading-relaxed">
-              Generic wellness is a perk. Precision wellness is a strategy. <br/>
-              WRK Corporate Wellness is a remote, app-based system that gives every employee structured training, nutrition tools, and a private company community — with fortnightly coach access and zero HR admin.
+              Vitality is a competitive advantage. Teams that have physical capacity execute better, lead better, and last longer. <br/>
+              WRK Corporate Wellness is a remote, app-based system that gives every employee structured training, nutrition tools, and a private company community — so they can show up ready to win.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4 mb-12">
                 <Button size="lg" onClick={scrollToEnquiry}>Send an Enquiry</Button>
@@ -149,7 +149,7 @@ export const CorporateWellness: React.FC = () => {
           <div className="max-w-6xl mx-auto">
              <div className="text-center mb-16">
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-widest mb-6">
-                  The Cost of Inactivity <span className="text-accent">Is Measurable.</span>
+                  Burnout is Expensive. <span className="text-accent">Vitality is an Asset.</span>
                 </h2>
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
                     {stats.map((stat, i) => (
@@ -164,7 +164,7 @@ export const CorporateWellness: React.FC = () => {
                     ))}
                 </div>
                 <p className="text-lg text-text-secondary max-w-2xl mx-auto font-medium">
-                    The point isn’t wellness theatre. The point is measurable capacity: energy, consistency, and resilience that shows up at work.
+                    The point isn’t wellness theatre. The point is measurable capacity: energy, consistency, and resilience that shows up in the P&L.
                 </p>
              </div>
           </div>
@@ -183,7 +183,7 @@ export const CorporateWellness: React.FC = () => {
                         </div>
                         <h3 className="text-xl font-bold text-text-primary uppercase mb-4">The “Already Fit” Bias</h3>
                         <p className="text-text-secondary leading-relaxed">
-                            Voluntary programs attract the people already doing fine. High-risk staff disengage early due to intimidation or lack of direction.
+                            Voluntary programs attract the people already doing fine. We build on-ramps for the people who actually need the support.
                         </p>
                     </div>
                     <div className="bg-secondary p-8 rounded-[2rem] border border-border">
@@ -192,7 +192,7 @@ export const CorporateWellness: React.FC = () => {
                         </div>
                         <h3 className="text-xl font-bold text-text-primary uppercase mb-4">The Gym Subsidy Trap</h3>
                         <p className="text-text-secondary leading-relaxed">
-                            Access doesn’t equal execution. Without a plan and accountability, the budget becomes a sunk cost.
+                            Access doesn’t equal execution. We provide the plan, the tracking, and the reason to show up.
                         </p>
                     </div>
                     <div className="bg-secondary p-8 rounded-[2rem] border border-border">

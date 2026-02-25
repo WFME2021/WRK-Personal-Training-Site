@@ -80,7 +80,7 @@ export const Home: React.FC = () => {
             {/* Top Text - Massive Typography */}
             <div className="flex flex-col items-center justify-center pt-8 mb-16 md:mb-20">
               <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-center text-accent mb-4">
-                Build Your Capacity
+                Train Smarter. Play Harder.
               </h3>
               <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-center text-text-primary max-w-6xl">
                 Christchurch Personal Trainer
@@ -88,7 +88,7 @@ export const Home: React.FC = () => {
               <div className="mt-12 flex flex-col items-center">
                 <p className="text-lg md:text-2xl text-text-primary font-medium max-w-3xl text-center leading-relaxed">
                   Whether you run a boardroom or run a household, people rely on you. <br className="hidden md:block"/>
-                  We build strength, fat loss, and body recomposition for busy professionals and parents — without burning you into the ground.
+                  We build the physical capacity to dominate the work week and own the weekend.
                 </p>
                 <p className="text-xs md:text-sm text-text-secondary mt-6 max-w-2xl text-center font-medium">
                   Based at Get Me Fitter, 12 Show Place, Addington, Christchurch. Clients from Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington, Halswell.
@@ -109,7 +109,7 @@ export const Home: React.FC = () => {
               {/* Overlay Text */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center mix-blend-overlay">
                 <span className="font-display text-[20vw] font-bold text-white opacity-20 uppercase tracking-tighter leading-none pointer-events-none">
-                  Show<br/>Up
+                  Full<br/>Capacity
                 </span>
               </div>
               
@@ -130,7 +130,7 @@ export const Home: React.FC = () => {
 
             <div className="mt-8 text-center flex justify-center items-center gap-4">
                <span className="h-px w-12 bg-border"></span>
-               <p className="text-xs font-bold uppercase tracking-[0.2em] text-text-secondary">The Right Work, Done Well.</p>
+               <p className="text-xs font-bold uppercase tracking-[0.2em] text-text-secondary">Professional Discipline. Epic Recreation.</p>
                <span className="h-px w-12 bg-border"></span>
             </div>
           </div>
@@ -142,10 +142,10 @@ export const Home: React.FC = () => {
              <div className="grid md:grid-cols-2 gap-20 items-center">
                 <div>
                   <h2 className="font-display text-6xl md:text-8xl uppercase font-bold text-text-primary mb-8 leading-[0.9] tracking-tighter">
-                    The Anchor <br/><span className="text-text-secondary">Of Your Environment.</span>
+                    Fuel The <br/><span className="text-text-secondary">Climb.</span>
                   </h2>
                   <p className="text-xl text-text-primary leading-relaxed mb-8">
-                    People rely on you — your team, your family, and your business. Your energy, mood, and decision-making are downstream of your body. We build the physical resilience to carry the load without breaking.
+                    Your fitness is the battery that powers everything else. The same focus that closes the deal fuels the climb. We build the resilience to carry the load of your career and still have the energy to chase the horizon.
                   </p>
                   <Link to="/philosophy" className="text-accent font-bold uppercase tracking-widest text-sm border-b-2 border-accent pb-1 hover:text-text-primary hover:border-text-primary transition-colors">
                     Read Our Philosophy
@@ -153,9 +153,9 @@ export const Home: React.FC = () => {
                 </div>
                 <div className="space-y-6">
                    {[
-                     { title: "Performance for the Long Haul", desc: "We are not interested in a 6-week shred. We are interested in the next decade of high performance." },
-                     { title: "Manage Energy, Not Just Time", desc: "You can't add hours to the day. But you can double the energy you bring to the hours you have." },
-                     { title: "The Right Work, Done Well", desc: "When you have physical capacity, you have options. When you don't, you have constraints." }
+                     { title: "Capacity is Currency", desc: "You can't add hours to the day, but you can double the energy you bring to them. Earn the right to play harder." },
+                     { title: "Resilience for the Long Haul", desc: "We don't train for a 6-week shred. We train for a lifetime of high performance—in the boardroom and on the mountain." },
+                     { title: "The Right Work, Done Well", desc: "Precision in the gym grants you freedom outside of it. When you are capable, the world opens up." }
                    ].map((item, i) => (
                      <div key={i} className="bg-primary p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300 border border-border hover:border-accent/50">
                        <h3 className="font-bold text-xl text-text-primary mb-2 flex items-center">
@@ -174,25 +174,25 @@ export const Home: React.FC = () => {
         <section className="py-32 px-4 md:px-8 bg-text-primary text-primary">
           <div className="max-w-5xl mx-auto">
              <div className="text-center mb-20">
-               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-8 tracking-tighter">For Busy Professionals and Parents</h2>
+               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-8 tracking-tighter">For The Anchors</h2>
                <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
                <p className="text-2xl text-primary/80 leading-relaxed max-w-3xl mx-auto font-light">
-                 Time is your most expensive asset. You don't need a cheerleader — you need a strategist.
+                 You are the one everyone relies on. You don't need a cheerleader—you need a strategist to keep your engine running at full power.
                </p>
              </div>
              
              <div className="grid md:grid-cols-3 gap-8 text-left">
                <div className="bg-primary/10 p-10 rounded-3xl border border-primary/20 hover:border-accent transition-colors duration-300">
                  <h3 className="font-display text-3xl text-primary mb-4 uppercase">Reliability</h3>
-                 <p className="text-primary/60">You need to be harder to break. Training that builds you up, rather than beating you down.</p>
+                 <p className="text-primary/60">You need a body that doesn't quit. Training that builds you up for the next challenge, rather than beating you down.</p>
                </div>
                <div className="bg-primary/10 p-10 rounded-3xl border border-primary/20 hover:border-accent transition-colors duration-300">
                  <h3 className="font-display text-3xl text-primary mb-4 uppercase">Efficiency</h3>
-                 <p className="text-primary/60">You want the minimum effective dose. High ROI, zero wasted time, maximum output.</p>
+                 <p className="text-primary/60">Maximum output, minimum wasted time. High ROI training that fits into a high-stakes schedule.</p>
                </div>
                <div className="bg-primary/10 p-10 rounded-3xl border border-primary/20 hover:border-accent transition-colors duration-300">
-                 <h3 className="font-display text-3xl text-primary mb-4 uppercase">Autonomy</h3>
-                 <p className="text-primary/60">You want a system you can rely on, even when life gets chaotic and the schedule breaks.</p>
+                 <h3 className="font-display text-3xl text-primary mb-4 uppercase">Vitality</h3>
+                 <p className="text-primary/60">You want the energy to say "yes" to the adventure. Skiing, surfing, hiking—your fitness is your freedom.</p>
                </div>
              </div>
           </div>
@@ -220,7 +220,7 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Hybrid Personal Training — Christchurch</h3>
-                <p className="text-text-secondary font-medium max-w-lg">In-person precision at Get Me Fitter + simple structure between sessions. Built for strength, fat loss and recomposition.</p>
+                <p className="text-text-secondary font-medium max-w-lg">In-person precision to build the engine. App-based structure to keep it running. The ultimate setup for the Christchurch professional.</p>
               </Link>
 
               {/* Service Card 2: Online */}
@@ -234,7 +234,7 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Online Coaching — NZ-Wide</h3>
-                <p className="text-text-secondary font-medium max-w-lg">Training + nutrition accountability for a chaotic schedule. Anywhere in New Zealand.</p>
+                <p className="text-text-secondary font-medium max-w-lg">Reliability anywhere. Whether you're in a hotel room or a home gym, your training adapts to your life.</p>
               </Link>
 
                {/* Service Card 3: 42 Day Reset */}
@@ -247,7 +247,7 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">42-Day Reset Challenge — NZ-Wide</h3>
-                <p className="text-text-secondary font-medium max-w-lg">A self-guided execution system to rebuild momentum when you’ve drifted.</p>
+                <p className="text-text-secondary font-medium max-w-lg">The circuit breaker. A self-guided system to clear the fog, rebuild momentum, and reclaim your energy.</p>
               </Link>
 
               {/* Service Card 4: Corporate Wellness */}
@@ -265,7 +265,7 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Corporate Wellness — NZ-Wide</h3>
-                <p className="text-text-secondary font-medium max-w-lg">High-ROI training and wellbeing strategies for resilient teams and performance culture.</p>
+                <p className="text-text-secondary font-medium max-w-lg">High-performance culture. Build a team that has the physical capacity to execute at the highest level.</p>
               </Link>
 
             </div>

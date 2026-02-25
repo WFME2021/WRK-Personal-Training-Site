@@ -109,11 +109,11 @@ export const Challenge42: React.FC = () => {
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
           </div>
           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-9xl font-display font-bold mb-6 uppercase tracking-tighter relative leading-none">Fitness <br/>Challenge</h1>
+            <h1 className="text-5xl md:text-9xl font-display font-bold mb-6 uppercase tracking-tighter relative leading-none">The Circuit <br/>Breaker</h1>
             <h2 className="text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-8">42 Day Reset</h2>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-xl mx-auto font-light leading-relaxed relative">
-              A simple, self-guided plan in the app to rebuild momentum, get stronger, and feel better in your body again — without overthinking it.
+              The system reboot you've been waiting for. Clear the fog, rebuild your momentum, and get back to operating at full capacity.
               <br/><span className="block mt-4 text-white font-medium">NZ-wide access. Start today.</span>
             </p>
             
@@ -136,11 +136,11 @@ export const Challenge42: React.FC = () => {
              
              <div className="grid md:grid-cols-2 gap-6 text-left">
                 {[
-                  "You want to get back into training without thinking about it for three weeks first.",
-                  "You like having a plan you can open and follow.",
-                  "You want something affordable to start with.",
-                  "You want to feel better, move more, and build consistency again.",
-                  "You’ve done “all or nothing” and want a realistic reset that actually sticks."
+                  "You’ve drifted and need a hard reset to get back on track.",
+                  "You want a plan you can open and execute without overthinking.",
+                  "You want to feel capable again—in the gym and on the weekend.",
+                  "You want to rebuild consistency before committing to a bigger goal.",
+                  "You’ve done “all or nothing” and want a system that actually sticks."
                 ].map((item, i) => (
                   <div key={i} className="flex items-start p-8 bg-secondary border border-border rounded-[2rem] hover:border-accent transition-colors duration-300 group">
                     <CheckCircle2 className="text-accent mr-6 shrink-0 mt-1" size={24} />
@@ -179,7 +179,7 @@ export const Challenge42: React.FC = () => {
         <section className="py-24 px-6 text-center bg-primary">
            <div className="max-w-3xl mx-auto">
              <h2 className="text-5xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter">Why It Works</h2>
-             <p className="text-3xl font-bold text-accent mb-8 uppercase tracking-widest">Because it’s realistic.</p>
+             <p className="text-3xl font-bold text-accent mb-8 uppercase tracking-widest">Because it respects your reality.</p>
              <p className="text-xl text-text-secondary mb-16 leading-relaxed">
                You don’t need to do everything. You just need to do the right things, often enough. <br/>
                This reset gives you a system — not a motivation speech.
