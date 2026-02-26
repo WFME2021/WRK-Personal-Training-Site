@@ -32,6 +32,10 @@ export interface PageContent {
   corporateWellness: {
     heroImage: CMSImage;
   };
+  layout: {
+    logoLight: CMSImage;
+    logoDark: CMSImage;
+  };
   gallery: {
     jetski: CMSImage;
     surfboard: CMSImage;
@@ -161,6 +165,18 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
       seoDescription: 'Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs.'
     }
   },
+  layout: {
+    logoLight: {
+      url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-white-transparent.png',
+      alt: 'WRK Personal Training Logo (Light)',
+      seoDescription: 'White WRK Personal Training logo for dark backgrounds.'
+    },
+    logoDark: {
+      url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-black-transparent.png',
+      alt: 'WRK Personal Training Logo (Dark)',
+      seoDescription: 'Black WRK Personal Training logo for light backgrounds.'
+    }
+  },
   gallery: {
     jetski: {
       url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/female-jetski.jpg',
@@ -186,11 +202,14 @@ export const PAGE_LABELS: Record<string, string> = {
   onlineCoaching: 'Online Coaching',
   challenge42: '42 Day Reset',
   philosophy: 'Philosophy',
-  corporateWellness: 'Corporate Wellness'
+  corporateWellness: 'Corporate Wellness',
+  layout: 'Global Layout (Header/Footer)'
 };
 
 export const FIELD_LABELS: Record<string, string> = {
   heroImage: 'Hero / Header Image',
+  logoLight: 'Logo (Light Mode / Dark Backgrounds)',
+  logoDark: 'Logo (Dark Mode / Light Backgrounds)',
   ptImage: 'In-Person Training Card Image',
   onlineImage: 'Online Coaching Card Image',
   corporateImage: 'Corporate Wellness Card Image',

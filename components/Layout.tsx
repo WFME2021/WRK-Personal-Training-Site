@@ -5,11 +5,14 @@ import { Menu, X } from 'lucide-react';
 import { BRAND_NAME, NAVIGATION_LINKS, LOCATION, EMAIL_CONTACT } from '../constants';
 import { ThemeToggle } from './ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
+import { useContent } from '../context/ContentContext';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const { theme } = useTheme();
+  const { pageContent } = useContent();
+  const { logoLight, logoDark } = pageContent.layout;
 
   // Close menu on route change
   useEffect(() => {
@@ -22,11 +25,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
           <Link to="/" className="block hover:opacity-80 transition-opacity" aria-label="Home">
             <img 
-              src={theme === 'dark' 
-                ? "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-white-transparent.png" 
-                : "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-black-transparent.png"
-              }
-              alt="WRK Personal Training"
+              src={theme === 'dark' ? logoLight.url : logoDark.url}
+              alt={theme === 'dark' ? logoLight.alt : logoDark.alt}
               className="h-8 md:h-10 w-auto"
             />
           </Link>
