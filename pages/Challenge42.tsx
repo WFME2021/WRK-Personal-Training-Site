@@ -101,8 +101,8 @@ export const Challenge42: React.FC = () => {
         <section className="relative min-h-screen flex flex-col items-center justify-center text-white bg-black overflow-hidden pt-32 pb-20">
           <div className="absolute inset-0 z-0">
              <img 
-              src={heroBackground} 
-              alt="42 day fitness challenge background" 
+              src={heroBackground.url} 
+              alt={heroBackground.alt} 
               className="w-full h-full object-cover opacity-60 grayscale contrast-125"
              />
              {/* Matching gradient overlay from other pages */}

@@ -24,7 +24,7 @@ export const BlogPost: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
-    "image": [post.imageUrl],
+    "image": [post.image.url],
     "datePublished": post.isoDate,
     "dateModified": post.isoDate,
     "author": [{
@@ -42,7 +42,7 @@ export const BlogPost: React.FC = () => {
         description={post.seoDescription || post.excerpt}
         schema={schemaData}
         type="article"
-        imageUrl={post.imageUrl}
+        imageUrl={post.image.url}
         publishedTime={post.isoDate}
         authorName={post.author.name}
       />
@@ -79,8 +79,8 @@ export const BlogPost: React.FC = () => {
           {/* Main Image */}
           <figure className="mb-16 -mx-6 md:mx-0">
              <img 
-               src={post.imageUrl} 
-               alt={post.title} 
+               src={post.image.url} 
+               alt={post.image.alt} 
                className="w-full h-auto object-cover md:rounded-sm shadow-sm border border-border"
              />
           </figure>

@@ -58,7 +58,8 @@ export const PersonalTraining: React.FC = () => {
             "serviceType": "Personal Training",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "WRK Personal Training"
+              "name": "WRK Personal Training",
+              "image": mainImage.url
             },
             "areaServed": {
               "@type": "City",
@@ -151,8 +152,8 @@ export const PersonalTraining: React.FC = () => {
             
             <div className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border border-border">
                <img 
-                src={mainImage} 
-                alt="Personal Trainer Christchurch technique coaching" 
+                src={mainImage.url} 
+                alt={mainImage.alt} 
                 className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
               />
             </div>

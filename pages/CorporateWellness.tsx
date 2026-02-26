@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useContent } from '../context/ContentContext';
 import { Button } from '../components/Button';
 import { 
   TrendingUp, Users, DollarSign, Activity, 
@@ -10,6 +11,8 @@ import {
 import { SeoHead } from '../components/SeoHead';
 
 export const CorporateWellness: React.FC = () => {
+  const { pageContent } = useContent();
+  const { heroImage } = pageContent.corporateWellness;
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -79,7 +82,8 @@ export const CorporateWellness: React.FC = () => {
             "serviceType": "Corporate Wellness Program",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "WRK Personal Training"
+              "name": "WRK Personal Training",
+              "image": heroImage.url
             },
             "areaServed": {
               "@type": "Country",
@@ -118,10 +122,17 @@ export const CorporateWellness: React.FC = () => {
         
         {/* HERO */}
         <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-           {/* Background Gradient */}
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary to-secondary opacity-90 z-0"></div>
-          
-          <div className="max-w-7xl mx-auto relative z-10 text-center">
+           {/* Background Image */}
+           <div className="absolute inset-0 z-0">
+             <img 
+               src={heroImage.url} 
+               alt={heroImage.alt} 
+               className="w-full h-full object-cover opacity-10 grayscale contrast-125"
+             />
+             <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/95 to-secondary"></div>
+           </div>
+           
+           <div className="max-w-7xl mx-auto relative z-10 text-center">
             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-widest text-text-primary leading-none mb-6">
               High-Performance <br/><span className="text-accent">Culture</span>
             </h1>

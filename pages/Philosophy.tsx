@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
 import { Activity, CheckCircle2, XCircle, Clock, Target } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 export const Philosophy: React.FC = () => {
+  const { pageContent } = useContent();
+  const { heroImage } = pageContent.philosophy;
+
   return (
     <>
       <SeoHead 
@@ -20,8 +24,8 @@ export const Philosophy: React.FC = () => {
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
-              alt="Dark gym atmosphere" 
+              src={heroImage.url} 
+              alt={heroImage.alt} 
               className="w-full h-full object-cover grayscale contrast-125"
             />
             <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>

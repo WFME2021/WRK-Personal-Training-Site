@@ -125,8 +125,8 @@ export const Blog: React.FC = () => {
                 <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
                   <div className="relative overflow-hidden mb-6 aspect-[16/10] bg-secondary rounded-2xl border border-border">
                     <img 
-                      src={post.imageUrl} 
-                      alt={post.title}
+                      src={post.image.url} 
+                      alt={post.image.alt}
                       loading="lazy"
                       className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                     />

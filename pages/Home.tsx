@@ -51,7 +51,7 @@ export const Home: React.FC = () => {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "WRK Personal Training",
-          "image": heroImage,
+          "image": heroImage.url,
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "12 Show Place",
@@ -100,8 +100,8 @@ export const Home: React.FC = () => {
             {/* Main Visual Block - Rounded Corners */}
             <div className="relative w-full h-[60vh] md:h-[85vh] rounded-[3rem] md:rounded-[4rem] overflow-hidden group shadow-2xl border border-border">
               <img 
-                src={heroImage} 
-                alt="Downhill Skiing - Vitality" 
+                src={heroImage.url} 
+                alt={heroImage.alt} 
                 className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
@@ -151,7 +151,7 @@ export const Home: React.FC = () => {
              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                {pageContent.home.lifestyleImages?.map((img, i) => (
                  <div key={i} className="aspect-[3/4] rounded-3xl overflow-hidden relative group">
-                   <img src={img} alt="Active Lifestyle" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                   <img src={img.url} alt={img.alt} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                  </div>
                ))}
@@ -227,7 +227,7 @@ export const Home: React.FC = () => {
                <div className="grid grid-cols-2 gap-4 rotate-3 hover:rotate-0 transition-transform duration-500">
                  {pageContent.home.appImages?.map((img, i) => (
                    <div key={i} className={`rounded-3xl overflow-hidden border-4 border-primary/10 shadow-2xl ${i % 2 === 0 ? 'translate-y-8' : '-translate-y-8'}`}>
-                     <img src={img} alt="WRK App Interface" className="w-full h-auto" />
+                     <img src={img.url} alt={img.alt} className="w-full h-auto" />
                    </div>
                  ))}
                </div>
@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
               {/* Service Card 1: Hybrid */}
               <Link to="/personal-training" className="group block">
                 <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
-                   <img src={ptImage} alt="Hybrid Personal Training" className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                   <img src={ptImage.url} alt={ptImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
                    <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Christchurch</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/80 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
@@ -263,7 +263,7 @@ export const Home: React.FC = () => {
               {/* Service Card 2: Online */}
               <Link to="/online-coaching" className="group block lg:mt-24">
                 <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
-                   <img src={onlineImage} alt="Online Coaching" className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                   <img src={onlineImage.url} alt={onlineImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
                    <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">NZ Wide</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/80 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
@@ -290,8 +290,8 @@ export const Home: React.FC = () => {
               {/* Service Card 4: Corporate Wellness */}
               <Link to="/corporate-wellness" className="group block lg:mt-24">
                 <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
-                   {corporateImage ? (
-                     <img src={corporateImage} alt="Corporate Wellness" className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                   {corporateImage.url ? (
+                     <img src={corporateImage.url} alt={corporateImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    ) : (
                      <div className="w-full h-full bg-secondary"></div>
                    )}

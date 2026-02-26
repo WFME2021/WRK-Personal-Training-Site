@@ -1,9 +1,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { BlogPost, Author } from '../data/blogs';
-import { PAGE_LABELS, FIELD_LABELS, PageContent } from '../data/pages';
+import { PAGE_LABELS, FIELD_LABELS, PageContent, CMSImage } from '../data/pages';
 import { Button } from '../components/Button';
-import { Save, Upload, Download, Plus, Trash2, ArrowLeft, Lock, LogOut, Layout, FileText, Image as ImageIcon } from 'lucide-react';
+import { Save, Upload, Download, Plus, Trash2, ArrowLeft, Lock, LogOut, Layout, FileText, Image as ImageIcon, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { RichTextEditor } from '../components/RichTextEditor';
 import { useContent } from '../context/ContentContext';
@@ -25,7 +25,11 @@ const EMPTY_POST: BlogPost = {
   date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
   isoDate: new Date().toISOString(),
   category: 'General',
-  imageUrl: 'https://picsum.photos/800/600',
+  image: {
+    url: 'https://picsum.photos/800/600',
+    alt: 'Default blog post image',
+    seoDescription: 'Default blog post image'
+  },
   author: DEFAULT_AUTHOR,
   seoTitle: '',
   seoDescription: ''
@@ -43,8 +47,6 @@ export const Admin: React.FC = () => {
   const [postFormData, setPostFormData] = useState<BlogPost>(EMPTY_POST);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
-  const pageImageInputRef = useRef<HTMLInputElement>(null);
-  const [activePageField, setActivePageField] = useState<string | null>(null);
 
   // Check auth on mount
   useEffect(() => {
@@ -69,6 +71,13 @@ export const Admin: React.FC = () => {
     setPassword('');
   };
 
+  const handleSaveAndPublish = () => {
+    // Force a reload to ensure all components pick up the latest data from localStorage
+    if (window.confirm('This will refresh the site to apply all changes. Continue?')) {
+        window.location.reload();
+    }
+  };
+
   // --- BLOG LOGIC ---
 
   // Load selected post into form
@@ -90,16 +99,14 @@ export const Admin: React.FC = () => {
     setPostFormData(prev => ({ ...prev, content: html }));
   };
 
-  const handlePostImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const result = e.target?.result as string;
-        setPostFormData(prev => ({ ...prev, imageUrl: result }));
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleBlogImageChange = (field: keyof CMSImage, value: string) => {
+    setPostFormData(prev => ({
+      ...prev,
+      image: {
+        ...prev.image,
+        [field]: value
+      }
+    }));
   };
 
   const handleSavePost = (e: React.FormEvent) => {
@@ -129,29 +136,27 @@ export const Admin: React.FC = () => {
 
   // --- PAGE CONTENT LOGIC ---
 
-  const handlePageImageChange = (key: string, value: string) => {
+  const handlePageImageChange = (key: string, field: keyof CMSImage, value: string, index?: number) => {
     if (!selectedPage) return;
-    const updatedPage = { ...pageContent[selectedPage], [key]: value };
+    const currentPage = pageContent[selectedPage];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const currentField = (currentPage as any)[key];
+    
+    let updatedValue;
+
+    if (index !== undefined && Array.isArray(currentField)) {
+        // Handle array update
+        const newArray = [...currentField];
+        newArray[index] = { ...newArray[index], [field]: value };
+        updatedValue = newArray;
+    } else {
+        // Handle single object update
+        updatedValue = { ...currentField, [field]: value };
+    }
+
+    const updatedPage = { ...currentPage, [key]: updatedValue };
     const updatedContent = { ...pageContent, [selectedPage]: updatedPage };
     updatePageContent(updatedContent);
-  };
-
-  const handlePageImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file && activePageField && selectedPage) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const result = e.target?.result as string;
-        handlePageImageChange(activePageField, result);
-      };
-      reader.readAsDataURL(file);
-    }
-    setActivePageField(null); // Reset
-  };
-
-  const triggerPageImageUpload = (fieldKey: string) => {
-    setActivePageField(fieldKey);
-    setTimeout(() => pageImageInputRef.current?.click(), 100);
   };
 
   // --- GLOBAL IMPORT/EXPORT ---
@@ -245,6 +250,10 @@ export const Admin: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap gap-3 items-center">
+            <Button variant="primary" type="button" onClick={handleSaveAndPublish} className="bg-green-600 hover:bg-green-700 text-white border-transparent">
+               <RefreshCw size={16} className="mr-2" /> Save & Publish
+            </Button>
+            <div className="h-8 w-px bg-border mx-2 hidden md:block"></div>
             <input 
               type="file" 
               ref={fileInputRef}
@@ -403,36 +412,47 @@ export const Admin: React.FC = () => {
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Image</label>
-                  <div className="flex gap-4">
-                    <div className="flex-grow flex gap-2">
-                      <input
-                        type="text"
-                        name="imageUrl"
-                        value={postFormData.imageUrl}
-                        onChange={handlePostChange}
-                        className="flex-grow p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                      <input
-                        type="file"
-                        ref={imageInputRef}
-                        onChange={handlePostImageUpload}
-                        className="hidden"
-                        accept="image/*"
-                      />
-                      <Button 
-                        type="button" 
-                        variant="secondary" 
-                        onClick={() => imageInputRef.current?.click()}
-                        className="shrink-0"
-                      >
-                        <ImageIcon size={16} className="mr-2" /> Upload
-                      </Button>
-                    </div>
-                    {postFormData.imageUrl && (
-                      <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-border">
-                        <img src={postFormData.imageUrl} alt="Preview" className="w-full h-full object-cover" />
+                  <div className="bg-primary p-6 rounded-2xl border border-border">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="w-full">
+                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image URL</label>
+                         <input
+                           type="text"
+                           value={postFormData.image.url}
+                           onChange={(e) => handleBlogImageChange('url', e.target.value)}
+                           className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                           placeholder="https://..."
+                         />
                       </div>
-                    )}
+                      {postFormData.image.url && (
+                        <div className="w-24 h-16 rounded-lg overflow-hidden border border-border shadow-sm ml-4 shrink-0">
+                          <img src={postFormData.image.url} alt={postFormData.image.alt} className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Alt Text</label>
+                        <input
+                          type="text"
+                          value={postFormData.image.alt}
+                          onChange={(e) => handleBlogImageChange('alt', e.target.value)}
+                          className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                          placeholder="Image description..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">SEO Description</label>
+                        <input
+                          type="text"
+                          value={postFormData.image.seoDescription}
+                          onChange={(e) => handleBlogImageChange('seoDescription', e.target.value)}
+                          className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                          placeholder="SEO context..."
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -480,51 +500,116 @@ export const Admin: React.FC = () => {
                 ) : (
                   <div className="space-y-8">
                     {Object.keys(pageContent[selectedPage]).map((fieldKey) => {
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       const value = (pageContent[selectedPage] as any)[fieldKey];
+                      const label = FIELD_LABELS[fieldKey] || fieldKey;
+
+                      if (Array.isArray(value)) {
+                        return (
+                           <div key={fieldKey} className="bg-primary p-6 rounded-2xl border border-border">
+                             <h3 className="block text-sm font-bold uppercase tracking-wider text-accent mb-4">{label} (List)</h3>
+                             <div className="space-y-6">
+                               {value.map((item: CMSImage, index: number) => (
+                                 <div key={index} className="p-4 border border-border rounded-xl bg-secondary">
+                                   <div className="flex gap-4 items-start mb-4">
+                                      <div className="w-20 h-20 rounded-lg overflow-hidden border border-border shrink-0">
+                                        <img src={item.url} alt={item.alt} className="w-full h-full object-cover" />
+                                      </div>
+                                      <div className="flex-grow space-y-3">
+                                        <div>
+                                          <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image URL</label>
+                                          <input
+                                            type="text"
+                                            value={item.url}
+                                            onChange={(e) => handlePageImageChange(fieldKey, 'url', e.target.value, index)}
+                                            className="w-full p-2 bg-primary text-text-primary border border-border rounded-lg text-sm"
+                                            placeholder="https://..."
+                                          />
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-3">
+                                          <div>
+                                            <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Alt Text</label>
+                                            <input
+                                              type="text"
+                                              value={item.alt}
+                                              onChange={(e) => handlePageImageChange(fieldKey, 'alt', e.target.value, index)}
+                                              className="w-full p-2 bg-primary text-text-primary border border-border rounded-lg text-sm"
+                                              placeholder="Description..."
+                                            />
+                                          </div>
+                                          <div>
+                                            <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">SEO Desc</label>
+                                            <input
+                                              type="text"
+                                              value={item.seoDescription}
+                                              onChange={(e) => handlePageImageChange(fieldKey, 'seoDescription', e.target.value, index)}
+                                              className="w-full p-2 bg-primary text-text-primary border border-border rounded-lg text-sm"
+                                              placeholder="SEO details..."
+                                            />
+                                          </div>
+                                        </div>
+                                      </div>
+                                   </div>
+                                 </div>
+                               ))}
+                             </div>
+                           </div>
+                        );
+                      }
+
                       return (
                         <div key={fieldKey} className="bg-primary p-6 rounded-2xl border border-border">
                            <div className="flex justify-between items-start mb-4">
                              <div>
                                <label className="block text-sm font-bold uppercase tracking-wider text-accent mb-1">
-                                 {FIELD_LABELS[fieldKey] || fieldKey}
+                                 {label}
                                </label>
                                <p className="text-xs text-text-secondary">Update the image displayed in this section.</p>
                              </div>
-                             {value && (
+                             {value.url && (
                                <div className="w-24 h-16 rounded-lg overflow-hidden border border-border shadow-sm">
-                                 <img src={value} alt="Preview" className="w-full h-full object-cover" />
+                                 <img src={value.url} alt={value.alt} className="w-full h-full object-cover" />
                                </div>
                              )}
                            </div>
                            
-                           <div className="flex gap-2">
-                             <input
-                               type="text"
-                               value={value}
-                               onChange={(e) => handlePageImageChange(fieldKey, e.target.value)}
-                               placeholder="Image URL..."
-                               className="flex-grow p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
-                             />
-                             <Button 
-                               type="button" 
-                               variant="secondary"
-                               onClick={() => triggerPageImageUpload(fieldKey)}
-                             >
-                               <Upload size={16} className="mr-2" /> Upload
-                             </Button>
+                           <div className="space-y-4">
+                             <div>
+                               <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image URL</label>
+                               <input
+                                 type="text"
+                                 value={value.url}
+                                 onChange={(e) => handlePageImageChange(fieldKey, 'url', e.target.value)}
+                                 placeholder="https://..."
+                                 className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                               />
+                             </div>
+                             <div className="grid grid-cols-2 gap-4">
+                               <div>
+                                 <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Alt Text</label>
+                                 <input
+                                   type="text"
+                                   value={value.alt}
+                                   onChange={(e) => handlePageImageChange(fieldKey, 'alt', e.target.value)}
+                                   placeholder="Image description..."
+                                   className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                                 />
+                               </div>
+                               <div>
+                                 <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">SEO Description</label>
+                                 <input
+                                   type="text"
+                                   value={value.seoDescription}
+                                   onChange={(e) => handlePageImageChange(fieldKey, 'seoDescription', e.target.value)}
+                                   placeholder="SEO context..."
+                                   className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                                 />
+                               </div>
+                             </div>
                            </div>
                         </div>
                       );
                     })}
-                    
-                    {/* Hidden Global Input for Page Images */}
-                    <input
-                      type="file"
-                      ref={pageImageInputRef}
-                      onChange={handlePageImageUpload}
-                      className="hidden"
-                      accept="image/*"
-                    />
                     
                     <div className="pt-4 flex justify-end">
                       <p className="text-sm text-text-primary bg-primary px-4 py-2 rounded-lg inline-flex items-center border border-border">

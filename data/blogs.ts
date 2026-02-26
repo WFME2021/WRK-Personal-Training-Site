@@ -1,3 +1,5 @@
+import { CMSImage } from './pages';
+
 export interface Author {
   name: string;
   role: string;
@@ -14,7 +16,7 @@ export interface BlogPost {
   date: string; // Display date
   isoDate: string; // ISO 8601 for Schema.org
   category: string;
-  imageUrl: string;
+  image: CMSImage;
   author: Author;
   seoTitle?: string;
   seoDescription?: string;
@@ -38,7 +40,11 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "October 15, 2023",
     isoDate: "2023-10-15T08:00:00+13:00",
     category: "Recovery",
-    imageUrl: "https://images.unsplash.com/photo-1541781777631-fa182f3a4b3c?q=80&w=800&auto=format&fit=crop",
+    image: {
+      url: "https://images.unsplash.com/photo-1541781777631-fa182f3a4b3c?q=80&w=800&auto=format&fit=crop",
+      alt: "Person sleeping comfortably",
+      seoDescription: "A person sleeping in a comfortable bed, representing recovery and sleep optimization."
+    },
     author: DEFAULT_AUTHOR,
     seoTitle: "Sleep Optimization Guide | WRK Personal Training",
     seoDescription: "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
@@ -52,7 +58,11 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "November 02, 2023",
     isoDate: "2023-11-02T10:00:00+13:00",
     category: "Training",
-    imageUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+    image: {
+      url: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+      alt: "Weight plates in a gym",
+      seoDescription: "Close up of weight plates in a gym setting, symbolizing strength training."
+    },
     author: DEFAULT_AUTHOR,
     seoTitle: "Beginner Strength Training Guide | WRK Personal Training",
     seoDescription: "Master the big four compound lifts to build strength and longevity. A simple guide for beginners."
@@ -66,7 +76,11 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "December 10, 2023",
     isoDate: "2023-12-10T09:00:00+13:00",
     category: "Nutrition",
-    imageUrl: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
+    image: {
+      url: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
+      alt: "Healthy meal prep containers",
+      seoDescription: "Healthy food in meal prep containers, representing nutrition strategies for busy professionals."
+    },
     author: DEFAULT_AUTHOR,
     seoTitle: "Nutrition Hacks for Busy Professionals | WRK",
     seoDescription: "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."

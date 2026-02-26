@@ -125,7 +125,7 @@ export const OnlineCoaching: React.FC = () => {
              <div className="order-2 lg:order-1 flex justify-center relative">
                 <div className="relative z-10 w-[300px] md:w-[350px] bg-secondary rounded-[3rem] p-4 shadow-2xl transform -rotate-2 border border-border">
                    <div className="overflow-hidden rounded-[2.5rem] border-4 border-primary">
-                      <img src={workoutLogImage} alt="Online personal training app interface" className="w-full h-full object-cover" />
+                      <img src={workoutLogImage.url} alt={workoutLogImage.alt} className="w-full h-full object-cover" />
                    </div>
                 </div>
              </div>
@@ -208,8 +208,8 @@ export const OnlineCoaching: React.FC = () => {
                  <div className="relative mt-12 lg:mt-0">
                     <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border border-border">
                       <img 
-                        src={habitsImage} 
-                        alt="Habit tracking interface showing daily goals" 
+                        src={habitsImage.url} 
+                        alt={habitsImage.alt} 
                         className="w-full h-auto object-cover" 
                       />
                     </div>
