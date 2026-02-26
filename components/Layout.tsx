@@ -12,7 +12,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const location = useLocation();
   const { theme } = useTheme();
   const { pageContent } = useContent();
-  const { logoLight, logoDark } = pageContent.layout;
+  const { logoLight, logoDark } = pageContent.layout || { 
+    logoLight: { url: '', alt: '' }, 
+    logoDark: { url: '', alt: '' } 
+  };
 
   // Close menu on route change
   useEffect(() => {

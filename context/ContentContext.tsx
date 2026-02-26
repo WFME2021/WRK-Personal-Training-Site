@@ -26,7 +26,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [pageContent, setPageContent] = useState<PageContent>(() => {
     try {
       const saved = localStorage.getItem('wrk_site_pages');
-      return saved ? JSON.parse(saved) : INITIAL_PAGE_CONTENT;
+      return saved ? { ...INITIAL_PAGE_CONTENT, ...JSON.parse(saved) } : INITIAL_PAGE_CONTENT;
     } catch (e) {
       return INITIAL_PAGE_CONTENT;
     }
