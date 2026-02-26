@@ -71,10 +71,38 @@ export const Admin: React.FC = () => {
     setPassword('');
   };
 
-  const handleSaveAndPublish = () => {
-    // Force a reload to ensure all components pick up the latest data from localStorage
-    if (window.confirm('This will refresh the site to apply all changes. Continue?')) {
-        window.location.reload();
+  const [isPublishing, setIsPublishing] = useState(false);
+
+  const handleSaveAndPublish = async () => {
+    if (!window.confirm('This will publish changes to the live site. Continue?')) return;
+
+    setIsPublishing(true);
+    try {
+      const publishData = {
+        pages: pageContent,
+        blogs: blogPosts
+      };
+
+      const response = await fetch('/api/admin/publish', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: publishData }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to publish');
+      }
+
+      alert('SUCCESS: Changes published to GitHub! The site will update automatically in a few moments.');
+    } catch (error: any) {
+      console.error('Publish error:', error);
+      alert(`ERROR: ${error.message}\n\nMake sure GITHUB_TOKEN, GITHUB_OWNER, and GITHUB_REPO are set in your environment variables.`);
+    } finally {
+      setIsPublishing(false);
     }
   };
 
@@ -250,8 +278,9 @@ export const Admin: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap gap-3 items-center">
-            <Button variant="primary" type="button" onClick={handleSaveAndPublish} className="bg-green-600 hover:bg-green-700 text-white border-transparent">
-               <RefreshCw size={16} className="mr-2" /> Save & Publish
+            <Button variant="primary" type="button" onClick={handleSaveAndPublish} disabled={isPublishing} className="bg-green-600 hover:bg-green-700 text-white border-transparent">
+               <RefreshCw size={16} className={`mr-2 ${isPublishing ? 'animate-spin' : ''}`} /> 
+               {isPublishing ? 'Publishing...' : 'Save & Publish'}
             </Button>
             <div className="h-8 w-px bg-border mx-2 hidden md:block"></div>
             <input 

@@ -12,6 +12,8 @@ interface ContentContextType {
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
+const CONTENT_URL = import.meta.env.VITE_CONTENT_URL || '/content.json';
+
 export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Initialize from localStorage to persist changes
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() => {
@@ -31,6 +33,45 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       return INITIAL_PAGE_CONTENT;
     }
   });
+
+  // Fetch external content on mount
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        // Add timestamp to bypass cache
+        const response = await fetch(`${CONTENT_URL}?t=${Date.now()}`);
+        if (!response.ok) throw new Error('Failed to fetch content');
+        
+        const data = await response.json();
+        
+        // Only update if we have valid data
+        if (data.blogs && Array.isArray(data.blogs)) {
+            // Merge with local storage (local storage takes precedence if modified recently? 
+            // Actually, usually remote is source of truth, but for this "CMS" flow, 
+            // we want to load remote as the base.
+            // However, if the user has unsaved local changes, we might overwrite them.
+            // For now, let's assume remote is the "published" state.
+            // If local storage is empty or matches default, we update.
+            // But if we want "dynamic fetch on every load", we should probably prioritize remote
+            // unless we have specific "draft" logic. 
+            // Given the user's request "fetch CMS data dynamically", we should update state.
+            
+            setBlogPosts(data.blogs);
+        }
+        
+        if (data.pages) {
+            setPageContent(prev => ({
+                ...INITIAL_PAGE_CONTENT, // Ensure structure
+                ...data.pages
+            }));
+        }
+      } catch (error) {
+        console.error('Error fetching dynamic content:', error);
+      }
+    };
+
+    fetchContent();
+  }, []);
 
   // Save to localStorage whenever state changes
   useEffect(() => {

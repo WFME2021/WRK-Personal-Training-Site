@@ -1,0 +1,225 @@
+{
+  "pages": {
+    "home": {
+      "heroImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/downhill-skiing.jpg",
+        "alt": "Downhill Skiing - Vitality",
+        "seoDescription": "A skier carving down a snowy mountain, representing the vitality and energy gained from WRK Personal Training."
+      },
+      "ptImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/dad-kid-paddleboard.jpg",
+        "alt": "Dad and kid paddleboarding",
+        "seoDescription": "A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training."
+      },
+      "onlineImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/family-activity.jpg",
+        "alt": "Family activity outdoors",
+        "seoDescription": "A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching."
+      },
+      "corporateImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/golfing.jpg",
+        "alt": "Corporate team golfing",
+        "seoDescription": "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
+      },
+      "lifestyleImages": [
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/dad-kid-paddleboard.jpg",
+          "alt": "Dad and kid paddleboarding",
+          "seoDescription": "Active parenting and outdoor adventure."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg",
+          "alt": "Mum and kid hiking",
+          "seoDescription": "Mother and child hiking in nature, representing strength and family time."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/guy-surfboard.jpg",
+          "alt": "Man with surfboard",
+          "seoDescription": "A man walking with a surfboard, symbolizing the physical capacity to enjoy hobbies."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/female-jetski.jpg",
+          "alt": "Woman on jetski",
+          "seoDescription": "A woman riding a jetski, showing the energy and confidence gained from fitness."
+        }
+      ],
+      "appImages": [
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/habit-tracking.png",
+          "alt": "WRK App Habit Tracking",
+          "seoDescription": "Screenshot of the WRK app showing habit tracking features."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-history.png",
+          "alt": "WRK App Exercise History",
+          "seoDescription": "Screenshot of the WRK app displaying exercise history and progress."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/macro-tracking-app.png",
+          "alt": "WRK App Macro Tracking",
+          "seoDescription": "Screenshot of the WRK app showing macro and nutrition tracking."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-videos.png",
+          "alt": "WRK App Exercise Videos",
+          "seoDescription": "Screenshot of the WRK app showing instructional exercise videos."
+        }
+      ]
+    },
+    "personalTraining": {
+      "mainImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg",
+        "alt": "Mum and kid hiking",
+        "seoDescription": "A mother and child hiking, representing the real-world application of strength training."
+      }
+    },
+    "onlineCoaching": {
+      "workoutLogImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-history.png",
+        "alt": "Workout Log Interface",
+        "seoDescription": "Mobile interface showing detailed workout logs."
+      },
+      "videoImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-videos.png",
+        "alt": "Video Demonstration Interface",
+        "seoDescription": "Mobile interface showing exercise video demonstrations."
+      },
+      "macroImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/macro-tracking-app.png",
+        "alt": "Macro Dashboard Interface",
+        "seoDescription": "Mobile interface showing macro nutrient tracking dashboard."
+      },
+      "nutritionLogImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/recipe-tracking.png",
+        "alt": "Nutrition Log Interface",
+        "seoDescription": "Mobile interface showing nutrition and recipe logging."
+      },
+      "habitsImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/habit-tracking.png",
+        "alt": "Habits Interface",
+        "seoDescription": "Mobile interface showing daily habit tracking."
+      }
+    },
+    "challenge42": {
+      "heroBackground": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mountain-biking.jpg",
+        "alt": "Mountain Biking",
+        "seoDescription": "A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset."
+      }
+    },
+    "philosophy": {
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
+        "alt": "Dark gym atmosphere",
+        "seoDescription": "A dark, atmospheric gym setting representing the serious, focused nature of the philosophy."
+      }
+    },
+    "corporateWellness": {
+      "heroImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/golfing.jpg",
+        "alt": "Corporate team golfing",
+        "seoDescription": "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
+      }
+    },
+    "layout": {
+      "logoLight": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-white-transparent.png",
+        "alt": "WRK Personal Training Logo (Light)",
+        "seoDescription": "White WRK Personal Training logo for dark backgrounds."
+      },
+      "logoDark": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-black-transparent.png",
+        "alt": "WRK Personal Training Logo (Dark)",
+        "seoDescription": "Black WRK Personal Training logo for light backgrounds."
+      }
+    },
+    "gallery": {
+      "jetski": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/female-jetski.jpg",
+        "alt": "Woman on jetski",
+        "seoDescription": "Woman riding a jetski."
+      },
+      "surfboard": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/guy-surfboard.jpg",
+        "alt": "Man with surfboard",
+        "seoDescription": "Man carrying a surfboard."
+      },
+      "activeMum": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/active-mum.jpg",
+        "alt": "Active Mum",
+        "seoDescription": "An active mother."
+      }
+    }
+  },
+  "blogs": [
+    {
+      "id": "1",
+      "slug": "how-to-optimize-sleep",
+      "title": "How to Optimize Sleep for Recovery",
+      "excerpt": "Sleep is the foundation of performance. Learn the 3 key protocols to improve your deep sleep scores tonight.",
+      "content": "<p>Sleep is not a passive state; it is an active recovery process. Without adequate sleep, your training efforts are largely wasted.</p><h2>The 3-2-1 Rule</h2><p>To optimize sleep, try the <strong>3-2-1 rule</strong>:</p><ul><li>3 hours before bed: No food</li><li>2 hours before bed: No work</li><li>1 hour before bed: No screens</li></ul><p>For more details, check out this <a href='https://hubermanlab.com/toolkit-for-sleep/' target='_blank'>comprehensive guide</a> by Dr. Huberman.</p>",
+      "date": "October 15, 2023",
+      "isoDate": "2023-10-15T08:00:00+13:00",
+      "category": "Recovery",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1541781777631-fa182f3a4b3c?q=80&w=800&auto=format&fit=crop",
+        "alt": "Person sleeping comfortably",
+        "seoDescription": "A person sleeping in a comfortable bed, representing recovery and sleep optimization."
+      },
+      "author": {
+        "name": "Hayden Richards",
+        "role": "Founder & Head Coach",
+        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+      },
+      "seoTitle": "Sleep Optimization Guide | WRK Personal Training",
+      "seoDescription": "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
+    },
+    {
+      "id": "2",
+      "slug": "strength-training-101",
+      "title": "Strength Training 101: The Big Four",
+      "excerpt": "You don't need a complex routine. You need to master the Squat, Bench, Deadlift, and Overhead Press.",
+      "content": "<p>Complexity is the enemy of execution. When starting out, your focus should be entirely on the compound lifts.</p><h2>1. The Squat</h2><p>The king of all exercises. It trains the entire posterior chain and core.</p><img src='https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop' alt='Athlete performing a back squat' /><p>Ensure your depth hits parallel and your chest stays up.</p><h2>2. The Deadlift</h2><p>The purest test of strength. Pick it up, put it down safely.</p>",
+      "date": "November 02, 2023",
+      "isoDate": "2023-11-02T10:00:00+13:00",
+      "category": "Training",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+        "alt": "Weight plates in a gym",
+        "seoDescription": "Close up of weight plates in a gym setting, symbolizing strength training."
+      },
+      "author": {
+        "name": "Hayden Richards",
+        "role": "Founder & Head Coach",
+        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+      },
+      "seoTitle": "Beginner Strength Training Guide | WRK Personal Training",
+      "seoDescription": "Master the big four compound lifts to build strength and longevity. A simple guide for beginners."
+    },
+    {
+      "id": "3",
+      "slug": "nutrition-for-busy-pros",
+      "title": "Nutrition Strategies for Corporate Athletes",
+      "excerpt": "Meal prep taking too long? Here is how to hit your macros without spending your entire Sunday in the kitchen.",
+      "content": "<p>Time is your most valuable asset. Your nutrition strategy needs to reflect that.</p><h2>Batch Cooking vs. Ingredient Prep</h2><p>Don't cook full meals. Cook <strong>ingredients</strong>. Roast a tray of chicken, boil a pot of rice, and chop veggies. Combine them differently throughout the week with different sauces.</p><p>This takes 1 hour and saves you 10.</p>",
+      "date": "December 10, 2023",
+      "isoDate": "2023-12-10T09:00:00+13:00",
+      "category": "Nutrition",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
+        "alt": "Healthy meal prep containers",
+        "seoDescription": "Healthy food in meal prep containers, representing nutrition strategies for busy professionals."
+      },
+      "author": {
+        "name": "Hayden Richards",
+        "role": "Founder & Head Coach",
+        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+      },
+      "seoTitle": "Nutrition Hacks for Busy Professionals | WRK",
+      "seoDescription": "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."
+    }
+  ]
+}
