@@ -75,27 +75,27 @@
     },
     "onlineCoaching": {
       "workoutLogImage": {
-        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-history.png",
+        "url": "https://i.postimg.cc/3w5FjthV/exercise-history.png",
         "alt": "Workout Log Interface",
         "seoDescription": "Mobile interface showing detailed workout logs."
       },
       "videoImage": {
-        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-videos.png",
+        "url": "https://i.postimg.cc/WzHzvp7V/exercise-videos.png",
         "alt": "Video Demonstration Interface",
         "seoDescription": "Mobile interface showing exercise video demonstrations."
       },
       "macroImage": {
-        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/macro-tracking-app.png",
+        "url": "https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg",
         "alt": "Macro Dashboard Interface",
         "seoDescription": "Mobile interface showing macro nutrient tracking dashboard."
       },
       "nutritionLogImage": {
-        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/recipe-tracking.png",
+        "url": "https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png",
         "alt": "Nutrition Log Interface",
         "seoDescription": "Mobile interface showing nutrition and recipe logging."
       },
       "habitsImage": {
-        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/habit-tracking.png",
+        "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
         "alt": "Habits Interface",
         "seoDescription": "Mobile interface showing daily habit tracking."
       }
