@@ -101,7 +101,7 @@ export const Home: React.FC = () => {
             <div className="relative w-full h-[60vh] md:h-[85vh] rounded-[3rem] md:rounded-[4rem] overflow-hidden group shadow-2xl border border-border">
               <img 
                 src={heroImage} 
-                alt="Personal training session Christchurch" 
+                alt="Downhill Skiing - Vitality" 
                 className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
@@ -136,8 +136,31 @@ export const Home: React.FC = () => {
           </div>
         </section>
 
-        {/* Philosophy Section - Secondary BG */}
+        {/* THE WHY - Lifestyle Grid */}
         <section className="py-24 px-4 md:px-8 bg-secondary border-t border-border">
+          <div className="max-w-[1600px] mx-auto">
+             <div className="text-center mb-16">
+               <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-6 tracking-tighter">
+                 From The Boardroom <br/><span className="text-accent">To The Weekend.</span>
+               </h2>
+               <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+                 This isn't about looking good in a mirror (though that happens). It's about having the engine to say "yes" to the adventure.
+               </p>
+             </div>
+             
+             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+               {pageContent.home.lifestyleImages?.map((img, i) => (
+                 <div key={i} className="aspect-[3/4] rounded-3xl overflow-hidden relative group">
+                   <img src={img} alt="Active Lifestyle" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                 </div>
+               ))}
+             </div>
+          </div>
+        </section>
+
+        {/* Philosophy Section - Secondary BG */}
+        <section className="py-24 px-4 md:px-8 bg-primary border-t border-border">
           <div className="max-w-6xl mx-auto">
              <div className="grid md:grid-cols-2 gap-20 items-center">
                 <div>
@@ -157,7 +180,7 @@ export const Home: React.FC = () => {
                      { title: "Resilience for the Long Haul", desc: "We don't train for a 6-week shred. We train for a lifetime of high performance—in the boardroom and on the mountain." },
                      { title: "The Right Work, Done Well", desc: "Precision in the gym grants you freedom outside of it. When you are capable, the world opens up." }
                    ].map((item, i) => (
-                     <div key={i} className="bg-primary p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300 border border-border hover:border-accent/50">
+                     <div key={i} className="bg-secondary p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300 border border-border hover:border-accent/50">
                        <h3 className="font-bold text-xl text-text-primary mb-2 flex items-center">
                          <span className="w-2 h-2 bg-accent rounded-full mr-4"></span> 
                          {item.title}
@@ -170,29 +193,43 @@ export const Home: React.FC = () => {
           </div>
         </section>
 
-        {/* Who I work best with - Inverse Scheme */}
-        <section className="py-32 px-4 md:px-8 bg-text-primary text-primary">
-          <div className="max-w-5xl mx-auto">
-             <div className="text-center mb-20">
-               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-8 tracking-tighter">For The Anchors</h2>
-               <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
-               <p className="text-2xl text-primary/80 leading-relaxed max-w-3xl mx-auto font-light">
-                 You are the one everyone relies on. You don't need a cheerleader—you need a strategist to keep your engine running at full power.
-               </p>
-             </div>
-             
-             <div className="grid md:grid-cols-3 gap-8 text-left">
-               <div className="bg-primary/10 p-10 rounded-3xl border border-primary/20 hover:border-accent transition-colors duration-300">
-                 <h3 className="font-display text-3xl text-primary mb-4 uppercase">Reliability</h3>
-                 <p className="text-primary/60">You need a body that doesn't quit. Training that builds you up for the next challenge, rather than beating you down.</p>
+        {/* THE HOW - App Showcase */}
+        <section className="py-24 px-4 md:px-8 bg-text-primary text-primary overflow-hidden">
+          <div className="max-w-[1600px] mx-auto">
+             <div className="grid lg:grid-cols-2 gap-20 items-center">
+               <div>
+                 <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-8 tracking-tighter text-primary">The System</h2>
+                 <div className="w-24 h-1 bg-accent mb-8"></div>
+                 <p className="text-2xl text-primary/80 leading-relaxed max-w-xl font-light mb-12">
+                   We don't guess. We track. Every rep, every macro, every win is captured in the WRK app. This is professional-grade accountability in your pocket.
+                 </p>
+                 <ul className="space-y-6 mb-12">
+                   {[
+                     "Structured Training Programs",
+                     "Video Demonstrations",
+                     "Nutrition & Macro Tracking",
+                     "Progress History & PRs"
+                   ].map((item, i) => (
+                     <li key={i} className="flex items-center text-lg text-primary/70">
+                       <div className="w-2 h-2 bg-accent rounded-full mr-4"></div>
+                       {item}
+                     </li>
+                   ))}
+                 </ul>
+                 <Link to="/online-coaching">
+                   <Button variant="primary" className="bg-accent text-white hover:bg-white hover:text-primary border-transparent">
+                     See How It Works
+                   </Button>
+                 </Link>
                </div>
-               <div className="bg-primary/10 p-10 rounded-3xl border border-primary/20 hover:border-accent transition-colors duration-300">
-                 <h3 className="font-display text-3xl text-primary mb-4 uppercase">Efficiency</h3>
-                 <p className="text-primary/60">Maximum output, minimum wasted time. High ROI training that fits into a high-stakes schedule.</p>
-               </div>
-               <div className="bg-primary/10 p-10 rounded-3xl border border-primary/20 hover:border-accent transition-colors duration-300">
-                 <h3 className="font-display text-3xl text-primary mb-4 uppercase">Vitality</h3>
-                 <p className="text-primary/60">You want the energy to say "yes" to the adventure. Skiing, surfing, hiking—your fitness is your freedom.</p>
+               
+               {/* App Screenshots Grid */}
+               <div className="grid grid-cols-2 gap-4 rotate-3 hover:rotate-0 transition-transform duration-500">
+                 {pageContent.home.appImages?.map((img, i) => (
+                   <div key={i} className={`rounded-3xl overflow-hidden border-4 border-primary/10 shadow-2xl ${i % 2 === 0 ? 'translate-y-8' : '-translate-y-8'}`}>
+                     <img src={img} alt="WRK App Interface" className="w-full h-auto" />
+                   </div>
+                 ))}
                </div>
              </div>
           </div>
