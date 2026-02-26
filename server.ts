@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import { Octokit } from "octokit";
@@ -29,9 +30,20 @@ async function startServer() {
     const repo = process.env.GITHUB_REPO;
 
     if (!token || !owner || !repo) {
-      console.error("Missing GitHub credentials");
+      const missing = [];
+      if (!token) missing.push("GITHUB_TOKEN");
+      if (!owner) missing.push("GITHUB_OWNER");
+      if (!repo) missing.push("GITHUB_REPO");
+
+      console.error("Missing GitHub credentials:", missing.join(", "));
       return res.status(500).json({ 
-        error: "GitHub credentials not configured. Please set GITHUB_TOKEN, GITHUB_OWNER, and GITHUB_REPO environment variables." 
+        error: "GitHub credentials not configured.",
+        details: `Missing variables: ${missing.join(", ")}`,
+        debug: {
+          hasToken: !!token,
+          hasOwner: !!owner,
+          hasRepo: !!repo
+        }
       });
     }
 

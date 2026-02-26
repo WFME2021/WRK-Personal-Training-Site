@@ -94,13 +94,14 @@ export const Admin: React.FC = () => {
       const result = await response.json();
 
       if (!response.ok) {
+        console.error('Publish API Error Details:', result);
         throw new Error(result.error || 'Failed to publish');
       }
 
       alert('SUCCESS: Changes published to GitHub! The site will update automatically in a few moments.');
     } catch (error: any) {
       console.error('Publish error:', error);
-      alert(`ERROR: ${error.message}\n\nMake sure GITHUB_TOKEN, GITHUB_OWNER, and GITHUB_REPO are set in your environment variables.`);
+      alert(`ERROR: ${error.message}\n\nCheck the browser console for more details.`);
     } finally {
       setIsPublishing(false);
     }
