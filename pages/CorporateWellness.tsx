@@ -121,15 +121,16 @@ export const CorporateWellness: React.FC = () => {
       <div className="bg-primary min-h-screen text-text-primary font-sans transition-colors duration-300">
         
         {/* HERO */}
-        <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
            {/* Background Image */}
            <div className="absolute inset-0 z-0">
              <img 
                src={heroImage.url} 
                alt={heroImage.alt} 
-               className="w-full h-full object-cover opacity-10 grayscale contrast-125"
+               className="w-full h-full object-cover grayscale contrast-125"
              />
-             <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/95 to-secondary"></div>
+             <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
            </div>
            
            <div className="max-w-7xl mx-auto relative z-10 text-center">

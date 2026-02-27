@@ -14,9 +14,11 @@ export interface PageContent {
     appImages: CMSImage[];
   };
   personalTraining: {
+    heroImage: CMSImage;
     mainImage: CMSImage;
   };
   onlineCoaching: {
+    heroImage: CMSImage;
     workoutLogImage: CMSImage;
     videoImage: CMSImage;
     macroImage: CMSImage;
@@ -24,12 +26,15 @@ export interface PageContent {
     habitsImage: CMSImage;
   };
   challenge42: {
-    heroBackground: CMSImage;
+    heroImage: CMSImage;
   };
   philosophy: {
     heroImage: CMSImage;
   };
   corporateWellness: {
+    heroImage: CMSImage;
+  };
+  contact: {
     heroImage: CMSImage;
   };
   layout: {
@@ -111,6 +116,11 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
     ]
   },
   personalTraining: {
+    heroImage: {
+      url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg',
+      alt: 'Mum and kid hiking',
+      seoDescription: 'A mother and child hiking, representing the real-world application of strength training.'
+    },
     mainImage: {
       url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg',
       alt: 'Mum and kid hiking',
@@ -118,6 +128,11 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
     },
   },
   onlineCoaching: {
+    heroImage: {
+      url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/family-activity.jpg',
+      alt: 'Family activity outdoors',
+      seoDescription: 'A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching.'
+    },
     workoutLogImage: {
       url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-history.png',
       alt: 'Workout Log Interface',
@@ -145,7 +160,7 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
     },
   },
   challenge42: {
-    heroBackground: {
+    heroImage: {
       url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mountain-biking.jpg',
       alt: 'Mountain Biking',
       seoDescription: 'A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset.'
@@ -163,6 +178,13 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
       url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/golfing.jpg',
       alt: 'Corporate team golfing',
       seoDescription: 'Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs.'
+    }
+  },
+  contact: {
+    heroImage: {
+      url: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop',
+      alt: 'Gym weights',
+      seoDescription: 'Weights in a gym, representing the commitment to training.'
     }
   },
   layout: {
@@ -203,6 +225,7 @@ export const PAGE_LABELS: Record<string, string> = {
   challenge42: '42 Day Reset',
   philosophy: 'Philosophy',
   corporateWellness: 'Corporate Wellness',
+  contact: 'Contact Page',
   layout: 'Global Layout (Header/Footer)'
 };
 

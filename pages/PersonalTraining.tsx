@@ -9,7 +9,7 @@ import { FAQ } from '../components/FAQ';
 
 export const PersonalTraining: React.FC = () => {
   const { pageContent } = useContent();
-  const { mainImage } = pageContent.personalTraining;
+  const { heroImage, mainImage } = pageContent.personalTraining;
 
   const faqs = [
     {
@@ -96,15 +96,27 @@ export const PersonalTraining: React.FC = () => {
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero */}
-        <section className="bg-secondary py-24 px-6 border-b border-border">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-5xl md:text-8xl font-display font-bold mb-4 text-text-primary uppercase tracking-tighter leading-none break-words">Your Personal <br/>Fitness Instructor</h1>
-            <h2 className="text-xl md:text-2xl font-bold uppercase tracking-widest text-accent mb-8">In-Person Precision. Real-World Adventure.</h2>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-6 font-light">
-              For the high-performer who needs a body that works as hard as they do. We build the strength to dominate the boardroom and the capacity to own the weekend. If you’re looking for a personal trainer in Christchurch, this is precision coaching for a life lived at full speed.
-            </p>
-            <p className="text-sm text-text-secondary max-w-2xl mx-auto mb-10 font-medium">
-              Based at Get Me Fitter, 12 Show Place, Addington, Christchurch (private facility, free parking, no crowds). Clients from Addington, Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington & Halswell.
+        <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={heroImage.url} 
+              alt={heroImage.alt} 
+              className="w-full h-full object-cover grayscale contrast-125"
+            />
+            <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+          </div>
+
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-8">
+              In-Person Precision
+            </span>
+            <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-widest text-text-primary leading-none mb-8">
+              Your Personal <br/><span className="text-accent">Fitness Instructor</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto font-light leading-relaxed mb-12">
+              For the high-performer who needs a body that works as hard as they do. We build the strength to dominate the boardroom and the capacity to own the weekend.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4">
               <Link to="/contact">
@@ -114,6 +126,9 @@ export const PersonalTraining: React.FC = () => {
                 <Button variant="outline" size="lg">Take Diagnostic</Button>
               </Link>
             </div>
+            <p className="text-xs md:text-sm text-text-secondary mt-8 max-w-2xl mx-auto font-medium opacity-80">
+              Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.
+            </p>
           </div>
         </section>
 

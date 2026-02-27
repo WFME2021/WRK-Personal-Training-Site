@@ -9,7 +9,7 @@ import { FAQ } from '../components/FAQ';
 
 export const Challenge42: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroBackground } = pageContent.challenge42;
+  const { heroImage } = pageContent.challenge42;
 
   const faqs = [
     {
@@ -101,11 +101,11 @@ export const Challenge42: React.FC = () => {
         <section className="relative min-h-screen flex flex-col items-center justify-center text-white bg-black overflow-hidden pt-32 pb-20">
           <div className="absolute inset-0 z-0">
              <img 
-              src={heroBackground.url} 
-              alt={heroBackground.alt} 
-              className="w-full h-full object-cover opacity-60 grayscale contrast-125"
+              src={heroImage.url} 
+              alt={heroImage.alt} 
+              className="w-full h-full object-cover grayscale contrast-125"
              />
-             {/* Matching gradient overlay from other pages */}
+             <div className="absolute inset-0 bg-black/70 mix-blend-multiply"></div>
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
           </div>
           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">

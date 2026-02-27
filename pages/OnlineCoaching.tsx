@@ -9,7 +9,7 @@ import { FAQ } from '../components/FAQ';
 
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
-  const { workoutLogImage, habitsImage } = pageContent.onlineCoaching;
+  const { heroImage, workoutLogImage, habitsImage } = pageContent.onlineCoaching;
 
   const faqs = [
     {
@@ -91,21 +91,32 @@ export const OnlineCoaching: React.FC = () => {
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero - Uses Secondary BG for contrast in Light Mode */}
-        <section className="bg-secondary text-text-primary py-24 px-6 rounded-b-[3rem] border-b border-border">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none">
+        <section className="relative h-[85vh] flex items-center justify-center overflow-hidden rounded-b-[3rem]">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={heroImage.url} 
+              alt={heroImage.alt} 
+              className="w-full h-full object-cover grayscale contrast-125"
+            />
+            <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+          </div>
+
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-8">
+              Freedom. Everywhere.
+            </span>
+            <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none text-text-primary">
               Online Personal <br/><span className="text-accent">Training</span>
             </h1>
-            <h2 className="font-bold uppercase tracking-[0.2em] mb-4 text-xl text-text-primary">
-              Freedom. Everywhere.
-            </h2>
             <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
               Structure + Accountability
             </p>
-            <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed mb-8 font-light">
+            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed mb-8 font-light">
               For the professional who refuses to let travel kill their momentum. We build a system that works in a hotel room, a home gym, or a high-end facility. Your location changes; your standards don't.
             </p>
-            <p className="text-sm font-medium text-text-secondary mb-12">
+            <p className="text-sm font-medium text-text-secondary mb-12 opacity-80">
               NZ-wide coaching. Fortnightly check-ins. 12-week commitment for real results.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-6">

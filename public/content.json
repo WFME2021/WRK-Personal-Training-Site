@@ -2,65 +2,65 @@
   "pages": {
     "home": {
       "heroImage": {
-        "url": "https://i.postimg.cc/vBXwJPvy/family-activity.jpg",
-        "alt": "Active Family - Vitality",
-        "seoDescription": "A father and mother outside playing with kids, fitness to have adventures"
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/downhill-skiing.jpg",
+        "alt": "Downhill Skiing - Vitality",
+        "seoDescription": "A skier carving down a snowy mountain, representing the vitality and energy gained from WRK Personal Training."
       },
       "ptImage": {
-        "url": "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/dad-kid-paddleboard.jpg",
         "alt": "Dad and kid paddleboarding",
         "seoDescription": "A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training."
       },
       "onlineImage": {
-        "url": "https://i.postimg.cc/gjZFxYP7/active-mum.jpg",
-        "alt": "Active mum, playing with child",
-        "seoDescription": "an active mum playing with child, using her core strength to hold her kid up in air"
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/family-activity.jpg",
+        "alt": "Family activity outdoors",
+        "seoDescription": "A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching."
       },
       "corporateImage": {
-        "url": "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/golfing.jpg",
         "alt": "Corporate team golfing",
         "seoDescription": "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
       },
       "lifestyleImages": [
         {
-          "url": "https://i.postimg.cc/j2wwCJ5m/dad-push-up-with-kid.jpg",
-          "alt": "Dad and kid doing push ups",
-          "seoDescription": "Active parenting, dad and child doing push ups together"
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/dad-kid-paddleboard.jpg",
+          "alt": "Dad and kid paddleboarding",
+          "seoDescription": "Active parenting and outdoor adventure."
         },
         {
-          "url": "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg",
           "alt": "Mum and kid hiking",
           "seoDescription": "Mother and child hiking in nature, representing strength and family time."
         },
         {
-          "url": "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/guy-surfboard.jpg",
           "alt": "Man with surfboard",
           "seoDescription": "A man walking with a surfboard, symbolizing the physical capacity to enjoy hobbies."
         },
         {
-          "url": "https://i.postimg.cc/zXN8ygVy/female-jetski.jpg",
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/female-jetski.jpg",
           "alt": "Woman on jetski",
           "seoDescription": "A woman riding a jetski, showing the energy and confidence gained from fitness."
         }
       ],
       "appImages": [
         {
-          "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/habit-tracking.png",
           "alt": "WRK App Habit Tracking",
           "seoDescription": "Screenshot of the WRK app showing habit tracking features."
         },
         {
-          "url": "https://i.postimg.cc/3w5FjthV/exercise-history.png",
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-history.png",
           "alt": "WRK App Exercise History",
           "seoDescription": "Screenshot of the WRK app displaying exercise history and progress."
         },
         {
-          "url": "https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg",
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/macro-tracking-app.png",
           "alt": "WRK App Macro Tracking",
           "seoDescription": "Screenshot of the WRK app showing macro and nutrition tracking."
         },
         {
-          "url": "https://i.postimg.cc/WzHzvp7V/exercise-videos.png",
+          "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-videos.png",
           "alt": "WRK App Exercise Videos",
           "seoDescription": "Screenshot of the WRK app showing instructional exercise videos."
         }
@@ -68,67 +68,67 @@
     },
     "personalTraining": {
       "mainImage": {
-        "url": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-        "alt": "Dad and kid hiking in carrier",
-        "seoDescription": "A dad carrying his child in a carry pack hiking in the hills, representing the real-world application of strength training."
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg",
+        "alt": "Mum and kid hiking",
+        "seoDescription": "A mother and child hiking, representing the real-world application of strength training."
       }
     },
     "onlineCoaching": {
       "workoutLogImage": {
-        "url": "https://i.postimg.cc/3w5FjthV/exercise-history.png",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-history.png",
         "alt": "Workout Log Interface",
         "seoDescription": "Mobile interface showing detailed workout logs."
       },
       "videoImage": {
-        "url": "https://i.postimg.cc/WzHzvp7V/exercise-videos.png",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-videos.png",
         "alt": "Video Demonstration Interface",
         "seoDescription": "Mobile interface showing exercise video demonstrations."
       },
       "macroImage": {
-        "url": "https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/macro-tracking-app.png",
         "alt": "Macro Dashboard Interface",
         "seoDescription": "Mobile interface showing macro nutrient tracking dashboard."
       },
       "nutritionLogImage": {
-        "url": "https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/recipe-tracking.png",
         "alt": "Nutrition Log Interface",
         "seoDescription": "Mobile interface showing nutrition and recipe logging."
       },
       "habitsImage": {
-        "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/habit-tracking.png",
         "alt": "Habits Interface",
         "seoDescription": "Mobile interface showing daily habit tracking."
       }
     },
     "challenge42": {
       "heroBackground": {
-        "url": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mountain-biking.jpg",
         "alt": "Mountain Biking",
         "seoDescription": "A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset."
       }
     },
     "philosophy": {
       "heroImage": {
-        "url": "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg",
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
         "alt": "Dark gym atmosphere",
         "seoDescription": "A dark, atmospheric gym setting representing the serious, focused nature of the philosophy."
       }
     },
     "corporateWellness": {
       "heroImage": {
-        "url": "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
-        "alt": "Corporate team exploring the outdoors",
-        "seoDescription": "Professionals on a team building hike, illustrating the work-life balance and performance focus of corporate wellness programs."
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/golfing.jpg",
+        "alt": "Corporate team golfing",
+        "seoDescription": "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
       }
     },
     "layout": {
       "logoLight": {
-        "url": "https://i.postimg.cc/13cs5yGp/WRK-LOGOS-(Final).png",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-white-transparent.png",
         "alt": "WRK Personal Training Logo (Light)",
         "seoDescription": "White WRK Personal Training logo for dark backgrounds."
       },
       "logoDark": {
-        "url": "https://i.postimg.cc/59nFgbLv/wrk-logo-black-transparent.png",
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/main/images/wrk-logo-black-transparent.png",
         "alt": "WRK Personal Training Logo (Dark)",
         "seoDescription": "Black WRK Personal Training logo for light backgrounds."
       }
