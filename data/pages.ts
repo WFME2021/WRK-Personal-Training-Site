@@ -28,13 +28,13 @@ export interface PageContent {
   challenge42: {
     heroImage: CMSImage;
   };
+  contact: {
+    heroImage: CMSImage;
+  };
   philosophy: {
     heroImage: CMSImage;
   };
   corporateWellness: {
-    heroImage: CMSImage;
-  };
-  contact: {
     heroImage: CMSImage;
   };
   layout: {
@@ -166,6 +166,13 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
       seoDescription: 'A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset.'
     },
   },
+  contact: {
+    heroImage: {
+      url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+      alt: 'Contact Page Hero',
+      seoDescription: 'Atmospheric gym background for contact page.'
+    }
+  },
   philosophy: {
     heroImage: {
       url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
@@ -178,13 +185,6 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
       url: 'https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/golfing.jpg',
       alt: 'Corporate team golfing',
       seoDescription: 'Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs.'
-    }
-  },
-  contact: {
-    heroImage: {
-      url: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop',
-      alt: 'Gym weights',
-      seoDescription: 'Weights in a gym, representing the commitment to training.'
     }
   },
   layout: {
@@ -237,7 +237,6 @@ export const FIELD_LABELS: Record<string, string> = {
   onlineImage: 'Online Coaching Card Image',
   corporateImage: 'Corporate Wellness Card Image',
   mainImage: 'Main Feature Image',
-  heroBackground: 'Background Image',
   workoutLogImage: 'Phone Screen: Session Log',
   videoImage: 'Phone Screen: Video Example',
   macroImage: 'Phone Screen: Macro Dashboard',

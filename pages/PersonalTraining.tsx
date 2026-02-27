@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Check, Target, UserCheck, ShieldCheck, MapPin } from 'lucide-react';
+import { Check, Target, UserCheck, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
@@ -11,38 +11,29 @@ export const PersonalTraining: React.FC = () => {
   const { pageContent } = useContent();
   const { heroImage, mainImage } = pageContent.personalTraining;
 
+  const scrollToEnquiry = () => {
+    const element = document.getElementById('enquiry-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const faqs = [
     {
-      question: "Do you offer personal training in Addington?",
-      answer: "Yes. Sessions run from Get Me Fitter (12 Show Place, Addington) — a private facility with free parking and no crowds."
+      question: "How often do I need to see you?",
+      answer: "Most hybrid clients train with me once a week or once a fortnight to refine technique, then execute the rest of their sessions on their own via the app."
     },
     {
-      question: "What is 'Hybrid' Personal Training?",
-      answer: "Hybrid means you get 1-on-1 coaching in person for precision (technique, safety, progression), plus app-based programming for the rest of your week so you can execute on your schedule — at the gym or at home."
+      question: "Do I need a gym membership?",
+      answer: "Yes. You'll need access to a gym for your solo sessions. Our 1:1 sessions happen at Get Me Fitter in Addington (no membership required there)."
     },
     {
-      question: "How often should I see a personal trainer?",
-      answer: "Most clients do 1–3 in-person sessions per week, depending on experience, schedule, and goals. We pick the minimum effective dose, then build consistency before adding more."
+      question: "Is this suitable for beginners?",
+      answer: "Absolutely. We start with the basics. The goal is to build your confidence and competence so you feel like you own the gym floor."
     },
     {
-      question: "Can you help if I’ve had injuries or pain?",
-      answer: "If you’re cleared to train, yes. We work around limitations, progress gradually, and build capacity where you’re currently fragile. If something needs clinical input, I’ll refer you to the right physio and we’ll coordinate."
-    },
-    {
-      question: "What if I'm a beginner?",
-      answer: "Perfect. Beginners usually get the fastest ROI because we remove guesswork. We start simple, build strong movement patterns, and make the plan realistic enough to stick."
-    },
-    {
-      question: "How long are the sessions?",
-      answer: "Sessions are 30 minutes. We focus on high-ROI work only—you’re not paying to warm up on a treadmill or wander around."
-    },
-    {
-      question: "Do you train clients from other suburbs?",
-      answer: "Yes — clients regularly come from Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington, and Halswell."
-    },
-    {
-      question: "Is this focused on fat loss, strength, or recomposition?",
-      answer: "All three. The plan is built around your goal, but the foundation is the same: progressive strength training, recovery guardrails, and nutrition habits you can actually maintain."
+      question: "What if I have an injury?",
+      answer: "We work around it. If needed, I can coordinate with your physio to ensure we're loading you safely and aiding recovery."
     }
   ];
 
@@ -59,7 +50,7 @@ export const PersonalTraining: React.FC = () => {
             "provider": {
               "@type": "LocalBusiness",
               "name": "WRK Personal Training",
-              "image": mainImage.url
+              "image": heroImage?.url || mainImage.url
             },
             "areaServed": {
               "@type": "City",
@@ -95,40 +86,53 @@ export const PersonalTraining: React.FC = () => {
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
-        {/* Hero */}
-        <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image with Overlay */}
+        {/* Hero Section - Full Width Banner */}
+        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src={heroImage.url} 
-              alt={heroImage.alt} 
-              className="w-full h-full object-cover grayscale contrast-125"
-            />
-            <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
+            {heroImage && (
+              <img 
+                src={heroImage.url} 
+                alt={heroImage.alt} 
+                className="w-full h-full object-cover grayscale contrast-125"
+              />
+            )}
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-8">
-              In-Person Precision
-            </span>
-            <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-widest text-text-primary leading-none mb-8">
-              Your Personal <br/><span className="text-accent">Fitness Instructor</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto font-light leading-relaxed mb-12">
-              For the high-performer who needs a body that works as hard as they do. We build the strength to dominate the boardroom and the capacity to own the weekend.
-            </p>
-            <div className="flex flex-col md:flex-row justify-center gap-4">
-              <Link to="/contact">
-                <Button size="lg">Apply for Hybrid</Button>
-              </Link>
-              <Link to="/assessment">
-                <Button variant="outline" size="lg">Take Diagnostic</Button>
-              </Link>
-            </div>
-            <p className="text-xs md:text-sm text-text-secondary mt-8 max-w-2xl mx-auto font-medium opacity-80">
-              Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.
-            </p>
+          {/* Content */}
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
+              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
+                In-Person Precision
+              </h3>
+              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Personal Training
+              </h1>
+              
+              <div className="max-w-3xl mx-auto space-y-8">
+                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
+                  For the high-performer who needs a body that works as hard as they do. We build the strength to dominate the boardroom and the capacity to own the weekend.
+                </p>
+                
+                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
+                  <Link to="/contact">
+                    <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
+                      Apply for Hybrid <ArrowRight size={20} className="ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/assessment">
+                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
+                      Take Diagnostic
+                    </Button>
+                  </Link>
+                </div>
+
+                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
+                  Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.
+                </p>
+              </div>
           </div>
         </section>
 

@@ -81,6 +81,7 @@ export const Contact: React.FC = () => {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "WRK Personal Training",
+          "image": heroImage?.url,
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "12 Show Place",
@@ -101,121 +102,119 @@ export const Contact: React.FC = () => {
       />
       
       <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
-        
-        {/* HERO */}
+        {/* Hero Section - Full Width Banner */}
         <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-           {/* Background Image */}
-           <div className="absolute inset-0 z-0">
-             <img 
-               src={heroImage.url} 
-               alt={heroImage.alt} 
-               className="w-full h-full object-cover grayscale contrast-125"
-             />
-             <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
-             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-           </div>
-           
-           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-widest text-text-primary leading-none mb-6">
-               Start <span className="text-accent">Here</span>
-             </h1>
-             <p className="text-xl text-text-secondary max-w-2xl mx-auto font-light">
-               Ready to commit to the process? Let's get to work.
-             </p>
-           </div>
-        </section>
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            {heroImage && (
+              <img 
+                src={heroImage.url} 
+                alt={heroImage.alt} 
+                className="w-full h-full object-cover grayscale contrast-125"
+              />
+            )}
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+          </div>
 
-        {/* FORM SECTION */}
-        <section className="py-20 px-6">
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold mb-4 text-text-primary uppercase tracking-wide">Application for Coaching</h2>
-              <p className="text-text-secondary">
-                Please complete the form below. We prioritize clients who are ready to commit to a structured process.
+          {/* Content */}
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-12">
+              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
+                Start Here
+              </h3>
+              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Contact
+              </h1>
+              <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed max-w-2xl">
+                Ready to commit to the process? Let's get to work.
               </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-8 bg-secondary p-8 md:p-12 border border-border shadow-sm rounded-2xl">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="block text-sm font-medium text-text-secondary">Full Name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-medium text-text-secondary">Email Address</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="phone" className="block text-sm font-medium text-text-secondary">Phone Number</label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="message" className="block text-sm font-medium text-text-secondary">Your Goals / Current Situation</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                ></textarea>
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="referralSource" className="block text-sm font-medium text-text-secondary">How did you hear about us?</label>
-                <select
-                  id="referralSource"
-                  name="referralSource"
-                  value={formData.referralSource}
-                  onChange={handleChange}
-                  className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none cursor-pointer"
-                >
-                  <option value="">Select an option</option>
-                  <option value="Google Search">Google Search</option>
-                  <option value="Social Media">Social Media</option>
-                  <option value="Referral">Friend / Referral</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <Button type="submit" fullWidth disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Submit Application'}
-              </Button>
-              
-              <p className="text-xs text-center text-text-secondary mt-4">
-                Your information is private and will strictly be used for coaching application purposes.
-              </p>
-            </form>
           </div>
         </section>
+
+        <div className="flex items-center justify-center px-6 py-20">
+          <div className="w-full max-w-2xl">
+            <form onSubmit={handleSubmit} className="space-y-8 bg-secondary p-8 md:p-12 border border-border shadow-sm rounded-2xl -mt-20 relative z-20">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-text-secondary">Full Name</label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-text-secondary">Email Address</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-text-secondary">Phone Number</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-text-secondary">Your Goals / Current Situation</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                  ></textarea>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="referralSource" className="block text-sm font-medium text-text-secondary">How did you hear about us?</label>
+                  <select
+                    id="referralSource"
+                    name="referralSource"
+                    value={formData.referralSource}
+                    onChange={handleChange}
+                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none cursor-pointer"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="Google Search">Google Search</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Referral">Friend / Referral</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <Button type="submit" fullWidth disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                </Button>
+                
+                <p className="text-xs text-center text-text-secondary mt-4">
+                  Your information is private and will strictly be used for coaching application purposes.
+                </p>
+              </form>
+          </div>
+        </div>
       </div>
     </>
   );

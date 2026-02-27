@@ -19,29 +19,36 @@ export const Philosophy: React.FC = () => {
 
       <div className="bg-primary min-h-screen font-sans selection:bg-accent selection:text-white pb-24 transition-colors duration-300">
         
-        {/* HERO SECTION */}
-        <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image with Overlay */}
+        {/* Hero Section - Full Width Banner */}
+        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src={heroImage.url} 
-              alt={heroImage.alt} 
-              className="w-full h-full object-cover grayscale contrast-125"
-            />
-            <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
+            {heroImage && (
+              <img 
+                src={heroImage.url} 
+                alt={heroImage.alt} 
+                className="w-full h-full object-cover grayscale contrast-125"
+              />
+            )}
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-8">
-              The Methodology
-            </span>
-            <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-widest text-text-primary leading-none mb-8">
-              Capacity Is <br/><span className="text-accent">Currency.</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto font-light leading-relaxed mb-12">
-              When you have capacity, you have options. When you don't, you have constraints.
-            </p>
+          {/* Content */}
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
+              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
+                The Methodology
+              </h3>
+              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Capacity Is <br/><span className="text-accent">Currency.</span>
+              </h1>
+              
+              <div className="max-w-3xl mx-auto space-y-8">
+                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
+                  When you have capacity, you have options. When you don't, you have constraints.
+                </p>
+              </div>
           </div>
         </section>
 

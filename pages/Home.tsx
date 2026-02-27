@@ -73,66 +73,57 @@ export const Home: React.FC = () => {
 
       <div className="flex flex-col w-full overflow-x-hidden bg-primary transition-colors duration-300">
         
-        {/* Hero Section */}
-        <section className="relative px-4 pt-12 pb-12 md:px-8">
-          <div className="max-w-[1800px] mx-auto">
-            
-            {/* Top Text - Massive Typography */}
-            <div className="flex flex-col items-center justify-center pt-8 mb-16 md:mb-20">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-center text-accent mb-4">
+        {/* Hero Section - Full Width Banner */}
+        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={heroImage.url} 
+              alt={heroImage.alt} 
+              className="w-full h-full object-cover grayscale contrast-125"
+            />
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
+              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
                 Train Smarter. Play Harder.
               </h3>
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-center text-text-primary max-w-6xl">
+              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
                 Christchurch Personal Trainer
               </h1>
-              <div className="mt-12 flex flex-col items-center">
-                <p className="text-lg md:text-2xl text-text-primary font-medium max-w-3xl text-center leading-relaxed">
+              
+              <div className="max-w-3xl mx-auto space-y-8">
+                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
                   Whether you run a boardroom or run a household, people rely on you. <br className="hidden md:block"/>
                   We build the physical capacity to dominate the work week and own the weekend.
                 </p>
-                <p className="text-xs md:text-sm text-text-secondary mt-6 max-w-2xl text-center font-medium">
-                  Based at Get Me Fitter, 12 Show Place, Addington, Christchurch. Clients from Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington, Halswell.
+                
+                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
+                  <Link to="/assessment">
+                    <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
+                      Start Diagnostic <ArrowRight size={20} className="ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
+                      Apply to Work Together
+                    </Button>
+                  </Link>
+                </div>
+
+                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
+                  Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.
                 </p>
-                <div className="w-12 h-1 bg-accent mt-6"></div>
               </div>
-            </div>
-
-            {/* Main Visual Block - Rounded Corners */}
-            <div className="relative w-full h-[60vh] md:h-[85vh] rounded-[3rem] md:rounded-[4rem] overflow-hidden group shadow-2xl border border-border">
-              <img 
-                src={heroImage.url} 
-                alt={heroImage.alt} 
-                className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 transition-transform duration-1000 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
-              
-              {/* Overlay Text */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center mix-blend-overlay">
-                <span className="font-display text-[20vw] font-bold text-white opacity-20 uppercase tracking-tighter leading-none pointer-events-none">
-                  Full<br/>Capacity
-                </span>
-              </div>
-              
-              {/* Floating CTA */}
-              <div className="absolute bottom-8 left-8 md:bottom-16 md:left-16 flex flex-col md:flex-row gap-4">
-                <Link to="/assessment">
-                  <Button variant="primary" className="px-10 py-5 text-sm md:text-base flex items-center gap-2">
-                    Start Diagnostic <ArrowRight size={20} />
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-sm md:text-base">
-                    Apply to Work Together
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="mt-8 text-center flex justify-center items-center gap-4">
-               <span className="h-px w-12 bg-border"></span>
-               <p className="text-xs font-bold uppercase tracking-[0.2em] text-text-secondary">Professional Discipline. Epic Recreation.</p>
-               <span className="h-px w-12 bg-border"></span>
-            </div>
+          </div>
+          
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/50 hidden md:block">
+            <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
           </div>
         </section>
 

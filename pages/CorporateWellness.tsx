@@ -120,39 +120,51 @@ export const CorporateWellness: React.FC = () => {
 
       <div className="bg-primary min-h-screen text-text-primary font-sans transition-colors duration-300">
         
-        {/* HERO */}
-        <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-           {/* Background Image */}
-           <div className="absolute inset-0 z-0">
-             <img 
-               src={heroImage.url} 
-               alt={heroImage.alt} 
-               className="w-full h-full object-cover grayscale contrast-125"
-             />
-             <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
-             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-           </div>
-           
-           <div className="max-w-7xl mx-auto relative z-10 text-center">
-            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-widest text-text-primary leading-none mb-6">
-              High-Performance <br/><span className="text-accent">Culture</span>
-            </h1>
-            <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
-              Remote corporate wellbeing program (NZ-wide)
-            </p>
-            <p className="text-xl md:text-2xl text-text-secondary font-light max-w-3xl mx-auto mb-8 leading-relaxed">
-              Vitality is a competitive advantage. Teams that have physical capacity execute better, lead better, and last longer. <br/>
-              WRK Corporate Wellness is a remote, app-based system that gives every employee structured training, nutrition tools, and a private company community — so they can show up ready to win.
-            </p>
-            <div className="flex flex-col md:flex-row justify-center gap-4 mb-12">
-                <Button size="lg" onClick={scrollToEnquiry}>Send an Enquiry</Button>
-                <a href="#audit" className="inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-widest text-text-primary border border-border rounded-xl hover:bg-secondary transition-colors">
-                    Audit your team’s potential
-                </a>
-            </div>
-            <p className="text-sm font-medium text-text-secondary">
-              NZ-wide • Remote delivery • Beginner to intermediate friendly
-            </p>
+        {/* Hero Section - Full Width Banner */}
+        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            {heroImage && (
+              <img 
+                src={heroImage.url} 
+                alt={heroImage.alt} 
+                className="w-full h-full object-cover grayscale contrast-125"
+              />
+            )}
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
+              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
+                High-Performance Culture
+              </h3>
+              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Corporate Wellness
+              </h1>
+              
+              <div className="max-w-3xl mx-auto space-y-8">
+                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
+                  Vitality is a competitive advantage. Teams that have physical capacity execute better, lead better, and last longer.
+                </p>
+                
+                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
+                  <Button variant="primary" onClick={scrollToEnquiry} className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
+                    Send an Enquiry <ArrowRight size={20} className="ml-2" />
+                  </Button>
+                  <a href="#audit">
+                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
+                      Audit your team’s potential
+                    </Button>
+                  </a>
+                </div>
+
+                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
+                  NZ-wide • Remote delivery • Beginner to intermediate friendly
+                </p>
+              </div>
           </div>
         </section>
 

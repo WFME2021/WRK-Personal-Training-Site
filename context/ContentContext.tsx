@@ -44,24 +44,15 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         
         const data = await response.json();
         
-        // Only update if we have valid data
         if (data.blogs && Array.isArray(data.blogs)) {
-            // Merge with local storage (local storage takes precedence if modified recently? 
-            // Actually, usually remote is source of truth, but for this "CMS" flow, 
-            // we want to load remote as the base.
-            // However, if the user has unsaved local changes, we might overwrite them.
-            // For now, let's assume remote is the "published" state.
-            // If local storage is empty or matches default, we update.
-            // But if we want "dynamic fetch on every load", we should probably prioritize remote
-            // unless we have specific "draft" logic. 
-            // Given the user's request "fetch CMS data dynamically", we should update state.
-            
             setBlogPosts(data.blogs);
         }
         
         if (data.pages) {
+            // Simple update - trust the remote content if it exists
+            // We merge with INITIAL_PAGE_CONTENT to ensure new fields are present
             setPageContent(prev => ({
-                ...INITIAL_PAGE_CONTENT, // Ensure structure
+                ...INITIAL_PAGE_CONTENT,
                 ...data.pages
             }));
         }

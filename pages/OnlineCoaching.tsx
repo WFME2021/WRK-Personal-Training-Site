@@ -54,7 +54,8 @@ export const OnlineCoaching: React.FC = () => {
             "serviceType": "Online Personal Training",
             "provider": {
               "@type": "LocalBusiness",
-              "name": "WRK Personal Training"
+              "name": "WRK Personal Training",
+              "image": heroImage?.url
             },
             "areaServed": {
               "@type": "Country",
@@ -90,43 +91,53 @@ export const OnlineCoaching: React.FC = () => {
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
-        {/* Hero - Uses Secondary BG for contrast in Light Mode */}
-        <section className="relative h-[85vh] flex items-center justify-center overflow-hidden rounded-b-[3rem]">
-          {/* Background Image with Overlay */}
+        {/* Hero Section - Full Width Banner */}
+        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src={heroImage.url} 
-              alt={heroImage.alt} 
-              className="w-full h-full object-cover grayscale contrast-125"
-            />
-            <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
+            {heroImage && (
+              <img 
+                src={heroImage.url} 
+                alt={heroImage.alt} 
+                className="w-full h-full object-cover grayscale contrast-125"
+              />
+            )}
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/60"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-8">
-              Freedom. Everywhere.
-            </span>
-            <h1 className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-6 leading-none text-text-primary">
-              Online Personal <br/><span className="text-accent">Training</span>
-            </h1>
-            <p className="font-bold uppercase tracking-[0.2em] mb-8 text-sm text-text-secondary">
-              Structure + Accountability
-            </p>
-            <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-              For the professional who refuses to let travel kill their momentum. We build a system that works in a hotel room, a home gym, or a high-end facility. Your location changes; your standards don't.
-            </p>
-            <p className="text-sm font-medium text-text-secondary mb-12 opacity-80">
-              NZ-wide coaching. Fortnightly check-ins. 12-week commitment for real results.
-            </p>
-            <div className="flex flex-col md:flex-row justify-center gap-6">
-              <Link to="/contact">
-                <Button variant="primary" className="px-10 py-5">Apply for Online</Button>
-              </Link>
-              <Link to="/assessment">
-                <Button variant="outline" className="px-10 py-5">Take Diagnostic</Button>
-              </Link>
-            </div>
+          {/* Content */}
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
+              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
+                Freedom. Everywhere.
+              </h3>
+              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Online Coaching
+              </h1>
+              
+              <div className="max-w-3xl mx-auto space-y-8">
+                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
+                  For the professional who refuses to let travel kill their momentum. We build a system that works in a hotel room, a home gym, or a high-end facility. Your location changes; your standards don't.
+                </p>
+                
+                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
+                  <Link to="/contact">
+                    <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
+                      Apply for Online <ArrowRight size={20} className="ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/assessment">
+                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
+                      Take Diagnostic
+                    </Button>
+                  </Link>
+                </div>
+
+                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
+                  NZ-wide coaching. Fortnightly check-ins. 12-week commitment for real results.
+                </p>
+              </div>
           </div>
         </section>
 
