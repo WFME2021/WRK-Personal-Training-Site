@@ -7,6 +7,8 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
+import { Hero } from '../components/Hero';
+
 export const Home: React.FC = () => {
   const { pageContent } = useContent();
   const { heroImage, ptImage, onlineImage, corporateImage } = pageContent.home;
@@ -62,61 +64,21 @@ export const Home: React.FC = () => {
       <div className="flex flex-col w-full overflow-x-hidden bg-primary transition-colors duration-300">
         
         {/* Hero Section - Full Width Banner */}
-        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src={heroImage.url} 
-              alt={heroImage.alt} 
-              className="w-full h-full object-cover grayscale contrast-125"
-            />
-            {/* Dark Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Train Smarter. <br/><span className="text-accent">Play Harder.</span>
-              </h1>
-              
-              <div className="max-w-3xl mx-auto space-y-8">
-                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  Coaching for busy professionals (often parents) who want <strong>fat loss, less pain, and consistency</strong>—without gym dominance or diet jail.
-                </p>
-                
-                <p className="text-base md:text-lg text-white/80 font-light leading-relaxed">
-                  You don’t need balls-to-the-wall intensity. You need a plan that fits your life, respects your body, and builds real-world capacity.
-                </p>
-                
-                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
-                  <Link to="/contact">
-                    <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                      Book a consult <ArrowRight size={20} className="ml-2" />
-                    </Button>
-                  </Link>
-                  <Link to="/online-coaching">
-                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                      Explore Online Coaching
-                    </Button>
-                  </Link>
-                </div>
-
-                {/* Trust / Quick Proof Bar */}
-                <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-8 text-white/70 text-sm font-medium uppercase tracking-wider">
-                  <span className="flex items-center"><span className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></span>Pain-aware training</span>
-                  <span className="flex items-center"><span className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></span>Protein-forward nutrition</span>
-                  <span className="flex items-center"><span className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></span>Built around time + stress</span>
-                </div>
-              </div>
-          </div>
-          
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/50 hidden md:block">
-            <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
-          </div>
-        </section>
+        <Hero 
+          image={heroImage}
+          title="Train Smarter. Play Harder."
+          subtitle="Coaching for busy professionals (often parents) who want fat loss, less pain, and consistency—without gym dominance or diet jail."
+          bullets={[
+            "Pain-aware training",
+            "Protein-forward nutrition",
+            "Built around time + stress"
+          ]}
+          secondaryCta={{
+            label: "Take the assessment",
+            href: "/assessment"
+          }}
+          kicker="You don’t need balls-to-the-wall intensity. You need a plan that fits your life, respects your body, and builds real-world capacity."
+        />
 
         {/* The Point of Training */}
         <section className="py-24 px-4 md:px-8 bg-secondary border-t border-border">
@@ -261,7 +223,7 @@ export const Home: React.FC = () => {
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">1:1 In-Person Training</h3>
                 <p className="text-text-secondary font-medium max-w-lg mb-4">Ongoing coaching at Get Me Fitter Gym—sessions, homework, and nutrition guidance.</p>
                 <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: accountability, injury-aware progress, fastest clarity.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Start 1:1 training</span>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
               </Link>
 
               {/* Service Card 2: Online */}
@@ -277,7 +239,7 @@ export const Home: React.FC = () => {
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Online Personal Training</h3>
                 <p className="text-text-secondary font-medium max-w-lg mb-4">App-based programming + check-ins + nutrition guidance.</p>
                 <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: structure, flexibility, and results without being tied to a location.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Start online coaching</span>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
               </Link>
 
                {/* Service Card 3: Corporate */}
@@ -296,7 +258,7 @@ export const Home: React.FC = () => {
                 </div>
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Corporate Wellness</h3>
                 <p className="text-text-secondary font-medium max-w-lg mb-4">A personal trainer in every employee’s pocket. App-led programs that support fitness, posture, stress, and consistency.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Corporate enquiry</span>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
               </Link>
 
               {/* Service Card 4: 42 Day Reset */}
@@ -311,7 +273,7 @@ export const Home: React.FC = () => {
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">42-Day Reset</h3>
                 <p className="text-text-secondary font-medium max-w-lg mb-4">A simple, structured reset with training + protein-forward nutrition guidance + automated support in the app.</p>
                 <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: momentum and a clean restart without overthinking.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Start the 42-Day Reset</span>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
               </Link>
 
             </div>

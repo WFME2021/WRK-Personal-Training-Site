@@ -7,6 +7,8 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
+import { Hero } from '../components/Hero';
+
 export const Challenge42: React.FC = () => {
   const { pageContent } = useContent();
   const { heroImage } = pageContent.challenge42;
@@ -98,54 +100,21 @@ export const Challenge42: React.FC = () => {
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero Section - Full Width Banner */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            {heroImage && (
-              <img 
-                src={heroImage.url} 
-                alt={heroImage.alt} 
-                className="w-full h-full object-cover grayscale contrast-125"
-              />
-            )}
-            {/* Dark Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                The Circuit Breaker
-              </h3>
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                42 Day Reset
-              </h1>
-              
-              <div className="max-w-3xl mx-auto space-y-8">
-                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  The system reboot you've been waiting for. Clear the fog, rebuild your momentum, and get back to operating at full capacity.
-                </p>
-                
-                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
-                  <a href="https://wrkpersonaltraining.mypthub.net/p/225904" target="_blank" rel="noopener noreferrer">
-                    <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                      Start Now ($47 NZD) <ArrowRight size={20} className="ml-2" />
-                    </Button>
-                  </a>
-                  <Link to="/assessment">
-                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                      Take Diagnostic
-                    </Button>
-                  </Link>
-                </div>
-
-                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
-                  One-time payment • 42 days access • No subscription
-                </p>
-              </div>
-          </div>
-        </section>
+        <Hero 
+          image={heroImage}
+          title="42 Day Reset"
+          subtitle="The system reboot you've been waiting for. Clear the fog, rebuild your momentum, and get back to operating at full capacity."
+          bullets={[
+            "Self-Guided Training",
+            "Simple Nutrition Support",
+            "One-Time Payment ($47)"
+          ]}
+          secondaryCta={{
+            label: "Take the assessment",
+            href: "/assessment"
+          }}
+          kicker="One-time payment • 42 days access • No subscription"
+        />
 
         {/* Who it's for */}
         <section className="py-24 px-6 bg-primary">
@@ -227,10 +196,10 @@ export const Challenge42: React.FC = () => {
                <p className="text-text-secondary mb-10 text-lg">If you’re ready to start — start.</p>
                <div className="flex flex-col md:flex-row justify-center gap-6 items-center">
                  <a href="https://wrkpersonaltraining.mypthub.net/p/225904" target="_blank" rel="noopener noreferrer">
-                   <Button variant="primary" size="lg" className="px-16 py-6 text-xl">Start ($47 NZD)</Button>
+                   <Button variant="primary" size="lg" className="px-16 py-6 text-xl">Start the 42-Day Reset</Button>
                  </a>
                  <Link to="/assessment">
-                   <Button variant="outline" size="lg">Take Diagnostic</Button>
+                   <Button variant="outline" size="lg">Take the assessment</Button>
                  </Link>
                </div>
                <p className="mt-8 text-sm text-text-secondary">

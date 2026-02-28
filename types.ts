@@ -65,4 +65,5 @@ export interface ContactFormData {
   phone: string;
   message: string;
   referralSource?: string;
+  interest?: string;
 }

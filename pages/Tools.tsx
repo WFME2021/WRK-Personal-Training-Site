@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 import { Flame, ArrowRight, Activity } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 
+import { Hero } from '../components/Hero';
+import { useContent } from '../context/ContentContext';
+
 export const Tools: React.FC = () => {
+  const { pageContent } = useContent();
+  const { heroImage } = pageContent.tools;
+
   return (
     <>
       <SeoHead 
@@ -13,18 +19,23 @@ export const Tools: React.FC = () => {
       />
       
       <div className="bg-primary min-h-screen transition-colors duration-300">
-        <div className="pt-32 pb-16 px-6 bg-secondary border-b border-border">
-           <div className="max-w-4xl mx-auto text-center">
-             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6 text-text-primary">
-               Tools
-             </h1>
-             <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-               Free resources to help you execute better.
-             </p>
-           </div>
-        </div>
+        <Hero 
+          image={heroImage}
+          title="Tools"
+          subtitle="Free resources to help you execute better."
+          bullets={[
+            "Nutrition Engine",
+            "1RM Estimator",
+            "Recovery Protocols"
+          ]}
+          secondaryCta={{
+            label: "Explore Tools",
+            onClick: () => document.getElementById('tools-grid')?.scrollIntoView({ behavior: 'smooth' })
+          }}
+          kicker="Calculators, checklists, and systems."
+        />
 
-        <div className="max-w-7xl mx-auto px-6 py-24">
+        <div id="tools-grid" className="max-w-7xl mx-auto px-6 py-24">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Nutrition Engine Card */}
             <Link to="/tools/calorie-calculator" className="group bg-secondary border border-border rounded-[2rem] p-8 hover:border-accent transition-all duration-300 shadow-sm hover:shadow-md flex flex-col">

@@ -7,6 +7,8 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
+import { Hero } from '../components/Hero';
+
 export const PersonalTraining: React.FC = () => {
   const { pageContent } = useContent();
   const { heroImage, mainImage } = pageContent.personalTraining;
@@ -87,49 +89,21 @@ export const PersonalTraining: React.FC = () => {
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero Section - Full Width Banner */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            {heroImage && (
-              <img 
-                src={heroImage.url} 
-                alt={heroImage.alt} 
-                className="w-full h-full object-cover grayscale contrast-125"
-              />
-            )}
-            {/* Dark Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                1:1 In-Person Training (Christchurch)
-              </h3>
-              <h1 className="font-display text-[8vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Ongoing 1:1 coaching <br/>built around your life.
-              </h1>
-              
-              <div className="max-w-3xl mx-auto space-y-8">
-                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  Train at Get Me Fitter Gym (Christchurch) with a plan that supports <strong>fat loss, reduces pain, and builds consistency</strong>—without living in the gym.
-                </p>
-                
-                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
-                  <Link to="/contact">
-                    <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                      Book a consult <ArrowRight size={20} className="ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-
-                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
-                  Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.
-                </p>
-              </div>
-          </div>
-        </section>
+        <Hero 
+          image={heroImage}
+          title="Ongoing 1:1 coaching built around your life."
+          subtitle="Train at Get Me Fitter Gym (Christchurch) with a plan that supports fat loss, reduces pain, and builds consistency—without living in the gym."
+          bullets={[
+            "1:1 In-Person Training",
+            "Hybrid Coaching Model",
+            "Based in Addington"
+          ]}
+          secondaryCta={{
+            label: "Take the assessment",
+            href: "/assessment"
+          }}
+          kicker="Based at Get Me Fitter, 12 Show Place, Addington, Christchurch."
+        />
 
         {/* Local SEO Block */}
         <section className="py-12 px-6 border-b border-border">

@@ -4,7 +4,13 @@ import { SeoHead } from '../components/SeoHead';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
+import { Hero } from '../components/Hero';
+import { useContent } from '../context/ContentContext';
+
 export const OneRepMaxEstimatorPage: React.FC = () => {
+  const { pageContent } = useContent();
+  const { heroImage } = pageContent.oneRmEstimator;
+
   return (
     <>
       <SeoHead 
@@ -13,21 +19,23 @@ export const OneRepMaxEstimatorPage: React.FC = () => {
       />
       
       <div className="bg-primary min-h-screen transition-colors duration-300">
-        <div className="pt-32 pb-16 px-6 bg-secondary border-b border-border">
-           <div className="max-w-4xl mx-auto text-center">
-             <Link to="/tools" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-text-secondary hover:text-accent mb-6 transition-colors">
-               <ArrowLeft size={14} className="mr-2" /> Back to Tools
-             </Link>
-             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6 text-text-primary">
-               1RM Estimator
-             </h1>
-             <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-               Calculate your strength ceiling without testing to failure.
-             </p>
-           </div>
-        </div>
+        <Hero 
+          image={heroImage}
+          title="1RM Estimator"
+          subtitle="Calculate your strength ceiling without testing to failure. Use this to set your training percentages."
+          bullets={[
+            "Safe Estimation",
+            "Training Percentages",
+            "Progress Tracking"
+          ]}
+          secondaryCta={{
+            label: "Back to Tools",
+            href: "/tools"
+          }}
+          kicker="Never test a 1RM when you can estimate it."
+        />
 
-        <div className="px-6 pb-24 -mt-8">
+        <div className="px-6 py-24">
            <OneRepMaxEstimator />
         </div>
       </div>

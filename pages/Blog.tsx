@@ -5,8 +5,11 @@ import { ArrowRight, Clock, Search } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { useContent } from '../context/ContentContext';
 
+import { Hero } from '../components/Hero';
+
 export const Blog: React.FC = () => {
-  const { blogPosts } = useContent();
+  const { blogPosts, pageContent } = useContent();
+  const { heroImage } = pageContent.blog;
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -63,44 +66,36 @@ export const Blog: React.FC = () => {
       
       <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
         {/* Hero Section */}
-        <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-24 px-6">
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" 
-              alt="Gym background" 
-              className="w-full h-full object-cover grayscale contrast-125"
-            />
-            <div className="absolute inset-0 bg-black/80 mix-blend-multiply"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-          </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto w-full text-center pt-12">
-            <span className="inline-block py-1 px-3 border border-accent text-accent text-xs font-bold uppercase tracking-[0.3em] mb-6">
-              The Repository
-            </span>
-            <h1 className="font-display text-6xl md:text-8xl font-bold text-white mb-6 uppercase tracking-tighter leading-none">
-              Blog
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-              Evidence-based insights on training, longevity, and mindset.
-            </p>
-            
-            {/* Search Bar */}
-            <div className="relative max-w-lg mx-auto">
-              <input 
-                type="text" 
-                placeholder="Search articles..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white/20 transition-all"
-              />
-              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-            </div>
-          </div>
-        </section>
+        <Hero 
+          image={heroImage}
+          title="The Repository"
+          subtitle="Evidence-based insights on training, longevity, and mindset."
+          bullets={[
+            "Strength Training",
+            "Recovery Protocols",
+            "High-Performance Living"
+          ]}
+          secondaryCta={{
+            label: "Search Articles",
+            onClick: () => document.getElementById('search-bar')?.focus()
+          }}
+          kicker="No fluff. Just what works."
+        />
 
         <div className="max-w-5xl mx-auto px-6 py-24">
+          {/* Search Bar */}
+          <div className="relative max-w-lg mx-auto mb-12">
+            <input 
+              id="search-bar"
+              type="text" 
+              placeholder="Search articles..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-4 bg-secondary border border-border text-text-primary placeholder-text-secondary rounded-full focus:outline-none focus:ring-2 focus:ring-accent focus:bg-primary transition-all shadow-sm"
+            />
+            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-text-secondary" size={20} />
+          </div>
+
           {/* Category Pills */}
           <nav className="flex flex-wrap gap-3 mb-16 border-b border-border pb-8 justify-center" aria-label="Blog categories">
             {categories.map(category => (

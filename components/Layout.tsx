@@ -152,7 +152,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 Unsure where to begin?
               </p>
               <Link to="/assessment" className="inline-block bg-text-primary text-primary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accent hover:text-white transition-colors">
-                Take Assessment
+                Take the assessment
               </Link>
             </div>
           </div>

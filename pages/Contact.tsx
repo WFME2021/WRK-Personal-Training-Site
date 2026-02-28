@@ -19,7 +19,8 @@ export const Contact: React.FC = () => {
     email: '',
     phone: '',
     message: '',
-    referralSource: ''
+    referralSource: '',
+    interest: ''
   });
 
   // If coming from Results, pre-fill text
@@ -173,6 +174,25 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
                   />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="interest" className="block text-sm font-medium text-text-secondary">What are you interested in?</label>
+                  <select
+                    id="interest"
+                    name="interest"
+                    required
+                    value={formData.interest}
+                    onChange={handleChange}
+                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none cursor-pointer"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="1:1 Coaching (Christchurch)">1:1 Coaching (Christchurch)</option>
+                    <option value="Online Coaching">Online Coaching</option>
+                    <option value="Corporate Wellness">Corporate Wellness</option>
+                    <option value="42-Day Reset">42-Day Reset</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
                 </div>
 
                 <div className="space-y-2">

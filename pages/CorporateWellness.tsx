@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 
+import { Hero } from '../components/Hero';
+
 export const CorporateWellness: React.FC = () => {
   const { pageContent } = useContent();
   const { heroImage } = pageContent.corporateWellness;
@@ -121,47 +123,21 @@ export const CorporateWellness: React.FC = () => {
       <div className="bg-primary min-h-screen text-text-primary font-sans transition-colors duration-300">
         
         {/* Hero Section - Full Width Banner */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            {heroImage && (
-              <img 
-                src={heroImage.url} 
-                alt={heroImage.alt} 
-                className="w-full h-full object-cover grayscale contrast-125"
-              />
-            )}
-            {/* Dark Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                High-Performance Culture
-              </h3>
-              <h1 className="font-display text-[8vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Corporate wellness that <br/>isn't just a fruit bowl.
-              </h1>
-              
-              <div className="max-w-3xl mx-auto space-y-8">
-                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  Practical workshops and health strategies for high-performing teams. <strong>Less fluff, more utility.</strong>
-                </p>
-                
-                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
-                  <Button variant="primary" onClick={scrollToEnquiry} className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                    Enquire about workshops <ArrowRight size={20} className="ml-2" />
-                  </Button>
-                </div>
-
-                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
-                  Christchurch-based workshops • Remote options available
-                </p>
-              </div>
-          </div>
-        </section>
+        <Hero 
+          image={heroImage}
+          title="Corporate wellness that isn't just a fruit bowl."
+          subtitle="Practical workshops and health strategies for high-performing teams. Less fluff, more utility."
+          bullets={[
+            "Scalable App-Based System",
+            "Private Company Community",
+            "Zero Admin for HR"
+          ]}
+          secondaryCta={{
+            label: "Book a consult",
+            href: "/contact"
+          }}
+          kicker="Christchurch-based workshops • Remote options available"
+        />
 
         {/* MARKET INSIGHTS */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
@@ -387,7 +363,9 @@ export const CorporateWellness: React.FC = () => {
                     ))}
                 </div>
                 
-                <Button size="lg" onClick={scrollToEnquiry}>Send an Enquiry</Button>
+                <Link to="/contact">
+                  <Button size="lg">Book a consult</Button>
+                </Link>
             </div>
         </section>
 
@@ -433,37 +411,13 @@ export const CorporateWellness: React.FC = () => {
                     <p className="text-xl text-text-secondary">Identify the gap between current performance and potential.</p>
                 </div>
 
-                <div id="enquiry-form" className="bg-secondary p-8 md:p-12 rounded-[2.5rem] border border-border shadow-xl">
-                    <form className="space-y-6">
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Name</label>
-                                <div className="relative">
-                                    <input type="text" className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 pl-4 focus:border-accent focus:outline-none" placeholder="Your Name" />
-                                </div>
-                            </div>
-                            <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Company</label>
-                                <div className="relative">
-                                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-                                    <input type="text" className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 pl-12 focus:border-accent focus:outline-none" placeholder="Company Name" />
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                             <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Work Email</label>
-                             <div className="relative">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-                                <input type="email" className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 pl-12 focus:border-accent focus:outline-none" placeholder="name@company.com" />
-                             </div>
-                        </div>
-                        <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Message</label>
-                            <p className="text-xs text-text-secondary mb-2">Include team size, primary goal (energy / strength / stress resilience / fat loss), and whether you want the company community active from day one.</p>
-                            <textarea rows={5} className="w-full bg-primary border border-border text-text-primary rounded-lg p-4 focus:border-accent focus:outline-none"></textarea>
-                        </div>
-                        <Button fullWidth size="lg" variant="primary">Send Enquiry</Button>
-                    </form>
+                <div id="enquiry-form" className="bg-secondary p-8 md:p-12 rounded-[2.5rem] border border-border shadow-xl text-center">
+                    <p className="text-lg text-text-secondary mb-8">
+                        Ready to discuss a program for your team? Book a consultation to get started.
+                    </p>
+                    <Link to="/contact">
+                        <Button fullWidth size="lg" variant="primary">Book a consult</Button>
+                    </Link>
                 </div>
             </div>
         </section>

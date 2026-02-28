@@ -82,7 +82,7 @@ export const Results: React.FC = () => {
             "Recovery guardrails (so you don't burn out)"
           ],
           translation: "You’ll know exactly what to do each day, without overthinking.",
-          cta: "Start 42-Day Reset ($47)",
+          cta: "Book a consult",
           link: "/contact"
         };
       case OfferType.ONLINE:
@@ -94,7 +94,7 @@ export const Results: React.FC = () => {
             "Weekly check-ins to keep you moving forward when life gets chaotic"
           ],
           translation: "Online coaching is the 'stability layer': the plan adjusts when your week changes.",
-          cta: "Apply for Online Coaching",
+          cta: "Book a consult",
           link: "/contact"
         };
       case OfferType.HYBRID:
@@ -106,7 +106,7 @@ export const Results: React.FC = () => {
             "Recovery guardrails (so you don’t regress)"
           ],
           translation: "If pain or confidence is in the mix, precision is the highest ROI move.",
-          cta: "Apply for Hybrid Coaching",
+          cta: "Book a consult",
           link: "/contact"
         };
       default:

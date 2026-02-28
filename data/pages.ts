@@ -37,6 +37,21 @@ export interface PageContent {
   corporateWellness: {
     heroImage: CMSImage;
   };
+  services: {
+    heroImage: CMSImage;
+  };
+  blog: {
+    heroImage: CMSImage;
+  };
+  tools: {
+    heroImage: CMSImage;
+  };
+  calorieCalculator: {
+    heroImage: CMSImage;
+  };
+  oneRmEstimator: {
+    heroImage: CMSImage;
+  };
   layout: {
     logoLight: CMSImage;
     logoDark: CMSImage;
@@ -187,6 +202,41 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
       seoDescription: 'Team members having outdor adventures together, illustrating the work-life balance and performance focus of corporate wellness programs.'
     }
   },
+  services: {
+    heroImage: {
+      url: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop',
+      alt: 'Outdoor Adventure',
+      seoDescription: 'A person hiking in the mountains, representing the freedom and capacity built through fitness.'
+    }
+  },
+  blog: {
+    heroImage: {
+      url: 'https://images.unsplash.com/photo-1502680390469-be75c70e094f?q=80&w=2070&auto=format&fit=crop',
+      alt: 'Paddleboarding',
+      seoDescription: 'A person paddleboarding on a calm lake, representing balance and active recovery.'
+    }
+  },
+  tools: {
+    heroImage: {
+      url: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop',
+      alt: 'Gym equipment',
+      seoDescription: 'Gym equipment in a modern facility, representing the tools needed for success.'
+    }
+  },
+  calorieCalculator: {
+    heroImage: {
+      url: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop',
+      alt: 'Healthy food',
+      seoDescription: 'Fresh, healthy food ingredients, representing nutrition and calorie management.'
+    }
+  },
+  oneRmEstimator: {
+    heroImage: {
+      url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+      alt: 'Weightlifting',
+      seoDescription: 'A person lifting weights, representing strength training and performance measurement.'
+    }
+  },
   layout: {
     logoLight: {
       url: 'https://i.postimg.cc/13cs5yGp/WRK-LOGOS-(Final).png',
@@ -225,6 +275,11 @@ export const PAGE_LABELS: Record<string, string> = {
   challenge42: '42 Day Reset',
   philosophy: 'Philosophy',
   corporateWellness: 'Corporate Wellness',
+  services: 'Services Page',
+  blog: 'Blog Archive',
+  tools: 'Tools Archive',
+  calorieCalculator: 'Calorie Calculator',
+  oneRmEstimator: '1RM Estimator',
   contact: 'Contact Page',
   layout: 'Global Layout (Header/Footer)'
 };

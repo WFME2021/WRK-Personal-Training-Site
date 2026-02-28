@@ -174,7 +174,7 @@ export const Philosophy: React.FC = () => {
               Ready to work correctly?
             </h2>
             <Link to="/assessment">
-              <Button size="lg" className="px-12 py-6">Start Diagnostic</Button>
+              <Button size="lg" className="px-12 py-6">Take the assessment</Button>
             </Link>
           </div>
         </section>

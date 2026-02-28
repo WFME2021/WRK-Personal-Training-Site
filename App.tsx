@@ -17,6 +17,7 @@ import { Admin } from './pages/Admin';
 import { Tools } from './pages/Tools';
 import { CalorieCalculatorPage } from './pages/CalorieCalculatorPage';
 import { OneRepMaxEstimatorPage } from './pages/OneRepMaxEstimatorPage';
+import { Services } from './pages/Services';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -47,6 +48,7 @@ const App: React.FC = () => {
               <Route path="/contact" element={<Contact />} />
               
               {/* Service Routes */}
+              <Route path="/services" element={<Services />} />
               <Route path="/personal-training" element={<PersonalTraining />} />
               <Route path="/online-coaching" element={<OnlineCoaching />} />
               <Route path="/corporate-wellness" element={<CorporateWellness />} />

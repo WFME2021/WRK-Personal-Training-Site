@@ -7,6 +7,8 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
+import { Hero } from '../components/Hero';
+
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
   const { heroImage, workoutLogImage, habitsImage } = pageContent.onlineCoaching;
@@ -92,49 +94,21 @@ export const OnlineCoaching: React.FC = () => {
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero Section - Full Width Banner */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            {heroImage && (
-              <img 
-                src={heroImage.url} 
-                alt={heroImage.alt} 
-                className="w-full h-full object-cover grayscale contrast-125"
-              />
-            )}
-            {/* Dark Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                Freedom. Everywhere.
-              </h3>
-              <h1 className="font-display text-[8vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Online coaching that fits <br/>your schedule—anywhere.
-              </h1>
-              
-              <div className="max-w-3xl mx-auto space-y-8">
-                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  Training + check-ins + nutrition guidance delivered via app, built for busy professionals who want <strong>fat loss, less pain, and consistency.</strong>
-                </p>
-                
-                <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
-                  <Link to="/contact">
-                    <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                      Apply for online coaching <ArrowRight size={20} className="ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-
-                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
-                  12-week minimum because quick fixes are how people end up starting over.
-                </p>
-              </div>
-          </div>
-        </section>
+        <Hero 
+          image={heroImage}
+          title="Online coaching that fits your schedule—anywhere."
+          subtitle="Training + check-ins + nutrition guidance delivered via app, built for busy professionals who want fat loss, less pain, and consistency."
+          bullets={[
+            "App-Based Programming",
+            "Fortnightly Check-Ins",
+            "Travel-Proof Plans"
+          ]}
+          secondaryCta={{
+            label: "Take the assessment",
+            href: "/assessment"
+          }}
+          kicker="12-week minimum because quick fixes are how people end up starting over."
+        />
 
         {/* Who it's for */}
         <section className="py-24 px-6 bg-primary">
@@ -306,7 +280,7 @@ export const OnlineCoaching: React.FC = () => {
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-6 items-center">
               <Link to="/contact">
-                <Button size="lg" className="px-12">Apply for online coaching</Button>
+                <Button size="lg" className="px-12">Book a consult</Button>
               </Link>
             </div>
             <p className="mt-8 text-sm text-text-secondary">
