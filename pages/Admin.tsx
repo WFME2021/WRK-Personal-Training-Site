@@ -279,11 +279,16 @@ export const Admin: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap gap-3 items-center">
+            {/* 
             <Button variant="primary" type="button" onClick={handleSaveAndPublish} disabled={isPublishing} className="bg-green-600 hover:bg-green-700 text-white border-transparent">
                <RefreshCw size={16} className={`mr-2 ${isPublishing ? 'animate-spin' : ''}`} /> 
                {isPublishing ? 'Publishing...' : 'Save & Publish'}
             </Button>
-            <div className="h-8 w-px bg-border mx-2 hidden md:block"></div>
+            */}
+            <div className="hidden md:block bg-yellow-500/10 border border-yellow-500/20 rounded-lg px-4 py-2 text-[10px] text-yellow-600 max-w-xs leading-tight">
+              <strong>Note:</strong> Changes here are local to your browser. To go live, download the config and send it to your developer.
+            </div>
+
             <input 
               type="file" 
               ref={fileInputRef}
@@ -292,16 +297,38 @@ export const Admin: React.FC = () => {
               accept=".json"
             />
             <Button variant="secondary" type="button" onClick={() => fileInputRef.current?.click()}>
-              <Upload size={16} className="mr-2" /> Import Backup
+              <Upload size={16} className="mr-2" /> Import
             </Button>
-            <Button variant="secondary" type="button" onClick={handleDownload}>
-              <Download size={16} className="mr-2" /> Export Backup
+            <Button variant="primary" type="button" onClick={handleDownload} className="shadow-lg">
+              <Download size={16} className="mr-2" /> Download Config
             </Button>
             <div className="h-8 w-px bg-border mx-2 hidden md:block"></div>
             <button onClick={handleLogout} className="flex items-center gap-2 text-red-500 hover:text-red-600 font-bold uppercase text-xs tracking-wider transition-colors">
                <LogOut size={16} /> Logout
             </button>
           </div>
+        </div>
+
+        {/* Info Banner */}
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 mb-8 flex gap-4 items-start">
+           <div className="bg-accent/10 p-2 rounded-full text-accent shrink-0 mt-1">
+             <Layout size={20} />
+           </div>
+           <div>
+             <h3 className="font-bold text-text-primary text-lg mb-2">How to make your changes live</h3>
+             <p className="text-text-secondary text-sm leading-relaxed mb-4">
+               The Admin panel currently saves changes to your <strong>local browser only</strong>. This is great for previewing, but other people won't see these changes yet.
+             </p>
+             <ol className="list-decimal list-inside text-sm text-text-secondary space-y-2 mb-4">
+               <li>Make your edits below (Images, Text, Blogs).</li>
+               <li>Verify they look correct on the site.</li>
+               <li>Click the <strong>Download Config</strong> button (top right).</li>
+               <li><strong>Send that downloaded file</strong> to your developer (or paste it into the AI chat).</li>
+             </ol>
+             <p className="text-xs font-bold text-accent uppercase tracking-wider">
+               Important: Image URLs must be public links (e.g. from Unsplash or a website), not files on your computer.
+             </p>
+           </div>
         </div>
 
         <div className="grid lg:grid-cols-4 gap-8">
