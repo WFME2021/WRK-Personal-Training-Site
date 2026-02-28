@@ -112,30 +112,25 @@ export const OnlineCoaching: React.FC = () => {
               <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
                 Freedom. Everywhere.
               </h3>
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Online Coaching
+              <h1 className="font-display text-[8vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Online coaching that fits <br/>your schedule—anywhere.
               </h1>
               
               <div className="max-w-3xl mx-auto space-y-8">
                 <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  For the professional who refuses to let travel kill their momentum. We build a system that works in a hotel room, a home gym, or a high-end facility. Your location changes; your standards don't.
+                  Training + check-ins + nutrition guidance delivered via app, built for busy professionals who want <strong>fat loss, less pain, and consistency.</strong>
                 </p>
                 
                 <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
                   <Link to="/contact">
                     <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                      Apply for Online <ArrowRight size={20} className="ml-2" />
-                    </Button>
-                  </Link>
-                  <Link to="/assessment">
-                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                      Take Diagnostic
+                      Apply for online coaching <ArrowRight size={20} className="ml-2" />
                     </Button>
                   </Link>
                 </div>
 
                 <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
-                  NZ-wide coaching. Fortnightly check-ins. 12-week commitment for real results.
+                  12-week minimum because quick fixes are how people end up starting over.
                 </p>
               </div>
           </div>
@@ -158,11 +153,10 @@ export const OnlineCoaching: React.FC = () => {
                 </h2>
                 <div className="space-y-6">
                   {[
-                    "You travel, you parent, you lead. You need a plan that adapts.",
-                    "You want to be fit enough to surf on your holiday, not just sit on the beach.",
-                    "You want guidance and accountability without an appointment time.",
-                    "You’re capable, but your schedule makes consistency hard.",
-                    "You want a system that survives disruption — not a plan that only works in perfect weeks."
+                    "You want structure and accountability without being tied to a gym location",
+                    "You’ve got time constraints, stress, or injury history",
+                    "You want fat loss and consistency without diet restriction",
+                    "You want to be fit enough to say yes to more life"
                   ].map((item, i) => (
                     <div key={i} className="flex items-start">
                        <Check className="text-accent mr-4 mt-1 shrink-0" size={24} />
@@ -174,23 +168,26 @@ export const OnlineCoaching: React.FC = () => {
           </div>
         </section>
 
-        {/* How It Works */}
+        {/* How we work */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
           <div className="max-w-6xl mx-auto">
-             <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">How It Works</h2>
-             <div className="grid md:grid-cols-4 gap-6">
+             <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">How We Work</h2>
+             <div className="grid md:grid-cols-3 gap-8">
                {[
-                 { step: "01", title: "Reality Check", desc: "We map out your goal, schedule, stress load, and constraints. I need the real week — not the ideal one." },
-                 { step: "02", title: "The Build", desc: "I build your plan in the app based on the equipment you have and the time you can spare." },
-                 { step: "03", title: "Execution", desc: "You complete the workouts, track your weights, and check in. I review your progress and adjust as we go." },
-                 { step: "04", title: "Agility", desc: "Busy week? Travel? Bad sleep? We pivot immediately. The mission continues." }
+                 { step: "Assess", title: "Assess", desc: "Assess your starting point and constraints." },
+                 { step: "Address", title: "Address", desc: "Address what’s limiting progress (movement, posture, recovery, pacing)." },
+                 { step: "Customise", title: "Customise", desc: "Customise your program + nutrition structure to your lifestyle." }
                ].map((item, i) => (
-                 <div key={i} className="bg-primary p-8 rounded-[2rem] shadow-sm hover:shadow-lg transition-all duration-300 border border-border">
-                    <span className="text-4xl font-display font-bold text-accent mb-6 block">{item.step}</span>
-                    <h3 className="font-display text-2xl font-bold mb-3 uppercase text-text-primary">{item.title}</h3>
-                    <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
+                 <div key={i} className="bg-primary p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow border border-border">
+                   <h3 className="font-display text-3xl font-bold mb-4 text-accent uppercase">{item.title}</h3>
+                   <p className="text-text-secondary leading-relaxed text-lg">{item.desc}</p>
                  </div>
                ))}
+             </div>
+             <div className="mt-12 text-center">
+               <p className="text-lg text-text-secondary font-medium">
+                 No pain no gain? More accurately: no appropriate discomfort, no progress.
+               </p>
              </div>
           </div>
         </section>
@@ -249,11 +246,11 @@ export const OnlineCoaching: React.FC = () => {
             <h2 className="text-5xl font-display font-bold mb-12 text-text-primary uppercase tracking-tighter">What You Get</h2>
             <div className="grid md:grid-cols-2 gap-10 text-left max-w-4xl mx-auto mb-16">
                {[
-                 { icon: Smartphone, title: "App-Based Plan", text: "Gym, home, or travel-friendly sessions with progressions that update as you get stronger." },
-                 { icon: MessageSquare, title: "Fortnightly Check-Ins", text: "Every two weeks we review performance, adherence, recovery, and results — then update the plan accordingly." },
-                 { icon: Globe, title: "Exercise Swaps", text: "Fallback sessions and quick swaps for busy weeks, travel, equipment limits, or flare-ups." },
-                 { icon: Utensils, title: "Nutrition Support", text: "Guidelines you can stick to — designed for fat loss and recomposition in real life." },
-                 { icon: Video, title: "Form Support", text: "When you need it, we tighten technique so you’re not guessing (and not reinforcing bad reps for months)." }
+                 { icon: Smartphone, title: "App-Based Plan", text: "Tailored to your goals + constraints." },
+                 { icon: MessageSquare, title: "Regular Check-Ins", text: "Accountability without hand-holding." },
+                 { icon: Utensils, title: "Nutrition Support", text: "Protein-forward, flexible nutrition guidance." },
+                 { icon: Globe, title: "Adaptability", text: "A plan that works when you travel, when work blows up, and when kids get sick." },
+                 { icon: Video, title: "Adjustments", text: "Based on progress, stress, sleep, and niggles." }
                ].map((item, i) => (
                  <div key={i} className="flex gap-6 p-6 bg-primary border border-border rounded-2xl hover:border-text-primary transition-colors shadow-sm">
                    <item.icon className="text-accent shrink-0" size={32} />
@@ -266,8 +263,7 @@ export const OnlineCoaching: React.FC = () => {
             </div>
 
             <div className="bg-primary p-8 rounded-2xl border border-border inline-block max-w-2xl mx-auto">
-              <h3 className="font-display text-2xl font-bold uppercase mb-2 text-text-primary">Minimum Commitment: 12 Weeks</h3>
-              <p className="text-text-secondary">Because the goal isn’t a motivational spike — it’s a system you can rely on. Twelve weeks is enough time to build consistency, momentum, and measurable change.</p>
+              <p className="text-text-secondary font-medium">No benefit in stressing an already jacked-up system. We train smart.</p>
             </div>
           </div>
         </section>
@@ -306,14 +302,11 @@ export const OnlineCoaching: React.FC = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter">Start Here</h2>
             <p className="text-xl text-text-secondary leading-relaxed mb-12 max-w-2xl mx-auto">
-              Take the diagnostic and I’ll point you to the best next step — based on your schedule, goals, and constraints.
+              Apply now and we’ll confirm fit, goals, and the best starting plan.
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-6 items-center">
-              <Link to="/assessment">
-                <Button size="lg" className="px-12">Take Diagnostic</Button>
-              </Link>
               <Link to="/contact">
-                <Button variant="outline" size="lg">Apply for Online</Button>
+                <Button size="lg" className="px-12">Apply for online coaching</Button>
               </Link>
             </div>
             <p className="mt-8 text-sm text-text-secondary">

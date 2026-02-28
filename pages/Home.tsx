@@ -13,40 +13,28 @@ export const Home: React.FC = () => {
 
   const faqs = [
     {
-      question: "How often do I need to train?",
-      answer: "Most clients get strong results on 2–4 sessions per week, depending on your schedule, stress, and goals. We choose the minimum effective dose, then earn the right to add more."
+      question: "Do I need to be fit already?",
+      answer: "No. We meet you where you’re at and build from there."
     },
     {
-      question: "Do you provide meal plans?",
-      answer: "Not generic PDFs. You’ll get a system: targets, structure, and simple rules that work in the real world — especially for parents, busy professionals, and people who travel."
+      question: "What if I’ve got injuries or I’m postpartum / in menopause?",
+      answer: "That’s common here. We train around it, improve what we can, and progress intelligently."
     },
     {
-      question: "Can you help with injuries?",
-      answer: "Yes — if you’re cleared to train, we build around limitations and progress safely. If something is outside scope, I’ll point you to the right physio/specialist and we coordinate."
+      question: "Do you do meal plans?",
+      answer: "Not restrictive ones. Nutrition is protein-forward and flexible, tailored to your lifestyle and preferences."
     },
     {
-      question: "What if I travel frequently?",
-      answer: "That’s normal. Your plan is built to survive disruption — and if you’re away a lot, we shift you into a hybrid/online structure without losing momentum."
-    },
-    {
-      question: "What is the 2-minute diagnostic?",
-      answer: "It’s a quick filter to find the best next step based on your schedule, training history, and goals — so you don’t waste weeks guessing."
-    },
-    {
-      question: "Do you offer online coaching?",
-      answer: "Yes. If you’re not in Christchurch, our Online Coaching service covers all of NZ with the same level of programming and accountability."
-    },
-    {
-      question: "Where are you located?",
-      answer: "We are based at Get Me Fitter, 12 Show Place, Addington. It’s a private facility with free parking."
+      question: "Where are you based?",
+      answer: "In-person is at Get Me Fitter Gym, Christchurch. Online and the 42-Day Reset are available worldwide (English-speaking)."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title="Christchurch Personal Trainer | WRK Personal Training (Addington)"
-        description="1-on-1 personal training in Addington, Christchurch at Get Me Fitter. Strength, fat loss and body recomposition for busy professionals and parents. Start with a diagnostic or assessment."
+        title="Christchurch Personal Trainer | WRK Personal Training"
+        description="Coaching for busy professionals (often parents) who want fat loss, less pain, and consistency—without gym dominance or diet jail."
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
@@ -89,35 +77,38 @@ export const Home: React.FC = () => {
 
           {/* Content */}
           <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                Train Smarter. Play Harder.
-              </h3>
               <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Christchurch Personal Trainer
+                Train Smarter. <br/><span className="text-accent">Play Harder.</span>
               </h1>
               
               <div className="max-w-3xl mx-auto space-y-8">
                 <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  Whether you run a boardroom or run a household, people rely on you. <br className="hidden md:block"/>
-                  We build the physical capacity to dominate the work week and own the weekend.
+                  Coaching for busy professionals (often parents) who want <strong>fat loss, less pain, and consistency</strong>—without gym dominance or diet jail.
+                </p>
+                
+                <p className="text-base md:text-lg text-white/80 font-light leading-relaxed">
+                  You don’t need balls-to-the-wall intensity. You need a plan that fits your life, respects your body, and builds real-world capacity.
                 </p>
                 
                 <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
-                  <Link to="/assessment">
+                  <Link to="/contact">
                     <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                      Start Diagnostic <ArrowRight size={20} className="ml-2" />
+                      Book a consult <ArrowRight size={20} className="ml-2" />
                     </Button>
                   </Link>
-                  <Link to="/contact">
+                  <Link to="/online-coaching">
                     <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                      Apply to Work Together
+                      Explore Online Coaching
                     </Button>
                   </Link>
                 </div>
 
-                <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
-                  Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.
-                </p>
+                {/* Trust / Quick Proof Bar */}
+                <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-8 text-white/70 text-sm font-medium uppercase tracking-wider">
+                  <span className="flex items-center"><span className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></span>Pain-aware training</span>
+                  <span className="flex items-center"><span className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></span>Protein-forward nutrition</span>
+                  <span className="flex items-center"><span className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></span>Built around time + stress</span>
+                </div>
               </div>
           </div>
           
@@ -127,119 +118,139 @@ export const Home: React.FC = () => {
           </div>
         </section>
 
-        {/* THE WHY - Lifestyle Grid */}
+        {/* The Point of Training */}
         <section className="py-24 px-4 md:px-8 bg-secondary border-t border-border">
-          <div className="max-w-[1600px] mx-auto">
-             <div className="text-center mb-16">
-               <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-6 tracking-tighter">
-                 From The Boardroom <br/><span className="text-accent">To The Weekend.</span>
-               </h2>
-               <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-                 This isn't about looking good in a mirror (though that happens). It's about having the engine to say "yes" to the adventure.
-               </p>
-             </div>
-             
-             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-               {pageContent.home.lifestyleImages?.map((img, i) => (
-                 <div key={i} className="aspect-[3/4] rounded-3xl overflow-hidden relative group">
-                   <img src={img.url} alt={img.alt} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                 </div>
-               ))}
-             </div>
+          <div className="max-w-[1000px] mx-auto text-center">
+             <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-8 tracking-tighter">
+               The gym isn’t the <span className="text-accent">main event.</span>
+             </h2>
+             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-8">
+               The purpose of training is simple: <strong>get you fitter so you can do more of the things you love</strong>—and show up better for the people who matter.
+             </p>
+             <p className="text-lg text-text-secondary font-light">
+               Whether that’s surfing, hiking, biking, golf, ocean swims, chasing kids, or just having energy after work… <br/>
+               <strong>fitness is the tool. life is the outcome.</strong>
+             </p>
           </div>
         </section>
 
-        {/* Philosophy Section - Secondary BG */}
+        {/* Who This Is For */}
         <section className="py-24 px-4 md:px-8 bg-primary border-t border-border">
           <div className="max-w-6xl mx-auto">
              <div className="grid md:grid-cols-2 gap-20 items-center">
                 <div>
-                  <h2 className="font-display text-6xl md:text-8xl uppercase font-bold text-text-primary mb-8 leading-[0.9] tracking-tighter">
-                    Fuel The <br/><span className="text-text-secondary">Climb.</span>
+                  <h2 className="font-display text-5xl md:text-7xl uppercase font-bold text-text-primary mb-8 leading-[0.9] tracking-tighter">
+                    Who This <br/><span className="text-text-secondary">Is For.</span>
                   </h2>
                   <p className="text-xl text-text-primary leading-relaxed mb-8">
-                    Your fitness is the battery that powers everything else. The same focus that closes the deal fuels the climb. We build the resilience to carry the load of your career and still have the energy to chase the horizon.
+                    You’re in the right place if you’re:
                   </p>
-                  <Link to="/philosophy" className="text-accent font-bold uppercase tracking-widest text-sm border-b-2 border-accent pb-1 hover:text-text-primary hover:border-text-primary transition-colors">
-                    Read Our Philosophy
-                  </Link>
+                  <ul className="space-y-4 mb-8">
+                    {[
+                      "Busy, time-poor, and sick of starting over",
+                      "Carrying stress and feeling it in your body",
+                      "Dealing with aches, pains, or niggles (yes, we’ll ask you that a lot)",
+                      "Wanting fat loss + strength without your routine taking over your diary",
+                      "Wanting a nutrition approach that works in the real world (friends, dinners, weekends)"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start text-lg text-text-secondary">
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full mr-4 mt-2.5 shrink-0"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-lg text-text-secondary font-medium italic border-l-4 border-accent pl-6 py-2">
+                    If you’re looking for a 6-day “grindset” plan and a tiny food list… not here to shag spiders.
+                  </p>
                 </div>
-                <div className="space-y-6">
-                   {[
-                     { title: "Capacity is Currency", desc: "You can't add hours to the day, but you can double the energy you bring to them. Earn the right to play harder." },
-                     { title: "Resilience for the Long Haul", desc: "We don't train for a 6-week shred. We train for a lifetime of high performance—in the boardroom and on the mountain." },
-                     { title: "The Right Work, Done Well", desc: "Precision in the gym grants you freedom outside of it. When you are capable, the world opens up." }
-                   ].map((item, i) => (
-                     <div key={i} className="bg-secondary p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-all duration-300 border border-border hover:border-accent/50">
-                       <h3 className="font-bold text-xl text-text-primary mb-2 flex items-center">
-                         <span className="w-2 h-2 bg-accent rounded-full mr-4"></span> 
-                         {item.title}
-                       </h3>
-                       <p className="text-text-secondary ml-6">{item.desc}</p>
-                     </div>
-                   ))}
+                
+                {/* Results You Can Keep */}
+                <div className="bg-secondary p-10 rounded-[2.5rem] border border-border">
+                   <h3 className="font-display text-3xl font-bold uppercase text-text-primary mb-6">Results you can keep</h3>
+                   <p className="text-text-secondary mb-8">Most clients come to me for <strong>fat loss</strong>, but stay for the bigger wins:</p>
+                   <div className="space-y-6">
+                     {[
+                       "Less pain, fewer flare-ups",
+                       "Consistency without burnout",
+                       "More energy and confidence",
+                       "Strength and fitness that carries over to real life"
+                     ].map((item, i) => (
+                       <div key={i} className="flex items-center">
+                         <div className="w-8 h-8 rounded-full bg-primary border border-border flex items-center justify-center mr-4 shrink-0 text-accent font-bold">
+                           {i + 1}
+                         </div>
+                         <span className="text-text-primary font-medium">{item}</span>
+                       </div>
+                     ))}
+                   </div>
+                   <div className="mt-10 pt-8 border-t border-border">
+                     <p className="text-text-secondary text-sm">
+                       No benefit in stressing an already jacked-up system. We’ll build you up properly.
+                     </p>
+                   </div>
                 </div>
              </div>
           </div>
         </section>
 
-        {/* THE HOW - App Showcase */}
+        {/* How It Works */}
         <section className="py-24 px-4 md:px-8 bg-text-primary text-primary overflow-hidden">
           <div className="max-w-[1600px] mx-auto">
-             <div className="grid lg:grid-cols-2 gap-20 items-center">
-               <div>
-                 <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-8 tracking-tighter text-primary">The System</h2>
-                 <div className="w-24 h-1 bg-accent mb-8"></div>
-                 <p className="text-2xl text-primary/80 leading-relaxed max-w-xl font-light mb-12">
-                   We don't guess. We track. Every rep, every macro, every win is captured in the WRK app. This is professional-grade accountability in your pocket.
-                 </p>
-                 <ul className="space-y-6 mb-12">
-                   {[
-                     "Structured Training Programs",
-                     "Video Demonstrations",
-                     "Nutrition & Macro Tracking",
-                     "Progress History & PRs"
-                   ].map((item, i) => (
-                     <li key={i} className="flex items-center text-lg text-primary/70">
-                       <div className="w-2 h-2 bg-accent rounded-full mr-4"></div>
-                       {item}
-                     </li>
-                   ))}
-                 </ul>
-                 <Link to="/online-coaching">
-                   <Button variant="primary" className="bg-accent text-white hover:bg-white hover:text-primary border-transparent">
-                     See How It Works
-                   </Button>
-                 </Link>
-               </div>
-               
-               {/* App Screenshots Grid */}
-               <div className="grid grid-cols-2 gap-4 rotate-3 hover:rotate-0 transition-transform duration-500">
-                 {pageContent.home.appImages?.map((img, i) => (
-                   <div key={i} className={`rounded-3xl overflow-hidden border-4 border-primary/10 shadow-2xl ${i % 2 === 0 ? 'translate-y-8' : '-translate-y-8'}`}>
-                     <img src={img.url} alt={img.alt} className="w-full h-auto" />
-                   </div>
-                 ))}
-               </div>
+             <div className="text-center mb-16">
+               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-6 tracking-tighter text-primary">How It Works</h2>
+               <p className="text-2xl text-primary/60 font-light">Assess. Address. Customise.</p>
+             </div>
+
+             <div className="grid lg:grid-cols-3 gap-8">
+               {[
+                 { 
+                   step: "Assess", 
+                   desc: "We start with where you’re at—time, injuries, stress, capabilities, goals. (“Any aches, pains or niggles?”)" 
+                 },
+                 { 
+                   step: "Address", 
+                   desc: "We fix the stuff that’s holding you back: posture patterns, weak links, recovery gaps, pacing." 
+                 },
+                 { 
+                   step: "Customise", 
+                   desc: "A plan that fits your week—sessions + homework + nutrition guidance—progressed in a way your body can actually handle." 
+                 }
+               ].map((item, i) => (
+                 <div key={i} className="bg-primary/5 p-10 rounded-[2rem] border border-primary/10 hover:bg-primary/10 transition-colors">
+                   <h3 className="font-display text-3xl font-bold uppercase mb-4 text-accent">{item.step}</h3>
+                   <p className="text-lg text-primary/80 leading-relaxed">{item.desc}</p>
+                 </div>
+               ))}
+             </div>
+
+             <div className="mt-16 text-center max-w-3xl mx-auto">
+               <p className="text-xl text-primary/90 font-medium mb-8">
+                 No pain no gain? More accurately: <strong>no appropriate level of discomfort, no progress.</strong> <br/>
+                 There’s a difference between productive work and dumb punishment.
+               </p>
+               <Link to="/contact">
+                 <Button variant="primary" className="bg-accent text-white hover:bg-white hover:text-primary border-transparent px-12 py-4 text-lg">
+                   Book a consult
+                 </Button>
+               </Link>
              </div>
           </div>
         </section>
 
-        {/* Services Section */}
+        {/* Ways to Work Together (Services) */}
         <section id="services" className="py-24 px-4 md:px-8 bg-primary">
           <div className="max-w-[1600px] mx-auto">
             <div className="flex justify-between items-end mb-16 border-b border-border pb-8">
-              <h2 className="font-display text-6xl md:text-9xl uppercase font-bold tracking-tighter leading-none text-text-primary">
-                Training — <br/><span className="text-accent">Choose Your Path.</span>
+              <h2 className="font-display text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-none text-text-primary">
+                Ways to <br/><span className="text-accent">Work Together.</span>
               </h2>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
               
-              {/* Service Card 1: Hybrid */}
+              {/* Service Card 1: 1:1 In-Person */}
               <Link to="/personal-training" className="group block">
-                <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
+                <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    <img src={ptImage.url} alt={ptImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
                    <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Christchurch</div>
@@ -247,98 +258,93 @@ export const Home: React.FC = () => {
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
                    </div>
                 </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Hybrid Personal Training — Christchurch</h3>
-                <p className="text-text-secondary font-medium max-w-lg">In-person precision to build the engine. App-based structure to keep it running. The ultimate setup for the Christchurch professional.</p>
+                <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">1:1 In-Person Training</h3>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">Ongoing coaching at Get Me Fitter Gym—sessions, homework, and nutrition guidance.</p>
+                <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: accountability, injury-aware progress, fastest clarity.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Start 1:1 training</span>
               </Link>
 
               {/* Service Card 2: Online */}
               <Link to="/online-coaching" className="group block lg:mt-24">
-                <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
+                <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    <img src={onlineImage.url} alt={onlineImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
-                   <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">NZ Wide</div>
+                   <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">12-Week Min</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/80 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
                    </div>
                 </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Online Coaching — NZ-Wide</h3>
-                <p className="text-text-secondary font-medium max-w-lg">Reliability anywhere. Whether you're in a hotel room or a home gym, your training adapts to your life.</p>
+                <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Online Personal Training</h3>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">App-based programming + check-ins + nutrition guidance.</p>
+                <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: structure, flexibility, and results without being tied to a location.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Start online coaching</span>
               </Link>
 
-               {/* Service Card 3: 42 Day Reset */}
-              <Link to="/42-day-reset" className="group block">
-                <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative bg-secondary flex items-center justify-center border border-border">
-                   <h4 className="font-display text-[12rem] font-bold text-text-primary opacity-5 leading-none">42</h4>
-                   <div className="absolute top-8 right-8 bg-accent text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">NZ Wide</div>
-                   <div className="absolute bottom-8 left-8 bg-primary/10 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
-                     <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
-                   </div>
-                </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">42-Day Reset Challenge — NZ-Wide</h3>
-                <p className="text-text-secondary font-medium max-w-lg">The circuit breaker. A self-guided system to clear the fog, rebuild momentum, and reclaim your energy.</p>
-              </Link>
-
-              {/* Service Card 4: Corporate Wellness */}
-              <Link to="/corporate-wellness" className="group block lg:mt-24">
-                <div className="h-[500px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
+               {/* Service Card 3: Corporate */}
+              <Link to="/corporate-wellness" className="group block">
+                <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    {corporateImage.url ? (
                      <img src={corporateImage.url} alt={corporateImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    ) : (
                      <div className="w-full h-full bg-secondary"></div>
                    )}
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
-                   <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">NZ Wide</div>
+                   <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">12 Months</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/80 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
                    </div>
                 </div>
-                <h3 className="font-display text-4xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Corporate Wellness — NZ-Wide</h3>
-                <p className="text-text-secondary font-medium max-w-lg">High-performance culture. Build a team that has the physical capacity to execute at the highest level.</p>
+                <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Corporate Wellness</h3>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">A personal trainer in every employee’s pocket. App-led programs that support fitness, posture, stress, and consistency.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Corporate enquiry</span>
+              </Link>
+
+              {/* Service Card 4: 42 Day Reset */}
+              <Link to="/42-day-reset" className="group block lg:mt-24">
+                <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative bg-secondary flex items-center justify-center border border-border">
+                   <h4 className="font-display text-[12rem] font-bold text-text-primary opacity-5 leading-none">42</h4>
+                   <div className="absolute top-8 right-8 bg-accent text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Self-Led</div>
+                   <div className="absolute bottom-8 left-8 bg-primary/10 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
+                     <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />
+                   </div>
+                </div>
+                <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">42-Day Reset</h3>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">A simple, structured reset with training + protein-forward nutrition guidance + automated support in the app.</p>
+                <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: momentum and a clean restart without overthinking.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">Start the 42-Day Reset</span>
               </Link>
 
             </div>
           </div>
         </section>
 
-        {/* Expectation Grid */}
+        {/* Why this approach works */}
         <section className="py-24 px-4 md:px-8 bg-secondary">
           <div className="max-w-4xl mx-auto">
-             <h2 className="font-display text-5xl font-bold text-text-primary mb-16 text-center uppercase tracking-tighter">What To Expect</h2>
+             <h2 className="font-display text-5xl font-bold text-text-primary mb-8 text-center uppercase tracking-tighter">Why this approach works</h2>
+             <p className="text-center text-xl text-text-secondary mb-16">Because it’s built for real people with real lives:</p>
+             
              <div className="grid md:grid-cols-2 gap-px bg-border border border-border rounded-[2rem] overflow-hidden">
                {[
-                 { title: "Respect for Reality", desc: "Training that fits your schedule, not a fantasy one." },
-                 { title: "Calm Clarity", desc: "A plan that removes decision fatigue. You execute; we handle the rest." },
-                 { title: "Tangible Progress", desc: "Strength numbers up, energy stable, recovery improving." },
-                 { title: "Feel Better", desc: "You leave sessions capable, not cooked." }
+                 "Time-efficient training",
+                 "Pain-aware progressions",
+                 "Flexible nutrition structure",
+                 "Systems that survive stress"
                ].map((item, i) => (
-                 <div key={i} className="bg-primary p-12 hover:bg-secondary transition-colors">
-                    <h3 className="font-display text-2xl font-bold uppercase mb-4 text-text-primary">{item.title}</h3>
-                    <p className="text-text-secondary">{item.desc}</p>
+                 <div key={i} className="bg-primary p-12 hover:bg-secondary transition-colors flex items-center justify-center text-center">
+                    <h3 className="font-display text-2xl font-bold uppercase text-text-primary">{item}</h3>
                  </div>
                ))}
+             </div>
+             <div className="mt-12 text-center">
+               <p className="text-lg text-text-secondary font-medium">
+                 You don’t need motivation. You need a plan that still works when life gets messy.
+               </p>
              </div>
           </div>
         </section>
 
-        {/* Location Block */}
-        <section className="py-24 px-4 md:px-8 bg-primary border-t border-border">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-5xl font-bold text-text-primary mb-8 uppercase tracking-tighter">
-              Christchurch Personal Training Location
-            </h2>
-            <p className="text-xl text-text-secondary leading-relaxed mb-8">
-              WRK Personal Training operates from <strong>Get Me Fitter</strong> — 12 Show Place, Addington, Christchurch.
-            </p>
-            <p className="text-text-secondary mb-12">
-              Most clients travel from Addington, Fendalton, Merivale, Ilam, Sumner, Cashmere, Barrington and Halswell.
-            </p>
-            <Link to="/contact">
-              <Button variant="outline" size="lg">Book / Enquire</Button>
-            </Link>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
+        {/* Testimonials Section - Keeping existing as per instructions */}
         <section className="py-24 px-4 md:px-8 bg-primary border-t border-border">
           <div className="max-w-6xl mx-auto">
             <h2 className="font-display text-5xl font-bold text-text-primary mb-16 text-center uppercase tracking-tighter">
@@ -384,22 +390,19 @@ export const Home: React.FC = () => {
         {/* FAQs */}
         <FAQ items={faqs} title="Common Questions" />
 
-        {/* CTA */}
+        {/* Final CTA */}
         <section className="bg-primary py-32 px-4 md:px-8 text-center relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent rounded-full opacity-5 blur-3xl pointer-events-none"></div>
           <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="font-display text-6xl md:text-8xl uppercase font-bold text-text-primary mb-8 tracking-tighter">
-              Start Now
+              Ready to train <br/>for real life?
             </h2>
             <p className="text-xl font-medium text-text-secondary mb-12">
-              Take the diagnostic and I’ll point you to the best next step — based on reality, not hype.
+              Book a consult and we’ll map out a plan that fits your week—and gets you moving toward the good stuff.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
-              <Link to="/assessment">
-                <Button size="lg" className="px-12 py-6 text-xl shadow-2xl">Take Diagnostic</Button>
-              </Link>
               <Link to="/contact">
-                <Button variant="outline" size="lg" className="px-12 py-6 text-xl">Apply to Work Together</Button>
+                <Button size="lg" className="px-12 py-6 text-xl shadow-2xl">Book a consult</Button>
               </Link>
             </div>
           </div>

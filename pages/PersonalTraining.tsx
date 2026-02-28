@@ -105,26 +105,21 @@ export const PersonalTraining: React.FC = () => {
           {/* Content */}
           <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
               <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                In-Person Precision
+                1:1 In-Person Training (Christchurch)
               </h3>
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Personal Training
+              <h1 className="font-display text-[8vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Ongoing 1:1 coaching <br/>built around your life.
               </h1>
               
               <div className="max-w-3xl mx-auto space-y-8">
                 <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  For the high-performer who needs a body that works as hard as they do. We build the strength to dominate the boardroom and the capacity to own the weekend.
+                  Train at Get Me Fitter Gym (Christchurch) with a plan that supports <strong>fat loss, reduces pain, and builds consistency</strong>—without living in the gym.
                 </p>
                 
                 <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
                   <Link to="/contact">
                     <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                      Apply for Hybrid <ArrowRight size={20} className="ml-2" />
-                    </Button>
-                  </Link>
-                  <Link to="/assessment">
-                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                      Take Diagnostic
+                      Book a consult <ArrowRight size={20} className="ml-2" />
                     </Button>
                   </Link>
                 </div>
@@ -154,10 +149,10 @@ export const PersonalTraining: React.FC = () => {
               
               <ul className="space-y-6">
                 {[
-                  "You are the 'Anchor'—people rely on you to be consistent.",
-                  "You make decisions all day. Here, you want to outsource the strategy.",
-                  "You want the physical capacity to say 'yes' to the ski trip, the hike, or the surf.",
-                  "You want training that builds your energy, rather than stealing it."
+                  "You want accountability that actually works",
+                  "You’ve tried “do more” plans and they’ve wrecked your schedule",
+                  "You’ve got aches, pains, niggles, posture issues—or a body that needs smart programming",
+                  "You want fat loss and strength without becoming “the person who can’t eat anything”"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start group">
                     <div className="w-8 h-8 rounded-full border border-accent flex items-center justify-center mr-4 shrink-0 group-hover:bg-accent transition-colors">
@@ -167,6 +162,9 @@ export const PersonalTraining: React.FC = () => {
                   </li>
                 ))}
               </ul>
+              <p className="mt-8 text-lg font-medium italic text-text-primary border-l-4 border-accent pl-6 py-2">
+                Not here to shag spiders—this is real coaching, for real life.
+              </p>
             </div>
             
             <div className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border border-border">
@@ -179,44 +177,48 @@ export const PersonalTraining: React.FC = () => {
           </div>
         </section>
 
-        {/* How It Works */}
+        {/* The Method */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
           <div className="max-w-6xl mx-auto">
-             <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">How Hybrid Works</h2>
+             <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">The Method</h2>
              <div className="grid md:grid-cols-3 gap-8">
                {[
-                 { step: "01", title: "Precision", desc: "In-person sessions focus on technique, safety, and intensity. We ensure every rep contributes to the mission." },
-                 { step: "02", title: "Execution", desc: "You complete the rest of your weekly sessions via the app. On your time, at your gym or home. No excuses." },
-                 { step: "03", title: "Performance", desc: "We manage the load so you can perform at work and play hard on the weekend." }
+                 { step: "Assess", title: "Assess", desc: "We assess where you are now (time, stress, body history, goals)." },
+                 { step: "Address", title: "Address", desc: "We address the limitations holding you back." },
+                 { step: "Customise", title: "Customise", desc: "We customise training + nutrition so it’s doable and repeatable." }
                ].map((item, i) => (
                  <div key={i} className="bg-primary p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow border border-border">
-                   <span className="text-6xl font-display font-bold text-accent mb-6 block text-shadow-sm" style={{textShadow: '0 0 1px var(--border)'}}>{item.step}</span>
-                   <h3 className="font-display text-3xl font-bold mb-4 text-text-primary uppercase">{item.title}</h3>
-                   <p className="text-text-secondary leading-relaxed">{item.desc}</p>
+                   <h3 className="font-display text-3xl font-bold mb-4 text-accent uppercase">{item.title}</h3>
+                   <p className="text-text-secondary leading-relaxed text-lg">{item.desc}</p>
                  </div>
                ))}
+             </div>
+             <div className="mt-12 text-center">
+               <p className="text-lg text-text-secondary font-medium">
+                 No need for balls-to-the-wall intensity. We want progress you can keep.
+               </p>
              </div>
           </div>
         </section>
 
-        {/* Results (Christchurch clients) */}
+        {/* What results to expect */}
         <section className="py-24 px-6 bg-primary border-b border-border">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">Results (Christchurch Clients)</h2>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {[
-                { quote: "I've added 20kg to my squat while running a business. The structure is exactly what I needed.", author: "David M.", role: "Business Owner" },
-                { quote: "Finally a trainer who understands that I can't live in the gym. Efficient, effective, and sustainable.", author: "Sarah K.", role: "Lawyer" },
-                { quote: "The hybrid model is a game changer. I get the coaching I need without being tied to a trainer's schedule 3x a week.", author: "James P.", role: "Engineer" }
-              ].map((testimonial, i) => (
-                <div key={i} className="bg-secondary p-8 rounded-[2rem] border border-border">
-                  <p className="text-lg text-text-primary mb-6 italic">"{testimonial.quote}"</p>
-                  <div>
-                    <p className="font-bold text-text-primary uppercase tracking-wider text-sm">{testimonial.author}</p>
-                    <p className="text-text-secondary text-xs uppercase tracking-widest mt-1">{testimonial.role}</p>
-                  </div>
-                </div>
-              ))}
+            <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">What results to expect</h2>
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+               {[
+                 "Fat loss without burnout",
+                 "Reduced pain / better movement confidence",
+                 "Strength gains and better fitness",
+                 "Consistency that doesn’t collapse the moment work gets busy"
+               ].map((item, i) => (
+                 <div key={i} className="bg-secondary p-8 rounded-[2rem] border border-border flex items-center">
+                   <div className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold mr-6 shrink-0">
+                     {i + 1}
+                   </div>
+                   <p className="text-xl text-text-primary font-medium">{item}</p>
+                 </div>
+               ))}
             </div>
             <div className="text-center">
               <Link to="/results">
@@ -226,18 +228,19 @@ export const PersonalTraining: React.FC = () => {
           </div>
         </section>
 
-        {/* My Approach */}
+        {/* Pain-aware training */}
         <section className="py-24 px-6 bg-primary">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl font-display font-bold mb-8 uppercase tracking-tighter text-text-primary">My Approach</h2>
+            <h2 className="text-5xl font-display font-bold mb-8 uppercase tracking-tighter text-text-primary">Pain-aware training that still gets results.</h2>
             <p className="text-2xl text-text-secondary mb-16 font-light max-w-2xl">
-              We don't train for Instagram. We train for reality. I’m here to help you build a body that is capable of handling whatever life throws at it.
+              Posture patterns, postpartum return-to-training, menopause changes—we train intelligently and build capacity steadily.
             </p>
             <div className="space-y-8">
                {[
-                 { icon: Target, title: "Minimum Effective Dose", text: "We find the most efficient path to the result. No wasted time." },
-                 { icon: UserCheck, title: "Planned Progress", text: "You never have to guess. You walk in, open the plan, and execute." },
-                 { icon: ShieldCheck, title: "Recovery Guardrails", text: "We respect your stress load. Training supports your life, not competes with it." }
+                 { icon: Target, title: "1:1 In-Person Sessions", text: "Technique, safety, and intensity managed by an expert." },
+                 { icon: UserCheck, title: "Structured Plan Outside The Gym", text: "Homework that fits your week, delivered via app." },
+                 { icon: ShieldCheck, title: "Protein-Forward Nutrition", text: "Flexible guidance, not restrictive meal plans." },
+                 { icon: ShieldCheck, title: "Smart Progression", text: "Respects stress, recovery, and injury history." }
                ].map((item, i) => (
                  <div key={i} className="flex gap-6 items-start border-b border-border pb-8 last:border-0">
                    <div className="bg-secondary p-4 rounded-full border border-border"><item.icon className="text-accent" size={24} /></div>
@@ -247,46 +250,6 @@ export const PersonalTraining: React.FC = () => {
                    </div>
                  </div>
                ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Investment Signal */}
-        <section className="py-24 px-6 bg-secondary border-t border-border">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter">Investment</h2>
-            <p className="text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
-              Hybrid coaching is designed for people who value time, structure, and long-term reliability. Packages depend on weekly frequency and support level.
-            </p>
-            <p className="text-lg font-medium text-text-primary mb-12">
-              Start with the diagnostic and I’ll point you to the right option.
-            </p>
-          </div>
-        </section>
-
-        {/* What You Get */}
-        <section className="bg-secondary py-24 px-6 border-t border-border">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl font-display font-bold mb-6 text-text-primary uppercase tracking-tighter">Included</h2>
-            <div className="w-24 h-1 bg-accent mx-auto mb-12"></div>
-            
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-3xl mx-auto text-lg text-left mb-16">
-               <li className="flex items-center text-text-secondary"><Check size={24} className="mr-4 text-accent" /> 1:1 In-Person Sessions</li>
-               <li className="flex items-center text-text-secondary"><Check size={24} className="mr-4 text-accent" /> Full App Programming</li>
-               <li className="flex items-center text-text-secondary"><Check size={24} className="mr-4 text-accent" /> Technique Video Library</li>
-               <li className="flex items-center text-text-secondary"><Check size={24} className="mr-4 text-accent" /> Support Between Sessions</li>
-            </div>
-
-            <div className="bg-primary p-10 rounded-[2.5rem] inline-block w-full max-w-2xl border border-border">
-               <p className="text-xl font-bold mb-8 text-text-primary">If you want coaching that’s honest, thoughtful, and tailored to you.</p>
-               <div className="flex flex-col md:flex-row justify-center gap-4">
-                 <Link to="/contact">
-                   <Button size="lg" fullWidth>Apply for Hybrid</Button>
-                 </Link>
-                 <Link to="/assessment">
-                   <Button variant="outline" size="lg" fullWidth>Take Diagnostic</Button>
-                 </Link>
-               </div>
             </div>
           </div>
         </section>
@@ -301,8 +264,23 @@ export const PersonalTraining: React.FC = () => {
               WRK Personal Training operates from Get Me Fitter — 12 Show Place, Addington, Christchurch. If you’re looking for a personal trainer in Christchurch and want coaching that’s calm, precise, and sustainable, start with the diagnostic or apply.
             </p>
             <Link to="/contact">
-              <Button variant="outline">Enquire Now</Button>
+              <Button variant="outline">Book a consult</Button>
             </Link>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-24 px-6 bg-secondary border-t border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter">Ready to start?</h2>
+            <p className="text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
+              Book a consult and we’ll map out your starting point, your constraints, and the next 12 weeks.
+            </p>
+            <div className="flex justify-center">
+              <Link to="/contact">
+                <Button size="lg" className="px-12 py-6 text-xl">Book a consult</Button>
+              </Link>
+            </div>
           </div>
         </section>
       </div>

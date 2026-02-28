@@ -141,28 +141,23 @@ export const CorporateWellness: React.FC = () => {
               <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
                 High-Performance Culture
               </h3>
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Corporate Wellness
+              <h1 className="font-display text-[8vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
+                Corporate wellness that <br/>isn't just a fruit bowl.
               </h1>
               
               <div className="max-w-3xl mx-auto space-y-8">
                 <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  Vitality is a competitive advantage. Teams that have physical capacity execute better, lead better, and last longer.
+                  Practical workshops and health strategies for high-performing teams. <strong>Less fluff, more utility.</strong>
                 </p>
                 
                 <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
                   <Button variant="primary" onClick={scrollToEnquiry} className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                    Send an Enquiry <ArrowRight size={20} className="ml-2" />
+                    Enquire about workshops <ArrowRight size={20} className="ml-2" />
                   </Button>
-                  <a href="#audit">
-                    <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                      Audit your team’s potential
-                    </Button>
-                  </a>
                 </div>
 
                 <p className="text-xs md:text-sm text-white/60 mt-8 font-medium">
-                  NZ-wide • Remote delivery • Beginner to intermediate friendly
+                  Christchurch-based workshops • Remote options available
                 </p>
               </div>
           </div>

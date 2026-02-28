@@ -16,6 +16,7 @@ import { BlogPost } from './pages/BlogPost';
 import { Admin } from './pages/Admin';
 import { Tools } from './pages/Tools';
 import { CalorieCalculatorPage } from './pages/CalorieCalculatorPage';
+import { OneRepMaxEstimatorPage } from './pages/OneRepMaxEstimatorPage';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -58,6 +59,7 @@ const App: React.FC = () => {
               {/* Tools Routes */}
               <Route path="/tools" element={<Tools />} />
               <Route path="/tools/calorie-calculator" element={<CalorieCalculatorPage />} />
+              <Route path="/tools/1rm-estimator" element={<OneRepMaxEstimatorPage />} />
               
               {/* Admin Route */}
               <Route path="/admin" element={<Admin />} />
