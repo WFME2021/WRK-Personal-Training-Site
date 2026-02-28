@@ -2,9 +2,9 @@
   "pages": {
     "home": {
       "heroImage": {
-        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/downhill-skiing.jpg",
-        "alt": "Downhill Skiing - Vitality",
-        "seoDescription": "A skier carving down a snowy mountain, representing the vitality and energy gained from WRK Personal Training."
+        "url": "https://i.postimg.cc/vBXwJPvy/family-activity.jpg",
+        "alt": "active family playing in the outdoors",
+        "seoDescription": "An active mum and day playing with their kids outside representing the vitality and energy gained from WRK Personal Training."
       },
       "ptImage": {
         "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/dad-kid-paddleboard.jpg",
@@ -67,6 +67,11 @@
       ]
     },
     "personalTraining": {
+      "heroImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg",
+        "alt": "Mum and kid hiking",
+        "seoDescription": "A mother and child hiking, representing the real-world application of strength training."
+      },
       "mainImage": {
         "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mum-kid-hiking.jpg",
         "alt": "Mum and kid hiking",
@@ -74,6 +79,11 @@
       }
     },
     "onlineCoaching": {
+      "heroImage": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/family-activity.jpg",
+        "alt": "Family activity outdoors",
+        "seoDescription": "A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching."
+      },
       "workoutLogImage": {
         "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/exercise-history.png",
         "alt": "Workout Log Interface",
@@ -101,10 +111,17 @@
       }
     },
     "challenge42": {
-      "heroBackground": {
+      "heroImage": {
         "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/mountain-biking.jpg",
         "alt": "Mountain Biking",
         "seoDescription": "A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset."
+      }
+    },
+    "contact": {
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
+        "alt": "Contact Page Hero",
+        "seoDescription": "Atmospheric gym background for contact page."
       }
     },
     "philosophy": {
