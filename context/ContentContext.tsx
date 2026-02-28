@@ -57,7 +57,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
             }));
         }
       } catch (error) {
-        console.error('Error fetching dynamic content:', error);
+        console.warn('Could not fetch dynamic content, using local defaults. This is expected during development if content.json is not yet generated or if offline.', error);
       }
     };
 

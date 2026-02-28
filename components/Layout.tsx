@@ -27,11 +27,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       <header className="fixed w-full top-0 z-50 bg-primary/90 backdrop-blur-md border-b border-border transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
           <Link to="/" className="block hover:opacity-80 transition-opacity" aria-label="Home">
+            {/* Text Logo as fallback since image is 404ing on live site */}
+            <h1 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tighter text-text-primary">
+              WRK<span className="text-accent">.</span>
+            </h1>
+            {/* 
             <img 
               src={theme === 'dark' ? logoLight.url : logoDark.url}
               alt={theme === 'dark' ? logoLight.alt : logoDark.alt}
               className="h-8 md:h-10 w-auto"
-            />
+            /> 
+            */}
           </Link>
 
           {/* Desktop Nav */}
