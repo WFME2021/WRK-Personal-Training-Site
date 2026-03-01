@@ -86,13 +86,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   personalTraining: {
     seo: {
-      title: "Personal Training Christchurch | 1:1 Coaching",
-      description: "Expert 1:1 personal training in Addington, Christchurch. Focus on technique, strength, and injury prevention."
+      title: "1:1 Personal Training in Christchurch | WRK",
+      description: "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better."
     },
     hero: {
-      h1: "1:1 PERSONAL TRAINING",
-      subhead: "Precision coaching in Christchurch. We fix movement patterns, build true strength, and keep you injury-free.",
-      bullets: ["Technical Mastery", "Injury Management", "Accountability"],
+      h1: "1:1 Personal Training in Christchurch",
+      subhead: "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better—without wrecking your schedule or your body.",
+      bullets: ["Technical mastery (move well, train safely)", "Pain-aware programming (posture / postpartum / menopause / niggles)", "Accountability that actually works"],
       image: unsplash("photo-1476514525535-07fb3b4ae5f1"), // mum and kid hiking (existing)
       kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch."
     },
