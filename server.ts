@@ -67,6 +67,48 @@ ${message}
       };
 
       await transporter.sendMail(mailOptions);
+
+      // --- MailerLite Integration ---
+      const MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
+      const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID;
+
+      if (MAILERLITE_API_KEY) {
+        try {
+          const subscriberData = {
+            email: email,
+            fields: {
+              name: name,
+              phone: phone,
+              interest: interest || 'General Inquiry',
+              source: referralSource || 'Website',
+              // Add assessment details if they exist in the message
+              message_summary: message.substring(0, 255) // Store brief summary
+            },
+            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
+          };
+
+          const mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(subscriberData)
+          });
+
+          if (!mlResponse.ok) {
+            const errorData = await mlResponse.json();
+            console.error('MailerLite Error:', errorData);
+          } else {
+            console.log('Successfully added to MailerLite');
+          }
+        } catch (mlError) {
+          console.error('MailerLite Integration Failed:', mlError);
+          // Don't fail the whole request if ML fails, just log it
+        }
+      }
+
       res.json({ success: true, message: "Email sent successfully" });
     } catch (error: any) {
       console.error("Email sending error:", error);
