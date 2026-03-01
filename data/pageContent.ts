@@ -109,15 +109,15 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   onlineCoaching: {
     seo: {
-      title: "Online Personal Training | NZ Wide",
-      description: "Professional online coaching for busy professionals. Structured programming, video analysis, and nutrition support."
+      title: "Online Personal Training | App Coaching (12 Weeks+)",
+      description: "Online personal training with custom programming, check-ins and flexible nutrition support. Built for travel, stress and real schedules. 12-week minimum."
     },
     hero: {
-      h1: "ONLINE COACHING",
-      subhead: "Professional programming and support, delivered to your phone. Train where you want, when you want.",
-      bullets: ["Custom Programming", "Video Analysis", "Nutrition Support"],
+      h1: "Online Personal Training (12-Week Minimum)",
+      subhead: "Professional programming and support delivered to your phone—so you can train where you want, when you want, and still get results when life gets busy.",
+      bullets: ["Custom programming built around your schedule", "Form checks + feedback (video analysis)", "Protein-forward, flexible nutrition support"],
       image: unsplash("photo-1476514525535-07fb3b4ae5f1"), // family activity (existing)
-      kicker: "12-week minimum because quick fixes are how people end up starting over."
+      kicker: "12-week minimum—because quick fixes are how people end up starting over."
     },
     banner: {
       tagline: "A plan that survives travel, stress, and chaos.",
@@ -137,15 +137,15 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   corporateWellness: {
     seo: {
-      title: "Corporate Wellness Christchurch | WRK",
-      description: "Corporate wellness programs that actually get used. Practical workshops and app-based support for Christchurch businesses."
+      title: "Corporate Wellness Program NZ | PT in Every Pocket",
+      description: "NZ corporate wellness program: a personal trainer in every employee’s pocket. App-led training plans for all levels, goals and schedules. Low admin."
     },
     hero: {
-      h1: "CORPORATE WELLNESS",
-      subhead: "Real health support for your team. Practical workshops and app-based programming that improves energy, focus, and retention.",
-      bullets: ["Practical Workshops", "App-Based Support", "Zero Admin for HR"],
+      h1: "Corporate Wellness Program (NZ)",
+      subhead: "A personal trainer in every employee’s pocket. App-led training and nutrition support that improves energy, posture, and consistency—without adding admin load to HR.",
+      bullets: ["App-based training plans for every level", "Programs for different goals + preferences", "Zero admin for HR"],
       image: "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg", // corporate hiking (existing)
-      kicker: "Christchurch-based workshops • Remote options available"
+      kicker: "NZ-wide delivery • Simple rollout • Private company community"
     },
     banner: {
       tagline: "Wellness that gets used—because it fits the job.",
