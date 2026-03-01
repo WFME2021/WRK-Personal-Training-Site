@@ -155,13 +155,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   challenge42: {
     seo: {
-      title: "42 Day Reset | Fitness Challenge NZ",
-      description: "A 42 day fitness challenge NZ-wide: self-guided training + simple nutrition support inside the WRK app."
+      title: "42 Day Fitness Reset | Self-Guided Program ($47)",
+      description: "A 42 day reset to rebuild routine, energy and momentum. App-based training plan + simple nutrition support. One-time payment $47."
     },
     hero: {
-      h1: "42 DAY RESET",
-      subhead: "The system reboot you've been waiting for. Clear the fog, rebuild your momentum, and get back to operating at full capacity.",
-      bullets: ["Self-Guided Training", "Simple Nutrition Support", "One-Time Payment ($47)"],
+      h1: "42 Day Reset",
+      subhead: "The system reboot you’ve been waiting for. Clear the fog, rebuild momentum, and get back to operating at full capacity—without diet jail or burnout.",
+      bullets: ["Self-guided training (app delivered)", "Simple nutrition support (flexible, protein-forward)", "One-time payment ($47)"],
       image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg", // mountain biking (existing)
       kicker: "One-time payment • 42 days access • No subscription"
     },
