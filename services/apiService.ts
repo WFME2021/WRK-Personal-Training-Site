@@ -16,14 +16,24 @@ export const submitAssessment = async (data: AssessmentData): Promise<boolean> =
 };
 
 export const submitApplication = async (data: ContactFormData): Promise<boolean> => {
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
-  console.log('[API] Application Submitted:', data);
-  // integration logic:
-  // 1. Send email to Owner
-  // 2. Save to Google Sheets (Leads)
-  // 3. Trigger MailerLite 'New Inquiry' workflow
+    if (!response.ok) {
+      throw new Error('Failed to submit application');
+    }
 
-  return true;
+    const result = await response.json();
+    console.log('[API] Application Submitted:', result);
+    return true;
+  } catch (error) {
+    console.error('Error submitting application:', error);
+    throw error;
+  }
 };

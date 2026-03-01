@@ -17,6 +17,63 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
+  // Contact Form Submission
+  app.post("/api/contact", async (req, res) => {
+    const { name, email, phone, message, interest, referralSource } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    try {
+      // Lazy load nodemailer
+      const nodemailer = await import("nodemailer");
+
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      const mailOptions = {
+        from: process.env.SMTP_FROM || '"WRK Website" <no-reply@wrkpersonaltraining.co.nz>',
+        to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
+        subject: `New Inquiry from ${name} - ${interest || 'General'}`,
+        text: `
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Interest: ${interest}
+Referral Source: ${referralSource}
+
+Message:
+${message}
+        `,
+        html: `
+<h3>New Inquiry from Website</h3>
+<p><strong>Name:</strong> ${name}</p>
+<p><strong>Email:</strong> ${email}</p>
+<p><strong>Phone:</strong> ${phone}</p>
+<p><strong>Interest:</strong> ${interest}</p>
+<p><strong>Referral Source:</strong> ${referralSource}</p>
+<br/>
+<p><strong>Message:</strong></p>
+<p>${message.replace(/\n/g, '<br/>')}</p>
+        `,
+      };
+
+      await transporter.sendMail(mailOptions);
+      res.json({ success: true, message: "Email sent successfully" });
+    } catch (error: any) {
+      console.error("Email sending error:", error);
+      res.status(500).json({ error: "Failed to send email" });
+    }
+  });
+
   // GitHub Publish Endpoint
   app.post("/api/admin/publish", async (req, res) => {
     const { content } = req.body;
