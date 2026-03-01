@@ -2,21 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './Button';
-import { CMSImage } from '../data/pages';
 
 interface HeroProps {
-  image: CMSImage;
+  image: string;
   title: string;
   subtitle: string;
   bullets: string[];
-  primaryCta?: {
-    label: string;
-    href: string;
-  };
-  secondaryCta?: {
-    label: string;
-    href: string;
-  };
   kicker?: string;
   className?: string;
 }
@@ -26,8 +17,6 @@ export const Hero: React.FC<HeroProps> = ({
   title,
   subtitle,
   bullets,
-  primaryCta = { label: 'Book a consult', href: '/contact' },
-  secondaryCta,
   kicker,
   className = ''
 }) => {
@@ -36,9 +25,10 @@ export const Hero: React.FC<HeroProps> = ({
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={image.url} 
-          alt={image.alt} 
+          src={image} 
+          alt={title} 
           className="w-full h-full object-cover grayscale contrast-125"
+          loading="eager"
         />
         {/* Dark Overlay for Text Readability */}
         <div className="absolute inset-0 bg-black/60"></div>
@@ -69,18 +59,16 @@ export const Hero: React.FC<HeroProps> = ({
             )}
             
             <div className="flex flex-col md:flex-row gap-4 justify-center pt-4">
-              <Link to={primaryCta.href}>
+              <Link to="/contact">
                 <Button variant="primary" className="px-10 py-5 text-lg shadow-xl hover:scale-105 transition-transform flex items-center">
-                  {primaryCta.label} <ArrowRight size={20} className="ml-2" />
+                  Book a consult <ArrowRight size={20} className="ml-2" />
                 </Button>
               </Link>
-              {secondaryCta && (
-                <Link to={secondaryCta.href}>
-                  <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                    {secondaryCta.label}
-                  </Button>
-                </Link>
-              )}
+              <Link to="/assessment">
+                <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
+                  Take the assessment
+                </Button>
+              </Link>
             </div>
 
             {kicker && (
@@ -98,3 +86,4 @@ export const Hero: React.FC<HeroProps> = ({
     </section>
   );
 };
+

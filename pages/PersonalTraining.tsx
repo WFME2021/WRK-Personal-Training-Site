@@ -8,10 +8,12 @@ import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 
 export const PersonalTraining: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage, mainImage } = pageContent.personalTraining;
+  const { mainImage } = pageContent.personalTraining;
+  const { hero, banner, seo } = pageContent.personalTraining;
 
   const scrollToEnquiry = () => {
     const element = document.getElementById('enquiry-form');
@@ -42,8 +44,8 @@ export const PersonalTraining: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Personal Fitness Instructor | In-Person Coaching (Christchurch) | WRK"
-        description="Your personal fitness instructor in Christchurch. Premium 1-on-1 coaching at Get Me Fitter, Addington. Hybrid training for busy professionals. Apply now."
+        title={seo.title}
+        description={seo.description}
         schema={[
           {
             "@context": "https://schema.org",
@@ -52,7 +54,7 @@ export const PersonalTraining: React.FC = () => {
             "provider": {
               "@type": "LocalBusiness",
               "name": "WRK Personal Training",
-              "image": heroImage?.url || mainImage.url
+              "image": hero.image || mainImage.url
             },
             "areaServed": {
               "@type": "City",
@@ -90,19 +92,11 @@ export const PersonalTraining: React.FC = () => {
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero Section - Full Width Banner */}
         <Hero 
-          image={heroImage}
-          title="Ongoing 1:1 coaching built around your life."
-          subtitle="Train at Get Me Fitter Gym (Christchurch) with a plan that supports fat loss, reduces pain, and builds consistency—without living in the gym."
-          bullets={[
-            "1:1 In-Person Training",
-            "Hybrid Coaching Model",
-            "Based in Addington"
-          ]}
-          secondaryCta={{
-            label: "Take the assessment",
-            href: "/assessment"
-          }}
-          kicker="Based at Get Me Fitter, 12 Show Place, Addington, Christchurch."
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
         />
 
         {/* Local SEO Block */}
@@ -150,6 +144,12 @@ export const PersonalTraining: React.FC = () => {
             </div>
           </div>
         </section>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
 
         {/* The Method */}
         <section className="py-24 px-6 bg-secondary border-y border-border">

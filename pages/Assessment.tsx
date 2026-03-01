@@ -5,9 +5,13 @@ import { Button } from '../components/Button';
 import { 
   GoalType, ConstraintType, FrequencyType, EnvironmentType, InjuryType, SupportType, OfferType, AssessmentData 
 } from '../types';
+import { useContent } from '../context/ContentContext';
+import { SeoHead } from '../components/SeoHead';
 import { ArrowLeft } from 'lucide-react';
 
 export const Assessment: React.FC = () => {
+  const { pageContent } = useContent();
+  const { seo } = pageContent.assessment;
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   
@@ -134,7 +138,12 @@ export const Assessment: React.FC = () => {
   // Render Intro Screen
   if (currentStepData.isIntro) {
     return (
-      <div className="min-h-[85vh] flex flex-col items-center justify-center py-12 px-6 bg-primary transition-colors duration-300">
+      <>
+        <SeoHead 
+          title={seo.title}
+          description={seo.description}
+        />
+        <div className="min-h-[85vh] flex flex-col items-center justify-center py-12 px-6 bg-primary transition-colors duration-300">
         <div className="max-w-xl w-full text-center">
           <span className="text-xs font-bold tracking-widest uppercase text-accent mb-4 block">
              Diagnostic Tool
@@ -156,6 +165,7 @@ export const Assessment: React.FC = () => {
           </Button>
         </div>
       </div>
+      </>
     );
   }
 

@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BLOG_POSTS, BlogPost } from '../data/blogs';
-import { INITIAL_PAGE_CONTENT, PageContent } from '../data/pages';
+import { PAGE_CONTENT, PageContentConfig } from '../data/pageContent';
+
+type PageContentState = Record<string, PageContentConfig>;
 
 interface ContentContextType {
   blogPosts: BlogPost[];
-  pageContent: PageContent;
+  pageContent: PageContentState;
   updateBlogPosts: (posts: BlogPost[]) => void;
-  updatePageContent: (content: PageContent) => void;
+  updatePageContent: (content: PageContentState) => void;
   importData: (data: any) => void;
 }
 
@@ -25,12 +27,12 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
   });
 
-  const [pageContent, setPageContent] = useState<PageContent>(() => {
+  const [pageContent, setPageContent] = useState<PageContentState>(() => {
     try {
-      const saved = localStorage.getItem('wrk_site_pages');
-      return saved ? { ...INITIAL_PAGE_CONTENT, ...JSON.parse(saved) } : INITIAL_PAGE_CONTENT;
+      const saved = localStorage.getItem('wrk_site_pages_v2'); // Changed key to avoid loading old structure
+      return saved ? { ...PAGE_CONTENT, ...JSON.parse(saved) } : PAGE_CONTENT;
     } catch (e) {
-      return INITIAL_PAGE_CONTENT;
+      return PAGE_CONTENT;
     }
   });
 
@@ -48,14 +50,13 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
             setBlogPosts(data.blogs);
         }
         
-        if (data.pages) {
-            // Simple update - trust the remote content if it exists
-            // We merge with INITIAL_PAGE_CONTENT to ensure new fields are present
-            setPageContent(prev => ({
-                ...INITIAL_PAGE_CONTENT,
-                ...data.pages
-            }));
-        }
+        // Disabled automatic page content merging from remote to prevent overwriting new structure with old schema
+        // if (data.pages) {
+        //     setPageContent(prev => ({
+        //         ...PAGE_CONTENT,
+        //         ...data.pages
+        //     }));
+        // }
       } catch (error) {
         console.warn('Could not fetch dynamic content, using local defaults. This is expected during development if content.json is not yet generated or if offline.', error);
       }
@@ -70,11 +71,11 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   }, [blogPosts]);
 
   useEffect(() => {
-    localStorage.setItem('wrk_site_pages', JSON.stringify(pageContent));
+    localStorage.setItem('wrk_site_pages_v2', JSON.stringify(pageContent));
   }, [pageContent]);
 
   const updateBlogPosts = (posts: BlogPost[]) => setBlogPosts(posts);
-  const updatePageContent = (content: PageContent) => setPageContent(content);
+  const updatePageContent = (content: PageContentState) => setPageContent(content);
 
   const importData = (data: any) => {
     if (data.blogs && Array.isArray(data.blogs)) setBlogPosts(data.blogs);

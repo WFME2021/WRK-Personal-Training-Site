@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useContent } from '../context/ContentContext';
 import { Button } from '../components/Button';
 import { 
@@ -11,10 +12,11 @@ import {
 import { SeoHead } from '../components/SeoHead';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 
 export const CorporateWellness: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage } = pageContent.corporateWellness;
+  const { hero, banner, seo } = pageContent.corporateWellness;
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -75,8 +77,8 @@ export const CorporateWellness: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Wellbeing in the Workplace | Corporate Wellness Programs NZ | WRK"
-        description="Remote corporate wellbeing program (NZ-wide). A personal trainer in every employee’s pocket. App-based training, nutrition tools, and private company community. Enquire for annual packages."
+        title={seo.title}
+        description={seo.description}
         schema={[
           {
             "@context": "https://schema.org",
@@ -85,7 +87,7 @@ export const CorporateWellness: React.FC = () => {
             "provider": {
               "@type": "LocalBusiness",
               "name": "WRK Personal Training",
-              "image": heroImage.url
+              "image": hero.image
             },
             "areaServed": {
               "@type": "Country",
@@ -124,19 +126,11 @@ export const CorporateWellness: React.FC = () => {
         
         {/* Hero Section - Full Width Banner */}
         <Hero 
-          image={heroImage}
-          title="Corporate wellness that isn't just a fruit bowl."
-          subtitle="Practical workshops and health strategies for high-performing teams. Less fluff, more utility."
-          bullets={[
-            "Scalable App-Based System",
-            "Private Company Community",
-            "Zero Admin for HR"
-          ]}
-          secondaryCta={{
-            label: "Book a consult",
-            href: "/contact"
-          }}
-          kicker="Christchurch-based workshops • Remote options available"
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
         />
 
         {/* MARKET INSIGHTS */}
@@ -164,6 +158,12 @@ export const CorporateWellness: React.FC = () => {
              </div>
           </div>
         </section>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
 
         {/* WHY GENERIC PROGRAMS FAIL */}
         <section className="py-24 px-6 bg-primary">

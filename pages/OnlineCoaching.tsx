@@ -8,10 +8,12 @@ import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage, workoutLogImage, habitsImage } = pageContent.onlineCoaching;
+  const { workoutLogImage, habitsImage } = pageContent.onlineCoaching;
+  const { hero, banner, seo } = pageContent.onlineCoaching;
 
   const faqs = [
     {
@@ -47,8 +49,8 @@ export const OnlineCoaching: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Online Personal Training NZ | Online Coaching (NZ-Wide) | WRK"
-        description="Online personal training NZ-wide for busy professionals and parents. App-based training, fortnightly check-ins, form support, nutrition guidance, and travel-proof plans that adapt to real life. Apply or take the diagnostic."
+        title={seo.title}
+        description={seo.description}
         schema={[
           {
             "@context": "https://schema.org",
@@ -57,7 +59,7 @@ export const OnlineCoaching: React.FC = () => {
             "provider": {
               "@type": "LocalBusiness",
               "name": "WRK Personal Training",
-              "image": heroImage?.url
+              "image": hero.image
             },
             "areaServed": {
               "@type": "Country",
@@ -95,19 +97,11 @@ export const OnlineCoaching: React.FC = () => {
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero Section - Full Width Banner */}
         <Hero 
-          image={heroImage}
-          title="Online coaching that fits your schedule—anywhere."
-          subtitle="Training + check-ins + nutrition guidance delivered via app, built for busy professionals who want fat loss, less pain, and consistency."
-          bullets={[
-            "App-Based Programming",
-            "Fortnightly Check-Ins",
-            "Travel-Proof Plans"
-          ]}
-          secondaryCta={{
-            label: "Take the assessment",
-            href: "/assessment"
-          }}
-          kicker="12-week minimum because quick fixes are how people end up starting over."
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
         />
 
         {/* Who it's for */}
@@ -141,6 +135,12 @@ export const OnlineCoaching: React.FC = () => {
              </div>
           </div>
         </section>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
 
         {/* How we work */}
         <section className="py-24 px-6 bg-secondary border-y border-border">

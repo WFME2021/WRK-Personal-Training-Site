@@ -6,10 +6,11 @@ import { SeoHead } from '../components/SeoHead';
 import { useContent } from '../context/ContentContext';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 
 export const Blog: React.FC = () => {
   const { blogPosts, pageContent } = useContent();
-  const { heroImage } = pageContent.blog;
+  const { hero, banner, seo } = pageContent.blog;
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -59,27 +60,23 @@ export const Blog: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Blog | WRK Personal Training"
-        description="Articles on strength training, longevity, corporate wellness, and mindset from the coaches at WRK Personal Training Christchurch."
+        title={seo.title}
+        description={seo.description}
         schema={collectionSchema}
       />
       
       <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
         {/* Hero Section */}
         <Hero 
-          image={heroImage}
-          title="The Repository"
-          subtitle="Evidence-based insights on training, longevity, and mindset."
-          bullets={[
-            "Strength Training",
-            "Recovery Protocols",
-            "High-Performance Living"
-          ]}
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
           secondaryCta={{
             label: "Search Articles",
             onClick: () => document.getElementById('search-bar')?.focus()
           }}
-          kicker="No fluff. Just what works."
         />
 
         <div className="max-w-5xl mx-auto px-6 py-24">
@@ -166,6 +163,12 @@ export const Blog: React.FC = () => {
             </div>
           )}
         </div>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
       </div>
     </>
   );

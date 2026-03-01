@@ -1,0 +1,300 @@
+export interface CMSImage {
+  url: string;
+  alt: string;
+  seoDescription?: string;
+}
+
+export interface PageContentConfig {
+  hero: {
+    h1: string;
+    subhead: string;
+    bullets: string[];
+    image: string;
+    kicker?: string;
+  };
+  banner: {
+    tagline: string;
+    support?: string;
+    image: string;
+  };
+  seo: {
+    title: string;
+    description: string;
+  };
+  // Legacy image fields
+  ptImage?: CMSImage;
+  onlineImage?: CMSImage;
+  corporateImage?: CMSImage;
+  mainImage?: CMSImage;
+  workoutLogImage?: CMSImage;
+  habitsImage?: CMSImage;
+}
+
+const unsplash = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1920&q=80`;
+
+export const PAGE_CONTENT: Record<string, PageContentConfig> = {
+  home: {
+    seo: {
+      title: "Personal Training That Fits Real Life | Christchurch + Online",
+      description: "Fat loss, less pain, and consistency for busy adults. Pain-aware training, flexible nutrition, and coaching in Christchurch or online."
+    },
+    hero: {
+      h1: "Personal Training That Fits Real Life",
+      subhead: "Fat loss, less pain, and consistency for busy adults (often parents) with real schedules, real stress, and bodies that don’t love “all-out” training.",
+      bullets: ["Progress without punishment", "Pain-aware training (posture / postpartum / menopause)", "Protein-forward nutrition, flexible structure"],
+      image: "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg", // Keeping existing hero
+      kicker: "Whether you run a business, a household, or both."
+    },
+    banner: {
+      tagline: "Fit enough for the good stuff.",
+      support: "Train to live more—work, family, weekends.",
+      image: unsplash("photo-1476514525535-07fb3b4ae5f1") // family hiking
+    },
+    ptImage: {
+      url: 'https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg',
+      alt: 'Dad and kid paddleboarding',
+      seoDescription: 'A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training.'
+    },
+    onlineImage: {
+      url: 'https://i.postimg.cc/vBXwJPvy/family-activity.jpg',
+      alt: 'Family activity outdoors',
+      seoDescription: 'A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching.'
+    },
+    corporateImage: {
+      url: 'https://i.postimg.cc/wMp8RCTM/golfing.jpg',
+      alt: 'Corporate team golfing',
+      seoDescription: 'Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs.'
+    }
+  },
+  services: {
+    seo: {
+      title: "Services | WRK Personal Training",
+      description: "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting."
+    },
+    hero: {
+      h1: "PERSONAL TRAINING SERVICES",
+      subhead: "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting.",
+      bullets: ["1:1 Christchurch Coaching", "Online Coaching (12-Week Mini)", "Corporate Wellness"],
+      image: unsplash("photo-1501555088652-021faa106b9b"), // outdoor adventure
+      kicker: "Options for every schedule and budget."
+    },
+    banner: {
+      tagline: "Choose the coaching that fits your real week.",
+      support: "Same goal—more capacity—different paths to get there.",
+      image: unsplash("photo-1501555088652-021faa106b9b") // outdoor adventure
+    }
+  },
+  personalTraining: {
+    seo: {
+      title: "Personal Training Christchurch | 1:1 Coaching",
+      description: "Expert 1:1 personal training in Addington, Christchurch. Focus on technique, strength, and injury prevention."
+    },
+    hero: {
+      h1: "1:1 PERSONAL TRAINING",
+      subhead: "Precision coaching in Christchurch. We fix movement patterns, build true strength, and keep you injury-free.",
+      bullets: ["Technical Mastery", "Injury Management", "Accountability"],
+      image: unsplash("photo-1476514525535-07fb3b4ae5f1"), // mum and kid hiking (existing)
+      kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch."
+    },
+    banner: {
+      tagline: "Train smart. Progress without breaking down.",
+      support: "We work around niggles and build you up properly.",
+      image: unsplash("photo-1517836357463-c25dfe94c0de") // strength training
+    },
+    mainImage: {
+      url: 'https://i.postimg.cc/gjZFxYP7/active-mum.jpg',
+      alt: 'Mum and kid hiking',
+      seoDescription: 'A mother and child playing, representing the real-world application of strength training.'
+    }
+  },
+  onlineCoaching: {
+    seo: {
+      title: "Online Personal Training | NZ Wide",
+      description: "Professional online coaching for busy professionals. Structured programming, video analysis, and nutrition support."
+    },
+    hero: {
+      h1: "ONLINE COACHING",
+      subhead: "Professional programming and support, delivered to your phone. Train where you want, when you want.",
+      bullets: ["Custom Programming", "Video Analysis", "Nutrition Support"],
+      image: unsplash("photo-1476514525535-07fb3b4ae5f1"), // family activity (existing)
+      kicker: "12-week minimum because quick fixes are how people end up starting over."
+    },
+    banner: {
+      tagline: "A plan that survives travel, stress, and chaos.",
+      support: "Consistency beats intensity when life’s busy.",
+      image: unsplash("photo-1541625602330-2277a4c46182") // road cycling
+    },
+    workoutLogImage: {
+      url: 'https://i.postimg.cc/3w5FjthV/exercise-history.png',
+      alt: 'Workout Log Interface',
+      seoDescription: 'Mobile interface showing detailed workout logs.'
+    },
+    habitsImage: {
+      url: 'https://i.postimg.cc/XqmjPHVV/habit-tracking.png',
+      alt: 'Habits Interface',
+      seoDescription: 'Mobile interface showing daily habit tracking.'
+    }
+  },
+  corporateWellness: {
+    seo: {
+      title: "Corporate Wellness Christchurch | WRK",
+      description: "Corporate wellness programs that actually get used. Practical workshops and app-based support for Christchurch businesses."
+    },
+    hero: {
+      h1: "CORPORATE WELLNESS",
+      subhead: "Real health support for your team. Practical workshops and app-based programming that improves energy, focus, and retention.",
+      bullets: ["Practical Workshops", "App-Based Support", "Zero Admin for HR"],
+      image: "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg", // corporate hiking (existing)
+      kicker: "Christchurch-based workshops • Remote options available"
+    },
+    banner: {
+      tagline: "Wellness that gets used—because it fits the job.",
+      support: "Simple programs that support energy, posture, and routine.",
+      image: unsplash("photo-1523240795612-9a054b0db644") // team hiking
+    }
+  },
+  challenge42: {
+    seo: {
+      title: "42 Day Reset | Fitness Challenge NZ",
+      description: "A 42 day fitness challenge NZ-wide: self-guided training + simple nutrition support inside the WRK app."
+    },
+    hero: {
+      h1: "42 DAY RESET",
+      subhead: "The system reboot you've been waiting for. Clear the fog, rebuild your momentum, and get back to operating at full capacity.",
+      bullets: ["Self-Guided Training", "Simple Nutrition Support", "One-Time Payment ($47)"],
+      image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg", // mountain biking (existing)
+      kicker: "One-time payment • 42 days access • No subscription"
+    },
+    banner: {
+      tagline: "Reset the routine. Keep your life.",
+      support: "Structure and momentum without diet jail or burnout.",
+      image: unsplash("photo-1591035897819-f4bdf739f446") // paddle boarding
+    }
+  },
+  blog: {
+    seo: {
+      title: "Blog | WRK Personal Training",
+      description: "Articles on strength training, longevity, and high-performance living."
+    },
+    hero: {
+      h1: "THE REPOSITORY",
+      subhead: "Evidence-based insights on training, longevity, and mindset.",
+      bullets: ["Strength Training", "Recovery Protocols", "High-Performance Living"],
+      image: unsplash("photo-1502680390469-be75c70e094f"), // paddleboarding (existing)
+      kicker: "No fluff. Just what works."
+    },
+    banner: {
+      tagline: "Less fluff. More progress you can repeat.",
+      support: "Practical guidance for fat loss, pain reduction, and consistency.",
+      image: unsplash("photo-1476480868291-40c4370371f3") // trail running
+    }
+  },
+  tools: {
+    seo: {
+      title: "Tools & Resources | WRK Personal Training",
+      description: "Free tools to help you execute better. Calorie calculators, checklists, and more."
+    },
+    hero: {
+      h1: "TOOLS",
+      subhead: "Free resources to help you execute better.",
+      bullets: ["Nutrition Engine", "1RM Estimator", "Recovery Protocols"],
+      image: unsplash("photo-1517836357463-d25dfeac3438"), // gym equipment (existing)
+      kicker: "Calculators, checklists, and systems."
+    },
+    banner: {
+      tagline: "Clarity in minutes. Then we keep it simple.",
+      support: "Use the numbers as a starting point—not a rulebook.",
+      image: unsplash("photo-1507525428034-b723cf961d3e") // ocean swimming
+    }
+  },
+  calorieCalculator: {
+    seo: {
+      title: "Calorie Calculator | WRK Personal Training",
+      description: "Calculate your daily calories and macros for fat loss or muscle gain."
+    },
+    hero: {
+      h1: "NUTRITION ENGINE",
+      subhead: "Calculate your daily calories, macros, and 'Party Fund' based on your specific goal and lifestyle variables.",
+      bullets: ["Custom Macros", "Party Fund Calc", "Goal Specific"],
+      image: unsplash("photo-1490645935967-10de6ba17061"), // healthy food (existing)
+      kicker: "Start with the numbers, then adjust for reality."
+    },
+    banner: {
+      tagline: "Start with a target. Adjust like an adult.",
+      support: "A sensible baseline, then refine based on results and recovery.",
+      image: unsplash("photo-1505253758473-96b7015fcd40") // meal prep
+    }
+  },
+  oneRmEstimator: {
+    seo: {
+      title: "1RM Estimator | WRK Personal Training",
+      description: "Estimate your one-rep max safely without testing to failure."
+    },
+    hero: {
+      h1: "1RM ESTIMATOR",
+      subhead: "Estimate your one-rep max without testing to failure. Use this to set your training percentages.",
+      bullets: ["Safety First", "Training Percentages", "Progress Tracking"],
+      image: unsplash("photo-1534438327276-14e5300c3a48"), // weightlifting (existing)
+      kicker: "Train smart, not just heavy."
+    },
+    banner: {
+      tagline: "Train smart—without maxing out every week.",
+      support: "Estimate loads so progress is repeatable and joint-friendly.",
+      image: unsplash("photo-1534438327276-14e5300c3a48") // barbell
+    }
+  },
+  contact: {
+    seo: {
+      title: "Contact | WRK Personal Training",
+      description: "Get in touch to discuss your training goals."
+    },
+    hero: {
+      h1: "CONTACT",
+      subhead: "Ready to get started? Let's discuss your goals and find the right plan for you.",
+      bullets: ["Book a Consult", "Ask a Question", "Get Started"],
+      image: unsplash("photo-1534438327276-14e5300c3a48"), // gym background (existing)
+      kicker: "No pressure sales. Just a conversation."
+    },
+    banner: {
+      tagline: "Let’s map the simplest plan that works.",
+      support: "Tell me your constraints and I’ll guide the next step.",
+      image: unsplash("photo-1573497019940-1c28c88b4f3e") // coaching conversation
+    }
+  },
+  philosophy: {
+    seo: {
+      title: "Philosophy | Capacity Is Currency | WRK",
+      description: "The Right Work, Done Well. A training philosophy for high performers who value longevity as much as results."
+    },
+    hero: {
+      h1: "CAPACITY IS CURRENCY",
+      subhead: "When you have capacity, you have options. When you don't, you have constraints.",
+      bullets: ["Return on Investment", "Evidence Based", "Resilience"],
+      image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg", // existing philosophy hero
+      kicker: "The Methodology"
+    },
+    banner: {
+      tagline: "We do not train for the sake of being tired.",
+      support: "We train to be capable.",
+      image: unsplash("photo-1517836357463-c25dfe94c0de") // strength training
+    }
+  },
+  assessment: {
+    seo: {
+      title: "Assessment | WRK Personal Training",
+      description: "Take the assessment to find the best training plan for you."
+    },
+    hero: {
+      h1: "ASSESSMENT",
+      subhead: "Find out exactly where you stand and what you need to do next.",
+      bullets: ["Quick Analysis", "Personalized Plan", "Immediate Results"],
+      image: unsplash("photo-1501554697317-40c68b949325"), // hiking view
+      kicker: "Takes less than 2 minutes."
+    },
+    banner: {
+      tagline: "Get clarity fast. Then take the right next step.",
+      support: "Six questions. Practical answers. A plan that fits real life.",
+      image: unsplash("photo-1501554697317-40c68b949325") // hiking view
+    }
+  }
+};

@@ -8,40 +8,46 @@ import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 
 export const Home: React.FC = () => {
   const { pageContent } = useContent();
   const { heroImage, ptImage, onlineImage, corporateImage } = pageContent.home;
+  const { hero, banner, seo } = pageContent.home;
 
   const faqs = [
     {
       question: "Do I need to be fit already?",
-      answer: "No. We meet you where you’re at and build from there."
+      answer: "No. We meet you where you’re at and build from there—capability first, intensity later."
     },
     {
-      question: "What if I’ve got injuries or I’m postpartum / in menopause?",
-      answer: "That’s common here. We train around it, improve what we can, and progress intelligently."
+      question: "What if I’ve got injuries or recurring niggles?",
+      answer: "Common. We train around them, strengthen what needs strengthening, and progress intelligently."
     },
     {
-      question: "Do you do meal plans?",
-      answer: "Not restrictive ones. Nutrition is protein-forward and flexible, tailored to your lifestyle and preferences."
+      question: "Do I have to track calories or follow a strict meal plan?",
+      answer: "No restrictive plans. Nutrition is protein-forward with flexible structure—built to suit the individual."
     },
     {
-      question: "Where are you based?",
-      answer: "In-person is at Get Me Fitter Gym, Christchurch. Online and the 42-Day Reset are available worldwide (English-speaking)."
+      question: "How many days a week do I need?",
+      answer: "Enough to be effective, not enough to dominate your diary. We aim for the minimum effective dose that fits your life."
+    },
+    {
+      question: "I’m not sure which option I need.",
+      answer: "Take the assessment and you’ll get a clear recommendation based on your answers."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title="Christchurch Personal Trainer | WRK Personal Training"
-        description="Coaching for busy professionals (often parents) who want fat loss, less pain, and consistency—without gym dominance or diet jail."
+        title={seo.title}
+        description={seo.description}
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "WRK Personal Training",
-          "image": heroImage.url,
+          "image": hero.image,
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "12 Show Place",
@@ -65,55 +71,66 @@ export const Home: React.FC = () => {
         
         {/* Hero Section - Full Width Banner */}
         <Hero 
-          image={heroImage}
-          title="Train Smarter. Play Harder."
-          subtitle="Coaching for busy professionals (often parents) who want fat loss, less pain, and consistency—without gym dominance or diet jail."
-          bullets={[
-            "Pain-aware training",
-            "Protein-forward nutrition",
-            "Built around time + stress"
-          ]}
-          secondaryCta={{
-            label: "Take the assessment",
-            href: "/assessment"
-          }}
-          kicker="You don’t need balls-to-the-wall intensity. You need a plan that fits your life, respects your body, and builds real-world capacity."
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
         />
 
-        {/* The Point of Training */}
+        {/* RELATABILITY (Relate) */}
         <section className="py-24 px-4 md:px-8 bg-secondary border-t border-border">
           <div className="max-w-[1000px] mx-auto text-center">
              <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-8 tracking-tighter">
-               The gym isn’t the <span className="text-accent">main event.</span>
+               If this is you, you’re in the <span className="text-accent">right place</span>
              </h2>
-             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-8">
-               The purpose of training is simple: <strong>get you fitter so you can do more of the things you love</strong>—and show up better for the people who matter.
+             <ul className="space-y-4 mb-8 text-left max-w-2xl mx-auto">
+                {[
+                  "Your weeks aren’t predictable and time is tight",
+                  "Stress is high and recovery isn’t what it used to be",
+                  "You’ve got aches, pains, or niggles (or you’re trying to avoid them)",
+                  "You want fat loss without living in the gym",
+                  "You want nutrition structure that doesn’t alienate you from real life"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start text-lg text-text-secondary">
+                    <span className="w-1.5 h-1.5 bg-accent rounded-full mr-4 mt-2.5 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+             </ul>
+             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-8 font-medium">
+               You don’t need more motivation. You need a plan that survives real life.
              </p>
-             <p className="text-lg text-text-secondary font-light">
-               Whether that’s surfing, hiking, biking, golf, ocean swims, chasing kids, or just having energy after work… <br/>
-               <strong>fitness is the tool. life is the outcome.</strong>
-             </p>
+             <div className="flex flex-col md:flex-row gap-6 justify-center mt-8">
+               <Link to="/contact">
+                 <Button size="lg" className="px-8 py-4 text-lg shadow-xl">Book a consult</Button>
+               </Link>
+               <Link to="/assessment">
+                 <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-accent text-accent hover:bg-accent hover:text-white">Take the assessment</Button>
+               </Link>
+             </div>
           </div>
         </section>
 
-        {/* Who This Is For */}
+        {/* VALUE (What they get) */}
         <section className="py-24 px-4 md:px-8 bg-primary border-t border-border">
           <div className="max-w-6xl mx-auto">
              <div className="grid md:grid-cols-2 gap-20 items-center">
                 <div>
                   <h2 className="font-display text-5xl md:text-7xl uppercase font-bold text-text-primary mb-8 leading-[0.9] tracking-tighter">
-                    Who This <br/><span className="text-text-secondary">Is For.</span>
+                    What <br/><span className="text-text-secondary">You Get.</span>
                   </h2>
                   <p className="text-xl text-text-primary leading-relaxed mb-8">
-                    You’re in the right place if you’re:
+                    Coaching built around your constraints—so the plan is doable, repeatable, and actually works long-term.
                   </p>
                   <ul className="space-y-4 mb-8">
                     {[
-                      "Busy, time-poor, and sick of starting over",
-                      "Carrying stress and feeling it in your body",
-                      "Dealing with aches, pains, or niggles (yes, we’ll ask you that a lot)",
-                      "Wanting fat loss + strength without your routine taking over your diary",
-                      "Wanting a nutrition approach that works in the real world (friends, dinners, weekends)"
+                      "Training that fits your schedule (not a fantasy routine)",
+                      "Smart progress around stress and niggles",
+                      "Strength + fitness that carries over to life outside the gym",
+                      "Nutrition guidance that’s protein-forward and flexible",
+                      "Clear weekly structure so you’re not guessing",
+                      "A simple approach you can stick to when life gets busy"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start text-lg text-text-secondary">
                         <span className="w-1.5 h-1.5 bg-accent rounded-full mr-4 mt-2.5 shrink-0"></span>
@@ -121,12 +138,9 @@ export const Home: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-lg text-text-secondary font-medium italic border-l-4 border-accent pl-6 py-2">
-                    If you’re looking for a 6-day “grindset” plan and a tiny food list… not here to shag spiders.
-                  </p>
                 </div>
                 
-                {/* Results You Can Keep */}
+                {/* Results You Can Keep - Using existing structure but adapting content slightly if needed, keeping visual style */}
                 <div className="bg-secondary p-10 rounded-[2.5rem] border border-border">
                    <h3 className="font-display text-3xl font-bold uppercase text-text-primary mb-6">Results you can keep</h3>
                    <p className="text-text-secondary mb-8">Most clients come to me for <strong>fat loss</strong>, but stay for the bigger wins:</p>
@@ -155,62 +169,29 @@ export const Home: React.FC = () => {
           </div>
         </section>
 
-        {/* How It Works */}
-        <section className="py-24 px-4 md:px-8 bg-text-primary text-primary overflow-hidden">
-          <div className="max-w-[1600px] mx-auto">
-             <div className="text-center mb-16">
-               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-6 tracking-tighter text-primary">How It Works</h2>
-               <p className="text-2xl text-primary/60 font-light">Assess. Address. Customise.</p>
-             </div>
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
 
-             <div className="grid lg:grid-cols-3 gap-8">
-               {[
-                 { 
-                   step: "Assess", 
-                   desc: "We start with where you’re at—time, injuries, stress, capabilities, goals. (“Any aches, pains or niggles?”)" 
-                 },
-                 { 
-                   step: "Address", 
-                   desc: "We fix the stuff that’s holding you back: posture patterns, weak links, recovery gaps, pacing." 
-                 },
-                 { 
-                   step: "Customise", 
-                   desc: "A plan that fits your week—sessions + homework + nutrition guidance—progressed in a way your body can actually handle." 
-                 }
-               ].map((item, i) => (
-                 <div key={i} className="bg-primary/5 p-10 rounded-[2rem] border border-primary/10 hover:bg-primary/10 transition-colors">
-                   <h3 className="font-display text-3xl font-bold uppercase mb-4 text-accent">{item.step}</h3>
-                   <p className="text-lg text-primary/80 leading-relaxed">{item.desc}</p>
-                 </div>
-               ))}
-             </div>
-
-             <div className="mt-16 text-center max-w-3xl mx-auto">
-               <p className="text-xl text-primary/90 font-medium mb-8">
-                 No pain no gain? More accurately: <strong>no appropriate level of discomfort, no progress.</strong> <br/>
-                 There’s a difference between productive work and dumb punishment.
-               </p>
-               <Link to="/contact">
-                 <Button variant="primary" className="bg-accent text-white hover:bg-white hover:text-primary border-transparent px-12 py-4 text-lg">
-                   Book a consult
-                 </Button>
-               </Link>
-             </div>
-          </div>
-        </section>
-
-        {/* Ways to Work Together (Services) */}
+        {/* OPTIONS (Pathways / “Choose your path”) */}
         <section id="services" className="py-24 px-4 md:px-8 bg-primary">
           <div className="max-w-[1600px] mx-auto">
-            <div className="flex justify-between items-end mb-16 border-b border-border pb-8">
-              <h2 className="font-display text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-none text-text-primary">
-                Ways to <br/><span className="text-accent">Work Together.</span>
-              </h2>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-border pb-8">
+              <div>
+                <h2 className="font-display text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-none text-text-primary mb-4">
+                  Ways to <br/><span className="text-accent">Work Together.</span>
+                </h2>
+                <p className="text-xl text-text-secondary max-w-2xl">
+                  Same goal—more capacity. Choose the coaching that fits your life right now.
+                </p>
+              </div>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
               
-              {/* Service Card 1: 1:1 In-Person */}
+              {/* Card 1: 1:1 In-Person Training (Christchurch) */}
               <Link to="/personal-training" className="group block">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    <img src={ptImage.url} alt={ptImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
@@ -221,12 +202,11 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">1:1 In-Person Training</h3>
-                <p className="text-text-secondary font-medium max-w-lg mb-4">Ongoing coaching at Get Me Fitter Gym—sessions, homework, and nutrition guidance.</p>
-                <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: accountability, injury-aware progress, fastest clarity.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">Ongoing coaching at Get Me Fitter Gym. Sessions, homework, and nutrition guidance—built around your body and your week.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View 1:1 Training</span>
               </Link>
 
-              {/* Service Card 2: Online */}
+              {/* Card 2: Online Personal Training (12-week minimum) */}
               <Link to="/online-coaching" className="group block lg:mt-24">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    <img src={onlineImage.url} alt={onlineImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
@@ -237,12 +217,11 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Online Personal Training</h3>
-                <p className="text-text-secondary font-medium max-w-lg mb-4">App-based programming + check-ins + nutrition guidance.</p>
-                <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: structure, flexibility, and results without being tied to a location.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">App-based training, check-ins, and nutrition guidance—anywhere. Structure that holds when life gets chaotic.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Online Coaching</span>
               </Link>
 
-               {/* Service Card 3: Corporate */}
+               {/* Card 3: Corporate Wellness (12 months) */}
               <Link to="/corporate-wellness" className="group block">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    {corporateImage.url ? (
@@ -257,11 +236,11 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">Corporate Wellness</h3>
-                <p className="text-text-secondary font-medium max-w-lg mb-4">A personal trainer in every employee’s pocket. App-led programs that support fitness, posture, stress, and consistency.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">A personal trainer in every employee’s pocket. App-led programs that support posture, energy, and sustainable routine.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Corporate Wellness</span>
               </Link>
 
-              {/* Service Card 4: 42 Day Reset */}
+              {/* Card 4: 42-Day Reset */}
               <Link to="/42-day-reset" className="group block lg:mt-24">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative bg-secondary flex items-center justify-center border border-border">
                    <h4 className="font-display text-[12rem] font-bold text-text-primary opacity-5 leading-none">42</h4>
@@ -271,36 +250,50 @@ export const Home: React.FC = () => {
                    </div>
                 </div>
                 <h3 className="font-display text-3xl uppercase font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">42-Day Reset</h3>
-                <p className="text-text-secondary font-medium max-w-lg mb-4">A simple, structured reset with training + protein-forward nutrition guidance + automated support in the app.</p>
-                <p className="text-sm text-text-secondary uppercase tracking-wider font-bold">Best for: momentum and a clean restart without overthinking.</p>
-                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View Details</span>
+                <p className="text-text-secondary font-medium max-w-lg mb-4">A self-led reset to rebuild routine and momentum. Training + nutrition guidance + automated support—simple, practical, doable.</p>
+                <span className="inline-block mt-4 text-accent font-bold uppercase text-sm border-b border-accent">View 42-Day Reset</span>
               </Link>
 
             </div>
           </div>
         </section>
 
-        {/* Why this approach works */}
-        <section className="py-24 px-4 md:px-8 bg-secondary">
-          <div className="max-w-4xl mx-auto">
-             <h2 className="font-display text-5xl font-bold text-text-primary mb-8 text-center uppercase tracking-tighter">Why this approach works</h2>
-             <p className="text-center text-xl text-text-secondary mb-16">Because it’s built for real people with real lives:</p>
-             
-             <div className="grid md:grid-cols-2 gap-px bg-border border border-border rounded-[2rem] overflow-hidden">
+        {/* PROOF (Why this works) */}
+        <section className="py-24 px-4 md:px-8 bg-text-primary text-primary overflow-hidden">
+          <div className="max-w-[1600px] mx-auto">
+             <div className="text-center mb-16">
+               <h2 className="font-display text-5xl md:text-7xl uppercase font-bold mb-6 tracking-tighter text-primary">Why This Works</h2>
+               <p className="text-xl text-primary/80 max-w-3xl mx-auto leading-relaxed">
+                 Because we don’t just pile more stress onto an already jacked-up system. We build fitness you can recover from—so you can repeat it, progress it, and keep it.
+               </p>
+               <h3 className="font-display text-3xl font-bold uppercase mt-8 text-accent">Assess. Address. Customise.</h3>
+             </div>
+
+             <div className="grid lg:grid-cols-3 gap-8">
                {[
-                 "Time-efficient training",
-                 "Pain-aware progressions",
-                 "Flexible nutrition structure",
-                 "Systems that survive stress"
+                 { 
+                   step: "Assess", 
+                   desc: "Time, stress, goals, and any aches, pains, or niggles." 
+                 },
+                 { 
+                   step: "Address", 
+                   desc: "The weak links (posture patterns, movement limits, recovery gaps)." 
+                 },
+                 { 
+                   step: "Customise", 
+                   desc: "A plan that fits your week and progresses without breaking you." 
+                 }
                ].map((item, i) => (
-                 <div key={i} className="bg-primary p-12 hover:bg-secondary transition-colors flex items-center justify-center text-center">
-                    <h3 className="font-display text-2xl font-bold uppercase text-text-primary">{item}</h3>
+                 <div key={i} className="bg-primary/5 p-10 rounded-[2rem] border border-primary/10 hover:bg-primary/10 transition-colors">
+                   <h3 className="font-display text-3xl font-bold uppercase mb-4 text-accent">{item.step}</h3>
+                   <p className="text-lg text-primary/80 leading-relaxed">{item.desc}</p>
                  </div>
                ))}
              </div>
-             <div className="mt-12 text-center">
-               <p className="text-lg text-text-secondary font-medium">
-                 You don’t need motivation. You need a plan that still works when life gets messy.
+
+             <div className="mt-16 text-center max-w-3xl mx-auto">
+               <p className="text-sm text-primary/60 font-medium mb-8">
+                 No pain no gain? More accurately: <strong>no appropriate level of discomfort, no progress.</strong>
                </p>
              </div>
           </div>
@@ -360,11 +353,14 @@ export const Home: React.FC = () => {
               Ready to train <br/>for real life?
             </h2>
             <p className="text-xl font-medium text-text-secondary mb-12">
-              Book a consult and we’ll map out a plan that fits your week—and gets you moving toward the good stuff.
+              Take the assessment for a clear next step—or book a consult and we’ll map the simplest plan that works.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <Link to="/contact">
                 <Button size="lg" className="px-12 py-6 text-xl shadow-2xl">Book a consult</Button>
+              </Link>
+              <Link to="/assessment">
+                <Button variant="outline" size="lg" className="px-12 py-6 text-xl border-accent text-accent hover:bg-accent hover:text-white">Take the assessment</Button>
               </Link>
             </div>
           </div>

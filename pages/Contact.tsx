@@ -5,12 +5,14 @@ import { Button } from '../components/Button';
 import { ContactFormData } from '../types';
 import { submitApplication } from '../services/apiService';
 import { Check } from 'lucide-react';
+import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 
 export const Contact: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage } = pageContent.contact;
+  const { hero, banner, seo } = pageContent.contact;
   const location = useLocation();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,13 +78,13 @@ export const Contact: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Contact | WRK Personal Training"
-        description="Contact WRK Personal Training in Christchurch. Enquire about 1-on-1 training, online coaching, or corporate wellness."
+        title={seo.title}
+        description={seo.description}
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "WRK Personal Training",
-          "image": heroImage?.url,
+          "image": hero.image,
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "12 Show Place",
@@ -104,38 +106,17 @@ export const Contact: React.FC = () => {
       
       <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
         {/* Hero Section - Full Width Banner */}
-        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            {heroImage && (
-              <img 
-                src={heroImage.url} 
-                alt={heroImage.alt} 
-                className="w-full h-full object-cover grayscale contrast-125"
-              />
-            )}
-            {/* Dark Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-12">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                Start Here
-              </h3>
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Contact
-              </h1>
-              <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed max-w-2xl">
-                Ready to commit to the process? Let's get to work.
-              </p>
-          </div>
-        </section>
+        <Hero 
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
+        />
 
         <div className="flex items-center justify-center px-6 py-20">
           <div className="w-full max-w-2xl">
-            <form onSubmit={handleSubmit} className="space-y-8 bg-secondary p-8 md:p-12 border border-border shadow-sm rounded-2xl -mt-20 relative z-20">
+            <form onSubmit={handleSubmit} className="space-y-8 bg-secondary p-8 md:p-12 border border-border shadow-sm rounded-2xl relative z-20">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="block text-sm font-medium text-text-secondary">Full Name</label>
@@ -235,6 +216,12 @@ export const Contact: React.FC = () => {
               </form>
           </div>
         </div>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
       </div>
     </>
   );

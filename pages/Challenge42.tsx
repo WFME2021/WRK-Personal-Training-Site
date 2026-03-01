@@ -8,10 +8,11 @@ import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 
 export const Challenge42: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage } = pageContent.challenge42;
+  const { hero, banner, seo } = pageContent.challenge42;
 
   const faqs = [
     {
@@ -52,8 +53,8 @@ export const Challenge42: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Fitness Challenge NZ | 42 Day Reset | WRK"
-        description="A 42 day fitness challenge NZ-wide: self-guided training + simple nutrition support inside the WRK app. Built-in progression, fallback sessions for busy weeks, and beginner-friendly structure. One-time $47 NZD."
+        title={seo.title}
+        description={seo.description}
         schema={[
           {
             "@context": "https://schema.org",
@@ -101,19 +102,11 @@ export const Challenge42: React.FC = () => {
       <div className="bg-primary text-text-primary transition-colors duration-300">
         {/* Hero Section - Full Width Banner */}
         <Hero 
-          image={heroImage}
-          title="42 Day Reset"
-          subtitle="The system reboot you've been waiting for. Clear the fog, rebuild your momentum, and get back to operating at full capacity."
-          bullets={[
-            "Self-Guided Training",
-            "Simple Nutrition Support",
-            "One-Time Payment ($47)"
-          ]}
-          secondaryCta={{
-            label: "Take the assessment",
-            href: "/assessment"
-          }}
-          kicker="One-time payment • 42 days access • No subscription"
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
         />
 
         {/* Who it's for */}
@@ -137,6 +130,12 @@ export const Challenge42: React.FC = () => {
              </div>
           </div>
         </section>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
 
         {/* What's Inside */}
         <section className="py-24 px-6 bg-secondary text-text-primary border-y border-border">

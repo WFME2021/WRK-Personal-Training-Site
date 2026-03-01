@@ -6,39 +6,42 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 import { useContent } from '../context/ContentContext';
 
 export const CalorieCalculatorPage: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage } = pageContent.calorieCalculator;
+  const { hero, banner, seo } = pageContent.calorieCalculator;
 
   return (
     <>
       <SeoHead 
-        title="Calorie Calculator | WRK"
-        description="Calculate your calories and macros for maintenance, muscle gain, or body recomposition."
+        title={seo.title}
+        description={seo.description}
       />
       
       <div className="bg-primary min-h-screen transition-colors duration-300">
         <Hero 
-          image={heroImage}
-          title="Calorie Calculator"
-          subtitle="Fueling for performance, not starvation. Calculate your daily targets."
-          bullets={[
-            "Maintenance Targets",
-            "Fat Loss Targets",
-            "Muscle Gain Targets"
-          ]}
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
           secondaryCta={{
             label: "Back to Tools",
             href: "/tools"
           }}
-          kicker="Use this as a starting point, then adjust based on real-world progress."
         />
 
         <div className="px-6 py-24">
            <CalorieCalculator />
         </div>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
       </div>
     </>
   );

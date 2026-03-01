@@ -3,36 +3,29 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '../components/Button';
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 
 export const Services: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage } = pageContent.services;
   const { ptImage, onlineImage, corporateImage } = pageContent.home; // Reuse existing images
+  const { hero, banner, seo } = pageContent.services;
 
   return (
     <>
       <SeoHead 
-        title="Personal Training Services | WRK Personal Training"
-        description="Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting."
+        title={seo.title}
+        description={seo.description}
       />
 
       <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
         <Hero 
-          image={heroImage}
-          title="Personal Training Services"
-          subtitle="Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting."
-          bullets={[
-            "1:1 Christchurch coaching",
-            "Online coaching (12-week minimum)",
-            "Corporate + 42-Day Reset options"
-          ]}
-          secondaryCta={{
-            label: "Take the assessment",
-            href: "/assessment"
-          }}
-          kicker="Whether you run a boardroom or a household…"
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
         />
 
         {/* Services List */}
@@ -109,6 +102,12 @@ export const Services: React.FC = () => {
             </div>
           </div>
         </section>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
 
         {/* Not Sure Section */}
         <section className="py-24 px-4 md:px-8 bg-secondary border-t border-border text-center">

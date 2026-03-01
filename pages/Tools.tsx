@@ -5,34 +5,31 @@ import { Flame, ArrowRight, Activity } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 
 import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 import { useContent } from '../context/ContentContext';
 
 export const Tools: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage } = pageContent.tools;
+  const { hero, banner, seo } = pageContent.tools;
 
   return (
     <>
       <SeoHead 
-        title="Tools & Resources | WRK Personal Training"
-        description="Free tools to help you execute better. Calorie calculators, checklists, and more."
+        title={seo.title}
+        description={seo.description}
       />
       
       <div className="bg-primary min-h-screen transition-colors duration-300">
         <Hero 
-          image={heroImage}
-          title="Tools"
-          subtitle="Free resources to help you execute better."
-          bullets={[
-            "Nutrition Engine",
-            "1RM Estimator",
-            "Recovery Protocols"
-          ]}
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
           secondaryCta={{
             label: "Explore Tools",
             onClick: () => document.getElementById('tools-grid')?.scrollIntoView({ behavior: 'smooth' })
           }}
-          kicker="Calculators, checklists, and systems."
         />
 
         <div id="tools-grid" className="max-w-7xl mx-auto px-6 py-24">
@@ -77,6 +74,12 @@ export const Tools: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
       </div>
     </>
   );

@@ -5,52 +5,30 @@ import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
 import { Activity, CheckCircle2, XCircle, Clock, Target } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
+import { Hero } from '../components/Hero';
+import { MidPageBanner } from '../components/MidPageBanner';
 
 export const Philosophy: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage } = pageContent.philosophy;
+  const { hero, banner, seo } = pageContent.philosophy;
 
   return (
     <>
       <SeoHead 
-        title="Philosophy | Capacity Is Currency | WRK"
-        description="The Right Work, Done Well. A training philosophy for high performers who value longevity as much as results."
+        title={seo.title}
+        description={seo.description}
       />
 
       <div className="bg-primary min-h-screen font-sans selection:bg-accent selection:text-white pb-24 transition-colors duration-300">
         
         {/* Hero Section - Full Width Banner */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            {heroImage && (
-              <img 
-                src={heroImage.url} 
-                alt={heroImage.alt} 
-                className="w-full h-full object-cover grayscale contrast-125"
-              />
-            )}
-            {/* Dark Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
-          </div>
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-              <h3 className="font-display text-xl md:text-3xl font-bold uppercase tracking-widest text-accent mb-6">
-                The Methodology
-              </h3>
-              <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-                Capacity Is <br/><span className="text-accent">Currency.</span>
-              </h1>
-              
-              <div className="max-w-3xl mx-auto space-y-8">
-                <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                  When you have capacity, you have options. When you don't, you have constraints.
-                </p>
-              </div>
-          </div>
-        </section>
+        <Hero 
+          image={hero.image}
+          title={hero.h1}
+          subtitle={hero.subhead}
+          bullets={hero.bullets}
+          kicker={hero.kicker}
+        />
 
         {/* PILLARS SECTION */}
         <section className="py-24 px-6 bg-primary">
@@ -158,14 +136,11 @@ export const Philosophy: React.FC = () => {
         </section>
 
         {/* MANIFESTO */}
-        <section className="py-32 px-6 bg-primary flex items-center justify-center">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="font-display text-4xl md:text-6xl font-bold text-text-primary uppercase tracking-wide leading-tight">
-              "We do not train for the sake of being tired. <br/>
-              <span className="text-accent">We train to be capable.</span>"
-            </p>
-          </div>
-        </section>
+        <MidPageBanner 
+          image={banner.image}
+          tagline={banner.tagline}
+          support={banner.support}
+        />
 
         {/* CTA */}
         <section className="py-24 px-6 bg-primary border-t border-border">
