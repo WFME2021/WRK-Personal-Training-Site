@@ -137,7 +137,8 @@ export const Results: React.FC = () => {
   const unlockContent = getUnlockContent();
   const offer = getOfferContent(assessment.recommendedOffer); // Helper below
   const strategy = getWeeklyStrategy(assessment.frequency); // Helper below
-  const templates = getTemplates(assessment.environment); // Helper below
+  const templates = getTemplates(assessment.environment, assessment.frequency); // Helper below
+  const nutrition = getNutritionStrategy(assessment.goal, assessment.constraint); // Helper below
 
   const handleUnlock = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -249,43 +250,42 @@ Recommended: ${assessment.recommendedOffer}`,
                )}
             </ul>
           </div>
+
+          {/* 3. Nutrition Card (Dynamic) */}
+          <div className="bg-secondary border border-border p-8 rounded-[2rem] md:col-span-2">
+             <div className="flex items-center gap-3 mb-6 text-text-primary">
+                <Zap size={24} className="text-accent" />
+                <h3 className="font-display text-2xl font-bold uppercase">Nutrition: {nutrition.title}</h3>
+             </div>
+             <div className="grid md:grid-cols-3 gap-6">
+                {nutrition.level1.map((point, i) => (
+                  <div key={i} className="bg-primary p-4 rounded-xl border border-border flex items-start gap-3">
+                    <span className="bg-accent text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                    <p className="text-sm text-text-secondary font-medium">{point}</p>
+                  </div>
+                ))}
+             </div>
+          </div>
         </div>
 
-        {/* 3. 7 Day Plan Template - Inverse Scheme */}
+        {/* 4. 7 Day Plan Template - Inverse Scheme */}
         <div className="bg-text-primary text-primary p-10 rounded-[2rem]">
            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
              <h3 className="font-display text-3xl font-bold uppercase tracking-tight text-primary">Your Next 7 Days</h3>
              <span className="text-[10px] font-bold bg-primary text-text-primary px-3 py-1 rounded-full uppercase tracking-widest">{templates.title}</span>
            </div>
            
-           <div className="grid md:grid-cols-3 gap-8">
-             {/* Day 1 */}
-             <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
-               <span className="text-xs font-bold text-accent uppercase mb-4 block tracking-widest">Day 1</span>
-               <ul className="space-y-3">
-                 {templates.day1.length > 0 ? templates.day1.map((ex, i) => (
-                   <li key={i} className="text-sm text-primary/80 border-b border-primary/10 pb-2 last:border-0">{ex}</li>
-                 )) : <li className="text-sm text-primary/60">Rest or Active Recovery</li>}
-               </ul>
-             </div>
-             {/* Day 2 */}
-             <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
-               <span className="text-xs font-bold text-accent uppercase mb-4 block tracking-widest">Day 2</span>
-               <ul className="space-y-3">
-                 {templates.day2.length > 0 ? templates.day2.map((ex, i) => (
-                   <li key={i} className="text-sm text-primary/80 border-b border-primary/10 pb-2 last:border-0">{ex}</li>
-                 )) : <li className="text-sm text-primary/60">Rest or Active Recovery</li>}
-               </ul>
-             </div>
-             {/* Day 3 */}
-             <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
-               <span className="text-xs font-bold text-accent uppercase mb-4 block tracking-widest">Day 3</span>
-               <ul className="space-y-3">
-                 {templates.day3.length > 0 ? templates.day3.map((ex, i) => (
-                   <li key={i} className="text-sm text-primary/80 border-b border-primary/10 pb-2 last:border-0">{ex}</li>
-                 )) : <li className="text-sm text-primary/60">Rest or Active Recovery</li>}
-               </ul>
-             </div>
+           <div className={`grid gap-8 ${templates.days.length === 2 ? 'md:grid-cols-2 max-w-3xl mx-auto' : templates.days.length >= 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
+             {templates.days.map((day, index) => (
+               <div key={index} className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
+                 <span className="text-xs font-bold text-accent uppercase mb-4 block tracking-widest">{day.name}</span>
+                 <ul className="space-y-3">
+                   {day.exercises.length > 0 ? day.exercises.map((ex, i) => (
+                     <li key={i} className="text-sm text-primary/80 border-b border-primary/10 pb-2 last:border-0">{ex}</li>
+                   )) : <li className="text-sm text-primary/60">Rest or Active Recovery</li>}
+                 </ul>
+               </div>
+             ))}
            </div>
         </div>
 
@@ -377,9 +377,9 @@ Recommended: ${assessment.recommendedOffer}`,
                  </div>
                  
                  <div className="bg-secondary border border-border p-10 rounded-[2rem]">
-                    <h3 className="font-display text-2xl font-bold mb-6 text-text-primary uppercase">{unlockContent.title}</h3>
+                    <h3 className="font-display text-2xl font-bold mb-6 text-text-primary uppercase">{nutrition.level3.title}</h3>
                     <div className="space-y-6">
-                       {unlockContent.items.map((item, i) => (
+                       {nutrition.level3.points.map((item, i) => (
                          <div key={i} className="text-sm pb-4 border-b border-border last:border-0 text-text-primary">
                            <strong className="block mb-1 text-accent uppercase text-xs tracking-wider">{item.title}</strong>
                            <span className="text-text-secondary">{item.desc}</span>
@@ -403,7 +403,7 @@ Recommended: ${assessment.recommendedOffer}`,
               
               <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
                  <Link to={offer.link} state={{ goal: assessment.goal, offer: assessment.recommendedOffer }}>
-                   <Button size="lg" className="bg-white text-accent hover:bg-black hover:text-white px-12 py-6 text-xl shadow-xl border-none w-full md:w-auto">
+                   <Button size="lg" className="bg-white text-black hover:bg-black hover:text-white px-12 py-6 text-xl shadow-xl border-none w-full md:w-auto">
                      {offer.cta} <ArrowRight size={24} className="ml-2" />
                    </Button>
                  </Link>
@@ -448,29 +448,181 @@ const getWeeklyStrategy = (frequency: FrequencyType | null) => {
   }
 };
 
-const getTemplates = (environment: EnvironmentType | null) => {
-  if (environment === EnvironmentType.GYM || environment === EnvironmentType.MIXED) {
-    return {
-      title: "Full Gym — 3-Day Template",
-      day1: ["Squat pattern (goblet/back squat)", "Horizontal press (DB bench)", "Horizontal pull (row)", "Carry or finisher"],
-      day2: ["Hinge pattern (RDL/trap bar)", "Vertical press (landmine/DB overhead)", "Vertical pull (lat pulldown)", "Core (dead bug)"],
-      day3: ["Single leg (split squat)", "Incline press", "Row variation", "Conditioning (10 min)"]
-    };
-  } else if (environment === EnvironmentType.HOME) {
-    return {
-      title: "Home / Minimal — 3-Day Template",
-      day1: ["Goblet squat / split squat", "Push-up / floor press", "1-arm DB row", "Carry or walk finisher"],
-      day2: ["DB RDL / swing", "Landmine press / incline push-up", "Band pulldown", "Core circuit"],
-      day3: ["Step-up / reverse lunge", "DB incline press", "Row variation", "10-min low impact conditioning"]
-    };
+const getTemplates = (environment: EnvironmentType | null, frequency: FrequencyType | null) => {
+  // 1. Determine the structure based on Frequency
+  let days: { name: string, exercises: string[] }[] = [];
+  let title = "";
+
+  if (frequency === FrequencyType.TWO) {
+    title = "2-Day Full Body (Essential)";
+    days = [
+      { name: "Day 1: Full Body A", exercises: [] },
+      { name: "Day 2: Full Body B", exercises: [] }
+    ];
+  } else if (frequency === FrequencyType.THREE) {
+    title = "3-Day Full Body (High ROI)";
+    days = [
+      { name: "Day 1: Full Body A", exercises: [] },
+      { name: "Day 2: Full Body B", exercises: [] },
+      { name: "Day 3: Full Body C", exercises: [] }
+    ];
+  } else if (frequency === FrequencyType.FOUR || frequency === FrequencyType.FIVE_PLUS) {
+    title = "4-Day Upper/Lower Split";
+    days = [
+      { name: "Day 1: Upper A", exercises: [] },
+      { name: "Day 2: Lower A", exercises: [] },
+      { name: "Day 3: Upper B", exercises: [] },
+      { name: "Day 4: Lower B", exercises: [] }
+    ];
   } else {
+    // Fallback
+    title = "3-Day Full Body Template";
+    days = [
+      { name: "Day 1", exercises: [] },
+      { name: "Day 2", exercises: [] },
+      { name: "Day 3", exercises: [] }
+    ];
+  }
+
+  // 2. Fill in exercises based on Environment
+  if (environment === EnvironmentType.GYM || environment === EnvironmentType.MIXED) {
+    if (days.length === 2) {
+      days[0].exercises = ["Squat Pattern (Goblet/Back)", "Horizontal Push (DB Bench)", "Horizontal Pull (Row)", "Hinge (RDL)", "Carry"];
+      days[1].exercises = ["Hinge (Trap Bar/DL)", "Vertical Push (Overhead)", "Vertical Pull (Lat Pulldown)", "Lunge Pattern", "Core"];
+    } else if (days.length === 3) {
+      days[0].exercises = ["Squat pattern (goblet/back squat)", "Horizontal press (DB bench)", "Horizontal pull (row)", "Carry or finisher"];
+      days[1].exercises = ["Hinge pattern (RDL/trap bar)", "Vertical press (landmine/DB overhead)", "Vertical pull (lat pulldown)", "Core (dead bug)"];
+      days[2].exercises = ["Single leg (split squat)", "Incline press", "Row variation", "Conditioning (10 min)"];
+    } else if (days.length === 4) {
+      days[0].exercises = ["Bench Press / DB Press", "Chest Supported Row", "Overhead Press", "Lat Pulldown", "Arms/Delts"];
+      days[1].exercises = ["Squat Variation", "RDL / Hinge", "Leg Extension", "Hamstring Curl", "Calves"];
+      days[2].exercises = ["Incline Press", "Cable Row", "Dips / Push-ups", "Face Pulls", "Arms"];
+      days[3].exercises = ["Deadlift / Trap Bar", "Split Squat / Lunge", "Leg Press", "Core", "Conditioning"];
+    }
+  } else if (environment === EnvironmentType.HOME) {
+    if (days.length === 2) {
+      days[0].exercises = ["Goblet Squat", "Push-up", "DB Row", "DB RDL", "Plank"];
+      days[1].exercises = ["DB Swing/Hinge", "Overhead Press", "Band Pull-apart", "Lunge", "Carry"];
+    } else if (days.length === 3) {
+      days[0].exercises = ["Goblet squat / split squat", "Push-up / floor press", "1-arm DB row", "Carry or walk finisher"];
+      days[1].exercises = ["DB RDL / swing", "Landmine press / incline push-up", "Band pulldown", "Core circuit"];
+      days[2].exercises = ["Step-up / reverse lunge", "DB incline press", "Row variation", "10-min low impact conditioning"];
+    } else if (days.length === 4) {
+      days[0].exercises = ["Push-ups (weighted)", "DB Row", "DB Shoulder Press", "Band Pull-aparts", "Arms"];
+      days[1].exercises = ["Goblet Squat", "DB RDL", "Nordic Curl (eccentric)", "Calf Raise", "Abs"];
+      days[2].exercises = ["Floor Press / Dips", "Pull-up / Band Pulldown", "Lateral Raise", "Triceps", "Biceps"];
+      days[3].exercises = ["DB Swing / Clean", "Reverse Lunge", "Single Leg RDL", "Core", "Burpees/Cond."];
+    }
+  } else {
+    // Travel / None
+    title = "Travel / Minimal Equipment";
+    days = [
+      { name: "Session A", exercises: ["Split squat x 8–12/side", "Push-up x 8–15", "Row (band/suitcase) x 10–15", "RDL (suitcase/DB) x 10–12", "5 min brisk walk"] },
+      { name: "Session B", exercises: ["Reverse Lunge", "Pike Push-up", "Door Frame Row", "Glute Bridge", "Plank"] }
+    ];
+  }
+
+  return { title, days };
+};
+
+const getNutritionStrategy = (goal: GoalType | null, constraint: ConstraintType | null) => {
+  // 1. Overwhelm/Restarting -> Habit based
+  if (constraint === ConstraintType.OVERWHELM || goal === GoalType.RESTARTING) {
     return {
-      title: "Hotel / Travel Fallback (30 min)",
-      day1: ["Split squat x 8–12/side", "Push-up x 8–15", "Row (band/suitcase) x 10–15", "RDL (suitcase/DB) x 10–12", "5 min brisk walk"],
-      day2: [],
-      day3: []
+      title: "The 'Add, Don't Subtract' Method",
+      level1: [
+        "Drink 500ml water before morning coffee.",
+        "Add 1 serving of protein to breakfast.",
+        "Add 1 fruit or vegetable to lunch."
+      ],
+      level3: {
+        title: "Habit Stacking",
+        points: [
+          { title: "The 3-Hour Rule", desc: "Eat something every 3-4 hours to prevent binging." },
+          { title: "The 'Plate' Method", desc: "1/2 Veg, 1/4 Protein, 1/4 Carbs. No counting." },
+          { title: "The 80% Rule", desc: "Eat until you are 80% full, not stuffed." }
+        ]
+      }
     };
   }
+
+  // 2. Fat Loss -> Satiety & Deficit
+  if (goal === GoalType.FAT_LOSS) {
+    return {
+      title: "The Satiety Protocol",
+      level1: [
+        "Protein is priority #1 (aim for 30g/meal).",
+        "Eat vegetables first at dinner (fiber buffer).",
+        "Zero liquid calories (water, black coffee, tea)."
+      ],
+      level3: {
+        title: "Calorie & Macro Management",
+        points: [
+          { title: "Protein Anchors", desc: "1.6g - 2g per kg of bodyweight." },
+          { title: "Carb Timing", desc: "Place majority of carbs around your workout window." },
+          { title: "Volume Eating", desc: "Use low-calorie density foods (greens, berries) to stay full." }
+        ]
+      }
+    };
+  }
+
+  // 3. Strength/Physique -> Performance
+  if (goal === GoalType.STRENGTH || goal === GoalType.PHYSIQUE) {
+    return {
+      title: "Performance Fueling",
+      level1: [
+        "Carbohydrates before training = energy.",
+        "Protein after training = recovery.",
+        "Creatine Monohydrate (5g daily)."
+      ],
+      level3: {
+        title: "Advanced Fueling",
+        points: [
+          { title: "Pre-Workout", desc: "30-50g carbs + 20g protein 60-90 mins before." },
+          { title: "Intra-Workout", desc: "Electrolytes + optional carbs if session > 60 mins." },
+          { title: "Post-Workout", desc: "High GI carbs + fast digesting protein." }
+        ]
+      }
+    };
+  }
+
+  // 4. Time/Stress -> Efficiency
+  if (constraint === ConstraintType.TIME || constraint === ConstraintType.STRESS) {
+    return {
+      title: "The Executive Nutrition System",
+      level1: [
+        "Standardize Breakfast (Shake or Eggs).",
+        "Lunch is a 'Go-To' order (Salad + Double Protein).",
+        "Dinner is social/family (focus on protein portion)."
+      ],
+      level3: {
+        title: "Decision Reduction",
+        points: [
+          { title: "Meal Prep Services", desc: "Outsource 5-10 meals a week." },
+          { title: "Liquid Nutrition", desc: "Use shakes to hit protein targets when busy." },
+          { title: "The 'Emergency' Snack", desc: "Keep beef jerky/nuts in bag to avoid vending machines." }
+        ]
+      }
+    };
+  }
+
+  // Default
+  return {
+    title: "The Foundation Protocol",
+    level1: [
+      "Eat whole foods 80% of the time.",
+      "Protein with every meal.",
+      "Hydrate (3L+ daily)."
+    ],
+    level3: {
+      title: "Lifestyle Integration",
+      points: [
+        { title: "Alcohol Strategy", desc: "1-2 drinks max, with water between." },
+        { title: "Sleep Nutrition", desc: "Stop eating 2-3 hours before bed." },
+        { title: "Weekend Buffer", desc: "Save 10-20% of calories for weekend flexibility." }
+      ]
+    }
+  };
 };
 
 const getOfferContent = (recommendedOffer?: OfferType) => {
