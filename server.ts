@@ -80,11 +80,8 @@ ${message}
                 fields: {
                   name: name,
                   phone: phone,
-                  // Note: Custom fields must exist in MailerLite first
-                  // interest: interest || 'General Inquiry', 
-                  // source: referralSource || 'Website'
                 },
-                groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
+                groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
               };
 
               console.log('Sending to MailerLite:', JSON.stringify(subscriberPayload, null, 2));
