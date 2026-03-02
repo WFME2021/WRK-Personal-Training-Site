@@ -66,48 +66,54 @@ ${message}
         `,
       };
 
-      await transporter.sendMail(mailOptions);
+      try {
+        await transporter.sendMail(mailOptions);
+        console.log("Email sent successfully");
+      } catch (emailError) {
+        console.error("Failed to send email:", emailError);
+        // We continue to MailerLite even if email fails, or you could return error here
+      }
 
-          // --- MailerLite Integration ---
-          const MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
-          const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID;
+      // --- MailerLite Integration ---
+      const MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
+      const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID;
 
-          if (MAILERLITE_API_KEY) {
-            try {
-              // 1. Create/Update Subscriber
-              const subscriberPayload = {
-                email: email,
-                fields: {
-                  name: name,
-                  phone: phone,
-                },
-                groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
-              };
+      if (MAILERLITE_API_KEY) {
+        try {
+          // 1. Create/Update Subscriber
+          const subscriberPayload = {
+            email: email,
+            fields: {
+              name: name,
+              phone: phone,
+            },
+            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
+          };
 
-              console.log('Sending to MailerLite:', JSON.stringify(subscriberPayload, null, 2));
+          console.log('Sending to MailerLite:', JSON.stringify(subscriberPayload, null, 2));
 
-              const mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
-                  'Accept': 'application/json'
-                },
-                body: JSON.stringify(subscriberPayload)
-              });
+          const mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(subscriberPayload)
+          });
 
-              if (!mlResponse.ok) {
-                const errorData = await mlResponse.json();
-                console.error('MailerLite API Error:', JSON.stringify(errorData, null, 2));
-              } else {
-                console.log('Successfully added to MailerLite');
-              }
-            } catch (mlError) {
-              console.error('MailerLite Integration Failed:', mlError);
-            }
+          if (!mlResponse.ok) {
+            const errorData = await mlResponse.json();
+            console.error('MailerLite API Error:', JSON.stringify(errorData, null, 2));
+          } else {
+            console.log('Successfully added to MailerLite');
           }
+        } catch (mlError) {
+          console.error('MailerLite Integration Failed:', mlError);
+        }
+      }
 
-      res.json({ success: true, message: "Email sent successfully" });
+      res.json({ success: true, message: "Processed inquiry" });
     } catch (error: any) {
       console.error("Email sending error:", error);
       res.status(500).json({ error: "Failed to send email" });
