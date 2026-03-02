@@ -27,12 +27,18 @@ async function startServer() {
 
     try {
       // Lazy load nodemailer
-      const nodemailer = await import("nodemailer");
+      let nodemailer;
+      try {
+        nodemailer = await import("nodemailer");
+      } catch (importError) {
+        console.error("Failed to import nodemailer:", importError);
+        throw new Error("Internal Server Error: Email module missing");
+      }
 
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT) || 587,
-        secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+        secure: process.env.SMTP_SECURE === 'true',
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
@@ -71,16 +77,15 @@ ${message}
         console.log("Email sent successfully");
       } catch (emailError) {
         console.error("Failed to send email:", emailError);
-        // We continue to MailerLite even if email fails, or you could return error here
       }
 
       // --- MailerLite Integration ---
-      const MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
+      const rawKey = process.env.MAILERLITE_API_KEY || "";
+      const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
       const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID;
 
       if (MAILERLITE_API_KEY) {
         try {
-          // 1. Create/Update Subscriber
           const subscriberPayload = {
             email: email,
             fields: {
@@ -89,8 +94,6 @@ ${message}
             },
             groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
           };
-
-          console.log('Sending to MailerLite:', JSON.stringify(subscriberPayload, null, 2));
 
           const mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
             method: 'POST',
@@ -103,20 +106,20 @@ ${message}
           });
 
           if (!mlResponse.ok) {
-            const errorData = await mlResponse.json();
-            console.error('MailerLite API Error:', JSON.stringify(errorData, null, 2));
+            const errorText = await mlResponse.text();
+            console.error('MailerLite API Error:', errorText);
           } else {
             console.log('Successfully added to MailerLite');
           }
-        } catch (mlError) {
-          console.error('MailerLite Integration Failed:', mlError);
+        } catch (mlError: any) {
+          console.error('MailerLite Integration Failed:', mlError.message);
         }
       }
 
       res.json({ success: true, message: "Processed inquiry" });
     } catch (error: any) {
-      console.error("Email sending error:", error);
-      res.status(500).json({ error: "Failed to send email" });
+      console.error("General error in /api/contact:", error);
+      res.status(500).json({ error: "Failed to process request" });
     }
   });
 
