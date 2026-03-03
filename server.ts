@@ -35,10 +35,17 @@ async function startServer() {
         throw new Error("Internal Server Error: Email module missing");
       }
 
+      const port = Number(process.env.SMTP_PORT) || 587;
+      
+      // Fix for "wrong version number" error:
+      // Port 587 MUST use secure: false (STARTTLS)
+      // Port 465 MUST use secure: true (Implicit SSL)
+      const isSecure = port === 465;
+
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: process.env.SMTP_SECURE === 'true',
+        port: port,
+        secure: isSecure,
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
@@ -86,12 +93,34 @@ ${message}
 
       if (MAILERLITE_API_KEY) {
         try {
+          // 1. Create/Update Subscriber
+          const fields: any = {
+            name: name,
+            phone: phone,
+          };
+
+          // Map Interest to Custom Fields
+          switch (interest) {
+            case '1:1 Coaching (Christchurch)':
+              fields['11_coaching_christchurch'] = 'Yes';
+              break;
+            case 'Online Coaching':
+              fields['online_coaching'] = 'Yes';
+              break;
+            case 'Corporate Wellness':
+              fields['corporate_wellness'] = 'Yes';
+              break;
+            case '42-Day Reset':
+              fields['42_day_reset'] = 'Yes';
+              break;
+            case 'Not sure yet':
+              fields['not_sure_yet'] = 'Yes';
+              break;
+          }
+
           const subscriberPayload = {
             email: email,
-            fields: {
-              name: name,
-              phone: phone,
-            },
+            fields: fields,
             groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
           };
 

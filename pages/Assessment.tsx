@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { 
-  GoalType, ConstraintType, FrequencyType, EnvironmentType, InjuryType, SupportType, OfferType, AssessmentData 
+  GoalType, ConstraintType, FrequencyType, EnvironmentType, InjuryType, SupportType, OfferType, AssessmentData, LocationType 
 } from '../types';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
@@ -21,7 +21,8 @@ export const Assessment: React.FC = () => {
     frequency: null,
     environment: null,
     injury: null,
-    support: null
+    support: null,
+    location: null
   });
 
   // Questions Configuration
@@ -30,9 +31,16 @@ export const Assessment: React.FC = () => {
       id: 'intro', 
       title: "ROI Training Diagnostic",
       subtitle: "(2 minutes)",
-      description: "Answer 6 questions and I’ll give you a personalised plan you can execute this week — built around your schedule, stress load, and goals.",
+      description: "Answer 7 questions and I’ll give you a personalised plan you can execute this week — built around your schedule, stress load, and goals.",
       micro: "No fluff. No guilt. Just the most beneficial approach for where you’re at.",
       isIntro: true
+    },
+    { 
+      id: 'location', 
+      title: "Where are you based?", 
+      options: Object.values(LocationType),
+      key: 'location',
+      micro: "This determines if we can work together in-person or online."
     },
     { 
       id: 'goal', 
@@ -102,21 +110,22 @@ export const Assessment: React.FC = () => {
 
   // --- ROUTING LOGIC ENGINE ---
   const calculateOffer = (data: AssessmentData): OfferType => {
-    // 1. HARD TRIGGER: Pain/Injury
-    if (data.injury && data.injury !== InjuryType.NONE) {
+    // 1. HARD TRIGGER: Location = Christchurch -> Hybrid/In-Person
+    if (data.location === LocationType.CHRISTCHURCH) {
       return OfferType.HYBRID;
     }
 
-    // 2. Map by Support Model
-    if (data.support === SupportType.COACHED) {
-      return OfferType.HYBRID;
-    }
-    
-    if (data.support === SupportType.ACCOUNTABLE) {
+    // 2. HARD TRIGGER: Pain/Injury (Non-CHCH) -> Online Coaching (High Touch)
+    if (data.injury && data.injury !== InjuryType.NONE) {
       return OfferType.ONLINE;
     }
 
-    // 3. Tie-Breakers (Optional bias logic)
+    // 3. Map by Support Model
+    if (data.support === SupportType.COACHED || data.support === SupportType.ACCOUNTABLE) {
+      return OfferType.ONLINE;
+    }
+
+    // 4. Tie-Breakers (Optional bias logic)
     
     // If travel or variable schedule -> Bias Online Coaching
     if (data.constraint === ConstraintType.TRAVEL || data.frequency === FrequencyType.VARIES) {

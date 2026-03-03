@@ -5,6 +5,7 @@ import { AssessmentData, OfferType, FrequencyType, EnvironmentType, InjuryType, 
 import { Button } from '../components/Button';
 import { CheckCircle2, Lock, Unlock, Calendar, ShieldCheck, BarChart3, Activity, ArrowRight, Zap, Brain, HeartPulse, Dumbbell } from 'lucide-react';
 import { submitApplication } from '../services/apiService';
+import { GOAL_PROTOCOLS, CONSTRAINT_FIXES, FREQUENCY_SPLITS } from '../src/data/blueprint';
 
 export const Results: React.FC = () => {
   const location = useLocation();
@@ -21,6 +22,11 @@ export const Results: React.FC = () => {
   if (!assessment) {
     return <Navigate to="/assessment" replace />;
   }
+
+  // --- BLUEPRINT DATA LOOKUP ---
+  const goalProtocol = assessment.goal ? GOAL_PROTOCOLS[assessment.goal] : GOAL_PROTOCOLS[GoalType.RESTARTING];
+  const constraintFix = assessment.constraint ? CONSTRAINT_FIXES[assessment.constraint] : CONSTRAINT_FIXES[ConstraintType.OVERWHELM];
+  const frequencySplit = assessment.frequency ? FREQUENCY_SPLITS[assessment.frequency] : FREQUENCY_SPLITS[FrequencyType.THREE];
 
   // --- 1. ARCHETYPE LOGIC ---
   const getArchetype = () => {
@@ -327,66 +333,62 @@ Recommended: ${assessment.recommendedOffer}`,
             <div className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
               <div className="text-center mb-12">
                  <div className="inline-flex items-center gap-2 bg-text-primary text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                   <Unlock size={14} /> Roadmap Unlocked
+                   <Unlock size={14} /> Blueprint Unlocked
                  </div>
-                 <h2 className="font-display text-5xl font-bold uppercase tracking-tighter text-text-primary">The Deeper Protocols</h2>
+                 <h2 className="font-display text-5xl font-bold uppercase tracking-tighter text-text-primary">Your Performance Blueprint</h2>
               </div>
 
-              {/* 1. Progression Model */}
-              <div className="bg-secondary p-10 rounded-[2rem] border border-border shadow-sm">
-                <h3 className="font-display text-3xl font-bold mb-8 text-text-primary uppercase">4-Week Progression</h3>
-                <div className="grid md:grid-cols-4 gap-6">
-                   {[
-                     { week: "Week 1", title: "Baseline", desc: "Clean reps, 2 RIR." },
-                     { week: "Week 2", title: "Volume", desc: "Add a set or load." },
-                     { week: "Week 3", title: "Intensity", desc: "Heavier, fewer reps." },
-                     { week: "Week 4", title: "Beat KPI", desc: "Repeat best week." }
-                   ].map((item, i) => (
-                     <div key={i} className="bg-primary p-6 rounded-2xl border border-border">
-                        <span className="block text-xs font-bold uppercase text-accent mb-2">{item.week}</span>
-                        <strong className="block text-text-primary text-lg mb-2">{item.title}</strong>
-                        <p className="text-sm text-text-secondary">{item.desc}</p>
-                     </div>
-                   ))}
+              {/* BLUEPRINT DASHBOARD */}
+              <div className="grid md:grid-cols-3 gap-6">
+                
+                {/* 1. THE SCHEDULE (Frequency) */}
+                <div className="bg-secondary p-8 rounded-[2rem] border border-border flex flex-col h-full">
+                  <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-6 border border-border">
+                    <Calendar size={20} className="text-accent" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold uppercase mb-2 text-text-primary">The Schedule</h3>
+                  <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">{frequencySplit.title}</p>
+                  <div className="space-y-3 mt-auto">
+                    {frequencySplit.split.map((day, i) => (
+                      <div key={i} className="text-sm text-text-secondary border-b border-border pb-2 last:border-0">
+                        {day}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* 2. Warm Ups & Swaps */}
-              <div className="grid md:grid-cols-2 gap-8">
-                 <div className="bg-secondary border border-border p-10 rounded-[2rem]">
-                    <h3 className="font-display text-2xl font-bold mb-6 text-text-primary uppercase">Warm-up Protocols</h3>
-                    <div className="space-y-8">
-                       <div>
-                         <h4 className="font-bold text-sm uppercase tracking-wider mb-3 text-text-primary">5-Minute Option</h4>
-                         <ul className="text-sm text-text-secondary space-y-2">
-                           <li>• 2 mins raise temp (walk/bike)</li>
-                           <li>• 1 mobility drill</li>
-                           <li>• 2 ramp sets</li>
-                         </ul>
-                       </div>
-                       <div>
-                         <h4 className="font-bold text-sm uppercase tracking-wider mb-3 text-text-primary">10-Minute Option</h4>
-                         <ul className="text-sm text-text-secondary space-y-2">
-                           <li>• 3 mins raise temp</li>
-                           <li>• 2 mobility drills</li>
-                           <li>• Activation</li>
-                           <li>• Ramp sets</li>
-                         </ul>
-                       </div>
-                    </div>
-                 </div>
-                 
-                 <div className="bg-secondary border border-border p-10 rounded-[2rem]">
-                    <h3 className="font-display text-2xl font-bold mb-6 text-text-primary uppercase">{nutrition.level3.title}</h3>
-                    <div className="space-y-6">
-                       {nutrition.level3.points.map((item, i) => (
-                         <div key={i} className="text-sm pb-4 border-b border-border last:border-0 text-text-primary">
-                           <strong className="block mb-1 text-accent uppercase text-xs tracking-wider">{item.title}</strong>
-                           <span className="text-text-secondary">{item.desc}</span>
-                         </div>
-                       ))}
-                    </div>
-                 </div>
+                {/* 2. THE PROTOCOL (Goal) */}
+                <div className="bg-secondary p-8 rounded-[2rem] border border-border flex flex-col h-full">
+                  <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-6 border border-border">
+                    <Activity size={20} className="text-accent" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold uppercase mb-2 text-text-primary">The Protocol</h3>
+                  <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">{goalProtocol.title}</p>
+                  <p className="text-sm text-text-secondary mb-4 leading-relaxed">
+                    {goalProtocol.description}
+                  </p>
+                  <div className="mt-auto bg-primary p-4 rounded-xl border-l-2 border-accent">
+                    <p className="text-xs font-bold text-text-primary uppercase mb-1">Key Rule</p>
+                    <p className="text-sm text-text-secondary">{goalProtocol.bullet}</p>
+                  </div>
+                </div>
+
+                {/* 3. THE FIX (Constraint) */}
+                <div className="bg-secondary p-8 rounded-[2rem] border border-border flex flex-col h-full">
+                  <div className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-6 border border-border">
+                    <ShieldCheck size={20} className="text-accent" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold uppercase mb-2 text-text-primary">The Fix</h3>
+                  <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">{constraintFix.title}</p>
+                  <p className="text-sm text-text-secondary mb-4 leading-relaxed">
+                    {constraintFix.description}
+                  </p>
+                  <div className="mt-auto bg-primary p-4 rounded-xl border-l-2 border-accent">
+                    <p className="text-xs font-bold text-text-primary uppercase mb-1">Action Step</p>
+                    <p className="text-sm text-text-secondary">{constraintFix.actionable}</p>
+                  </div>
+                </div>
+
               </div>
             </div>
           )}

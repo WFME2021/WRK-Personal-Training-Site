@@ -1,19 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Smartphone, Video, MessageSquare, Check, Utensils, Globe, ArrowRight, Zap, Moon, Droplets } from 'lucide-react';
+import { Smartphone, Video, MessageSquare, Check, Utensils, Globe, ArrowRight, Zap, Moon, Droplets, Star } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
-
-import { Hero } from '../components/Hero';
-import { MidPageBanner } from '../components/MidPageBanner';
+import { LeadFormModal } from '../components/LeadFormModal';
 
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
-  const { workoutLogImage, habitsImage } = pageContent.onlineCoaching;
-  const { hero, banner, seo } = pageContent.onlineCoaching;
+  const { seo } = pageContent.onlineCoaching;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const faqs = [
     {
@@ -45,244 +43,230 @@ export const OnlineCoaching: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title={seo.title}
-        description={seo.description}
-        schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Online Personal Training",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "WRK Personal Training",
-              "image": hero.image
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "New Zealand"
-            },
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Online Coaching Services",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Online Coaching"
-                  }
-                }
-              ]
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          }
-        ]}
+        title="Online Personal Training | WRK Coaching"
+        description="World-class programming and accountability, anywhere in the world. Built for busy professionals who need a system, not a babysitter."
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
-        {/* Hero Section - Full Width Banner */}
-        <Hero 
-          image={hero.image}
-          title={hero.h1}
-          subtitle={hero.subhead}
-          bullets={hero.bullets}
-          kicker={hero.kicker}
-        />
-
-        {/* RELATABILITY (Relate) */}
-        <section className="py-24 px-6 bg-secondary border-b border-border">
-          <div className="max-w-4xl mx-auto text-center">
-             <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-8 tracking-tighter">
-               If this is you, <span className="text-accent">online coaching is a good fit</span>
-             </h2>
-             <ul className="space-y-4 mb-8 text-left max-w-2xl mx-auto">
-                {[
-                  "You want structure and accountability without being tied to a gym location",
-                  "You’ve got time constraints, stress, or injury history",
-                  "You want fat loss and consistency without diet restriction",
-                  "You travel, work gets messy, or your weeks aren’t predictable",
-                  "You want to be fit enough to say yes to more life"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start text-lg text-text-secondary">
-                    <span className="w-1.5 h-1.5 bg-accent rounded-full mr-4 mt-2.5 shrink-0"></span>
-                    {item}
-                  </li>
-                ))}
-             </ul>
-             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-8 font-medium italic">
-               A plan that survives travel, stress, and chaos.
-             </p>
-             <div className="flex flex-col md:flex-row gap-6 justify-center mt-8">
-               <Link to="/contact">
-                 <Button size="lg" className="px-8 py-4 text-lg shadow-xl">Book a consult</Button>
-               </Link>
-               <Link to="/assessment">
-                 <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-accent text-accent hover:bg-accent hover:text-white">Take the assessment</Button>
-               </Link>
-             </div>
-          </div>
+        
+        {/* A) HOOK */}
+        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">Worldwide • App Based • High Touch</span>
+          <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
+            World-Class Coaching. <br/><span className="text-accent">Anywhere.</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
+            You don't need a trainer standing over you counting reps. You need a professional strategy, intelligent programming, and ruthless accountability.
+          </p>
+          <Button 
+            size="lg" 
+            className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Apply for Coaching
+          </Button>
+          <p className="mt-4 text-xs text-text-secondary uppercase tracking-wider">Application Only • 12 Week Minimum</p>
         </section>
 
-        {/* VALUE (What you get) */}
-        <section className="py-24 px-6 bg-primary border-b border-border">
-          <div className="max-w-6xl mx-auto">
-             <div className="grid md:grid-cols-2 gap-20 items-center">
-                <div>
-                  <h2 className="font-display text-5xl md:text-7xl uppercase font-bold text-text-primary mb-8 leading-[0.9] tracking-tighter">
-                    What <br/><span className="text-text-secondary">You Get.</span>
-                  </h2>
-                  <p className="text-xl text-text-primary leading-relaxed mb-8">
-                    Everything you need to stay consistent—without overthinking.
-                  </p>
-                  <ul className="space-y-6">
-                    {[
-                      "App-based plan tailored to your goals and constraints",
-                      "Regular check-ins (accountability without hand-holding)",
-                      "Nutrition support that’s protein-forward and flexible",
-                      "Adaptability for travel, busy weeks, and changing schedules",
-                      "Adjustments based on progress, stress, sleep, and niggles",
-                      "Form checks / video feedback so technique stays solid"
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start group">
-                        <div className="w-1.5 h-1.5 bg-accent rounded-full mr-4 mt-2.5 shrink-0"></div>
-                        <span className="text-text-secondary text-lg">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-8 text-lg font-medium italic text-text-primary border-l-4 border-accent pl-6 py-2">
-                    No benefit in stressing an already jacked-up system. We train smart.
-                  </p>
-                </div>
-                <div className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border border-border">
-                   <img 
-                    src={workoutLogImage.url} 
-                    alt={workoutLogImage.alt} 
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
-             </div>
-          </div>
-        </section>
-
-        <MidPageBanner 
-          image={banner.image}
-          tagline={banner.tagline}
-          support={banner.support}
-        />
-
-        {/* PROOF (Why this works) */}
-        <section className="py-24 px-6 bg-secondary border-b border-border">
-          <div className="max-w-4xl mx-auto text-center">
-             <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-8 tracking-tighter">
-               Why this works
-             </h2>
-             <p className="text-xl text-text-secondary leading-relaxed mb-8">
-               Training is one hour of your day. The other 23 decide the result.
-             </p>
-             <p className="text-xl text-text-secondary leading-relaxed mb-12">
-               So we track the “big rocks” that actually drive body composition and performance—without obsession:
-             </p>
-             
-             <div className="grid md:grid-cols-2 gap-8 text-left max-w-3xl mx-auto">
-               {[
-                 { title: "Sleep hygiene", desc: "Simple recovery metrics" },
-                 { title: "Hydration", desc: "Daily targets to keep energy stable" },
-                 { title: "Energy management", desc: "Quick scoring to prevent burnout and overreach" },
-                 { title: "Weekly structure", desc: "You can repeat even when life is messy" }
-               ].map((item, i) => (
-                 <div key={i} className="bg-primary p-6 rounded-2xl border border-border">
-                   <h3 className="font-bold text-lg text-text-primary mb-2">{item.title}</h3>
-                   <p className="text-text-secondary">{item.desc}</p>
-                 </div>
-               ))}
-             </div>
-          </div>
-        </section>
-
-        {/* PATH (How we work) */}
-        <section className="py-24 px-6 bg-primary border-b border-border">
-          <div className="max-w-6xl mx-auto">
-             <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">How We Work</h2>
-             <div className="grid md:grid-cols-3 gap-8">
-               {[
-                 { step: "Step 1", title: "Assess", desc: "Assess your starting point, schedule, stress, training history, and constraints." },
-                 { step: "Step 2", title: "Address", desc: "Address what limits progress—movement patterns, posture, recovery, pacing." },
-                 { step: "Step 3", title: "Customise", desc: "Customise your training and nutrition structure so it fits your lifestyle and keeps progressing." }
-               ].map((item, i) => (
-                 <div key={i} className="bg-secondary p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow border border-border">
-                   <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">{item.step}</span>
-                   <h3 className="font-display text-3xl font-bold mb-4 text-text-primary uppercase">{item.title}</h3>
-                   <p className="text-text-secondary leading-relaxed text-lg">{item.desc}</p>
-                 </div>
-               ))}
-             </div>
-             <div className="mt-12 text-center">
-               <p className="text-lg text-text-secondary font-medium italic">
-                 No pain no gain? More accurately: no appropriate discomfort, no progress.
-               </p>
-             </div>
-          </div>
-        </section>
-
-        {/* RESULTS / TESTIMONIALS */}
-        <section className="py-24 px-6 bg-secondary border-t border-border">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">Online Client Results</h2>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+        {/* B) AGITATE */}
+        <section className="py-20 px-6 bg-secondary border-y border-border">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-3xl font-bold uppercase mb-10 text-center">The Problem with "Generic" Plans</h2>
+            <div className="space-y-6">
               {[
-                { quote: "I travel 2 weeks a month. This is the first time I’ve actually stayed consistent while on the road.", author: "Mark T.", role: "Sales Director" },
-                { quote: "The app makes it easy. I don’t have to think, I just open it and do the work. Down 8kg in 12 weeks.", author: "Emma S.", role: "Working Mum" },
-                { quote: "I was skeptical about online coaching, but the form feedback is better than trainers I’ve had in person.", author: "Jason L.", role: "Software Dev" }
-              ].map((testimonial, i) => (
-                <div key={i} className="bg-primary p-8 rounded-[2rem] border border-border">
-                  <p className="text-lg text-text-primary mb-6 italic">"{testimonial.quote}"</p>
+                "You travel for work, so your 'Monday Chest Day' falls apart when you're in a hotel with only dumbbells.",
+                "You know HOW to lift, but you don't know WHAT to do to break your plateau.",
+                "You've downloaded PDF programs before, but fell off the wagon after 3 weeks because no one was watching.",
+                "You're training hard but eating poorly, so your physique never actually changes.",
+                "You're tired of guessing and want to outsource the thinking to an expert."
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-4 p-4 rounded-xl hover:bg-primary/50 transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center shrink-0">
+                    <span className="font-bold">✕</span>
+                  </div>
+                  <p className="text-lg text-text-primary font-medium">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* C) REFRAME */}
+        <section className="py-24 px-6 bg-primary text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">
+              You don't need a <span className="text-accent">babysitter</span>.
+            </h2>
+            <p className="text-2xl text-text-primary font-medium leading-relaxed mb-6">
+              You need a strategist.
+            </p>
+            <p className="text-lg text-text-secondary leading-relaxed">
+              Most people think they need someone to motivate them in the gym. What they actually need is a plan that adapts to their life, and a coach who notices when they drift off course.
+            </p>
+          </div>
+        </section>
+
+        {/* D) SOLUTION */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">The Solution</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
+                WRK Online.
+              </h2>
+              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+                This isn't a PDF download. This is a high-touch coaching relationship delivered digitally.
+              </p>
+              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+                We use professional coaching software to deliver your workouts, track your weights, monitor your nutrition, and analyze your technique. It's like having a coach in your pocket, 24/7.
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-primary p-6 rounded-2xl border border-border">
+                  <Smartphone className="text-accent mb-4" size={32} />
+                  <h3 className="font-bold text-lg mb-2">The App</h3>
+                  <p className="text-sm text-text-secondary">Your program, demos, and history in one place.</p>
+                </div>
+                <div className="bg-primary p-6 rounded-2xl border border-border">
+                  <Video className="text-accent mb-4" size={32} />
+                  <h3 className="font-bold text-lg mb-2">Video Feedback</h3>
+                  <p className="text-sm text-text-secondary">Upload lifts, get detailed technical analysis.</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-[600px] bg-primary rounded-[3rem] border border-border overflow-hidden shadow-2xl flex items-center justify-center">
+               <div className="text-center p-8">
+                 <Smartphone size={64} className="text-text-secondary mx-auto mb-4 opacity-20" />
+                 <p className="text-text-secondary font-display uppercase text-2xl font-bold opacity-20">App Interface Preview</p>
+               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* E) OFFER (What you get) */}
+        <section className="py-24 px-6 bg-primary">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-12 text-center">
+              What you get
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                { title: "Custom Training Program", desc: "Built for your goals, your equipment, and your schedule. Updated as you progress." },
+                { title: "Video Form Analysis", desc: "Record your main lifts. I review them and send back voice-over corrections." },
+                { title: "Nutrition Framework", desc: "Calorie and protein targets tailored to your goal (Fat Loss, Muscle, or Performance)." },
+                { title: "Weekly Check-Ins", desc: "A formal review of your week. We look at biofeedback, stress, and progress." },
+                { title: "Direct Coach Access", desc: "Message me anytime in the app. Questions answered within 24 hours." },
+                { title: "Lifestyle Management", desc: "We track sleep, stress, and energy to ensure you aren't burning out." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <CheckCircleIcon />
                   <div>
-                    <p className="font-bold text-text-primary uppercase tracking-wider text-sm">{testimonial.author}</p>
-                    <p className="text-text-secondary text-xs uppercase tracking-widest mt-1">{testimonial.role}</p>
+                    <h3 className="font-bold text-lg text-text-primary">{item.title}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="text-center">
-               <p className="text-lg text-text-secondary font-medium">Results vary—but consistency always wins.</p>
+            <div className="mt-16 text-center">
+              <Button 
+                size="lg" 
+                className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Apply for Coaching
+              </Button>
             </div>
           </div>
         </section>
 
-        <FAQ items={faqs} title="Online Coaching FAQs" />
+        {/* F) HOW IT WORKS */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-16 text-center">How it works</h2>
+            <div className="grid md:grid-cols-3 gap-12">
+              {[
+                { step: "01", title: "Onboarding", desc: "We jump on a video call to map out your goals, schedule, and equipment. We set the strategy." },
+                { step: "02", title: "The Setup", desc: "I build your program in the app. You get your login, view your schedule, and see your nutrition targets." },
+                { step: "03", title: "The Sprint", desc: "You execute. You track your weights. You upload videos. Every week, we review and refine." }
+              ].map((item, i) => (
+                <div key={i} className="relative p-8 bg-primary rounded-[2rem] border border-border">
+                  <span className="absolute -top-6 left-8 text-6xl font-display font-bold text-accent/20">{item.step}</span>
+                  <h3 className="font-display text-2xl font-bold uppercase mb-4 mt-6">{item.title}</h3>
+                  <p className="text-text-secondary leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        {/* Final CTA */}
-        <section className="py-24 px-6 bg-primary border-t border-border">
+        {/* G) PROOF */}
+        <section className="py-24 px-6 bg-primary">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter">Start Here</h2>
-            <p className="text-xl text-text-secondary leading-relaxed mb-12 max-w-2xl mx-auto">
-              Book a consult and we’ll confirm fit, your constraints, and the best starting plan. If you’re not ready yet, take the assessment and you’ll get a clear next step.
+            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12">Client Results</h2>
+            <div className="grid md:grid-cols-3 gap-8 text-left">
+              {[
+                { name: "Mark T.", role: "Sales Director", quote: "I travel 2 weeks a month. This is the first time I’ve actually stayed consistent while on the road. The hotel workouts saved me." },
+                { name: "Emma S.", role: "Working Mum", quote: "The app makes it easy. I don’t have to think, I just open it and do the work. Down 8kg in 12 weeks." },
+                { name: "Jason L.", role: "Software Dev", quote: "I was skeptical about online coaching, but the video feedback is better than trainers I’ve had in person. My squat has never felt better." }
+              ].map((item, i) => (
+                <div key={i} className="bg-secondary p-8 rounded-2xl border border-border">
+                  <div className="flex gap-1 text-accent mb-4">
+                    {[1,2,3,4,5].map(s => <Star key={s} size={14} fill="currentColor" />)}
+                  </div>
+                  <p className="text-text-secondary text-sm italic mb-6">"{item.quote}"</p>
+                  <div>
+                    <strong className="block text-text-primary font-bold">{item.name}</strong>
+                    <span className="text-xs text-text-secondary uppercase tracking-wider">{item.role}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* H) FAQ */}
+        <section className="py-24 px-6 bg-secondary border-t border-border">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12 text-center">Frequently Asked Questions</h2>
+            <FAQ items={faqs} />
+          </div>
+        </section>
+
+        {/* I) CTA */}
+        <section className="py-32 px-6 bg-primary text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-8">
+              Start Your <span className="text-accent">Transformation.</span>
+            </h2>
+            <p className="text-xl text-text-secondary mb-12 max-w-xl mx-auto">
+              Professional guidance, anywhere in the world. Stop guessing and start progressing.
             </p>
-            <div className="flex flex-col md:flex-row justify-center gap-6 items-center">
-              <Link to="/contact">
-                <Button size="lg" className="px-12 py-6 text-xl shadow-xl">Book a consult</Button>
-              </Link>
-              <Link to="/assessment">
-                <Button variant="outline" size="lg" className="px-12 py-6 text-xl border-accent text-accent hover:bg-accent hover:text-white">Take the assessment</Button>
-              </Link>
+            <div className="flex flex-col md:flex-row gap-6 justify-center">
+              <Button 
+                size="lg" 
+                className="px-16 py-6 text-xl shadow-xl w-full md:w-auto"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Apply for Coaching
+              </Button>
             </div>
             <p className="mt-8 text-sm text-text-secondary">
-              Not ready for coaching? <Link to="/42-day-reset" className="underline hover:text-accent">Start with the 42-Day Reset</Link>.
+              100% No-Pressure Chat. We'll just see if we're a good fit.
             </p>
           </div>
         </section>
       </div>
+
+      <LeadFormModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        service="Online Coaching" 
+      />
     </>
   );
 };
+
+const CheckCircleIcon = () => (
+  <div className="w-6 h-6 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-1">
+    <Check size={14} strokeWidth={3} />
+  </div>
+);

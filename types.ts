@@ -49,6 +49,12 @@ export enum OfferType {
   HYBRID = 'Hybrid 1:1 Coaching'
 }
 
+export enum LocationType {
+  CHRISTCHURCH = 'Christchurch',
+  NEW_ZEALAND = 'New Zealand (Other)',
+  INTERNATIONAL = 'International'
+}
+
 export interface AssessmentData {
   goal: GoalType | null;
   constraint: ConstraintType | null;
@@ -56,6 +62,7 @@ export interface AssessmentData {
   environment: EnvironmentType | null;
   injury: InjuryType | null;
   support: SupportType | null;
+  location: LocationType | null;
   recommendedOffer?: OfferType;
 }
 

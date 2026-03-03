@@ -1,280 +1,273 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Check, Target, UserCheck, ShieldCheck, MapPin, ArrowRight } from 'lucide-react';
+import { Check, Target, UserCheck, ShieldCheck, MapPin, ArrowRight, Star, Clock, Zap } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
-
-import { Hero } from '../components/Hero';
-import { MidPageBanner } from '../components/MidPageBanner';
+import { LeadFormModal } from '../components/LeadFormModal';
 
 export const PersonalTraining: React.FC = () => {
   const { pageContent } = useContent();
-  const { mainImage } = pageContent.personalTraining;
-  const { hero, banner, seo } = pageContent.personalTraining;
-
-  const scrollToEnquiry = () => {
-    const element = document.getElementById('enquiry-form');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const { seo } = pageContent.personalTraining;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const faqs = [
     {
       question: "Do I need to be fit before starting?",
-      answer: "No. We meet you where you’re at and build from there."
+      answer: "No. We meet you where you’re at. Whether you're returning from injury or haven't trained in years, we build the floor before we raise the ceiling."
     },
     {
-      question: "What if I’ve got injuries or recurring niggles?",
-      answer: "Common. We train around them, strengthen weak links, and progress intelligently."
+      question: "What if I travel for work?",
+      answer: "That's why we use the Hybrid model. You get a specific 'Travel Protocol' in your app so you don't lose momentum when you're away."
     },
     {
-      question: "Will I have to follow a strict meal plan?",
-      answer: "No. Protein-forward and flexible—built to suit your life and preferences."
+      question: "Do I need a gym membership?",
+      answer: "For your solo sessions, yes—access to basic equipment helps. For our 1:1 sessions, you come to my private facility in Addington (no membership required)."
     },
     {
-      question: "How many sessions per week do I need?",
-      answer: "Enough to be effective, not enough to dominate your diary. We’ll pick the minimum effective dose that fits."
+      question: "How often do we meet?",
+      answer: "Most clients train 1:1 once per week for technique and intensity, then execute 2-3 solo sessions via the app. This is the most time-efficient model."
     },
     {
-      question: "Is this just for “gym people”?",
-      answer: "No. This is for people who want to feel better, move better, and show up better outside the gym."
+      question: "What if I have an injury?",
+      answer: "We specialize in working around pain. We don't just 'rest it'; we find the regression that allows you to train pain-free while you heal."
+    },
+    {
+      question: "Is there a minimum commitment?",
+      answer: "Yes, 12 weeks. Real physiological adaptation takes time. We aren't interested in selling quick fixes that don't stick."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title={seo.title}
-        description={seo.description}
-        schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Personal Training",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "WRK Personal Training",
-              "image": hero.image || mainImage.url
-            },
-            "areaServed": {
-              "@type": "City",
-              "name": "Christchurch"
-            },
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Personal Training Services",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Hybrid Personal Training"
-                  }
-                }
-              ]
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          }
-        ]}
+        title="Personal Training Christchurch | WRK Hybrid Coaching"
+        description="Stop guessing in the gym. Get a structured, pain-free training system that fits your busy schedule. Based in Addington, Christchurch."
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300">
-        {/* Hero Section - Full Width Banner */}
-        <Hero 
-          image={hero.image}
-          title={hero.h1}
-          subtitle={hero.subhead}
-          bullets={hero.bullets}
-          kicker={hero.kicker}
-        />
-
-        {/* RELATABILITY (Relate) */}
-        <section className="py-24 px-6 bg-secondary border-b border-border">
-          <div className="max-w-4xl mx-auto text-center">
-             <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-8 tracking-tighter">
-               If this is you, <span className="text-accent">1:1 is a good fit</span>
-             </h2>
-             <ul className="space-y-4 mb-8 text-left max-w-2xl mx-auto">
-                {[
-                  "You want accountability that actually works",
-                  "You’ve tried “do more” plans and they’ve wrecked your schedule",
-                  "You’ve got aches, pains, niggles, posture issues—or a body that needs smart programming",
-                  "You want fat loss and strength without becoming “the person who can’t eat anything”",
-                  "You want a plan that survives real life, not perfect weeks"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start text-lg text-text-secondary">
-                    <span className="w-1.5 h-1.5 bg-accent rounded-full mr-4 mt-2.5 shrink-0"></span>
-                    {item}
-                  </li>
-                ))}
-             </ul>
-             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-8 font-medium italic">
-               Not here to shag spiders—this is real coaching, for real life.
-             </p>
-             <div className="flex flex-col md:flex-row gap-6 justify-center mt-8">
-               <Link to="/contact">
-                 <Button size="lg" className="px-8 py-4 text-lg shadow-xl">Book a consult</Button>
-               </Link>
-               <Link to="/assessment">
-                 <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-accent text-accent hover:bg-accent hover:text-white">Take the assessment</Button>
-               </Link>
-             </div>
-          </div>
+        
+        {/* A) HOOK */}
+        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
+          <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">Christchurch Based • Hybrid Model</span>
+          <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
+            Stop "Exercising". <br/>Start Training for <span className="text-accent">ROI.</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
+            You don't need to live in the gym to look like you lift. You need a system that respects your time, your injuries, and your schedule.
+          </p>
+          <Button 
+            size="lg" 
+            className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Book a Free Consult
+          </Button>
+          <p className="mt-4 text-xs text-text-secondary uppercase tracking-wider">Limited spots available • Addington Facility</p>
         </section>
 
-        {/* VALUE (What you get) */}
-        <section className="py-24 px-6 bg-primary border-b border-border">
-          <div className="max-w-6xl mx-auto">
-             <div className="grid md:grid-cols-2 gap-20 items-center">
-                <div>
-                  <h2 className="font-display text-5xl md:text-7xl uppercase font-bold text-text-primary mb-8 leading-[0.9] tracking-tighter">
-                    What <br/><span className="text-text-secondary">You Get.</span>
-                  </h2>
-                  <p className="text-xl text-text-primary leading-relaxed mb-8">
-                    Hands-on coaching plus a structured plan outside the gym—so progress continues between sessions.
-                  </p>
-                  <ul className="space-y-6">
-                    {[
-                      { title: "1:1 in-person sessions", desc: "Technique, safety, and intensity managed by an expert" },
-                      { title: "Structured plan outside the gym", desc: "“Homework” that fits your week, delivered via app" },
-                      { title: "Pain-aware training that still gets results", desc: "Posture, postpartum return-to-training, menopause changes" },
-                      { title: "Protein-forward nutrition", desc: "Flexible guidance, not restrictive meal plans" },
-                      { title: "Smart progression", desc: "Respects stress, recovery, and injury history" },
-                      { title: "Accountability + clarity", desc: "You’ll always know what to do next" }
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start group">
-                        <div className="w-1.5 h-1.5 bg-accent rounded-full mr-4 mt-2.5 shrink-0"></div>
-                        <div>
-                          <strong className="text-text-primary block text-lg">{item.title}</strong>
-                          <span className="text-text-secondary">{item.desc}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+        {/* B) AGITATE */}
+        <section className="py-20 px-6 bg-secondary border-y border-border">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-3xl font-bold uppercase mb-10 text-center">Sound familiar?</h2>
+            <div className="space-y-6">
+              {[
+                "You go to the gym 3x a week but look exactly the same as you did last year.",
+                "You have 'niggles' (shoulder, lower back, knee) that stop you from pushing hard.",
+                "You follow random Instagram workouts with no structure or progression.",
+                "You’re busy, so when work gets crazy, your training is the first thing to drop.",
+                "You’re guessing with your nutrition—either starving yourself or eating whatever."
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-4 p-4 rounded-xl hover:bg-primary/50 transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center shrink-0">
+                    <span className="font-bold">✕</span>
+                  </div>
+                  <p className="text-lg text-text-primary font-medium">{item}</p>
                 </div>
-                <div className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border border-border">
-                   <img 
-                    src={mainImage.url} 
-                    alt={mainImage.alt} 
-                    className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
-                  />
-                </div>
-             </div>
-          </div>
-        </section>
-
-        <MidPageBanner 
-          image={banner.image}
-          tagline={banner.tagline}
-          support={banner.support}
-        />
-
-        {/* PROOF (Why this works) */}
-        <section className="py-24 px-6 bg-secondary border-b border-border">
-          <div className="max-w-4xl mx-auto text-center">
-             <h2 className="font-display text-4xl md:text-6xl uppercase font-bold text-text-primary mb-8 tracking-tighter">
-               Why this works
-             </h2>
-             <p className="text-xl text-text-secondary leading-relaxed mb-8">
-               Most people don’t need more intensity. They need better structure and better decision-making—especially when stress is high and recovery is limited.
-             </p>
-             <p className="text-xl text-text-secondary leading-relaxed mb-8">
-               There’s no benefit in stressing an already jacked-up system. We train hard enough to progress, not so hard you can’t recover, repeat it, or stay consistent.
-             </p>
-             <p className="text-lg text-text-secondary font-medium italic">
-               No need for balls-to-the-wall intensity. We want progress you can keep.
-             </p>
-          </div>
-        </section>
-
-        {/* PATH (The method) */}
-        <section className="py-24 px-6 bg-primary border-b border-border">
-          <div className="max-w-6xl mx-auto">
-             <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">The Method</h2>
-             <div className="grid md:grid-cols-3 gap-8">
-               {[
-                 { step: "Assess", title: "Assess", desc: "We assess where you are now—time, stress, body history, goals. (Any aches, pains, or niggles?)" },
-                 { step: "Address", title: "Address", desc: "We address the limitations holding you back—movement patterns, weak links, recovery gaps." },
-                 { step: "Customise", title: "Customise", desc: "We customise training + nutrition so it’s doable, repeatable, and progressed over time." }
-               ].map((item, i) => (
-                 <div key={i} className="bg-secondary p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-shadow border border-border">
-                   <h3 className="font-display text-3xl font-bold mb-4 text-accent uppercase">{item.title}</h3>
-                   <p className="text-text-secondary leading-relaxed text-lg">{item.desc}</p>
-                 </div>
-               ))}
-             </div>
-          </div>
-        </section>
-
-        {/* RESULTS (what to expect) */}
-        <section className="py-24 px-6 bg-secondary border-b border-border">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl font-display font-bold mb-16 text-center text-text-primary uppercase tracking-tighter">Results to expect</h2>
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-               {[
-                 "Fat loss without burnout",
-                 "Reduced pain + better movement confidence",
-                 "Strength gains and better fitness",
-                 "Consistency that doesn’t collapse when work gets busy"
-               ].map((item, i) => (
-                 <div key={i} className="bg-primary p-8 rounded-[2rem] border border-border flex items-center">
-                   <div className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold mr-6 shrink-0">
-                     {i + 1}
-                   </div>
-                   <p className="text-xl text-text-primary font-medium">{item}</p>
-                 </div>
-               ))}
+              ))}
             </div>
           </div>
         </section>
 
-        {/* LOCATION (quick clarity) */}
-        <section className="py-24 px-6 bg-primary border-b border-border">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-display font-bold mb-6 text-text-primary uppercase tracking-tighter">Where you’ll train</h2>
-            <p className="text-lg text-text-secondary leading-relaxed mb-8">
-              Based in Addington at Get Me Fitter — private facility, free parking, no crowds.
-              <br/>
-              <strong>Address:</strong> 12 Show Place, Addington, Christchurch.
+        {/* C) REFRAME */}
+        <section className="py-24 px-6 bg-primary text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">
+              You don't need more <span className="text-accent">motivation</span>.
+            </h2>
+            <p className="text-2xl text-text-primary font-medium leading-relaxed mb-6">
+              You need a system.
+            </p>
+            <p className="text-lg text-text-secondary leading-relaxed">
+              Motivation is a feeling; it comes and goes. A system is a set of rules that works even when you're tired, stressed, or busy. We build the system so you just have to execute.
             </p>
           </div>
         </section>
 
-        <FAQ items={faqs} title="FAQs" />
+        {/* D) SOLUTION */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">The Solution</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
+                The Hybrid Model.
+              </h2>
+              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+                Traditional Personal Training is broken. You pay $100/hour to have someone count your reps, then you're on your own for the other 167 hours of the week.
+              </p>
+              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+                <strong>We do it differently.</strong> We combine high-precision in-person coaching with digital programming. You see me to fix your technique and push your limits. You use the app to stay consistent the rest of the week.
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-primary p-6 rounded-2xl border border-border">
+                  <UserCheck className="text-accent mb-4" size={32} />
+                  <h3 className="font-bold text-lg mb-2">In-Person Precision</h3>
+                  <p className="text-sm text-text-secondary">Technique, safety, and intensity management.</p>
+                </div>
+                <div className="bg-primary p-6 rounded-2xl border border-border">
+                  <Zap className="text-accent mb-4" size={32} />
+                  <h3 className="font-bold text-lg mb-2">Digital Freedom</h3>
+                  <p className="text-sm text-text-secondary">Train whenever, wherever, with full guidance.</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-[600px] bg-primary rounded-[3rem] border border-border overflow-hidden shadow-2xl">
+               {/* Placeholder for image - using a div to represent the app interface or training shot */}
+               <div className="absolute inset-0 flex items-center justify-center bg-primary">
+                 <p className="text-text-secondary font-display uppercase text-4xl font-bold opacity-10 rotate-12">WRK System</p>
+               </div>
+            </div>
+          </div>
+        </section>
 
-        {/* Final CTA */}
-        <section className="py-24 px-6 bg-secondary border-t border-border">
+        {/* E) OFFER (What you get) */}
+        <section className="py-24 px-6 bg-primary">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-12 text-center">
+              What you get
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                { title: "1:1 Coaching Sessions", desc: "Weekly or fortnightly sessions at our private Addington facility to refine technique." },
+                { title: "Custom Training App", desc: "Your entire program in your pocket. Video demos, rep tracking, and progress history." },
+                { title: "Nutrition Systems", desc: "No rigid meal plans. We build a nutrition framework that fits your lifestyle and goals." },
+                { title: "Daily Accountability", desc: "Direct access to your coach via chat. Questions answered within 24 hours." },
+                { title: "Form Reviews", desc: "Upload videos of your solo sessions for feedback. Never guess if you're doing it right." },
+                { title: "Travel Protocols", desc: "Custom workouts for hotel rooms or limited equipment when you're on the road." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <CheckCircleIcon />
+                  <div>
+                    <h3 className="font-bold text-lg text-text-primary">{item.title}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-16 text-center">
+              <Button 
+                size="lg" 
+                className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Book a Consult
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* F) HOW IT WORKS */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-16 text-center">How it works</h2>
+            <div className="grid md:grid-cols-3 gap-12">
+              {[
+                { step: "01", title: "The Audit", desc: "We meet for a consult to assess your movement, injury history, stress levels, and goals. We find the gaps." },
+                { step: "02", title: "The Build", desc: "I build your custom training block and nutrition protocol. We set the schedule that fits your life." },
+                { step: "03", title: "The Execution", desc: "We train. You track. We review. Every week we adjust the variables to ensure you keep progressing." }
+              ].map((item, i) => (
+                <div key={i} className="relative p-8 bg-primary rounded-[2rem] border border-border">
+                  <span className="absolute -top-6 left-8 text-6xl font-display font-bold text-accent/20">{item.step}</span>
+                  <h3 className="font-display text-2xl font-bold uppercase mb-4 mt-6">{item.title}</h3>
+                  <p className="text-text-secondary leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* G) PROOF */}
+        <section className="py-24 px-6 bg-primary">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl font-display font-bold mb-8 text-text-primary uppercase tracking-tighter">Ready to get started?</h2>
-            <p className="text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
-              Book a consult and we’ll map the simplest plan that works—based on your goals, your schedule, and your body.
+            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12">Client Results</h2>
+            <div className="grid md:grid-cols-3 gap-8 text-left">
+              {[
+                { name: "Sarah J.", role: "Corporate Lawyer", quote: "I used to burn out every 3 months. The structure of this program meant I could train through my busiest trial period without crashing." },
+                { name: "Mike T.", role: "Business Owner", quote: "I've had back pain for 5 years. 12 weeks of this program and I'm deadlifting pain-free for the first time. The technique focus is legit." },
+                { name: "James H.", role: "Dad of 2", quote: "Simple, effective, and fits around the kids. I'm stronger at 40 than I was at 30. Best investment I've made." }
+              ].map((item, i) => (
+                <div key={i} className="bg-secondary p-8 rounded-2xl border border-border">
+                  <div className="flex gap-1 text-accent mb-4">
+                    {[1,2,3,4,5].map(s => <Star key={s} size={14} fill="currentColor" />)}
+                  </div>
+                  <p className="text-text-secondary text-sm italic mb-6">"{item.quote}"</p>
+                  <div>
+                    <strong className="block text-text-primary font-bold">{item.name}</strong>
+                    <span className="text-xs text-text-secondary uppercase tracking-wider">{item.role}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* H) FAQ */}
+        <section className="py-24 px-6 bg-secondary border-t border-border">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12 text-center">Frequently Asked Questions</h2>
+            <FAQ items={faqs} />
+          </div>
+        </section>
+
+        {/* I) CTA */}
+        <section className="py-32 px-6 bg-primary text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-8">
+              Start Your <span className="text-accent">Progression.</span>
+            </h2>
+            <p className="text-xl text-text-secondary mb-12 max-w-xl mx-auto">
+              No more guessing. No more wasted sessions. Just a clear plan and the support to execute it.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
-              <Link to="/contact">
-                <Button size="lg" className="px-12 py-6 text-xl shadow-xl">Book a consult</Button>
-              </Link>
-              <Link to="/assessment">
-                <Button variant="outline" size="lg" className="px-12 py-6 text-xl border-accent text-accent hover:bg-accent hover:text-white">Take the assessment</Button>
-              </Link>
+              <Button 
+                size="lg" 
+                className="px-16 py-6 text-xl shadow-xl w-full md:w-auto"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Book a Consult
+              </Button>
             </div>
+            <p className="mt-8 text-sm text-text-secondary">
+              100% No-Pressure Chat. We'll just see if we're a good fit.
+            </p>
           </div>
         </section>
+
       </div>
+
+      <LeadFormModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        service="1:1 Coaching (Christchurch)" 
+      />
     </>
   );
 };
+
+const CheckCircleIcon = () => (
+  <div className="w-6 h-6 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-1">
+    <Check size={14} strokeWidth={3} />
+  </div>
+);
