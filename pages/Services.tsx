@@ -50,7 +50,7 @@ export const Services: React.FC = () => {
               </Link>
 
               {/* Service Card 2: Online */}
-              <Link to="/online-coaching" className="group block lg:mt-24">
+              <Link to="/online-personal-training-nz" className="group block lg:mt-24">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    <img src={onlineImage.url} alt={onlineImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
@@ -66,7 +66,7 @@ export const Services: React.FC = () => {
               </Link>
 
                {/* Service Card 3: Corporate */}
-              <Link to="/corporate-wellness" className="group block">
+              <Link to="/workplace-wellness-program-nz" className="group block">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    {corporateImage.url ? (
                      <img src={corporateImage.url} alt={corporateImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
@@ -85,7 +85,7 @@ export const Services: React.FC = () => {
               </Link>
 
               {/* Service Card 4: 42 Day Reset */}
-              <Link to="/42-day-reset" className="group block lg:mt-24">
+              <Link to="/fitness-challenge-nz" className="group block lg:mt-24">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative bg-secondary flex items-center justify-center border border-border">
                    <h4 className="font-display text-[12rem] font-bold text-text-primary opacity-5 leading-none">42</h4>
                    <div className="absolute top-8 right-8 bg-accent text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Self-Led</div>

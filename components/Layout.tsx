@@ -24,9 +24,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
   const LANDING_PAGE_ROUTES = [
     '/personal-trainer-christchurch',
-    '/online-coaching',
-    '/corporate-wellness',
-    '/42-day-reset'
+    '/online-personal-training-nz',
+    '/workplace-wellness-program-nz',
+    '/fitness-challenge-nz'
   ];
 
   const isLandingPage = LANDING_PAGE_ROUTES.includes(location.pathname);
@@ -107,9 +107,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <span className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-6 block">Programs</span>
               <div className="flex flex-col space-y-6">
                 <Link to="/personal-trainer-christchurch" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Personal Training</Link>
-                <Link to="/online-coaching" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Online Coaching</Link>
-                <Link to="/corporate-wellness" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Corporate Wellness</Link>
-                <Link to="/42-day-reset" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">42 Day Reset</Link>
+                <Link to="/online-personal-training-nz" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Online Coaching</Link>
+                <Link to="/workplace-wellness-program-nz" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Corporate Wellness</Link>
+                <Link to="/fitness-challenge-nz" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">42 Day Reset</Link>
               </div>
             </div>
           </div>
@@ -151,9 +151,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <h4 className="font-bold uppercase tracking-widest text-xs text-accent mb-8">Coaching</h4>
                 <ul className="space-y-4 text-sm font-medium text-text-secondary">
                   <li><Link to="/personal-trainer-christchurch" className="hover:text-text-primary transition-colors">Personal Training</Link></li>
-                  <li><Link to="/online-coaching" className="hover:text-text-primary transition-colors">Online Coaching</Link></li>
-                  <li><Link to="/corporate-wellness" className="hover:text-text-primary transition-colors">Corporate Wellness</Link></li>
-                  <li><Link to="/42-day-reset" className="hover:text-text-primary transition-colors">42 Day Reset</Link></li>
+                  <li><Link to="/online-personal-training-nz" className="hover:text-text-primary transition-colors">Online Coaching</Link></li>
+                  <li><Link to="/workplace-wellness-program-nz" className="hover:text-text-primary transition-colors">Corporate Wellness</Link></li>
+                  <li><Link to="/fitness-challenge-nz" className="hover:text-text-primary transition-colors">42 Day Reset</Link></li>
                 </ul>
               </div>
 

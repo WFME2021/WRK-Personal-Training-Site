@@ -50,9 +50,9 @@ const App: React.FC = () => {
               {/* Service Routes */}
               <Route path="/services" element={<Services />} />
               <Route path="/personal-trainer-christchurch" element={<PersonalTraining />} />
-              <Route path="/online-coaching" element={<OnlineCoaching />} />
-              <Route path="/corporate-wellness" element={<CorporateWellness />} />
-              <Route path="/42-day-reset" element={<Challenge42 />} />
+              <Route path="/online-personal-training-nz" element={<OnlineCoaching />} />
+              <Route path="/workplace-wellness-program-nz" element={<CorporateWellness />} />
+              <Route path="/fitness-challenge-nz" element={<Challenge42 />} />
               
               {/* Blog Routes */}
               <Route path="/blog" element={<Blog />} />
