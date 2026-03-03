@@ -192,7 +192,7 @@ export const Home: React.FC = () => {
             <div className="grid lg:grid-cols-2 gap-8">
               
               {/* Card 1: 1:1 In-Person Training (Christchurch) */}
-              <Link to="/personal-training" className="group block">
+              <Link to="/personal-trainer-christchurch" className="group block">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    <img src={ptImage.url} alt={ptImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
