@@ -45,7 +45,12 @@ export const BLOG_POSTS: BlogPost[] = [
       alt: "Person sleeping comfortably",
       seoDescription: "A person sleeping in a comfortable bed, representing recovery and sleep optimization."
     },
-    author: DEFAULT_AUTHOR,
+    author: {
+      name: "Hayden Richards",
+      role: "Founder & Head Coach",
+      bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+      avatarUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+    },
     seoTitle: "Sleep Optimization Guide | WRK Personal Training",
     seoDescription: "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
   },
@@ -63,7 +68,12 @@ export const BLOG_POSTS: BlogPost[] = [
       alt: "Weight plates in a gym",
       seoDescription: "Close up of weight plates in a gym setting, symbolizing strength training."
     },
-    author: DEFAULT_AUTHOR,
+    author: {
+      name: "Hayden Richards",
+      role: "Founder & Head Coach",
+      bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+      avatarUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+    },
     seoTitle: "Beginner Strength Training Guide | WRK Personal Training",
     seoDescription: "Master the big four compound lifts to build strength and longevity. A simple guide for beginners."
   },
@@ -81,7 +91,12 @@ export const BLOG_POSTS: BlogPost[] = [
       alt: "Healthy meal prep containers",
       seoDescription: "Healthy food in meal prep containers, representing nutrition strategies for busy professionals."
     },
-    author: DEFAULT_AUTHOR,
+    author: {
+      name: "Hayden Richards",
+      role: "Founder & Head Coach",
+      bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+      avatarUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+    },
     seoTitle: "Nutrition Hacks for Busy Professionals | WRK",
     seoDescription: "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."
   }

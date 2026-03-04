@@ -27,6 +27,7 @@ export const CalorieCalculatorPage: React.FC = () => {
           subtitle={hero.subhead}
           bullets={hero.bullets}
           kicker={hero.kicker}
+          eyebrow={hero.eyebrow}
           secondaryCta={{
             label: "Back to Tools",
             href: "/tools"

@@ -9,7 +9,12 @@ interface HeroProps {
   subtitle: string;
   bullets: string[];
   kicker?: string;
+  eyebrow?: string;
   className?: string;
+  secondaryCta?: {
+    label: string;
+    href: string;
+  };
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -18,7 +23,9 @@ export const Hero: React.FC<HeroProps> = ({
   subtitle,
   bullets,
   kicker,
-  className = ''
+  eyebrow,
+  className = '',
+  secondaryCta
 }) => {
   return (
     <section className={`relative h-[90vh] flex items-center justify-center overflow-hidden ${className}`}>
@@ -37,6 +44,11 @@ export const Hero: React.FC<HeroProps> = ({
 
       {/* Content */}
       <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
+          {eyebrow && (
+            <span className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6 block">
+              {eyebrow}
+            </span>
+          )}
           <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
             {title}
           </h1>
@@ -64,11 +76,19 @@ export const Hero: React.FC<HeroProps> = ({
                   Book a consult <ArrowRight size={20} className="ml-2" />
                 </Button>
               </Link>
-              <Link to="/assessment">
-                <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
-                  Take the assessment
-                </Button>
-              </Link>
+              {secondaryCta ? (
+                <Link to={secondaryCta.href}>
+                  <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
+                    {secondaryCta.label}
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/assessment">
+                  <Button variant="outline" className="backdrop-blur-md bg-white/10 border-white/50 text-white hover:bg-white hover:text-black px-10 py-5 text-lg">
+                    Take the assessment
+                  </Button>
+                </Link>
+              )}
             </div>
 
             {kicker && (
@@ -77,11 +97,6 @@ export const Hero: React.FC<HeroProps> = ({
               </p>
             )}
           </div>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/50 hidden md:block">
-        <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
       </div>
     </section>
   );

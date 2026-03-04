@@ -11,6 +11,10 @@ export interface PageContentConfig {
     bullets: string[];
     image: string;
     kicker?: string;
+    eyebrow?: string;
+    url?: string;
+    alt?: string;
+    seoDescription?: string;
   };
   banner: {
     tagline: string;
@@ -41,29 +45,36 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "Personal Training That Fits Real Life",
       subhead: "Fat loss, less pain, and consistency for busy adults (often parents) with real schedules, real stress, and bodies that don’t love “all-out” training.",
-      bullets: ["Progress without punishment", "Pain-aware training (posture / postpartum / menopause)", "Protein-forward nutrition, flexible structure"],
-      image: "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg", // Keeping existing hero
-      kicker: "Whether you run a business, a household, or both."
+      bullets: [
+        "Progress without punishment",
+        "Pain-aware training (posture / postpartum / menopause)",
+        "Protein-forward nutrition, flexible structure"
+      ],
+      image: "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg",
+      kicker: "Whether you run a business, a household, or both.",
+      url: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+      alt: "strong capable dad, carrying child in carry pack while tramping up hill",
+      seoDescription: "strong capable dad who has trained hard so that he can play hard by "
     },
     banner: {
       tagline: "Fit enough for the good stuff.",
       support: "Train to live more—work, family, weekends.",
-      image: unsplash("photo-1476514525535-07fb3b4ae5f1") // family hiking
+      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80"
     },
     ptImage: {
-      url: 'https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg',
-      alt: 'Dad and kid paddleboarding',
-      seoDescription: 'A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training.'
+      url: "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
+      alt: "Dad and kid paddleboarding",
+      seoDescription: "A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training."
     },
     onlineImage: {
-      url: 'https://i.postimg.cc/vBXwJPvy/family-activity.jpg',
-      alt: 'Family activity outdoors',
-      seoDescription: 'A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching.'
+      url: "https://i.postimg.cc/vBXwJPvy/family-activity.jpg",
+      alt: "Family activity outdoors",
+      seoDescription: "A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching."
     },
     corporateImage: {
-      url: 'https://i.postimg.cc/wMp8RCTM/golfing.jpg',
-      alt: 'Corporate team golfing',
-      seoDescription: 'Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs.'
+      url: "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
+      alt: "Corporate team golfing",
+      seoDescription: "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
     }
   },
   services: {
@@ -74,14 +85,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "PERSONAL TRAINING SERVICES",
       subhead: "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting.",
-      bullets: ["1:1 Christchurch Coaching", "Online Coaching (12-Week Mini)", "Corporate Wellness"],
-      image: unsplash("photo-1501555088652-021faa106b9b"), // outdoor adventure
+      bullets: [
+        "1:1 Christchurch Coaching",
+        "Online Coaching (12-Week Mini)",
+        "Corporate Wellness"
+      ],
+      image: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80",
       kicker: "Options for every schedule and budget."
     },
     banner: {
       tagline: "Choose the coaching that fits your real week.",
       support: "Same goal—more capacity—different paths to get there.",
-      image: unsplash("photo-1501555088652-021faa106b9b") // outdoor adventure
+      image: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80"
     }
   },
   personalTraining: {
@@ -92,19 +107,23 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "1:1 Personal Training in Christchurch",
       subhead: "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better—without wrecking your schedule or your body.",
-      bullets: ["Technical mastery (move well, train safely)", "Pain-aware programming (posture / postpartum / menopause / niggles)", "Accountability that actually works"],
-      image: unsplash("photo-1476514525535-07fb3b4ae5f1"), // mum and kid hiking (existing)
+      bullets: [
+        "Technical mastery (move well, train safely)",
+        "Pain-aware programming (posture / postpartum / menopause / niggles)",
+        "Accountability that actually works"
+      ],
+      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
       kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch."
     },
     banner: {
       tagline: "Train smart. Progress without breaking down.",
       support: "We work around niggles and build you up properly.",
-      image: unsplash("photo-1517836357463-c25dfe94c0de") // strength training
+      image: "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80"
     },
     mainImage: {
-      url: 'https://i.postimg.cc/gjZFxYP7/active-mum.jpg',
-      alt: 'Mum and kid hiking',
-      seoDescription: 'A mother and child playing, representing the real-world application of strength training.'
+      url: "https://i.postimg.cc/gjZFxYP7/active-mum.jpg",
+      alt: "Mum and kid hiking",
+      seoDescription: "A mother and child playing, representing the real-world application of strength training."
     }
   },
   onlineCoaching: {
@@ -115,24 +134,28 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "Online Personal Training (12-Week Minimum)",
       subhead: "Professional programming and support delivered to your phone—so you can train where you want, when you want, and still get results when life gets busy.",
-      bullets: ["Custom programming built around your schedule", "Form checks + feedback (video analysis)", "Protein-forward, flexible nutrition support"],
-      image: unsplash("photo-1476514525535-07fb3b4ae5f1"), // family activity (existing)
+      bullets: [
+        "Custom programming built around your schedule",
+        "Form checks + feedback (video analysis)",
+        "Protein-forward, flexible nutrition support"
+      ],
+      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
       kicker: "12-week minimum—because quick fixes are how people end up starting over."
     },
     banner: {
       tagline: "A plan that survives travel, stress, and chaos.",
       support: "Consistency beats intensity when life’s busy.",
-      image: unsplash("photo-1541625602330-2277a4c46182") // road cycling
+      image: "https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=1920&q=80"
     },
     workoutLogImage: {
-      url: 'https://i.postimg.cc/3w5FjthV/exercise-history.png',
-      alt: 'Workout Log Interface',
-      seoDescription: 'Mobile interface showing detailed workout logs.'
+      url: "https://i.postimg.cc/3w5FjthV/exercise-history.png",
+      alt: "Workout Log Interface",
+      seoDescription: "Mobile interface showing detailed workout logs."
     },
     habitsImage: {
-      url: 'https://i.postimg.cc/XqmjPHVV/habit-tracking.png',
-      alt: 'Habits Interface',
-      seoDescription: 'Mobile interface showing daily habit tracking.'
+      url: "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+      alt: "Habits Interface",
+      seoDescription: "Mobile interface showing daily habit tracking."
     }
   },
   corporateWellness: {
@@ -143,14 +166,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "Corporate Wellness Program (NZ)",
       subhead: "A personal trainer in every employee’s pocket. App-led training and nutrition support that improves energy, posture, and consistency—without adding admin load to HR.",
-      bullets: ["App-based training plans for every level", "Programs for different goals + preferences", "Zero admin for HR"],
-      image: "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg", // corporate hiking (existing)
+      bullets: [
+        "App-based training plans for every level",
+        "Programs for different goals + preferences",
+        "Zero admin for HR"
+      ],
+      image: "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
       kicker: "NZ-wide delivery • Simple rollout • Private company community"
     },
     banner: {
       tagline: "Wellness that gets used—because it fits the job.",
       support: "Simple programs that support energy, posture, and routine.",
-      image: unsplash("photo-1523240795612-9a054b0db644") // team hiking
+      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
     }
   },
   challenge42: {
@@ -161,14 +188,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "42 Day Reset",
       subhead: "The system reboot you’ve been waiting for. Clear the fog, rebuild momentum, and get back to operating at full capacity—without diet jail or burnout.",
-      bullets: ["Self-guided training (app delivered)", "Simple nutrition support (flexible, protein-forward)", "One-time payment ($47)"],
-      image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg", // mountain biking (existing)
+      bullets: [
+        "Self-guided training (app delivered)",
+        "Simple nutrition support (flexible, protein-forward)",
+        "One-time payment ($47)"
+      ],
+      image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
       kicker: "One-time payment • 42 days access • No subscription"
     },
     banner: {
       tagline: "Reset the routine. Keep your life.",
       support: "Structure and momentum without diet jail or burnout.",
-      image: unsplash("photo-1591035897819-f4bdf739f446") // paddle boarding
+      image: "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&w=1920&q=80"
     }
   },
   blog: {
@@ -179,14 +210,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "THE REPOSITORY",
       subhead: "Evidence-based insights on training, longevity, and mindset.",
-      bullets: ["Strength Training", "Recovery Protocols", "High-Performance Living"],
-      image: unsplash("photo-1502680390469-be75c70e094f"), // paddleboarding (existing)
+      bullets: [
+        "Strength Training",
+        "Recovery Protocols",
+        "High-Performance Living"
+      ],
+      image: "https://images.unsplash.com/photo-1502680390469-be75c70e094f?auto=format&fit=crop&w=1920&q=80",
       kicker: "No fluff. Just what works."
     },
     banner: {
       tagline: "Less fluff. More progress you can repeat.",
       support: "Practical guidance for fat loss, pain reduction, and consistency.",
-      image: unsplash("photo-1476480868291-40c4370371f3") // trail running
+      image: "https://images.unsplash.com/photo-1476480868291-40c4370371f3?auto=format&fit=crop&w=1920&q=80"
     }
   },
   tools: {
@@ -197,14 +232,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "TOOLS",
       subhead: "Free resources to help you execute better.",
-      bullets: ["Nutrition Engine", "1RM Estimator", "Recovery Protocols"],
-      image: unsplash("photo-1517836357463-d25dfeac3438"), // gym equipment (existing)
+      bullets: [
+        "Nutrition Engine",
+        "1RM Estimator",
+        "Recovery Protocols"
+      ],
+      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80",
       kicker: "Calculators, checklists, and systems."
     },
     banner: {
       tagline: "Clarity in minutes. Then we keep it simple.",
       support: "Use the numbers as a starting point—not a rulebook.",
-      image: unsplash("photo-1507525428034-b723cf961d3e") // ocean swimming
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
     }
   },
   calorieCalculator: {
@@ -215,14 +254,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "Calorie Calculator",
       subhead: "Use this calorie calculator to estimate your daily calorie needs based on your body, activity level, and goal (fat loss, maintenance, or muscle gain). It gives you a clear starting target you can actually follow — without crash dieting, over-tracking, or guessing what “healthy” means.",
-      bullets: ["Daily Calorie Target", "Protein Targets", "Party Fund"],
-      image: unsplash("photo-1490645935967-10de6ba17061"), // healthy food (existing)
-      kicker: "Nutrition Engine"
+      bullets: [
+        "Daily Calorie Target",
+        "Protein Targets",
+        "Party Fund"
+      ],
+      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1920&q=80",
+      eyebrow: "Nutrition Engine"
     },
     banner: {
       tagline: "Start with a target. Adjust like an adult.",
       support: "A sensible baseline, then refine based on results and recovery.",
-      image: unsplash("photo-1505253758473-96b7015fcd40") // meal prep
+      image: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1920&q=80"
     }
   },
   oneRmEstimator: {
@@ -233,14 +276,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "1RM ESTIMATOR",
       subhead: "Estimate your one-rep max without testing to failure. Use this to set your training percentages.",
-      bullets: ["Safety First", "Training Percentages", "Progress Tracking"],
-      image: unsplash("photo-1534438327276-14e5300c3a48"), // weightlifting (existing)
+      bullets: [
+        "Safety First",
+        "Training Percentages",
+        "Progress Tracking"
+      ],
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80",
       kicker: "Train smart, not just heavy."
     },
     banner: {
       tagline: "Train smart—without maxing out every week.",
       support: "Estimate loads so progress is repeatable and joint-friendly.",
-      image: unsplash("photo-1534438327276-14e5300c3a48") // barbell
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80"
     }
   },
   contact: {
@@ -251,14 +298,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "CONTACT",
       subhead: "Ready to get started? Let's discuss your goals and find the right plan for you.",
-      bullets: ["Book a Consult", "Ask a Question", "Get Started"],
-      image: unsplash("photo-1534438327276-14e5300c3a48"), // gym background (existing)
+      bullets: [
+        "Book a Consult",
+        "Ask a Question",
+        "Get Started"
+      ],
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80",
       kicker: "No pressure sales. Just a conversation."
     },
     banner: {
       tagline: "Let’s map the simplest plan that works.",
       support: "Tell me your constraints and I’ll guide the next step.",
-      image: unsplash("photo-1573497019940-1c28c88b4f3e") // coaching conversation
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1920&q=80"
     }
   },
   philosophy: {
@@ -269,14 +320,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "CAPACITY IS CURRENCY",
       subhead: "When you have capacity, you have options. When you don't, you have constraints.",
-      bullets: ["Return on Investment", "Evidence Based", "Resilience"],
-      image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg", // existing philosophy hero
+      bullets: [
+        "Return on Investment",
+        "Evidence Based",
+        "Resilience"
+      ],
+      image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
       kicker: "The Methodology"
     },
     banner: {
       tagline: "We do not train for the sake of being tired.",
       support: "We train to be capable.",
-      image: unsplash("photo-1517836357463-c25dfe94c0de") // strength training
+      image: "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80"
     }
   },
   assessment: {
@@ -287,14 +342,18 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     hero: {
       h1: "ASSESSMENT",
       subhead: "Find out exactly where you stand and what you need to do next.",
-      bullets: ["Quick Analysis", "Personalized Plan", "Immediate Results"],
-      image: unsplash("photo-1501554697317-40c68b949325"), // hiking view
+      bullets: [
+        "Quick Analysis",
+        "Personalized Plan",
+        "Immediate Results"
+      ],
+      image: "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80",
       kicker: "Takes less than 2 minutes."
     },
     banner: {
       tagline: "Get clarity fast. Then take the right next step.",
       support: "Six questions. Practical answers. A plan that fits real life.",
-      image: unsplash("photo-1501554697317-40c68b949325") // hiking view
+      image: "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80"
     }
   }
 };

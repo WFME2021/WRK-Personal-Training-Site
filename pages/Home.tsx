@@ -90,7 +90,7 @@ export const Home: React.FC = () => {
               Train Smarter. <br/><span className="text-accent">Play Harder.</span>
             </h1>
             
-            <div className="max-w-3xl mx-auto space-y-8">
+            <div className="max-w-3xl mx-auto space-y-4">
               <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
                 I help people lose fat, get stronger, and trust their body outside the gym.
               </p>
