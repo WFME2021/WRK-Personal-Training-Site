@@ -20,6 +20,9 @@ export interface PageContentConfig {
     tagline: string;
     support?: string;
     image: string;
+    url?: string;
+    alt?: string;
+    seoDescription?: string;
   };
   seo: {
     title: string;
@@ -60,7 +63,8 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Fit enough for the good stuff.",
       support: "Train to live more—work, family, weekends.",
-      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80"
+      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+      url: ""
     },
     ptImage: {
       url: "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
@@ -114,17 +118,23 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Accountability that actually works"
       ],
       image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
-      kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch."
+      kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.",
+      url: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
+      alt: "Fit and capable man back country skiing",
+      seoDescription: "Fit and capable man back country skiing, reflecting the fitness gained through personal training."
     },
     banner: {
       tagline: "Train smart. Progress without breaking down.",
       support: "We work around niggles and build you up properly.",
-      image: "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80"
+      image: "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80",
+      url: "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+      alt: "Mum and child hiking",
+      seoDescription: "A mother carrying a child on a hike,  representing the real-world application of strength gained through personal training."
     },
     mainImage: {
-      url: "https://i.postimg.cc/gjZFxYP7/active-mum.jpg",
-      alt: "Mum and kid hiking",
-      seoDescription: "A mother and child playing, representing the real-world application of strength training."
+      url: "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+      alt: "Habit Tracking App Display",
+      seoDescription: "Habit Tracking App, one of the tools used in our personal training approach. "
     }
   },
   onlineCoaching: {
@@ -327,7 +337,8 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Resilience"
       ],
       image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-      kicker: "The Methodology"
+      kicker: "The Methodology",
+      url: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
     },
     banner: {
       tagline: "We do not train for the sake of being tired.",
