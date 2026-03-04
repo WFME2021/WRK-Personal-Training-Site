@@ -493,7 +493,7 @@ export const Admin: React.FC = () => {
                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Alt Text</label>
                         <input
                           type="text"
-                          value={postFormData.image.alt}
+                          value={postFormData.image.alt || ''}
                           onChange={(e) => handleBlogImageChange('alt', e.target.value)}
                           className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
                           placeholder="Image description..."
@@ -503,7 +503,7 @@ export const Admin: React.FC = () => {
                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">SEO Description</label>
                         <input
                           type="text"
-                          value={postFormData.image.seoDescription}
+                          value={postFormData.image.seoDescription || ''}
                           onChange={(e) => handleBlogImageChange('seoDescription', e.target.value)}
                           className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
                           placeholder="SEO context..."
@@ -588,7 +588,7 @@ export const Admin: React.FC = () => {
                                             <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Alt Text</label>
                                             <input
                                               type="text"
-                                              value={item.alt}
+                                              value={item.alt || ''}
                                               onChange={(e) => handlePageImageChange(fieldKey, 'alt', e.target.value, index)}
                                               className="w-full p-2 bg-primary text-text-primary border border-border rounded-lg text-sm"
                                               placeholder="Description..."
@@ -598,7 +598,7 @@ export const Admin: React.FC = () => {
                                             <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">SEO Desc</label>
                                             <input
                                               type="text"
-                                              value={item.seoDescription}
+                                              value={item.seoDescription || ''}
                                               onChange={(e) => handlePageImageChange(fieldKey, 'seoDescription', e.target.value, index)}
                                               className="w-full p-2 bg-primary text-text-primary border border-border rounded-lg text-sm"
                                               placeholder="SEO details..."
@@ -646,7 +646,7 @@ export const Admin: React.FC = () => {
                                  <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Alt Text</label>
                                  <input
                                    type="text"
-                                   value={value.alt}
+                                   value={value.alt || ''}
                                    onChange={(e) => handlePageImageChange(fieldKey, 'alt', e.target.value)}
                                    placeholder="Image description..."
                                    className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
@@ -656,7 +656,7 @@ export const Admin: React.FC = () => {
                                  <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">SEO Description</label>
                                  <input
                                    type="text"
-                                   value={value.seoDescription}
+                                   value={value.seoDescription || ''}
                                    onChange={(e) => handlePageImageChange(fieldKey, 'seoDescription', e.target.value)}
                                    placeholder="SEO context..."
                                    className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"

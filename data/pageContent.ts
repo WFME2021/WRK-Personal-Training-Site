@@ -50,7 +50,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Pain-aware training (posture / postpartum / menopause)",
         "Protein-forward nutrition, flexible structure"
       ],
-      image: "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg",
+      image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
       kicker: "Whether you run a business, a household, or both.",
       url: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
       alt: "strong capable dad, carrying child in carry pack while tramping up hill",
