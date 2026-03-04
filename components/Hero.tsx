@@ -49,9 +49,10 @@ export const Hero: React.FC<HeroProps> = ({
               {eyebrow}
             </span>
           )}
-          <h1 className="font-display text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-            {title}
-          </h1>
+          <h1 
+            className="font-display text-[12vw] md:text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
           
           <div className="max-w-3xl mx-auto space-y-8">
             <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">

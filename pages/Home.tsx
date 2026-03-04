@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, CheckCircle2, Star } from 'lucide-react';
 import { Button } from '../components/Button';
+import { Hero } from '../components/Hero';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
@@ -10,7 +11,7 @@ import { MidPageBanner } from '../components/MidPageBanner';
 
 export const Home: React.FC = () => {
   const { pageContent } = useContent();
-  const { heroImage, ptImage, onlineImage, corporateImage } = pageContent.home;
+  const { hero, ptImage, onlineImage, corporateImage } = pageContent.home;
   const { banner } = pageContent.home;
 
   const faqs = [
@@ -45,7 +46,7 @@ export const Home: React.FC = () => {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "WRK Personal Training",
-          "image": heroImage,
+          "image": hero.image,
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "12 Show Place",
@@ -72,7 +73,7 @@ export const Home: React.FC = () => {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src={heroImage} 
+              src={hero.image} 
               alt="Strength and Conditioning Christchurch" 
               className="w-full h-full object-cover grayscale contrast-125"
               loading="eager"
@@ -82,24 +83,28 @@ export const Home: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20">
-            <span className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6 block">
-              Strength & Conditioning | Christchurch (Addington) + NZ-wide
-            </span>
-            <h1 className="font-display text-[12vw] md:text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8">
-              Train Smarter. <br/><span className="text-accent">Play Harder.</span>
-            </h1>
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20 pb-24">
+            {hero.eyebrow && (
+              <span className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6 block">
+                {hero.eyebrow}
+              </span>
+            )}
+            <h1 
+              className="font-display text-[12vw] md:text-[10vw] leading-[0.9] font-bold uppercase tracking-tighter text-white max-w-6xl mb-8"
+              dangerouslySetInnerHTML={{ __html: hero.h1 }}
+            />
             
             <div className="max-w-3xl mx-auto space-y-4">
               <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                I help people lose fat, get stronger, and trust their body outside the gym.
+                {hero.subhead}
               </p>
               
-              <p className="text-base md:text-lg text-white/80 font-light leading-relaxed">
-                <span className="text-white font-bold">The gym is a tool — not a lifestyle.</span>
-                <br className="hidden md:block" />
-                The goal is more energy, less pain, and a body that can handle work, family, weekends, and the adventures you keep putting off.
-              </p>
+              {hero.kicker && (
+                <div 
+                  className="text-base md:text-lg text-white/80 font-light leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: hero.kicker }}
+                />
+              )}
               
               <div className="flex flex-col md:flex-row gap-4 justify-center pt-8">
                 <Link to="/assessment">
@@ -115,21 +120,19 @@ export const Home: React.FC = () => {
               </div>
 
               {/* Quick Wins */}
-              <div className="pt-16 border-t border-white/10 mt-16">
-                <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-8">Quick wins we focus on</p>
-                <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-white/90 text-sm font-medium">
-                  {[
-                    "Progress without punishment",
-                    "Pain-aware training",
-                    "Protein-forward nutrition"
-                  ].map((item, i) => (
-                    <span key={i} className="flex items-center bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                      <CheckCircle2 size={14} className="text-accent mr-2" />
-                      {item}
-                    </span>
-                  ))}
+              {hero.bullets && hero.bullets.length > 0 && (
+                <div className="pt-16 border-t border-white/10 mt-16">
+                  <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-8">Quick wins we focus on</p>
+                  <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-white/90 text-sm font-medium">
+                    {hero.bullets.map((item, i) => (
+                      <span key={i} className="flex items-center bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <CheckCircle2 size={14} className="text-accent mr-2" />
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>

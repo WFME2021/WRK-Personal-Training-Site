@@ -43,15 +43,16 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
       description: "Fat loss, less pain, and consistency for busy adults. Pain-aware training, flexible nutrition, and coaching in Christchurch or online."
     },
     hero: {
-      h1: "Personal Training That Fits Real Life",
-      subhead: "Fat loss, less pain, and consistency for busy adults (often parents) with real schedules, real stress, and bodies that don’t love “all-out” training.",
+      h1: "Train Smarter. <br/><span class='text-accent'>Play Harder.</span>",
+      subhead: "I help people lose fat, get stronger, and trust their body outside the gym.",
       bullets: [
         "Progress without punishment",
-        "Pain-aware training (posture / postpartum / menopause)",
-        "Protein-forward nutrition, flexible structure"
+        "Pain-aware training",
+        "Protein-forward nutrition"
       ],
       image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-      kicker: "Whether you run a business, a household, or both.",
+      kicker: "<span class='text-white font-bold'>The gym is a tool — not a lifestyle.</span><br class='hidden md:block' /> The goal is more energy, less pain, and a body that can handle work, family, weekends, and the adventures you keep putting off.",
+      eyebrow: "Strength & Conditioning | Christchurch (Addington) + NZ-wide",
       url: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
       alt: "strong capable dad, carrying child in carry pack while tramping up hill",
       seoDescription: "strong capable dad who has trained hard so that he can play hard by "
