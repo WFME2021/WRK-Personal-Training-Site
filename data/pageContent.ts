@@ -209,15 +209,15 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   calorieCalculator: {
     seo: {
-      title: "Calorie Calculator | WRK Personal Training",
-      description: "Calculate your daily calories and macros for fat loss or muscle gain."
+      title: "Calorie Calculator | Estimate Your Daily Calories (TDEE + Goals)",
+      description: "Use this calorie calculator to estimate your daily calorie needs for fat loss, maintenance, or muscle gain. Includes protein targets and a “Party Fund” to account for weekly drinks while staying on track."
     },
     hero: {
-      h1: "NUTRITION ENGINE",
-      subhead: "Calculate your daily calories, macros, and 'Party Fund' based on your specific goal and lifestyle variables.",
-      bullets: ["Custom Macros", "Party Fund Calc", "Goal Specific"],
+      h1: "Calorie Calculator",
+      subhead: "Use this calorie calculator to estimate your daily calorie needs based on your body, activity level, and goal (fat loss, maintenance, or muscle gain). It gives you a clear starting target you can actually follow — without crash dieting, over-tracking, or guessing what “healthy” means.",
+      bullets: ["Daily Calorie Target", "Protein Targets", "Party Fund"],
       image: unsplash("photo-1490645935967-10de6ba17061"), // healthy food (existing)
-      kicker: "Start with the numbers, then adjust for reality."
+      kicker: "Nutrition Engine"
     },
     banner: {
       tagline: "Start with a target. Adjust like an adult.",

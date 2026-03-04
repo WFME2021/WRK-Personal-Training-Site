@@ -35,7 +35,7 @@ export const Tools: React.FC = () => {
         <div id="tools-grid" className="max-w-7xl mx-auto px-6 py-24">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Nutrition Engine Card */}
-            <Link to="/tools/calorie-calculator" className="group bg-secondary border border-border rounded-[2rem] p-8 hover:border-accent transition-all duration-300 shadow-sm hover:shadow-md flex flex-col">
+            <Link to="/calorie-calculator" className="group bg-secondary border border-border rounded-[2rem] p-8 hover:border-accent transition-all duration-300 shadow-sm hover:shadow-md flex flex-col">
                <div className="bg-primary w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-border group-hover:border-accent/50 transition-colors">
                  <Flame className="text-accent" size={32} />
                </div>

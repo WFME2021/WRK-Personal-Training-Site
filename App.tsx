@@ -60,7 +60,7 @@ const App: React.FC = () => {
               
               {/* Tools Routes */}
               <Route path="/tools" element={<Tools />} />
-              <Route path="/tools/calorie-calculator" element={<CalorieCalculatorPage />} />
+              <Route path="/calorie-calculator" element={<CalorieCalculatorPage />} />
               <Route path="/tools/1rm-estimator" element={<OneRepMaxEstimatorPage />} />
               
               {/* Admin Route */}
