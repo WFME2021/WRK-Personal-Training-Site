@@ -6,10 +6,11 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 import { LeadFormModal } from '../components/LeadFormModal';
+import { Hero } from '../components/Hero';
 
 export const PersonalTraining: React.FC = () => {
   const { pageContent } = useContent();
-  // We are overriding the default SEO content with the specific pack provided
+  const { personalTraining } = pageContent;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const faqs = [
@@ -42,35 +43,26 @@ export const PersonalTraining: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Personal Trainer Christchurch (Addington) | Hybrid PT at Get Me Fitter"
-        description="Personal training in Addington, Christchurch at Get Me Fitter. Hybrid coaching: in-person sessions + app programming so you stay consistent all week. Book a free consult."
+        title={personalTraining.seo.title}
+        description={personalTraining.seo.description}
+        image={personalTraining.hero.url || personalTraining.hero.image}
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300 pb-24 md:pb-0">
         
         {/* A) HERO */}
-        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
-          <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">Christchurch Based • Addington (Get Me Fitter)</span>
-          <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
-            Personal Training in Christchurch That Actually Delivers <span className="text-accent">ROI.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-6 max-w-2xl mx-auto">
-            Stop “exercising.” Start training with a system that respects your time, your injuries, and your schedule.
-          </p>
-          <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
-            You don’t need to live in the gym to look like you lift.
-            <br />
-            You need structure that works even when life gets busy.
-          </p>
-          <Button 
-            size="lg" 
-            className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
-            onClick={() => setIsModalOpen(true)}
-          >
-            Book a Free Consult
-          </Button>
-          <p className="mt-4 text-xs text-text-secondary uppercase tracking-wider">Limited spots • Private Addington facility (Get Me Fitter – 12 Show Place)</p>
-        </section>
+        <Hero 
+          image={personalTraining.hero.url || personalTraining.hero.image}
+          title={personalTraining.hero.h1}
+          subtitle={personalTraining.hero.subhead}
+          bullets={personalTraining.hero.bullets}
+          kicker={personalTraining.hero.kicker}
+          eyebrow="Christchurch Based • Addington (Get Me Fitter)"
+          secondaryCta={{
+            label: "Book a Free Consult",
+            href: "/contact"
+          }}
+        />
 
         {/* B) PROBLEM (Agitate) */}
         <section className="py-20 px-6 bg-secondary border-y border-border">
@@ -155,9 +147,17 @@ export const PersonalTraining: React.FC = () => {
               </div>
             </div>
             <div className="relative h-[500px] bg-primary rounded-[3rem] border border-border overflow-hidden shadow-2xl flex items-center justify-center">
-               <div className="text-center p-8">
-                 <p className="text-text-secondary font-display uppercase text-4xl font-bold opacity-10 rotate-12">WRK System</p>
-               </div>
+               {personalTraining.mainImage?.url ? (
+                 <img 
+                   src={personalTraining.mainImage.url} 
+                   alt={personalTraining.mainImage.alt || "WRK System"} 
+                   className="w-full h-full object-cover"
+                 />
+               ) : (
+                 <div className="text-center p-8">
+                   <p className="text-text-secondary font-display uppercase text-4xl font-bold opacity-10 rotate-12">WRK System</p>
+                 </div>
+               )}
             </div>
           </div>
         </section>

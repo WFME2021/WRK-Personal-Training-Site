@@ -295,8 +295,15 @@ export const Home: React.FC = () => {
 
               {/* Card 4: 42-Day Reset */}
               <Link to="/fitness-challenge-nz" className="group block lg:mt-24">
-                <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative bg-primary flex items-center justify-center border border-border">
-                   <h4 className="font-display text-[12rem] font-bold text-text-primary opacity-5 leading-none">42</h4>
+                <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
+                   {pageContent.home.challengeImage?.url ? (
+                     <img src={pageContent.home.challengeImage.url} alt={pageContent.home.challengeImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                   ) : (
+                     <div className="w-full h-full bg-primary flex items-center justify-center">
+                        <h4 className="font-display text-[12rem] font-bold text-text-primary opacity-5 leading-none">42</h4>
+                     </div>
+                   )}
+                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
                    <div className="absolute top-8 right-8 bg-accent text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Self-Led</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/10 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
                      <ArrowUpRight className="text-text-primary group-hover:text-white" size={32} />

@@ -35,6 +35,7 @@ export interface PageContentConfig {
   mainImage?: CMSImage;
   workoutLogImage?: CMSImage;
   habitsImage?: CMSImage;
+  challengeImage?: CMSImage;
 }
 
 const unsplash = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1920&q=80`;
@@ -80,6 +81,11 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
       url: "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
       alt: "Corporate team golfing",
       seoDescription: "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
+    },
+    challengeImage: {
+      url: "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
+      alt: "Man carrying surfboard",
+      seoDescription: "A man carrying a surfboard, representing the 42 Day Reset challenge."
     }
   },
   services: {
