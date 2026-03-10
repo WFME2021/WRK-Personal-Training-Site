@@ -29,7 +29,7 @@ export const Services: React.FC = () => {
         />
 
         {/* Services List */}
-        <section id="services-list" className="py-24 px-4 md:px-8 bg-primary">
+        <section id="services-list" className="pt-24 pb-24 px-4 md:px-8 bg-primary">
           <div className="max-w-[1600px] mx-auto">
             <div className="grid lg:grid-cols-2 gap-8">
               

@@ -5,6 +5,7 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 import { LeadFormModal } from '../components/LeadFormModal';
+import { AppScreenshots } from '../components/AppScreenshots';
 
 export const CorporateWellness: React.FC = () => {
   const { pageContent } = useContent();
@@ -120,8 +121,8 @@ export const CorporateWellness: React.FC = () => {
 
         {/* D) SOLUTION */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center mb-16">
               <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">The Solution</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
                 WRK Corporate (12 Months, App-Based)
@@ -132,7 +133,7 @@ export const CorporateWellness: React.FC = () => {
               <p className="text-lg text-text-secondary mb-8 leading-relaxed">
                 Every employee gets the WRK Personal Training App — with:
               </p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 text-left max-w-2xl mx-auto">
                 {[
                   "A library of training programs based on interest and readiness",
                   "Habit targets that build consistency (steps, sleep, hydration, etc.)",
@@ -146,15 +147,14 @@ export const CorporateWellness: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <p className="text-xl font-bold text-text-primary">
+              <p className="text-xl font-bold text-text-primary mt-8">
                 A PT in every employee’s pocket — nationwide.
               </p>
             </div>
-            <div className="relative h-[500px] bg-primary rounded-[3rem] border border-border overflow-hidden shadow-2xl flex items-center justify-center">
-               <div className="text-center p-8">
-                 <Smartphone size={64} className="text-text-secondary mx-auto mb-4 opacity-20" />
-                 <p className="text-text-secondary font-display uppercase text-2xl font-bold opacity-20">App Dashboard</p>
-               </div>
+            
+            <div className="mt-16">
+               <h3 className="font-display text-2xl font-bold uppercase mb-8 text-center text-accent">Inside The Platform</h3>
+               <AppScreenshots />
             </div>
           </div>
         </section>

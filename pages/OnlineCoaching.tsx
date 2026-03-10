@@ -7,6 +7,8 @@ import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 import { LeadFormModal } from '../components/LeadFormModal';
 
+import { AppScreenshots } from '../components/AppScreenshots';
+
 export const OnlineCoaching: React.FC = () => {
   const { pageContent } = useContent();
   // We are overriding the default SEO content with the specific pack provided
@@ -127,8 +129,8 @@ export const OnlineCoaching: React.FC = () => {
 
         {/* D) SOLUTION */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center mb-16">
               <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">The Solution</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
                 WRK Online.
@@ -142,24 +144,24 @@ export const OnlineCoaching: React.FC = () => {
               <p className="text-lg text-text-secondary mb-8 leading-relaxed font-bold">
                 It’s like having a coach in your pocket — without needing to train at a specific location.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="bg-primary p-6 rounded-2xl border border-border">
-                  <Smartphone className="text-accent mb-4" size={32} />
-                  <h3 className="font-bold text-lg mb-2">The App</h3>
-                  <p className="text-sm text-text-secondary">Your program, demos, tracking, and history in one place.</p>
-                </div>
-                <div className="bg-primary p-6 rounded-2xl border border-border">
-                  <Video className="text-accent mb-4" size={32} />
-                  <h3 className="font-bold text-lg mb-2">Video Feedback</h3>
-                  <p className="text-sm text-text-secondary">Upload lifts → get corrections → progress safely and faster.</p>
-                </div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+              <div className="bg-primary p-6 rounded-2xl border border-border">
+                <Smartphone className="text-accent mb-4" size={32} />
+                <h3 className="font-bold text-lg mb-2">The App</h3>
+                <p className="text-sm text-text-secondary">Your program, demos, tracking, and history in one place.</p>
+              </div>
+              <div className="bg-primary p-6 rounded-2xl border border-border">
+                <Video className="text-accent mb-4" size={32} />
+                <h3 className="font-bold text-lg mb-2">Video Feedback</h3>
+                <p className="text-sm text-text-secondary">Upload lifts → get corrections → progress safely and faster.</p>
               </div>
             </div>
-            <div className="relative h-[500px] bg-primary rounded-[3rem] border border-border overflow-hidden shadow-2xl flex items-center justify-center">
-               <div className="text-center p-8">
-                 <Smartphone size={64} className="text-text-secondary mx-auto mb-4 opacity-20" />
-                 <p className="text-text-secondary font-display uppercase text-2xl font-bold opacity-20">App Interface Preview</p>
-               </div>
+
+            <div className="mt-16">
+               <h3 className="font-display text-2xl font-bold uppercase mb-8 text-center text-accent">Inside The Platform</h3>
+               <AppScreenshots />
             </div>
           </div>
         </section>

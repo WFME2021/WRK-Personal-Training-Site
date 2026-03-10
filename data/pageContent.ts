@@ -94,7 +94,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
       description: "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting."
     },
     hero: {
-      h1: "PERSONAL TRAINING SERVICES",
+      h1: "PERSONAL TRAINING <span class='text-accent'>SERVICES</span>",
       subhead: "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting.",
       bullets: [
         "1:1 Christchurch Coaching",
@@ -116,7 +116,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
       description: "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better."
     },
     hero: {
-      h1: "1:1 Personal Training in Christchurch",
+      h1: "1:1 Personal Training <span class='text-accent'>in Christchurch</span>",
       subhead: "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better—without wrecking your schedule or your body.",
       bullets: [
         "Technical mastery (move well, train safely)",

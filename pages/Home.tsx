@@ -69,7 +69,7 @@ export const Home: React.FC = () => {
       <div className="flex flex-col w-full overflow-x-hidden bg-primary transition-colors duration-300 pb-24">
         
         {/* HERO SECTION */}
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-[90vh] flex flex-col overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -83,7 +83,7 @@ export const Home: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center pt-20 pb-24">
+          <div className="relative z-10 max-w-[1800px] mx-auto px-4 md:px-8 text-center flex flex-col items-center py-24 my-auto">
             {hero.eyebrow && (
               <span className="text-accent font-bold uppercase tracking-widest text-xs md:text-sm mb-6 block">
                 {hero.eyebrow}

@@ -112,8 +112,8 @@ export const Challenge42: React.FC = () => {
 
         {/* D) SOLUTION */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center mb-16">
               <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">The Solution</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
                 The 42 Day Reset.
@@ -121,38 +121,33 @@ export const Challenge42: React.FC = () => {
               <p className="text-lg text-text-secondary mb-8 leading-relaxed">
                 A complete 6-week training + nutrition protocol delivered through the app.
               </p>
-              <div className="grid gap-6">
-                <div className="bg-primary p-6 rounded-2xl border border-border flex gap-4">
-                  <Smartphone className="text-accent shrink-0" size={32} />
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">The App</h3>
-                    <p className="text-sm text-text-secondary">Workouts, tracking, and targets in your pocket.</p>
-                  </div>
-                </div>
-                <div className="bg-primary p-6 rounded-2xl border border-border flex gap-4">
-                  <Utensils className="text-accent shrink-0" size={32} />
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">Nutrition Guide</h3>
-                    <p className="text-sm text-text-secondary">Simple framework, recipes, shopping lists, and clear targets.</p>
-                  </div>
-                </div>
-                <div className="bg-primary p-6 rounded-2xl border border-border flex gap-4">
-                  <Users className="text-accent shrink-0" size={32} />
-                  <div>
-                    <h3 className="font-bold text-lg mb-1">Support</h3>
-                    <p className="text-sm text-text-secondary">A private group to keep you moving when motivation drops.</p>
-                  </div>
-                </div>
-              </div>
-              <p className="mt-6 text-sm text-text-secondary italic">
-                (You can start anytime. No waiting for a “challenge start date.”)
-              </p>
             </div>
-            <div className="relative h-[500px] bg-primary rounded-[3rem] border border-border overflow-hidden shadow-2xl flex items-center justify-center">
-               <div className="text-center p-8">
-                 <Trophy size={64} className="text-text-secondary mx-auto mb-4 opacity-20" />
-                 <p className="text-text-secondary font-display uppercase text-2xl font-bold opacity-20">Challenge Dashboard</p>
-               </div>
+
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+              <div className="bg-primary p-6 rounded-2xl border border-border flex flex-col items-center text-center">
+                <Smartphone className="text-accent mb-4" size={32} />
+                <h3 className="font-bold text-lg mb-2">The App</h3>
+                <p className="text-sm text-text-secondary">Workouts, tracking, and targets in your pocket.</p>
+              </div>
+              <div className="bg-primary p-6 rounded-2xl border border-border flex flex-col items-center text-center">
+                <Utensils className="text-accent mb-4" size={32} />
+                <h3 className="font-bold text-lg mb-2">Nutrition Guide</h3>
+                <p className="text-sm text-text-secondary">Simple framework, recipes, shopping lists, and clear targets.</p>
+              </div>
+              <div className="bg-primary p-6 rounded-2xl border border-border flex flex-col items-center text-center">
+                <Users className="text-accent mb-4" size={32} />
+                <h3 className="font-bold text-lg mb-2">Support</h3>
+                <p className="text-sm text-text-secondary">A private group to keep you moving when motivation drops.</p>
+              </div>
+            </div>
+            
+            <p className="text-center text-sm text-text-secondary italic mb-16">
+              (You can start anytime. No waiting for a “challenge start date.”)
+            </p>
+
+            <div className="mt-16">
+               <h3 className="font-display text-2xl font-bold uppercase mb-8 text-center text-accent">Inside The Platform</h3>
+               <AppScreenshots />
             </div>
           </div>
         </section>
