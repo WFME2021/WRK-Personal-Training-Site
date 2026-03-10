@@ -6,7 +6,6 @@ import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 import { LeadFormModal } from '../components/LeadFormModal';
-
 import { AppScreenshots } from '../components/AppScreenshots';
 
 export const OnlineCoaching: React.FC = () => {

@@ -5,6 +5,7 @@ import { Check, Trophy, Smartphone, Utensils, Users, Star } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
+import { AppScreenshots } from '../components/AppScreenshots';
 
 export const Challenge42: React.FC = () => {
   const { pageContent } = useContent();
