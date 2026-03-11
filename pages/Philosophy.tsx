@@ -8,36 +8,34 @@ import { useContent } from '../context/ContentContext';
 
 export const Philosophy: React.FC = () => {
   const { pageContent } = useContent();
-  // Overriding SEO content
 
   return (
     <>
       <SeoHead 
-        title="Personal Training Christchurch | WRK Philosophy (Capacity Is Currency)"
-        description="WRK personal training philosophy in Christchurch (Addington): ROI-based training, evidence-led coaching, and pain-smart resilience. Take the assessment or book a consult."
+        title="Personal Training Christchurch Philosophy | The WRK Way"
+        description="Our training philosophy: build capacity for real life—fat loss, less pain, and consistency without gym dominance or restrictive dieting. Christchurch + online."
       />
 
       <div className="bg-primary min-h-screen font-sans selection:bg-accent selection:text-white pb-24 transition-colors duration-300">
         
-        {/* A) HERO: CAPACITY IS CURRENCY */}
+        {/* A) HERO: CAPACITY IS THE GOAL */}
         <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
-          <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">Personal Training Christchurch • Built for ROI</span>
           <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
-            Capacity Is <span className="text-accent">Currency.</span>
+            Capacity is the <span className="text-accent">goal.</span>
           </h1>
           <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-6 max-w-2xl mx-auto">
-            When you have capacity, you have options.
+            When you’ve got capacity, you’ve got options.
             <br />
             When you don’t, everything feels harder than it should.
           </p>
           
           <div className="max-w-2xl mx-auto bg-secondary p-8 rounded-2xl border border-border text-left mb-10">
-            <p className="font-bold text-text-primary uppercase tracking-wider mb-4 text-sm">Capacity means:</p>
+            <p className="font-bold text-text-primary uppercase tracking-wider mb-4 text-sm">Capacity looks like:</p>
             <ul className="space-y-3">
               {[
                 "Energy that doesn’t crash mid-week",
                 "Strength that carries into real life",
-                "Training that survives stress, travel, and messy schedules",
+                "A plan that still works when stress is high and time is tight",
                 "A body that’s resilient — not constantly “managing niggles”"
               ].map((item, i) => (
                 <li key={i} className="flex items-start text-text-secondary">
@@ -61,51 +59,58 @@ export const Philosophy: React.FC = () => {
         {/* B) THE WRK METHOD (3 Principles) */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
           <div className="max-w-7xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-tighter mb-16 text-center">The WRK Method</h2>
+            <div className="text-center mb-16">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-tighter mb-4">The WRK Method</h2>
+              <p className="text-xl text-text-secondary max-w-2xl mx-auto">Do the right amount. Do it consistently.</p>
+              <p className="text-text-secondary max-w-2xl mx-auto mt-4">
+                I’m not here to bury you for the sake of it.<br/>
+                We train with purpose — because every rep should have a job.
+              </p>
+            </div>
             <div className="grid md:grid-cols-3 gap-8">
               
-              {/* Principle 1: ROI */}
+              {/* Principle 1: Return on effort */}
               <div className="bg-primary p-10 border border-border hover:border-accent transition-colors duration-500 group rounded-3xl">
                 <div className="bg-secondary w-16 h-16 flex items-center justify-center mb-8 border border-border group-hover:border-accent transition-colors rounded-xl">
                   <Target className="text-accent" size={32} />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-text-primary uppercase tracking-wider mb-4">
-                  Return on Investment
+                  Return on effort
                 </h3>
                 <p className="text-text-secondary leading-relaxed">
-                  We find the precise amount of work needed to trigger progress without burnout.
+                  We find the minimum effective dose that drives progress without cooking your recovery.
                   <br/><br/>
-                  More isn’t better. Better is better. Every rep has a job.
+                  More isn’t better. Better is better.
                 </p>
               </div>
 
-              {/* Principle 2: Evidence Based */}
+              {/* Principle 2: Evidence-led, not trend-led */}
               <div className="bg-primary p-10 border border-border hover:border-accent transition-colors duration-500 group rounded-3xl">
                 <div className="bg-secondary w-16 h-16 flex items-center justify-center mb-8 border border-border group-hover:border-accent transition-colors rounded-xl">
                   <Brain className="text-accent" size={32} />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-text-primary uppercase tracking-wider mb-4">
-                  Evidence Based
+                  Evidence-led, not trend-led
                 </h3>
                 <p className="text-text-secondary leading-relaxed">
-                  We use physiology and biofeedback — not trends.
+                  We use physiology and feedback from your real life — sleep, stress, recovery, performance.
                   <br/><br/>
-                  If it doesn’t improve performance, health markers, or long-term consistency, we don’t do it.
+                  If it doesn’t improve your results or your consistency, we don’t do it.
                 </p>
               </div>
 
-              {/* Principle 3: Resilience */}
+              {/* Principle 3: Resilience over hype */}
               <div className="bg-primary p-10 border border-border hover:border-accent transition-colors duration-500 group rounded-3xl">
                 <div className="bg-secondary w-16 h-16 flex items-center justify-center mb-8 border border-border group-hover:border-accent transition-colors rounded-xl">
                   <ShieldCheck className="text-accent" size={32} />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-text-primary uppercase tracking-wider mb-4">
-                  Resilience
+                  Resilience over hype
                 </h3>
                 <p className="text-text-secondary leading-relaxed">
-                  Intensity is cheap. Consistency is expensive.
+                  Intensity is easy to do once. Consistency is harder — and it’s what actually changes you.
                   <br/><br/>
-                  We build systems you can repeat for decades — and a body that supports your life.
+                  We build routines you can repeat for years, and a body that supports your life outside the gym.
                 </p>
               </div>
 
@@ -118,6 +123,7 @@ export const Philosophy: React.FC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-tighter mb-4">The Difference</h2>
+              <p className="text-xl text-text-secondary max-w-2xl mx-auto">Typical fitness vs the WRK way</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12">
@@ -129,7 +135,7 @@ export const Philosophy: React.FC = () => {
                 </h3>
                 <ul className="space-y-6">
                   {[
-                    "Random workouts (“muscle confusion”)",
+                    "Random workouts and “muscle confusion”",
                     "Training to exhaustion every session",
                     "Ignoring pain signals to “push through”",
                     "Short-term fixes and restrictive dieting",
@@ -142,7 +148,7 @@ export const Philosophy: React.FC = () => {
                   ))}
                 </ul>
                 <div className="mt-8 pt-8 border-t border-border/50 text-center text-text-secondary italic">
-                  "We train for the sake of being tired."
+                  “We train for the sake of being tired.”
                 </div>
               </div>
 
@@ -154,9 +160,9 @@ export const Philosophy: React.FC = () => {
                 </h3>
                 <ul className="space-y-6">
                   {[
-                    "Structured progressive overload",
+                    "Structured progression that makes sense",
                     "Training for capacity and capability",
-                    "Intelligent modification around pain",
+                    "Smart modifications around pain and niggles",
                     "Sustainable habits + energy management",
                     "Built on physiology and discipline"
                   ].map((item, i) => (
@@ -167,7 +173,7 @@ export const Philosophy: React.FC = () => {
                   ))}
                 </ul>
                 <div className="mt-8 pt-8 border-t border-border/50 text-center text-text-primary font-bold">
-                  "We train to be capable."
+                  “We train to be capable.”
                 </div>
               </div>
 
@@ -180,17 +186,17 @@ export const Philosophy: React.FC = () => {
           <div className="max-w-4xl mx-auto text-center">
             <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">About WRK Coaching</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-tighter mb-8">
-              No Guesswork. Just Results.
+              No guessing. Just a plan that works.
             </h2>
             <div className="prose prose-lg mx-auto text-text-secondary leading-relaxed">
               <p className="mb-6">
-                I coach people who are sick of guessing — and want training that actually pays off.
+                I coach people who are sick of guessing — and want training that actually pays off in real life.
               </p>
               <p className="mb-6">
-                I’ve got 20+ years experience coaching clients in Christchurch (Addington) and NZ-wide online. The focus is simple: fat loss, strength, and consistency — without your plan falling apart when life gets busy.
+                I’ve got 20+ years coaching clients in Christchurch (Addington) and NZ-wide online. The focus is simple: fat loss, strength, and consistency — without your plan falling apart when life gets busy.
               </p>
               <p className="mb-10">
-                A big part of my client base deals with aches, pains, and niggles. We train smart, build resilience, and keep momentum without doing dumb stuff to prove a point.
+                A big chunk of my clients deal with aches, pains, and niggles. So we train smart, build resilience, and keep momentum… without doing dumb stuff to prove a point.
               </p>
             </div>
             
@@ -201,6 +207,28 @@ export const Philosophy: React.FC = () => {
               <Link to="/contact">
                 <Button variant="outline" size="lg" className="px-12 py-6 text-xl border-accent text-accent hover:bg-accent hover:text-white w-full md:w-auto">Book a consult</Button>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* E) WHAT YOU CAN EXPECT */}
+        <section className="py-24 px-6 bg-primary border-t border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-tighter mb-12">
+              What you can expect from me
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+              {[
+                "I’ll meet you where you’re at — and still hold the standard",
+                "No need for balls-to-the-wall intensity",
+                "No benefit in stressing an already jacked-up system",
+                "No pain no gain? More accurately: no appropriate discomfort, no progress"
+              ].map((item, i) => (
+                <div key={i} className="bg-secondary p-6 rounded-2xl border border-border flex items-start gap-4">
+                  <CheckCircle2 size={24} className="text-accent shrink-0 mt-1" />
+                  <p className="text-text-secondary text-lg leading-relaxed">{item}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

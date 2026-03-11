@@ -326,7 +326,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Let’s map the simplest plan that works.",
       support: "Tell me your constraints and I’ll guide the next step.",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
     }
   },
   philosophy: {
