@@ -260,7 +260,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Clarity in minutes. Then we keep it simple.",
       support: "Use the numbers as a starting point—not a rulebook.",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
     }
   },
   calorieCalculator: {
