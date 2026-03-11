@@ -232,7 +232,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Recovery Protocols",
         "High-Performance Living"
       ],
-      image: "https://images.unsplash.com/photo-1502680390469-be75c70e094f?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
       kicker: "No fluff. Just what works."
     },
     banner: {

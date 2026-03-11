@@ -45,29 +45,40 @@ export const CorporateWellness: React.FC = () => {
       <div className="bg-primary text-text-primary transition-colors duration-300 pb-24 md:pb-0">
         
         {/* A) HERO */}
-        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
-          <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">NZ-Wide • App-Based • 12-Month Program</span>
-          <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
-            Workplace Wellness Program NZ — A PT in Every <span className="text-accent">Employee’s Pocket</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-6 max-w-2xl mx-auto">
-            Most workplace “wellness” fails because it relies on motivation and one-off initiatives.
-          </p>
-          <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
-            <strong>This is different.</strong>
-            <br />
-            A 12-month corporate wellness program delivered through the WRK Personal Training App — giving every staff member access to training, habits, nutrition support, and real check-ins.
-          </p>
-          <Button 
-            size="lg" 
-            className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
-            onClick={() => setIsModalOpen(true)}
-          >
-            Book a Corporate Consult
-          </Button>
-          <p className="mt-4 text-xs text-text-secondary uppercase tracking-wider">
-            Flat annual rate based on staff numbers • Example: 100 employees = $10k/year • NZ-wide delivery
-          </p>
+        <section className="relative pt-40 pb-32 px-6 text-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg" 
+              alt="Workplace Wellness Program" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">NZ-Wide • App-Based • 12-Month Program</span>
+            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9] text-white">
+              Workplace Wellness Program NZ — A PT in Every <span className="text-accent">Employee’s Pocket</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-6 max-w-2xl mx-auto">
+              Most workplace “wellness” fails because it relies on motivation and one-off initiatives.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed mb-10 max-w-2xl mx-auto">
+              <strong>This is different.</strong>
+              <br />
+              A 12-month corporate wellness program delivered through the WRK Personal Training App — giving every staff member access to training, habits, nutrition support, and real check-ins.
+            </p>
+            <Button 
+              size="lg" 
+              className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Book a Corporate Consult
+            </Button>
+            <p className="mt-4 text-xs text-gray-300 uppercase tracking-wider">
+              Flat annual rate based on staff numbers • Example: 100 employees = $10k/year • NZ-wide delivery
+            </p>
+          </div>
         </section>
 
         {/* B) AGITATE */}

@@ -50,25 +50,36 @@ export const OnlineCoaching: React.FC = () => {
       <div className="bg-primary text-text-primary transition-colors duration-300 pb-24 md:pb-0">
         
         {/* A) HERO */}
-        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
-          <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">NZ-Wide • App Based • High Touch</span>
-          <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
-            Online Personal Training NZ — World-Class Coaching, <span className="text-accent">Anywhere.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-6 max-w-2xl mx-auto">
-            You don’t need a trainer standing over you counting reps.
-          </p>
-          <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
-            You need a professional strategy, intelligent programming, and accountability that doesn’t let you drift.
-          </p>
-          <Button 
-            size="lg" 
-            className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
-            onClick={() => setIsModalOpen(true)}
-          >
-            Apply for Coaching
-          </Button>
-          <p className="mt-4 text-xs text-text-secondary uppercase tracking-wider">Application only • 12-week minimum • $99 onboarding + $27.50/week</p>
+        <section className="relative pt-40 pb-32 px-6 text-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg" 
+              alt="Online Personal Training" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">NZ-Wide • App Based • High Touch</span>
+            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9] text-white">
+              Online Personal Training NZ — World-Class Coaching, <span className="text-accent">Anywhere.</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-6 max-w-2xl mx-auto">
+              You don’t need a trainer standing over you counting reps.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed mb-10 max-w-2xl mx-auto">
+              You need a professional strategy, intelligent programming, and accountability that doesn’t let you drift.
+            </p>
+            <Button 
+              size="lg" 
+              className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Apply for Coaching
+            </Button>
+            <p className="mt-4 text-xs text-gray-300 uppercase tracking-wider">Application only • 12-week minimum • $99 onboarding + $27.50/week</p>
+          </div>
         </section>
 
         {/* B) AGITATE */}
