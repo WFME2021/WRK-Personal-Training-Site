@@ -254,7 +254,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "1RM Estimator",
         "Recovery Protocols"
       ],
-      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg",
       kicker: "Calculators, checklists, and systems."
     },
     banner: {
