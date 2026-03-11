@@ -4,6 +4,8 @@ import { createServer as createViteServer } from "vite";
 import { Octokit } from "octokit";
 import path from "path";
 import fs from "fs";
+import { assessmentData } from "./data/assessmentData.js";
+import { calculateArchetype, calculateRecommendation } from "./services/assessmentLogic.js";
 
 async function startServer() {
   const app = express();
@@ -148,6 +150,193 @@ ${message}
       res.json({ success: true, message: "Processed inquiry" });
     } catch (error: any) {
       console.error("General error in /api/contact:", error);
+      res.status(500).json({ error: "Failed to process request" });
+    }
+  });
+
+  // Assessment Form Submission
+  app.post("/api/assessment", async (req, res) => {
+    const { name, email, answers } = req.body;
+
+    if (!name || !email) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    try {
+      // Lazy load nodemailer
+      let nodemailer;
+      try {
+        nodemailer = await import("nodemailer");
+      } catch (importError) {
+        console.error("Failed to import nodemailer:", importError);
+        throw new Error("Internal Server Error: Email module missing");
+      }
+
+      const port = Number(process.env.SMTP_PORT) || 587;
+      const isSecure = port === 465;
+
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: port,
+        secure: isSecure,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      const getLabel = (qId: string, optionId: string) => {
+        const q = assessmentData.questions.find(q => q.id === qId);
+        if (!q) return optionId;
+        const opt = q.options.find(o => o.id === optionId);
+        return opt ? opt.label : optionId;
+      };
+
+      const locationLabel = getLabel('q1_location', answers['q1_location']);
+      const goalLabel = getLabel('q2_goal', answers['q2_goal']);
+      const timeLabel = getLabel('q3_time', answers['q3_time']);
+      const constraintLabel = getLabel('q4_constraint', answers['q4_constraint']);
+      const flagsLabel = getLabel('q6_flags', answers['q6_flags']);
+
+      const archetype = calculateArchetype(answers);
+      const recommendation = calculateRecommendation(answers);
+
+      const archetypeLabel = archetype?.postGate.blueprintName || "Unknown Blueprint";
+      const primaryBottleneck = archetype?.primaryBottleneck || "Unknown";
+      const ruleThisWeek = archetype?.postGate.keyRuleCopy || "Unknown";
+
+      const serviceNames: Record<string, string> = {
+        "1-1": "1:1 Personal Training",
+        "online": "Online Coaching",
+        "reset": "42-Day Reset",
+        "corporate": "Corporate Wellness"
+      };
+
+      const recommendedServiceName = serviceNames[recommendation.recommend.serviceId] || recommendation.recommend.serviceId;
+      const recommendedServicePath = recommendation.recommend.href;
+
+      const alternateServiceName = serviceNames[recommendation.alternate.serviceId] || recommendation.alternate.serviceId;
+      const alternateServicePath = recommendation.alternate.href;
+
+      const replyStarters: Record<string, string> = {
+        "time_crunched": `Hi ${name}, I saw you completed the assessment. It looks like time is your biggest constraint right now. The Capacity Blueprint is designed exactly for this—focusing on minimum effective dose. Let me know if you have any questions on the 4-week progression.`,
+        "stress_stacked": `Hi ${name}, thanks for running through the assessment. It looks like managing your stress load is the priority right now. The Stress-Smart Blueprint will help you build momentum without adding to the noise. Let me know if you'd like to chat about how to implement this.`,
+        "pain_limited": `Hi ${name}, I saw your assessment results. Since you're working around some pain or injury, the priority is finding your pain-free baseline. The Pain-Smart Blueprint gives you the guardrails to keep moving safely. Let me know if you need help adjusting any of the movements.`,
+        "nutrition_drifting": `Hi ${name}, thanks for completing the assessment. It looks like your training is consistent, but nutrition is the missing link. The Nutrition Blueprint focuses on simple, high-ROI habits rather than restrictive diets. Let me know if you want to discuss how to apply this to your routine.`,
+        "motivation_drifting": `Hi ${name}, I saw you completed the assessment. It sounds like you need a clearer system to stay consistent. The System Blueprint is about removing friction and building reliable habits. Let me know if you'd like to jump on a quick call to map out your next step.`,
+        "reset_mode": `Hi ${name}, thanks for running through the assessment. It looks like you're ready for a clean slate. The Reset Blueprint is designed to help you rebuild momentum without burning out in the first week. Let me know if you have any questions on the initial phase.`
+      };
+
+      const replyStarter = archetype ? replyStarters[archetype.id] : `Hi ${name}, thanks for completing the assessment. Let me know if you have any questions about your blueprint.`;
+
+      const mailOptions = {
+        from: process.env.SMTP_FROM || '"WRK Website" <no-reply@wrkpersonaltraining.co.nz>',
+        to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
+        subject: `Assessment Unlocked — ${name} — ${archetypeLabel} — ${locationLabel}`,
+        text: `=== New Assessment Unlocked ===
+
+Name: ${name}
+Email: ${email}
+Location: ${locationLabel}
+
+--- Quick Summary ---
+Goal: ${goalLabel}
+Time available: ${timeLabel}
+Main constraint: ${constraintLabel}
+Pain/Recovery flag: ${flagsLabel}
+
+--- Diagnostic Result ---
+Archetype / Bottleneck: ${archetypeLabel}
+Bottleneck statement: ${primaryBottleneck}
+Rule this week: ${ruleThisWeek}
+
+Recommended next step: ${recommendedServiceName}
+Recommended link: https://www.wrkpersonaltraining.co.nz${recommendedServicePath}
+Alternate option: ${alternateServiceName}
+Alternate link: https://www.wrkpersonaltraining.co.nz${alternateServicePath}
+
+--- Reply Starter (copy/paste) ---
+${replyStarter}
+
+--- Raw Answers (for reference) ---
+${JSON.stringify(answers, null, 2)}
+`,
+        html: `<h3>=== New Assessment Unlocked ===</h3>
+
+<p><strong>Name:</strong> ${name}<br/>
+<strong>Email:</strong> ${email}<br/>
+<strong>Location:</strong> ${locationLabel}</p>
+
+<h4>--- Quick Summary ---</h4>
+<p><strong>Goal:</strong> ${goalLabel}<br/>
+<strong>Time available:</strong> ${timeLabel}<br/>
+<strong>Main constraint:</strong> ${constraintLabel}<br/>
+<strong>Pain/Recovery flag:</strong> ${flagsLabel}</p>
+
+<h4>--- Diagnostic Result ---</h4>
+<p><strong>Archetype / Bottleneck:</strong> ${archetypeLabel}<br/>
+<strong>Bottleneck statement:</strong> ${primaryBottleneck}<br/>
+<strong>Rule this week:</strong> ${ruleThisWeek}</p>
+
+<p><strong>Recommended next step:</strong> ${recommendedServiceName}<br/>
+<strong>Recommended link:</strong> <a href="https://www.wrkpersonaltraining.co.nz${recommendedServicePath}">https://www.wrkpersonaltraining.co.nz${recommendedServicePath}</a><br/>
+<strong>Alternate option:</strong> ${alternateServiceName}<br/>
+<strong>Alternate link:</strong> <a href="https://www.wrkpersonaltraining.co.nz${alternateServicePath}">https://www.wrkpersonaltraining.co.nz${alternateServicePath}</a></p>
+
+<h4>--- Reply Starter (copy/paste) ---</h4>
+<p><em>${replyStarter}</em></p>
+
+<h4>--- Raw Answers (for reference) ---</h4>
+<pre>${JSON.stringify(answers, null, 2)}</pre>
+`,
+      };
+
+      try {
+        await transporter.sendMail(mailOptions);
+        console.log("Assessment email sent successfully");
+      } catch (emailError) {
+        console.error("Failed to send assessment email:", emailError);
+      }
+
+      // --- MailerLite Integration ---
+      const rawKey = process.env.MAILERLITE_API_KEY || "";
+      const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
+      const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID;
+
+      if (MAILERLITE_API_KEY) {
+        try {
+          const subscriberPayload = {
+            email: email,
+            fields: {
+              name: name,
+            },
+            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
+          };
+
+          const mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(subscriberPayload)
+          });
+
+          if (!mlResponse.ok) {
+            const errorText = await mlResponse.text();
+            console.error('MailerLite API Error:', errorText);
+          } else {
+            console.log('Successfully added assessment lead to MailerLite');
+          }
+        } catch (mlError: any) {
+          console.error('MailerLite Integration Failed:', mlError.message);
+        }
+      }
+
+      res.json({ success: true, message: "Processed assessment" });
+    } catch (error: any) {
+      console.error("General error in /api/assessment:", error);
       res.status(500).json({ error: "Failed to process request" });
     }
   });
