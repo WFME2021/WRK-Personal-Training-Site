@@ -18,6 +18,10 @@ import { Tools } from './pages/Tools';
 import { CalorieCalculatorPage } from './pages/CalorieCalculatorPage';
 import { OneRepMaxEstimatorPage } from './pages/OneRepMaxEstimatorPage';
 import { Services } from './pages/Services';
+import { Terms } from './pages/Terms';
+import { Privacy } from './pages/Privacy';
+import { HealthDisclaimer } from './pages/HealthDisclaimer';
+import { Refunds } from './pages/Refunds';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -63,6 +67,12 @@ const App: React.FC = () => {
               <Route path="/calorie-calculator" element={<CalorieCalculatorPage />} />
               <Route path="/tools/1rm-estimator" element={<OneRepMaxEstimatorPage />} />
               
+              {/* Legal Routes */}
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/health-disclaimer" element={<HealthDisclaimer />} />
+              <Route path="/refunds" element={<Refunds />} />
+
               {/* Admin Route */}
               <Route path="/admin" element={<Admin />} />
             </Routes>

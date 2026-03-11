@@ -128,9 +128,18 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       {isLandingPage ? (
         <footer className="bg-secondary text-text-primary py-12 border-t border-border mt-12">
           <div className="max-w-7xl mx-auto px-8 text-center">
-            <p className="text-xs font-bold uppercase tracking-widest text-text-secondary">
+            <p className="text-xs font-bold uppercase tracking-widest text-text-secondary mb-4">
               &copy; {new Date().getFullYear()} {BRAND_NAME} | The right work, done well.
             </p>
+            <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-text-secondary font-medium uppercase tracking-wider">
+              <Link to="/terms" className="hover:text-text-primary transition-colors">Terms</Link>
+              <span className="opacity-30">|</span>
+              <Link to="/privacy" className="hover:text-text-primary transition-colors">Privacy</Link>
+              <span className="opacity-30">|</span>
+              <Link to="/refunds" className="hover:text-text-primary transition-colors">Refunds</Link>
+              <span className="opacity-30">|</span>
+              <Link to="/health-disclaimer" className="hover:text-text-primary transition-colors">Health Disclaimer</Link>
+            </div>
           </div>
         </footer>
       ) : (
@@ -171,10 +180,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <h4 className="font-bold uppercase tracking-widest text-xs text-accent mb-8">Company</h4>
                 <ul className="space-y-4 text-sm font-medium text-text-secondary">
                   <li><Link to="/" className="hover:text-text-primary transition-colors">Home</Link></li>
-                  <li><Link to="/results" className="hover:text-text-primary transition-colors">Results</Link></li>
                   <li><Link to="/blog" className="hover:text-text-primary transition-colors">Blog</Link></li>
                   <li><Link to="/contact" className="hover:text-text-primary transition-colors">Contact</Link></li>
-                  <li><a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-text-primary transition-colors">Email</a></li>
                 </ul>
               </div>
 
@@ -190,8 +197,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </div>
             <div className="mt-20 pt-8 border-t border-border text-xs text-text-secondary flex flex-col md:flex-row justify-between items-center font-medium uppercase tracking-wider">
               <p>&copy; {new Date().getFullYear()} {BRAND_NAME}</p>
-              <div className="flex items-center gap-4 mt-2 md:mt-0">
-                <p>The right work, done well.</p>
+              <div className="flex flex-wrap justify-center items-center gap-4 mt-4 md:mt-0">
+                <Link to="/terms" className="hover:text-text-primary transition-colors">Terms</Link>
+                <span className="hidden md:inline opacity-30">|</span>
+                <Link to="/privacy" className="hover:text-text-primary transition-colors">Privacy</Link>
+                <span className="hidden md:inline opacity-30">|</span>
+                <Link to="/refunds" className="hover:text-text-primary transition-colors">Refunds</Link>
+                <span className="hidden md:inline opacity-30">|</span>
+                <Link to="/health-disclaimer" className="hover:text-text-primary transition-colors">Health Disclaimer</Link>
                 <span className="hidden md:inline opacity-30">|</span>
                 <Link to="/admin" className="opacity-50 hover:opacity-100 hover:text-text-primary transition-all">Admin</Link>
               </div>
