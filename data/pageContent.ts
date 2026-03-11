@@ -320,7 +320,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Ask a Question",
         "Get Started"
       ],
-      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/90S2dr9G/pexels-pixabay-163407.jpg",
       kicker: "No pressure sales. Just a conversation."
     },
     banner: {
