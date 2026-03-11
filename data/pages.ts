@@ -218,7 +218,7 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
   },
   tools: {
     heroImage: {
-      url: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop',
+      url: 'https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg',
       alt: 'Gym equipment',
       seoDescription: 'Gym equipment in a modern facility, representing the tools needed for success.'
     }

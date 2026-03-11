@@ -132,7 +132,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Train smart. Progress without breaking down.",
       support: "We work around niggles and build you up properly.",
-      image: "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       url: "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
       alt: "Mum and child hiking",
       seoDescription: "A mother carrying a child on a hike,  representing the real-world application of strength gained through personal training."
@@ -238,7 +238,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Less fluff. More progress you can repeat.",
       support: "Practical guidance for fat loss, pain reduction, and consistency.",
-      image: "https://images.unsplash.com/photo-1476480868291-40c4370371f3?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   tools: {
@@ -349,7 +349,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "We do not train for the sake of being tired.",
       support: "We train to be capable.",
-      image: "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   assessment: {
@@ -365,13 +365,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Personalized Plan",
         "Immediate Results"
       ],
-      image: "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       kicker: "Takes less than 2 minutes."
     },
     banner: {
       tagline: "Get clarity fast. Then take the right next step.",
       support: "Six questions. Practical answers. A plan that fits real life.",
-      image: "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   }
 };

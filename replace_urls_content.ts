@@ -1,0 +1,23 @@
+import fs from 'fs';
+import path from 'path';
+
+const filePath = path.join(process.cwd(), 'public', 'content.json');
+let content = fs.readFileSync(filePath, 'utf8');
+
+const brokenUrls = [
+  "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1476480868291-40c4370371f3?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1476480868291-40c4370371f3?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1501554697317-40c68b949325?q=80&w=2070&auto=format&fit=crop"
+];
+
+const newUrl = "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg";
+
+for (const url of brokenUrls) {
+  content = content.split(url).join(newUrl);
+}
+
+fs.writeFileSync(filePath, content);
+console.log('Replaced broken URLs in public/content.json');

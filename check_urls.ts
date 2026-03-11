@@ -1,0 +1,41 @@
+const urls = [
+  "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg",
+  "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
+  "https://i.postimg.cc/vBXwJPvy/family-activity.jpg",
+  "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
+  "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+  "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
+  "https://i.postimg.cc/zXN8ygVy/female-jetski.jpg",
+  "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+  "https://i.postimg.cc/8CS5D0LN/fat-loss-tracking.png",
+  "https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg",
+  "https://i.postimg.cc/WzHzvp7V/exercise-videos.png",
+  "https://i.postimg.cc/gjZFxYP7/active-mum.jpg",
+  "https://i.postimg.cc/3w5FjthV/exercise-history.png",
+  "https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png",
+  "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+  "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+  "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
+  "https://i.postimg.cc/13cs5yGp/WRK-LOGOS-(Final).png",
+  "https://i.postimg.cc/59nFgbLv/wrk-logo-black-transparent.png",
+  "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg",
+  "https://i.postimg.cc/90S2dr9G/pexels-pixabay-163407.jpg",
+  "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
+  "https://i.postimg.cc/CLcHRbm3/barcode-scanner.png",
+  "https://i.postimg.cc/cHT6FBgH/celebrating-wins.png",
+  "https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg"
+];
+
+async function check() {
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { method: 'HEAD' });
+      if (!res.ok) {
+        console.log(url, res.status);
+      }
+    } catch (e) {
+      console.log(url, 'Error');
+    }
+  }
+}
+check();
