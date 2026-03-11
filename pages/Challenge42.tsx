@@ -46,20 +46,31 @@ export const Challenge42: React.FC = () => {
       <div className="bg-primary text-text-primary transition-colors duration-300 pb-24 md:pb-0">
         
         {/* A) HERO */}
-        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
-          <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">Habits • Training • Nutrition</span>
-          <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
-            42 Day Fitness Challenge NZ — Reset Your <span className="text-accent">Habits, Health & Headspace</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
-            You don’t need another crash diet. You need a reset.
-            <br className="hidden md:block" />
-            A structured 6-week kickstart that builds momentum you can actually keep.
-          </p>
-          <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="px-12 py-6 text-xl shadow-xl w-full md:w-auto">Start Your Reset ($47 NZD)</Button>
-          </a>
-          <p className="mt-4 text-xs text-text-secondary uppercase tracking-wider">Instant access • One-time payment • Start anytime</p>
+        <section className="relative pt-40 pb-32 px-6 text-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg" 
+              alt="42 Day Reset Training" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">Habits • Training • Nutrition</span>
+            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9] text-white">
+              42 Day Fitness Challenge NZ — Reset Your <span className="text-accent">Habits, Health & Headspace</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-10 max-w-2xl mx-auto">
+              You don’t need another crash diet. You need a reset.
+              <br className="hidden md:block" />
+              A structured 6-week kickstart that builds momentum you can actually keep.
+            </p>
+            <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="px-12 py-6 text-xl shadow-xl w-full md:w-auto">Start Your Reset ($47 NZD)</Button>
+            </a>
+            <p className="mt-4 text-xs text-gray-300 uppercase tracking-wider">Instant access • One-time payment • Start anytime</p>
+          </div>
         </section>
 
         {/* B) AGITATE */}
