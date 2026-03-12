@@ -2,6 +2,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
+import { marked } from 'marked';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
 import { useContent } from '../context/ContentContext';
@@ -60,6 +61,11 @@ export const BlogPost: React.FC = () => {
               <span className="flex items-center text-text-secondary">
                 <Calendar size={14} className="mr-1" /> <time dateTime={post.isoDate}>{post.date}</time>
               </span>
+              {post.updatedDate && (
+                <span className="flex items-center text-text-secondary italic">
+                  (Updated: {post.updatedDate})
+                </span>
+              )}
               <span className="flex items-center text-text-secondary">
                 <Clock size={14} className="mr-1" /> {readTime} min read
               </span>
@@ -87,9 +93,31 @@ export const BlogPost: React.FC = () => {
 
           {/* Post Content */}
           <div 
-            className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-20 prose-headings:font-bold prose-headings:uppercase prose-headings:font-display prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-12 prose-headings:font-bold prose-headings:uppercase prose-headings:font-display prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
+            dangerouslySetInnerHTML={{ __html: marked.parse(post.content || '') as string }}
           />
+
+          {/* FAQ Section */}
+          {post.faq && (
+            <div className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Frequently Asked Questions</h2>
+              <div 
+                className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-xl prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
+                dangerouslySetInnerHTML={{ __html: marked.parse(post.faq || '') as string }}
+              />
+            </div>
+          )}
+
+          {/* References Section */}
+          {post.references && (
+            <div className="mb-16 bg-secondary p-6 rounded-xl border border-border">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-text-secondary mb-4">References & Sources</h3>
+              <div 
+                className="prose prose-sm prose-slate dark:prose-invert max-w-none prose-a:text-accent prose-a:no-underline hover:prose-a:underline text-text-secondary"
+                dangerouslySetInnerHTML={{ __html: marked.parse(post.references || '') as string }}
+              />
+            </div>
+          )}
 
           {/* Author Bio (E-E-A-T) */}
           <section className="bg-secondary p-8 md:p-10 rounded-sm mb-16 flex flex-col md:flex-row items-center md:items-start gap-8 border border-border">
@@ -107,15 +135,45 @@ export const BlogPost: React.FC = () => {
              </div>
           </section>
           
+          {/* Related Posts */}
+          {post.relatedPosts && post.relatedPosts.length > 0 && (
+            <div className="mb-16">
+              <h2 className="text-2xl font-bold uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Related Articles</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {post.relatedPosts.map(relatedId => {
+                  const relatedPost = blogPosts.find(p => p.id === relatedId);
+                  if (!relatedPost) return null;
+                  return (
+                    <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="group block bg-secondary border border-border rounded-xl overflow-hidden hover:border-accent transition-colors">
+                      <div className="h-40 overflow-hidden">
+                        <img src={relatedPost.image.url} alt={relatedPost.image.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="font-bold text-lg text-text-primary mb-2 group-hover:text-accent transition-colors">{relatedPost.title}</h3>
+                        <p className="text-sm text-text-secondary line-clamp-2">{relatedPost.excerpt}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Conversion Area */}
           <div className="border-t border-border pt-16">
             <div className="bg-text-primary text-primary p-10 md:p-14 text-center rounded-sm shadow-lg">
-               <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to apply this?</h3>
-               <p className="text-primary/70 mb-8 max-w-lg mx-auto text-lg">
-                 Knowledge is potential power. Execution is real power. Start your journey with a structured assessment today.
-               </p>
-               <Link to="/assessment">
-                 <Button variant="primary" className="bg-primary text-text-primary hover:bg-accent hover:text-white border-0">Start Assessment</Button>
+               <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                 {post.ctaText || "Ready to apply this?"}
+               </h3>
+               {!post.ctaText && (
+                 <p className="text-primary/70 mb-8 max-w-lg mx-auto text-lg">
+                   Knowledge is potential power. Execution is real power. Start your journey with a structured assessment today.
+                 </p>
+               )}
+               <Link to={post.ctaLink || "/assessment"}>
+                 <Button variant="primary" className="bg-primary text-text-primary hover:bg-accent hover:text-white border-0">
+                   {post.ctaText ? "Get Started" : "Start Assessment"}
+                 </Button>
                </Link>
             </div>
           </div>

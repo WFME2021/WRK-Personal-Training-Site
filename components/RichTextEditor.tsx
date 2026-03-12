@@ -2,9 +2,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { 
   Bold, Italic, List, Link as LinkIcon, Image as ImageIcon, 
-  Heading1, Heading2, Quote, Undo, Redo, Code, X 
+  Heading1, Heading2, Quote, Undo, Redo, Code, X, Search
 } from 'lucide-react';
 import { Button } from './Button';
+import { marked } from 'marked';
+import { useContent } from '../context/ContentContext';
 
 interface RichTextEditorProps {
   value: string;
@@ -23,6 +25,41 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
   }, [value, showHtml]);
 
   const handleInput = () => {
+    if (editorRef.current) {
+      onChange(editorRef.current.innerHTML);
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const text = e.clipboardData.getData('text/plain');
+    const html = e.clipboardData.getData('text/html');
+
+    // If there is rich text, let the browser handle it, but we can clean it up or just insert it.
+    // Actually, if we want to support markdown, we check if the plain text looks like markdown
+    // and there's no HTML, or if we prefer markdown conversion.
+    // GPT usually copies as rich text if copied from the UI, but if copied as markdown, it's plain text.
+    if (html) {
+      // Clean up the HTML to remove weird inline styles
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      
+      // Remove all style attributes and class attributes
+      const elements = tempDiv.getElementsByTagName('*');
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].removeAttribute('style');
+        elements[i].removeAttribute('class');
+        elements[i].removeAttribute('id');
+        elements[i].removeAttribute('dir');
+      }
+      
+      document.execCommand('insertHTML', false, tempDiv.innerHTML);
+    } else if (text) {
+      // Convert markdown to HTML
+      const parsedHtml = marked.parse(text) as string;
+      document.execCommand('insertHTML', false, parsedHtml);
+    }
+    
     if (editorRef.current) {
       onChange(editorRef.current.innerHTML);
     }
@@ -102,6 +139,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
             ref={editorRef}
             contentEditable
             onInput={handleInput}
+            onPaste={handlePaste}
             className="w-full h-full p-6 overflow-y-auto focus:outline-none prose max-w-none"
             style={{
               fontFamily: 'Inter, sans-serif'

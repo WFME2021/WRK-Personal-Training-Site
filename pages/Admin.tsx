@@ -3,8 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { BlogPost, Author } from '../data/blogs';
 import { PAGE_LABELS, FIELD_LABELS, PageContent, CMSImage } from '../data/pages';
 import { Button } from '../components/Button';
-import { Save, Upload, Download, Plus, Trash2, ArrowLeft, Lock, LogOut, Layout, FileText, Image as ImageIcon, RefreshCw } from 'lucide-react';
+import { Save, Upload, Download, Plus, Trash2, ArrowLeft, Lock, LogOut, Layout, FileText, Image as ImageIcon, RefreshCw, Copy } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { MarkdownEditor } from '../components/MarkdownEditor';
 import { RichTextEditor } from '../components/RichTextEditor';
 import { useContent } from '../context/ContentContext';
 
@@ -21,9 +22,11 @@ const EMPTY_POST: BlogPost = {
   slug: '',
   title: '',
   excerpt: '',
-  content: '',
+  content: '## Intro\n\n## Quick Answer\n\n## Section 1\n\n## Section 2\n\n## Section 3\n\n## Section 4\n\n## Final Thoughts',
+  faq: '## FAQ\n\n**Question 1?**\nAnswer 1.',
   date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
   isoDate: new Date().toISOString(),
+  updatedDate: '',
   category: 'General',
   image: {
     url: 'https://picsum.photos/800/600',
@@ -32,7 +35,18 @@ const EMPTY_POST: BlogPost = {
   },
   author: DEFAULT_AUTHOR,
   seoTitle: '',
-  seoDescription: ''
+  seoDescription: '',
+  primaryKeyword: '',
+  secondaryKeywords: '',
+  ctaText: '',
+  ctaLink: '',
+  references: '',
+  relatedPosts: [],
+  localLocation: '',
+  localServiceCategory: '',
+  localServicePage: '',
+  localKeywordNote: '',
+  status: 'draft'
 };
 
 export const Admin: React.FC = () => {
@@ -122,6 +136,50 @@ export const Admin: React.FC = () => {
   const handlePostChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setPostFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleRichTextChange = (field: keyof BlogPost, html: string) => {
+    setPostFormData(prev => ({ ...prev, [field]: html }));
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 1200;
+        const MAX_HEIGHT = 1200;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+          const webpDataUrl = canvas.toDataURL('image/webp', 0.8);
+          handleBlogImageChange('url', webpDataUrl);
+        }
+      };
+      img.src = event.target?.result as string;
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleContentChange = (html: string) => {
@@ -279,14 +337,12 @@ export const Admin: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap gap-3 items-center">
-            {/* 
             <Button variant="primary" type="button" onClick={handleSaveAndPublish} disabled={isPublishing} className="bg-green-600 hover:bg-green-700 text-white border-transparent">
                <RefreshCw size={16} className={`mr-2 ${isPublishing ? 'animate-spin' : ''}`} /> 
                {isPublishing ? 'Publishing...' : 'Save & Publish'}
             </Button>
-            */}
             <div className="hidden md:block bg-yellow-500/10 border border-yellow-500/20 rounded-lg px-4 py-2 text-[10px] text-yellow-600 max-w-xs leading-tight">
-              <strong>Note:</strong> Changes here are local to your browser. To go live, download the config and send it to your developer.
+              <strong>Note:</strong> Publishing will commit changes to GitHub and trigger a deployment.
             </div>
 
             <input 
@@ -315,15 +371,15 @@ export const Admin: React.FC = () => {
              <Layout size={20} />
            </div>
            <div>
-             <h3 className="font-bold text-text-primary text-lg mb-2">How to make your changes live</h3>
+             <h3 className="font-bold text-text-primary text-lg mb-2">How to publish your changes</h3>
              <p className="text-text-secondary text-sm leading-relaxed mb-4">
-               The Admin panel currently saves changes to your <strong>local browser only</strong>. This is great for previewing, but other people won't see these changes yet.
+               The Admin panel saves your changes locally as you work. When you are ready to go live, click <strong>Save & Publish</strong> to push the updates to your website.
              </p>
              <ol className="list-decimal list-inside text-sm text-text-secondary space-y-2 mb-4">
                <li>Make your edits below (Images, Text, Blogs).</li>
                <li>Verify they look correct on the site.</li>
-               <li>Click the <strong>Download Config</strong> button (top right).</li>
-               <li><strong>Send that downloaded file</strong> to your developer (or paste it into the AI chat).</li>
+               <li>Click the <strong>Save & Publish</strong> button (top right).</li>
+               <li>Wait a few minutes for the live site to update.</li>
              </ol>
              <p className="text-xs font-bold text-accent uppercase tracking-wider">
                Important: Image URLs must be public links (e.g. from Unsplash or a website), not files on your computer.
@@ -374,20 +430,104 @@ export const Admin: React.FC = () => {
                         className={`p-4 border rounded-xl cursor-pointer transition-all duration-200 group ${editingId === post.id ? 'border-accent bg-primary ring-1 ring-accent' : 'border-border hover:border-accent hover:bg-primary'}`}
                         onClick={() => setEditingId(post.id)}
                       >
-                        <h3 className="font-bold text-text-primary text-sm truncate mb-1">{post.title}</h3>
+                        <h3 className="font-bold text-text-primary text-sm truncate mb-1">
+                          {post.title}
+                          {post.status === 'draft' && (
+                            <span className="ml-2 inline-block bg-yellow-500/10 text-yellow-600 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Draft</span>
+                          )}
+                        </h3>
                         <div className="flex justify-between items-center text-xs text-text-secondary">
                           <span>{post.date}</span>
-                          <button 
-                            type="button"
-                            onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id); }}
-                            className="text-text-secondary hover:text-red-500 transition-colors p-1"
-                            title="Delete Post"
-                          >
-                            <Trash2 size={14} />
-                          </button>
+                          <div className="flex gap-1">
+                            <button 
+                              type="button"
+                              onClick={(e) => { 
+                                e.stopPropagation(); 
+                                const newPost = { ...post, id: Date.now().toString(), title: `${post.title} (Copy)`, slug: `${post.slug}-copy` };
+                                updateBlogPosts([...blogPosts, newPost]);
+                              }}
+                              className="text-text-secondary hover:text-accent transition-colors p-1"
+                              title="Duplicate Post"
+                            >
+                              <Copy size={14} />
+                            </button>
+                            <button 
+                              type="button"
+                              onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id); }}
+                              className="text-text-secondary hover:text-red-500 transition-colors p-1"
+                              title="Delete Post"
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     ))}
+                  </div>
+
+                  {/* Pre-Publish Checklist */}
+                  <div className="mt-8 pt-6 border-t border-border">
+                    <h3 className="font-bold text-sm uppercase tracking-wider text-accent mb-4">Pre-Publish Checklist</h3>
+                    <ul className="space-y-2 text-xs text-text-secondary">
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.title ? 'bg-green-500' : 'bg-red-500'}`}></span> Title
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.slug ? 'bg-green-500' : 'bg-red-500'}`}></span> Slug
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.seoTitle ? 'bg-green-500' : 'bg-red-500'}`}></span> Meta Title
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.seoDescription ? 'bg-green-500' : 'bg-red-500'}`}></span> Meta Description
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.excerpt ? 'bg-green-500' : 'bg-red-500'}`}></span> Excerpt
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.image.url && postFormData.image.url !== 'https://picsum.photos/800/600' ? 'bg-green-500' : 'bg-red-500'}`}></span> Featured Image
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.image.alt && postFormData.image.alt !== 'Default blog post image' ? 'bg-green-500' : 'bg-red-500'}`}></span> Image Alt Text
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.content && postFormData.content.length > 50 ? 'bg-green-500' : 'bg-red-500'}`}></span> Body Content
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.content && (postFormData.content.includes('##') || postFormData.content.includes('###')) ? 'bg-green-500' : 'bg-yellow-500'}`}></span> Headings Present
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${postFormData.ctaText ? 'bg-green-500' : 'bg-yellow-500'}`}></span> CTA Added
+                      </li>
+                    </ul>
+                    
+                    <div className="mt-4 pt-4 border-t border-border grid grid-cols-2 gap-2 text-xs text-text-secondary">
+                      <div>
+                        <span className="block font-bold text-text-primary">Words</span>
+                        {postFormData.content ? postFormData.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(w => w.length > 0).length : 0}
+                      </div>
+                      <div>
+                        <span className="block font-bold text-text-primary">Read Time</span>
+                        {postFormData.content ? Math.ceil(postFormData.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(w => w.length > 0).length / 200) : 0} min
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* SEO Preview */}
+                  <div className="mt-8 pt-6 border-t border-border">
+                    <h3 className="font-bold text-sm uppercase tracking-wider text-accent mb-4">SEO Preview</h3>
+                    <div className="bg-primary p-4 rounded-xl border border-border">
+                      <div className="text-[12px] text-text-secondary mb-1 flex items-center gap-2">
+                        <span className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-[10px]">W</span>
+                        <span className="truncate">wrkpersonaltraining.co.nz › blog › {postFormData.slug || 'your-slug'}</span>
+                      </div>
+                      <h4 className="text-[18px] text-blue-600 dark:text-blue-400 hover:underline cursor-pointer truncate mb-1 leading-tight">
+                        {postFormData.seoTitle || postFormData.title || 'Your Meta Title'}
+                      </h4>
+                      <p className="text-[13px] text-text-secondary line-clamp-2 leading-snug">
+                        {postFormData.seoDescription || postFormData.excerpt || 'Your meta description will appear here. Keep it under 160 characters for best results.'}
+                      </p>
+                    </div>
                   </div>
                  </>
                ) : (
@@ -415,64 +555,209 @@ export const Admin: React.FC = () => {
           <div className="lg:col-span-3 bg-secondary p-8 shadow-sm border border-border rounded-[2rem]">
             {view === 'blogs' ? (
               // BLOG EDITOR
-              <form onSubmit={handleSavePost} className="space-y-6">
-                <h2 className="font-bold text-2xl mb-8 text-text-primary border-b border-border pb-4">
-                  {editingId ? 'Edit Post' : 'Create New Post'}
-                </h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Title</label>
-                    <input
-                      type="text"
-                      name="title"
-                      value={postFormData.title}
-                      onChange={handlePostChange}
-                      required
-                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Slug</label>
-                    <input
-                      type="text"
-                      name="slug"
-                      value={postFormData.slug}
-                      onChange={handlePostChange}
-                      required
-                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                    />
+              <form onSubmit={handleSavePost} className="space-y-8">
+                <div className="flex justify-between items-center border-b border-border pb-4">
+                  <h2 className="font-bold text-2xl text-text-primary">
+                    {editingId ? 'Edit Post' : 'Create New Post'}
+                  </h2>
+                  <div className="flex gap-4">
+                    {editingId && (
+                      <Button type="button" variant="secondary" onClick={() => { setEditingId(null); setPostFormData({ ...EMPTY_POST, id: Date.now().toString() }); }}>
+                        Cancel
+                      </Button>
+                    )}
+                    <Button type="submit">
+                      <Save size={16} className="mr-2" /> {editingId ? 'Update Post' : 'Save Post'}
+                    </Button>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Category</label>
-                    <input
-                      type="text"
-                      name="category"
-                      value={postFormData.category}
-                      onChange={handlePostChange}
-                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                    />
+                {/* BASIC INFO */}
+                <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">1. Basic Info</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Title</label>
+                      <input
+                        type="text"
+                        name="title"
+                        value={postFormData.title}
+                        onChange={handlePostChange}
+                        required
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Slug / URL</label>
+                      <input
+                        type="text"
+                        name="slug"
+                        value={postFormData.slug}
+                        onChange={handlePostChange}
+                        required
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Date</label>
-                    <input
-                      type="text"
-                      name="date"
-                      value={postFormData.date}
-                      onChange={handlePostChange}
-                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                    />
+                  <div className="grid md:grid-cols-4 gap-6">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Category</label>
+                      <input
+                        type="text"
+                        name="category"
+                        value={postFormData.category}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Status</label>
+                      <select
+                        name="status"
+                        value={postFormData.status || 'draft'}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      >
+                        <option value="draft">Draft</option>
+                        <option value="published">Published</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Publish Date</label>
+                      <input
+                        type="text"
+                        name="date"
+                        value={postFormData.date}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Updated Date</label>
+                      <input
+                        type="text"
+                        name="updatedDate"
+                        value={postFormData.updatedDate || ''}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Image</label>
-                  <div className="bg-primary p-6 rounded-2xl border border-border">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="w-full">
-                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image URL</label>
+                {/* SEO & METADATA */}
+                <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">2. SEO & Metadata</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Meta Title</label>
+                      <input
+                        type="text"
+                        name="seoTitle"
+                        value={postFormData.seoTitle || ''}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Meta Description</label>
+                      <input
+                        type="text"
+                        name="seoDescription"
+                        value={postFormData.seoDescription || ''}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Primary Keyword</label>
+                      <input
+                        type="text"
+                        name="primaryKeyword"
+                        value={postFormData.primaryKeyword || ''}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Secondary Keywords</label>
+                      <input
+                        type="text"
+                        name="secondaryKeywords"
+                        value={postFormData.secondaryKeywords || ''}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Location</label>
+                      <input
+                        type="text"
+                        name="localLocation"
+                        value={postFormData.localLocation || ''}
+                        onChange={handlePostChange}
+                        placeholder="e.g., Christchurch"
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Service Category</label>
+                      <input
+                        type="text"
+                        name="localServiceCategory"
+                        value={postFormData.localServiceCategory || ''}
+                        onChange={handlePostChange}
+                        placeholder="e.g., Personal Training"
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Service Page URL</label>
+                      <input
+                        type="text"
+                        name="localServicePage"
+                        value={postFormData.localServicePage || ''}
+                        onChange={handlePostChange}
+                        placeholder="/services/personal-training"
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Keyword Note</label>
+                      <input
+                        type="text"
+                        name="localKeywordNote"
+                        value={postFormData.localKeywordNote || ''}
+                        onChange={handlePostChange}
+                        placeholder="Internal notes for local SEO"
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* MEDIA */}
+                <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">3. Media</h3>
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="w-full space-y-4">
+                       <div>
+                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Upload Image (Auto-converts to WebP)</label>
+                         <input
+                           type="file"
+                           accept="image/*"
+                           onChange={handleImageUpload}
+                           className="w-full p-2 bg-secondary text-text-primary border border-border rounded-lg text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-accent file:text-white hover:file:bg-accent/90"
+                         />
+                       </div>
+                       <div>
+                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Or enter Image URL</label>
                          <input
                            type="text"
                            value={postFormData.image.url}
@@ -480,59 +765,134 @@ export const Admin: React.FC = () => {
                            className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
                            placeholder="https://..."
                          />
-                      </div>
-                      {postFormData.image.url && (
-                        <div className="w-24 h-16 rounded-lg overflow-hidden border border-border shadow-sm ml-4 shrink-0">
-                          <img src={postFormData.image.url} alt={postFormData.image.alt} className="w-full h-full object-cover" />
-                        </div>
-                      )}
+                       </div>
                     </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Alt Text</label>
-                        <input
-                          type="text"
-                          value={postFormData.image.alt || ''}
-                          onChange={(e) => handleBlogImageChange('alt', e.target.value)}
-                          className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
-                          placeholder="Image description..."
-                        />
+                    {postFormData.image.url && (
+                      <div className="w-32 h-24 rounded-lg overflow-hidden border border-border shadow-sm ml-4 shrink-0">
+                        <img src={postFormData.image.url} alt={postFormData.image.alt} className="w-full h-full object-cover" />
                       </div>
-                      <div>
-                        <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">SEO Description</label>
-                        <input
-                          type="text"
-                          value={postFormData.image.seoDescription || ''}
-                          onChange={(e) => handleBlogImageChange('seoDescription', e.target.value)}
-                          className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
-                          placeholder="SEO context..."
-                        />
-                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Featured Image Alt Text</label>
+                      <input
+                        type="text"
+                        value={postFormData.image.alt || ''}
+                        onChange={(e) => handleBlogImageChange('alt', e.target.value)}
+                        className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                        placeholder="Image description..."
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image SEO Description</label>
+                      <input
+                        type="text"
+                        value={postFormData.image.seoDescription || ''}
+                        onChange={(e) => handleBlogImageChange('seoDescription', e.target.value)}
+                        className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                        placeholder="SEO context..."
+                      />
                     </div>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Excerpt</label>
-                  <textarea
-                    name="excerpt"
-                    value={postFormData.excerpt}
-                    onChange={handlePostChange}
-                    rows={2}
-                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none"
-                  />
+                {/* CONTENT */}
+                <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">4. Content</h3>
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Excerpt / Summary</label>
+                    <textarea
+                      name="excerpt"
+                      value={postFormData.excerpt}
+                      onChange={handlePostChange}
+                      rows={2}
+                      className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none"
+                    />
+                  </div>
+
+                  <div>
+                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Main Blog Body</label>
+                     <MarkdownEditor 
+                        value={postFormData.content} 
+                        onChange={(md) => handleRichTextChange('content', md)} 
+                     />
+                  </div>
+
+                  <div>
+                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">FAQ Section</label>
+                     <MarkdownEditor 
+                        value={postFormData.faq || ''} 
+                        onChange={(md) => handleRichTextChange('faq', md)} 
+                     />
+                  </div>
                 </div>
 
-                <div>
-                   <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Content</label>
-                   <RichTextEditor 
-                      value={postFormData.content} 
-                      onChange={handleContentChange} 
-                   />
+                {/* CTA & REFERENCES */}
+                <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">5. CTA & References</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">CTA Text</label>
+                      <input
+                        type="text"
+                        name="ctaText"
+                        value={postFormData.ctaText || ''}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">CTA Link</label>
+                      <input
+                        type="text"
+                        name="ctaLink"
+                        value={postFormData.ctaLink || ''}
+                        onChange={handlePostChange}
+                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">References</label>
+                     <MarkdownEditor 
+                        value={postFormData.references || ''} 
+                        onChange={(md) => handleRichTextChange('references', md)} 
+                        minHeight="200px"
+                     />
+                  </div>
+
+                  <div>
+                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Related Posts</label>
+                     <div className="flex flex-col gap-2">
+                       {blogPosts.filter(p => p.id !== postFormData.id).map(p => (
+                         <label key={p.id} className="flex items-center gap-2 text-sm text-text-primary">
+                           <input 
+                             type="checkbox" 
+                             checked={postFormData.relatedPosts?.includes(p.id) || false}
+                             onChange={(e) => {
+                               const checked = e.target.checked;
+                               setPostFormData(prev => {
+                                 const related = prev.relatedPosts || [];
+                                 if (checked) {
+                                   return { ...prev, relatedPosts: [...related, p.id] };
+                                 } else {
+                                   return { ...prev, relatedPosts: related.filter(id => id !== p.id) };
+                                 }
+                               });
+                             }}
+                             className="rounded border-border text-accent focus:ring-accent"
+                           />
+                           {p.title}
+                         </label>
+                       ))}
+                     </div>
+                  </div>
                 </div>
                 
-                <div className="pt-4 flex justify-end gap-4">
+                <div className="pt-4 flex justify-end gap-4 border-t border-border mt-8">
                   {editingId && (
                     <Button type="button" variant="secondary" onClick={() => { setEditingId(null); setPostFormData({ ...EMPTY_POST, id: Date.now().toString() }); }}>
                       Cancel

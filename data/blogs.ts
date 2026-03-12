@@ -13,13 +13,26 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string; // HTML string
+  faq?: string; // HTML string for FAQ section
   date: string; // Display date
   isoDate: string; // ISO 8601 for Schema.org
+  updatedDate?: string;
   category: string;
   image: CMSImage;
   author: Author;
   seoTitle?: string;
   seoDescription?: string;
+  primaryKeyword?: string;
+  secondaryKeywords?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  references?: string; // HTML string for references
+  relatedPosts?: string[]; // Array of blog post IDs
+  localLocation?: string;
+  localServiceCategory?: string;
+  localServicePage?: string;
+  localKeywordNote?: string;
+  status?: 'draft' | 'published';
 }
 
 const DEFAULT_AUTHOR: Author = {
@@ -52,7 +65,8 @@ export const BLOG_POSTS: BlogPost[] = [
       avatarUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
     },
     seoTitle: "Sleep Optimization Guide | WRK Personal Training",
-    seoDescription: "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
+    seoDescription: "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained.",
+    status: "published"
   },
   {
     id: "2",
@@ -75,7 +89,8 @@ export const BLOG_POSTS: BlogPost[] = [
       avatarUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
     },
     seoTitle: "Beginner Strength Training Guide | WRK Personal Training",
-    seoDescription: "Master the big four compound lifts to build strength and longevity. A simple guide for beginners."
+    seoDescription: "Master the big four compound lifts to build strength and longevity. A simple guide for beginners.",
+    status: "published"
   },
   {
     id: "3",
@@ -98,6 +113,7 @@ export const BLOG_POSTS: BlogPost[] = [
       avatarUrl: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
     },
     seoTitle: "Nutrition Hacks for Busy Professionals | WRK",
-    seoDescription: "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."
+    seoDescription: "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition.",
+    status: "published"
   }
 ];

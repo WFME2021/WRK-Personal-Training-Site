@@ -215,7 +215,7 @@ export const Results: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to={recommendation.recommend.href} className="w-full sm:w-auto">
                 <Button variant="primary" className="w-full py-4 px-8 text-lg flex items-center justify-center gap-2">
-                  View Service Details <ArrowRight className="w-5 h-5" />
+                  Continue with support <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
             </div>

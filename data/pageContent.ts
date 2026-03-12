@@ -64,7 +64,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Fit enough for the good stuff.",
       support: "Train to live more—work, family, weekends.",
-      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       url: ""
     },
     ptImage: {
@@ -101,13 +101,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Online Coaching (12-Week Mini)",
         "Corporate Wellness"
       ],
-      image: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       kicker: "Options for every schedule and budget."
     },
     banner: {
       tagline: "Choose the coaching that fits your real week.",
       support: "Same goal—more capacity—different paths to get there.",
-      image: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   personalTraining: {
@@ -123,7 +123,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Pain-aware programming (posture / postpartum / menopause / niggles)",
         "Accountability that actually works"
       ],
-      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.",
       url: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
       alt: "Fit and capable man back country skiing",
@@ -156,13 +156,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Form checks + feedback (video analysis)",
         "Protein-forward, flexible nutrition support"
       ],
-      image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       kicker: "12-week minimum—because quick fixes are how people end up starting over."
     },
     banner: {
       tagline: "A plan that survives travel, stress, and chaos.",
       support: "Consistency beats intensity when life’s busy.",
-      image: "https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     },
     workoutLogImage: {
       url: "https://i.postimg.cc/3w5FjthV/exercise-history.png",
@@ -194,7 +194,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Wellness that gets used—because it fits the job.",
       support: "Simple programs that support energy, posture, and routine.",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   challenge42: {
@@ -216,7 +216,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Reset the routine. Keep your life.",
       support: "Structure and momentum without diet jail or burnout.",
-      image: "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   blog: {
@@ -254,13 +254,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "1RM Estimator",
         "Recovery Protocols"
       ],
-      image: "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       kicker: "Calculators, checklists, and systems."
     },
     banner: {
       tagline: "Clarity in minutes. Then we keep it simple.",
       support: "Use the numbers as a starting point—not a rulebook.",
-      image: "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   calorieCalculator: {
@@ -276,13 +276,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Protein Targets",
         "Party Fund"
       ],
-      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       eyebrow: "Nutrition Engine"
     },
     banner: {
       tagline: "Start with a target. Adjust like an adult.",
       support: "A sensible baseline, then refine based on results and recovery.",
-      image: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   oneRmEstimator: {
@@ -298,13 +298,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Training Percentages",
         "Progress Tracking"
       ],
-      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80",
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
       kicker: "Train smart, not just heavy."
     },
     banner: {
       tagline: "Train smart—without maxing out every week.",
       support: "Estimate loads so progress is repeatable and joint-friendly.",
-      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   contact: {
@@ -326,7 +326,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Let’s map the simplest plan that works.",
       support: "Tell me your constraints and I’ll guide the next step.",
-      image: "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     }
   },
   philosophy: {

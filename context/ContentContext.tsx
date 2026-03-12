@@ -50,13 +50,12 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
             setBlogPosts(data.blogs);
         }
         
-        // Disabled automatic page content merging from remote to prevent overwriting new structure with old schema
-        // if (data.pages) {
-        //     setPageContent(prev => ({
-        //         ...PAGE_CONTENT,
-        //         ...data.pages
-        //     }));
-        // }
+        if (data.pages) {
+            setPageContent(prev => ({
+                ...prev,
+                ...data.pages
+            }));
+        }
       } catch (error) {
         console.warn('Could not fetch dynamic content, using local defaults. This is expected during development if content.json is not yet generated or if offline.', error);
       }

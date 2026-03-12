@@ -12,7 +12,7 @@ async function startServer() {
   const PORT = 3000;
 
   // Parse JSON bodies
-  app.use(express.json());
+  app.use(express.json({ limit: '50mb' }));
 
   // API Routes
   app.get("/api/health", (req, res) => {
@@ -144,6 +144,30 @@ ${message}
           }
         } catch (mlError: any) {
           console.error('MailerLite Integration Failed:', mlError.message);
+        }
+      }
+
+      // --- Google Sheets Webhook Integration ---
+      const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+      if (sheetsWebhookUrl) {
+        try {
+          await fetch(sheetsWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'contact',
+              date: new Date().toISOString(),
+              name,
+              email,
+              phone,
+              interest,
+              referralSource,
+              message
+            })
+          });
+          console.log('Successfully sent to Google Sheets Webhook');
+        } catch (sheetsError: any) {
+          console.error('Google Sheets Webhook Failed:', sheetsError.message);
         }
       }
 
@@ -334,6 +358,35 @@ ${JSON.stringify(answers, null, 2)}
         }
       }
 
+      // --- Google Sheets Webhook Integration ---
+      const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+      if (sheetsWebhookUrl) {
+        try {
+          await fetch(sheetsWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'assessment',
+              date: new Date().toISOString(),
+              name,
+              email,
+              location: locationLabel,
+              goal: goalLabel,
+              time: timeLabel,
+              constraint: constraintLabel,
+              flags: flagsLabel,
+              archetype: archetypeLabel,
+              bottleneck: primaryBottleneck,
+              recommendedService: recommendedServiceName,
+              rawAnswers: answers
+            })
+          });
+          console.log('Successfully sent assessment to Google Sheets Webhook');
+        } catch (sheetsError: any) {
+          console.error('Google Sheets Webhook Failed:', sheetsError.message);
+        }
+      }
+
       res.json({ success: true, message: "Processed assessment" });
     } catch (error: any) {
       console.error("General error in /api/assessment:", error);
@@ -373,6 +426,113 @@ ${JSON.stringify(answers, null, 2)}
 
     try {
       const octokit = new Octokit({ auth: token });
+      
+      // Helper to upload base64 image to GitHub and return raw URL
+      const uploadImageToGithub = async (base64DataUrl: string, filename: string) => {
+        const base64Data = base64DataUrl.replace(/^data:image\/\w+;base64,/, "");
+        const imagePath = `public/images/${filename}`;
+        
+        let fileSha;
+        try {
+          const { data } = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+            owner,
+            repo,
+            path: imagePath,
+          });
+          if (!Array.isArray(data)) fileSha = data.sha;
+        } catch (e) {
+          // File doesn't exist, which is fine
+        }
+
+        await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
+          owner,
+          repo,
+          path: imagePath,
+          message: `Upload image via CMS - ${filename}`,
+          content: base64Data,
+          sha: fileSha,
+        });
+
+        // Return the raw GitHub URL
+        return `https://raw.githubusercontent.com/${owner}/${repo}/main/${imagePath}`;
+      };
+
+      // Process blog images
+      if (content.blogs && Array.isArray(content.blogs)) {
+        for (const blog of content.blogs) {
+          // 1. Featured Image
+          if (blog.image?.url?.startsWith('data:image/')) {
+            const ext = blog.image.url.split(';')[0].split('/')[1] || 'webp';
+            const filename = `blog-${blog.slug || Date.now()}-${Date.now()}.${ext}`;
+            try {
+              blog.image.url = await uploadImageToGithub(blog.image.url, filename);
+            } catch (err) {
+              console.error(`Failed to upload image for blog ${blog.slug}:`, err);
+            }
+          }
+
+          // 2. Embedded Markdown Images (Content, FAQ, References)
+          const extractAndUploadMarkdownImages = async (markdownText: string, prefix: string) => {
+            if (!markdownText) return markdownText;
+            const base64Regex = /data:image\/[a-zA-Z]+;base64,[^\s)]+/g;
+            const matches = markdownText.match(base64Regex);
+            
+            if (matches && matches.length > 0) {
+              let updatedText = markdownText;
+              for (let i = 0; i < matches.length; i++) {
+                const base64Str = matches[i];
+                const ext = base64Str.split(';')[0].split('/')[1] || 'webp';
+                const filename = `blog-${blog.slug || Date.now()}-${prefix}-${i}-${Date.now()}.${ext}`;
+                try {
+                  const rawUrl = await uploadImageToGithub(base64Str, filename);
+                  updatedText = updatedText.replace(base64Str, rawUrl);
+                } catch (err) {
+                  console.error(`Failed to upload embedded image for blog ${blog.slug}:`, err);
+                }
+              }
+              return updatedText;
+            }
+            return markdownText;
+          };
+
+          blog.content = await extractAndUploadMarkdownImages(blog.content, 'content');
+          blog.faq = await extractAndUploadMarkdownImages(blog.faq, 'faq');
+          blog.references = await extractAndUploadMarkdownImages(blog.references, 'ref');
+        }
+      }
+
+      // Process page images
+      if (content.pages) {
+        for (const pageKey of Object.keys(content.pages)) {
+          const page = content.pages[pageKey];
+          for (const fieldKey of Object.keys(page)) {
+            const field = page[fieldKey];
+            if (field && typeof field === 'object' && field.url && field.url.startsWith('data:image/')) {
+              const ext = field.url.split(';')[0].split('/')[1] || 'webp';
+              const filename = `page-${pageKey}-${fieldKey}-${Date.now()}.${ext}`;
+              try {
+                field.url = await uploadImageToGithub(field.url, filename);
+              } catch (err) {
+                console.error(`Failed to upload image for ${pageKey}.${fieldKey}:`, err);
+              }
+            } else if (Array.isArray(field)) {
+              for (let i = 0; i < field.length; i++) {
+                const item = field[i];
+                if (item && item.url && item.url.startsWith('data:image/')) {
+                  const ext = item.url.split(';')[0].split('/')[1] || 'webp';
+                  const filename = `page-${pageKey}-${fieldKey}-${i}-${Date.now()}.${ext}`;
+                  try {
+                    item.url = await uploadImageToGithub(item.url, filename);
+                  } catch (err) {
+                    console.error(`Failed to upload image for ${pageKey}.${fieldKey}[${i}]:`, err);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
       const path = "public/content.json";
       
       // 1. Get current SHA of the file

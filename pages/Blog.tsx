@@ -14,15 +14,20 @@ export const Blog: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Extract unique categories
+  const [currentPage, setCurrentPage] = useState(1);
+  const POSTS_PER_PAGE = 6;
+
+  // Extract unique categories from published posts
   const categories = useMemo(() => {
-    const cats = ['All', ...new Set(blogPosts.map(post => post.category))];
+    const publishedPosts = blogPosts.filter(post => post.status !== 'draft');
+    const cats = ['All', ...new Set(publishedPosts.map(post => post.category))];
     return cats;
   }, [blogPosts]);
 
   // Filter posts by Category AND Search Query
   const filteredPosts = useMemo(() => {
     return blogPosts.filter(post => {
+      if (post.status === 'draft') return false;
       const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
       const matchesSearch = 
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -32,6 +37,18 @@ export const Blog: React.FC = () => {
       return matchesCategory && matchesSearch;
     });
   }, [selectedCategory, searchQuery, blogPosts]);
+
+  // Reset page when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, searchQuery]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
 
   // Calculate read time helper
   const getReadTime = (content: string) => {
@@ -112,7 +129,7 @@ export const Blog: React.FC = () => {
 
           {/* Posts Grid */}
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
-            {filteredPosts.map((post) => (
+            {paginatedPosts.map((post) => (
               <article key={post.id} className="group cursor-pointer flex flex-col h-full">
                 <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
                   <div className="relative overflow-hidden mb-6 aspect-[16/10] bg-secondary rounded-2xl border border-border">
@@ -159,6 +176,37 @@ export const Blog: React.FC = () => {
                 className="text-text-primary font-bold uppercase tracking-widest text-sm underline hover:text-accent transition-colors"
               >
                 Clear filters
+              </button>
+            </div>
+          )}
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="mt-16 flex justify-center items-center space-x-4">
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-colors ${
+                  currentPage === 1 
+                    ? 'bg-secondary text-text-secondary opacity-50 cursor-not-allowed' 
+                    : 'bg-secondary text-text-primary hover:bg-border'
+                }`}
+              >
+                Previous
+              </button>
+              <span className="text-sm font-bold text-text-secondary">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-colors ${
+                  currentPage === totalPages 
+                    ? 'bg-secondary text-text-secondary opacity-50 cursor-not-allowed' 
+                    : 'bg-secondary text-text-primary hover:bg-border'
+                }`}
+              >
+                Next
               </button>
             </div>
           )}
