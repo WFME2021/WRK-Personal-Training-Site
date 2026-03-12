@@ -11,6 +11,11 @@ export const CorporateWellness: React.FC = () => {
   const { pageContent } = useContent();
   // Overriding SEO content
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [employeeCount, setEmployeeCount] = useState(50);
+
+  const weeklyCostPerEmployee = 2;
+  const weeklyTotal = employeeCount * weeklyCostPerEmployee;
+  const annualTotal = weeklyTotal * 52;
 
   const faqs = [
     {
@@ -256,28 +261,111 @@ export const CorporateWellness: React.FC = () => {
 
         {/* G) PRICING */}
         <section className="py-24 px-6 bg-primary text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">
-              Pricing
+          <div className="max-w-4xl mx-auto">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">Transparent Pricing</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
+              Calculate Your Investment
             </h2>
-            <p className="text-2xl text-text-primary font-medium mb-4">
-              Flat annual rate based on staff numbers.
+            <p className="text-lg text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed">
+              A fraction of the cost of a single sick day. Predictable, flat-rate pricing based on your team size.
             </p>
-            <div className="bg-secondary p-8 rounded-2xl border border-border inline-block mb-8">
-              <p className="text-xl text-text-secondary">
-                Example: <span className="font-bold text-text-primary">100 employees = $10,000/year</span>
-              </p>
+            
+            {/* Calculator UI */}
+            <div className="bg-secondary p-8 md:p-12 rounded-[2rem] border border-border shadow-sm text-left relative overflow-hidden">
+              {/* Decorative background element */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+
+              <div className="relative z-10 mb-12">
+                <div className="flex justify-between items-end mb-6">
+                  <label htmlFor="employee-slider" className="font-bold text-sm md:text-lg uppercase tracking-wider text-text-primary">
+                    Number of Employees
+                  </label>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl md:text-5xl font-display font-bold text-accent">{employeeCount}</span>
+                    <span className="text-sm font-bold text-text-secondary uppercase tracking-wider">Staff</span>
+                  </div>
+                </div>
+                
+                <div className="relative pt-2 pb-6">
+                  <input 
+                    id="employee-slider"
+                    type="range" 
+                    min="5" 
+                    max="500" 
+                    step="5"
+                    value={employeeCount}
+                    onChange={(e) => setEmployeeCount(parseInt(e.target.value))}
+                    className="w-full h-3 bg-primary rounded-full appearance-none cursor-pointer accent-accent relative z-10"
+                    style={{
+                      background: `linear-gradient(to right, var(--accent) ${((employeeCount - 5) / (500 - 5)) * 100}%, var(--bg-primary) ${((employeeCount - 5) / (500 - 5)) * 100}%)`
+                    }}
+                  />
+                  <div className="flex justify-between text-[10px] text-text-secondary mt-4 font-bold uppercase tracking-widest">
+                    <span>5</span>
+                    <span>500+</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 border-t border-border pt-10 relative z-10">
+                {/* Ongoing Cost */}
+                <div className="flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-text-secondary mb-6">Program Investment</h3>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center py-2 border-b border-border/50">
+                        <span className="text-text-primary">Weekly per employee</span>
+                        <span className="font-bold text-text-primary">${weeklyCostPerEmployee}</span>
+                      </div>
+                      <div className="flex justify-between items-center py-2 border-b border-border/50">
+                        <span className="text-text-primary">Weekly total</span>
+                        <span className="font-bold text-text-primary">${weeklyTotal.toLocaleString()}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-border">
+                    <div className="flex justify-between items-end">
+                      <span className="font-bold text-sm uppercase tracking-wider text-text-primary mb-1">Annual Total</span>
+                      <span className="font-display text-4xl font-bold text-text-primary">${annualTotal.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Onboarding */}
+                <div className="bg-primary p-8 rounded-2xl border border-border flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-text-secondary mb-4">One-off Onboarding</h3>
+                    <div className="mb-6">
+                      <span className="font-display text-4xl font-bold text-text-primary">$500</span>
+                    </div>
+                    <ul className="space-y-4">
+                      <li className="flex items-start text-sm text-text-secondary leading-relaxed">
+                        <Check size={16} className="text-accent mr-3 shrink-0 mt-0.5" />
+                        Dedicated company landing page
+                      </li>
+                      <li className="flex items-start text-sm text-text-secondary leading-relaxed">
+                        <Check size={16} className="text-accent mr-3 shrink-0 mt-0.5" />
+                        App download & setup instructions
+                      </li>
+                      <li className="flex items-start text-sm text-text-secondary leading-relaxed">
+                        <Check size={16} className="text-accent mr-3 shrink-0 mt-0.5" />
+                        Program overview for staff
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-text-secondary mb-10">
-              (We’ll quote based on headcount and how you want the program structured.)
-            </p>
-            <Button 
-              size="lg" 
-              className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Book a Corporate Consult
-            </Button>
+
+            <div className="mt-12">
+              <Button 
+                size="lg" 
+                className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Book a Corporate Consult
+              </Button>
+            </div>
           </div>
         </section>
 
