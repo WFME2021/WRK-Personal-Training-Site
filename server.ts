@@ -572,6 +572,67 @@ ${JSON.stringify(answers, null, 2)}
     }
   });
 
+  app.get('/sitemap.xml', async (req, res) => {
+    try {
+      const contentPath = path.resolve("public/content.json");
+      let blogPosts = [];
+      if (fs.existsSync(contentPath)) {
+        const contentData = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
+        if (contentData.blogPosts) {
+          blogPosts = contentData.blogPosts.filter((post: any) => post.status !== 'draft');
+        }
+      }
+
+      const baseUrl = 'https://www.wrkpersonaltraining.co.nz';
+      const staticPages = [
+        '',
+        '/personal-trainer-christchurch',
+        '/personal-training-christchurch-philosophy',
+        '/assessment',
+        '/results',
+        '/contact',
+        '/services',
+        '/online-personal-training-nz',
+        '/workplace-wellness-program-nz',
+        '/fitness-challenge-nz',
+        '/blog',
+        '/tools',
+        '/calorie-calculator',
+        '/tools/1rm-estimator'
+      ];
+
+      let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+      sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+      // Add static pages
+      staticPages.forEach(page => {
+        sitemap += `  <url>\n`;
+        sitemap += `    <loc>${baseUrl}${page}</loc>\n`;
+        sitemap += `    <changefreq>${page === '' || page === '/blog' ? 'weekly' : 'monthly'}</changefreq>\n`;
+        sitemap += `    <priority>${page === '' ? '1.0' : '0.8'}</priority>\n`;
+        sitemap += `  </url>\n`;
+      });
+
+      // Add blog posts
+      blogPosts.forEach((post: any) => {
+        sitemap += `  <url>\n`;
+        sitemap += `    <loc>${baseUrl}/blog/${post.slug}</loc>\n`;
+        sitemap += `    <lastmod>${new Date(post.date).toISOString()}</lastmod>\n`;
+        sitemap += `    <changefreq>monthly</changefreq>\n`;
+        sitemap += `    <priority>0.7</priority>\n`;
+        sitemap += `  </url>\n`;
+      });
+
+      sitemap += `</urlset>`;
+
+      res.header('Content-Type', 'application/xml');
+      res.send(sitemap);
+    } catch (error) {
+      console.error("Error generating sitemap:", error);
+      res.status(500).end();
+    }
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
@@ -585,7 +646,7 @@ ${JSON.stringify(answers, null, 2)}
     if (fs.existsSync(distPath)) {
       app.use(express.static(distPath));
       // SPA Fallback
-      app.get("*", (req, res) => {
+      app.get(/(.*)/, (req, res) => {
         res.sendFile(path.join(distPath, "index.html"));
       });
     } else {
