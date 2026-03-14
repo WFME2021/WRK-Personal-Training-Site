@@ -646,7 +646,7 @@ ${JSON.stringify(answers, null, 2)}
     if (fs.existsSync(distPath)) {
       app.use(express.static(distPath));
       // SPA Fallback
-      app.get(/(.*)/, (req, res) => {
+      app.get('*all', (req, res) => {
         res.sendFile(path.join(distPath, "index.html"));
       });
     } else {
