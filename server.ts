@@ -561,6 +561,13 @@ ${JSON.stringify(answers, null, 2)}
       const contentString = JSON.stringify(content, null, 2);
       const contentEncoded = Buffer.from(contentString).toString('base64');
 
+      // Save locally so the dev server serves the updated content
+      try {
+        fs.writeFileSync(path, contentString, 'utf8');
+      } catch (localErr) {
+        console.error("Failed to save locally:", localErr);
+      }
+
       await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
         owner,
         repo,
