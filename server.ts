@@ -402,9 +402,14 @@ ${JSON.stringify(answers, null, 2)}
       return res.status(400).json({ error: "No content provided" });
     }
 
-    const token = process.env.GITHUB_TOKEN;
-    const owner = process.env.GITHUB_OWNER;
-    const repo = process.env.GITHUB_REPO;
+    const rawToken = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || "";
+    const token = rawToken.replace(/^"|"$/g, '').trim();
+    
+    const rawOwner = process.env.GITHUB_OWNER || process.env.VITE_GITHUB_OWNER || "";
+    const owner = rawOwner.replace(/^"|"$/g, '').trim();
+    
+    const rawRepo = process.env.GITHUB_REPO || process.env.VITE_GITHUB_REPO || "";
+    const repo = rawRepo.replace(/^"|"$/g, '').trim();
 
     if (!token || !owner || !repo) {
       const missing = [];
