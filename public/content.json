@@ -474,29 +474,6 @@
   },
   "blogs": [
     {
-      "id": "1",
-      "slug": "how-to-optimize-sleep",
-      "title": "How to Optimize Sleep for Recovery",
-      "excerpt": "Sleep is the foundation of performance. Learn the 3 key protocols to improve your deep sleep scores tonight.",
-      "content": "<p>Sleep is not a passive state; it is an active recovery process. Without adequate sleep, your training efforts are largely wasted.</p><h2>The 3-2-1 Rule</h2><p>To optimize sleep, try the <strong>3-2-1 rule</strong>:</p><ul><li>3 hours before bed: No food</li><li>2 hours before bed: No work</li><li>1 hour before bed: No screens</li></ul><p>For more details, check out this <a href='https://hubermanlab.com/toolkit-for-sleep/' target='_blank'>comprehensive guide</a> by Dr. Huberman.</p>",
-      "date": "October 15, 2023",
-      "isoDate": "2023-10-15T08:00:00+13:00",
-      "category": "Recovery",
-      "image": {
-        "url": "https://images.unsplash.com/photo-1541781777631-fa182f3a4b3c?q=80&w=800&auto=format&fit=crop",
-        "alt": "Person sleeping comfortably",
-        "seoDescription": "A person sleeping in a comfortable bed, representing recovery and sleep optimization."
-      },
-      "author": {
-        "name": "Hayden Richards",
-        "role": "Founder & Head Coach",
-        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
-      },
-      "seoTitle": "Sleep Optimization Guide | WRK Personal Training",
-      "seoDescription": "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
-    },
-    {
       "id": "2",
       "slug": "strength-training-101",
       "title": "Strength Training 101: The Big Four",
@@ -570,7 +547,7 @@
       "secondaryKeywords": "creatine benefits, creatine dosage, is creatine safe, creatine monohydrate, who should take creatine",
       "ctaText": "Lets Connect",
       "ctaLink": "https://www.wrkpersonaltraining.co.nz/contact",
-      "references": "If you want help building a realistic training and nutrition plan that actually fits your life, get in touch and we can help you keep things simple.\n",
+      "references": "- Kreider RB, Kalman DS, Antonio J, et al. *International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine.* Journal of the International Society of Sports Nutrition. 2017.\n- Antonio J, Candow DG, Forbes SC, et al. *Part II. Common questions and misconceptions about creatine supplementation: what does the scientific evidence really show?* Journal of the International Society of Sports Nutrition. 2024.\n- Forbes SC, Candow DG, Ostojic SM, Roberts MD, Chilibeck PD. *Meta-Analysis Examining the Importance of Creatine Ingestion Strategies on Lean Tissue Mass and Strength in Older Adults.* Nutrients. 2021.\n- Xu C, Bi S, Zhang W, Luo L. *The effects of creatine supplementation on cognitive function in adults: a systematic review and meta-analysis.* Frontiers in Nutrition. 2024.\n- Kreider RB, Gonzalez DE, Hines K, et al. *Safety of creatine supplementation: analysis of the prevalence of reported side effects in clinical trials and adverse event reports.* Journal of the International Society of Sports Nutrition. 2025.\n",
       "relatedPosts": [
         "2"
       ],
