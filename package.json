@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx server.ts",
+    "dev": "tsx fetch_content.ts && tsx server.ts",
     "build": "vite build && tsx generate-sitemap.ts",
     "lint": "tsc --noEmit",
     "preview": "vite preview --port 8080 --host",
