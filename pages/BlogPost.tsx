@@ -25,12 +25,12 @@ export const BlogPost: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
-    "image": [post.image.url],
+    "image": [post.image?.url || ''],
     "datePublished": post.isoDate,
     "dateModified": post.isoDate,
     "author": [{
       "@type": "Person",
-      "name": post.author.name,
+      "name": post.author?.name || 'WRK Personal Training',
       "url": "https://www.wrkpersonaltraining.co.nz" // Updated to main site since /about isn't explicit yet
     }],
     "description": post.seoDescription || post.excerpt
@@ -43,9 +43,9 @@ export const BlogPost: React.FC = () => {
         description={post.seoDescription || post.excerpt}
         schema={schemaData}
         type="article"
-        imageUrl={post.image.url}
+        imageUrl={post.image?.url}
         publishedTime={post.isoDate}
-        authorName={post.author.name}
+        authorName={post.author?.name}
       />
 
       <article className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
@@ -83,13 +83,15 @@ export const BlogPost: React.FC = () => {
 
         <div className="max-w-3xl mx-auto px-6 py-16">
           {/* Main Image */}
-          <figure className="mb-16 -mx-6 md:mx-0">
-             <img 
-               src={post.image.url} 
-               alt={post.image.alt} 
-               className="w-full h-auto object-cover md:rounded-sm shadow-sm border border-border"
-             />
-          </figure>
+          {post.image?.url && (
+            <figure className="mb-16 -mx-6 md:mx-0">
+               <img 
+                 src={post.image.url} 
+                 alt={post.image.alt || post.title} 
+                 className="w-full h-auto object-cover md:rounded-sm shadow-sm border border-border"
+               />
+            </figure>
+          )}
 
           {/* Post Content */}
           <div 
@@ -146,7 +148,9 @@ export const BlogPost: React.FC = () => {
                   return (
                     <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="group block bg-secondary border border-border rounded-xl overflow-hidden hover:border-accent transition-colors">
                       <div className="h-40 overflow-hidden">
-                        <img src={relatedPost.image.url} alt={relatedPost.image.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        {relatedPost.image?.url && (
+                          <img src={relatedPost.image.url} alt={relatedPost.image.alt || relatedPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        )}
                       </div>
                       <div className="p-6">
                         <h3 className="font-bold text-lg text-text-primary mb-2 group-hover:text-accent transition-colors">{relatedPost.title}</h3>

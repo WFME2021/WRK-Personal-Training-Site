@@ -14,7 +14,29 @@ interface ContentContextType {
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
-const CONTENT_URL = import.meta.env.VITE_CONTENT_URL || '/content.json';
+const CONTENT_URL = '/content.json';
+
+// Helper function for deep merging objects
+const isObject = (item: any) => {
+  return (item && typeof item === 'object' && !Array.isArray(item));
+};
+
+const mergeDeep = (target: any, source: any) => {
+  let output = Object.assign({}, target);
+  if (isObject(target) && isObject(source)) {
+    Object.keys(source).forEach(key => {
+      if (isObject(source[key])) {
+        if (!(key in target))
+          Object.assign(output, { [key]: source[key] });
+        else
+          output[key] = mergeDeep(target[key], source[key]);
+      } else {
+        Object.assign(output, { [key]: source[key] });
+      }
+    });
+  }
+  return output;
+};
 
 export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Initialize from localStorage to persist changes
@@ -30,7 +52,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [pageContent, setPageContent] = useState<PageContentState>(() => {
     try {
       const saved = localStorage.getItem('wrk_site_pages_v17'); // Changed key to avoid loading old structure
-      return saved ? { ...PAGE_CONTENT, ...JSON.parse(saved) } : PAGE_CONTENT;
+      return saved ? mergeDeep(PAGE_CONTENT, JSON.parse(saved)) : PAGE_CONTENT;
     } catch (e) {
       return PAGE_CONTENT;
     }
@@ -51,10 +73,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         }
         
         if (data.pages) {
-            setPageContent(prev => ({
-                ...prev,
-                ...data.pages
-            }));
+            setPageContent(prev => mergeDeep(prev, data.pages));
         }
       } catch (error) {
         console.warn('Could not fetch dynamic content, using local defaults. This is expected during development if content.json is not yet generated or if offline.', error);
@@ -80,10 +99,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (data.blogs && Array.isArray(data.blogs)) setBlogPosts(data.blogs);
     // Merge page content carefully
     if (data.pages) {
-      setPageContent(prev => ({
-        ...prev,
-        ...data.pages
-      }));
+      setPageContent(prev => mergeDeep(prev, data.pages));
     }
   };
 

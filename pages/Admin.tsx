@@ -133,7 +133,13 @@ export const Admin: React.FC = () => {
   useEffect(() => {
     if (view === 'blogs' && editingId) {
       const post = blogPosts.find(p => p.id === editingId);
-      if (post) setPostFormData(post);
+      if (post) {
+        setPostFormData({
+          ...EMPTY_POST,
+          ...post,
+          image: { ...EMPTY_POST.image, ...(post.image || {}) }
+        });
+      }
     } else if (view === 'blogs') {
       setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
     }

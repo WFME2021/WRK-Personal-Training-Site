@@ -133,12 +133,14 @@ export const Blog: React.FC = () => {
               <article key={post.id} className="group cursor-pointer flex flex-col h-full">
                 <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
                   <div className="relative overflow-hidden mb-6 aspect-[16/10] bg-secondary rounded-2xl border border-border">
-                    <img 
-                      src={post.image.url} 
-                      alt={post.image.alt}
-                      loading="lazy"
-                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
-                    />
+                    {post.image?.url && (
+                      <img 
+                        src={post.image.url} 
+                        alt={post.image.alt || post.title}
+                        loading="lazy"
+                        className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                      />
+                    )}
                     <div className="absolute top-4 left-4 bg-secondary/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-text-primary shadow-sm rounded-full border border-border">
                       {post.category}
                     </div>

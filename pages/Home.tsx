@@ -72,12 +72,14 @@ export const Home: React.FC = () => {
         <section className="relative min-h-[90vh] flex flex-col overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src={hero.image} 
-              alt="Strength and Conditioning Christchurch" 
-              className="w-full h-full object-cover grayscale contrast-125"
-              loading="eager"
-            />
+            {hero?.image && (
+              <img 
+                src={hero.image} 
+                alt="Strength and Conditioning Christchurch" 
+                className="w-full h-full object-cover grayscale contrast-125"
+                loading="eager"
+              />
+            )}
             <div className="absolute inset-0 bg-black/60"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
           </div>

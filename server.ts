@@ -539,6 +539,7 @@ ${JSON.stringify(answers, null, 2)}
       }
 
       const contentPath = "public/content.json";
+      const localContentPath = path.join(process.cwd(), "public", "content.json");
       
       // 1. Get current SHA of the file
       let sha;
@@ -563,7 +564,7 @@ ${JSON.stringify(answers, null, 2)}
 
       // Save locally so the dev server serves the updated content
       try {
-        fs.writeFileSync(contentPath, contentString, 'utf8');
+        fs.writeFileSync(localContentPath, contentString, 'utf8');
       } catch (localErr) {
         console.error("Failed to save locally:", localErr);
       }
