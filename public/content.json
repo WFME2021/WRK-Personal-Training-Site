@@ -1,346 +1,11 @@
 {
-  "pages": {
-    "home": {
-      "seo": {
-        "title": "Personal Training That Fits Real Life | Christchurch + Online",
-        "description": "Fat loss, less pain, and consistency for busy adults. Pain-aware training, flexible nutrition, and coaching in Christchurch or online."
-      },
-      "hero": {
-        "h1": "Train Smarter. <br/><span class='text-accent'>Play Harder.</span>",
-        "subhead": "I help people lose fat, get stronger, and trust their body outside the gym.",
-        "bullets": [
-          "Progress without punishment",
-          "Pain-aware training",
-          "Protein-forward nutrition"
-        ],
-        "image": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-        "kicker": "<span class='text-white font-bold'>The gym is a tool — not a lifestyle.</span><br class='hidden md:block' /> The goal is more energy, less pain, and a body that can handle work, family, weekends, and the adventures you keep putting off.",
-        "eyebrow": "Strength & Conditioning | Christchurch (Addington) + NZ-wide",
-        "url": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-        "alt": "strong capable dad, carrying child in carry pack while tramping up hill",
-        "seoDescription": "strong capable dad who has trained hard so that he can play hard by "
-      },
-      "banner": {
-        "tagline": "Fit enough for the good stuff.",
-        "support": "Train to live more—work, family, weekends.",
-        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
-        "url": ""
-      },
-      "ptImage": {
-        "url": "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
-        "alt": "Dad and kid paddleboarding",
-        "seoDescription": "A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training."
-      },
-      "onlineImage": {
-        "url": "https://i.postimg.cc/vBXwJPvy/family-activity.jpg",
-        "alt": "Family activity outdoors",
-        "seoDescription": "A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching."
-      },
-      "corporateImage": {
-        "url": "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
-        "alt": "Corporate team golfing",
-        "seoDescription": "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
-      },
-      "challengeImage": {
-        "url": "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
-        "alt": "Man carrying surfboard",
-        "seoDescription": "A man carrying a surfboard, representing the 42 Day Reset challenge."
-      }
-    },
-    "services": {
-      "seo": {
-        "title": "Services | WRK Personal Training",
-        "description": "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting."
-      },
-      "hero": {
-        "h1": "PERSONAL TRAINING <span class='text-accent'>SERVICES</span>",
-        "subhead": "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting.",
-        "bullets": [
-          "1:1 Christchurch Coaching",
-          "Online Coaching (12-Week Mini)",
-          "Corporate Wellness"
-        ],
-        "image": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80",
-        "kicker": "Options for every schedule and budget."
-      },
-      "banner": {
-        "tagline": "Choose the coaching that fits your real week.",
-        "support": "Same goal—more capacity—different paths to get there.",
-        "image": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80"
-      }
-    },
-    "personalTraining": {
-      "seo": {
-        "title": "1:1 Personal Training in Christchurch | WRK",
-        "description": "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better."
-      },
-      "hero": {
-        "h1": "1:1 Personal Training <span class='text-accent'>in Christchurch</span>",
-        "subhead": "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better—without wrecking your schedule or your body.",
-        "bullets": [
-          "Technical mastery (move well, train safely)",
-          "Pain-aware programming (posture / postpartum / menopause / niggles)",
-          "Accountability that actually works"
-        ],
-        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
-        "kicker": "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.",
-        "url": "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
-        "alt": "Fit and capable man back country skiing",
-        "seoDescription": "Fit and capable man back country skiing, reflecting the fitness gained through personal training."
-      },
-      "banner": {
-        "tagline": "Train smart. Progress without breaking down.",
-        "support": "We work around niggles and build you up properly.",
-        "image": "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80",
-        "url": "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
-        "alt": "Mum and child hiking",
-        "seoDescription": "A mother carrying a child on a hike,  representing the real-world application of strength gained through personal training."
-      },
-      "mainImage": {
-        "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
-        "alt": "Habit Tracking App Display",
-        "seoDescription": "Habit Tracking App, one of the tools used in our personal training approach. "
-      }
-    },
-    "onlineCoaching": {
-      "seo": {
-        "title": "Online Personal Training | App Coaching (12 Weeks+)",
-        "description": "Online personal training with custom programming, check-ins and flexible nutrition support. Built for travel, stress and real schedules. 12-week minimum."
-      },
-      "hero": {
-        "h1": "Online Personal Training (12-Week Minimum)",
-        "subhead": "Professional programming and support delivered to your phone—so you can train where you want, when you want, and still get results when life gets busy.",
-        "bullets": [
-          "Custom programming built around your schedule",
-          "Form checks + feedback (video analysis)",
-          "Protein-forward, flexible nutrition support"
-        ],
-        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
-        "kicker": "12-week minimum—because quick fixes are how people end up starting over."
-      },
-      "banner": {
-        "tagline": "A plan that survives travel, stress, and chaos.",
-        "support": "Consistency beats intensity when life’s busy.",
-        "image": "https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=1920&q=80"
-      },
-      "workoutLogImage": {
-        "url": "https://i.postimg.cc/3w5FjthV/exercise-history.png",
-        "alt": "Workout Log Interface",
-        "seoDescription": "Mobile interface showing detailed workout logs."
-      },
-      "habitsImage": {
-        "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
-        "alt": "Habits Interface",
-        "seoDescription": "Mobile interface showing daily habit tracking."
-      }
-    },
-    "corporateWellness": {
-      "seo": {
-        "title": "Corporate Wellness Program NZ | PT in Every Pocket",
-        "description": "NZ corporate wellness program: a personal trainer in every employee’s pocket. App-led training plans for all levels, goals and schedules. Low admin."
-      },
-      "hero": {
-        "h1": "Corporate Wellness Program (NZ)",
-        "subhead": "A personal trainer in every employee’s pocket. App-led training and nutrition support that improves energy, posture, and consistency—without adding admin load to HR.",
-        "bullets": [
-          "App-based training plans for every level",
-          "Programs for different goals + preferences",
-          "Zero admin for HR"
-        ],
-        "image": "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
-        "kicker": "NZ-wide delivery • Simple rollout • Private company community"
-      },
-      "banner": {
-        "tagline": "Wellness that gets used—because it fits the job.",
-        "support": "Simple programs that support energy, posture, and routine.",
-        "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
-      }
-    },
-    "challenge42": {
-      "seo": {
-        "title": "42 Day Fitness Reset | Self-Guided Program ($47)",
-        "description": "A 42 day reset to rebuild routine, energy and momentum. App-based training plan + simple nutrition support. One-time payment $47."
-      },
-      "hero": {
-        "h1": "42 Day Reset",
-        "subhead": "The system reboot you’ve been waiting for. Clear the fog, rebuild momentum, and get back to operating at full capacity—without diet jail or burnout.",
-        "bullets": [
-          "Self-guided training (app delivered)",
-          "Simple nutrition support (flexible, protein-forward)",
-          "One-time payment ($47)"
-        ],
-        "image": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
-        "kicker": "One-time payment • 42 days access • No subscription"
-      },
-      "banner": {
-        "tagline": "Reset the routine. Keep your life.",
-        "support": "Structure and momentum without diet jail or burnout.",
-        "image": "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&w=1920&q=80"
-      }
-    },
-    "blog": {
-      "seo": {
-        "title": "Blog | WRK Personal Training",
-        "description": "Articles on strength training, longevity, and high-performance living."
-      },
-      "hero": {
-        "h1": "THE REPOSITORY",
-        "subhead": "Evidence-based insights on training, longevity, and mindset.",
-        "bullets": [
-          "Strength Training",
-          "Recovery Protocols",
-          "High-Performance Living"
-        ],
-        "image": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
-        "kicker": "No fluff. Just what works."
-      },
-      "banner": {
-        "tagline": "Less fluff. More progress you can repeat.",
-        "support": "Practical guidance for fat loss, pain reduction, and consistency.",
-        "image": "https://images.unsplash.com/photo-1476480868291-40c4370371f3?auto=format&fit=crop&w=1920&q=80"
-      }
-    },
-    "tools": {
-      "seo": {
-        "title": "Tools & Resources | WRK Personal Training",
-        "description": "Free tools to help you execute better. Calorie calculators, checklists, and more."
-      },
-      "hero": {
-        "h1": "TOOLS",
-        "subhead": "Free resources to help you execute better.",
-        "bullets": [
-          "Nutrition Engine",
-          "1RM Estimator",
-          "Recovery Protocols"
-        ],
-        "image": "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg",
-        "kicker": "Calculators, checklists, and systems."
-      },
-      "banner": {
-        "tagline": "Clarity in minutes. Then we keep it simple.",
-        "support": "Use the numbers as a starting point—not a rulebook.",
-        "image": "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
-      }
-    },
-    "calorieCalculator": {
-      "seo": {
-        "title": "Calorie Calculator | Estimate Your Daily Calories (TDEE + Goals)",
-        "description": "Use this calorie calculator to estimate your daily calorie needs for fat loss, maintenance, or muscle gain. Includes protein targets and a “Party Fund” to account for weekly drinks while staying on track."
-      },
-      "hero": {
-        "h1": "Calorie Calculator",
-        "subhead": "Use this calorie calculator to estimate your daily calorie needs based on your body, activity level, and goal (fat loss, maintenance, or muscle gain). It gives you a clear starting target you can actually follow — without crash dieting, over-tracking, or guessing what “healthy” means.",
-        "bullets": [
-          "Daily Calorie Target",
-          "Protein Targets",
-          "Party Fund"
-        ],
-        "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1920&q=80",
-        "eyebrow": "Nutrition Engine"
-      },
-      "banner": {
-        "tagline": "Start with a target. Adjust like an adult.",
-        "support": "A sensible baseline, then refine based on results and recovery.",
-        "image": "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1920&q=80"
-      }
-    },
-    "oneRmEstimator": {
-      "seo": {
-        "title": "1RM Estimator | WRK Personal Training",
-        "description": "Estimate your one-rep max safely without testing to failure."
-      },
-      "hero": {
-        "h1": "1RM ESTIMATOR",
-        "subhead": "Estimate your one-rep max without testing to failure. Use this to set your training percentages.",
-        "bullets": [
-          "Safety First",
-          "Training Percentages",
-          "Progress Tracking"
-        ],
-        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80",
-        "kicker": "Train smart, not just heavy."
-      },
-      "banner": {
-        "tagline": "Train smart—without maxing out every week.",
-        "support": "Estimate loads so progress is repeatable and joint-friendly.",
-        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80"
-      }
-    },
-    "contact": {
-      "seo": {
-        "title": "Contact | WRK Personal Training",
-        "description": "Get in touch to discuss your training goals."
-      },
-      "hero": {
-        "h1": "CONTACT",
-        "subhead": "Ready to get started? Let's discuss your goals and find the right plan for you.",
-        "bullets": [
-          "Book a Consult",
-          "Ask a Question",
-          "Get Started"
-        ],
-        "image": "https://i.postimg.cc/90S2dr9G/pexels-pixabay-163407.jpg",
-        "kicker": "No pressure sales. Just a conversation."
-      },
-      "banner": {
-        "tagline": "Let’s map the simplest plan that works.",
-        "support": "Tell me your constraints and I’ll guide the next step.",
-        "image": "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
-      }
-    },
-    "philosophy": {
-      "seo": {
-        "title": "Philosophy | Capacity Is Currency | WRK",
-        "description": "The Right Work, Done Well. A training philosophy for high performers who value longevity as much as results."
-      },
-      "hero": {
-        "h1": "CAPACITY IS CURRENCY",
-        "subhead": "When you have capacity, you have options. When you don't, you have constraints.",
-        "bullets": [
-          "Return on Investment",
-          "Evidence Based",
-          "Resilience"
-        ],
-        "image": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-        "kicker": "The Methodology",
-        "url": "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
-      },
-      "banner": {
-        "tagline": "We do not train for the sake of being tired.",
-        "support": "We train to be capable.",
-        "image": "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80"
-      }
-    },
-    "assessment": {
-      "seo": {
-        "title": "Assessment | WRK Personal Training",
-        "description": "Take the assessment to find the best training plan for you."
-      },
-      "hero": {
-        "h1": "ASSESSMENT",
-        "subhead": "Find out exactly where you stand and what you need to do next.",
-        "bullets": [
-          "Quick Analysis",
-          "Personalized Plan",
-          "Immediate Results"
-        ],
-        "image": "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80",
-        "kicker": "Takes less than 2 minutes."
-      },
-      "banner": {
-        "tagline": "Get clarity fast. Then take the right next step.",
-        "support": "Six questions. Practical answers. A plan that fits real life.",
-        "image": "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80"
-      }
-    }
-  },
   "blogs": [
     {
       "id": "1",
       "slug": "how-to-optimize-sleep",
       "title": "How to Optimize Sleep for Recovery",
       "excerpt": "Sleep is the foundation of performance. Learn the 3 key protocols to improve your deep sleep scores tonight.",
-      "content": "The 3-2-1 Rule\nTo optimize sleep, try the 3-2-1 rule:\n\n3 hours before bed: No food",
+      "content": "<p>Sleep is not a passive state; it is an active recovery process. Without adequate sleep, your training efforts are largely wasted.</p><h2>The 3-2-1 Rule</h2><p>To optimize sleep, try the <strong>3-2-1 rule</strong>:</p><ul><li>3 hours before bed: No food</li><li>2 hours before bed: No work</li><li>1 hour before bed: No screens</li></ul><p>For more details, check out this <a href='https://hubermanlab.com/toolkit-for-sleep/' target='_blank'>comprehensive guide</a> by Dr. Huberman.</p>",
       "date": "October 15, 2023",
       "isoDate": "2023-10-15T08:00:00+13:00",
       "category": "Recovery",
@@ -403,29 +68,200 @@
       },
       "seoTitle": "Nutrition Hacks for Busy Professionals | WRK",
       "seoDescription": "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."
-    },
-    {
-      "id": "1773277401149",
-      "slug": "creatine-benefits-dosage-safety",
-      "title": "Creatine Explained: Benefits, Dosage, Safety, and Who It’s For",
-      "excerpt": "",
-      "content": "<h1 data-section-id=\"1il80kh\" data-start=\"1440\" data-end=\"1504\">Creatine Explained: Benefits, Dosage, Safety, and Who It’s For</h1>\n<p data-start=\"1506\" data-end=\"1730\">If you have ever looked into supplements, you have probably seen creatine come up again and again. It is often talked about like it is only for bodybuilders or people chasing bigger lifts, but that misses the bigger picture.</p>\n<p data-start=\"1732\" data-end=\"2017\">Creatine is one of the most researched supplements in sports nutrition, and the reason it keeps coming up is simple: it may help with strength, training performance, muscle retention, and possibly some aspects of brain function too. The challenge is separating useful advice from hype.</p>\n<p data-start=\"2019\" data-end=\"2175\">This guide will walk you through what creatine is, what it may actually help with, how to take it, and what most adults really need to know before using it.</p>\n<h2 data-section-id=\"xgv4vw\" data-start=\"2177\" data-end=\"2192\">Quick Answer</h2>\n<p data-start=\"2194\" data-end=\"2830\">Creatine is a naturally occurring compound stored mostly in your muscles. Supplementing with creatine, especially creatine monohydrate, may help you train harder, improve strength, support muscle gain, and help preserve muscle as you age. It is generally considered safe for healthy adults when used as recommended, but it is still worth checking with a qualified health professional if you have a kidney condition, are pregnant, or have a complex medical history. Research also suggests potential benefits beyond the gym, especially in older adults and during periods of physical or mental stress. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"18cbtxl\" data-start=\"2832\" data-end=\"2852\">What Is Creatine?</h2>\n<p data-start=\"2854\" data-end=\"3081\">Creatine is a substance your body makes from amino acids. You also get some from foods like red meat and fish. Most of it is stored in your muscles, where it helps your body quickly produce energy during short, intense efforts.</p>\n<p data-start=\"3083\" data-end=\"3245\">That matters most when your body needs fast energy. Think strength training, sprinting, repeated efforts, and hard sets where you are pushing close to your limit.</p>\n<p data-start=\"3247\" data-end=\"3551\">In plain English, creatine helps your body recharge faster during demanding work. That is why it has been used for years in sport and performance. But it is also why researchers have become interested in its role in healthy aging, recovery, and brain energy support. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"1oe7ty3\" data-start=\"3553\" data-end=\"3594\">Why Creatine Matters for Normal Adults</h2>\n<p data-start=\"3596\" data-end=\"3679\">A lot of supplement advice is aimed at extreme cases. Most people do not need that.</p>\n<p data-start=\"3681\" data-end=\"3932\">For everyday adults, creatine is worth considering for a much simpler reason: it may support the things that tend to matter most over time. Better training quality. More strength. A better chance of holding onto muscle. More support for healthy aging.</p>\n<p data-start=\"3934\" data-end=\"4087\">That matters whether your goal is to get stronger, improve body composition, stay capable as you get older, or simply make your training more productive.</p>\n<p data-start=\"4089\" data-end=\"4261\">Creatine is not magic. It will not replace good training, enough protein, or decent sleep. But it may help you get more out of the basics you are already trying to do well.</p>\n<h2 data-section-id=\"yjmgyh\" data-start=\"4263\" data-end=\"4295\">The Main Benefits of Creatine</h2>\n<h2 data-section-id=\"9c3r32\" data-start=\"4297\" data-end=\"4351\">1. It may improve strength and training performance</h2>\n<p data-start=\"4353\" data-end=\"4451\">This is the benefit creatine is most known for, and it is also the one with the strongest backing.</p>\n<p data-start=\"4453\" data-end=\"4742\">Creatine may improve performance in short, repeated, high-intensity efforts. In practice, that can mean a few more reps, slightly better quality across sets, or a bit more output during hard sessions. Over time, that extra training quality can add up. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"lslv32\" data-start=\"4744\" data-end=\"4776\">2. It may support muscle gain</h2>\n<p data-start=\"4778\" data-end=\"4977\">Creatine does not build muscle on its own. Training does that. But creatine may help create better conditions for muscle gain by improving training capacity and supporting greater long-term progress.</p>\n<p data-start=\"4979\" data-end=\"5295\">It can also cause a small increase in body weight early on because it pulls more water into the muscle. That is normal, and it is one reason people sometimes think it is causing “bloating.” In most cases, this is simply increased water stored inside muscle tissue, not fat gain. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"1uvrnn1\" data-start=\"5297\" data-end=\"5347\">3. It may be especially useful as you get older</h2>\n<p data-start=\"5349\" data-end=\"5491\">One of the more practical uses of creatine is not for chasing performance peaks. It is for helping maintain muscle and strength later in life.</p>\n<p data-start=\"5493\" data-end=\"5835\">Research suggests that creatine, when combined with resistance training, can improve lean mass, strength, and some functional outcomes in older adults more than training alone. That matters because muscle loss with age is not just about appearance. It affects mobility, independence, and quality of life. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"61cvdg\" data-start=\"5837\" data-end=\"5887\">4. It may help in some brain-related situations</h2>\n<p data-start=\"5889\" data-end=\"5938\">This area is more nuanced, but still interesting.</p>\n<p data-start=\"5940\" data-end=\"6333\">Research suggests creatine may support brain energy availability, and some studies have found possible benefits during sleep deprivation, mental fatigue, or other metabolically demanding situations. That does not mean everyone will feel a dramatic mental boost. It means creatine may have benefits beyond muscle, especially when the brain is under stress. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"h1gl93\" data-start=\"6335\" data-end=\"6364\">Who Creatine May Help Most</h2>\n<p data-start=\"6366\" data-end=\"6411\">Creatine may be worth considering if you are:</p>\n<p data-start=\"6413\" data-end=\"6435\">trying to get stronger</p>\n<p data-start=\"6437\" data-end=\"6470\">doing regular resistance training</p>\n<p data-start=\"6472\" data-end=\"6508\">returning to training after time off</p>\n<p data-start=\"6510\" data-end=\"6554\">wanting help preserving muscle while dieting</p>\n<p data-start=\"6556\" data-end=\"6620\">vegetarian or vegan, since baseline creatine stores may be lower</p>\n<p data-start=\"6622\" data-end=\"6685\">an older adult focused on strength, function, and healthy aging</p>\n<p data-start=\"6687\" data-end=\"7032\">You do not need to be an athlete to benefit. In many cases, the people who may get the most practical value are ordinary adults who want to keep training well and stay physically capable for the long term. Vegetarians may respond particularly well because they often start with lower muscle creatine stores. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"lr0jee\" data-start=\"7034\" data-end=\"7057\">How to Take Creatine</h2>\n<p data-start=\"7059\" data-end=\"7102\">For most adults, the simple option is best:</p>\n<p data-start=\"7104\" data-end=\"7154\">Take 3 to 5 grams of creatine monohydrate per day.</p>\n<p data-start=\"7156\" data-end=\"7329\">That is enough for most people. You do not need a complicated schedule. You do not need to cycle on and off. You do not need to take it at the perfect minute after training.</p>\n<p data-start=\"7331\" data-end=\"7368\">Consistency matters more than timing.</p>\n<p data-start=\"7370\" data-end=\"7556\">Some people choose a loading phase of around 20 grams per day, split into 4 doses, for 5 to 7 days. This can saturate muscle stores faster. After that, they move to 3 to 5 grams per day.</p>\n<p data-start=\"7558\" data-end=\"7823\">But loading is optional. If you would rather keep it simple, taking 3 to 5 grams daily will still work. It just takes longer to fully saturate stores. Creatine monohydrate remains the form with the strongest evidence behind it. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"tpi9zo\" data-start=\"7825\" data-end=\"7852\">Common Creatine Mistakes</h2>\n<h2 data-section-id=\"1wlrm3\" data-start=\"7854\" data-end=\"7907\">Choosing expensive versions without a clear reason</h2>\n<p data-start=\"7909\" data-end=\"8099\">Most people do not need fancy forms of creatine. Creatine monohydrate is the most researched, most reliable, and usually the most cost-effective option. <span class=\"\" data-state=\"closed\"></span></p>\n<h2 data-section-id=\"5t2uxr\" data-start=\"8101\" data-end=\"8140\">Expecting dramatic results in a week</h2>\n<p data-start=\"8142\" data-end=\"8289\">Creatine can help, but it is still a support tool. It works best when your training, food, and recovery are already heading in the right direction.</p>\n<h2 data-section-id=\"bp08kf\" data-start=\"8291\" data-end=\"8337\">Stopping because the scale went up slightly</h2>\n<p data-start=\"8339\" data-end=\"8549\">Some people gain a little water weight when they start creatine. That is not the same as gaining fat. If your goal includes performance, muscle retention, or strength, that early shift is not usually a problem.</p>\n<h2 data-section-id=\"9ml00k\" data-start=\"8551\" data-end=\"8578\">Taking it inconsistently</h2>\n<p data-start=\"8580\" data-end=\"8685\">Creatine works through saturation. Random use is less useful than taking a basic daily dose consistently.</p>\n<h2 data-section-id=\"1nczinm\" data-start=\"8687\" data-end=\"8707\">Is Creatine Safe?</h2>\n<p data-start=\"8709\" data-end=\"8935\">For healthy adults, creatine monohydrate is generally considered safe and well studied. Position stands and recent reviews continue to support its safety profile when used appropriately. <span class=\"\" data-state=\"closed\"></span></p>\n<p data-start=\"8937\" data-end=\"9022\">That said, safe does not mean suitable for every single person in every circumstance.</p>\n<p data-start=\"9024\" data-end=\"9103\">You should speak with a qualified health professional before using creatine if:</p>\n<p data-start=\"9105\" data-end=\"9134\">you have known kidney disease</p>\n<p data-start=\"9136\" data-end=\"9211\">you have been told to limit certain supplements or protein-related products</p>\n<p data-start=\"9213\" data-end=\"9246\">you are pregnant or breastfeeding</p>\n<p data-start=\"9248\" data-end=\"9311\">you have a complex medical history or take multiple medications</p>\n<p data-start=\"9313\" data-end=\"9408\">It is also sensible to buy from a reputable brand that uses third-party testing where possible.</p>\n<h2 data-section-id=\"1im7jl6\" data-start=\"9410\" data-end=\"9449\">What Most People Really Need to Know</h2>\n<p data-start=\"9451\" data-end=\"9540\">Most adults do not need more supplements. They need fewer distractions and better basics.</p>\n<p data-start=\"9542\" data-end=\"9719\">Creatine is one of the few supplements that may actually earn a place in the conversation because it is practical, well researched, and relevant to goals many adults care about.</p>\n<p data-start=\"9721\" data-end=\"9874\">If you strength train, want to preserve muscle, or want support for performance and healthy aging, creatine monohydrate is a sensible option to consider.</p>\n<p data-start=\"9876\" data-end=\"9951\">It is not essential. But it is one of the better-supported tools available.</p>\n<h2 data-section-id=\"114wazr\" data-start=\"9953\" data-end=\"9970\">Final Thoughts</h2>\n<p data-start=\"9972\" data-end=\"10179\">Creatine is not just a gym supplement. It is a straightforward option that may support strength, training quality, muscle retention, and possibly some aspects of cognitive performance in specific situations.</p>\n<p data-start=\"10181\" data-end=\"10340\">For many adults, the most useful approach is also the simplest: choose creatine monohydrate, take 3 to 5 grams a day, and focus on the habits that matter most.</p>\n<p data-start=\"10342\" data-end=\"10471\">If your training is already built on good basics, creatine may be a helpful add-on. If the basics are missing, start there first.</p>\n<p data-start=\"10473\" data-end=\"10485\">FAQ Section:</p>\n<h3 data-section-id=\"1y1l08o\" data-start=\"10487\" data-end=\"10536\">Is creatine only for people who lift weights?</h3>\n<p data-start=\"10538\" data-end=\"10745\">No. It is most useful for people doing resistance training or repeated high-intensity activity, but it may also be relevant for vegetarians, older adults, and people focused on preserving muscle as they age.</p>\n<h3 data-section-id=\"1wwprjm\" data-start=\"10747\" data-end=\"10780\">Does creatine cause bloating?</h3>\n<p data-start=\"10782\" data-end=\"11025\">Some people notice a small increase in body weight at the start, mostly because more water is stored inside muscle. That is different from body fat gain, and it does not happen the same way for everyone. <span class=\"\" data-state=\"closed\"></span></p>\n<h3 data-section-id=\"1ekx4a7\" data-start=\"11027\" data-end=\"11058\">Do I need to load creatine?</h3>\n<p data-start=\"11060\" data-end=\"11192\">No. Loading can saturate muscle stores faster, but it is optional. A steady daily intake of 3 to 5 grams works well for most people.</p>\n<h3 data-section-id=\"15dmaui\" data-start=\"11194\" data-end=\"11231\">Is creatine bad for your kidneys?</h3>\n<p data-start=\"11233\" data-end=\"11501\">In healthy adults, current evidence does not show harmful effects on kidney function when creatine is used appropriately. But anyone with existing kidney disease or medical concerns should speak with a health professional first. <span class=\"\" data-state=\"closed\"></span></p>\n<h3 data-section-id=\"aysj7z\" data-start=\"11503\" data-end=\"11542\">What type of creatine should I buy?</h3>\n<p data-start=\"11544\" data-end=\"11723\">Creatine monohydrate is the best place to start. It has the most research behind it, is usually affordable, and works well for most people. <span class=\"\" data-state=\"closed\"></span></p>\n<p data-start=\"11725\" data-end=\"11880\">CTA:<br data-start=\"11729\" data-end=\"11732\">\nIf you want help building a realistic training and nutrition plan that actually fits your life, get in touch and we can help you keep things simple.</p>\n<p data-start=\"11882\" data-end=\"11893\">References:</p>\n<p data-start=\"11895\" data-end=\"12117\">Antonio J, Candow DG, Forbes SC, et al. <em data-start=\"11935\" data-end=\"12013\">Part II. Common questions and misconceptions about creatine supplementation.</em> Journal of the International Society of Sports Nutrition. 2024. <span class=\"\" data-state=\"closed\"></span></p>\n<p data-start=\"12119\" data-end=\"12339\">Forbes SC, Candow DG, Krentz JR, et al. <em data-start=\"12159\" data-end=\"12282\">Meta-Analysis Examining the Importance of Creatine Ingestion Strategies on Lean Tissue Mass and Strength in Older Adults.</em> Nutrients. 2021. <span class=\"\" data-state=\"closed\"></span></p>\n<p data-start=\"12341\" data-end=\"12612\">Chilibeck PD, Kaviani M, Candow DG, Zello GA. <em data-start=\"12387\" data-end=\"12526\">Effect of creatine supplementation during resistance training on lean tissue mass and muscular strength in older adults: a meta-analysis.</em> Open Access Journal of Sports Medicine. 2017. <span class=\"\" data-state=\"closed\"></span></p>\n<p data-start=\"12614\" data-end=\"12814\">Candow DG, Chilibeck PD, Forbes SC. <em data-start=\"12650\" data-end=\"12751\">Heads Up for Creatine Supplementation and its Potential Applications for Brain Health and Function.</em> Sports Medicine. 2023. <span class=\"\" data-state=\"closed\"></span></p>\n<p data-start=\"12816\" data-end=\"13163\">Kreider RB, Kalman DS, Antonio J, et al. <em data-start=\"12857\" data-end=\"12998\">International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation in exercise, sport, and medicine.</em> Journal of the International Society of Sports Nutrition. Position stand cited within recent ISSN-supported review material.&nbsp;</p>",
-      "date": "March 12, 2026",
-      "isoDate": "2026-03-12T00:20:44.961Z",
-      "category": "Supplementation",
-      "image": {
-        "url": "https://i.postimg.cc/gj6J6bWx/pexels-krzysztof-biernat-406313862-15120889.jpg",
-        "alt": "Default blog post image",
-        "seoDescription": "Default blog post image"
-      },
-      "author": {
-        "name": "Admin",
-        "role": "Editor",
-        "bio": "",
-        "avatarUrl": "https://picsum.photos/100"
-      },
-      "seoTitle": "",
-      "seoDescription": ""
     }
-  ]
+  ],
+  "pages": {
+    "home": {
+      "heroImage": {
+        "url": "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg",
+        "alt": "Downhill Skiing - Vitality",
+        "seoDescription": "A skier carving down a snowy mountain, representing the vitality and energy gained from WRK Personal Training."
+      },
+      "ptImage": {
+        "url": "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
+        "alt": "Dad and kid paddleboarding",
+        "seoDescription": "A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training."
+      },
+      "onlineImage": {
+        "url": "https://i.postimg.cc/vBXwJPvy/family-activity.jpg",
+        "alt": "Family activity outdoors",
+        "seoDescription": "A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching."
+      },
+      "corporateImage": {
+        "url": "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
+        "alt": "Corporate team golfing",
+        "seoDescription": "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
+      },
+      "lifestyleImages": [
+        {
+          "url": "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
+          "alt": "Dad heading out surfing",
+          "seoDescription": "Active parenting and outdoor adventure."
+        },
+        {
+          "url": "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+          "alt": "Mum and kid hiking",
+          "seoDescription": "Mother and child hiking in nature, representing strength and family time."
+        },
+        {
+          "url": "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
+          "alt": "Man with surfboard",
+          "seoDescription": "A man walking with a surfboard, symbolizing the physical capacity to enjoy hobbies."
+        },
+        {
+          "url": "https://i.postimg.cc/zXN8ygVy/female-jetski.jpg",
+          "alt": "Woman on jetski",
+          "seoDescription": "A woman riding a jetski, showing the energy and confidence gained from fitness."
+        }
+      ],
+      "appImages": [
+        {
+          "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+          "alt": "WRK App Habit Tracking",
+          "seoDescription": "Screenshot of the WRK app showing habit tracking features."
+        },
+        {
+          "url": "https://i.postimg.cc/8CS5D0LN/fat-loss-tracking.png",
+          "alt": "WRK App Fat Loss Tracking",
+          "seoDescription": "Screenshot of the WRK app displaying fat loss progress."
+        },
+        {
+          "url": "https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg",
+          "alt": "WRK App Macro Tracking",
+          "seoDescription": "Screenshot of the WRK app showing macro and nutrition tracking."
+        },
+        {
+          "url": "https://i.postimg.cc/WzHzvp7V/exercise-videos.png",
+          "alt": "WRK App Exercise Videos",
+          "seoDescription": "Screenshot of the WRK app showing instructional exercise videos."
+        }
+      ]
+    },
+    "personalTraining": {
+      "mainImage": {
+        "url": "https://i.postimg.cc/gjZFxYP7/active-mum.jpg",
+        "alt": "Mum and kid hiking",
+        "seoDescription": "A mother and child playing, representing the real-world application of strength training."
+      }
+    },
+    "onlineCoaching": {
+      "workoutLogImage": {
+        "url": "https://i.postimg.cc/3w5FjthV/exercise-history.png",
+        "alt": "Workout Log Interface",
+        "seoDescription": "Mobile interface showing detailed workout logs."
+      },
+      "videoImage": {
+        "url": "https://i.postimg.cc/WzHzvp7V/exercise-videos.png",
+        "alt": "Video Demonstration Interface",
+        "seoDescription": "Mobile interface showing exercise video demonstrations."
+      },
+      "macroImage": {
+        "url": "https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg",
+        "alt": "Macro Dashboard Interface",
+        "seoDescription": "Mobile interface showing macro nutrient tracking dashboard."
+      },
+      "nutritionLogImage": {
+        "url": "https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png",
+        "alt": "Nutrition Log Interface",
+        "seoDescription": "Mobile interface showing nutrition and recipe logging."
+      },
+      "habitsImage": {
+        "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+        "alt": "Habits Interface",
+        "seoDescription": "Mobile interface showing daily habit tracking."
+      }
+    },
+    "challenge42": {
+      "heroBackground": {
+        "url": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+        "alt": "Mountain Biking",
+        "seoDescription": "A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset."
+      }
+    },
+    "contact": {
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
+        "alt": "Contact Page Hero",
+        "seoDescription": "Atmospheric gym background for contact page."
+      }
+    },
+    "philosophy": {
+      "heroImage": {
+        "url": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+        "alt": "Active Dad carrying kid while hiking",
+        "seoDescription": "An active dad hiking with child in carry pack, representing the play harder nature of the philosophy."
+      }
+    },
+    "corporateWellness": {
+      "heroImage": {
+        "url": "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
+        "alt": "Corporate team hiking",
+        "seoDescription": "Team members having outdor adventures together, illustrating the work-life balance and performance focus of corporate wellness programs."
+      }
+    },
+    "services": {
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop",
+        "alt": "Outdoor Adventure",
+        "seoDescription": "A person hiking in the mountains, representing the freedom and capacity built through fitness."
+      }
+    },
+    "blog": {
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1502680390469-be75c70e094f?q=80&w=2070&auto=format&fit=crop",
+        "alt": "Paddleboarding",
+        "seoDescription": "A person paddleboarding on a calm lake, representing balance and active recovery."
+      }
+    },
+    "tools": {
+      "heroImage": {
+        "url": "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+        "alt": "Gym equipment",
+        "seoDescription": "Gym equipment in a modern facility, representing the tools needed for success."
+      }
+    },
+    "calorieCalculator": {
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop",
+        "alt": "Healthy food",
+        "seoDescription": "Fresh, healthy food ingredients, representing nutrition and calorie management."
+      }
+    },
+    "oneRmEstimator": {
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
+        "alt": "Weightlifting",
+        "seoDescription": "A person lifting weights, representing strength training and performance measurement."
+      }
+    },
+    "layout": {
+      "logoLight": {
+        "url": "https://i.postimg.cc/13cs5yGp/WRK-LOGOS-(Final).png",
+        "alt": "WRK Personal Training Logo (Light)",
+        "seoDescription": "White WRK Personal Training logo for dark backgrounds."
+      },
+      "logoDark": {
+        "url": "https://i.postimg.cc/59nFgbLv/wrk-logo-black-transparent.png",
+        "alt": "WRK Personal Training Logo (Dark)",
+        "seoDescription": "Black WRK Personal Training logo for light backgrounds."
+      }
+    },
+    "gallery": {
+      "jetski": {
+        "url": "https://raw.githubusercontent.com/WFME2021/WRK-Personal-Training-Site/refs/heads/main/images/female-jetski.jpg",
+        "alt": "Woman on jetski",
+        "seoDescription": "Woman riding a jetski."
+      },
+      "surfboard": {
+        "url": "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
+        "alt": "Man with surfboard",
+        "seoDescription": "Man carrying a surfboard."
+      },
+      "activeMum": {
+        "url": "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+        "alt": "Active Mum",
+        "seoDescription": "An active mother."
+      }
+    }
+  }
 }

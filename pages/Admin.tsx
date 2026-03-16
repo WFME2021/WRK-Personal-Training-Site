@@ -62,6 +62,14 @@ export const Admin: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
 
+  const [confirmDialog, setConfirmDialog] = useState<{ message: string; onConfirm: () => void } | null>(null);
+  const [toastMessage, setToastMessage] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    setToastMessage({ message, type });
+    setTimeout(() => setToastMessage(null), 5000);
+  };
+
   // Check auth on mount
   useEffect(() => {
     const auth = sessionStorage.getItem('wrk_admin_auth');
@@ -75,7 +83,7 @@ export const Admin: React.FC = () => {
       setIsAuthenticated(true);
       sessionStorage.setItem('wrk_admin_auth', 'true');
     } else {
-      alert('Incorrect password');
+      showToast('Incorrect password', 'error');
     }
   };
 
@@ -88,8 +96,6 @@ export const Admin: React.FC = () => {
   const [isPublishing, setIsPublishing] = useState(false);
 
   const handleSaveAndPublish = async () => {
-    if (!window.confirm('This will publish changes to the live site. Continue?')) return;
-
     setIsPublishing(true);
     try {
       const publishData = {
@@ -112,10 +118,10 @@ export const Admin: React.FC = () => {
         throw new Error(result.error || 'Failed to publish');
       }
 
-      alert('SUCCESS: Changes published to GitHub! The site will update automatically in a few moments.');
+      showToast('SUCCESS: Changes published to GitHub! The site will update automatically in a few moments.');
     } catch (error: any) {
       console.error('Publish error:', error);
-      alert(`ERROR: ${error.message}\n\nCheck the browser console for more details.`);
+      showToast(`ERROR: ${error.message}`, 'error');
     } finally {
       setIsPublishing(false);
     }
@@ -207,18 +213,23 @@ export const Admin: React.FC = () => {
     updateBlogPosts(updatedPosts);
     setEditingId(null);
     setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
-    alert('Post saved locally! Remember to click "Save & Publish" at the top of the page to push these changes to the live site.');
+    showToast('Post saved locally! Remember to click "Save & Publish" at the top of the page to push these changes to the live site.');
   };
 
   const handleDeletePost = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this post?')) {
-      const updatedPosts = blogPosts.filter(p => p.id !== id);
-      updateBlogPosts(updatedPosts);
-      if (editingId === id) {
-        setEditingId(null);
-        setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
+    setConfirmDialog({
+      message: 'Are you sure you want to delete this post?',
+      onConfirm: () => {
+        const updatedPosts = blogPosts.filter(p => p.id !== id);
+        updateBlogPosts(updatedPosts);
+        if (editingId === id) {
+          setEditingId(null);
+          setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
+        }
+        setConfirmDialog(null);
+        showToast('Post deleted locally. Remember to Save & Publish.');
       }
-    }
+    });
   };
 
   // --- PAGE CONTENT LOGIC ---
@@ -274,13 +285,13 @@ export const Admin: React.FC = () => {
         // Supports old format (array of posts) or new format (object with blogs/pages)
         if (Array.isArray(json)) {
            importData({ blogs: json });
-           alert('Blog posts imported successfully!');
+           showToast('Blog posts imported successfully!');
         } else {
            importData(json);
-           alert('Site content imported successfully!');
+           showToast('Site content imported successfully!');
         }
       } catch (error) {
-        alert('Error parsing JSON file.');
+        showToast('Error parsing JSON file.', 'error');
       }
     };
     reader.readAsText(file);
@@ -322,6 +333,28 @@ export const Admin: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-primary pt-28 pb-12 px-6 transition-colors duration-300">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className={`fixed bottom-4 right-4 p-4 rounded-lg shadow-2xl text-white z-50 flex items-center gap-3 animate-in slide-in-from-bottom-5 ${toastMessage.type === 'error' ? 'bg-red-600' : 'bg-green-600'}`}>
+          <span className="font-medium">{toastMessage.message}</span>
+          <button onClick={() => setToastMessage(null)} className="text-white/80 hover:text-white ml-2">&times;</button>
+        </div>
+      )}
+
+      {/* Confirm Modal */}
+      {confirmDialog && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-secondary rounded-2xl p-6 max-w-md w-full shadow-2xl border border-border">
+            <h3 className="text-xl font-bold mb-4 text-text-primary">Confirm Action</h3>
+            <p className="mb-6 text-text-secondary leading-relaxed">{confirmDialog.message}</p>
+            <div className="flex justify-end gap-3">
+              <Button variant="secondary" onClick={() => setConfirmDialog(null)}>Cancel</Button>
+              <Button variant="primary" onClick={confirmDialog.onConfirm} className="bg-red-600 hover:bg-red-700 text-white border-transparent">Confirm</Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto">
         
         {/* Header Actions */}
