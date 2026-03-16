@@ -1,81 +1,30 @@
 {
-  "blogs": [
-    {
-      "id": "1",
-      "slug": "how-to-optimize-sleep",
-      "title": "How to Optimize Sleep for Recovery",
-      "excerpt": "Sleep is the foundation of performance. Learn the 3 key protocols to improve your deep sleep scores tonight.",
-      "content": "<p>Sleep is not a passive state; it is an active recovery process. Without adequate sleep, your training efforts are largely wasted.</p><h2>The 3-2-1 Rule</h2><p>To optimize sleep, try the <strong>3-2-1 rule</strong>:</p><ul><li>3 hours before bed: No food</li><li>2 hours before bed: No work</li><li>1 hour before bed: No screens</li></ul><p>For more details, check out this <a href='https://hubermanlab.com/toolkit-for-sleep/' target='_blank'>comprehensive guide</a> by Dr. Huberman.</p>",
-      "date": "October 15, 2023",
-      "isoDate": "2023-10-15T08:00:00+13:00",
-      "category": "Recovery",
-      "image": {
-        "url": "https://images.unsplash.com/photo-1541781777631-fa182f3a4b3c?q=80&w=800&auto=format&fit=crop",
-        "alt": "Person sleeping comfortably",
-        "seoDescription": "A person sleeping in a comfortable bed, representing recovery and sleep optimization."
-      },
-      "author": {
-        "name": "Hayden Richards",
-        "role": "Founder & Head Coach",
-        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
-      },
-      "seoTitle": "Sleep Optimization Guide | WRK Personal Training",
-      "seoDescription": "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
-    },
-    {
-      "id": "2",
-      "slug": "strength-training-101",
-      "title": "Strength Training 101: The Big Four",
-      "excerpt": "You don't need a complex routine. You need to master the Squat, Bench, Deadlift, and Overhead Press.",
-      "content": "<p>Complexity is the enemy of execution. When starting out, your focus should be entirely on the compound lifts.</p><h2>1. The Squat</h2><p>The king of all exercises. It trains the entire posterior chain and core.</p><img src='https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop' alt='Athlete performing a back squat' /><p>Ensure your depth hits parallel and your chest stays up.</p><h2>2. The Deadlift</h2><p>The purest test of strength. Pick it up, put it down safely.</p>",
-      "date": "November 02, 2023",
-      "isoDate": "2023-11-02T10:00:00+13:00",
-      "category": "Training",
-      "image": {
-        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
-        "alt": "Weight plates in a gym",
-        "seoDescription": "Close up of weight plates in a gym setting, symbolizing strength training."
-      },
-      "author": {
-        "name": "Hayden Richards",
-        "role": "Founder & Head Coach",
-        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
-      },
-      "seoTitle": "Beginner Strength Training Guide | WRK Personal Training",
-      "seoDescription": "Master the big four compound lifts to build strength and longevity. A simple guide for beginners."
-    },
-    {
-      "id": "3",
-      "slug": "nutrition-for-busy-pros",
-      "title": "Nutrition Strategies for Corporate Athletes",
-      "excerpt": "Meal prep taking too long? Here is how to hit your macros without spending your entire Sunday in the kitchen.",
-      "content": "<p>Time is your most valuable asset. Your nutrition strategy needs to reflect that.</p><h2>Batch Cooking vs. Ingredient Prep</h2><p>Don't cook full meals. Cook <strong>ingredients</strong>. Roast a tray of chicken, boil a pot of rice, and chop veggies. Combine them differently throughout the week with different sauces.</p><p>This takes 1 hour and saves you 10.</p>",
-      "date": "December 10, 2023",
-      "isoDate": "2023-12-10T09:00:00+13:00",
-      "category": "Nutrition",
-      "image": {
-        "url": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
-        "alt": "Healthy meal prep containers",
-        "seoDescription": "Healthy food in meal prep containers, representing nutrition strategies for busy professionals."
-      },
-      "author": {
-        "name": "Hayden Richards",
-        "role": "Founder & Head Coach",
-        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
-      },
-      "seoTitle": "Nutrition Hacks for Busy Professionals | WRK",
-      "seoDescription": "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."
-    }
-  ],
   "pages": {
     "home": {
-      "heroImage": {
-        "url": "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg",
-        "alt": "Downhill Skiing - Vitality",
-        "seoDescription": "A skier carving down a snowy mountain, representing the vitality and energy gained from WRK Personal Training."
+      "seo": {
+        "title": "Personal Training That Fits Real Life | Christchurch + Online",
+        "description": "Fat loss, less pain, and consistency for busy adults. Pain-aware training, flexible nutrition, and coaching in Christchurch or online."
+      },
+      "hero": {
+        "h1": "Train Smarter. <br/><span class='text-accent'>Play Harder.</span>",
+        "subhead": "I help people lose fat, get stronger, and trust their body outside the gym.",
+        "bullets": [
+          "Progress without punishment",
+          "Pain-aware training",
+          "Protein-forward nutrition"
+        ],
+        "image": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+        "kicker": "<span class='text-white font-bold'>The gym is a tool — not a lifestyle.</span><br class='hidden md:block' /> The goal is more energy, less pain, and a body that can handle work, family, weekends, and the adventures you keep putting off.",
+        "eyebrow": "Strength & Conditioning | Christchurch (Addington) + NZ-wide",
+        "url": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+        "alt": "strong capable dad, carrying child in carry pack while tramping up hill",
+        "seoDescription": "strong capable dad who has trained hard so that he can play hard by "
+      },
+      "banner": {
+        "tagline": "Fit enough for the good stuff.",
+        "support": "Train to live more—work, family, weekends.",
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+        "url": ""
       },
       "ptImage": {
         "url": "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
@@ -91,6 +40,16 @@
         "url": "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
         "alt": "Corporate team golfing",
         "seoDescription": "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
+      },
+      "challengeImage": {
+        "url": "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
+        "alt": "Man carrying surfboard",
+        "seoDescription": "A man carrying a surfboard, representing the 42 Day Reset challenge."
+      },
+      "heroImage": {
+        "url": "https://i.postimg.cc/mkHkTfpx/skiing-2.jpg",
+        "alt": "Downhill Skiing - Vitality",
+        "seoDescription": "A skier carving down a snowy mountain, representing the vitality and energy gained from WRK Personal Training."
       },
       "lifestyleImages": [
         {
@@ -137,7 +96,60 @@
         }
       ]
     },
+    "services": {
+      "seo": {
+        "title": "Services | WRK Personal Training",
+        "description": "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting."
+      },
+      "hero": {
+        "h1": "PERSONAL TRAINING <span class='text-accent'>SERVICES</span>",
+        "subhead": "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting.",
+        "bullets": [
+          "1:1 Christchurch Coaching",
+          "Online Coaching (12-Week Mini)",
+          "Corporate Wellness"
+        ],
+        "image": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80",
+        "kicker": "Options for every schedule and budget."
+      },
+      "banner": {
+        "tagline": "Choose the coaching that fits your real week.",
+        "support": "Same goal—more capacity—different paths to get there.",
+        "image": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80"
+      },
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop",
+        "alt": "Outdoor Adventure",
+        "seoDescription": "A person hiking in the mountains, representing the freedom and capacity built through fitness."
+      }
+    },
     "personalTraining": {
+      "seo": {
+        "title": "1:1 Personal Training in Christchurch | WRK",
+        "description": "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better."
+      },
+      "hero": {
+        "h1": "1:1 Personal Training <span class='text-accent'>in Christchurch</span>",
+        "subhead": "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better—without wrecking your schedule or your body.",
+        "bullets": [
+          "Technical mastery (move well, train safely)",
+          "Pain-aware programming (posture / postpartum / menopause / niggles)",
+          "Accountability that actually works"
+        ],
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+        "kicker": "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.",
+        "url": "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
+        "alt": "Fit and capable man back country skiing",
+        "seoDescription": "Fit and capable man back country skiing, reflecting the fitness gained through personal training."
+      },
+      "banner": {
+        "tagline": "Train smart. Progress without breaking down.",
+        "support": "We work around niggles and build you up properly.",
+        "image": "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80",
+        "url": "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+        "alt": "Mum and child hiking",
+        "seoDescription": "A mother carrying a child on a hike,  representing the real-world application of strength gained through personal training."
+      },
       "mainImage": {
         "url": "https://i.postimg.cc/gjZFxYP7/active-mum.jpg",
         "alt": "Mum and kid hiking",
@@ -145,10 +157,35 @@
       }
     },
     "onlineCoaching": {
+      "seo": {
+        "title": "Online Personal Training | App Coaching (12 Weeks+)",
+        "description": "Online personal training with custom programming, check-ins and flexible nutrition support. Built for travel, stress and real schedules. 12-week minimum."
+      },
+      "hero": {
+        "h1": "Online Personal Training (12-Week Minimum)",
+        "subhead": "Professional programming and support delivered to your phone—so you can train where you want, when you want, and still get results when life gets busy.",
+        "bullets": [
+          "Custom programming built around your schedule",
+          "Form checks + feedback (video analysis)",
+          "Protein-forward, flexible nutrition support"
+        ],
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80",
+        "kicker": "12-week minimum—because quick fixes are how people end up starting over."
+      },
+      "banner": {
+        "tagline": "A plan that survives travel, stress, and chaos.",
+        "support": "Consistency beats intensity when life’s busy.",
+        "image": "https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=1920&q=80"
+      },
       "workoutLogImage": {
         "url": "https://i.postimg.cc/3w5FjthV/exercise-history.png",
         "alt": "Workout Log Interface",
         "seoDescription": "Mobile interface showing detailed workout logs."
+      },
+      "habitsImage": {
+        "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+        "alt": "Habits Interface",
+        "seoDescription": "Mobile interface showing daily habit tracking."
       },
       "videoImage": {
         "url": "https://i.postimg.cc/WzHzvp7V/exercise-videos.png",
@@ -164,49 +201,83 @@
         "url": "https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png",
         "alt": "Nutrition Log Interface",
         "seoDescription": "Mobile interface showing nutrition and recipe logging."
-      },
-      "habitsImage": {
-        "url": "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
-        "alt": "Habits Interface",
-        "seoDescription": "Mobile interface showing daily habit tracking."
-      }
-    },
-    "challenge42": {
-      "heroBackground": {
-        "url": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
-        "alt": "Mountain Biking",
-        "seoDescription": "A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset."
-      }
-    },
-    "contact": {
-      "heroImage": {
-        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
-        "alt": "Contact Page Hero",
-        "seoDescription": "Atmospheric gym background for contact page."
-      }
-    },
-    "philosophy": {
-      "heroImage": {
-        "url": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-        "alt": "Active Dad carrying kid while hiking",
-        "seoDescription": "An active dad hiking with child in carry pack, representing the play harder nature of the philosophy."
       }
     },
     "corporateWellness": {
+      "seo": {
+        "title": "Corporate Wellness Program NZ | PT in Every Pocket",
+        "description": "NZ corporate wellness program: a personal trainer in every employee’s pocket. App-led training plans for all levels, goals and schedules. Low admin."
+      },
+      "hero": {
+        "h1": "Corporate Wellness Program (NZ)",
+        "subhead": "A personal trainer in every employee’s pocket. App-led training and nutrition support that improves energy, posture, and consistency—without adding admin load to HR.",
+        "bullets": [
+          "App-based training plans for every level",
+          "Programs for different goals + preferences",
+          "Zero admin for HR"
+        ],
+        "image": "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
+        "kicker": "NZ-wide delivery • Simple rollout • Private company community"
+      },
+      "banner": {
+        "tagline": "Wellness that gets used—because it fits the job.",
+        "support": "Simple programs that support energy, posture, and routine.",
+        "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
+      },
       "heroImage": {
         "url": "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
         "alt": "Corporate team hiking",
         "seoDescription": "Team members having outdor adventures together, illustrating the work-life balance and performance focus of corporate wellness programs."
       }
     },
-    "services": {
-      "heroImage": {
-        "url": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2073&auto=format&fit=crop",
-        "alt": "Outdoor Adventure",
-        "seoDescription": "A person hiking in the mountains, representing the freedom and capacity built through fitness."
+    "challenge42": {
+      "seo": {
+        "title": "42 Day Fitness Reset | Self-Guided Program ($47)",
+        "description": "A 42 day reset to rebuild routine, energy and momentum. App-based training plan + simple nutrition support. One-time payment $47."
+      },
+      "hero": {
+        "h1": "42 Day Reset",
+        "subhead": "The system reboot you’ve been waiting for. Clear the fog, rebuild momentum, and get back to operating at full capacity—without diet jail or burnout.",
+        "bullets": [
+          "Self-guided training (app delivered)",
+          "Simple nutrition support (flexible, protein-forward)",
+          "One-time payment ($47)"
+        ],
+        "image": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+        "kicker": "One-time payment • 42 days access • No subscription"
+      },
+      "banner": {
+        "tagline": "Reset the routine. Keep your life.",
+        "support": "Structure and momentum without diet jail or burnout.",
+        "image": "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?auto=format&fit=crop&w=1920&q=80"
+      },
+      "heroBackground": {
+        "url": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+        "alt": "Mountain Biking",
+        "seoDescription": "A mountain biker on a trail, representing the challenge and adventure of the 42 Day Reset."
       }
     },
     "blog": {
+      "seo": {
+        "title": "Blog | WRK Personal Training",
+        "description": "Articles on strength training, longevity, and high-performance living."
+      },
+      "hero": {
+        "h1": "THE REPOSITORY",
+        "subhead": "Evidence-based insights on training, longevity, and mindset.",
+        "bullets": [
+          "Strength Training",
+          "Recovery Protocols",
+          "High-Performance Living"
+        ],
+        "image": "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+        "kicker": "No fluff. Just what works."
+      },
+      "banner": {
+        "tagline": "Less fluff. More progress you can repeat.",
+        "support": "Practical guidance for fat loss, pain reduction, and consistency.",
+        "image": "https://images.unsplash.com/photo-1476480868291-40c4370371f3?auto=format&fit=crop&w=1920&q=80"
+      },
       "heroImage": {
         "url": "https://images.unsplash.com/photo-1502680390469-be75c70e094f?q=80&w=2070&auto=format&fit=crop",
         "alt": "Paddleboarding",
@@ -214,6 +285,26 @@
       }
     },
     "tools": {
+      "seo": {
+        "title": "Tools & Resources | WRK Personal Training",
+        "description": "Free tools to help you execute better. Calorie calculators, checklists, and more."
+      },
+      "hero": {
+        "h1": "TOOLS",
+        "subhead": "Free resources to help you execute better.",
+        "bullets": [
+          "Nutrition Engine",
+          "1RM Estimator",
+          "Recovery Protocols"
+        ],
+        "image": "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg",
+        "kicker": "Calculators, checklists, and systems."
+      },
+      "banner": {
+        "tagline": "Clarity in minutes. Then we keep it simple.",
+        "support": "Use the numbers as a starting point—not a rulebook.",
+        "image": "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
+      },
       "heroImage": {
         "url": "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
         "alt": "Gym equipment",
@@ -221,6 +312,26 @@
       }
     },
     "calorieCalculator": {
+      "seo": {
+        "title": "Calorie Calculator | Estimate Your Daily Calories (TDEE + Goals)",
+        "description": "Use this calorie calculator to estimate your daily calorie needs for fat loss, maintenance, or muscle gain. Includes protein targets and a “Party Fund” to account for weekly drinks while staying on track."
+      },
+      "hero": {
+        "h1": "Calorie Calculator",
+        "subhead": "Use this calorie calculator to estimate your daily calorie needs based on your body, activity level, and goal (fat loss, maintenance, or muscle gain). It gives you a clear starting target you can actually follow — without crash dieting, over-tracking, or guessing what “healthy” means.",
+        "bullets": [
+          "Daily Calorie Target",
+          "Protein Targets",
+          "Party Fund"
+        ],
+        "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1920&q=80",
+        "eyebrow": "Nutrition Engine"
+      },
+      "banner": {
+        "tagline": "Start with a target. Adjust like an adult.",
+        "support": "A sensible baseline, then refine based on results and recovery.",
+        "image": "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1920&q=80"
+      },
       "heroImage": {
         "url": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop",
         "alt": "Healthy food",
@@ -228,10 +339,107 @@
       }
     },
     "oneRmEstimator": {
+      "seo": {
+        "title": "1RM Estimator | WRK Personal Training",
+        "description": "Estimate your one-rep max safely without testing to failure."
+      },
+      "hero": {
+        "h1": "1RM ESTIMATOR",
+        "subhead": "Estimate your one-rep max without testing to failure. Use this to set your training percentages.",
+        "bullets": [
+          "Safety First",
+          "Training Percentages",
+          "Progress Tracking"
+        ],
+        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80",
+        "kicker": "Train smart, not just heavy."
+      },
+      "banner": {
+        "tagline": "Train smart—without maxing out every week.",
+        "support": "Estimate loads so progress is repeatable and joint-friendly.",
+        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80"
+      },
       "heroImage": {
         "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
         "alt": "Weightlifting",
         "seoDescription": "A person lifting weights, representing strength training and performance measurement."
+      }
+    },
+    "contact": {
+      "seo": {
+        "title": "Contact | WRK Personal Training",
+        "description": "Get in touch to discuss your training goals."
+      },
+      "hero": {
+        "h1": "CONTACT",
+        "subhead": "Ready to get started? Let's discuss your goals and find the right plan for you.",
+        "bullets": [
+          "Book a Consult",
+          "Ask a Question",
+          "Get Started"
+        ],
+        "image": "https://i.postimg.cc/90S2dr9G/pexels-pixabay-163407.jpg",
+        "kicker": "No pressure sales. Just a conversation."
+      },
+      "banner": {
+        "tagline": "Let’s map the simplest plan that works.",
+        "support": "Tell me your constraints and I’ll guide the next step.",
+        "image": "https://i.postimg.cc/fyFscJdc/pexels-allan-mas-5383718.jpg"
+      },
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
+        "alt": "Contact Page Hero",
+        "seoDescription": "Atmospheric gym background for contact page."
+      }
+    },
+    "philosophy": {
+      "seo": {
+        "title": "Philosophy | Capacity Is Currency | WRK",
+        "description": "The Right Work, Done Well. A training philosophy for high performers who value longevity as much as results."
+      },
+      "hero": {
+        "h1": "CAPACITY IS CURRENCY",
+        "subhead": "When you have capacity, you have options. When you don't, you have constraints.",
+        "bullets": [
+          "Return on Investment",
+          "Evidence Based",
+          "Resilience"
+        ],
+        "image": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+        "kicker": "The Methodology",
+        "url": "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
+      },
+      "banner": {
+        "tagline": "We do not train for the sake of being tired.",
+        "support": "We train to be capable.",
+        "image": "https://images.unsplash.com/photo-1517836357463-c25dfe94c0de?auto=format&fit=crop&w=1920&q=80"
+      },
+      "heroImage": {
+        "url": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+        "alt": "Active Dad carrying kid while hiking",
+        "seoDescription": "An active dad hiking with child in carry pack, representing the play harder nature of the philosophy."
+      }
+    },
+    "assessment": {
+      "seo": {
+        "title": "Assessment | WRK Personal Training",
+        "description": "Take the assessment to find the best training plan for you."
+      },
+      "hero": {
+        "h1": "ASSESSMENT",
+        "subhead": "Find out exactly where you stand and what you need to do next.",
+        "bullets": [
+          "Quick Analysis",
+          "Personalized Plan",
+          "Immediate Results"
+        ],
+        "image": "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80",
+        "kicker": "Takes less than 2 minutes."
+      },
+      "banner": {
+        "tagline": "Get clarity fast. Then take the right next step.",
+        "support": "Six questions. Practical answers. A plan that fits real life.",
+        "image": "https://images.unsplash.com/photo-1501554697317-40c68b949325?auto=format&fit=crop&w=1920&q=80"
       }
     },
     "layout": {
@@ -263,5 +471,53 @@
         "seoDescription": "An active mother."
       }
     }
-  }
+  },
+  "blogs": [
+    {
+      "id": "2",
+      "slug": "strength-training-101",
+      "title": "Strength Training 101: The Big Four",
+      "excerpt": "You don't need a complex routine. You need to master the Squat, Bench, Deadlift, and Overhead Press.",
+      "content": "<p>Complexity is the enemy of execution. When starting out, your focus should be entirely on the compound lifts.</p><h2>1. The Squat</h2><p>The king of all exercises. It trains the entire posterior chain and core.</p><img src='https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=800&auto=format&fit=crop' alt='Athlete performing a back squat' /><p>Ensure your depth hits parallel and your chest stays up.</p><h2>2. The Deadlift</h2><p>The purest test of strength. Pick it up, put it down safely.</p>",
+      "date": "November 02, 2023",
+      "isoDate": "2023-11-02T10:00:00+13:00",
+      "category": "Training",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+        "alt": "Weight plates in a gym",
+        "seoDescription": "Close up of weight plates in a gym setting, symbolizing strength training."
+      },
+      "author": {
+        "name": "Hayden Richards",
+        "role": "Founder & Head Coach",
+        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+      },
+      "seoTitle": "Beginner Strength Training Guide | WRK Personal Training",
+      "seoDescription": "Master the big four compound lifts to build strength and longevity. A simple guide for beginners."
+    },
+    {
+      "id": "3",
+      "slug": "nutrition-for-busy-pros",
+      "title": "Nutrition Strategies for Corporate Athletes",
+      "excerpt": "Meal prep taking too long? Here is how to hit your macros without spending your entire Sunday in the kitchen.",
+      "content": "<p>Time is your most valuable asset. Your nutrition strategy needs to reflect that.</p><h2>Batch Cooking vs. Ingredient Prep</h2><p>Don't cook full meals. Cook <strong>ingredients</strong>. Roast a tray of chicken, boil a pot of rice, and chop veggies. Combine them differently throughout the week with different sauces.</p><p>This takes 1 hour and saves you 10.</p>",
+      "date": "December 10, 2023",
+      "isoDate": "2023-12-10T09:00:00+13:00",
+      "category": "Nutrition",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
+        "alt": "Healthy meal prep containers",
+        "seoDescription": "Healthy food in meal prep containers, representing nutrition strategies for busy professionals."
+      },
+      "author": {
+        "name": "Hayden Richards",
+        "role": "Founder & Head Coach",
+        "bio": "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
+        "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
+      },
+      "seoTitle": "Nutrition Hacks for Busy Professionals | WRK",
+      "seoDescription": "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition."
+    }
+  ]
 }
