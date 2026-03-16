@@ -340,7 +340,7 @@
       "slug": "how-to-optimize-sleep",
       "title": "How to Optimize Sleep for Recovery",
       "excerpt": "Sleep is the foundation of performance. Learn the 3 key protocols to improve your deep sleep scores tonight.",
-      "content": "The 3-2-1 Rule\nTo optimize sleep, try the 3-2-1 rule:\n\n3 hours before bed: No food",
+      "content": "The 3-2-1 Rule\n\n",
       "date": "October 15, 2023",
       "isoDate": "2023-10-15T08:00:00+13:00",
       "category": "Recovery",
@@ -356,7 +356,10 @@
         "avatarUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200&auto=format&fit=crop"
       },
       "seoTitle": "Sleep Optimization Guide | WRK Personal Training",
-      "seoDescription": "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained."
+      "seoDescription": "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained.",
+      "relatedPosts": [
+        "2"
+      ]
     },
     {
       "id": "2",
