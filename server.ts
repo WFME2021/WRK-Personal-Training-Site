@@ -538,7 +538,7 @@ ${JSON.stringify(answers, null, 2)}
         }
       }
 
-      const path = "public/content.json";
+      const contentPath = "public/content.json";
       
       // 1. Get current SHA of the file
       let sha;
@@ -546,7 +546,7 @@ ${JSON.stringify(answers, null, 2)}
         const { data } = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
           owner,
           repo,
-          path,
+          path: contentPath,
         });
         if (!Array.isArray(data)) {
           sha = data.sha;
@@ -563,7 +563,7 @@ ${JSON.stringify(answers, null, 2)}
 
       // Save locally so the dev server serves the updated content
       try {
-        fs.writeFileSync(path, contentString, 'utf8');
+        fs.writeFileSync(contentPath, contentString, 'utf8');
       } catch (localErr) {
         console.error("Failed to save locally:", localErr);
       }
@@ -571,7 +571,7 @@ ${JSON.stringify(answers, null, 2)}
       await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
         owner,
         repo,
-        path,
+        path: contentPath,
         message: `Update content via CMS - ${new Date().toISOString()}`,
         content: contentEncoded,
         sha, // Required if updating existing file
@@ -580,7 +580,19 @@ ${JSON.stringify(answers, null, 2)}
       res.json({ success: true, message: "Content published to GitHub successfully!" });
     } catch (error: any) {
       console.error("GitHub API Error:", error);
-      res.status(500).json({ error: `Failed to publish to GitHub: ${error.message}` });
+      
+      // Extract more detailed error information from Octokit if available
+      let errorDetails = error.message;
+      if (error.response && error.response.data) {
+        console.error("GitHub API Response Data:", error.response.data);
+        errorDetails = `${error.message} - ${JSON.stringify(error.response.data)}`;
+      }
+      
+      res.status(500).json({ 
+        error: `Failed to publish to GitHub: ${errorDetails}`,
+        status: error.status,
+        name: error.name
+      });
     }
   });
 
