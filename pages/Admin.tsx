@@ -207,7 +207,7 @@ export const Admin: React.FC = () => {
     updateBlogPosts(updatedPosts);
     setEditingId(null);
     setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
-    alert('Post saved! It is now live on the site.');
+    alert('Post saved locally! Remember to click "Save & Publish" at the top of the page to push these changes to the live site.');
   };
 
   const handleDeletePost = (id: string) => {
