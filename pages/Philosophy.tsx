@@ -188,6 +188,15 @@ export const Philosophy: React.FC = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary uppercase tracking-tighter mb-8">
               No guessing. Just a plan that works.
             </h2>
+            
+            {/* Trainer Image Placeholder */}
+            <div className="mb-10 flex justify-center">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-dashed border-accent flex flex-col items-center justify-center bg-primary/50 text-text-secondary p-6 text-center">
+                <span className="font-bold text-lg text-text-primary mb-2">This needs to be me.</span>
+                <span className="text-sm">H. Richards - WRK Personal Trainer etc.</span>
+              </div>
+            </div>
+
             <div className="prose prose-lg mx-auto text-text-secondary leading-relaxed">
               <p className="mb-6">
                 I coach people who are sick of guessing — and want training that actually pays off in real life.

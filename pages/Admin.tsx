@@ -11,8 +11,8 @@ import { useContent } from '../context/ContentContext';
 
 // Default Author for new posts
 const DEFAULT_AUTHOR: Author = {
-  name: "Admin",
-  role: "Editor",
+  name: "H. Richards",
+  role: "Personal Trainer",
   bio: "",
   avatarUrl: "https://picsum.photos/100"
 };
