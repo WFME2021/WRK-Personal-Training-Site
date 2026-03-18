@@ -50,12 +50,12 @@ async function startServer() {
         secure: isSecure,
         auth: {
           user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
+          pass: process.env.SMTP_PASS?.replace(/^"|"$/g, ''),
         },
       });
 
       const mailOptions = {
-        from: process.env.SMTP_FROM || '"WRK Website" <no-reply@wrkpersonaltraining.co.nz>',
+        from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
         to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
         subject: `New Inquiry from ${name} - ${interest || 'General'}`,
         text: `
@@ -91,54 +91,61 @@ ${message}
       // --- MailerLite Integration ---
       const rawKey = process.env.MAILERLITE_API_KEY || "";
       const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
-      const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID;
+      const rawGroupId = process.env.MAILERLITE_GROUP_ID || "";
+      const MAILERLITE_GROUP_ID = rawGroupId.replace(/^"|"$/g, '').trim();
 
       if (MAILERLITE_API_KEY) {
         try {
-          // 1. Create/Update Subscriber
           const fields: any = {
             name: name,
             phone: phone,
           };
 
-          // Map Interest to Custom Fields
-          switch (interest) {
-            case '1:1 Coaching (Christchurch)':
-              fields['11_coaching_christchurch'] = 'Yes';
-              break;
-            case 'Online Coaching':
-              fields['online_coaching'] = 'Yes';
-              break;
-            case 'Corporate Wellness':
-              fields['corporate_wellness'] = 'Yes';
-              break;
-            case '42-Day Reset':
-              fields['42_day_reset'] = 'Yes';
-              break;
-            case 'Not sure yet':
-              fields['not_sure_yet'] = 'Yes';
-              break;
-          }
-
-          const subscriberPayload = {
+          // Try v3 API first
+          const subscriberPayloadV3 = {
             email: email,
             fields: fields,
-            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
+            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
           };
 
-          const mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+          let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
               'Accept': 'application/json'
             },
-            body: JSON.stringify(subscriberPayload)
+            body: JSON.stringify(subscriberPayloadV3)
           });
+
+          if (!mlResponse.ok && mlResponse.status === 401) {
+            // Fallback to v2 API if v3 returns Unauthorized
+            console.log('MailerLite v3 failed with 401, trying v2 API...');
+            const subscriberPayloadV2 = {
+              email: email,
+              name: name,
+              fields: fields
+            };
+            
+            // If group ID is provided, the v2 endpoint is different
+            const v2Endpoint = MAILERLITE_GROUP_ID 
+              ? `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_ID}/subscribers`
+              : 'https://api.mailerlite.com/api/v2/subscribers';
+
+            mlResponse = await fetch(v2Endpoint, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-MailerLite-ApiKey': MAILERLITE_API_KEY,
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(subscriberPayloadV2)
+            });
+          }
 
           if (!mlResponse.ok) {
             const errorText = await mlResponse.text();
-            console.error('MailerLite API Error:', errorText);
+            console.error('MailerLite API Error:', mlResponse.status, errorText);
           } else {
             console.log('Successfully added to MailerLite');
           }
@@ -205,7 +212,7 @@ ${message}
         secure: isSecure,
         auth: {
           user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
+          pass: process.env.SMTP_PASS?.replace(/^"|"$/g, ''),
         },
       });
 
@@ -254,7 +261,7 @@ ${message}
       const replyStarter = archetype ? replyStarters[archetype.id] : `Hi ${name}, thanks for completing the assessment. Let me know if you have any questions about your blueprint.`;
 
       const mailOptions = {
-        from: process.env.SMTP_FROM || '"WRK Website" <no-reply@wrkpersonaltraining.co.nz>',
+        from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
         to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
         subject: `Assessment Unlocked — ${name} — ${archetypeLabel} — ${locationLabel}`,
         text: `=== New Assessment Unlocked ===
@@ -325,31 +332,57 @@ ${JSON.stringify(answers, null, 2)}
       // --- MailerLite Integration ---
       const rawKey = process.env.MAILERLITE_API_KEY || "";
       const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
-      const MAILERLITE_GROUP_ID = process.env.MAILERLITE_GROUP_ID;
+      const rawGroupId = process.env.MAILERLITE_GROUP_ID || "";
+      const MAILERLITE_GROUP_ID = rawGroupId.replace(/^"|"$/g, '').trim();
 
       if (MAILERLITE_API_KEY) {
         try {
-          const subscriberPayload = {
+          const subscriberPayloadV3 = {
             email: email,
             fields: {
               name: name,
             },
-            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID.toString()] : []
+            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
           };
 
-          const mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+          let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
               'Accept': 'application/json'
             },
-            body: JSON.stringify(subscriberPayload)
+            body: JSON.stringify(subscriberPayloadV3)
           });
+
+          if (!mlResponse.ok && mlResponse.status === 401) {
+            console.log('MailerLite v3 failed with 401, trying v2 API...');
+            const subscriberPayloadV2 = {
+              email: email,
+              name: name,
+              fields: {
+                name: name
+              }
+            };
+            
+            const v2Endpoint = MAILERLITE_GROUP_ID 
+              ? `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_ID}/subscribers`
+              : 'https://api.mailerlite.com/api/v2/subscribers';
+
+            mlResponse = await fetch(v2Endpoint, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-MailerLite-ApiKey': MAILERLITE_API_KEY,
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(subscriberPayloadV2)
+            });
+          }
 
           if (!mlResponse.ok) {
             const errorText = await mlResponse.text();
-            console.error('MailerLite API Error:', errorText);
+            console.error('MailerLite API Error:', mlResponse.status, errorText);
           } else {
             console.log('Successfully added assessment lead to MailerLite');
           }
