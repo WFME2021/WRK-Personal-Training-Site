@@ -14,8 +14,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const { pageContent } = useContent();
   
   // Hardcoded logos as requested
-  const LOGO_LIGHT_MODE = "https://i.postimg.cc/59nFgbLv/wrk-logo-black-transparent.png"; // Black logo for light background
-  const LOGO_DARK_MODE = "https://i.postimg.cc/13cs5yGp/WRK-LOGOS-(Final).png"; // White/Main logo for dark background
+  const LOGO_LIGHT_MODE = "/images/wrk-logo-black-transparent.png"; // Black logo for light background
+  const LOGO_DARK_MODE = "/images/WRK-LOGOS-(Final).png"; // White/Main logo for dark background
   
   const logoSrc = theme === 'dark' ? LOGO_DARK_MODE : LOGO_LIGHT_MODE;
 
@@ -38,7 +38,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       <header className={`fixed w-full top-0 z-50 bg-primary/90 backdrop-blur-md border-b border-border transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
           <Link to="/" className="block hover:opacity-80 transition-opacity" aria-label="Home">
-            <img 
+            <img referrerPolicy="no-referrer" 
               src={logoSrc} 
               alt={BRAND_NAME} 
               className="h-12 w-auto object-contain" 
@@ -148,7 +148,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               <div className="col-span-1 md:col-span-1">
                 <Link to="/" className="block mb-6 hover:opacity-80 transition-opacity">
-                  <img 
+                  <img referrerPolicy="no-referrer" 
                     src={logoSrc} 
                     alt={BRAND_NAME} 
                     className="h-16 w-auto object-contain" 

@@ -17,7 +17,7 @@ export const MidPageBanner: React.FC<MidPageBannerProps> = ({
     <section className={`relative h-[60vh] md:h-[500px] flex items-center justify-center overflow-hidden my-24 ${className}`}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <img referrerPolicy="no-referrer" 
           src={image} 
           alt={tagline} 
           className="w-full h-full object-cover grayscale contrast-125"

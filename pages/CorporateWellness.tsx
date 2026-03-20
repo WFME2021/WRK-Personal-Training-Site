@@ -53,7 +53,7 @@ export const CorporateWellness: React.FC = () => {
         <section className="relative pt-40 pb-32 px-6 text-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg" 
+              src="/images/pexels-pnw-prod-7625047.jpg" 
               alt="Workplace Wellness Program" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

@@ -148,7 +148,7 @@ export const PersonalTraining: React.FC = () => {
             </div>
             <div className="relative h-[500px] bg-primary rounded-[3rem] border border-border overflow-hidden shadow-2xl flex items-center justify-center">
                {personalTraining.mainImage?.url ? (
-                 <img 
+                 <img referrerPolicy="no-referrer" 
                    src={personalTraining.mainImage.url} 
                    alt={personalTraining.mainImage.alt || "WRK System"} 
                    className="w-full h-full object-cover"

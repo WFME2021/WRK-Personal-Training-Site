@@ -134,7 +134,7 @@ export const Blog: React.FC = () => {
                 <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
                   <div className="relative overflow-hidden mb-6 aspect-[16/10] bg-secondary rounded-2xl border border-border">
                     {post.image?.url && (
-                      <img 
+                      <img referrerPolicy="no-referrer" 
                         src={post.image.url} 
                         alt={post.image.alt || post.title}
                         loading="lazy"

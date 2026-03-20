@@ -808,7 +808,7 @@ export const Admin: React.FC = () => {
                     </div>
                     {postFormData.image.url && (
                       <div className="w-32 h-24 rounded-lg overflow-hidden border border-border shadow-sm ml-4 shrink-0">
-                        <img src={postFormData.image.url} alt={postFormData.image.alt} className="w-full h-full object-cover" />
+                        <img referrerPolicy="no-referrer" src={postFormData.image.url} alt={postFormData.image.alt} className="w-full h-full object-cover" />
                       </div>
                     )}
                   </div>
@@ -969,7 +969,7 @@ export const Admin: React.FC = () => {
                                  <div key={index} className="p-4 border border-border rounded-xl bg-secondary">
                                    <div className="flex gap-4 items-start mb-4">
                                       <div className="w-20 h-20 rounded-lg overflow-hidden border border-border shrink-0">
-                                        <img src={item.url} alt={item.alt} className="w-full h-full object-cover" />
+                                        <img referrerPolicy="no-referrer" src={item.url} alt={item.alt} className="w-full h-full object-cover" />
                                       </div>
                                       <div className="flex-grow space-y-3">
                                         <div>
@@ -1024,7 +1024,7 @@ export const Admin: React.FC = () => {
                              </div>
                              {value.url && (
                                <div className="w-24 h-16 rounded-lg overflow-hidden border border-border shadow-sm">
-                                 <img src={value.url} alt={value.alt} className="w-full h-full object-cover" />
+                                 <img referrerPolicy="no-referrer" src={value.url} alt={value.alt} className="w-full h-full object-cover" />
                                </div>
                              )}
                            </div>

@@ -36,6 +36,7 @@ export const Hero: React.FC<HeroProps> = ({
           alt={title} 
           className="w-full h-full object-cover grayscale contrast-125"
           loading="eager"
+          referrerPolicy="no-referrer"
         />
         {/* Dark Overlay for Text Readability */}
         <div className="absolute inset-0 bg-black/60"></div>

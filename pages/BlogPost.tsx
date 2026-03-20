@@ -85,7 +85,7 @@ export const BlogPost: React.FC = () => {
           {/* Main Image */}
           {post.image?.url && (
             <figure className="mb-16 -mx-6 md:mx-0">
-               <img 
+               <img referrerPolicy="no-referrer" 
                  src={post.image.url} 
                  alt={post.image.alt || post.title} 
                  className="w-full h-auto object-cover md:rounded-sm shadow-sm border border-border"
@@ -123,7 +123,7 @@ export const BlogPost: React.FC = () => {
 
           {/* Author Bio (E-E-A-T) */}
           <section className="bg-secondary p-8 md:p-10 rounded-sm mb-16 flex flex-col md:flex-row items-center md:items-start gap-8 border border-border">
-             <img 
+             <img referrerPolicy="no-referrer" 
                src={post.author.avatarUrl} 
                alt={post.author.name}
                className="w-24 h-24 rounded-full object-cover border-2 border-primary shadow-sm shrink-0"
@@ -149,7 +149,7 @@ export const BlogPost: React.FC = () => {
                     <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="group block bg-secondary border border-border rounded-xl overflow-hidden hover:border-accent transition-colors">
                       <div className="h-40 overflow-hidden">
                         {relatedPost.image?.url && (
-                          <img src={relatedPost.image.url} alt={relatedPost.image.alt || relatedPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <img referrerPolicy="no-referrer" src={relatedPost.image.url} alt={relatedPost.image.alt || relatedPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         )}
                       </div>
                       <div className="p-6">

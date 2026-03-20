@@ -38,7 +38,7 @@ export interface PageContentConfig {
   challengeImage?: CMSImage;
 }
 
-const unsplash = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1920&q=80`;
+const unsplash = (id: string) => `/images/dad-carrypack-hiking.jpg`;
 
 export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   home: {
@@ -54,36 +54,36 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Pain-aware training",
         "Protein-forward nutrition"
       ],
-      image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+      image: "/images/dad-carrypack-hiking.jpg",
       kicker: "<span class='text-white font-bold'>The gym is a tool — not a lifestyle.</span><br class='hidden md:block' /> The goal is more energy, less pain, and a body that can handle work, family, weekends, and the adventures you keep putting off.",
       eyebrow: "Strength & Conditioning | Christchurch (Addington) + NZ-wide",
-      url: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+      url: "/images/dad-carrypack-hiking.jpg",
       alt: "strong capable dad, carrying child in carry pack while tramping up hill",
       seoDescription: "strong capable dad who has trained hard so that he can play hard by "
     },
     banner: {
       tagline: "Fit enough for the good stuff.",
       support: "Train to live more—work, family, weekends.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       url: ""
     },
     ptImage: {
-      url: "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
+      url: "/images/dad-kid-paddleboard.jpg",
       alt: "Dad and kid paddleboarding",
       seoDescription: "A father and child paddleboarding together, showcasing the active lifestyle enabled by personal training."
     },
     onlineImage: {
-      url: "https://i.postimg.cc/vBXwJPvy/family-activity.jpg",
+      url: "/images/family-activity.jpg",
       alt: "Family activity outdoors",
       seoDescription: "A family enjoying outdoor activities, highlighting the freedom and capacity built through online coaching."
     },
     corporateImage: {
-      url: "https://i.postimg.cc/wMp8RCTM/golfing.jpg",
+      url: "/images/golfing.jpg",
       alt: "Corporate team golfing",
       seoDescription: "Professionals playing golf, illustrating the work-life balance and performance focus of corporate wellness programs."
     },
     challengeImage: {
-      url: "https://i.postimg.cc/Vk6ytB1q/guy-surfboard.jpg",
+      url: "/images/guy-surfboard.jpg",
       alt: "Man carrying surfboard",
       seoDescription: "A man carrying a surfboard, representing the 42 Day Reset challenge."
     }
@@ -101,13 +101,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Online Coaching (12-Week Mini)",
         "Corporate Wellness"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       kicker: "Options for every schedule and budget."
     },
     banner: {
       tagline: "Choose the coaching that fits your real week.",
       support: "Same goal—more capacity—different paths to get there.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   personalTraining: {
@@ -123,22 +123,22 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Pain-aware programming (posture / postpartum / menopause / niggles)",
         "Accountability that actually works"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.",
-      url: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
+      url: "/images/downhill-skiing.jpg",
       alt: "Fit and capable man back country skiing",
       seoDescription: "Fit and capable man back country skiing, reflecting the fitness gained through personal training."
     },
     banner: {
       tagline: "Train smart. Progress without breaking down.",
       support: "We work around niggles and build you up properly.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
-      url: "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
+      url: "/images/mum-kid-hiking.jpg",
       alt: "Mum and child hiking",
       seoDescription: "A mother carrying a child on a hike,  representing the real-world application of strength gained through personal training."
     },
     mainImage: {
-      url: "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+      url: "/images/habit-tracking.png",
       alt: "Habit Tracking App Display",
       seoDescription: "Habit Tracking App, one of the tools used in our personal training approach. "
     }
@@ -156,21 +156,21 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Form checks + feedback (video analysis)",
         "Protein-forward, flexible nutrition support"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       kicker: "12-week minimum—because quick fixes are how people end up starting over."
     },
     banner: {
       tagline: "A plan that survives travel, stress, and chaos.",
       support: "Consistency beats intensity when life’s busy.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     },
     workoutLogImage: {
-      url: "https://i.postimg.cc/3w5FjthV/exercise-history.png",
+      url: "/images/exercise-history.png",
       alt: "Workout Log Interface",
       seoDescription: "Mobile interface showing detailed workout logs."
     },
     habitsImage: {
-      url: "https://i.postimg.cc/XqmjPHVV/habit-tracking.png",
+      url: "/images/habit-tracking.png",
       alt: "Habits Interface",
       seoDescription: "Mobile interface showing daily habit tracking."
     }
@@ -188,13 +188,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Programs for different goals + preferences",
         "Zero admin for HR"
       ],
-      image: "https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg",
+      image: "/images/pexels-pnw-prod-7625047.jpg",
       kicker: "NZ-wide delivery • Simple rollout • Private company community"
     },
     banner: {
       tagline: "Wellness that gets used—because it fits the job.",
       support: "Simple programs that support energy, posture, and routine.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   challenge42: {
@@ -210,13 +210,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Simple nutrition support (flexible, protein-forward)",
         "One-time payment ($47)"
       ],
-      image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+      image: "/images/mountain-biking.jpg",
       kicker: "One-time payment • 42 days access • No subscription"
     },
     banner: {
       tagline: "Reset the routine. Keep your life.",
       support: "Structure and momentum without diet jail or burnout.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   blog: {
@@ -232,13 +232,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Recovery Protocols",
         "High-Performance Living"
       ],
-      image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+      image: "/images/mountain-biking.jpg",
       kicker: "No fluff. Just what works."
     },
     banner: {
       tagline: "Less fluff. More progress you can repeat.",
       support: "Practical guidance for fat loss, pain reduction, and consistency.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   tools: {
@@ -254,13 +254,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "1RM Estimator",
         "Recovery Protocols"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       kicker: "Calculators, checklists, and systems."
     },
     banner: {
       tagline: "Clarity in minutes. Then we keep it simple.",
       support: "Use the numbers as a starting point—not a rulebook.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   calorieCalculator: {
@@ -276,13 +276,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Protein Targets",
         "Party Fund"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       eyebrow: "Nutrition Engine"
     },
     banner: {
       tagline: "Start with a target. Adjust like an adult.",
       support: "A sensible baseline, then refine based on results and recovery.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   oneRmEstimator: {
@@ -298,13 +298,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Training Percentages",
         "Progress Tracking"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       kicker: "Train smart, not just heavy."
     },
     banner: {
       tagline: "Train smart—without maxing out every week.",
       support: "Estimate loads so progress is repeatable and joint-friendly.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   contact: {
@@ -320,13 +320,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Ask a Question",
         "Get Started"
       ],
-      image: "https://i.postimg.cc/90S2dr9G/pexels-pixabay-163407.jpg",
+      image: "/images/pexels-pixabay-163407.jpg",
       kicker: "No pressure sales. Just a conversation."
     },
     banner: {
       tagline: "Let’s map the simplest plan that works.",
       support: "Tell me your constraints and I’ll guide the next step.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   philosophy: {
@@ -342,14 +342,14 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Evidence Based",
         "Resilience"
       ],
-      image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+      image: "/images/dad-carrypack-hiking.jpg",
       kicker: "The Methodology",
-      url: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
+      url: "/images/downhill-skiing.jpg"
     },
     banner: {
       tagline: "We do not train for the sake of being tired.",
       support: "We train to be capable.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   },
   assessment: {
@@ -365,13 +365,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Personalized Plan",
         "Immediate Results"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "/images/pexels-pripicart-591216.jpg",
       kicker: "Takes less than 2 minutes."
     },
     banner: {
       tagline: "Get clarity fast. Then take the right next step.",
       support: "Six questions. Practical answers. A plan that fits real life.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "/images/pexels-pripicart-591216.jpg"
     }
   }
 };

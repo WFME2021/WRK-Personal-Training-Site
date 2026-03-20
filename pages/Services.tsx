@@ -36,7 +36,7 @@ export const Services: React.FC = () => {
               {/* Service Card 1: 1:1 In-Person */}
               <Link to="/personal-trainer-christchurch" className="group block">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
-                   <img src={ptImage.url} alt={ptImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                   <img referrerPolicy="no-referrer" src={ptImage.url} alt={ptImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
                    <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">Christchurch</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/80 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
@@ -52,7 +52,7 @@ export const Services: React.FC = () => {
               {/* Service Card 2: Online */}
               <Link to="/online-personal-training-nz" className="group block lg:mt-24">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
-                   <img src={onlineImage.url} alt={onlineImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                   <img referrerPolicy="no-referrer" src={onlineImage.url} alt={onlineImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors"></div>
                    <div className="absolute top-8 right-8 bg-secondary text-text-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">12-Week Min</div>
                    <div className="absolute bottom-8 left-8 bg-secondary/80 backdrop-blur-md p-4 rounded-full border border-border group-hover:bg-accent group-hover:border-accent transition-colors">
@@ -69,7 +69,7 @@ export const Services: React.FC = () => {
               <Link to="/workplace-wellness-program-nz" className="group block">
                 <div className="h-[400px] rounded-[3rem] overflow-hidden mb-6 relative border border-border">
                    {corporateImage.url ? (
-                     <img src={corporateImage.url} alt={corporateImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
+                     <img referrerPolicy="no-referrer" src={corporateImage.url} alt={corporateImage.alt} className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700" />
                    ) : (
                      <div className="w-full h-full bg-secondary"></div>
                    )}
