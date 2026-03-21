@@ -39,7 +39,7 @@ const DEFAULT_AUTHOR: Author = {
   name: "Hayden Richards",
   role: "Founder & Head Coach",
   bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-  avatarUrl: "/images/dad-carrypack-hiking.jpg?v=2"
+  avatarUrl: "/images-v2/dad-carrypack-hiking.jpg?v=2"
 };
 
 // This acts as our initial "posts.json" data
@@ -54,7 +54,7 @@ export const BLOG_POSTS: BlogPost[] = [
     isoDate: "2023-10-15T08:00:00+13:00",
     category: "Recovery",
     image: {
-      url: "/images/dad-carrypack-hiking.jpg?v=2",
+      url: "/images-v2/dad-carrypack-hiking.jpg?v=2",
       alt: "Person sleeping comfortably",
       seoDescription: "A person sleeping in a comfortable bed, representing recovery and sleep optimization."
     },
@@ -62,7 +62,7 @@ export const BLOG_POSTS: BlogPost[] = [
       name: "Hayden Richards",
       role: "Founder & Head Coach",
       bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-      avatarUrl: "/images/dad-carrypack-hiking.jpg?v=2"
+      avatarUrl: "/images-v2/dad-carrypack-hiking.jpg?v=2"
     },
     seoTitle: "Sleep Optimization Guide | WRK Personal Training",
     seoDescription: "Maximize your recovery with these evidence-based sleep protocols. The 3-2-1 rule explained.",
@@ -73,12 +73,12 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "strength-training-101",
     title: "Strength Training 101: The Big Four",
     excerpt: "You don't need a complex routine. You need to master the Squat, Bench, Deadlift, and Overhead Press.",
-    content: "<p>Complexity is the enemy of execution. When starting out, your focus should be entirely on the compound lifts.</p><h2>1. The Squat</h2><p>The king of all exercises. It trains the entire posterior chain and core.</p><img src='/images/dad-carrypack-hiking.jpg?v=2' alt='Athlete performing a back squat' /><p>Ensure your depth hits parallel and your chest stays up.</p><h2>2. The Deadlift</h2><p>The purest test of strength. Pick it up, put it down safely.</p>",
+    content: "<p>Complexity is the enemy of execution. When starting out, your focus should be entirely on the compound lifts.</p><h2>1. The Squat</h2><p>The king of all exercises. It trains the entire posterior chain and core.</p><img src='/images-v2/dad-carrypack-hiking.jpg?v=2' alt='Athlete performing a back squat' /><p>Ensure your depth hits parallel and your chest stays up.</p><h2>2. The Deadlift</h2><p>The purest test of strength. Pick it up, put it down safely.</p>",
     date: "November 02, 2023",
     isoDate: "2023-11-02T10:00:00+13:00",
     category: "Training",
     image: {
-      url: "/images/dad-carrypack-hiking.jpg?v=2",
+      url: "/images-v2/dad-carrypack-hiking.jpg?v=2",
       alt: "Weight plates in a gym",
       seoDescription: "Close up of weight plates in a gym setting, symbolizing strength training."
     },
@@ -86,7 +86,7 @@ export const BLOG_POSTS: BlogPost[] = [
       name: "Hayden Richards",
       role: "Founder & Head Coach",
       bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-      avatarUrl: "/images/dad-carrypack-hiking.jpg?v=2"
+      avatarUrl: "/images-v2/dad-carrypack-hiking.jpg?v=2"
     },
     seoTitle: "Beginner Strength Training Guide | WRK Personal Training",
     seoDescription: "Master the big four compound lifts to build strength and longevity. A simple guide for beginners.",
@@ -102,7 +102,7 @@ export const BLOG_POSTS: BlogPost[] = [
     isoDate: "2023-12-10T09:00:00+13:00",
     category: "Nutrition",
     image: {
-      url: "/images/dad-carrypack-hiking.jpg?v=2",
+      url: "/images-v2/dad-carrypack-hiking.jpg?v=2",
       alt: "Healthy meal prep containers",
       seoDescription: "Healthy food in meal prep containers, representing nutrition strategies for busy professionals."
     },
@@ -110,7 +110,7 @@ export const BLOG_POSTS: BlogPost[] = [
       name: "Hayden Richards",
       role: "Founder & Head Coach",
       bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-      avatarUrl: "/images/dad-carrypack-hiking.jpg?v=2"
+      avatarUrl: "/images-v2/dad-carrypack-hiking.jpg?v=2"
     },
     seoTitle: "Nutrition Hacks for Busy Professionals | WRK",
     seoDescription: "Stop wasting time meal prepping. Learn the ingredient prep method for sustainable nutrition.",
