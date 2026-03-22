@@ -129,7 +129,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
       <div className="flex-grow overflow-hidden relative">
         {showHtml ? (
           <textarea
-            value={value}
+            value={value || ''}
             onChange={handleHtmlChange}
             className="w-full h-full p-4 font-mono text-sm resize-none focus:outline-none bg-primary text-text-primary"
             placeholder="Edit HTML directly..."
@@ -151,7 +151,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
       {/* Footer Info */}
       <div className="px-4 py-2 bg-secondary border-t border-border text-[10px] text-text-secondary uppercase tracking-wider font-bold flex justify-between">
         <span>{showHtml ? 'Editing Source Code' : 'Visual Editor Mode'}</span>
-        <span>{value.length} Characters</span>
+        <span>{(value || '').length} Characters</span>
       </div>
 
       <style>{`

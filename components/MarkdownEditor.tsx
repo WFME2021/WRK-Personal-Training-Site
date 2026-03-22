@@ -75,9 +75,10 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
         try {
           // Insert a placeholder
           const placeholderText = `\n![Uploading ${file.name}...]()\n`;
-          const cursorPosition = textareaRef.current?.selectionStart || value.length;
-          const textBefore = value.substring(0, cursorPosition);
-          const textAfter = value.substring(cursorPosition);
+          const safeValue = value || '';
+          const cursorPosition = textareaRef.current?.selectionStart || safeValue.length;
+          const textBefore = safeValue.substring(0, cursorPosition);
+          const textAfter = safeValue.substring(cursorPosition);
           onChange(textBefore + placeholderText + textAfter);
 
           // Compress and get base64
@@ -137,7 +138,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
         {!isPreview ? (
           <textarea
             ref={textareaRef}
-            value={value}
+            value={value || ''}
             onChange={(e) => onChange(e.target.value)}
             onDrop={handleDrop}
             onDragOver={handleDragOver}

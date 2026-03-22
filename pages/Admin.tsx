@@ -256,6 +256,11 @@ export const Admin: React.FC = () => {
     } else {
         // Handle single object update
         updatedValue = { ...currentField, [field]: value };
+        
+        // If updating 'url' on hero or banner, also update 'image'
+        if ((key === 'hero' || key === 'banner') && field === 'url') {
+            updatedValue.image = value;
+        }
     }
 
     const updatedPage = { ...currentPage, [key]: updatedValue };
@@ -620,7 +625,7 @@ export const Admin: React.FC = () => {
                       <input
                         type="text"
                         name="title"
-                        value={postFormData.title}
+                        value={postFormData.title || ''}
                         onChange={handlePostChange}
                         required
                         className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
@@ -631,7 +636,7 @@ export const Admin: React.FC = () => {
                       <input
                         type="text"
                         name="slug"
-                        value={postFormData.slug}
+                        value={postFormData.slug || ''}
                         onChange={handlePostChange}
                         required
                         className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
@@ -644,7 +649,7 @@ export const Admin: React.FC = () => {
                       <input
                         type="text"
                         name="category"
-                        value={postFormData.category}
+                        value={postFormData.category || ''}
                         onChange={handlePostChange}
                         className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
                       />
@@ -666,7 +671,7 @@ export const Admin: React.FC = () => {
                       <input
                         type="text"
                         name="date"
-                        value={postFormData.date}
+                        value={postFormData.date || ''}
                         onChange={handlePostChange}
                         className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
                       />
@@ -799,7 +804,7 @@ export const Admin: React.FC = () => {
                          <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Or enter Image URL</label>
                          <input
                            type="text"
-                           value={postFormData.image.url}
+                           value={postFormData.image?.url || ''}
                            onChange={(e) => handleBlogImageChange('url', e.target.value)}
                            className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
                            placeholder="https://..."
@@ -844,7 +849,7 @@ export const Admin: React.FC = () => {
                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Excerpt / Summary</label>
                     <textarea
                       name="excerpt"
-                      value={postFormData.excerpt}
+                      value={postFormData.excerpt || ''}
                       onChange={handlePostChange}
                       rows={2}
                       className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none"
@@ -854,7 +859,7 @@ export const Admin: React.FC = () => {
                   <div>
                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Main Blog Body</label>
                      <MarkdownEditor 
-                        value={postFormData.content} 
+                        value={postFormData.content || ''} 
                         onChange={(md) => handleRichTextChange('content', md)} 
                      />
                   </div>
@@ -955,10 +960,14 @@ export const Admin: React.FC = () => {
                    </div>
                 ) : (
                   <div className="space-y-8">
-                    {Object.keys(pageContent[selectedPage]).map((fieldKey) => {
+                    {Object.keys(pageContent[selectedPage])
+                      .filter(key => key !== 'seo')
+                      .map((fieldKey) => {
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       const value = (pageContent[selectedPage] as any)[fieldKey];
                       const label = FIELD_LABELS[fieldKey] || fieldKey;
+                      const isHeroOrBanner = fieldKey === 'hero' || fieldKey === 'banner';
+                      const imageUrl = isHeroOrBanner ? (value.url || value.image) : value.url;
 
                       if (Array.isArray(value)) {
                         return (
@@ -976,7 +985,7 @@ export const Admin: React.FC = () => {
                                           <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image URL</label>
                                           <input
                                             type="text"
-                                            value={item.url}
+                                            value={item.url || ''}
                                             onChange={(e) => handlePageImageChange(fieldKey, 'url', e.target.value, index)}
                                             className="w-full p-2 bg-primary text-text-primary border border-border rounded-lg text-sm"
                                             placeholder="https://..."
@@ -1022,9 +1031,9 @@ export const Admin: React.FC = () => {
                                </label>
                                <p className="text-xs text-text-secondary">Update the image displayed in this section.</p>
                              </div>
-                             {value.url && (
+                             {imageUrl && (
                                <div className="w-24 h-16 rounded-lg overflow-hidden border border-border shadow-sm">
-                                 <img referrerPolicy="no-referrer" src={value.url} alt={value.alt} className="w-full h-full object-cover" />
+                                 <img referrerPolicy="no-referrer" src={imageUrl} alt={value.alt} className="w-full h-full object-cover" />
                                </div>
                              )}
                            </div>
@@ -1034,7 +1043,7 @@ export const Admin: React.FC = () => {
                                <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image URL</label>
                                <input
                                  type="text"
-                                 value={value.url}
+                                 value={imageUrl || ''}
                                  onChange={(e) => handlePageImageChange(fieldKey, 'url', e.target.value)}
                                  placeholder="https://..."
                                  className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"

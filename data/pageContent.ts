@@ -57,15 +57,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
       image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
       kicker: "<span class='text-white font-bold'>The gym is a tool — not a lifestyle.</span><br class='hidden md:block' /> The goal is more energy, less pain, and a body that can handle work, family, weekends, and the adventures you keep putting off.",
       eyebrow: "Strength & Conditioning | Christchurch (Addington) + NZ-wide",
-      url: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
       alt: "strong capable dad, carrying child in carry pack while tramping up hill",
       seoDescription: "strong capable dad who has trained hard so that he can play hard by "
     },
     banner: {
       tagline: "Fit enough for the good stuff.",
       support: "Train to live more—work, family, weekends.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
-      url: ""
+      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
     },
     ptImage: {
       url: "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
@@ -123,17 +121,15 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Pain-aware programming (posture / postpartum / menopause / niggles)",
         "Accountability that actually works"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
       kicker: "Based at Get Me Fitter, 12 Show Place, Addington, Christchurch.",
-      url: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
       alt: "Fit and capable man back country skiing",
       seoDescription: "Fit and capable man back country skiing, reflecting the fitness gained through personal training."
     },
     banner: {
       tagline: "Train smart. Progress without breaking down.",
       support: "We work around niggles and build you up properly.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
-      url: "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
+      image: "https://i.postimg.cc/PrV3gGs8/mum-kid-hiking.jpg",
       alt: "Mum and child hiking",
       seoDescription: "A mother carrying a child on a hike,  representing the real-world application of strength gained through personal training."
     },
@@ -342,9 +338,8 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Evidence Based",
         "Resilience"
       ],
-      image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-      kicker: "The Methodology",
-      url: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
+      image: "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg",
+      kicker: "The Methodology"
     },
     banner: {
       tagline: "We do not train for the sake of being tired.",
