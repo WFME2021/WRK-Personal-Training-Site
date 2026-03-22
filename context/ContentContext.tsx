@@ -68,11 +68,14 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         
         const data = await response.json();
         
-        if (data.blogs && Array.isArray(data.blogs)) {
+        // Only overwrite if we don't have local changes for this version
+        const hasLocalBlogs = !!localStorage.getItem('wrk_site_blogs');
+        if (!hasLocalBlogs && data.blogs && Array.isArray(data.blogs)) {
             setBlogPosts(data.blogs);
         }
         
-        if (data.pages) {
+        const hasLocalPages = !!localStorage.getItem('wrk_site_pages_v22');
+        if (!hasLocalPages && data.pages) {
             setPageContent(prev => mergeDeep(prev, data.pages));
         }
       } catch (error) {

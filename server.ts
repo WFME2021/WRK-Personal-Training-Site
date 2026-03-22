@@ -435,6 +435,17 @@ ${JSON.stringify(answers, null, 2)}
       return res.status(400).json({ error: "No content provided" });
     }
 
+    // 1. Save locally first (so it works in AI Studio preview immediately)
+    const localContentPath = path.join(process.cwd(), "public", "content.json");
+    const contentString = JSON.stringify(content, null, 2);
+    try {
+      fs.writeFileSync(localContentPath, contentString, 'utf8');
+      console.log("Saved content locally to", localContentPath);
+    } catch (localErr) {
+      console.error("Failed to save locally:", localErr);
+      return res.status(500).json({ error: "Failed to save content locally" });
+    }
+
     const rawToken = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || "";
     const token = rawToken.replace(/^"|"$/g, '').trim();
     
@@ -445,20 +456,10 @@ ${JSON.stringify(answers, null, 2)}
     const repo = rawRepo.replace(/^"|"$/g, '').trim();
 
     if (!token || !owner || !repo) {
-      const missing = [];
-      if (!token) missing.push("GITHUB_TOKEN");
-      if (!owner) missing.push("GITHUB_OWNER");
-      if (!repo) missing.push("GITHUB_REPO");
-
-      console.error("Missing GitHub credentials:", missing.join(", "));
-      return res.status(500).json({ 
-        error: "GitHub credentials not configured.",
-        details: `Missing variables: ${missing.join(", ")}`,
-        debug: {
-          hasToken: !!token,
-          hasOwner: !!owner,
-          hasRepo: !!repo
-        }
+      console.log("GitHub credentials not fully configured. Saved locally only.");
+      return res.json({ 
+        success: true, 
+        message: "Content saved locally! (GitHub push skipped due to missing credentials)" 
       });
     }
 
@@ -592,15 +593,7 @@ ${JSON.stringify(answers, null, 2)}
 
       // 2. Update file content
       // Convert content to Base64
-      const contentString = JSON.stringify(content, null, 2);
       const contentEncoded = Buffer.from(contentString).toString('base64');
-
-      // Save locally so the dev server serves the updated content
-      try {
-        fs.writeFileSync(localContentPath, contentString, 'utf8');
-      } catch (localErr) {
-        console.error("Failed to save locally:", localErr);
-      }
 
       await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
         owner,
@@ -611,7 +604,7 @@ ${JSON.stringify(answers, null, 2)}
         sha, // Required if updating existing file
       });
 
-      res.json({ success: true, message: "Content published to GitHub successfully!" });
+      res.json({ success: true, message: "Content saved locally and published to GitHub successfully!" });
     } catch (error: any) {
       console.error("GitHub API Error:", error);
       
