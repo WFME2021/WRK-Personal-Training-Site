@@ -159,7 +159,8 @@
     "onlineCoaching": {
       "seo": {
         "title": "Online Personal Training | App Coaching (12 Weeks+)",
-        "description": "Online personal training with custom programming, check-ins and flexible nutrition support. Built for travel, stress and real schedules. 12-week minimum."
+        "description": "Online personal training with custom programming, check-ins and flexible nutrition support. Built for travel, stress and real schedules. 12-week minimum.",
+        "url": "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
       },
       "hero": {
         "h1": "Online Personal Training (12-Week Minimum)",
@@ -170,12 +171,14 @@
           "Protein-forward, flexible nutrition support"
         ],
         "image": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
-        "kicker": "12-week minimum—because quick fixes are how people end up starting over."
+        "kicker": "12-week minimum—because quick fixes are how people end up starting over.",
+        "url": "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
       },
       "banner": {
         "tagline": "A plan that survives travel, stress, and chaos.",
         "support": "Consistency beats intensity when life’s busy.",
-        "image": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg"
+        "image": "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
+        "url": "https://i.postimg.cc/4Nv4P1rF/downhill-skiing.jpg"
       },
       "workoutLogImage": {
         "url": "https://i.postimg.cc/3w5FjthV/exercise-history.png",
