@@ -51,7 +51,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   const [pageContent, setPageContent] = useState<PageContentState>(() => {
     try {
-      const saved = localStorage.getItem('wrk_site_pages_v20'); // Changed key to avoid loading old structure
+      const saved = localStorage.getItem('wrk_site_pages_v21'); // Changed key to avoid loading old structure
       return saved ? mergeDeep(PAGE_CONTENT, JSON.parse(saved)) : PAGE_CONTENT;
     } catch (e) {
       return PAGE_CONTENT;
@@ -89,7 +89,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   }, [blogPosts]);
 
   useEffect(() => {
-    localStorage.setItem('wrk_site_pages_v20', JSON.stringify(pageContent));
+    localStorage.setItem('wrk_site_pages_v21', JSON.stringify(pageContent));
   }, [pageContent]);
 
   const updateBlogPosts = (posts: BlogPost[]) => setBlogPosts(posts);

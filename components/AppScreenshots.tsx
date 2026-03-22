@@ -1,14 +1,14 @@
 import React from 'react';
 
 const SCREENSHOTS = [
-  { src: "/images/exercise-videos.png", alt: "Exercise Videos & Form" },
-  { src: "/images/exercise-history.png", alt: "Exercise History & Tracking" },
-  { src: "/images/macro-tracking-app.jpg", alt: "Macro Tracking" },
-  { src: "/images/habit-tracking.png", alt: "Daily Habit Tracking" },
-  { src: "/images/fat-loss-tracking.png", alt: "Progress Tracking" },
-  { src: "/images/recipe-tracking.png", alt: "Recipe Database" },
-  { src: "/images/barcode-scanner.png", alt: "Barcode Scanner" },
-  { src: "/images/celebrating-wins.png", alt: "Celebrating Wins" }
+  { src: "https://i.postimg.cc/WzHzvp7V/exercise-videos.png", alt: "Exercise Videos & Form" },
+  { src: "https://i.postimg.cc/3w5FjthV/exercise-history.png", alt: "Exercise History & Tracking" },
+  { src: "https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg", alt: "Macro Tracking" },
+  { src: "https://i.postimg.cc/XqmjPHVV/habit-tracking.png", alt: "Daily Habit Tracking" },
+  { src: "https://i.postimg.cc/8CS5D0LN/fat-loss-tracking.png", alt: "Progress Tracking" },
+  { src: "https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png", alt: "Recipe Database" },
+  { src: "https://i.postimg.cc/CLcHRbm3/barcode-scanner.png", alt: "Barcode Scanner" },
+  { src: "https://i.postimg.cc/cHT6FBgH/celebrating-wins.png", alt: "Celebrating Wins" }
 ];
 
 export const AppScreenshots: React.FC<{ limit?: number, className?: string }> = ({ limit, className = "" }) => {

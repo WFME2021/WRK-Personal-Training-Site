@@ -14,8 +14,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const { pageContent } = useContent();
   
   // Hardcoded logos as requested
-  const LOGO_LIGHT_MODE = "/images/wrk-logo-black-transparent.png"; // Black logo for light background
-  const LOGO_DARK_MODE = "/images/WRK-LOGOS-(Final).png"; // White/Main logo for dark background
+  const LOGO_LIGHT_MODE = "https://i.postimg.cc/59nFgbLv/wrk-logo-black-transparent.png"; // Black logo for light background
+  const LOGO_DARK_MODE = "https://i.postimg.cc/13cs5yGp/WRK-LOGOS-(Final).png"; // White/Main logo for dark background
   
   const logoSrc = theme === 'dark' ? LOGO_DARK_MODE : LOGO_LIGHT_MODE;
 
