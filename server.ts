@@ -19,6 +19,22 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
+  app.get("/api/debug-env", (req, res) => {
+    console.log("DEBUG ENV:", {
+      GITHUB_TOKEN: !!process.env.GITHUB_TOKEN,
+      GITHUB_OWNER: process.env.GITHUB_OWNER,
+      GITHUB_REPO: process.env.GITHUB_REPO,
+      VITE_GITHUB_TOKEN: !!process.env.VITE_GITHUB_TOKEN,
+      VITE_GITHUB_OWNER: process.env.VITE_GITHUB_OWNER,
+      VITE_GITHUB_REPO: process.env.VITE_GITHUB_REPO
+    });
+    res.json({ 
+      hasToken: !!process.env.GITHUB_TOKEN || !!process.env.VITE_GITHUB_TOKEN,
+      owner: process.env.GITHUB_OWNER || process.env.VITE_GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO || process.env.VITE_GITHUB_REPO
+    });
+  });
+
   // Contact Form Submission
   app.post("/api/contact", async (req, res) => {
     const { name, email, phone, message, interest, referralSource } = req.body;

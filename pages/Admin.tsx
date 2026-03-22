@@ -118,7 +118,7 @@ export const Admin: React.FC = () => {
         throw new Error(result.error || 'Failed to publish');
       }
 
-      showToast('SUCCESS: Changes published to GitHub! The site will update automatically in a few moments.');
+      showToast(result.message || 'SUCCESS: Changes published! The site will update automatically in a few moments.');
     } catch (error: any) {
       console.error('Publish error:', error);
       showToast(`ERROR: ${error.message}`, 'error');
