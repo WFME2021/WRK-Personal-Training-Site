@@ -454,12 +454,14 @@ ${JSON.stringify(answers, null, 2)}
     // 1. Save locally first (so it works in AI Studio preview immediately)
     const localContentPath = path.join(process.cwd(), "public", "content.json");
     const contentString = JSON.stringify(content, null, 2);
+    let localSaveSuccess = false;
     try {
       fs.writeFileSync(localContentPath, contentString, 'utf8');
       console.log("Saved content locally to", localContentPath);
+      localSaveSuccess = true;
     } catch (localErr) {
-      console.error("Failed to save locally:", localErr);
-      return res.status(500).json({ error: "Failed to save content locally" });
+      console.warn("Failed to save locally (expected on Vercel/read-only environments):", localErr);
+      // Do not return 500 here, continue to GitHub push!
     }
 
     const rawToken = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || "";
@@ -472,7 +474,12 @@ ${JSON.stringify(answers, null, 2)}
     const repo = rawRepo.replace(/^"|"$/g, '').trim();
 
     if (!token || !owner || !repo) {
-      console.log("GitHub credentials not fully configured. Saved locally only.");
+      console.log("GitHub credentials not fully configured.");
+      if (!localSaveSuccess) {
+        return res.status(500).json({ 
+          error: "Failed to save content. The file system is read-only and GitHub credentials are not configured to push the changes." 
+        });
+      }
       return res.json({ 
         success: true, 
         message: "Content saved locally! (GitHub push skipped due to missing credentials)" 

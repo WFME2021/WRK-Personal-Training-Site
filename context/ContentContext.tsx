@@ -93,14 +93,9 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
               }
               
               // Add any local blogs that aren't in fetched (e.g. newly created but not deployed yet)
-              // But only if they were created recently (e.g. within the last 24 hours) to avoid keeping deleted posts forever
-              const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
               for (const [id, localBlog] of localMap.entries()) {
                 if (!mergedMap.has(id)) {
-                  const localDate = new Date((localBlog as any).updatedDate || (localBlog as any).isoDate || 0).getTime();
-                  if (localDate > oneDayAgo) {
-                    mergedMap.set(id, localBlog);
-                  }
+                  mergedMap.set(id, localBlog);
                 }
               }
               
