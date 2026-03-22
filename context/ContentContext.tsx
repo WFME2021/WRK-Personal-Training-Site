@@ -68,15 +68,66 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         
         const data = await response.json();
         
-        // Only overwrite if we don't have local changes for this version
-        const hasLocalBlogs = !!localStorage.getItem('wrk_site_blogs');
-        if (!hasLocalBlogs && data.blogs && Array.isArray(data.blogs)) {
-            setBlogPosts(data.blogs);
+        if (data.blogs && Array.isArray(data.blogs)) {
+            setBlogPosts(prevLocal => {
+              // Create a map of fetched blogs
+              const fetchedMap = new Map(data.blogs.map((b: any) => [b.id, b]));
+              
+              // Create a map of local blogs
+              const localMap = new Map(prevLocal.map(b => [b.id, b]));
+              
+              // Merge them, preferring the one with the latest updatedDate or isoDate
+              const mergedMap = new Map();
+              
+              // Add all fetched blogs, potentially overridden by newer local ones
+              for (const [id, fetchedBlogRaw] of fetchedMap.entries()) {
+                const fetchedBlog = fetchedBlogRaw as any;
+                const localBlog = localMap.get(id) as any;
+                if (localBlog) {
+                  const fetchedDate = new Date(fetchedBlog.updatedDate || fetchedBlog.isoDate || 0).getTime();
+                  const localDate = new Date(localBlog.updatedDate || localBlog.isoDate || 0).getTime();
+                  mergedMap.set(id, localDate > fetchedDate ? localBlog : fetchedBlog);
+                } else {
+                  mergedMap.set(id, fetchedBlog);
+                }
+              }
+              
+              // Add any local blogs that aren't in fetched (e.g. newly created but not deployed yet)
+              // But only if they were created recently (e.g. within the last 24 hours) to avoid keeping deleted posts forever
+              const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
+              for (const [id, localBlog] of localMap.entries()) {
+                if (!mergedMap.has(id)) {
+                  const localDate = new Date((localBlog as any).updatedDate || (localBlog as any).isoDate || 0).getTime();
+                  if (localDate > oneDayAgo) {
+                    mergedMap.set(id, localBlog);
+                  }
+                }
+              }
+              
+              return Array.from(mergedMap.values()).sort((a, b) => {
+                const dateA = new Date(a.isoDate).getTime();
+                const dateB = new Date(b.isoDate).getTime();
+                return dateB - dateA;
+              });
+            });
         }
         
-        const hasLocalPages = !!localStorage.getItem('wrk_site_pages_v22');
-        if (!hasLocalPages && data.pages) {
-            setPageContent(prev => mergeDeep(prev, data.pages));
+        if (data.pages) {
+            setPageContent(prevLocal => {
+              // Merge them, preferring the one with the latest updatedDate
+              const mergedPages = { ...data.pages };
+              for (const [key, fetchedPage] of Object.entries(data.pages) as [string, any][]) {
+                const localPage = prevLocal[key];
+                if (localPage) {
+                  const fetchedDate = new Date(fetchedPage.updatedDate || 0).getTime();
+                  const localDate = new Date(localPage.updatedDate || 0).getTime();
+                  if (localDate > fetchedDate) {
+                    mergedPages[key] = localPage;
+                  }
+                }
+              }
+              return mergeDeep(prevLocal, mergedPages);
+            });
         }
       } catch (error) {
         console.warn('Could not fetch dynamic content, using local defaults. This is expected during development if content.json is not yet generated or if offline.', error);
