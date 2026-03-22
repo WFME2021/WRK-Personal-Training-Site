@@ -42,7 +42,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   // Initialize from localStorage to persist changes
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() => {
     try {
-      const saved = localStorage.getItem('wrk_site_blogs');
+      const saved = localStorage.getItem('wrk_site_blogs_v2'); // Changed key to avoid loading old deleted blogs
       return saved ? JSON.parse(saved) : BLOG_POSTS;
     } catch (e) {
       return BLOG_POSTS;
@@ -134,7 +134,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   // Save to localStorage whenever state changes
   useEffect(() => {
-    localStorage.setItem('wrk_site_blogs', JSON.stringify(blogPosts));
+    localStorage.setItem('wrk_site_blogs_v2', JSON.stringify(blogPosts));
   }, [blogPosts]);
 
   useEffect(() => {
