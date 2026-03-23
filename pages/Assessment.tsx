@@ -5,6 +5,7 @@ import { SeoHead } from '../components/SeoHead';
 import { ArrowLeft, CheckCircle2, Loader2 } from 'lucide-react';
 import { assessmentData } from '../data/assessmentData';
 import { calculateArchetype, Answers } from '../services/assessmentLogic';
+import { submitAssessment } from '../services/apiService';
 
 export const Assessment: React.FC = () => {
   const navigate = useNavigate();
@@ -61,13 +62,7 @@ export const Assessment: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      await fetch('/api/assessment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, answers }),
-      });
+      await submitAssessment({ name, email, answers });
     } catch (error) {
       console.error('Failed to submit assessment:', error);
     } finally {

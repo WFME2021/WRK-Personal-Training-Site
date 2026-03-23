@@ -3,7 +3,7 @@ import { AssessmentData, ContactFormData } from '../types';
 // In a real implementation, these functions would call your backend (Firebase Functions, etc.)
 // which would then interact with Google Sheets and MailerLite.
 
-export const submitAssessment = async (data: AssessmentData): Promise<boolean> => {
+export const submitAssessment = async (data: { name: string; email: string; answers: Record<string, string> }): Promise<boolean> => {
   try {
     const response = await fetch('/api/assessment', {
       method: 'POST',
