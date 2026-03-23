@@ -53,7 +53,7 @@ export const OnlineCoaching: React.FC = () => {
         <section className="relative pt-40 pb-32 px-6 text-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="/images/mum-kid-hiking.jpg" 
+              src={pageContent.onlineCoaching?.hero?.image || "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"} 
               alt="Online Personal Training" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
