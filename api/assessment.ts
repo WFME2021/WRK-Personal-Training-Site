@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 import { assessmentData } from '../data/assessmentData';
 import { calculateArchetype, calculateRecommendation } from '../services/assessmentLogic';
 
@@ -8,7 +8,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { name, email, answers } = req.body;
+  const { name, email, answers = {} } = req.body;
 
   if (!name || !email) {
     return res.status(400).json({ error: "Missing required fields" });
@@ -134,7 +134,64 @@ ${JSON.stringify(answers, null, 2)}
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log("Assessment email sent successfully");
+    } catch (emailError) {
+      console.error("Failed to send assessment email:", emailError);
+    }
+
+    const userMailOptions = {
+      from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
+      to: email,
+      subject: `Your Capacity Blueprint Results - WRK Personal Training`,
+      text: `Hi ${name},
+
+Thanks for completing the Capacity Blueprint Diagnostic.
+
+--- Your Diagnostic Result ---
+Archetype / Bottleneck: ${archetypeLabel}
+Bottleneck statement: ${primaryBottleneck}
+Rule this week: ${ruleThisWeek}
+
+Recommended next step: ${recommendedServiceName}
+Link: https://www.wrkpersonaltraining.co.nz${recommendedServicePath}
+
+Alternate option: ${alternateServiceName}
+Link: https://www.wrkpersonaltraining.co.nz${alternateServicePath}
+
+If you have any questions or want to discuss how to implement this, just reply to this email.
+
+Best regards,
+WRK Personal Training
+`,
+      html: `<p>Hi ${name},</p>
+<p>Thanks for completing the Capacity Blueprint Diagnostic.</p>
+
+<h4>--- Your Diagnostic Result ---</h4>
+<p><strong>Archetype / Bottleneck:</strong> ${archetypeLabel}<br/>
+<strong>Bottleneck statement:</strong> ${primaryBottleneck}<br/>
+<strong>Rule this week:</strong> ${ruleThisWeek}</p>
+
+<p><strong>Recommended next step:</strong> ${recommendedServiceName}<br/>
+<strong>Link:</strong> <a href="https://www.wrkpersonaltraining.co.nz${recommendedServicePath}">https://www.wrkpersonaltraining.co.nz${recommendedServicePath}</a></p>
+
+<p><strong>Alternate option:</strong> ${alternateServiceName}<br/>
+<strong>Link:</strong> <a href="https://www.wrkpersonaltraining.co.nz${alternateServicePath}">https://www.wrkpersonaltraining.co.nz${alternateServicePath}</a></p>
+
+<p>If you have any questions or want to discuss how to implement this, just reply to this email.</p>
+
+<p>Best regards,<br/>
+WRK Personal Training</p>
+`
+    };
+
+    try {
+      await transporter.sendMail(userMailOptions);
+      console.log("Assessment email sent to user successfully");
+    } catch (emailError) {
+      console.error("Failed to send assessment email to user:", emailError);
+    }
 
     // --- MailerLite Integration ---
     const rawKey = process.env.MAILERLITE_API_KEY || "";

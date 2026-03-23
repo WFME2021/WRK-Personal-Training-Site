@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -53,7 +53,12 @@ ${message}
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log("Contact email sent successfully");
+    } catch (emailError) {
+      console.error("Failed to send contact email:", emailError);
+    }
 
     // --- MailerLite Integration ---
     const rawKey = process.env.MAILERLITE_API_KEY || "";
