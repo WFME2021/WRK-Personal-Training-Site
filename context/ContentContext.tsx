@@ -42,8 +42,18 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   // Initialize from localStorage to persist changes
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() => {
     try {
-      const saved = localStorage.getItem('wrk_site_blogs_v2'); // Changed key to avoid loading old deleted blogs
-      return saved ? JSON.parse(saved) : BLOG_POSTS;
+      const saved = localStorage.getItem('wrk_site_blogs'); // Reverted key to restore user's work
+      if (saved) {
+        const parsed = JSON.parse(saved) as BlogPost[];
+        // Permanently remove specific blogs the user requested to be deleted
+        const titlesToRemove = [
+          "Nutrition Strategies for Corporate Athletes",
+          "Strength Training 101: The Big Four",
+          "How to Optimize Sleep for Recovery"
+        ];
+        return parsed.filter(post => !titlesToRemove.includes(post.title));
+      }
+      return BLOG_POSTS;
     } catch (e) {
       return BLOG_POSTS;
     }
@@ -51,7 +61,7 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   const [pageContent, setPageContent] = useState<PageContentState>(() => {
     try {
-      const saved = localStorage.getItem('wrk_site_pages_v22'); // Changed key to avoid loading old structure
+      const saved = localStorage.getItem('wrk_site_pages'); // Reverted key to restore user's work
       return saved ? mergeDeep(PAGE_CONTENT, JSON.parse(saved)) : PAGE_CONTENT;
     } catch (e) {
       return PAGE_CONTENT;
@@ -70,14 +80,24 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         
         if (data.blogs && Array.isArray(data.blogs)) {
             setBlogPosts(prevLocal => {
-              // Create a map of fetched blogs
-              const fetchedMap = new Map(data.blogs.map((b: any) => [b.id, b]));
+              const titlesToRemove = [
+                "Nutrition Strategies for Corporate Athletes",
+                "Strength Training 101: The Big Four",
+                "How to Optimize Sleep for Recovery"
+              ];
+              
+              // Create a map of fetched blogs, filtering out the ones to remove
+              const fetchedMap = new Map<string, BlogPost>(
+                data.blogs
+                  .filter((b: any) => !titlesToRemove.includes(b.title))
+                  .map((b: any) => [b.id, b])
+              );
               
               // Create a map of local blogs
-              const localMap = new Map(prevLocal.map(b => [b.id, b]));
+              const localMap = new Map<string, BlogPost>(prevLocal.map(b => [b.id, b]));
               
               // Merge them, preferring the one with the latest updatedDate or isoDate
-              const mergedMap = new Map();
+              const mergedMap = new Map<string, BlogPost>();
               
               // Add all fetched blogs, potentially overridden by newer local ones
               for (const [id, fetchedBlogRaw] of fetchedMap.entries()) {
@@ -92,9 +112,10 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
                 }
               }
               
-              // Add any local blogs that aren't in fetched (e.g. newly created but not deployed yet)
+              // Only add local blogs that are explicitly marked as draft (newly created but not published)
+              // This prevents deleted blogs from being resurrected from localStorage
               for (const [id, localBlog] of localMap.entries()) {
-                if (!mergedMap.has(id)) {
+                if (!mergedMap.has(id) && localBlog.status === 'draft') {
                   mergedMap.set(id, localBlog);
                 }
               }
@@ -134,11 +155,11 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   // Save to localStorage whenever state changes
   useEffect(() => {
-    localStorage.setItem('wrk_site_blogs_v2', JSON.stringify(blogPosts));
+    localStorage.setItem('wrk_site_blogs', JSON.stringify(blogPosts));
   }, [blogPosts]);
 
   useEffect(() => {
-    localStorage.setItem('wrk_site_pages_v22', JSON.stringify(pageContent));
+    localStorage.setItem('wrk_site_pages', JSON.stringify(pageContent));
   }, [pageContent]);
 
   const updateBlogPosts = (posts: BlogPost[]) => setBlogPosts(posts);

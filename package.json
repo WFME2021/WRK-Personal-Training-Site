@@ -8,7 +8,7 @@
     "build": "vite build && tsx generate-sitemap.ts",
     "lint": "tsc --noEmit",
     "preview": "vite preview --port 8080 --host",
-    "start": "node server.ts"
+    "start": "tsx server.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
