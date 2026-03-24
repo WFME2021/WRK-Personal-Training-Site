@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import * as nodemailer from 'nodemailer';
-import { assessmentData } from '../data/assessmentData';
-import { calculateArchetype, calculateRecommendation } from '../services/assessmentLogic';
+import { assessmentData } from '../data/assessmentData.js';
+import { calculateArchetype, calculateRecommendation } from '../services/assessmentLogic.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
