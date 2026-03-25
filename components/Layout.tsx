@@ -6,6 +6,7 @@ import { BRAND_NAME, NAVIGATION_LINKS, LOCATION, EMAIL_CONTACT } from '../consta
 import { ThemeToggle } from './ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
 import { useContent } from '../context/ContentContext';
+import { corporateClients } from '../data/corporateClients';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +33,15 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   ];
 
   const isLandingPage = LANDING_PAGE_ROUTES.includes(location.pathname);
+  const isCorporatePage = location.pathname.startsWith('/corporate/');
+  
+  let corporateClientName = "";
+  if (isCorporatePage) {
+    const companyId = location.pathname.split('/')[2];
+    if (companyId && corporateClients[companyId]) {
+      corporateClientName = corporateClients[companyId].name;
+    }
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-primary text-text-primary selection:bg-accent selection:text-white transition-colors duration-300 overflow-x-hidden">
@@ -45,8 +55,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             />
           </Link>
 
-          {/* Landing Page Nav - Minimal */}
-          {isLandingPage ? (
+          {/* Corporate Page Nav - Custom Message */}
+          {isCorporatePage ? (
+            <div className="flex items-center gap-4">
+              <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-text-secondary hidden sm:block">
+                WRK is excited to partner with {corporateClientName}
+              </span>
+              <div className="pl-4 sm:border-l border-border">
+                <ThemeToggle />
+              </div>
+            </div>
+          ) : isLandingPage ? (
             <Link 
               to="/" 
               className="text-xs font-bold uppercase tracking-widest text-text-primary hover:text-accent transition-colors border-b border-transparent hover:border-accent"
@@ -95,8 +114,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           )}
         </div>
 
-        {/* Mobile Nav - Only show if NOT landing page */}
-        {!isLandingPage && isMenuOpen && (
+        {/* Mobile Nav - Only show if NOT landing page or corporate page */}
+        {!isLandingPage && !isCorporatePage && isMenuOpen && (
           <div className="md:hidden absolute top-24 left-0 w-full bg-primary border-b border-border p-6 flex flex-col space-y-4 shadow-xl h-[calc(100vh-6rem)] overflow-y-auto">
             {NAVIGATION_LINKS.map((link) => (
               <Link 
@@ -125,7 +144,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </main>
 
       {/* Footer - Conditional Render */}
-      {isLandingPage ? (
+      {(isLandingPage || isCorporatePage) ? (
         <footer className="bg-secondary text-text-primary py-12 border-t border-border mt-12">
           <div className="max-w-7xl mx-auto px-8 text-center">
             <p className="text-xs font-bold uppercase tracking-widest text-text-secondary mb-4">

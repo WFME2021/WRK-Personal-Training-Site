@@ -10,6 +10,7 @@ import { Contact } from './pages/Contact';
 import { PersonalTraining } from './pages/PersonalTraining';
 import { OnlineCoaching } from './pages/OnlineCoaching';
 import { CorporateWellness } from './pages/CorporateWellness';
+import { CorporateLanding } from './pages/CorporateLanding';
 import { Challenge42 } from './pages/Challenge42';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
@@ -56,6 +57,7 @@ const App: React.FC = () => {
               <Route path="/personal-trainer-christchurch" element={<PersonalTraining />} />
               <Route path="/online-personal-training-nz" element={<OnlineCoaching />} />
               <Route path="/workplace-wellness-program-nz" element={<CorporateWellness />} />
+              <Route path="/corporate/:companyId" element={<CorporateLanding />} />
               <Route path="/fitness-challenge-nz" element={<Challenge42 />} />
               
               {/* Blog Routes */}
