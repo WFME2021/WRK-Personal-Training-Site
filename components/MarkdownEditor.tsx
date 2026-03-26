@@ -84,10 +84,16 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
           // Compress and get base64
           const base64Data = await compressImage(file);
 
-          // Replace placeholder with actual image
+          // Upload to Firebase Storage
+          const { uploadImageToStorage } = await import('../firebase');
+          const ext = file.name.split('.').pop() || 'webp';
+          const filename = `markdown-${Date.now()}.${ext}`;
+          const downloadUrl = await uploadImageToStorage(base64Data, `images/${filename}`);
+
+          // Replace placeholder with actual image URL
           const newText = (textBefore + placeholderText + textAfter).replace(
             placeholderText,
-            `\n![${file.name}](${base64Data})\n`
+            `\n![${file.name}](${downloadUrl})\n`
           );
           onChange(newText);
         } catch (error) {

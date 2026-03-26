@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "BlogPost": {
+      "title": "Blog Post",
+      "description": "A blog post entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "slug": { "type": "string" },
+        "title": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "content": { "type": "string" },
+        "faq": { "type": "string" },
+        "date": { "type": "string" },
+        "isoDate": { "type": "string" },
+        "updatedDate": { "type": "string" },
+        "category": { "type": "string" },
+        "image": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string" },
+            "alt": { "type": "string" },
+            "seoDescription": { "type": "string" }
+          }
+        },
+        "author": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "role": { "type": "string" },
+            "bio": { "type": "string" },
+            "avatarUrl": { "type": "string" }
+          }
+        },
+        "seoTitle": { "type": "string" },
+        "seoDescription": { "type": "string" },
+        "primaryKeyword": { "type": "string" },
+        "secondaryKeywords": { "type": "string" },
+        "ctaText": { "type": "string" },
+        "ctaLink": { "type": "string" },
+        "references": { "type": "string" },
+        "relatedPosts": { "type": "array", "items": { "type": "string" } },
+        "localLocation": { "type": "string" },
+        "localServiceCategory": { "type": "string" },
+        "localServicePage": { "type": "string" },
+        "localKeywordNote": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "published"] }
+      },
+      "required": ["id", "slug", "title", "excerpt", "content", "date", "isoDate", "category", "image", "author"]
+    },
+    "PageContent": {
+      "title": "Page Content",
+      "description": "Content for a specific page",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hero": { "type": "object" },
+        "banner": { "type": "object" },
+        "seo": { "type": "object" },
+        "ptImage": { "type": "object" },
+        "onlineImage": { "type": "object" },
+        "corporateImage": { "type": "object" },
+        "mainImage": { "type": "object" },
+        "workoutLogImage": { "type": "object" },
+        "habitsImage": { "type": "object" },
+        "challengeImage": { "type": "object" }
+      },
+      "required": ["id", "hero", "banner", "seo"]
+    }
+  },
+  "firestore": {
+    "blogs/{blogId}": {
+      "schema": { "$ref": "#/entities/BlogPost" },
+      "description": "Stores all blog posts"
+    },
+    "pages/{pageId}": {
+      "schema": { "$ref": "#/entities/PageContent" },
+      "description": "Stores content for static pages"
+    }
+  }
+}

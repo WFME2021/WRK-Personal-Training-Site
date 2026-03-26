@@ -1,15 +1,27 @@
 import fs from 'fs';
 import path from 'path';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import firebaseConfig from './firebase-applet-config.json' assert { type: 'json' };
 
-const generateSitemap = () => {
+const generateSitemap = async () => {
   try {
-    const contentPath = path.resolve("public/content.json");
-    let blogPosts = [];
-    if (fs.existsSync(contentPath)) {
-      const contentData = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
-      if (contentData.blogPosts) {
-        blogPosts = contentData.blogPosts.filter((post: any) => post.status !== 'draft');
-      }
+    let blogPosts: any[] = [];
+    
+    // Fetch blogs from Firestore using JS SDK
+    try {
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+      const querySnapshot = await getDocs(collection(db, 'blogs'));
+      
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.status !== 'draft' && data.slug) {
+          blogPosts.push(data);
+        }
+      });
+    } catch (err) {
+      console.error("Error fetching from Firestore:", err);
     }
 
     const baseUrl = 'https://www.wrkpersonaltraining.co.nz';
@@ -46,7 +58,13 @@ const generateSitemap = () => {
     blogPosts.forEach((post: any) => {
       sitemap += `  <url>\n`;
       sitemap += `    <loc>${baseUrl}/blog/${post.slug}</loc>\n`;
-      sitemap += `    <lastmod>${new Date(post.date).toISOString()}</lastmod>\n`;
+      if (post.date) {
+        try {
+          sitemap += `    <lastmod>${new Date(post.date).toISOString()}</lastmod>\n`;
+        } catch (e) {
+          // Ignore invalid dates
+        }
+      }
       sitemap += `    <changefreq>monthly</changefreq>\n`;
       sitemap += `    <priority>0.7</priority>\n`;
       sitemap += `  </url>\n`;
@@ -63,8 +81,10 @@ const generateSitemap = () => {
     }
     
     console.log('Sitemap generated successfully.');
+    process.exit(0);
   } catch (error) {
     console.error("Error generating sitemap:", error);
+    process.exit(1);
   }
 };
 

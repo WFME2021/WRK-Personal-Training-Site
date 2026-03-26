@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { MarkdownEditor } from '../components/MarkdownEditor';
 import { RichTextEditor } from '../components/RichTextEditor';
 import { useContent } from '../context/ContentContext';
+import { loginWithGoogle, logout, auth } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 // Default Author for new posts
 const DEFAULT_AUTHOR: Author = {
@@ -52,7 +54,7 @@ const EMPTY_POST: BlogPost = {
 export const Admin: React.FC = () => {
   const { blogPosts, pageContent, updateBlogPosts, updatePageContent, importData } = useContent();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
   
   const [view, setView] = useState<'blogs' | 'pages'>('blogs');
   const [editingId, setEditingId] = useState<string | null>(null); // Post ID
@@ -72,60 +74,36 @@ export const Admin: React.FC = () => {
 
   // Check auth on mount
   useEffect(() => {
-    const auth = sessionStorage.getItem('wrk_admin_auth');
-    if (auth === 'true') setIsAuthenticated(true);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+      setIsAuthLoading(false);
+    });
+    return () => unsubscribe();
   }, []);
 
   // Handle Login
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'wrk') { // Default Password
-      setIsAuthenticated(true);
-      sessionStorage.setItem('wrk_admin_auth', 'true');
-    } else {
-      showToast('Incorrect password', 'error');
+    try {
+      await loginWithGoogle();
+    } catch (error) {
+      showToast('Failed to sign in with Google', 'error');
     }
   };
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    sessionStorage.removeItem('wrk_admin_auth');
-    setPassword('');
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      showToast('Failed to sign out', 'error');
+    }
   };
 
   const [isPublishing, setIsPublishing] = useState(false);
-
-  const handleSaveAndPublish = async () => {
-    setIsPublishing(true);
-    try {
-      const publishData = {
-        pages: pageContent,
-        blogs: blogPosts
-      };
-
-      const response = await fetch('/api/admin/publish', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ content: publishData }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        console.error('Publish API Error Details:', result);
-        throw new Error(result.error || 'Failed to publish');
-      }
-
-      showToast(result.message || 'SUCCESS: Changes published! The site will update automatically in a few moments.');
-    } catch (error: any) {
-      console.error('Publish error:', error);
-      showToast(`ERROR: ${error.message}`, 'error');
-    } finally {
-      setIsPublishing(false);
-    }
-  };
 
   // --- BLOG LOGIC ---
 
@@ -154,44 +132,57 @@ export const Admin: React.FC = () => {
     setPostFormData(prev => ({ ...prev, [field]: html }));
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const MAX_WIDTH = 1200;
-        const MAX_HEIGHT = 1200;
-        let width = img.width;
-        let height = img.height;
+    try {
+      showToast('Uploading image...', 'success');
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = async () => {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 1200;
+          const MAX_HEIGHT = 1200;
+          let width = img.width;
+          let height = img.height;
 
-        if (width > height) {
-          if (width > MAX_WIDTH) {
-            height *= MAX_WIDTH / width;
-            width = MAX_WIDTH;
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
           }
-        } else {
-          if (height > MAX_HEIGHT) {
-            width *= MAX_HEIGHT / height;
-            height = MAX_HEIGHT;
-          }
-        }
 
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.drawImage(img, 0, 0, width, height);
-          const webpDataUrl = canvas.toDataURL('image/webp', 0.8);
-          handleBlogImageChange('url', webpDataUrl);
-        }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(img, 0, 0, width, height);
+            const webpDataUrl = canvas.toDataURL('image/webp', 0.8);
+            
+            // Upload to Firebase Storage
+            const { uploadImageToStorage } = await import('../firebase');
+            const filename = `blog-featured-${Date.now()}.webp`;
+            const downloadUrl = await uploadImageToStorage(webpDataUrl, `images/${filename}`);
+            
+            handleBlogImageChange('url', downloadUrl);
+            showToast('Image uploaded successfully!');
+          }
+        };
+        img.src = event.target?.result as string;
       };
-      img.src = event.target?.result as string;
-    };
-    reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      showToast('Failed to upload image', 'error');
+    }
   };
 
   const handleContentChange = (html: string) => {
@@ -208,7 +199,7 @@ export const Admin: React.FC = () => {
     }));
   };
 
-  const handleSavePost = (e: React.FormEvent) => {
+  const handleSavePost = async (e: React.FormEvent) => {
     e.preventDefault();
     let updatedPosts;
     if (editingId) {
@@ -216,31 +207,39 @@ export const Admin: React.FC = () => {
     } else {
       updatedPosts = [...blogPosts, { ...postFormData, id: Date.now().toString() }];
     }
-    updateBlogPosts(updatedPosts);
-    setEditingId(null);
-    setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
-    showToast('Post saved locally! Remember to click "Save & Publish" at the top of the page to push these changes to the live site.');
+    try {
+      await updateBlogPosts(updatedPosts);
+      setEditingId(null);
+      setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
+      showToast('Post saved to cloud!');
+    } catch (error) {
+      showToast('Error saving post', 'error');
+    }
   };
 
   const handleDeletePost = (id: string) => {
     setConfirmDialog({
       message: 'Are you sure you want to delete this post?',
-      onConfirm: () => {
+      onConfirm: async () => {
         const updatedPosts = blogPosts.filter(p => p.id !== id);
-        updateBlogPosts(updatedPosts);
-        if (editingId === id) {
-          setEditingId(null);
-          setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
+        try {
+          await updateBlogPosts(updatedPosts);
+          if (editingId === id) {
+            setEditingId(null);
+            setPostFormData({ ...EMPTY_POST, id: Date.now().toString() });
+          }
+          setConfirmDialog(null);
+          showToast('Post deleted from cloud.');
+        } catch (error) {
+          showToast('Error deleting post', 'error');
         }
-        setConfirmDialog(null);
-        showToast('Post deleted locally. Remember to Save & Publish.');
       }
     });
   };
 
   // --- PAGE CONTENT LOGIC ---
 
-  const handlePageImageChange = (key: string, field: keyof CMSImage, value: string, index?: number) => {
+  const handlePageImageChange = async (key: string, field: keyof CMSImage, value: string, index?: number) => {
     if (!selectedPage) return;
     const currentPage = pageContent[selectedPage];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -265,7 +264,12 @@ export const Admin: React.FC = () => {
 
     const updatedPage = { ...currentPage, [key]: updatedValue };
     const updatedContent = { ...pageContent, [selectedPage]: updatedPage };
-    updatePageContent(updatedContent);
+    try {
+      await updatePageContent(updatedContent);
+      showToast('Page updated in cloud!');
+    } catch (error) {
+      showToast('Error updating page', 'error');
+    }
   };
 
   // --- GLOBAL IMPORT/EXPORT ---
@@ -318,22 +322,15 @@ export const Admin: React.FC = () => {
               <Lock size={32} />
             </div>
             <h1 className="text-2xl font-display font-bold text-text-primary uppercase">Admin Access</h1>
-            <p className="text-text-secondary text-sm mt-2">Please enter your credentials to continue.</p>
+            <p className="text-text-secondary text-sm mt-2">Please sign in with your authorized Google account to continue.</p>
           </div>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-text-secondary mb-2">Password</label>
-              <input 
-                type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-4 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all placeholder-text-secondary/50"
-                placeholder="••••••••"
-                autoFocus
-              />
-            </div>
-            <Button fullWidth type="submit">Login</Button>
-          </form>
+          {isAuthLoading ? (
+            <div className="text-center text-text-secondary py-4">Checking authentication...</div>
+          ) : (
+            <form onSubmit={handleLogin} className="space-y-4">
+              <Button fullWidth type="submit">Sign in with Google</Button>
+            </form>
+          )}
           <div className="mt-6 text-center">
             <Link to="/" className="text-xs font-bold uppercase tracking-wider text-text-secondary hover:text-accent">Return to Site</Link>
           </div>
@@ -381,12 +378,8 @@ export const Admin: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap gap-3 items-center">
-            <Button variant="primary" type="button" onClick={handleSaveAndPublish} disabled={isPublishing} className="bg-green-600 hover:bg-green-700 text-white border-transparent">
-               <RefreshCw size={16} className={`mr-2 ${isPublishing ? 'animate-spin' : ''}`} /> 
-               {isPublishing ? 'Publishing...' : 'Save & Publish'}
-            </Button>
-            <div className="hidden md:block bg-yellow-500/10 border border-yellow-500/20 rounded-lg px-4 py-2 text-[10px] text-yellow-600 max-w-xs leading-tight">
-              <strong>Note:</strong> Publishing will commit changes to GitHub and trigger a deployment.
+            <div className="hidden md:block bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 text-[10px] text-green-600 max-w-xs leading-tight">
+              <strong>Cloud Sync Active:</strong> Changes are saved instantly to your secure database.
             </div>
 
             <input 
@@ -415,15 +408,14 @@ export const Admin: React.FC = () => {
              <Layout size={20} />
            </div>
            <div>
-             <h3 className="font-bold text-text-primary text-lg mb-2">How to publish your changes</h3>
+             <h3 className="font-bold text-text-primary text-lg mb-2">Cloud Sync is Active</h3>
              <p className="text-text-secondary text-sm leading-relaxed mb-4">
-               The Admin panel saves your changes locally as you work. When you are ready to go live, click <strong>Save & Publish</strong> to push the updates to your website.
+               Your site is now connected to a secure cloud database. All changes you make here are saved instantly and permanently. You no longer need to click "Save & Publish".
              </p>
              <ol className="list-decimal list-inside text-sm text-text-secondary space-y-2 mb-4">
                <li>Make your edits below (Images, Text, Blogs).</li>
-               <li>Verify they look correct on the site.</li>
-               <li>Click the <strong>Save & Publish</strong> button (top right).</li>
-               <li>Wait a few minutes for the live site to update.</li>
+               <li>Click "Save Post" or edit a page field.</li>
+               <li>Changes are instantly live on your website.</li>
              </ol>
              <p className="text-xs font-bold text-accent uppercase tracking-wider">
                Important: Image URLs must be public links (e.g. from Unsplash or a website), not files on your computer.

@@ -1,20 +1,72 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BLOG_POSTS, BlogPost } from '../data/blogs';
 import { PAGE_CONTENT, PageContentConfig } from '../data/pageContent';
+import { db, auth } from '../firebase';
+import { collection, doc, onSnapshot, setDoc, getDocs, writeBatch } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+
+enum OperationType {
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  LIST = 'list',
+  GET = 'get',
+  WRITE = 'write',
+}
+
+interface FirestoreErrorInfo {
+  error: string;
+  operationType: OperationType;
+  path: string | null;
+  authInfo: {
+    userId?: string;
+    email?: string | null;
+    emailVerified?: boolean;
+    isAnonymous?: boolean;
+    tenantId?: string | null;
+    providerInfo: {
+      providerId: string;
+      displayName: string | null;
+      email: string | null;
+      photoUrl: string | null;
+    }[];
+  }
+}
+
+function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+  const errInfo: FirestoreErrorInfo = {
+    error: error instanceof Error ? error.message : String(error),
+    authInfo: {
+      userId: auth.currentUser?.uid,
+      email: auth.currentUser?.email,
+      emailVerified: auth.currentUser?.emailVerified,
+      isAnonymous: auth.currentUser?.isAnonymous,
+      tenantId: auth.currentUser?.tenantId,
+      providerInfo: auth.currentUser?.providerData.map(provider => ({
+        providerId: provider.providerId,
+        displayName: provider.displayName,
+        email: provider.email,
+        photoUrl: provider.photoURL
+      })) || []
+    },
+    operationType,
+    path
+  }
+  console.error('Firestore Error: ', JSON.stringify(errInfo));
+  throw new Error(JSON.stringify(errInfo));
+}
 
 type PageContentState = Record<string, PageContentConfig>;
 
 interface ContentContextType {
   blogPosts: BlogPost[];
   pageContent: PageContentState;
-  updateBlogPosts: (posts: BlogPost[]) => void;
-  updatePageContent: (content: PageContentState) => void;
-  importData: (data: any) => void;
+  updateBlogPosts: (posts: BlogPost[]) => Promise<void>;
+  updatePageContent: (content: PageContentState) => Promise<void>;
+  importData: (data: any) => Promise<void>;
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
-
-const CONTENT_URL = '/content.json';
 
 // Helper function for deep merging objects
 const isObject = (item: any) => {
@@ -39,137 +91,116 @@ const mergeDeep = (target: any, source: any) => {
 };
 
 export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Initialize from localStorage to persist changes
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() => {
-    try {
-      const saved = localStorage.getItem('wrk_site_blogs'); // Reverted key to restore user's work
-      if (saved) {
-        const parsed = JSON.parse(saved) as BlogPost[];
-        // Permanently remove specific blogs the user requested to be deleted
-        const titlesToRemove = [
-          "Nutrition Strategies for Corporate Athletes",
-          "Strength Training 101: The Big Four",
-          "How to Optimize Sleep for Recovery"
-        ];
-        return parsed.filter(post => !titlesToRemove.includes(post.title));
-      }
-      return BLOG_POSTS;
-    } catch (e) {
-      return BLOG_POSTS;
-    }
-  });
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(BLOG_POSTS);
+  const [pageContent, setPageContent] = useState<PageContentState>(PAGE_CONTENT);
+  const [isAuthReady, setIsAuthReady] = useState(false);
 
-  const [pageContent, setPageContent] = useState<PageContentState>(() => {
-    try {
-      const saved = localStorage.getItem('wrk_site_pages'); // Reverted key to restore user's work
-      return saved ? mergeDeep(PAGE_CONTENT, JSON.parse(saved)) : PAGE_CONTENT;
-    } catch (e) {
-      return PAGE_CONTENT;
-    }
-  });
-
-  // Fetch external content on mount
   useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        // Add timestamp to bypass cache
-        const response = await fetch(`${CONTENT_URL}?t=${Date.now()}`);
-        if (!response.ok) throw new Error('Failed to fetch content');
-        
-        const data = await response.json();
-        
-        if (data.blogs && Array.isArray(data.blogs)) {
-            setBlogPosts(prevLocal => {
-              const titlesToRemove = [
-                "Nutrition Strategies for Corporate Athletes",
-                "Strength Training 101: The Big Four",
-                "How to Optimize Sleep for Recovery"
-              ];
-              
-              // Create a map of fetched blogs, filtering out the ones to remove
-              const fetchedMap = new Map<string, BlogPost>(
-                data.blogs
-                  .filter((b: any) => !titlesToRemove.includes(b.title))
-                  .map((b: any) => [b.id, b])
-              );
-              
-              // Create a map of local blogs
-              const localMap = new Map<string, BlogPost>(prevLocal.map(b => [b.id, b]));
-              
-              // Merge them, preferring the one with the latest updatedDate or isoDate
-              const mergedMap = new Map<string, BlogPost>();
-              
-              // Add all fetched blogs, potentially overridden by newer local ones
-              for (const [id, fetchedBlogRaw] of fetchedMap.entries()) {
-                const fetchedBlog = fetchedBlogRaw as any;
-                const localBlog = localMap.get(id) as any;
-                if (localBlog) {
-                  const fetchedDate = new Date(fetchedBlog.updatedDate || fetchedBlog.isoDate || 0).getTime();
-                  const localDate = new Date(localBlog.updatedDate || localBlog.isoDate || 0).getTime();
-                  mergedMap.set(id, localDate > fetchedDate ? localBlog : fetchedBlog);
-                } else {
-                  mergedMap.set(id, fetchedBlog);
-                }
-              }
-              
-              // Only add local blogs that are explicitly marked as draft (newly created but not published)
-              // This prevents deleted blogs from being resurrected from localStorage
-              for (const [id, localBlog] of localMap.entries()) {
-                if (!mergedMap.has(id) && localBlog.status === 'draft') {
-                  mergedMap.set(id, localBlog);
-                }
-              }
-              
-              return Array.from(mergedMap.values()).sort((a, b) => {
-                const dateA = new Date(a.isoDate).getTime();
-                const dateB = new Date(b.isoDate).getTime();
-                return dateB - dateA;
-              });
-            });
-        }
-        
-        if (data.pages) {
-            setPageContent(prevLocal => {
-              // Merge them, preferring the one with the latest updatedDate
-              const mergedPages = { ...data.pages };
-              for (const [key, fetchedPage] of Object.entries(data.pages) as [string, any][]) {
-                const localPage = prevLocal[key];
-                if (localPage) {
-                  const fetchedDate = new Date(fetchedPage.updatedDate || 0).getTime();
-                  const localDate = new Date(localPage.updatedDate || 0).getTime();
-                  if (localDate > fetchedDate) {
-                    mergedPages[key] = localPage;
-                  }
-                }
-              }
-              return mergeDeep(prevLocal, mergedPages);
-            });
-        }
-      } catch (error) {
-        console.warn('Could not fetch dynamic content, using local defaults. This is expected during development if content.json is not yet generated or if offline.', error);
-      }
-    };
-
-    fetchContent();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthReady(true);
+    });
+    return () => unsubscribe();
   }, []);
 
-  // Save to localStorage whenever state changes
   useEffect(() => {
-    localStorage.setItem('wrk_site_blogs', JSON.stringify(blogPosts));
-  }, [blogPosts]);
+    if (!isAuthReady) return;
 
-  useEffect(() => {
-    localStorage.setItem('wrk_site_pages', JSON.stringify(pageContent));
-  }, [pageContent]);
+    // Listen to blogs
+    const unsubscribeBlogs = onSnapshot(collection(db, 'blogs'), (snapshot) => {
+      if (!snapshot.empty) {
+        const posts: BlogPost[] = [];
+        snapshot.forEach((doc) => {
+          posts.push(doc.data() as BlogPost);
+        });
+        // Sort by date descending
+        posts.sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime());
+        setBlogPosts(posts);
+      } else {
+        // If empty, we could initialize it, but let's just use default for now
+        setBlogPosts(BLOG_POSTS);
+      }
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'blogs');
+    });
 
-  const updateBlogPosts = (posts: BlogPost[]) => setBlogPosts(posts);
-  const updatePageContent = (content: PageContentState) => setPageContent(content);
+    // Listen to pages
+    const unsubscribePages = onSnapshot(collection(db, 'pages'), (snapshot) => {
+      if (!snapshot.empty) {
+        const pages: PageContentState = {};
+        snapshot.forEach((doc) => {
+          pages[doc.id] = doc.data() as PageContentConfig;
+        });
+        setPageContent(mergeDeep(PAGE_CONTENT, pages));
+      } else {
+        setPageContent(PAGE_CONTENT);
+      }
+    }, (error) => {
+      handleFirestoreError(error, OperationType.LIST, 'pages');
+    });
 
-  const importData = (data: any) => {
-    if (data.blogs && Array.isArray(data.blogs)) setBlogPosts(data.blogs);
-    // Merge page content carefully
-    if (data.pages) {
-      setPageContent(prev => mergeDeep(prev, data.pages));
+    return () => {
+      unsubscribeBlogs();
+      unsubscribePages();
+    };
+  }, [isAuthReady]);
+
+  const updateBlogPosts = async (posts: BlogPost[]) => {
+    try {
+      const batch = writeBatch(db);
+      
+      // Get current blogs to find deletions
+      const snapshot = await getDocs(collection(db, 'blogs'));
+      const existingIds = new Set(snapshot.docs.map(doc => doc.id));
+      
+      posts.forEach(post => {
+        const docRef = doc(db, 'blogs', post.id);
+        batch.set(docRef, post);
+        existingIds.delete(post.id);
+      });
+      
+      // Delete removed posts
+      existingIds.forEach(id => {
+        const docRef = doc(db, 'blogs', id);
+        batch.delete(docRef);
+      });
+      
+      await batch.commit();
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'blogs');
+    }
+  };
+
+  const updatePageContent = async (content: PageContentState) => {
+    try {
+      const batch = writeBatch(db);
+      Object.entries(content).forEach(([pageId, pageData]) => {
+        const docRef = doc(db, 'pages', pageId);
+        batch.set(docRef, pageData);
+      });
+      await batch.commit();
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'pages');
+    }
+  };
+
+  const importData = async (data: any) => {
+    try {
+      const batch = writeBatch(db);
+      if (data.blogs && Array.isArray(data.blogs)) {
+        data.blogs.forEach((post: BlogPost) => {
+          const docRef = doc(db, 'blogs', post.id);
+          batch.set(docRef, post);
+        });
+      }
+      if (data.pages) {
+        Object.entries(data.pages).forEach(([pageId, pageData]) => {
+          const docRef = doc(db, 'pages', pageId);
+          batch.set(docRef, pageData);
+        });
+      }
+      await batch.commit();
+    } catch (error) {
+      handleFirestoreError(error, OperationType.WRITE, 'import');
     }
   };
 

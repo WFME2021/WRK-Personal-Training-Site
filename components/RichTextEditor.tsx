@@ -78,9 +78,31 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
     if (url) exec('createLink', url);
   };
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const addImage = () => {
-    const url = window.prompt('Enter the Image URL:');
-    if (url) exec('insertImage', url);
+    fileInputRef.current?.click();
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const base64Data = event.target?.result as string;
+        const { uploadImageToStorage } = await import('../firebase');
+        const ext = file.name.split('.').pop() || 'webp';
+        const filename = `richtext-${Date.now()}.${ext}`;
+        const downloadUrl = await uploadImageToStorage(base64Data, `images/${filename}`);
+        exec('insertImage', downloadUrl);
+      };
+      reader.readAsDataURL(file);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image.");
+    }
   };
 
   // HTML Mode Handler
@@ -101,6 +123,13 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
 
   return (
     <div className="border border-border rounded-xl overflow-hidden bg-secondary shadow-sm flex flex-col h-[500px]">
+      <input 
+        type="file" 
+        ref={fileInputRef} 
+        onChange={handleImageUpload} 
+        accept="image/*" 
+        className="hidden" 
+      />
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-1 p-2 border-b border-border bg-secondary">
         <ToolbarButton onClick={() => exec('bold')} icon={Bold} title="Bold" />
