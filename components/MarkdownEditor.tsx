@@ -19,6 +19,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   const [htmlPreview, setHtmlPreview] = useState('');
   const [isDragging, setIsDragging] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isPreview) {
@@ -70,36 +71,49 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
     setIsDragging(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      const file = e.dataTransfer.files[0];
-      if (file.type.startsWith('image/')) {
-        try {
-          // Insert a placeholder
-          const placeholderText = `\n![Uploading ${file.name}...]()\n`;
-          const safeValue = value || '';
-          const cursorPosition = textareaRef.current?.selectionStart || safeValue.length;
-          const textBefore = safeValue.substring(0, cursorPosition);
-          const textAfter = safeValue.substring(cursorPosition);
-          onChange(textBefore + placeholderText + textAfter);
+      await processFile(e.dataTransfer.files[0]);
+    }
+  };
 
-          // Compress and get base64
-          const base64Data = await compressImage(file);
+  const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      await processFile(e.target.files[0]);
+    }
+    // Reset input so the same file can be selected again if needed
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
-          // Upload to Firebase Storage
-          const { uploadImageToStorage } = await import('../firebase');
-          const ext = file.name.split('.').pop() || 'webp';
-          const filename = `markdown-${Date.now()}.${ext}`;
-          const downloadUrl = await uploadImageToStorage(base64Data, `images/${filename}`);
+  const processFile = async (file: File) => {
+    if (file.type.startsWith('image/')) {
+      try {
+        // Insert a placeholder
+        const placeholderText = `\n![Uploading ${file.name}...]()\n`;
+        const safeValue = value || '';
+        const cursorPosition = textareaRef.current?.selectionStart || safeValue.length;
+        const textBefore = safeValue.substring(0, cursorPosition);
+        const textAfter = safeValue.substring(cursorPosition);
+        onChange(textBefore + placeholderText + textAfter);
 
-          // Replace placeholder with actual image URL
-          const newText = (textBefore + placeholderText + textAfter).replace(
-            placeholderText,
-            `\n![${file.name}](${downloadUrl})\n`
-          );
-          onChange(newText);
-        } catch (error) {
-          console.error("Error uploading image:", error);
-          alert("Failed to process image.");
-        }
+        // Compress and get base64
+        const base64Data = await compressImage(file);
+
+        // Upload to Firebase Storage
+        const { uploadImageToStorage } = await import('../firebase');
+        const ext = file.name.split('.').pop() || 'webp';
+        const filename = `markdown-${Date.now()}.${ext}`;
+        const downloadUrl = await uploadImageToStorage(base64Data, `images/${filename}`);
+
+        // Replace placeholder with actual image URL
+        const newText = (textBefore + placeholderText + textAfter).replace(
+          placeholderText,
+          `\n![${file.name}](${downloadUrl})\n`
+        );
+        onChange(newText);
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        alert("Failed to process image.");
       }
     }
   };
@@ -134,8 +148,25 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
             <Eye size={14} /> Live Preview
           </button>
         </div>
-        <div className="flex items-center gap-2 text-[10px] text-text-secondary uppercase font-bold tracking-wider px-2">
-          <ImageIcon size={12} /> Drag & Drop Images
+        <div className="flex items-center gap-2">
+          <input 
+            type="file" 
+            accept="image/*" 
+            className="hidden" 
+            ref={fileInputRef}
+            onChange={handleFileInput}
+          />
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-text-secondary hover:bg-secondary hover:text-accent"
+            title="Insert Image"
+          >
+            <ImageIcon size={14} /> Insert Image
+          </button>
+          <div className="hidden sm:flex items-center gap-2 text-[10px] text-text-secondary uppercase font-bold tracking-wider px-2 border-l border-border ml-1 pl-3">
+            Drag & Drop Supported
+          </div>
         </div>
       </div>
 
