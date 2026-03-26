@@ -90,8 +90,9 @@ export const Admin: React.FC = () => {
     e.preventDefault();
     try {
       await loginWithGoogle();
-    } catch (error) {
-      showToast('Failed to sign in with Google', 'error');
+    } catch (error: any) {
+      console.error("Login error:", error);
+      showToast(`Failed to sign in: ${error.message || 'Unknown error'}`, 'error');
     }
   };
 
