@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { marked } from 'marked';
-import { Eye, Edit2, Image as ImageIcon } from 'lucide-react';
+import { Eye, Edit2, Image as ImageIcon, Link as LinkIcon } from 'lucide-react';
 
 interface MarkdownEditorProps {
   value: string;
@@ -18,6 +18,8 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   const [isPreview, setIsPreview] = useState(false);
   const [htmlPreview, setHtmlPreview] = useState('');
   const [isDragging, setIsDragging] = useState(false);
+  const [showUrlInput, setShowUrlInput] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -27,6 +29,21 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
       setHtmlPreview(html as string);
     }
   }, [value, isPreview]);
+
+  const handleInsertUrl = () => {
+    if (!imageUrl.trim()) {
+      setShowUrlInput(false);
+      return;
+    }
+    const safeValue = value || '';
+    const cursorPosition = textareaRef.current?.selectionStart || safeValue.length;
+    const textBefore = safeValue.substring(0, cursorPosition);
+    const textAfter = safeValue.substring(cursorPosition);
+    const markdownImage = `\n![Image](${imageUrl.trim()})\n`;
+    onChange(textBefore + markdownImage + textAfter);
+    setImageUrl('');
+    setShowUrlInput(false);
+  };
 
   // Compress image before converting to base64
   const compressImage = (file: File): Promise<string> => {
@@ -148,7 +165,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
             <Eye size={14} /> Live Preview
           </button>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 relative">
           <input 
             type="file" 
             accept="image/*" 
@@ -160,10 +177,40 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
             type="button"
             onClick={() => fileInputRef.current?.click()}
             className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-text-secondary hover:bg-secondary hover:text-accent"
-            title="Insert Image"
+            title="Upload Image"
           >
-            <ImageIcon size={14} /> Insert Image
+            <ImageIcon size={14} /> Upload
           </button>
+          <button
+            type="button"
+            onClick={() => setShowUrlInput(!showUrlInput)}
+            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-text-secondary hover:bg-secondary hover:text-accent"
+            title="Insert Image from URL"
+          >
+            <LinkIcon size={14} /> Insert URL
+          </button>
+          
+          {showUrlInput && (
+            <div className="absolute top-full right-0 mt-2 z-10 bg-primary border border-border p-2 rounded-lg shadow-xl flex gap-2 min-w-[300px]">
+              <input
+                type="text"
+                placeholder="Paste image URL here..."
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                className="flex-1 px-3 py-1.5 bg-secondary border border-border rounded text-sm text-text-primary outline-none focus:border-accent"
+                onKeyDown={(e) => e.key === 'Enter' && handleInsertUrl()}
+                autoFocus
+              />
+              <button
+                type="button"
+                onClick={handleInsertUrl}
+                className="px-3 py-1.5 bg-accent text-white text-xs font-bold rounded hover:bg-accent/90 transition-colors"
+              >
+                Insert
+              </button>
+            </div>
+          )}
+
           <div className="hidden sm:flex items-center gap-2 text-[10px] text-text-secondary uppercase font-bold tracking-wider px-2 border-l border-border ml-1 pl-3">
             Drag & Drop Supported
           </div>
