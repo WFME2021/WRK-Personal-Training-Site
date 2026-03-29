@@ -20,6 +20,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [showUrlInput, setShowUrlInput] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+  const [imageAlt, setImageAlt] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -33,15 +34,18 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   const handleInsertUrl = () => {
     if (!imageUrl.trim()) {
       setShowUrlInput(false);
+      setImageAlt('');
       return;
     }
     const safeValue = value || '';
     const cursorPosition = textareaRef.current?.selectionStart || safeValue.length;
     const textBefore = safeValue.substring(0, cursorPosition);
     const textAfter = safeValue.substring(cursorPosition);
-    const markdownImage = `\n![Image](${imageUrl.trim()})\n`;
+    const altText = imageAlt.trim() || 'Image';
+    const markdownImage = `\n![${altText}](${imageUrl.trim()})\n`;
     onChange(textBefore + markdownImage + textAfter);
     setImageUrl('');
+    setImageAlt('');
     setShowUrlInput(false);
   };
 
@@ -191,23 +195,43 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
           </button>
           
           {showUrlInput && (
-            <div className="absolute top-full right-0 mt-2 z-10 bg-primary border border-border p-2 rounded-lg shadow-xl flex gap-2 min-w-[300px]">
+            <div className="absolute top-full right-0 mt-2 z-10 bg-primary border border-border p-3 rounded-lg shadow-xl flex flex-col gap-2 min-w-[300px]">
               <input
                 type="text"
                 placeholder="Paste image URL here..."
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
-                className="flex-1 px-3 py-1.5 bg-secondary border border-border rounded text-sm text-text-primary outline-none focus:border-accent"
-                onKeyDown={(e) => e.key === 'Enter' && handleInsertUrl()}
+                className="w-full px-3 py-1.5 bg-secondary border border-border rounded text-sm text-text-primary outline-none focus:border-accent"
                 autoFocus
               />
-              <button
-                type="button"
-                onClick={handleInsertUrl}
-                className="px-3 py-1.5 bg-accent text-white text-xs font-bold rounded hover:bg-accent/90 transition-colors"
-              >
-                Insert
-              </button>
+              <input
+                type="text"
+                placeholder="Alt Text (SEO description)..."
+                value={imageAlt}
+                onChange={(e) => setImageAlt(e.target.value)}
+                className="w-full px-3 py-1.5 bg-secondary border border-border rounded text-sm text-text-primary outline-none focus:border-accent"
+                onKeyDown={(e) => e.key === 'Enter' && handleInsertUrl()}
+              />
+              <div className="flex justify-end gap-2 mt-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowUrlInput(false);
+                    setImageUrl('');
+                    setImageAlt('');
+                  }}
+                  className="px-3 py-1.5 text-text-secondary hover:text-text-primary text-xs font-bold rounded transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleInsertUrl}
+                  className="px-3 py-1.5 bg-accent text-white text-xs font-bold rounded hover:bg-accent/90 transition-colors"
+                >
+                  Insert
+                </button>
+              </div>
             </div>
           )}
 
