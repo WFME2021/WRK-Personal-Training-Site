@@ -328,20 +328,73 @@ ${JSON.stringify(answers, null, 2)}
         console.error("Failed to send assessment email:", emailError);
       }
 
+      const doseKey = answers['q3_time'] || 'three_days';
+      const postGate = archetype?.postGate;
+      const schedule = postGate ? postGate.scheduleByDose[doseKey as keyof typeof postGate.scheduleByDose] : undefined;
+      const next7Days = archetype ? archetype.next7DaysByDose[doseKey as keyof typeof archetype.next7DaysByDose] : undefined;
+
+      const scheduleText = schedule ? `
+--- ${postGate?.scheduleTitle} ---
+${schedule.title}
+${schedule.lines.map((line: string) => `- ${line}`).join('\n')}
+` : '';
+
+      const protocolText = postGate ? `
+--- ${postGate.protocolTitle} ---
+${postGate.protocolCopy}
+
+--- ${postGate.keyRuleTitle} ---
+${postGate.keyRuleCopy}
+` : '';
+
+      const next7DaysText = next7Days ? `
+--- ${archetype?.next7DaysTitle} ---
+${next7Days.title}
+${next7Days.days.map((day: any) => `
+${day.label}:
+${day.items.map((item: string) => `- ${item}`).join('\n')}`).join('\n')}
+` : '';
+
+      const scheduleHtml = schedule ? `
+<h4>--- ${postGate?.scheduleTitle} ---</h4>
+<p><strong>${schedule.title}</strong></p>
+<ul>
+${schedule.lines.map((line: string) => `<li>${line}</li>`).join('\n')}
+</ul>
+` : '';
+
+      const protocolHtml = postGate ? `
+<h4>--- ${postGate.protocolTitle} ---</h4>
+<p>${postGate.protocolCopy}</p>
+
+<h4>--- ${postGate.keyRuleTitle} ---</h4>
+<p>${postGate.keyRuleCopy}</p>
+` : '';
+
+      const next7DaysHtml = next7Days ? `
+<h4>--- ${archetype?.next7DaysTitle} ---</h4>
+<p><strong>${next7Days.title}</strong></p>
+${next7Days.days.map((day: any) => `
+<p><strong>${day.label}:</strong></p>
+<ul>
+${day.items.map((item: string) => `<li>${item}</li>`).join('\n')}
+</ul>`).join('\n')}
+` : '';
+
       const userMailOptions = {
         from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
         to: email,
         subject: `Your Capacity Blueprint Results - WRK Personal Training`,
         text: `Hi ${name},
 
-Thanks for completing the Capacity Blueprint Diagnostic.
+Thanks for completing the Capacity Blueprint Diagnostic. Here is your personalised plan.
 
 --- Your Diagnostic Result ---
 Archetype / Bottleneck: ${archetypeLabel}
 Bottleneck statement: ${primaryBottleneck}
-Rule this week: ${ruleThisWeek}
-
-Recommended next step: ${recommendedServiceName}
+${scheduleText}${protocolText}${next7DaysText}
+--- Recommended Next Steps ---
+Recommended option: ${recommendedServiceName}
 Link: https://www.wrkpersonaltraining.co.nz${recommendedServicePath}
 
 Alternate option: ${alternateServiceName}
@@ -353,14 +406,14 @@ Best regards,
 WRK Personal Training
 `,
         html: `<p>Hi ${name},</p>
-<p>Thanks for completing the Capacity Blueprint Diagnostic.</p>
+<p>Thanks for completing the Capacity Blueprint Diagnostic. Here is your personalised plan.</p>
 
 <h4>--- Your Diagnostic Result ---</h4>
 <p><strong>Archetype / Bottleneck:</strong> ${archetypeLabel}<br/>
-<strong>Bottleneck statement:</strong> ${primaryBottleneck}<br/>
-<strong>Rule this week:</strong> ${ruleThisWeek}</p>
-
-<p><strong>Recommended next step:</strong> ${recommendedServiceName}<br/>
+<strong>Bottleneck statement:</strong> ${primaryBottleneck}</p>
+${scheduleHtml}${protocolHtml}${next7DaysHtml}
+<h4>--- Recommended Next Steps ---</h4>
+<p><strong>Recommended option:</strong> ${recommendedServiceName}<br/>
 <strong>Link:</strong> <a href="https://www.wrkpersonaltraining.co.nz${recommendedServicePath}">https://www.wrkpersonaltraining.co.nz${recommendedServicePath}</a></p>
 
 <p><strong>Alternate option:</strong> ${alternateServiceName}<br/>
