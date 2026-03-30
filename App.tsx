@@ -23,6 +23,7 @@ import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
 import { HealthDisclaimer } from './pages/HealthDisclaimer';
 import { Refunds } from './pages/Refunds';
+import { NotFound } from './pages/NotFound';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -77,6 +78,9 @@ const App: React.FC = () => {
 
               {/* Admin Route */}
               <Route path="/admin" element={<Admin />} />
+
+              {/* 404 Catch-all */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
         </Router>

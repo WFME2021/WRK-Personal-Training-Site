@@ -13,6 +13,15 @@ async function startServer() {
   // Parse JSON bodies
   app.use(express.json({ limit: '50mb' }));
 
+  // SEO 301 Redirects for old URLs
+  app.get('/42-day-reset', (req, res) => {
+    res.redirect(301, '/fitness-challenge-nz');
+  });
+  
+  app.get('/corporate-wellness', (req, res) => {
+    res.redirect(301, '/workplace-wellness-program-nz');
+  });
+
   // API Routes
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok" });
