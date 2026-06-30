@@ -5,7 +5,7 @@ import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
 
 export const Free14Day: React.FC = () => {
-  const trialLink = "https://wrkpersonaltraining.mypthub.net/p/228105";
+  const trialLink = "https://wrkpersonaltraining.mypthub.net/p/233801";
 
   const faqItems = [
     {
