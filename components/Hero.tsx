@@ -11,6 +11,7 @@ interface HeroProps {
   kicker?: string;
   eyebrow?: string;
   className?: string;
+  disableGrayscale?: boolean;
   secondaryCta?: {
     label: string;
     href?: string;
@@ -26,6 +27,7 @@ export const Hero: React.FC<HeroProps> = ({
   kicker,
   eyebrow,
   className = '',
+  disableGrayscale = false,
   secondaryCta
 }) => {
   return (
@@ -44,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({
         <img 
           src={image} 
           alt="Hero background" 
-          className="w-full h-full object-cover grayscale contrast-125 object-center"
+          className={`w-full h-full object-cover object-center ${disableGrayscale ? '' : 'grayscale contrast-125'}`}
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-black/40"></div>

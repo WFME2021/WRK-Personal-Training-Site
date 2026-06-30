@@ -5,13 +5,15 @@ interface MidPageBannerProps {
   tagline: string;
   support?: string;
   className?: string;
+  disableGrayscale?: boolean;
 }
 
 export const MidPageBanner: React.FC<MidPageBannerProps> = ({
   image,
   tagline,
   support,
-  className = ''
+  className = '',
+  disableGrayscale = false
 }) => {
   return (
     <section className={`px-4 md:px-8 my-24 md:my-32 ${className}`}>
@@ -21,7 +23,7 @@ export const MidPageBanner: React.FC<MidPageBannerProps> = ({
           <img referrerPolicy="no-referrer" 
             src={image} 
             alt={tagline} 
-            className="w-full h-full object-cover grayscale contrast-125 object-center"
+            className={`w-full h-full object-cover object-center ${disableGrayscale ? '' : 'grayscale contrast-125'}`}
             loading="lazy"
           />
           {/* Dark Overlay */}
