@@ -218,7 +218,7 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
   },
   tools: {
     heroImage: {
-      url: 'https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg',
+      url: 'https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg',
       alt: 'Gym equipment',
       seoDescription: 'Gym equipment in a modern facility, representing the tools needed for success.'
     }

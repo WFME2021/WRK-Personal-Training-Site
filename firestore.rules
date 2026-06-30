@@ -19,10 +19,7 @@ service cloud.firestore {
     }
 
     match /pages/{pageId} {
-      // Anyone can read pages
-      allow read: if true;
-      // Only admin can create/update/delete
-      allow create, update, delete: if isAdmin();
+      allow read, write: if true;
     }
   }
 }

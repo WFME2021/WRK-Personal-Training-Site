@@ -63,7 +63,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Fit enough for the good stuff.",
       support: "Train to live more—work, family, weekends.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     },
     ptImage: {
       url: "https://i.postimg.cc/gJwkKbW6/dad-kid-paddleboard.jpg",
@@ -99,13 +99,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Online Coaching (12-Week Mini)",
         "Corporate Wellness"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
       kicker: "Options for every schedule and budget."
     },
     banner: {
       tagline: "Choose the coaching that fits your real week.",
       support: "Same goal—more capacity—different paths to get there.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   personalTraining: {
@@ -152,13 +152,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Form checks + feedback (video analysis)",
         "Protein-forward, flexible nutrition support"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
       kicker: "12-week minimum—because quick fixes are how people end up starting over."
     },
     banner: {
       tagline: "A plan that survives travel, stress, and chaos.",
       support: "Consistency beats intensity when life’s busy.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     },
     workoutLogImage: {
       url: "https://i.postimg.cc/3w5FjthV/exercise-history.png",
@@ -190,7 +190,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Wellness that gets used—because it fits the job.",
       support: "Simple programs that support energy, posture, and routine.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   challenge42: {
@@ -212,7 +212,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Reset the routine. Keep your life.",
       support: "Structure and momentum without diet jail or burnout.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   blog: {
@@ -234,7 +234,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Less fluff. More progress you can repeat.",
       support: "Practical guidance for fat loss, pain reduction, and consistency.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   tools: {
@@ -272,13 +272,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Protein Targets",
         "Party Fund"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
       eyebrow: "Nutrition Engine"
     },
     banner: {
       tagline: "Start with a target. Adjust like an adult.",
       support: "A sensible baseline, then refine based on results and recovery.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   oneRmEstimator: {
@@ -294,13 +294,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Training Percentages",
         "Progress Tracking"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
       kicker: "Train smart, not just heavy."
     },
     banner: {
       tagline: "Train smart—without maxing out every week.",
       support: "Estimate loads so progress is repeatable and joint-friendly.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   contact: {
@@ -322,7 +322,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "Let’s map the simplest plan that works.",
       support: "Tell me your constraints and I’ll guide the next step.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   philosophy: {
@@ -344,7 +344,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     banner: {
       tagline: "We do not train for the sake of being tired.",
       support: "We train to be capable.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
   assessment: {
@@ -360,13 +360,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Personalized Plan",
         "Immediate Results"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
       kicker: "Takes less than 2 minutes."
     },
     banner: {
       tagline: "Get clarity fast. Then take the right next step.",
       support: "Six questions. Practical answers. A plan that fits real life.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   }
 };

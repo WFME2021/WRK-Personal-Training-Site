@@ -130,7 +130,28 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         snapshot.forEach((doc) => {
           pages[doc.id] = doc.data() as PageContentConfig;
         });
-        setPageContent(mergeDeep(PAGE_CONTENT, pages));
+
+        // Migrate broken/replaced postimg urls from Firestore
+        let pagesStr = JSON.stringify(pages);
+        // Original placeholder and previous URLs
+        pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/mkq4Yt9C\/pexels-pripicart-591216\.jpg/g, 'https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg');
+        pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/T2VQgtDM\/mushroom-brie-omelette-8\.jpg/g, 'https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg');
+        pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/ZRgR3MtP\/recipe-tracking\.png/g, 'https://i.postimg.cc/nhnTcBRr/banana-walnut-porridge-3.jpg');
+        pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/fyFscJdc\/pexels-allan-mas-5383718\.jpg/g, 'https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg');
+
+        const migratedPages = JSON.parse(pagesStr);
+        
+        // Force the tools page images to match what was requested
+        if (migratedPages.tools) {
+          if (migratedPages.tools.hero) {
+            migratedPages.tools.hero.image = 'https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg';
+          }
+          if (migratedPages.tools.banner) {
+            migratedPages.tools.banner.image = 'https://i.postimg.cc/nhnTcBRr/banana-walnut-porridge-3.jpg';
+          }
+        }
+
+        setPageContent(mergeDeep(PAGE_CONTENT, migratedPages));
       } else {
         setPageContent(PAGE_CONTENT);
       }
