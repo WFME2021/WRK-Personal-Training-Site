@@ -1,359 +1,340 @@
-
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2, Dumbbell, Utensils, Target, MessageSquare, BookOpen } from 'lucide-react';
 import { Button } from '../components/Button';
-import { Smartphone, Video, Check, Star } from 'lucide-react';
-import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
-import { FAQ } from '../components/FAQ';
-import { LeadFormModal } from '../components/LeadFormModal';
 import { AppScreenshots } from '../components/AppScreenshots';
+import { FAQ } from '../components/FAQ';
 
 export const OnlineCoaching: React.FC = () => {
-  const { pageContent } = useContent();
-  // We are overriding the default SEO content with the specific pack provided
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const faqs = [
+  const faqItems = [
     {
-      question: "Can you build a plan around a busy schedule or travel?",
-      answer: "Yes — that’s the primary problem I solve. We build around available days and include travel/hotel options so you don’t lose momentum."
+      question: "What happens in the initial consult?",
+      answer: "A free 20–30 minute call covering your goals, training history, injuries, physical considerations, and your available equipment and environment. Everything discussed becomes the foundation of your programme. Nothing is assumed. Nothing is generic."
+    },
+    {
+      question: "What do I get for the $99 programme design fee?",
+      answer: "A fully customised 16-week training and nutrition programme built specifically around you — your goals, your schedule, your starting point, your equipment, and your body. If you train in a gym, your programme is built for a gym. If you train at home, it's built around the kit you actually have. If you have injuries or physical considerations, they're factored into every session from day one. This is not a template with your name on it."
     },
     {
       question: "Do I need a gym membership?",
-      answer: "No. Gym, home, or hybrid — we build around what you actually have access to."
+      answer: "No. During your consult we establish where and how you train. Your programme is then designed specifically around that environment. Gym members get gym-based programming. Home trainers get a programme built around their available equipment. If your situation changes during the 16 weeks, your programme adapts with it."
     },
     {
-      question: "How do form checks work?",
-      answer: "You upload short videos in-app. I send feedback so you know what to change and what to keep."
+      question: "I have an injury or a physical consideration. Can I still do this?",
+      answer: "Yes. Injuries and physical considerations are captured during the consult and built into your programme design from the start. You won't be handed a generic plan and told to modify exercises yourself. Your programme is written with your specific limitations and history already accounted for."
     },
     {
-      question: "Is there a minimum commitment?",
-      answer: "Yes — 12 weeks. That’s the timeframe needed to build momentum, create real change, and stop restarting."
+      question: "Why $14.95 per week? What does that actually cover?",
+      answer: "Everything. A fully customised training programme, nutrition framework, bi-weekly check-ins with Hayden, direct messaging access throughout the 16 weeks, exercise video library, macro and habit tracking, and the Busy Professional Survival Guide. Over 16 weeks that's $338.20 total — less than the cost of four single PT sessions with someone who doesn't know your history."
     },
     {
-      question: "Do you work with beginners online?",
-      answer: "Yes. Beginners often do extremely well because we build the basics properly and keep things simple."
+      question: "How does the bi-weekly check-in work?",
+      answer: "Every two weeks Hayden reviews your progress and sends direct feedback — adjustments to training, nutrition targets, or approach based on how you're actually tracking. It's not a form response or a bot. It's a coach who built your programme reviewing your real data and telling you what needs to change."
     },
     {
-      question: "Do you coach NZ-wide?",
-      answer: "Yes — anywhere in NZ (and worldwide if needed)."
+      question: "I travel a lot. Will this still work?",
+      answer: "Yes — it's built for it. During your consult we talk through your travel patterns and schedule. Travel strategies are built into weeks 5–8, and travel-specific workout templates are part of your weeks 13–16 lifestyle phase. The Busy Professional Survival Guide covers exactly this scenario in detail."
+    },
+    {
+      question: "I've tried online programmes before and not finished them. Why is this different?",
+      answer: "Most online programmes send you a generic plan and leave you to figure it out. This programme was built specifically for you based on a detailed consult — so it already fits your life, your environment, and your physical situation before you start week one. Add bi-weekly check-ins and direct messaging access throughout, and you have a coach actively keeping you on track — not a PDF collecting dust."
+    },
+    {
+      question: "Can I cancel once I've started?",
+      answer: "The programme runs on a direct debit of $14.95 per week. You can cancel before the programme begins. Once underway, the 16-week commitment stands — because results require consistency, and a programme this customised deserves the full runway to deliver them."
+    },
+    {
+      question: "What happens after the 16 weeks?",
+      answer: "By week 13 you'll be transitioning to long-term maintenance — with a maintenance calorie calculation, travel templates, and a habit integration plan built into your programme. The goal is that by week 16 you have a system that works and the knowledge to keep it going independently. If you want to continue with structured coaching, we can discuss what that looks like."
+    },
+    {
+      question: "Is this suitable if I'm over 50?",
+      answer: "Yes. The programme is specifically designed for adults 35–60 — accounting for the physiology of a body that's changed, the demands of a life that's full, and the training approach that actually delivers fat loss and strength at this stage of life. Everything from your training load to your nutrition targets is calibrated for where you are right now — not where a 25-year-old with unlimited time would be."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title="Online Personal Training NZ | High-Touch App Coaching (12 Weeks)"
-        description="Online personal training across NZ with app-based programming, weekly check-ins, nutrition targets and video form feedback. $99 onboarding + $27.50/week (12-week minimum). Apply now."
+        title="Online Fitness Coach New Zealand | 16-Week Coaching | WRK"
+        description="Hayden Richards - WRK Personal Training. Structured fat loss and strength coaching for adults 35+ across New Zealand. Expert programming, practical nutrition, and an online personal trainer who actually keeps you accountable."
       />
 
-      <div className="bg-primary text-text-primary transition-colors duration-300 pb-24 md:pb-0">
+      <div className="flex flex-col w-full overflow-x-hidden bg-primary pb-24">
         
-        {/* A) HERO */}
-        <section className="relative pt-40 pb-32 px-6 text-center overflow-hidden">
+        {/* SECTION 1 — HERO */}
+        <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-            <img 
-              src={pageContent.onlineCoaching?.hero?.image || "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"} 
-              alt="Online Personal Training" 
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-black/70"></div>
+             <img 
+               referrerPolicy="no-referrer" 
+               loading="eager" 
+               src="https://i.postimg.cc/1t9HjpcR/508833357-30407543532163264-7406991278294427854-n.jpg" 
+               alt="ONLINE FITNESS COACH | NEW ZEALAND" 
+               className="w-full h-full object-cover object-top" 
+             />
+             <div 
+               className="absolute inset-0"
+               style={{
+                 background: 'linear-gradient(to bottom, rgba(13, 17, 23, 0) 0%, rgba(13, 17, 23, 0.6) 60%, rgba(13, 17, 23, 0.88) 100%)'
+               }}
+             />
           </div>
-          <div className="relative z-10 max-w-4xl mx-auto">
-            <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">NZ-Wide • App Based • High Touch</span>
-            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9] text-white">
-              Online Personal Training NZ — World-Class Coaching, <span className="text-accent">Anywhere.</span>
+          <div className="relative z-10 w-full px-5 pt-32 pb-12 md:pb-24 max-w-[1200px] mx-auto md:px-12 text-left">
+            <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-orange-burnt mb-4">
+              ONLINE FITNESS COACH · 16-WEEK PROGRAMME · WORLDWIDE
+            </span>
+            <h1 className="font-display text-[44px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-[1.1] sm:leading-[1.1] text-white mb-6 uppercase max-w-[1000px]">
+              Online Fitness Coaching for Busy Professionals 35–60
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-6 max-w-2xl mx-auto">
-              You don’t need a trainer standing over you counting reps.
+            <p className="font-sans text-[18px] md:text-[20px] text-off-white font-medium max-w-[640px] mb-8 leading-[1.6]">
+              Twenty years of coaching distilled into one structured 16-week fat loss and strength programme. Built around your schedule, your goals, and a body that's ready to perform — not just survive the week.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed mb-10 max-w-2xl mx-auto">
-              You need a professional strategy, intelligent programming, and accountability that doesn’t let you drift.
-            </p>
-            <Button 
-              size="lg" 
-              className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Apply for Coaching
-            </Button>
-            <p className="mt-4 text-xs text-gray-300 uppercase tracking-wider">Application only • 12-week minimum • $99 onboarding + $27.50/week</p>
-          </div>
-        </section>
-
-        {/* B) AGITATE */}
-        <section className="py-20 px-6 bg-secondary border-y border-border">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-3xl font-bold uppercase mb-10 text-center">The problem with “generic” plans</h2>
-            <div className="space-y-6">
-              {[
-                "You travel for work… and “Monday chest day” dies in a hotel gym with dumbbells.",
-                "You know how to lift, but not what to do to break your plateau.",
-                "You’ve downloaded PDFs before… and stopped after 3 weeks because no one was watching.",
-                "You’re training hard but eating poorly, so your physique never changes.",
-                "You’re sick of guessing and want to outsource the thinking to an expert."
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl hover:bg-primary/50 transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center shrink-0">
-                    <span className="font-bold">✕</span>
-                  </div>
-                  <p className="text-lg text-text-primary font-medium">{item}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-10 text-center">
-              <p className="text-xl font-bold text-text-primary">
-                The issue isn’t effort. <span className="text-accent">It’s direction + consistency.</span>
-              </p>
+            <div className="flex flex-col md:flex-row items-start gap-4">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto px-8 py-5 text-[15px] sm:text-[16px] flex items-center justify-center gap-3">
+                  Apply for Online Coaching <ArrowRight size={20} />
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* C) REFRAME */}
-        <section className="py-24 px-6 bg-primary text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">
-              You don't need a <span className="text-accent">babysitter</span>.
-            </h2>
-            <p className="text-2xl text-text-primary font-medium leading-relaxed mb-6">
-              You need a strategist.
-            </p>
-            <p className="text-lg text-text-secondary leading-relaxed mb-8">
-              Most people think they need “motivation.”
-              <br />
-              What they actually need is a plan that adapts to real life — and a coach who notices when they drift off course.
-            </p>
-            <p className="text-xl font-bold text-text-primary mb-10">
-              That’s what this is.
-            </p>
-            <Button 
-              size="lg" 
-              className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Apply for Coaching
-            </Button>
+        {/* SECTION 2 — THE PROMISE */}
+        <section className="py-24 px-6 lg:px-12 bg-black text-white text-center">
+          <div className="max-w-4xl mx-auto flex flex-col items-center">
+             <h2 className="font-display text-4xl md:text-6xl uppercase leading-[1.25] mb-10">
+               Your programme. Your own coach. Your results.
+             </h2>
+             <div className="text-xl text-gray-400 font-medium leading-relaxed space-y-6">
+                <p>Most online programmes send you a plan and leave you to figure it out. WRK is different.</p>
+                <p>You get a bespoke 16-week programme built around your goals, your schedule, and your body — with nutrition guidance that works in the real world, and direct access to Hayden throughout.</p>
+                <p className="text-white font-bold tracking-widest uppercase text-sm mt-8">Same standard as in-person. No matter where you are.</p>
+             </div>
           </div>
         </section>
 
-        {/* D) SOLUTION */}
-        <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-6xl mx-auto">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">The Solution</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
-                WRK Online.
+        {/* SECTION 3 — THE 16-WEEK ROADMAP */}
+        <section className="py-24 px-6 lg:px-12 bg-primary">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="text-center mb-16">
+              <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-accent mb-4">
+                YOUR ONLINE FAT LOSS PROGRAMME
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl uppercase text-text-primary leading-[1.25]">
+                The 16-Week Roadmap
               </h2>
-              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-                This isn’t a PDF download. It’s a high-touch coaching relationship delivered digitally.
-              </p>
-              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-                You get a program built around your goals, schedule, and equipment. Weekly coaching that adjusts based on results + recovery. Video feedback so technique doesn’t become your bottleneck.
-              </p>
-              <p className="text-lg text-text-secondary mb-8 leading-relaxed font-bold">
-                It’s like having a coach in your pocket — without needing to train at a specific location.
-              </p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
-              <div className="bg-primary p-6 rounded-2xl border border-border">
-                <Smartphone className="text-accent mb-4" size={32} />
-                <h3 className="font-bold text-lg mb-2">The App</h3>
-                <p className="text-sm text-text-secondary">Your program, demos, tracking, and history in one place.</p>
-              </div>
-              <div className="bg-primary p-6 rounded-2xl border border-border">
-                <Video className="text-accent mb-4" size={32} />
-                <h3 className="font-bold text-lg mb-2">Video Feedback</h3>
-                <p className="text-sm text-text-secondary">Upload lifts → get corrections → progress safely and faster.</p>
-              </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+               <div className="bg-secondary p-10 rounded-[2rem] border border-border shadow-sm flex flex-col items-start gap-6">
+                 <div className="text-accent font-bold uppercase tracking-widest text-xs">WEEKS 1–4</div>
+                 <h3 className="font-display text-3xl uppercase text-text-primary">Reset</h3>
+                 <p className="text-text-secondary leading-relaxed font-medium">Establish your baseline. Stabilise energy. Initiate fat loss. Custom training plan, protein and calorie targets, sleep and hydration protocols.</p>
+               </div>
+               <div className="bg-secondary p-10 rounded-[2rem] border border-border shadow-sm flex flex-col items-start gap-6">
+                 <div className="text-accent font-bold uppercase tracking-widest text-xs">WEEKS 5–8</div>
+                 <h3 className="font-display text-3xl uppercase text-text-primary">Momentum</h3>
+                 <p className="text-text-secondary leading-relaxed font-medium">Accelerate fat loss and build strength. Progressive overload. Social event and travel strategies. Mid-programme check-in.</p>
+               </div>
+               <div className="bg-secondary p-10 rounded-[2rem] border border-border shadow-sm flex flex-col items-start gap-6">
+                 <div className="text-accent font-bold uppercase tracking-widest text-xs">WEEKS 9–12</div>
+                 <h3 className="font-display text-3xl uppercase text-text-primary">Refinement</h3>
+                 <p className="text-text-secondary leading-relaxed font-medium">Overcome plateaus. Optimise body composition. Training intensity and nutrition adjusted based on your data.</p>
+               </div>
+               <div className="bg-secondary p-10 rounded-[2rem] border border-border shadow-sm flex flex-col items-start gap-6">
+                 <div className="text-accent font-bold uppercase tracking-widest text-xs">WEEKS 13–16</div>
+                 <h3 className="font-display text-3xl uppercase text-text-primary">Lifestyle</h3>
+                 <p className="text-text-secondary leading-relaxed font-medium">Lock in your results. Transition to long-term maintenance. Travel templates, habit integration, maintenance calorie calculation.</p>
+               </div>
             </div>
+          </div>
+        </section>
 
+        {/* SECTION 4 — WHAT YOU GET */}
+        <section className="py-24 px-6 lg:px-12 bg-secondary border-y border-border">
+          <div className="max-w-[1000px] mx-auto">
+            <div className="text-center mb-12">
+              <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-accent mb-4">
+                EVERYTHING INSIDE YOUR 16-WEEK PROGRAMME
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl uppercase text-text-primary leading-[1.25]">
+                What's Included
+              </h2>
+            </div>
+            
+            <div className="space-y-6 mt-12 bg-primary p-8 md:p-12 rounded-[2rem] border border-border text-lg font-medium shadow-sm">
+               <div className="flex items-start">
+                 <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-1 shrink-0">
+                   <Dumbbell size={18} className="text-accent" />
+                 </div>
+                 <p className="text-text-primary"><strong>Your 16-Week Bespoke Training Programme</strong> — Delivered through the WRK app. Gym or home. Progressive, structured, and adjusted as you go.</p>
+               </div>
+               <div className="flex items-start">
+                 <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-1 shrink-0">
+                   <Utensils size={18} className="text-accent" />
+                 </div>
+                 <p className="text-text-primary"><strong>Nutrition Framework</strong> — Protein targets, calorie approach, and practical strategies for eating out, travelling, and navigating busy weeks — without tracking everything.</p>
+               </div>
+               <div className="flex items-start">
+                 <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-1 shrink-0">
+                   <Target size={18} className="text-accent" />
+                 </div>
+                 <p className="text-text-primary"><strong>Bi-Weekly Check-Ins</strong> — Direct feedback and programme adjustments from Hayden every fortnight. Not a bot. Not a template response.</p>
+               </div>
+               <div className="flex items-start">
+                 <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-1 shrink-0">
+                   <MessageSquare size={18} className="text-accent" />
+                 </div>
+                 <p className="text-text-primary"><strong>Direct Messaging Access</strong> — Quick questions, form checks, and accountability when you need it — throughout the full 16 weeks.</p>
+               </div>
+               <div className="flex items-start">
+                 <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-1 shrink-0">
+                   <CheckCircle2 size={18} className="text-accent" />
+                 </div>
+                 <p className="text-text-primary"><strong>Exercise Video Library and History Tracking</strong> — Every movement demonstrated. Every session logged. Progress visible.</p>
+               </div>
+               <div className="flex items-start">
+                 <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-1 shrink-0">
+                   <CheckCircle2 size={18} className="text-accent" />
+                 </div>
+                 <p className="text-text-primary"><strong>Macro and Habit Tracking</strong> — Built into the app. Simple, not obsessive.</p>
+               </div>
+               <div className="flex items-start">
+                 <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center mr-4 mt-1 shrink-0">
+                   <BookOpen size={18} className="text-accent" />
+                 </div>
+                 <p className="text-text-primary"><strong>The Busy Professional Survival Guide</strong> — How to stay on track through work stress, social events, and the weeks that don't go to plan.</p>
+               </div>
+            </div>
+            
             <div className="mt-16">
-               <h3 className="font-display text-2xl font-bold uppercase mb-8 text-center text-accent">Inside The Platform</h3>
-               <AppScreenshots />
+              <AppScreenshots limit={4} />
             </div>
           </div>
         </section>
 
-        {/* E) WHAT YOU GET (Offer) */}
-        <section className="py-24 px-6 bg-primary">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-12 text-center">
-              What you get
+        {/* SECTION 4.5 — INVESTMENT */}
+        <section className="py-24 px-6 lg:px-12 bg-secondary border-t border-border">
+          <div className="max-w-[1000px] mx-auto flex flex-col items-center">
+            <div className="text-center mb-16">
+              <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-accent mb-4">
+                TRANSPARENT PRICING
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl uppercase text-text-primary leading-[1.25]">
+                What It Costs
+              </h2>
+            </div>
+            
+            <div className="w-full space-y-6">
+               <div className="bg-primary p-8 md:p-12 rounded-[2rem] border border-border shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center">
+                  <div className="flex-1">
+                     <h3 className="font-bold text-lg text-text-primary uppercase tracking-widest mb-2">Initial Consult</h3>
+                     <p className="text-accent font-medium mb-4">Free</p>
+                     <p className="text-text-secondary font-medium leading-relaxed">A 20–30 minute discovery call to talk through your goals, your history, and whether WRK online coaching is the right fit.</p>
+                  </div>
+               </div>
+               
+               <div className="bg-primary p-8 md:p-12 rounded-[2rem] border border-border shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center">
+                  <div className="flex-1">
+                     <h3 className="font-bold text-lg text-text-primary uppercase tracking-widest mb-2">Programme Design</h3>
+                     <p className="text-accent font-medium mb-4">$99 one-off</p>
+                     <p className="text-text-secondary font-medium leading-relaxed">Your fully customised 16-week training and nutrition programme built from your consult findings. Delivered through the WRK app before week one begins.</p>
+                  </div>
+               </div>
+               
+               <div className="bg-primary p-8 md:p-12 rounded-[2rem] border border-border shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center">
+                  <div className="flex-1">
+                     <h3 className="font-bold text-lg text-text-primary uppercase tracking-widest mb-2">16-Week Coaching</h3>
+                     <p className="text-accent font-medium mb-4">$14.95 per week</p>
+                     <p className="text-text-secondary font-medium leading-relaxed">Bespoke programming, bi-weekly check-ins, direct messaging access, nutrition framework, and the full WRK coaching system — for the duration of your programme. Direct debit. Cancel anytime before the programme begins.</p>
+                  </div>
+               </div>
+            </div>
+            
+            <div className="text-center mt-12">
+               <p className="text-lg text-text-secondary font-medium">Total programme investment: $338.20 over 16 weeks. Less than the cost of four sessions with a PT who doesn't know your name.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5 — WHO IT'S FOR */}
+        <section className="py-24 px-6 lg:px-12 bg-primary border-t border-border">
+          <div className="max-w-[1000px] mx-auto text-center flex flex-col items-center">
+            <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-accent mb-4">
+              WHO THIS WORKS FOR
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl uppercase text-text-primary mb-12 leading-[1.25]">
+              Who This Works For
             </h2>
-            <p className="text-xl text-center text-text-secondary mb-12">
-              Everything you need to keep progressing — without overthinking.
-            </p>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                { title: "Custom training program", desc: "Built for your goals, equipment, and schedule. Progresses as you progress." },
-                { title: "Video form analysis", desc: "Record key lifts. I review and send clear corrections (voice notes / cues)." },
-                { title: "Nutrition framework", desc: "Protein + calorie targets aligned to your goal (fat loss, muscle, performance). No rigid meal plans." },
-                { title: "Weekly check-ins", desc: "We review adherence, biofeedback, stress, sleep, and progress — then adjust." },
-                { title: "Direct coach access", desc: "Message me inside the app. Questions answered within 24 hours." },
-                { title: "Lifestyle management", desc: "We track sleep, stress, and energy so you don’t burn out while “trying to be consistent.”" }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4">
-                  <CheckCircleIcon />
-                  <div>
-                    <h3 className="font-bold text-lg text-text-primary">{item.title}</h3>
-                    <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-16 text-center">
-              <Button 
-                size="lg" 
-                className="px-12 py-6 text-xl shadow-xl w-full md:w-auto"
-                onClick={() => setIsModalOpen(true)}
-              >
-                Apply for Coaching
-              </Button>
+            <div className="text-xl text-text-secondary leading-relaxed font-medium space-y-6 text-left w-full max-w-3xl">
+              <ul className="space-y-6">
+                <li className="flex items-start">
+                  <span className="mr-4 text-text-primary font-black opacity-30 mt-1">•</span>
+                  <p className="text-text-primary font-medium">This works if you're 35–60 and want to lose body fat without extreme dieting.</p>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-4 text-text-primary font-black opacity-30 mt-1">•</span>
+                  <p className="text-text-primary font-medium">If you've tried programmes before and struggled with consistency.</p>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-4 text-text-primary font-black opacity-30 mt-1">•</span>
+                  <p className="text-text-primary font-medium">If you travel, eat out, work long hours, and need something that bends without breaking.</p>
+                </li>
+                <li className="flex items-start">
+                  <span className="mr-4 text-text-primary font-black opacity-30 mt-1">•</span>
+                  <p className="text-text-primary font-medium">If you want a coach — not a content library and a chatbot.</p>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* F) HOW IT WORKS */}
-        <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-16 text-center">How it works</h2>
-            <div className="grid md:grid-cols-3 gap-12">
-              {[
-                { step: "01", title: "Onboarding", desc: "We jump on a call to map goals, schedule, equipment, injury history, and constraints. We set your strategy." },
-                { step: "02", title: "Setup", desc: "I build your program in the app. You get your login, weekly structure, and nutrition targets." },
-                { step: "03", title: "Execution (12-week block)", desc: "You train. You track. You upload videos. Every week we refine and progress." }
-              ].map((item, i) => (
-                <div key={i} className="relative p-8 bg-primary rounded-[2rem] border border-border">
-                  <span className="absolute -top-6 left-8 text-6xl font-display font-bold text-accent/20">{item.step}</span>
-                  <h3 className="font-display text-2xl font-bold uppercase mb-4 mt-6">{item.title}</h3>
-                  <p className="text-text-secondary leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* SECTION 5.5 — FAQ */}
+        <FAQ items={faqItems} title="Frequently Asked Questions" eyebrow="COMMON QUESTIONS" />
+
+        {/* SECTION 6 — PROGRAMME CALLOUT */}
+        <section className="py-20 md:py-24 px-5 lg:px-12 bg-orange-burnt text-white text-center">
+           <div className="max-w-[800px] mx-auto flex flex-col items-center">
+              <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-white/70 mb-4">
+                NOT READY TO COMMIT TO 16 WEEKS?
+              </span>
+              <h2 className="font-display text-[36px] md:text-[48px] uppercase mb-6 leading-[1.1] text-white">
+                 Start Here Instead.
+              </h2>
+              <p className="font-sans text-[18px] leading-[1.6] mb-10 font-medium max-w-[700px] text-white/90">
+                The 14 Day Fat Loss Foundations programme gives you a real taste of how WRK programmes are built — and a practical starting point regardless of what comes next.
+              </p>
+              <Link to="/14-day-fat-loss-foundations" className="w-full sm:w-auto">
+                 <Button size="lg" variant="secondary" className="w-full sm:w-auto px-8 py-5 text-[15px] sm:text-[16px] flex items-center justify-center gap-3 border-none">
+                   Get the 14-Day Programme <ArrowRight size={20} />
+                 </Button>
+              </Link>
+           </div>
         </section>
 
-        {/* G) PRICING */}
-        <section className="py-24 px-6 bg-primary text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">Pricing</h2>
-            <div className="bg-secondary p-10 rounded-[2.5rem] border border-border inline-block w-full max-w-2xl">
-              <h3 className="font-display text-3xl font-bold uppercase mb-4">Online Coaching</h3>
-              <div className="text-4xl md:text-5xl font-bold text-accent mb-2">$99 onboarding + $27.50/week</div>
-              <p className="text-text-secondary mb-8">12-week minimum commitment<br/><span className="text-xs opacity-70">(because quick fixes are how people end up starting over)</span></p>
-              
-              <div className="text-left max-w-md mx-auto space-y-4 mb-10">
-                <p className="font-bold text-text-primary">If you’re a fit, you’ll leave this 12-week block with:</p>
-                {[
-                  "A repeatable weekly structure",
-                  "Stronger lifts + better movement quality",
-                  "Clearer nutrition targets you can actually maintain",
-                  "Momentum that doesn’t disappear when life gets busy"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <Check size={18} className="text-accent mt-1 shrink-0" />
-                    <span className="text-text-secondary text-sm">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Button 
-                size="lg" 
-                className="px-12 py-6 text-xl shadow-xl w-full"
-                onClick={() => setIsModalOpen(true)}
-              >
-                Apply for Coaching
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* H) PROOF */}
-        <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12">Client Results</h2>
-            <div className="grid md:grid-cols-3 gap-8 text-left">
-              {[
-                { name: "Mark T.", role: "Sales Director", quote: "I travel 2 weeks a month. This is the first time I’ve stayed consistent while on the road. The hotel workouts saved me." },
-                { name: "Emma S.", role: "Working Mum", quote: "The app makes it easy. I don’t have to think — I just open it and do the work. Down 8kg in 12 weeks." },
-                { name: "Jason L.", role: "Software Dev", quote: "I was skeptical about online coaching, but the video feedback is better than trainers I’ve had in person. My squat has never felt better." }
-              ].map((item, i) => (
-                <div key={i} className="bg-primary p-8 rounded-2xl border border-border">
-                  <div className="flex gap-1 text-accent mb-4">
-                    {[1,2,3,4,5].map(s => <Star key={s} size={14} fill="currentColor" />)}
-                  </div>
-                  <p className="text-text-secondary text-sm italic mb-6">"{item.quote}"</p>
-                  <div>
-                    <strong className="block text-text-primary font-bold">{item.name}</strong>
-                    <span className="text-xs text-text-secondary uppercase tracking-wider">{item.role}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="mt-10 text-text-secondary font-medium">Results vary — but consistency always wins.</p>
-          </div>
-        </section>
-
-        {/* I) FAQ */}
-        <section className="py-24 px-6 bg-primary">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12 text-center">FAQs</h2>
-            <FAQ items={faqs} />
-          </div>
-        </section>
-
-        {/* J) FINAL CLOSE (CTA) */}
-        <section className="py-32 px-6 bg-secondary text-center border-t border-border">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-8">
-              Start progressing — <span className="text-accent">without guessing.</span>
+        {/* SECTION 7 — CTA */}
+        <section className="bg-secondary py-20 md:py-32 px-5 lg:px-12 text-center relative overflow-hidden border-t border-border">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+          <div className="max-w-[800px] mx-auto relative z-10 flex flex-col items-center">
+            <h2 className="font-display text-[44px] md:text-[64px] uppercase text-text-primary mb-6 leading-[1.1]">
+              Let's Talk About What 16 Weeks Could Do.
             </h2>
-            <p className="text-xl text-text-secondary mb-6 max-w-xl mx-auto">
-              Professional strategy, delivered through your phone.
-              <br />
-              If you’re accepted, we’ll build your 12-week block and get to work.
+            <p className="text-[18px] md:text-[20px] font-medium text-text-secondary mb-10 leading-[1.6]">
+              Apply for online coaching. If it's the right fit, we'll build your programme and get started.
             </p>
-            <div className="flex flex-col md:flex-row gap-6 justify-center mb-8">
-              <Button 
-                size="lg" 
-                className="px-16 py-6 text-xl shadow-xl w-full md:w-auto"
-                onClick={() => setIsModalOpen(true)}
-              >
-                Apply for Coaching
-              </Button>
+            <div className="flex flex-col gap-6 w-full max-w-sm mx-auto items-center">
+              <Link to="/contact" className="w-full">
+                <Button size="lg" className="w-full px-8 py-5 text-[15px] sm:text-[16px] flex items-center justify-center gap-3">
+                  Apply Now <ArrowRight size={20} />
+                </Button>
+              </Link>
+              <p className="text-text-secondary text-sm font-medium mt-2">Built around your life. Backed by 20 years of experience.</p>
             </div>
-            <p className="text-sm text-text-secondary">
-              100% no-pressure. We’ll just confirm fit and the best next step.
-            </p>
           </div>
         </section>
 
       </div>
-
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 w-full p-4 bg-primary border-t border-border md:hidden z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-        <Button 
-          size="lg" 
-          className="w-full shadow-xl"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Apply for Coaching
-        </Button>
-      </div>
-
-      <LeadFormModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        service="Online Coaching" 
-      />
     </>
   );
 };
-
-const CheckCircleIcon = () => (
-  <div className="w-6 h-6 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-1">
-    <Check size={14} strokeWidth={3} />
-  </div>
-);

@@ -1,294 +1,321 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
-import { Check, Trophy, Smartphone, Utensils, Users, Star } from 'lucide-react';
+import { Check, Trophy, Smartphone, Utensils, Users, Star, ArrowRight } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SeoHead } from '../components/SeoHead';
 import { FAQ } from '../components/FAQ';
-import { AppScreenshots } from '../components/AppScreenshots';
 
 export const Challenge42: React.FC = () => {
   const { pageContent } = useContent();
-  // Overriding SEO content
+  const purchaseUrl = "https://wrkpersonaltraining.mypthub.net/p/225904";
 
   const faqs = [
     {
       question: "Do I need a gym membership?",
-      answer: "No. There are Gym and Home versions, and you can switch if needed."
+      answer: "No. There are Gym and Home versions of the training program. You can choose what works for you."
     },
     {
-      question: "Is there a meal plan?",
-      answer: "It’s a nutrition framework (not a restrictive diet). You’ll get targets, guidance, and resources to make it easy."
+      question: "Is there a strict meal plan?",
+      answer: "No. Meal plans teach you how to follow rules, not how to eat. We give you a nutrition framework with clear targets, recipes, and guidelines so you can eat real food and still get results."
     },
     {
       question: "What if I miss a day?",
-      answer: "You don’t restart. You continue. The plan is designed for real life."
+      answer: "You don’t restart. You don't quit. You just do the next day. The program is designed for real life, not perfection."
     },
     {
       question: "Is this suitable for beginners?",
-      answer: "Yes. It’s beginner-friendly and built to help you build confidence and consistency."
+      answer: "100%. The workouts have video demonstrations for every movement, and the habits start small and build up."
     },
     {
-      question: "What happens after 42 days?",
-      answer: "You’ll finish with a repeatable structure and momentum. If you want the next step, you’ll have the option to move into ongoing coaching."
+      question: "What happens on Day 43?",
+      answer: "You'll have the option to graduate into our core Coaching Membership to keep progressing, or you can take the habits you've built and continue on your own."
     }
   ];
-
-  const purchaseUrl = "https://wrkpersonaltraining.mypthub.net/p/225904";
 
   return (
     <>
       <SeoHead 
-        title="Fitness Challenge NZ | 42 Day Reset (6-Week Kickstart) – $47"
-        description="A beginner-friendly fitness challenge you can start anytime. 42 Day Reset includes training (gym or home), nutrition framework, habit tracking, and progress tracking. Instant access. $47 NZD."
+        title={pageContent.challenge42.seo.title}
+        description={pageContent.challenge42.seo.description}
       />
 
       <div className="bg-primary text-text-primary transition-colors duration-300 pb-24 md:pb-0">
         
-        {/* A) HERO */}
-        <section className="relative pt-40 pb-32 px-6 text-center overflow-hidden">
+        {/* HERO */}
+        {/* SECTION 1 — HERO */}
+        <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-            <img 
-              src={pageContent.challenge42?.hero?.image || "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg"} 
-              alt="42 Day Reset Training" 
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-black/70"></div>
+             <img 
+               referrerPolicy="no-referrer" 
+               loading="eager" 
+               src="https://i.postimg.cc/xTbx6w9V/IMG-7278.png" 
+               alt="THE 42-DAY CHALLENGE" 
+               className="w-full h-full object-cover object-top" 
+             />
+             <div 
+               className="absolute inset-0"
+               style={{
+                 background: 'linear-gradient(to bottom, rgba(13, 17, 23, 0) 0%, rgba(13, 17, 23, 0.6) 60%, rgba(13, 17, 23, 0.88) 100%)'
+               }}
+             />
           </div>
-          <div className="relative z-10 max-w-4xl mx-auto">
-            <span className="text-accent font-bold uppercase tracking-widest text-xs mb-6 block">Habits • Training • Nutrition</span>
-            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-8 leading-[0.9] text-white">
-              42 Day Fitness Challenge NZ — Reset Your <span className="text-accent">Habits, Health & Headspace</span>
+          <div className="relative z-10 w-full px-5 pt-32 pb-12 md:pb-24 max-w-[1200px] mx-auto md:px-12 text-left">
+            <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-orange-burnt mb-4">
+              THE 42-DAY CHALLENGE
+            </span>
+            <h1 className="font-display text-[44px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-[1.1] sm:leading-[1.1] text-white mb-6 uppercase max-w-[1000px]">
+              THE 42-DAY <br className="hidden md:block" />RESET.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-10 max-w-2xl mx-auto">
-              You don’t need another crash diet. You need a reset.
-              <br className="hidden md:block" />
-              A structured 6-week kickstart that builds momentum you can actually keep.
+            <p className="font-sans text-[18px] md:text-[20px] text-off-white font-medium max-w-[640px] mb-8 leading-[1.6]">
+              Build the habits that make fitness automatic. A 6-week structured kickstart delivered straight to your phone.
             </p>
-            <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="px-12 py-6 text-xl shadow-xl w-full md:w-auto">Start Your Reset ($47 NZD)</Button>
-            </a>
-            <p className="mt-4 text-xs text-gray-300 uppercase tracking-wider">Instant access • One-time payment • Start anytime</p>
-          </div>
-        </section>
-
-        {/* B) AGITATE */}
-        <section className="py-20 px-6 bg-secondary border-y border-border">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-3xl font-bold uppercase mb-10 text-center">Feeling Stuck?</h2>
-            <div className="space-y-6">
-              {[
-                "You feel sluggish, tired, and flat.",
-                "Your clothes are tighter than they used to be.",
-                "You’ve been “starting Monday” for 6 months.",
-                "You’re training without a plan and seeing zero results.",
-                "You want to get back on track… but don’t know where to start."
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 p-4 rounded-xl hover:bg-primary/50 transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center shrink-0">
-                    <span className="font-bold">✕</span>
-                  </div>
-                  <p className="text-lg text-text-primary font-medium">{item}</p>
+            <div className="flex flex-col md:flex-row items-start gap-4">
+               <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
+                  <a href={purchaseUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                    <Button 
+                      size="lg" 
+                      className="w-full sm:w-auto px-8 py-5 text-[15px] sm:text-[16px] flex items-center justify-center gap-3"
+                    >
+                      START YOUR RESET <ArrowRight size={20} />
+                    </Button>
+                  </a>
+                  <a href="#whats-included" className="w-full sm:w-auto flex items-center justify-center gap-3 text-white hover:text-accent font-bold uppercase tracking-[0.1em] text-[13px] transition-colors mt-4 sm:mt-0">
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/5 hover:bg-white/10 transition-colors">
+                      <ArrowRight size={18} />
+                    </div>
+                    What's Included
+                  </a>
                 </div>
-              ))}
-            </div>
-            <div className="mt-10 text-center">
-              <p className="text-xl font-bold text-text-primary">
-                This isn’t a motivation problem. <span className="text-accent">It’s a structure problem.</span>
-              </p>
-            </div>
+              </div>
           </div>
         </section>
 
-        {/* C) REFRAME */}
-        <section className="py-24 px-6 bg-primary text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">
-              Motivation is <span className="text-accent">fleeting</span>.
+        {/* WHY 42 DAYS? (Agitate/Reframe) */}
+        <section className="py-24 md:py-32 px-6 bg-secondary border-y border-border">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="font-display text-4xl md:text-6xl uppercase mb-8">
+              Why <span className="text-accent">42 Days?</span>
             </h2>
-            <p className="text-2xl text-text-primary font-medium leading-relaxed mb-6">
-              Systems are forever.
+            <p className="text-2xl text-text-primary font-bold leading-relaxed mb-10 max-w-3xl mx-auto">
+              Because 21 days isn't enough to change a habit, and 90 days feels too far away when you're just starting out.
             </p>
-            <p className="text-lg text-text-secondary leading-relaxed mb-8">
-              The 42 Day Reset isn’t about starving yourself or training 7 days a week. It’s about installing the daily habits that make fitness automatic.
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-16 max-w-2xl mx-auto">
+              This isn't a crash diet or a "shred." It's a structured reset. It's long enough to see real physical changes, but short enough to stay focused. We strip away the noise and focus on the daily inputs that actually move the needle.
             </p>
-            <p className="text-lg text-text-secondary leading-relaxed mb-10">
-              You get the plan, the tools, and a simple structure to follow — so you stop guessing and start progressing.
-            </p>
-            <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="px-12 py-6 text-xl shadow-xl w-full md:w-auto">Start Your Reset ($47 NZD)</Button>
-            </a>
-          </div>
-        </section>
-
-        {/* D) SOLUTION */}
-        <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-6xl mx-auto">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="text-accent font-bold uppercase tracking-widest text-xs mb-4 block">The Solution</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
-                The 42 Day Reset.
-              </h2>
-              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-                A complete 6-week training + nutrition protocol delivered through the app.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-              <div className="bg-primary p-6 rounded-2xl border border-border flex flex-col items-center text-center">
-                <Smartphone className="text-accent mb-4" size={32} />
-                <h3 className="font-bold text-lg mb-2">The App</h3>
-                <p className="text-sm text-text-secondary">Workouts, tracking, and targets in your pocket.</p>
-              </div>
-              <div className="bg-primary p-6 rounded-2xl border border-border flex flex-col items-center text-center">
-                <Utensils className="text-accent mb-4" size={32} />
-                <h3 className="font-bold text-lg mb-2">Nutrition Guide</h3>
-                <p className="text-sm text-text-secondary">Simple framework, recipes, shopping lists, and clear targets.</p>
-              </div>
-              <div className="bg-primary p-6 rounded-2xl border border-border flex flex-col items-center text-center">
-                <Users className="text-accent mb-4" size={32} />
-                <h3 className="font-bold text-lg mb-2">Support</h3>
-                <p className="text-sm text-text-secondary">A private group to keep you moving when motivation drops.</p>
-              </div>
-            </div>
             
-            <p className="text-center text-sm text-text-secondary italic mb-16">
-              (You can start anytime. No waiting for a “challenge start date.”)
-            </p>
-
-            <div className="mt-16">
-               <h3 className="font-display text-2xl font-bold uppercase mb-8 text-center text-accent">Inside The Platform</h3>
-               <AppScreenshots />
+            <div className="grid md:grid-cols-3 gap-8 text-left mt-16">
+              <div className="bg-primary p-10 rounded-[2rem] border border-border group hover:border-accent transition-colors">
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                  <span className="text-accent font-black text-2xl">01</span>
+                </div>
+                <h3 className="font-display uppercase text-2xl mb-4 text-text-primary">No Starvation</h3>
+                <p className="text-base text-text-secondary leading-relaxed">You won't be eating 1200 calories and feeling miserable. You'll learn how to fuel properly.</p>
+              </div>
+              <div className="bg-primary p-10 rounded-[2rem] border border-border group hover:border-accent transition-colors">
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                  <span className="text-accent font-black text-2xl">02</span>
+                </div>
+                <h3 className="font-display uppercase text-2xl mb-4 text-text-primary">No 7-Day Training</h3>
+                <p className="text-base text-text-secondary leading-relaxed">More isn't better. Better is better. 3-4 focused sessions a week is all you need.</p>
+              </div>
+              <div className="bg-primary p-10 rounded-[2rem] border border-border group hover:border-accent transition-colors">
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                  <span className="text-accent font-black text-2xl">03</span>
+                </div>
+                <h3 className="font-display uppercase text-2xl mb-4 text-text-primary">No Guesswork</h3>
+                <p className="text-base text-text-secondary leading-relaxed">Open the app, see your tasks, tick them off. We remove the decision fatigue.</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* E) OFFER (What you get) */}
-        <section className="py-24 px-6 bg-primary">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-12 text-center">
-              What's Included
-            </h2>
-            <p className="text-xl text-center text-text-secondary mb-12">
-              Everything you need to build momentum in 42 days:
-            </p>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                { title: "6-Week Training Program", desc: "Gym or Home options. 3–4 sessions per week." },
-                { title: "Nutrition Framework", desc: "Learn how to fuel your body without giving up everything you love." },
-                { title: "Habit Tracking", desc: "Simple daily targets for water, sleep, steps, and consistency." },
-                { title: "Video Demonstrations", desc: "Every exercise has a demo so you know exactly what to do." },
-                { title: "Progress Tracking", desc: "Track workouts and key stats so you can see the changes happening." },
-                { title: "Support Group", desc: "Community support for questions, encouragement, and accountability." }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4">
-                  <CheckCircleIcon />
-                  <div>
-                    <h3 className="font-bold text-lg text-text-primary">{item.title}</h3>
-                    <p className="text-sm text-text-secondary leading-relaxed">{item.desc}</p>
+        {/* WHAT YOU GET */}
+        <section id="whats-included" className="py-24 md:py-32 px-6 bg-primary">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="font-display text-4xl md:text-6xl uppercase mb-6">
+                What's Included
+              </h2>
+              <p className="text-xl md:text-2xl text-text-secondary">
+                Everything you need to build momentum, delivered through the WRK app.
+              </p>
+            </div>
+
+            {/* App Features - Alternating Rows */}
+            <div className="flex flex-col gap-24 md:gap-40 mt-12 md:mt-24 max-w-6xl mx-auto text-left mb-16 px-4">
+              
+              {/* Feature 1 - Image Left */}
+              <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+                <div className="order-2 md:order-1 flex justify-center">
+                  <div className="w-[280px] md:w-[320px] h-[580px] md:h-[660px] bg-black rounded-[3.5rem] border-[12px] border-gray-900 overflow-hidden relative shadow-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+                    <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 z-20 rounded-b-3xl w-1/2 mx-auto"></div>
+                    <img referrerPolicy="no-referrer" src="https://i.postimg.cc/tCGRmr4y/IMG-1925.png" alt="Training Program" className="w-full h-full object-cover" />
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="mt-16 text-center">
-              <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="px-12 py-6 text-xl shadow-xl w-full md:w-auto">Start Your Reset ($47 NZD)</Button>
-              </a>
-              <p className="mt-4 text-xs text-text-secondary uppercase tracking-wider">One-time payment. Instant access.</p>
+                <div className="order-1 md:order-2 flex flex-col justify-center">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-6 font-mono text-sm font-bold">01</div>
+                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">6-Week Training <br />Program</h3>
+                  <p className="text-text-secondary text-lg md:text-xl leading-relaxed font-medium">
+                    Choose between Gym or Home workouts. Structured progression over 6 weeks with video demonstrations for every single movement.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 2 - Image Right */}
+              <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+                <div className="order-1 md:order-1 flex flex-col justify-center">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-6 font-mono text-sm font-bold">02</div>
+                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">Nutrition <br />Framework</h3>
+                  <p className="text-text-secondary text-lg md:text-xl leading-relaxed font-medium">
+                    Clear calorie and protein targets, plus a flexible framework that teaches you how to eat without giving up the foods you love.
+                  </p>
+                </div>
+                <div className="order-2 md:order-2 flex justify-center">
+                  <div className="w-[280px] md:w-[320px] h-[580px] md:h-[660px] bg-black rounded-[3.5rem] border-[12px] border-gray-900 overflow-hidden relative shadow-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+                    <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 z-20 rounded-b-3xl w-1/2 mx-auto"></div>
+                    <img referrerPolicy="no-referrer" src="https://i.postimg.cc/3JQrbLxM/IMG-1928.png" alt="Nutrition & Habits" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 3 - Image Left */}
+              <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+                <div className="order-2 md:order-1 flex justify-center">
+                  <div className="w-[280px] md:w-[320px] h-[580px] md:h-[660px] bg-black rounded-[3.5rem] border-[12px] border-gray-900 overflow-hidden relative shadow-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+                    <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 z-20 rounded-b-3xl w-1/2 mx-auto"></div>
+                    <img referrerPolicy="no-referrer" src="https://i.postimg.cc/Hs1WPSsF/IMG-1929.png" alt="Daily Checking and Community" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div className="order-1 md:order-2 flex flex-col justify-center">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-6 font-mono text-sm font-bold">03</div>
+                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">Tracking & <br />Community</h3>
+                  <p className="text-text-secondary text-lg md:text-xl leading-relaxed font-medium">
+                    Simple daily targets for water, steps, and sleep. Tick them off in the app. Access the private group inside the app for questions, form checks, and accountability.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
 
-        {/* F) HOW IT WORKS */}
+        {/* WHO THIS IS FOR */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-16 text-center">The Timeline</h2>
-            <div className="grid md:grid-cols-3 gap-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-display text-4xl md:text-5xl uppercase mb-12">
+              Who is this for?
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8 text-left">
               {[
-                { step: "01", title: "Sign Up", desc: "Create your account, download the app, and get instant access." },
-                { step: "02", title: "Set Up (Day 1)", desc: "Pick Gym or Home, schedule your sessions, and lock in your targets." },
-                { step: "03", title: "The 42 Days", desc: "You train, track, and build momentum — one week at a time." }
+                { title: "The Starter", desc: "You want to get fit but feel overwhelmed by all the conflicting information online. You just want a clear, safe plan to follow." },
+                { title: "The Restarter", desc: "You used to be fit, but life got in the way. You need a structured 6-week block to get your momentum back." },
+                { title: "The DIYer", desc: "You don't need a 1:1 coach checking in every week, but you do need a proven program to follow rather than making it up yourself." }
               ].map((item, i) => (
-                <div key={i} className="relative p-8 bg-primary rounded-[2rem] border border-border">
-                  <span className="absolute -top-6 left-8 text-6xl font-display font-bold text-accent/20">{item.step}</span>
-                  <h3 className="font-display text-2xl font-bold uppercase mb-4 mt-6">{item.title}</h3>
+                <div key={i} className="bg-primary p-8 rounded-2xl border border-border">
+                  <h3 className="font-bold text-xl mb-4 text-accent">{item.title}</h3>
                   <p className="text-text-secondary leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-12 text-center text-text-secondary italic">
-              (Miss a day? You don’t “fail.” You just continue the plan. Consistency beats perfection.)
-            </p>
           </div>
         </section>
 
-        {/* G) PROOF */}
+        {/* TESTIMONIALS */}
         <section className="py-24 px-6 bg-primary">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12">Real Results</h2>
-            <div className="grid md:grid-cols-3 gap-8 text-left">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl uppercase mb-16 text-center">
+              Real Results
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
               {[
-                { name: "Sarah J.", result: "Lost 5kg", quote: "I finally understand how to eat. I’m not starving, and the weight is coming off." },
-                { name: "Mike D.", result: "Stronger than ever", quote: "The structure is what I needed. No more guessing in the gym." },
-                { name: "Kelly R.", result: "Habits stuck", quote: "The 42 days are over but I’m still going. It changed my mindset." }
-              ].map((item, i) => (
-                <div key={i} className="bg-secondary p-8 rounded-2xl border border-border">
-                  <div className="flex gap-1 text-accent mb-4">
-                    {[1,2,3,4,5].map(s => <Star key={s} size={14} fill="currentColor" />)}
+                {
+                  quote: "This was exactly the kickstart I needed. The structure helped me get back on track without feeling overwhelmed.",
+                  author: "Sarah J."
+                },
+                {
+                  quote: "No crazy diets, just sustainable habits. I'm moving better and feeling stronger than I have in years.",
+                  author: "Mike D."
+                },
+                {
+                  quote: "The 42 days flew by. Having everything laid out in the app made it so easy to stay consistent.",
+                  author: "Kelly R."
+                }
+              ].map((testimonial, i) => (
+                <div key={i} className="bg-secondary p-10 rounded-[2rem] border border-border hover:border-accent transition-colors duration-300">
+                  <div className="text-accent mb-6 flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={20} fill="currentColor" className="text-accent" />
+                    ))}
                   </div>
-                  <p className="text-text-secondary text-sm italic mb-6">"{item.quote}"</p>
+                  <p className="text-lg text-text-primary mb-8 font-medium leading-relaxed">
+                    "{testimonial.quote}"
+                  </p>
                   <div>
-                    <strong className="block text-text-primary font-bold">{item.name}</strong>
-                    <span className="text-xs text-accent uppercase tracking-wider font-bold">{item.result}</span>
+                    <p className="font-bold text-text-primary uppercase tracking-wider text-sm">{testimonial.author}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="mt-12 text-lg font-bold text-text-primary">
-              Results vary — but structure always wins.
-            </p>
+            <p className="text-center text-sm text-text-secondary">Results vary. Consistency is the only guarantee.</p>
           </div>
         </section>
 
-        {/* H) FAQ */}
-        <section className="py-24 px-6 bg-secondary border-t border-border">
+        {/* FAQ */}
+        <section className="py-24 px-6 bg-secondary border-y border-border">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-4xl font-bold uppercase tracking-tighter mb-12 text-center">FAQs</h2>
+            <h2 className="font-display text-4xl uppercase mb-12 text-center">FAQs</h2>
             <FAQ items={faqs} />
           </div>
         </section>
 
-        {/* I) CTA */}
-        <section className="py-32 px-6 bg-primary text-center border-t border-border">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-8">
+        {/* FINAL CTA */}
+        <section className="py-32 px-6 bg-primary text-center border-t border-border relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent rounded-full opacity-5 blur-3xl pointer-events-none"></div>
+          <div className="max-w-3xl mx-auto relative z-10">
+            <h2 className="font-display text-5xl md:text-6xl uppercase mb-8">
               Ready to <span className="text-accent">Reset?</span>
             </h2>
-            <p className="text-xl text-text-secondary mb-12 max-w-xl mx-auto">
+            <p className="text-xl text-text-secondary mb-12 max-w-xl mx-auto font-medium">
               Six weeks from now you’ll wish you started today.
               <br />
               Let’s build momentum that lasts.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="px-16 py-6 text-xl shadow-xl w-full md:w-auto">Start Your Reset ($47 NZD)</Button>
+                <Button size="lg" className="px-16 py-6 text-xl shadow-xl w-full md:w-auto uppercase tracking-widest font-bold">Start Your Reset ($47 NZD)</Button>
               </a>
             </div>
-            <p className="mt-8 text-sm text-text-secondary">
+            <p className="mt-8 text-sm text-text-secondary font-bold uppercase tracking-wider">
               One-time payment • Instant access • Start anytime
             </p>
           </div>
         </section>
 
+        {/* POST-COMPLETION UPSELL */}
+        <section className="py-24 px-6 bg-secondary text-center border-t border-border">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-3xl uppercase mb-6">
+              What comes after the reset?
+            </h2>
+            <p className="text-lg text-text-primary leading-relaxed mb-4 max-w-2xl mx-auto font-medium">
+              The 42 Day Reset builds the foundation. Online coaching is what you build on top of it.
+            </p>
+            <p className="text-lg text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
+              If you finish the 42 days and want to keep progressing with a personalised program and coaching, that’s what Online PT is for.
+            </p>
+            <Link to="/online-personal-training-nz">
+              <span className="inline-block text-accent font-bold uppercase tracking-widest text-sm border-b-2 border-accent hover:border-white hover:text-white transition-colors pb-1">
+                Learn about Online Coaching
+              </span>
+            </Link>
+          </div>
+        </section>
+
       </div>
 
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 w-full p-4 bg-primary border-t border-border md:hidden z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-        <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
-          <Button size="lg" className="w-full shadow-xl">Start Your Reset ($47 NZD)</Button>
-        </a>
-      </div>
+
     </>
   );
 };

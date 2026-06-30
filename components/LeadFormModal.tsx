@@ -75,7 +75,7 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
         {/* Header */}
         <div className="bg-secondary px-6 py-5 md:px-8 md:py-6 border-b border-border flex justify-between items-center shrink-0">
           <div>
-            <h3 className="font-display text-xl md:text-2xl font-bold uppercase text-text-primary">
+            <h3 className="font-display text-xl md:text-2xl uppercase text-text-primary">
               {service === 'Corporate Wellness' ? 'Request Proposal' : 'Book Consult'}
             </h3>
             <p className="text-xs text-text-secondary uppercase tracking-widest mt-1">

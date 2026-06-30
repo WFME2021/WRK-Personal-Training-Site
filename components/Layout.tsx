@@ -2,235 +2,200 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { BRAND_NAME, NAVIGATION_LINKS, LOCATION, EMAIL_CONTACT } from '../constants';
-import { ThemeToggle } from './ThemeToggle';
-import { useTheme } from '../context/ThemeContext';
-import { useContent } from '../context/ContentContext';
-import { corporateClients } from '../data/corporateClients';
+import { BRAND_NAME, NAVIGATION_LINKS, SERVICE_LINKS, EMAIL_CONTACT } from '../constants';
+import { Button } from './Button';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const { theme } = useTheme();
-  const { pageContent } = useContent();
   
-  // Hardcoded logos as requested
-  const LOGO_LIGHT_MODE = "https://i.postimg.cc/59nFgbLv/wrk-logo-black-transparent.png"; // Black logo for light background
-  const LOGO_DARK_MODE = "https://i.postimg.cc/13cs5yGp/WRK-LOGOS-(Final).png"; // White/Main logo for dark background
-  
-  const logoSrc = theme === 'dark' ? LOGO_DARK_MODE : LOGO_LIGHT_MODE;
-
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  const LANDING_PAGE_ROUTES = [
-    '/personal-trainer-christchurch',
-    '/online-personal-training-nz',
-    '/workplace-wellness-program-nz',
-    '/fitness-challenge-nz'
-  ];
-
-  const isLandingPage = LANDING_PAGE_ROUTES.includes(location.pathname);
-  const isCorporatePage = location.pathname.startsWith('/corporate/');
-  
-  let corporateClientName = "";
-  if (isCorporatePage) {
-    const companyId = location.pathname.split('/')[2];
-    if (companyId && corporateClients[companyId]) {
-      corporateClientName = corporateClients[companyId].name;
-    }
-  }
-
   return (
-    <div className="min-h-screen flex flex-col bg-primary text-text-primary selection:bg-accent selection:text-white transition-colors duration-300 overflow-x-hidden">
-      <header className={`fixed w-full top-0 z-50 bg-primary/90 backdrop-blur-md border-b border-border transition-colors duration-300`}>
-        <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-          <Link to="/" className="block hover:opacity-80 transition-opacity" aria-label="Home">
-            <img referrerPolicy="no-referrer" 
-              src={logoSrc} 
-              alt={BRAND_NAME} 
-              className="h-12 w-auto object-contain" 
-            />
+    <div className="min-h-screen flex flex-col bg-navy text-white transition-colors duration-300 overflow-x-hidden selection:bg-orange-burnt selection:text-white">
+      
+      {/* Header */}
+      <header className="fixed w-full top-0 z-50 bg-navy/96 backdrop-blur-md transition-colors duration-300 border-b border-navy-light h-[60px] md:h-[72px]">
+        <div className="max-w-[1200px] mx-auto px-5 md:px-12 h-full flex items-center justify-between">
+          
+          {/* Logo / Wordmark */}
+          <Link to="/" className="block hover:opacity-80 transition-opacity flex-shrink-0" aria-label="Home">
+             <span className="font-display text-[22px] md:text-3xl tracking-wide text-white uppercase">WRK</span>
           </Link>
 
-          {/* Corporate Page Nav - Custom Message */}
-          {isCorporatePage ? (
-            <div className="flex items-center gap-4">
-              <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-text-secondary hidden sm:block">
-                WRK is excited to partner with {corporateClientName}
-              </span>
-              <div className="pl-4 sm:border-l border-border">
-                <ThemeToggle />
-              </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex flex-grow justify-center items-center space-x-5 lg:space-x-8">
+            <div className="relative group py-4">
+               <span className="text-[14px] font-medium text-off-white group-hover:text-white transition-colors cursor-pointer flex items-center gap-1.5">
+                 Services
+                 <svg className="w-3.5 h-3.5 text-off-white/70 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+               </span>
+               <div className="absolute top-full left-1/2 -translate-x-1/2 w-[220px] opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 bg-navy/95 backdrop-blur-md border border-navy-light rounded-xl shadow-2xl py-2 z-50">
+                 {SERVICE_LINKS.map(link => (
+                   <Link key={link.path} to={link.path} className="block px-5 py-3 text-[14px] font-medium text-off-white hover:text-white hover:bg-navy-light/50 transition-colors">
+                     {link.label}
+                   </Link>
+                 ))}
+               </div>
             </div>
-          ) : isLandingPage ? (
-            <Link 
-              to="/" 
-              className="text-xs font-bold uppercase tracking-widest text-text-primary hover:text-accent transition-colors border-b border-transparent hover:border-accent"
-            >
-              Back to Home
-            </Link>
-          ) : (
-            <>
-              {/* Desktop Nav */}
-              <nav className="hidden md:flex items-center space-x-8">
-                {NAVIGATION_LINKS.map((link) => (
-                  link.isPrimary ? (
-                    <Link 
-                      key={link.path} 
-                      to={link.path}
-                      className="bg-accent text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-accent border border-accent transition-all duration-300 shadow-lg"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <Link 
-                      key={link.path} 
-                      to={link.path}
-                      className="text-xs font-bold uppercase tracking-widest text-text-primary hover:text-accent transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  )
-                ))}
-                <div className="pl-4 border-l border-border">
-                  <ThemeToggle />
-                </div>
-              </nav>
-
-              {/* Mobile Menu Button */}
-              <div className="md:hidden flex items-center gap-4">
-                <ThemeToggle />
-                <button 
-                  className="p-2 text-text-primary hover:bg-secondary rounded-full transition-colors"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+            {NAVIGATION_LINKS.map((link: any) => {
+              if (link.isPrimary || link.isHighlight) return null; // Rendered elsewhere
+              return (
+                <Link 
+                  key={link.path} 
+                  to={link.path}
+                  className="text-[14px] font-medium text-off-white hover:text-white transition-colors"
                 >
-                  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+                  {link.label}
+                </Link>
+              )
+            })}
+          </nav>
 
-        {/* Mobile Nav - Only show if NOT landing page or corporate page */}
-        {!isLandingPage && !isCorporatePage && isMenuOpen && (
-          <div className="md:hidden absolute top-24 left-0 w-full bg-primary border-b border-border p-6 flex flex-col space-y-4 shadow-xl h-[calc(100vh-6rem)] overflow-y-auto">
-            {NAVIGATION_LINKS.map((link) => (
-              <Link 
-                key={link.path} 
-                to={link.path}
-                className={`text-3xl font-display uppercase font-bold ${link.isPrimary ? 'text-accent' : 'text-text-primary'}`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="pt-8 border-t border-border mt-4">
-              <span className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-6 block">Programs</span>
-              <div className="flex flex-col space-y-6">
-                <Link to="/personal-trainer-christchurch" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Personal Training</Link>
-                <Link to="/online-personal-training-nz" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Online Coaching</Link>
-                <Link to="/workplace-wellness-program-nz" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">Corporate Wellness</Link>
-                <Link to="/fitness-challenge-nz" className="text-2xl font-display uppercase font-bold text-text-secondary hover:text-text-primary">42 Day Reset</Link>
-              </div>
-            </div>
+          {/* Desktop Right Side CTA */}
+          <div className="hidden md:flex flex-shrink-0">
+             {NAVIGATION_LINKS.filter((l:any) => l.isPrimary).map((link: any) => (
+                <Link key={link.path} to={link.path}>
+                   <Button style={{height: '40px'}} size="sm" className="px-8 text-sm">
+                     {link.label}
+                   </Button>
+                </Link>
+             ))}
           </div>
-        )}
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center h-full">
+            <button 
+              className="text-white flex items-center justify-center min-w-[44px] min-h-[44px]"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle Navigation"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
+        </div>
       </header>
 
-      <main className="flex-grow pt-24">
+      {/* Mobile Nav Drawer */}
+      {/* Backdrop overlay */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 z-40 md:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
+      <div 
+        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[360px] bg-navy-mid z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-[60px] border-l border-navy-light shadow-2xl shadow-black/50 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+         <button 
+           className="absolute top-0 right-5 flex items-center justify-center min-w-[44px] min-h-[60px] text-white"
+           onClick={() => setIsMenuOpen(false)}
+         >
+           <X size={24} />
+         </button>
+         
+         <div className="flex flex-col py-6 overflow-y-auto flex-grow">
+           <Link onClick={() => setIsMenuOpen(false)} to="/" className="h-[56px] flex items-center px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt">
+             Home
+           </Link>
+           {SERVICE_LINKS.map(link => (
+             <Link onClick={() => setIsMenuOpen(false)} key={link.path} to={link.path} className="h-[56px] flex items-center px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt">
+               {link.label}
+             </Link>
+           ))}
+           {NAVIGATION_LINKS.filter((l:any) => !l.isPrimary && !l.isHighlight).map((link: any) => (
+             <Link 
+               key={link.path} 
+               to={link.path}
+               onClick={() => setIsMenuOpen(false)}
+               className="h-[56px] flex items-center px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt"
+             >
+               {link.label}
+             </Link>
+           ))}
+         </div>
+         
+         <div className="p-6 border-t border-navy-light mt-auto">
+            {NAVIGATION_LINKS.filter((l:any) => l.isPrimary).map((link: any) => (
+              <Link key={link.path} to={link.path} onClick={() => setIsMenuOpen(false)}>
+                 <Button fullWidth size="lg" className="w-full">
+                    {link.label}
+                 </Button>
+              </Link>
+            ))}
+         </div>
+      </div>
+
+      <main className="flex-grow pt-[60px] md:pt-[72px]">
         {children}
       </main>
 
-      {/* Footer - Conditional Render */}
-      {(isLandingPage || isCorporatePage) ? (
-        <footer className="bg-secondary text-text-primary py-12 border-t border-border mt-12">
-          <div className="max-w-7xl mx-auto px-8 text-center">
-            <p className="text-xs font-bold uppercase tracking-widest text-text-secondary mb-4">
-              &copy; {new Date().getFullYear()} {BRAND_NAME} | The right work, done well.
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-text-secondary font-medium uppercase tracking-wider">
-              <Link to="/terms" className="hover:text-text-primary transition-colors">Terms</Link>
-              <span className="opacity-30">|</span>
-              <Link to="/privacy" className="hover:text-text-primary transition-colors">Privacy</Link>
-              <span className="opacity-30">|</span>
-              <Link to="/refunds" className="hover:text-text-primary transition-colors">Refunds</Link>
-              <span className="opacity-30">|</span>
-              <Link to="/health-disclaimer" className="hover:text-text-primary transition-colors">Health Disclaimer</Link>
+      {/* Footer */}
+      <footer className="footer-bg relative mt-16 pt-[48px] pb-[32px] px-5 sm:px-12">
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gold-rule opacity-40"></div>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
+            
+            {/* Col 1 */}
+            <div className="col-span-1 md:col-span-1">
+              <Link to="/" className="block mb-4 hover:opacity-80 transition-opacity">
+                 <span className="font-display text-[40px] md:text-5xl tracking-wide text-white uppercase leading-[1.25]">WRK</span>
+              </Link>
+              <p className="text-white text-[15px] leading-relaxed">
+                The right work, done well.
+              </p>
             </div>
-          </div>
-        </footer>
-      ) : (
-        <footer className="bg-secondary text-text-primary py-24 rounded-t-[3rem] mt-12 border-t border-border">
-          <div className="max-w-7xl mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-              <div className="col-span-1 md:col-span-1">
-                <Link to="/" className="block mb-6 hover:opacity-80 transition-opacity">
-                  <img referrerPolicy="no-referrer" 
-                    src={logoSrc} 
-                    alt={BRAND_NAME} 
-                    className="h-16 w-auto object-contain" 
-                  />
-                </Link>
-                <p className="text-text-secondary text-sm leading-relaxed mb-6">
-                  Premium coaching for those who need to perform. Whether you run a company or a family, we build the capacity you need to keep showing up.
-                </p>
-                
-                <address className="not-italic text-sm text-text-secondary space-y-2">
-                  <p className="font-bold text-accent">WRK Personal Training</p>
-                  <p>Based at Get Me Fitter</p>
-                  <p>Addington, Christchurch, New Zealand</p>
-                  <p className="mt-2"><a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-text-primary transition-colors">{EMAIL_CONTACT}</a></p>
-                </address>
-              </div>
-              
-              <div>
-                <h4 className="font-bold uppercase tracking-widest text-xs text-accent mb-8">Coaching</h4>
-                <ul className="space-y-4 text-sm font-medium text-text-secondary">
-                  <li><Link to="/personal-trainer-christchurch" className="hover:text-text-primary transition-colors">Personal Training</Link></li>
-                  <li><Link to="/online-personal-training-nz" className="hover:text-text-primary transition-colors">Online Coaching</Link></li>
-                  <li><Link to="/workplace-wellness-program-nz" className="hover:text-text-primary transition-colors">Corporate Wellness</Link></li>
-                  <li><Link to="/fitness-challenge-nz" className="hover:text-text-primary transition-colors">42 Day Reset</Link></li>
-                </ul>
-              </div>
+            
+            {/* Col 2 */}
+            <div>
+              <h4 className="font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-orange-burnt mb-6">Company</h4>
+              <ul className="space-y-4">
+                <li><Link to="/about" className="text-[15px] text-grey-mid hover:text-white transition-colors">About</Link></li>
+                <li><Link to="/blog" className="text-[15px] text-grey-mid hover:text-white transition-colors">Blog</Link></li>
+                <li><Link to="/tools" className="text-[15px] text-grey-mid hover:text-white transition-colors">Tools</Link></li>
+                <li><Link to="/contact" className="text-[15px] text-grey-mid hover:text-white transition-colors">Contact</Link></li>
+              </ul>
+            </div>
 
-              <div>
-                <h4 className="font-bold uppercase tracking-widest text-xs text-accent mb-8">Company</h4>
-                <ul className="space-y-4 text-sm font-medium text-text-secondary">
-                  <li><Link to="/" className="hover:text-text-primary transition-colors">Home</Link></li>
-                  <li><Link to="/blog" className="hover:text-text-primary transition-colors">Blog</Link></li>
-                  <li><Link to="/contact" className="hover:text-text-primary transition-colors">Contact</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold uppercase tracking-widest text-xs text-accent mb-8">Action</h4>
-                <p className="text-sm text-text-secondary mb-6">
-                  Unsure where to begin?
-                </p>
-                <Link to="/assessment" className="inline-block bg-text-primary text-primary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accent hover:text-white transition-colors">
-                  Take the assessment
-                </Link>
-              </div>
+            {/* Col 3 */}
+            <div>
+              <h4 className="font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-orange-burnt mb-6">Services</h4>
+              <ul className="space-y-4">
+                <li><Link to="/assessment" className="text-[15px] font-semibold text-white hover:text-orange-burnt transition-colors">Free Custom Diagnostic</Link></li>
+                <li><Link to="/personal-training" className="text-[15px] text-grey-mid hover:text-white transition-colors">1:1 Personal Training</Link></li>
+                <li><Link to="/online-coaching" className="text-[15px] text-grey-mid hover:text-white transition-colors">Online Coaching</Link></li>
+                <li><Link to="/corporate-wellness" className="text-[15px] text-grey-mid hover:text-white transition-colors">Corporate Wellness</Link></li>
+                <li><Link to="/14-day-fat-loss-foundations" className="text-[15px] text-grey-mid hover:text-white transition-colors">14-Day Programme</Link></li>
+              </ul>
             </div>
-            <div className="mt-20 pt-8 border-t border-border text-xs text-text-secondary flex flex-col md:flex-row justify-between items-center font-medium uppercase tracking-wider">
-              <p>&copy; {new Date().getFullYear()} {BRAND_NAME}</p>
-              <div className="flex flex-wrap justify-center items-center gap-4 mt-4 md:mt-0">
-                <Link to="/terms" className="hover:text-text-primary transition-colors">Terms</Link>
-                <span className="hidden md:inline opacity-30">|</span>
-                <Link to="/privacy" className="hover:text-text-primary transition-colors">Privacy</Link>
-                <span className="hidden md:inline opacity-30">|</span>
-                <Link to="/refunds" className="hover:text-text-primary transition-colors">Refunds</Link>
-                <span className="hidden md:inline opacity-30">|</span>
-                <Link to="/health-disclaimer" className="hover:text-text-primary transition-colors">Health Disclaimer</Link>
-                <span className="hidden md:inline opacity-30">|</span>
-                <Link to="/admin" className="opacity-50 hover:opacity-100 hover:text-text-primary transition-all">Admin</Link>
-              </div>
+            
+            {/* Col 4 */}
+            <div>
+              <h4 className="font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-orange-burnt mb-6">Contact</h4>
+              <address className="not-italic space-y-4 text-[15px] text-grey-mid">
+                <p>Based at Get Me Fitter</p>
+                <p>Addington, Christchurch</p>
+                <p><a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-white transition-colors">{EMAIL_CONTACT}</a></p>
+                <p><a href="tel:+6421393160" className="hover:text-white transition-colors">021 393 160</a></p>
+              </address>
             </div>
+            
           </div>
-        </footer>
-      )}
+          
+          <div className="pt-8 border-t border-navy-light flex flex-col md:flex-row justify-between items-center gap-4">
+             <p className="text-[12px] text-grey-mid">&copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.</p>
+             <div className="flex flex-wrap justify-center gap-6">
+                <Link to="/terms" className="text-[12px] text-grey-mid hover:text-white transition-colors">Terms</Link>
+                <Link to="/privacy" className="text-[12px] text-grey-mid hover:text-white transition-colors">Privacy</Link>
+                <Link to="/health-disclaimer" className="text-[12px] text-grey-mid hover:text-white transition-colors">Health Disclaimer</Link>
+             </div>
+          </div>
+          
+        </div>
+      </footer>
     </div>
   );
 };

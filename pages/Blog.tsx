@@ -153,7 +153,7 @@ export const Blog: React.FC = () => {
                       <span className="flex items-center"><Clock size={12} className="mr-1" /> {getReadTime(post.content)} min read</span>
                     </div>
                     
-                    <h2 className="text-3xl font-display font-bold group-hover:text-accent transition-colors leading-none mb-4 text-text-primary uppercase">
+                    <h2 className="text-3xl font-display group-hover:text-accent transition-colors leading-[1.25] mb-4 text-text-primary uppercase">
                       {post.title}
                     </h2>
                     

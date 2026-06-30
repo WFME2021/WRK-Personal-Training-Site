@@ -4,12 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WRK Personal Training | Build Your Capacity</title>
-    <meta name="description" content="Bespoke personal training for high performers who run boardrooms or households. Build the physical capacity to support your life." />
+    <title>Christchurch Personal Trainer Specialising in Fat Loss | WRK</title>
+    <meta name="description" content="Hayden Richards - WRK Personal Training. Expert 1:1 coaching and online programmes for busy professionals aged 35–60, across Christchurch and New Zealand." />
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -17,28 +17,32 @@
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
-              display: ['Oswald', 'sans-serif'],
+              display: ['Bebas Neue', 'sans-serif'],
             },
             colors: {
-              // Semantic Colors mapped to CSS Variables
+              navy: {
+                DEFAULT: '#023047',
+                mid: '#0B425E',
+                light: '#1A5070',
+              },
+              orange: {
+                burnt: '#FB8500',
+                hover: '#E07600',
+              },
+              white: '#FFFFFF',
+              'off-white': '#F8FAFC',
+              'grey-mid': '#8ECAE6',
+              gold: {
+                rule: '#FFB703',
+              },
+              // Keep original variables around but map to new colors if necessary,
+              // or we can just use the variables defined below.
               primary: 'var(--bg-primary)',
               secondary: 'var(--bg-secondary)',
-              
-              // Text Colors
               'text-primary': 'var(--text-primary)',
               'text-secondary': 'var(--text-secondary)',
-              
-              // UI Elements
               border: 'var(--border)',
               accent: 'var(--accent)',
-              
-              // Legacy/Brand mappings for compatibility
-              brand: {
-                orange: 'var(--accent)',
-                black: 'var(--bg-primary)', // Maps to Slate 950 in dark mode
-                light: 'var(--bg-primary)', // Maps to Slate 50 in light mode
-                gray: 'var(--text-secondary)',
-              }
             },
             borderRadius: {
               '4xl': '2.5rem',
@@ -54,24 +58,13 @@
       }
     </script>
     <style>
-      :root {
-        /* LIGHT MODE DEFAULT */
-        --bg-primary: #F8FAFC;   /* Slate 50 */
-        --bg-secondary: #FFFFFF; /* White */
-        --text-primary: #0F172A; /* Slate 900 */
-        --text-secondary: #475569; /* Slate 600 */
-        --border: #E2E8F0;       /* Slate 200 */
-        --accent: #F77300;       /* Vivid Orange */
-      }
-
-      .dark {
-        /* DARK MODE DEFAULT */
-        --bg-primary: #020617;   /* Slate 950 */
-        --bg-secondary: #0F172A; /* Slate 900 */
-        --text-primary: #FFFFFF; /* White */
-        --text-secondary: #CBD5E1; /* Slate 300 */
-        --border: #1E293B;       /* Slate 800 */
-        --accent: #F77300;       /* Vivid Orange */
+      :root, .dark {
+        --bg-primary: #023047;   /* navy */
+        --bg-secondary: #0A3B54; /* slightly lighter navy */
+        --text-primary: #FFFFFF; /* white */
+        --text-secondary: #8ECAE6; /* light blue */
+        --border: #1A5070;       /* navy-light */
+        --accent: #FFB703;       /* yellow */
       }
 
       body {
@@ -80,9 +73,15 @@
         color: var(--text-primary);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        transition: background-color 0.3s ease, color 0.3s ease;
         overflow-x: hidden;
         width: 100%;
+      }
+      
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
       }
       
       /* Smooth scrolling */

@@ -71,7 +71,7 @@ export const BlogPost: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-bold leading-[1.15] mb-6 text-text-primary">
+            <h1 className="text-3xl md:text-5xl font-bold leading-[1.25] mb-6 text-text-primary">
               {post.title}
             </h1>
             
@@ -95,14 +95,14 @@ export const BlogPost: React.FC = () => {
 
           {/* Post Content */}
           <div 
-            className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-12 prose-headings:font-bold prose-headings:uppercase prose-headings:font-display prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
+            className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-12 prose-headings: prose-headings:uppercase prose-headings:font-display prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
             dangerouslySetInnerHTML={{ __html: marked.parse(post.content || '') as string }}
           />
 
           {/* FAQ Section */}
           {post.faq && (
             <div className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Frequently Asked Questions</h2>
+              <h2 className="text-2xl md:text-3xl uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Frequently Asked Questions</h2>
               <div 
                 className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-xl prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
                 dangerouslySetInnerHTML={{ __html: marked.parse(post.faq || '') as string }}
@@ -140,7 +140,7 @@ export const BlogPost: React.FC = () => {
           {/* Related Posts */}
           {post.relatedPosts && post.relatedPosts.length > 0 && (
             <div className="mb-16">
-              <h2 className="text-2xl font-bold uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Related Articles</h2>
+              <h2 className="text-2xl uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Related Articles</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {post.relatedPosts.map(relatedId => {
                   const relatedPost = blogPosts.find(p => p.id === relatedId);

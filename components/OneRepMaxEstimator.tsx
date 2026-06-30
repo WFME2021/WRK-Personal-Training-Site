@@ -31,7 +31,7 @@ export const OneRepMaxEstimator: React.FC = () => {
         <div className="bg-secondary p-3 rounded-xl border border-border">
           <Dumbbell className="text-accent" size={24} />
         </div>
-        <h2 className="font-display text-2xl font-bold uppercase text-text-primary">Estimate Your Max</h2>
+        <h2 className="font-display text-2xl uppercase text-text-primary">Estimate Your Max</h2>
       </div>
 
       <form onSubmit={calculate1RM} className="space-y-6">
@@ -75,7 +75,7 @@ export const OneRepMaxEstimator: React.FC = () => {
         <div className="mt-12 pt-12 border-t border-border animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="text-center">
             <p className="text-sm font-bold uppercase tracking-widest text-text-secondary mb-2">Estimated 1 Rep Max</p>
-            <div className="text-6xl md:text-8xl font-display font-bold text-accent mb-4">
+            <div className="text-6xl md:text-8xl font-display text-accent mb-4">
               {result}<span className="text-2xl md:text-4xl text-text-secondary ml-2">kg</span>
             </div>
             <p className="text-text-secondary text-sm max-w-md mx-auto mb-8">

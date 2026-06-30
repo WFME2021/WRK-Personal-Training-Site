@@ -11,10 +11,10 @@ export const NotFound: React.FC = () => {
         description="The page you are looking for does not exist." 
       />
       <div className="min-h-[70vh] flex flex-col items-center justify-center px-6 text-center bg-primary pt-32 pb-24">
-        <h1 className="text-6xl md:text-8xl font-display font-bold uppercase tracking-tighter mb-4 text-text-primary">
+        <h1 className="text-6xl md:text-8xl font-display uppercase mb-4 text-text-primary">
           404
         </h1>
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-text-primary uppercase tracking-tight">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-text-primary uppercase">
           Page Not Found
         </h2>
         <p className="text-lg text-text-secondary mb-10 max-w-md mx-auto">

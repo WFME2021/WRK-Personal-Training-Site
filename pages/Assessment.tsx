@@ -75,7 +75,7 @@ export const Assessment: React.FC = () => {
     return (
       <div className="min-h-screen bg-primary flex flex-col items-center justify-center p-6 text-center">
         <Loader2 className="w-12 h-12 text-accent animate-spin mb-8" />
-        <h2 className="text-3xl font-display font-bold uppercase tracking-tighter mb-4">
+        <h2 className="text-3xl font-display uppercase mb-4">
           {assessmentData.uiCopy.interstitial.title}
         </h2>
         <p className="text-text-secondary text-lg animate-pulse">
@@ -101,7 +101,7 @@ export const Assessment: React.FC = () => {
             <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-4">
               {assessmentData.uiCopy.preGate.headline}
             </span>
-            <h1 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tighter mb-6">
+            <h1 className="text-4xl md:text-5xl font-display uppercase mb-6">
               {archetype?.primaryBottleneck}
             </h1>
             <p className="text-xl text-text-secondary">
@@ -136,7 +136,7 @@ export const Assessment: React.FC = () => {
           </div>
 
           <div className="bg-secondary p-8 rounded-2xl shadow-xl border border-border text-center">
-            <h2 className="text-3xl font-display font-bold uppercase tracking-tighter text-text-primary mb-4">
+            <h2 className="text-3xl font-display uppercase text-text-primary mb-4">
               {assessmentData.uiCopy.preGate.unlockTitleTemplate.replace('{blueprintName}', archetype?.postGate.blueprintName || 'Blueprint')}
             </h2>
             <p className="text-text-secondary mb-8">
@@ -197,7 +197,7 @@ export const Assessment: React.FC = () => {
               <span className="inline-block px-3 py-1 bg-secondary text-text-secondary text-xs font-bold uppercase tracking-wider rounded-full mb-6">
                 (2 minutes)
               </span>
-              <h1 className="text-5xl md:text-6xl font-display font-bold uppercase tracking-tighter mb-6">
+              <h1 className="text-5xl md:text-6xl font-display uppercase mb-6">
                 Capacity Blueprint Diagnostic
               </h1>
               <p className="text-xl text-text-secondary mb-8">
@@ -245,7 +245,7 @@ export const Assessment: React.FC = () => {
             <span className="text-accent text-sm font-bold uppercase tracking-wider mb-4 block">
               Question {currentStep + 1} of {questions.length}
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-tighter">
+            <h2 className="text-3xl md:text-4xl font-display uppercase">
               {question.prompt}
             </h2>
           </div>

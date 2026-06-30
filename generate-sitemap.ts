@@ -28,11 +28,9 @@ const generateSitemap = async () => {
     const staticPages = [
       '',
       '/personal-trainer-christchurch',
-      '/personal-training-christchurch-philosophy',
       '/assessment',
       '/results',
       '/contact',
-      '/services',
       '/online-personal-training-nz',
       '/workplace-wellness-program-nz',
       '/fitness-challenge-nz',

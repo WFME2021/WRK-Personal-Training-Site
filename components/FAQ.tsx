@@ -10,9 +10,10 @@ interface FAQItem {
 interface FAQProps {
   items: FAQItem[];
   title?: string;
+  eyebrow?: string;
 }
 
-export const FAQ: React.FC<FAQProps> = ({ items, title = "Frequently Asked Questions" }) => {
+export const FAQ: React.FC<FAQProps> = ({ items, title = "Frequently Asked Questions", eyebrow }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
@@ -38,7 +39,12 @@ export const FAQ: React.FC<FAQProps> = ({ items, title = "Frequently Asked Quest
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       
       <div className="max-w-3xl mx-auto">
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-12 text-text-primary">{title}</h2>
+        {eyebrow && (
+          <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-accent mb-4 text-center">
+            {eyebrow}
+          </span>
+        )}
+        <h2 className="font-display text-3xl md:text-4xl mb-12 text-text-primary text-center">{title}</h2>
         
         <div className="space-y-4">
           {items.map((item, index) => (

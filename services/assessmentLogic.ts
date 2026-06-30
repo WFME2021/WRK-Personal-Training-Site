@@ -1,4 +1,4 @@
-import { assessmentData } from '../data/assessmentData.js';
+import { assessmentData } from '../data/assessmentData.ts';
 
 export type Answers = Record<string, string>;
 

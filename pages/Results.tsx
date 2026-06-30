@@ -41,7 +41,7 @@ export const Results: React.FC = () => {
           <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-6">
             {assessmentData.uiCopy.postGate.headline}
           </span>
-          <h1 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-6">
+          <h1 className="font-display text-4xl md:text-6xl uppercase mb-6">
             Hey {name || 'there'}, here is your <span className="text-accent">Blueprint.</span>
           </h1>
           <p className="text-xl text-text-secondary max-w-2xl mx-auto">
@@ -57,7 +57,7 @@ export const Results: React.FC = () => {
               <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center shrink-0">
                 <Calendar className="w-6 h-6 text-accent" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tighter">
+              <h2 className="text-2xl md:text-3xl font-display uppercase">
                 {postGate?.scheduleTitle}
               </h2>
             </div>
@@ -81,7 +81,7 @@ export const Results: React.FC = () => {
                 <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center shrink-0">
                   <Activity className="w-5 h-5 text-accent" />
                 </div>
-                <h2 className="text-xl font-display font-bold uppercase tracking-tighter">
+                <h2 className="text-xl font-display uppercase">
                   {postGate?.protocolTitle}
                 </h2>
               </div>
@@ -95,7 +95,7 @@ export const Results: React.FC = () => {
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="text-xl font-display font-bold uppercase tracking-tighter">
+                <h2 className="text-xl font-display uppercase">
                   {postGate?.keyRuleTitle}
                 </h2>
               </div>
@@ -107,7 +107,7 @@ export const Results: React.FC = () => {
 
           {/* 3. Next 7 Days (Detailed) */}
           <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-            <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tighter mb-8">
+            <h2 className="text-2xl md:text-3xl font-display uppercase mb-8">
               {archetype?.next7DaysTitle}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -130,7 +130,7 @@ export const Results: React.FC = () => {
           {/* 3.5 4-Week Progression Model */}
           {postGate?.progressionModel4Weeks && (
             <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-              <h2 className="text-2xl md:text-3xl font-display font-bold uppercase tracking-tighter mb-8">
+              <h2 className="text-2xl md:text-3xl font-display uppercase mb-8">
                 {postGate.progressionModel4Weeks.title}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -205,7 +205,7 @@ export const Results: React.FC = () => {
             <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-6">
               {assessmentData.recommendation.ui.recommendedTitle}
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-tighter text-text-primary mb-4">
+            <h2 className="text-3xl md:text-4xl font-display uppercase text-text-primary mb-4">
               {assessmentData.recommendation.ui.recommendedSubtitleTemplate.replace('{serviceName}', assessmentData.recommendation.serviceNames[recommendation.recommend.serviceId as keyof typeof assessmentData.recommendation.serviceNames])}
             </h2>
             <p className="text-lg text-text-secondary mb-8 max-w-2xl mx-auto">

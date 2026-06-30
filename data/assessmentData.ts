@@ -2584,9 +2584,9 @@ export const assessmentData = {
   },
   "recommendation": {
     "serviceNames": {
-      "inPerson": "1:1 Coaching (Christchurch)",
-      "online": "Online Coaching (12-week minimum)",
-      "reset": "42-Day Reset",
+      "inPerson": "In-Person PT",
+      "online": "Coaching Membership",
+      "reset": "42-Day Challenge",
       "corporate": "Corporate Wellness"
     },
     "rules": [

@@ -1,227 +1,187 @@
-
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Button } from '../components/Button';
-import { ContactFormData } from '../types';
-import { submitApplication } from '../services/apiService';
-import { Check } from 'lucide-react';
-import { Hero } from '../components/Hero';
-import { MidPageBanner } from '../components/MidPageBanner';
-import { useContent } from '../context/ContentContext';
+import React, { useState } from 'react';
 import { SeoHead } from '../components/SeoHead';
+import { Button } from '../components/Button';
+import { CheckCircle2 } from 'lucide-react';
 
 export const Contact: React.FC = () => {
-  const { pageContent } = useContent();
-  const { hero, banner, seo } = pageContent.contact;
-  const location = useLocation();
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
-    message: '',
-    referralSource: '',
-    interest: ''
+    interest: '',
+    message: ''
   });
+  const [submitted, setSubmitted] = useState(false);
 
-  // If coming from Results, pre-fill text
-  useEffect(() => {
-    if (location.state?.fromResults) {
-      setFormData(prev => ({
-        ...prev,
-        message: `I completed the assessment regarding ${location.state.goal || 'my goals'} and would like to discuss the recommended strategy.`
-      }));
-    }
-  }, [location.state]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      await submitApplication(formData);
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error(error);
-      alert('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSubmitted(true);
+    // Submit logic
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center bg-primary transition-colors duration-300">
-        <SeoHead 
-          title="Contact | WRK Personal Training"
-          description="Contact WRK Personal Training in Christchurch. Enquire about 1-on-1 training, online coaching, or corporate wellness."
-        />
-        <div className="bg-green-500/10 p-6 rounded-full mb-6 border border-green-500/20">
-          <Check size={48} className="text-green-500" />
-        </div>
-        <h1 className="text-3xl font-bold mb-4 text-text-primary">Application Received</h1>
-        <p className="text-text-secondary max-w-lg mb-8">
-          Thank you for applying. We have received your details and assessment results. We review all applications within 24 hours and will be in touch via email to schedule your consultation.
-        </p>
-        <a href="/" className="text-sm font-semibold border-b border-text-primary pb-1 hover:opacity-70 text-text-primary">
-          Return Home
-        </a>
-      </div>
-    );
-  }
+  const inputClasses = "w-full bg-navy-light border-[1.5px] border-[#8B95A1]/30 rounded-[4px] px-[16px] py-[14px] font-sans text-[16px] text-white placeholder-grey-mid min-h-[48px] focus:border-orange-burnt focus:outline-none focus:ring-[3px] focus:ring-orange-burnt/15 transition-all";
+  const labelClasses = "block font-sans font-medium text-[13px] text-off-white mb-[6px]";
 
   return (
     <>
       <SeoHead 
-        title={seo.title}
-        description={seo.description}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "WRK Personal Training",
-          "image": hero.image,
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "12 Show Place",
-            "addressLocality": "Addington",
-            "addressRegion": "Christchurch",
-            "postalCode": "8024",
-            "addressCountry": "NZ"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": -43.543,
-            "longitude": 172.605
-          },
-          "url": "https://wrkpersonaltraining.co.nz",
-          "telephone": "+64210000000",
-          "priceRange": "$$"
-        }}
+        title="Book a Free Consult | WRK Personal Training Christchurch"
+        description="Book a free 20-minute consult with Hayden Richards at WRK Personal Training. Christchurch personal trainer for fat loss, strength, and corporate wellness."
       />
-      
-      <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
-        {/* Hero Section - Full Width Banner */}
-        <Hero 
-          image={hero.image}
-          title={hero.h1}
-          subtitle={hero.subhead}
-          bullets={hero.bullets}
-          kicker={hero.kicker}
-        />
 
-        <div className="flex items-center justify-center px-6 py-20">
-          <div className="w-full max-w-2xl">
-            <form onSubmit={handleSubmit} className="space-y-8 bg-secondary p-8 md:p-12 border border-border shadow-sm rounded-2xl relative z-20">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-medium text-text-secondary">Full Name</label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                    />
+      <div className="flex flex-col w-full bg-navy pt-[64px] pb-[64px] md:pt-[96px] md:pb-[96px]">
+        
+        <div className="max-w-[1200px] mx-auto w-full px-5 md:px-12">
+          
+          {/* HERO */}
+          <div className="mb-[40px] md:mb-[64px] max-w-[800px]">
+            <h1 className="font-display text-[44px] md:text-[64px] uppercase text-white mb-6 leading-[1.1]">
+              Let's Talk.
+            </h1>
+            <div className="font-sans text-[18px] md:text-[20px] text-off-white font-medium leading-[1.6] space-y-4">
+              <p>Book a consult now. No pitch, no pressure - just an honest conversation about what you're looking for and whether WRK is the right fit.</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            {/* CONTACT FORM */}
+            <div className="lg:col-span-8 bg-navy-mid border border-navy-light rounded-[8px] p-6 text-left">
+              {submitted ? (
+                <div className="flex flex-col justify-center text-left py-12">
+                  <div className="w-[44px] h-[44px] bg-orange-burnt/10 rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle2 size={24} className="text-orange-burnt" />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-medium text-text-secondary">Email Address</label>
-                    <input
+                  <h2 className="font-display text-[32px] md:text-[40px] uppercase text-white leading-[1.25] mb-4">Message Sent</h2>
+                  <p className="font-sans text-[16px] text-off-white leading-[1.65]">
+                    Got it. I'll be in touch within one business day.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-[24px]">
+                  
+                  <div className="flex flex-col md:flex-row gap-[24px]">
+                    <div className="flex-1">
+                      <label htmlFor="firstName" className={labelClasses}>First Name</label>
+                      <input 
+                        type="text" 
+                        id="firstName"
+                        required
+                        value={formData.firstName}
+                        onChange={e => setFormData({...formData, firstName: e.target.value})}
+                        className={inputClasses}
+                        placeholder="John"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <label htmlFor="lastName" className={labelClasses}>Last Name</label>
+                      <input 
+                        type="text" 
+                        id="lastName"
+                        required
+                        value={formData.lastName}
+                        onChange={e => setFormData({...formData, lastName: e.target.value})}
+                        className={inputClasses}
+                        placeholder="Doe"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className={labelClasses}>Email</label>
+                    <input 
+                      type="email" 
                       id="email"
-                      name="email"
-                      type="email"
                       required
                       value={formData.email}
-                      onChange={handleChange}
-                      className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
+                      onChange={e => setFormData({...formData, email: e.target.value})}
+                      className={inputClasses}
+                      placeholder="john@example.com"
                     />
                   </div>
-                </div>
+                  
+                  <div>
+                    <label htmlFor="phone" className={labelClasses}>Phone</label>
+                    <input 
+                      type="tel" 
+                      id="phone"
+                      value={formData.phone}
+                      onChange={e => setFormData({...formData, phone: e.target.value})}
+                      className={inputClasses}
+                      placeholder="021 123 4567"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="phone" className="block text-sm font-medium text-text-secondary">Phone Number</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                  />
-                </div>
+                  <div>
+                    <label htmlFor="interest" className={labelClasses}>Enquiry Type</label>
+                    <div className="relative">
+                      <select 
+                        id="interest"
+                        value={formData.interest}
+                        onChange={e => setFormData({...formData, interest: e.target.value})}
+                        className={`${inputClasses} appearance-none`}
+                      >
+                        <option value="">Please select...</option>
+                        <option value="1:1 Personal Training">1:1 Personal Training</option>
+                        <option value="Online Coaching">Online Coaching</option>
+                        <option value="Corporate Wellness">Corporate Wellness</option>
+                        <option value="General Enquiry">General Enquiry</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 pt-1">
+                        <svg className="fill-current h-4 w-4 text-grey-mid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="interest" className="block text-sm font-medium text-text-secondary">What are you interested in?</label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    required
-                    value={formData.interest}
-                    onChange={handleChange}
-                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none cursor-pointer"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="1:1 Coaching (Christchurch)">1:1 Coaching (Christchurch)</option>
-                    <option value="Online Coaching">Online Coaching</option>
-                    <option value="Corporate Wellness">Corporate Wellness</option>
-                    <option value="42-Day Reset">42-Day Reset</option>
-                    <option value="Not sure yet">Not sure yet</option>
-                  </select>
-                </div>
+                  <div>
+                    <label htmlFor="message" className={labelClasses}>Message</label>
+                    <textarea 
+                      id="message"
+                      rows={4}
+                      value={formData.message}
+                      onChange={e => setFormData({...formData, message: e.target.value})}
+                      className={`${inputClasses} resize-none`}
+                      placeholder="How can I help?"
+                    ></textarea>
+                  </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-text-secondary">Your Goals / Current Situation</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                  ></textarea>
-                </div>
+                  <Button type="submit" size="md" fullWidth className="mt-2">
+                    Submit Enquiry
+                  </Button>
+                </form>
+              )}
+            </div>
+            
+            {/* DIRECT CONTACT */}
+            <div className="lg:col-span-4 mt-8 lg:mt-0 lg:pl-12 lg:border-l lg:border-navy-light pt-8 lg:pt-0 border-t border-navy-light lg:border-t-0">
+               <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-orange-burnt mb-[24px]">
+                 DIRECT CONTACT
+               </span>
+               <div className="space-y-6">
+                 <div>
+                   <span className="block font-sans text-grey-mid text-[13px] mb-1">Phone</span>
+                   <a href="tel:+64213931660" className="font-sans text-[16px] text-white hover:text-orange-burnt transition-colors">021 393 160</a>
+                 </div>
+                 <div>
+                   <span className="block font-sans text-grey-mid text-[13px] mb-1">Email</span>
+                   <a href="mailto:info@wrkpersonaltraining.co.nz" className="font-sans text-[16px] text-white hover:text-orange-burnt transition-colors break-all">info@wrkpersonaltraining.co.nz</a>
+                 </div>
+                 <div>
+                   <span className="block font-sans text-grey-mid text-[13px] mb-1">Location</span>
+                   <p className="font-sans text-[16px] text-white leading-relaxed">
+                     Based at Get Me Fitter<br/>
+                     Addington, Christchurch<br/>
+                     New Zealand
+                   </p>
+                 </div>
+               </div>
+            </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="referralSource" className="block text-sm font-medium text-text-secondary">How did you hear about us?</label>
-                  <select
-                    id="referralSource"
-                    name="referralSource"
-                    value={formData.referralSource}
-                    onChange={handleChange}
-                    className="w-full p-3 bg-primary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none cursor-pointer"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="Google Search">Google Search</option>
-                    <option value="Social Media">Social Media</option>
-                    <option value="Referral">Friend / Referral</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <Button type="submit" fullWidth disabled={isSubmitting}>
-                  {isSubmitting ? 'Submitting...' : 'Submit Application'}
-                </Button>
-                
-                <p className="text-xs text-center text-text-secondary mt-4">
-                  Your information is private and will strictly be used for coaching application purposes.
-                </p>
-              </form>
           </div>
         </div>
-
-        <MidPageBanner 
-          image={banner.image}
-          tagline={banner.tagline}
-          support={banner.support}
-        />
       </div>
     </>
   );

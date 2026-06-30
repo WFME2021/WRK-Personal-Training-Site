@@ -11,7 +11,7 @@ export const HealthDisclaimer: React.FC = () => {
 
       <div className="bg-primary min-h-screen font-sans selection:bg-accent selection:text-white pb-24 transition-colors duration-300">
         <section className="pt-32 pb-20 px-6 max-w-3xl mx-auto">
-          <h1 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">
+          <h1 className="font-display text-4xl md:text-5xl uppercase mb-8">
             Health & Exercise Disclaimer
           </h1>
           <p className="text-text-secondary mb-12">Last updated: 11 March 2026</p>

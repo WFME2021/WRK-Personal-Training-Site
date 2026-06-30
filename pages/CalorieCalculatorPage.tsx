@@ -38,36 +38,40 @@ export const CalorieCalculatorPage: React.FC = () => {
            <CalorieCalculator />
            
            {/* SEO Content Sections */}
-           <div className="max-w-3xl mx-auto mt-24 space-y-20">
+           <div className="max-w-4xl mx-auto mt-32 space-y-32">
              
              {/* What you'll get */}
              <section>
-               <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary uppercase mb-8">What you’ll get</h2>
+               <h2 className="font-display text-4xl md:text-5xl text-text-primary uppercase mb-12">What you’ll get</h2>
                <div className="grid gap-6 md:grid-cols-3">
                  {[
                    "A daily calorie target matched to your goal",
                    "Protein targets that support results and recovery",
                    "A simple structure you can actually stick to in real life"
                  ].map((item, i) => (
-                   <div key={i} className="bg-secondary p-6 rounded-2xl border border-border">
-                     <p className="text-text-secondary font-medium">{item}</p>
+                   <div key={i} className="bg-secondary p-8 rounded-[2rem] border border-border flex flex-col justify-between group hover:border-accent transition-colors">
+                     <span className="text-accent font-black text-4xl opacity-50 mb-4 block group-hover:opacity-100 transition-opacity">0{i+1}</span>
+                     <p className="text-text-primary font-medium text-lg leading-snug">{item}</p>
                    </div>
                  ))}
                </div>
              </section>
 
              {/* Party Fund */}
-             <section className="bg-secondary rounded-3xl p-8 md:p-12 border border-border">
-               <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary uppercase mb-6">Party Fund (built in)</h2>
-               <p className="text-xl text-text-primary font-medium mb-6">Life happens. Drinks happen. Results can still happen.</p>
-               <p className="text-text-secondary leading-relaxed">
-                 Your Party Fund lets you allocate your drinks across the week, then automatically spreads those calories out and adjusts your daily target so you can still hit your deficit (or goal) without wrecking your protein target.
-               </p>
+             <section className="bg-text-primary text-primary rounded-[3rem] p-10 md:p-16 relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
+               <div className="relative z-10">
+                 <h2 className="font-display text-4xl md:text-5xl uppercase mb-6">Party Fund <span className="opacity-50">(built in)</span></h2>
+                 <p className="text-2xl font-bold mb-6 text-accent">Life happens. Drinks happen. Results can still happen.</p>
+                 <p className="text-lg leading-relaxed opacity-90 max-w-2xl">
+                   Your Party Fund lets you allocate your drinks across the week, then automatically spreads those calories out and adjusts your daily target so you can still hit your deficit (or goal) without wrecking your protein target.
+                 </p>
+               </div>
              </section>
 
              {/* How it works */}
              <section>
-               <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary uppercase mb-8">How it works</h2>
+               <h2 className="font-display text-4xl md:text-5xl text-text-primary uppercase mb-12">How it works</h2>
                <div className="space-y-6">
                  {[
                    "Set your total drinks for the week",
@@ -76,23 +80,26 @@ export const CalorieCalculatorPage: React.FC = () => {
                    "Your daily calorie target is reduced slightly to “make room”",
                    "You stay on track — without Monday guilt and Thursday damage control"
                  ].map((step, i) => (
-                   <div key={i} className="flex gap-4">
-                     <span className="flex-shrink-0 w-8 h-8 rounded-full bg-accent text-white font-bold flex items-center justify-center text-sm">
+                   <div key={i} className="flex gap-6 items-start bg-secondary p-6 rounded-2xl border border-border hover:border-accent transition-colors">
+                     <span className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary border border-border text-accent font-black flex items-center justify-center text-xl">
                        {i + 1}
                      </span>
-                     <p className="text-text-secondary text-lg pt-1">{step}</p>
+                     <p className="text-text-primary font-medium text-lg pt-2">{step}</p>
                    </div>
                  ))}
                </div>
-               <p className="mt-8 text-xl font-medium text-text-primary border-l-4 border-accent pl-6 py-2">
-                 The goal isn’t perfection. It’s consistency.
-               </p>
+               
+               <div className="mt-12 bg-accent/10 border border-accent/20 rounded-[2rem] p-8 md:p-10 text-center">
+                 <p className="text-2xl md:text-3xl font-black text-text-primary uppercase">
+                   The goal isn’t perfection. <span className="text-accent flex block mt-2">It’s consistency.</span>
+                 </p>
+               </div>
              </section>
 
              {/* Use it, adjust it, repeat */}
-             <section>
-               <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary uppercase mb-6">Use it, adjust it, repeat</h2>
-               <p className="text-text-secondary text-lg leading-relaxed">
+             <section className="text-center pb-12">
+               <h2 className="font-display text-3xl md:text-4xl text-text-primary uppercase mb-6">Use it, adjust it, repeat</h2>
+               <p className="text-text-secondary text-xl leading-relaxed max-w-2xl mx-auto">
                  This is a starting point — not a life sentence. Run it for 7–14 days, track progress, then adjust based on real-world results.
                </p>
              </section>

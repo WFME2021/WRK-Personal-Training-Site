@@ -96,7 +96,7 @@ export const CalorieCalculator: React.FC = () => {
       <div className="p-8 md:p-12 border-b border-border bg-secondary">
         <div className="flex items-center gap-3 mb-4">
           <Flame className="text-accent" size={28} />
-          <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tighter text-text-primary">Nutrition Engine</h2>
+          <h2 className="font-display text-3xl md:text-4xl uppercase text-text-primary">Nutrition Engine</h2>
         </div>
         <p className="text-text-secondary max-w-2xl">
           Fueling for performance, not starvation. Adjust your inputs to see how your daily targets change based on your goal and lifestyle.
@@ -260,7 +260,7 @@ export const CalorieCalculator: React.FC = () => {
             <h3 className="font-bold text-sm uppercase tracking-widest text-accent mb-6">Daily Targets</h3>
             
             <div className="flex items-baseline gap-2 mb-2">
-               <span className="text-7xl font-display font-bold text-text-primary">{results.totalCals}</span>
+               <span className="text-7xl font-display text-text-primary">{results.totalCals}</span>
                <span className="text-xl text-text-secondary font-medium">kcal</span>
             </div>
             <div className="h-px w-full bg-border mb-8"></div>
@@ -322,7 +322,7 @@ export const CalorieCalculator: React.FC = () => {
             {!isUnlocked ? (
               <div className="bg-primary flex flex-col items-center justify-center text-center p-8 border border-border rounded-2xl backdrop-blur-sm">
                  <Lock className="text-accent mb-4" size={32} />
-                 <h3 className="font-display text-2xl font-bold uppercase mb-2 text-text-primary">Unlock Performance Roadmap</h3>
+                 <h3 className="font-display text-2xl uppercase mb-2 text-text-primary">Unlock Performance Roadmap</h3>
                  <p className="text-sm text-text-secondary mb-6 max-w-xs">
                    Get meal timing protocols, supplement recommendations, and training day vs. rest day adjustments.
                  </p>
@@ -359,7 +359,7 @@ export const CalorieCalculator: React.FC = () => {
                  <div className="bg-primary p-6 rounded-xl border-l-4 border-amber-600">
                     <div className="flex items-center gap-3 mb-3 text-amber-600 dark:text-amber-500">
                         <Clock size={24} />
-                        <h4 className="font-display text-xl font-bold uppercase">The Protein Timing Blueprint</h4>
+                        <h4 className="font-display text-xl uppercase">The Protein Timing Blueprint</h4>
                     </div>
                     <p className="text-text-secondary leading-relaxed text-sm">
                         To optimize muscle protein synthesis, aim for <strong className="text-text-primary">4 servings of {Math.round(results.protein.grams / 4)}g</strong>, spaced every 3-4 hours. This ensures a consistent 'Anabolic Trigger' throughout the workday.
@@ -370,17 +370,17 @@ export const CalorieCalculator: React.FC = () => {
                  <div className="bg-primary p-6 rounded-xl border-l-4 border-amber-600">
                     <div className="flex items-center gap-3 mb-4 text-amber-600 dark:text-amber-500">
                         <Dumbbell size={24} />
-                        <h4 className="font-display text-xl font-bold uppercase">Training vs. Rest Day Strategy</h4>
+                        <h4 className="font-display text-xl uppercase">Training vs. Rest Day Strategy</h4>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="bg-secondary p-4 rounded-lg border border-border text-center">
                              <span className="block text-[10px] font-bold uppercase text-text-secondary mb-1">Performance Day</span>
-                             <span className="block text-2xl font-display font-bold text-text-primary">{Math.round(results.totalCals * 1.1)}</span>
+                             <span className="block text-2xl font-display text-text-primary">{Math.round(results.totalCals * 1.1)}</span>
                              <span className="text-[10px] text-amber-500 font-bold">+10% (Carbs)</span>
                         </div>
                         <div className="bg-secondary p-4 rounded-lg border border-border text-center">
                              <span className="block text-[10px] font-bold uppercase text-text-secondary mb-1">Recovery Day</span>
-                             <span className="block text-2xl font-display font-bold text-text-primary">{Math.round(results.totalCals * 0.9)}</span>
+                             <span className="block text-2xl font-display text-text-primary">{Math.round(results.totalCals * 0.9)}</span>
                              <span className="text-[10px] text-green-500 font-bold">-10% (Fats/Fiber)</span>
                         </div>
                     </div>
@@ -391,7 +391,7 @@ export const CalorieCalculator: React.FC = () => {
                     <div className="bg-primary p-6 rounded-xl border-l-4 border-amber-600">
                         <div className="flex items-center gap-3 mb-3 text-amber-600 dark:text-amber-500">
                             <GlassWater size={24} />
-                            <h4 className="font-display text-xl font-bold uppercase">The Party Fund Protocol</h4>
+                            <h4 className="font-display text-xl uppercase">The Party Fund Protocol</h4>
                         </div>
                         <p className="text-text-secondary leading-relaxed text-sm">
                             On days you use your budget of <strong className="text-text-primary">{stats.alcoholDrinks} drinks</strong>, follow the WRK Social Protocol: Consume protein and high-fiber veggies early in the day. <strong className="text-text-primary">Strictly avoid high-fat meals</strong> in the 3 hours before and after drinking to prevent excess fat storage while your body prioritizes alcohol metabolism.
@@ -403,7 +403,7 @@ export const CalorieCalculator: React.FC = () => {
                  <div className="bg-primary p-6 rounded-xl border-l-4 border-amber-600">
                     <div className="flex items-center gap-3 mb-3 text-amber-600 dark:text-amber-500">
                         <LineChart size={24} />
-                        <h4 className="font-display text-xl font-bold uppercase">Rate of Progress Reality Check</h4>
+                        <h4 className="font-display text-xl uppercase">Rate of Progress Reality Check</h4>
                     </div>
                     <p className="text-text-secondary leading-relaxed text-sm">
                         {stats.goal === 'gain' 
@@ -414,7 +414,7 @@ export const CalorieCalculator: React.FC = () => {
 
                  {/* 5. CTA */}
                  <div className="pt-6 mt-4 border-t border-border text-center">
-                     <h4 className="font-display text-xl font-bold uppercase text-text-primary mb-2">
+                     <h4 className="font-display text-xl uppercase text-text-primary mb-2">
                         Need help putting this roadmap into action?
                      </h4>
                      <p className="text-text-secondary text-sm mb-6 max-w-md mx-auto">

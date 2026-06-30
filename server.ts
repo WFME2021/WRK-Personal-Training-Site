@@ -3,8 +3,8 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import fs from "fs";
-import { assessmentData } from "./data/assessmentData.js";
-import { calculateArchetype, calculateRecommendation } from "./services/assessmentLogic.js";
+import { assessmentData } from "./data/assessmentData.ts";
+import { calculateArchetype, calculateRecommendation } from "./services/assessmentLogic.ts";
 
 async function startServer() {
   const app = express();

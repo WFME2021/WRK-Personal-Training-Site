@@ -322,7 +322,7 @@ export const Admin: React.FC = () => {
             <div className="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-accent border border-border">
               <Lock size={32} />
             </div>
-            <h1 className="text-2xl font-display font-bold text-text-primary uppercase">Admin Access</h1>
+            <h1 className="text-2xl font-display text-text-primary uppercase">Admin Access</h1>
             <p className="text-text-secondary text-sm mt-2">Please sign in with your authorized Google account to continue.</p>
           </div>
           {isAuthLoading ? (
@@ -373,13 +373,13 @@ export const Admin: React.FC = () => {
               <ArrowLeft size={20} />
             </Link>
             <div>
-               <h1 className="text-3xl font-display font-bold text-text-primary uppercase">Admin Dashboard</h1>
+               <h1 className="text-3xl font-display text-text-primary uppercase">Admin Dashboard</h1>
                <p className="text-xs font-bold uppercase tracking-wider text-text-secondary">Manage your content</p>
             </div>
           </div>
           
           <div className="flex flex-wrap gap-3 items-center">
-            <div className="hidden md:block bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 text-[10px] text-green-600 max-w-xs leading-tight">
+            <div className="hidden md:block bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 text-[10px] text-green-600 max-w-xs leading-[1.2]">
               <strong>Cloud Sync Active:</strong> Changes are saved instantly to your secure database.
             </div>
 
@@ -558,7 +558,7 @@ export const Admin: React.FC = () => {
                         <span className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-[10px]">W</span>
                         <span className="truncate">wrkpersonaltraining.co.nz › blog › {postFormData.slug || 'your-slug'}</span>
                       </div>
-                      <h4 className="text-[18px] text-blue-600 dark:text-blue-400 hover:underline cursor-pointer truncate mb-1 leading-tight">
+                      <h4 className="text-[18px] text-blue-600 dark:text-blue-400 hover:underline cursor-pointer truncate mb-1 leading-[1.2]">
                         {postFormData.seoTitle || postFormData.title || 'Your Meta Title'}
                       </h4>
                       <p className="text-[13px] text-text-secondary line-clamp-2 leading-snug">

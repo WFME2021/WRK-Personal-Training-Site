@@ -43,8 +43,8 @@ const unsplash = (id: string) => `https://i.postimg.cc/MKnbjvN1/dad-carrypack-hi
 export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   home: {
     seo: {
-      title: "Personal Training That Fits Real Life | Christchurch + Online",
-      description: "Fat loss, less pain, and consistency for busy adults. Pain-aware training, flexible nutrition, and coaching in Christchurch or online."
+      title: "Personal Trainer Christchurch & Online Coaching | WRK PT",
+      description: "Looking for a personal trainer in Christchurch or online coaching? WRK PT helps busy adults build consistency, lose fat, and train smarter for life outside the gym."
     },
     hero: {
       h1: "Train Smarter. <br/><span class='text-accent'>Play Harder.</span>",
@@ -56,7 +56,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
       ],
       image: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg",
       kicker: "<span class='text-white font-bold'>The gym is a tool — not a lifestyle.</span><br class='hidden md:block' /> The goal is more energy, less pain, and a body that can handle work, family, weekends, and the adventures you keep putting off.",
-      eyebrow: "Strength & Conditioning | Christchurch (Addington) + NZ-wide",
+      eyebrow: "Personal Trainer in Christchurch & Online Coaching",
       alt: "strong capable dad, carrying child in carry pack while tramping up hill",
       seoDescription: "strong capable dad who has trained hard so that he can play hard by "
     },
@@ -110,8 +110,8 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   personalTraining: {
     seo: {
-      title: "1:1 Personal Training in Christchurch | WRK",
-      description: "Precision coaching at Get Me Fitter (Addington). We fix movement patterns, build real strength, and help you get leaner and feel better."
+      title: "Personal Trainer Christchurch | 1-on-1 Coaching | WRK PT",
+      description: "Expert 1-on-1 personal training in Christchurch (Addington). Fix your movement, build real strength, and get accountable with WRK PT."
     },
     hero: {
       h1: "1:1 Personal Training <span class='text-accent'>in Christchurch</span>",
@@ -141,11 +141,11 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   onlineCoaching: {
     seo: {
-      title: "Online Personal Training | App Coaching (12 Weeks+)",
-      description: "Online personal training with custom programming, check-ins and flexible nutrition support. Built for travel, stress and real schedules. 12-week minimum."
+      title: "Online Personal Training NZ | App-Based Coaching | WRK PT",
+      description: "Online personal training for busy professionals in NZ. Get custom programming, nutrition targets, and weekly accountability delivered straight to your phone."
     },
     hero: {
-      h1: "Online Personal Training (12-Week Minimum)",
+      h1: "Online Personal Training <span class='text-accent'>NZ</span>",
       subhead: "Professional programming and support delivered to your phone—so you can train where you want, when you want, and still get results when life gets busy.",
       bullets: [
         "Custom programming built around your schedule",
@@ -173,8 +173,8 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   corporateWellness: {
     seo: {
-      title: "Corporate Wellness Program NZ | PT in Every Pocket",
-      description: "NZ corporate wellness program: a personal trainer in every employee’s pocket. App-led training plans for all levels, goals and schedules. Low admin."
+      title: "Corporate Wellness Program NZ | Workplace Fitness | WRK PT",
+      description: "NZ-wide workplace wellness program delivered via the WRK Personal Training app. A PT in every employee’s pocket: training programs, habit + nutrition support, and check-ins. Flat annual rate by staff size (100 staff = $10k/year). Book a corporate consult."
     },
     hero: {
       h1: "Corporate Wellness Program (NZ)",
@@ -195,11 +195,11 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   challenge42: {
     seo: {
-      title: "42 Day Fitness Reset | Self-Guided Program ($47)",
-      description: "A 42 day reset to rebuild routine, energy and momentum. App-based training plan + simple nutrition support. One-time payment $47."
+      title: "42-Day Reset | Fitness Challenge NZ | WRK PT",
+      description: "Join the 42-Day Reset, a 6-week fitness challenge in NZ designed to build automatic habits. Get app-based training, nutrition framework, and tracking for just $47."
     },
     hero: {
-      h1: "42 Day Reset",
+      h1: "The 42-Day <span class='text-accent'>Fitness Reset</span>",
       subhead: "The system reboot you’ve been waiting for. Clear the fog, rebuild momentum, and get back to operating at full capacity—without diet jail or burnout.",
       bullets: [
         "Self-guided training (app delivered)",
@@ -228,7 +228,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Recovery Protocols",
         "High-Performance Living"
       ],
-      image: "https://i.postimg.cc/XYhPyRQh/mountain-biking.jpg",
+      image: "https://i.postimg.cc/59gkxvcS/Screen-Shot-2026-06-23-at-2-11-19-PM.png",
       kicker: "No fluff. Just what works."
     },
     banner: {
@@ -239,11 +239,11 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   tools: {
     seo: {
-      title: "Tools & Resources | WRK Personal Training",
-      description: "Free tools to help you execute better. Calorie calculators, checklists, and more."
+      title: "Free Fitness Tools & Calculators | WRK PT",
+      description: "Access free fitness tools from WRK PT, including a calorie calculator and 1RM estimator to help you train smarter and hit your goals."
     },
     hero: {
-      h1: "TOOLS",
+      h1: "Free Fitness <span class='text-accent'>Tools</span>",
       subhead: "Free resources to help you execute better.",
       bullets: [
         "Nutrition Engine",
@@ -261,7 +261,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   calorieCalculator: {
     seo: {
-      title: "Calorie Calculator | Estimate Your Daily Calories (TDEE + Goals)",
+      title: "Free Calorie Calculator | TDEE & Macros | WRK PT",
       description: "Use this calorie calculator to estimate your daily calorie needs for fat loss, maintenance, or muscle gain. Includes protein targets and a “Party Fund” to account for weekly drinks while staying on track."
     },
     hero: {
@@ -283,8 +283,8 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   oneRmEstimator: {
     seo: {
-      title: "1RM Estimator | WRK Personal Training",
-      description: "Estimate your one-rep max safely without testing to failure."
+      title: "1RM Estimator | Calculate One Rep Max | WRK PT",
+      description: "Use our free 1RM estimator to safely calculate your one-rep max without testing to failure. Perfect for setting your training percentages."
     },
     hero: {
       h1: "1RM ESTIMATOR",
