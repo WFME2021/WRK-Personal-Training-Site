@@ -250,13 +250,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "1RM Estimator",
         "Recovery Protocols"
       ],
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg",
+      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
       kicker: "Calculators, checklists, and systems."
     },
     banner: {
       tagline: "Clarity in minutes. Then we keep it simple.",
       support: "Use the numbers as a starting point—not a rulebook.",
-      image: "https://i.postimg.cc/mkq4Yt9C/pexels-pripicart-591216.jpg"
+      image: "https://i.postimg.cc/nhnTcBRr/banana-walnut-porridge-3.jpg"
     }
   },
   calorieCalculator: {
