@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
@@ -10,11 +9,11 @@ import { FAQ } from '../components/FAQ';
 export const Challenge42: React.FC = () => {
   const { pageContent } = useContent();
   const purchaseUrl = "https://wrkpersonaltraining.mypthub.net/p/225904";
-
+  
   const faqs = [
     {
       question: "Do I need a gym membership?",
-      answer: "No. There are Gym and Home versions of the training program. You can choose what works for you."
+      answer: "No. There are Gym and Home versions of the training programme. You can choose what works for you."
     },
     {
       question: "Is there a strict meal plan?",
@@ -22,7 +21,7 @@ export const Challenge42: React.FC = () => {
     },
     {
       question: "What if I miss a day?",
-      answer: "You don’t restart. You don't quit. You just do the next day. The program is designed for real life, not perfection."
+      answer: "You don't restart. You don't quit. You just do the next day. The programme is designed for real life, not perfection."
     },
     {
       question: "Is this suitable for beginners?",
@@ -37,24 +36,34 @@ export const Challenge42: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title={pageContent.challenge42.seo.title}
-        description={pageContent.challenge42.seo.description}
+        title="Fitness Challenge NZ | The 42-Day Reset | WRK Personal Training"
+        description="The WRK 42-Day Reset is a structured fitness challenge for New Zealanders who want to build the habits that make training stick. 6 weeks, app-delivered, gym or home. $47."
       />
-
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      }) }} />
       <div className="bg-primary text-text-primary transition-colors duration-300 pb-24 md:pb-0">
         
         {/* HERO */}
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-             <img 
-               referrerPolicy="no-referrer" 
-               loading="eager" 
-               src="https://i.postimg.cc/xTbx6w9V/IMG-7278.png" 
-               alt="THE 42-DAY CHALLENGE" 
-               className="w-full h-full object-cover object-top" 
-             />
-             <div 
+             <img loading="lazy"
+                referrerPolicy="no-referrer"
+                src="https://i.postimg.cc/xTbx6w9V/IMG-7278.png"
+                alt="42-day fitness challenge NZ, WRK Personal Training"
+                className="w-full h-full object-cover object-top"
+              />
+             <div
                className="absolute inset-0"
                style={{
                  background: 'linear-gradient(to bottom, rgba(13, 17, 23, 0) 0%, rgba(13, 17, 23, 0.6) 60%, rgba(13, 17, 23, 0.88) 100%)'
@@ -65,11 +74,13 @@ export const Challenge42: React.FC = () => {
             <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-orange-burnt mb-4">
               THE 42-DAY CHALLENGE
             </span>
-            <h1 className="font-display text-[44px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-[1.1] sm:leading-[1.1] text-white mb-6 uppercase max-w-[1000px]">
-              THE 42-DAY <br className="hidden md:block" />RESET.
+            <h1 className="flex flex-col mb-6 max-w-[1000px]">
+              <span className="font-display text-[44px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-[1.1] sm:leading-[1.1] text-white uppercase">
+                The 42-Day Reset - NZ Fitness Challenge for Real Results
+              </span>
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-off-white font-medium max-w-[640px] mb-8 leading-[1.6]">
-              Build the habits that make fitness automatic. A 6-week structured kickstart delivered straight to your phone.
+              The 42-Day Reset is a structured fitness challenge for New Zealanders who want to build the habits that make training automatic. Six weeks. A daily plan in the WRK app. Gym or home. No starvation, no seven-day training schedules, no guesswork. This fitness challenge in NZ is built around the inputs that actually move the needle — and long enough to see real change. $47.
             </p>
             <div className="flex flex-col md:flex-row items-start gap-4">
                <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
@@ -78,7 +89,7 @@ export const Challenge42: React.FC = () => {
                       size="lg" 
                       className="w-full sm:w-auto px-8 py-5 text-[15px] sm:text-[16px] flex items-center justify-center gap-3"
                     >
-                      START YOUR RESET <ArrowRight size={20} />
+                      Start Your Reset <ArrowRight size={20} />
                     </Button>
                   </a>
                   <a href="#whats-included" className="w-full sm:w-auto flex items-center justify-center gap-3 text-white hover:text-accent font-bold uppercase tracking-[0.1em] text-[13px] transition-colors mt-4 sm:mt-0">
@@ -92,17 +103,16 @@ export const Challenge42: React.FC = () => {
           </div>
         </section>
 
-        {/* WHY 42 DAYS? (Agitate/Reframe) */}
+        {/* WHY 42 DAYS? */}
         <section className="py-24 md:py-32 px-6 bg-secondary border-y border-border">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="font-display text-4xl md:text-6xl uppercase mb-8">
-              Why <span className="text-accent">42 Days?</span>
+              Why 42 Days?
             </h2>
-            <p className="text-2xl text-text-primary font-bold leading-relaxed mb-10 max-w-3xl mx-auto">
+            <p className="text-xl text-text-primary font-medium leading-relaxed mb-16 max-w-3xl mx-auto">
               Because 21 days isn't enough to change a habit, and 90 days feels too far away when you're just starting out.
-            </p>
-            <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-16 max-w-2xl mx-auto">
-              This isn't a crash diet or a "shred." It's a structured reset. It's long enough to see real physical changes, but short enough to stay focused. We strip away the noise and focus on the daily inputs that actually move the needle.
+              <br /><br />
+              This isn't a crash diet or a shred. It's a structured 6-week fitness challenge. It's long enough to see real physical changes, but short enough to stay focused. We strip away the noise and focus on the daily inputs that actually move the needle.
             </p>
             
             <div className="grid md:grid-cols-3 gap-8 text-left mt-16">
@@ -113,13 +123,15 @@ export const Challenge42: React.FC = () => {
                 <h3 className="font-display uppercase text-2xl mb-4 text-text-primary">No Starvation</h3>
                 <p className="text-base text-text-secondary leading-relaxed">You won't be eating 1200 calories and feeling miserable. You'll learn how to fuel properly.</p>
               </div>
+              
               <div className="bg-primary p-10 rounded-[2rem] border border-border group hover:border-accent transition-colors">
                 <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
                   <span className="text-accent font-black text-2xl">02</span>
                 </div>
                 <h3 className="font-display uppercase text-2xl mb-4 text-text-primary">No 7-Day Training</h3>
-                <p className="text-base text-text-secondary leading-relaxed">More isn't better. Better is better. 3-4 focused sessions a week is all you need.</p>
+                <p className="text-base text-text-secondary leading-relaxed">More isn't better. Better is better. 3 to 4 focused sessions a week is all you need.</p>
               </div>
+
               <div className="bg-primary p-10 rounded-[2rem] border border-border group hover:border-accent transition-colors">
                 <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
                   <span className="text-accent font-black text-2xl">03</span>
@@ -131,32 +143,26 @@ export const Challenge42: React.FC = () => {
           </div>
         </section>
 
-        {/* WHAT YOU GET */}
+        {/* WHAT'S INCLUDED */}
         <section id="whats-included" className="py-24 md:py-32 px-6 bg-primary">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-20">
-              <h2 className="font-display text-4xl md:text-6xl uppercase mb-6">
-                What's Included
-              </h2>
-              <p className="text-xl md:text-2xl text-text-secondary">
-                Everything you need to build momentum, delivered through the WRK app.
-              </p>
+              <h2 className="font-display text-4xl md:text-6xl uppercase mb-6">What's Included</h2>
+              <p className="text-xl text-text-secondary max-w-2xl mx-auto font-medium">Everything you need to build momentum, delivered through the WRK app.</p>
             </div>
-
-            {/* App Features - Alternating Rows */}
-            <div className="flex flex-col gap-24 md:gap-40 mt-12 md:mt-24 max-w-6xl mx-auto text-left mb-16 px-4">
-              
+            
+            <div className="space-y-24 md:space-y-32">
               {/* Feature 1 - Image Left */}
               <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
                 <div className="order-2 md:order-1 flex justify-center">
                   <div className="w-[280px] md:w-[320px] h-[580px] md:h-[660px] bg-black rounded-[3.5rem] border-[12px] border-gray-900 overflow-hidden relative shadow-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
                     <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 z-20 rounded-b-3xl w-1/2 mx-auto"></div>
-                    <img referrerPolicy="no-referrer" src="https://i.postimg.cc/tCGRmr4y/IMG-1925.png" alt="Training Program" className="w-full h-full object-cover" />
+                    <img loading="lazy" referrerPolicy="no-referrer" src="https://i.postimg.cc/QtxV1RzS/IMG-1927.png" alt="6-Week Training Programme" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <div className="order-1 md:order-2 flex flex-col justify-center">
                   <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-6 font-mono text-sm font-bold">01</div>
-                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">6-Week Training <br />Program</h3>
+                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">6-Week Training Programme</h3>
                   <p className="text-text-secondary text-lg md:text-xl leading-relaxed font-medium">
                     Choose between Gym or Home workouts. Structured progression over 6 weeks with video demonstrations for every single movement.
                   </p>
@@ -165,9 +171,9 @@ export const Challenge42: React.FC = () => {
 
               {/* Feature 2 - Image Right */}
               <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
-                <div className="order-1 md:order-1 flex flex-col justify-center">
+                <div className="order-1 md:order-1 flex flex-col justify-center md:pl-12">
                   <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-6 font-mono text-sm font-bold">02</div>
-                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">Nutrition <br />Framework</h3>
+                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">Nutrition Framework</h3>
                   <p className="text-text-secondary text-lg md:text-xl leading-relaxed font-medium">
                     Clear calorie and protein targets, plus a flexible framework that teaches you how to eat without giving up the foods you love.
                   </p>
@@ -175,7 +181,7 @@ export const Challenge42: React.FC = () => {
                 <div className="order-2 md:order-2 flex justify-center">
                   <div className="w-[280px] md:w-[320px] h-[580px] md:h-[660px] bg-black rounded-[3.5rem] border-[12px] border-gray-900 overflow-hidden relative shadow-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
                     <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 z-20 rounded-b-3xl w-1/2 mx-auto"></div>
-                    <img referrerPolicy="no-referrer" src="https://i.postimg.cc/3JQrbLxM/IMG-1928.png" alt="Nutrition & Habits" className="w-full h-full object-cover" />
+                    <img loading="lazy" referrerPolicy="no-referrer" src="https://i.postimg.cc/3JQrbLxM/IMG-1928.png" alt="Nutrition Framework" className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
@@ -185,18 +191,17 @@ export const Challenge42: React.FC = () => {
                 <div className="order-2 md:order-1 flex justify-center">
                   <div className="w-[280px] md:w-[320px] h-[580px] md:h-[660px] bg-black rounded-[3.5rem] border-[12px] border-gray-900 overflow-hidden relative shadow-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
                     <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 z-20 rounded-b-3xl w-1/2 mx-auto"></div>
-                    <img referrerPolicy="no-referrer" src="https://i.postimg.cc/Hs1WPSsF/IMG-1929.png" alt="Daily Checking and Community" className="w-full h-full object-cover" />
+                    <img loading="lazy" referrerPolicy="no-referrer" src="https://i.postimg.cc/Hs1WPSsF/IMG-1929.png" alt="Tracking & Community" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <div className="order-1 md:order-2 flex flex-col justify-center">
                   <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-6 font-mono text-sm font-bold">03</div>
-                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">Tracking & <br />Community</h3>
+                  <h3 className="text-3xl md:text-5xl font-display uppercase mb-6 leading-[1.25] text-text-primary">Tracking & Community</h3>
                   <p className="text-text-secondary text-lg md:text-xl leading-relaxed font-medium">
                     Simple daily targets for water, steps, and sleep. Tick them off in the app. Access the private group inside the app for questions, form checks, and accountability.
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
@@ -211,7 +216,7 @@ export const Challenge42: React.FC = () => {
               {[
                 { title: "The Starter", desc: "You want to get fit but feel overwhelmed by all the conflicting information online. You just want a clear, safe plan to follow." },
                 { title: "The Restarter", desc: "You used to be fit, but life got in the way. You need a structured 6-week block to get your momentum back." },
-                { title: "The DIYer", desc: "You don't need a 1:1 coach checking in every week, but you do need a proven program to follow rather than making it up yourself." }
+                { title: "The DIYer", desc: "You don't need a 1:1 coach checking in every week, but you do need a proven programme to follow rather than making it up yourself." }
               ].map((item, i) => (
                 <div key={i} className="bg-primary p-8 rounded-2xl border border-border">
                   <h3 className="font-bold text-xl mb-4 text-accent">{item.title}</h3>
@@ -222,25 +227,28 @@ export const Challenge42: React.FC = () => {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
+        {/* NEW PROGRAMME NOT A NEW COACH */}
         <section className="py-24 px-6 bg-primary">
           <div className="max-w-6xl mx-auto">
-            <h2 className="font-display text-4xl md:text-5xl uppercase mb-16 text-center">
-              Real Results
+            <h2 className="font-display text-4xl md:text-5xl uppercase mb-6 text-center">
+              New Programme. Not A New Coach.
             </h2>
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <p className="text-lg md:text-xl text-text-secondary text-center max-w-3xl mx-auto mb-16 font-medium">
+              The 42-Day Reset is brand new, so I'm not going to show you invented before-and-afters. Here's what people say after training with me instead. The Reset runs on the same 20 years of coaching behind it.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
               {[
                 {
-                  quote: "This was exactly the kickstart I needed. The structure helped me get back on track without feeling overwhelmed.",
-                  author: "Sarah J."
+                  quote: "Hayden is incredibly knowledgeable about the human body and takes the time to understand your personal concerns. He's helped me recover from multiple injuries and health issues, always adjusting my programme to keep me safe and moving forward.",
+                  author: "Melanie, training with Hayden 10+ years"
                 },
                 {
-                  quote: "No crazy diets, just sustainable habits. I'm moving better and feeling stronger than I have in years.",
-                  author: "Mike D."
+                  quote: "Over 20 years, Hayden has adapted the way I train to meet the changes in my body and goals. His knowledge is equal to any professional, and he's been an invaluable investment in my health.",
+                  author: "Jeff, training with Hayden 20+ years"
                 },
                 {
-                  quote: "The 42 days flew by. Having everything laid out in the app made it so easy to stay consistent.",
-                  author: "Kelly R."
+                  quote: "I came to Hayden to prepare for a corporate boxing match. He made sure my training was specific to what I needed. It paid off in the fight, and I've kept training with him since.",
+                  author: "Simon"
                 }
               ].map((testimonial, i) => (
                 <div key={i} className="bg-secondary p-10 rounded-[2rem] border border-border hover:border-accent transition-colors duration-300">
@@ -249,7 +257,7 @@ export const Challenge42: React.FC = () => {
                       <Star key={i} size={20} fill="currentColor" className="text-accent" />
                     ))}
                   </div>
-                  <p className="text-lg text-text-primary mb-8 font-medium leading-relaxed">
+                  <p className="text-lg text-text-primary mb-8 font-medium leading-relaxed italic">
                     "{testimonial.quote}"
                   </p>
                   <div>
@@ -258,14 +266,21 @@ export const Challenge42: React.FC = () => {
                 </div>
               ))}
             </div>
-            <p className="text-center text-sm text-text-secondary">Results vary. Consistency is the only guarantee.</p>
+            
+            <div className="max-w-3xl mx-auto bg-secondary p-6 rounded-2xl border border-border flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
+               <span className="font-sans font-bold text-[14px] uppercase tracking-widest text-text-primary">20+ Years Coaching</span>
+               <span className="hidden sm:block text-accent">•</span>
+               <span className="font-sans font-bold text-[14px] uppercase tracking-widest text-text-primary">200+ Clients</span>
+               <span className="hidden sm:block text-accent">•</span>
+               <span className="font-sans font-bold text-[14px] uppercase tracking-widest text-text-primary flex items-center gap-1">5<Star className="inline w-4 h-4 fill-current text-accent" /> Google Rating</span>
+            </div>
           </div>
         </section>
 
         {/* FAQ */}
         <section className="py-24 px-6 bg-secondary border-y border-border">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-4xl uppercase mb-12 text-center">FAQs</h2>
+            <h2 className="font-display text-4xl uppercase mb-12 text-center">Frequently Asked Questions</h2>
             <FAQ items={faqs} />
           </div>
         </section>
@@ -275,20 +290,25 @@ export const Challenge42: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent rounded-full opacity-5 blur-3xl pointer-events-none"></div>
           <div className="max-w-3xl mx-auto relative z-10">
             <h2 className="font-display text-5xl md:text-6xl uppercase mb-8">
-              Ready to <span className="text-accent">Reset?</span>
+              Ready to Reset?
             </h2>
             <p className="text-xl text-text-secondary mb-12 max-w-xl mx-auto font-medium">
-              Six weeks from now you’ll wish you started today.
+              Six weeks from now you'll wish you started today.
               <br />
-              Let’s build momentum that lasts.
+              Let's build momentum that lasts.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <a href={purchaseUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="px-16 py-6 text-xl shadow-xl w-full md:w-auto uppercase tracking-widest font-bold">Start Your Reset ($47 NZD)</Button>
+                <Button size="lg" className="px-16 py-6 text-xl shadow-xl w-full md:w-auto uppercase tracking-widest font-bold">
+                  Start Your Reset ($47 NZD) <ArrowRight size={20} className="inline ml-2" />
+                </Button>
               </a>
             </div>
             <p className="mt-8 text-sm text-text-secondary font-bold uppercase tracking-wider">
               One-time payment • Instant access • Start anytime
+            </p>
+            <p className="mt-6 text-sm text-text-secondary italic max-w-xl mx-auto">
+              Be one of the first through the 42-Day Reset. It's brand new. Get in early, put it to work, and help shape where it goes next.
             </p>
           </div>
         </section>
@@ -300,28 +320,19 @@ export const Challenge42: React.FC = () => {
               What comes after the reset?
             </h2>
             <p className="text-lg text-text-primary leading-relaxed mb-4 max-w-2xl mx-auto font-medium">
-              The 42 Day Reset builds the foundation. Online coaching is what you build on top of it.
+              The 42-Day Reset builds the foundation. Online coaching is what you build on top of it.
             </p>
             <p className="text-lg text-text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
-              If you finish the 42 days and want to keep progressing with a personalised program and coaching, that’s what Online PT is for.
+              If you finish the 42 days and want to keep progressing with a personalised programme and coaching, that's what online PT is for.
             </p>
-            <Link to="/online-personal-training-nz">
-              <span className="inline-block text-accent font-bold uppercase tracking-widest text-sm border-b-2 border-accent hover:border-white hover:text-white transition-colors pb-1">
-                Learn about Online Coaching
+            <Link to="/online-coaching">
+              <span className="inline-flex items-center gap-2 text-accent font-bold uppercase tracking-widest text-sm border-b-2 border-accent hover:border-white hover:text-white transition-colors pb-1">
+                Learn about Online Coaching <ArrowRight size={16} />
               </span>
             </Link>
           </div>
         </section>
-
       </div>
-
-
     </>
   );
 };
-
-const CheckCircleIcon = () => (
-  <div className="w-6 h-6 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-1">
-    <Check size={14} strokeWidth={3} />
-  </div>
-);

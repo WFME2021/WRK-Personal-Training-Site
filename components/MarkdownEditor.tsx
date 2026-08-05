@@ -149,6 +149,36 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
     setIsDragging(false);
   };
 
+  
+  const insertLink = () => {
+    if (!textareaRef.current) return;
+    const start = textareaRef.current.selectionStart;
+    const end = textareaRef.current.selectionEnd;
+    const safeValue = value || '';
+    const selectedText = safeValue.substring(start, end);
+    
+    if (!selectedText) {
+      alert('Please highlight the text you want to link first.');
+      return;
+    }
+    
+    const url = window.prompt('Enter the URL (e.g., /services or https://example.com):');
+    if (url) {
+      const textBefore = safeValue.substring(0, start);
+      const textAfter = safeValue.substring(end);
+      const newText = textBefore + `[${selectedText}](${url})` + textAfter;
+      onChange(newText);
+      
+      // Try to reset selection after a short delay
+      setTimeout(() => {
+        if (textareaRef.current) {
+          textareaRef.current.focus();
+          textareaRef.current.setSelectionRange(start + 1, start + 1 + selectedText.length);
+        }
+      }, 0);
+    }
+  };
+
   return (
     <div className="border border-border rounded-xl overflow-hidden bg-secondary flex flex-col">
       {/* Toolbar */}
@@ -177,6 +207,16 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
             ref={fileInputRef}
             onChange={handleFileInput}
           />
+          
+          <button
+            type="button"
+            onClick={insertLink}
+            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-text-secondary hover:bg-secondary hover:text-accent"
+            title="Insert Link"
+          >
+            <LinkIcon size={14} /> Link
+          </button>
+
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}

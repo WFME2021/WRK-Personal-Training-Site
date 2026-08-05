@@ -15,8 +15,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 const DEFAULT_AUTHOR: Author = {
   name: "H. Richards",
   role: "Personal Trainer",
-  bio: "",
-  avatarUrl: "https://picsum.photos/100"
+  bio: "With over 20 years of experience coaching high performers, H. Richards delivers precision training frameworks built on evidence and practical application. His approach cuts through the noise to help you achieve sustainable results, backed by consistently excellent 5-star client reviews.",
+  avatarUrl: "https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
 };
 
 const EMPTY_POST: BlogPost = {
@@ -55,6 +55,7 @@ export const Admin: React.FC = () => {
   const { blogPosts, pageContent, updateBlogPosts, updatePageContent, importData } = useContent();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAuthLoading, setIsAuthLoading] = useState(true);
+
   
   const [view, setView] = useState<'blogs' | 'pages'>('blogs');
   const [editingId, setEditingId] = useState<string | null>(null); // Post ID
@@ -96,6 +97,7 @@ export const Admin: React.FC = () => {
     }
   };
 
+
   const handleLogout = async () => {
     try {
       await logout();
@@ -126,7 +128,11 @@ export const Admin: React.FC = () => {
 
   const handlePostChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setPostFormData(prev => ({ ...prev, [name]: value }));
+    let newValue = value;
+    if (name === 'slug') {
+       newValue = value.replace(/^\/+/, '').toLowerCase().replace(/\s+/g, '-');
+    }
+    setPostFormData(prev => ({ ...prev, [name]: newValue }));
   };
 
   const handleRichTextChange = (field: keyof BlogPost, html: string) => {
@@ -323,13 +329,21 @@ export const Admin: React.FC = () => {
               <Lock size={32} />
             </div>
             <h1 className="text-2xl font-display text-text-primary uppercase">Admin Access</h1>
-            <p className="text-text-secondary text-sm mt-2">Please sign in with your authorized Google account to continue.</p>
+            <p className="text-text-secondary text-sm mt-2">Please sign in with your admin credentials to continue.</p>
           </div>
           {isAuthLoading ? (
             <div className="text-center text-text-secondary py-4">Checking authentication...</div>
           ) : (
             <form onSubmit={handleLogin} className="space-y-4">
-              <Button fullWidth type="submit">Sign in with Google</Button>
+              <Button fullWidth type="submit" className="mt-2 flex justify-center items-center gap-2">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Sign in with Google
+              </Button>
             </form>
           )}
           <div className="mt-6 text-center">
@@ -365,567 +379,237 @@ export const Admin: React.FC = () => {
       )}
 
       <div className="max-w-7xl mx-auto">
-        
-        {/* Header Actions */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 border-b border-border pb-6">
-          <div className="flex items-center gap-4">
-            <Link to="/" className="p-2 bg-secondary border border-border rounded-full hover:bg-primary transition-colors text-text-primary">
-              <ArrowLeft size={20} />
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+          <div>
+            <h1 className="text-4xl font-display text-text-primary uppercase mb-2">Content Manager</h1>
+            <p className="text-text-secondary text-lg">Manage blogs and page images.</p>
+          </div>
+          <div className="flex gap-4">
+            <Link to="/">
+              <Button variant="secondary"><ArrowLeft size={16} className="mr-2" /> Back to Site</Button>
             </Link>
-            <div>
-               <h1 className="text-3xl font-display text-text-primary uppercase">Admin Dashboard</h1>
-               <p className="text-xs font-bold uppercase tracking-wider text-text-secondary">Manage your content</p>
-            </div>
+            <Button onClick={handleLogout} variant="secondary">
+              <LogOut size={16} className="mr-2" /> Sign Out
+            </Button>
           </div>
-          
-          <div className="flex flex-wrap gap-3 items-center">
-            <div className="hidden md:block bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 text-[10px] text-green-600 max-w-xs leading-[1.2]">
-              <strong>Cloud Sync Active:</strong> Changes are saved instantly to your secure database.
-            </div>
+        </header>
 
-            <input 
-              type="file" 
-              ref={fileInputRef}
-              onChange={handleFileUpload}
-              className="hidden" 
-              accept=".json"
-            />
-            <Button variant="secondary" type="button" onClick={() => fileInputRef.current?.click()}>
-              <Upload size={16} className="mr-2" /> Import
-            </Button>
-            <Button variant="primary" type="button" onClick={handleDownload} className="shadow-lg">
-              <Download size={16} className="mr-2" /> Download Config
-            </Button>
-            <div className="h-8 w-px bg-border mx-2 hidden md:block"></div>
-            <button onClick={handleLogout} className="flex items-center gap-2 text-red-500 hover:text-red-600 font-bold uppercase text-xs tracking-wider transition-colors">
-               <LogOut size={16} /> Logout
-            </button>
-          </div>
+        {/* View Toggle */}
+        <div className="flex gap-4 mb-8 border-b border-border pb-4">
+          <button 
+            onClick={() => setView('blogs')}
+            className={`flex items-center gap-2 pb-2 border-b-2 font-bold uppercase tracking-wider transition-colors ${view === 'blogs' ? 'border-accent text-text-primary' : 'border-transparent text-text-secondary hover:text-text-primary'}`}
+          >
+            <FileText size={18} /> Blog Posts
+          </button>
+          <button 
+            onClick={() => setView('pages')}
+            className={`flex items-center gap-2 pb-2 border-b-2 font-bold uppercase tracking-wider transition-colors ${view === 'pages' ? 'border-accent text-text-primary' : 'border-transparent text-text-secondary hover:text-text-primary'}`}
+          >
+            <Layout size={18} /> Page Content
+          </button>
         </div>
 
-        {/* Info Banner */}
-        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 mb-8 flex gap-4 items-start">
-           <div className="bg-accent/10 p-2 rounded-full text-accent shrink-0 mt-1">
-             <Layout size={20} />
-           </div>
-           <div>
-             <h3 className="font-bold text-text-primary text-lg mb-2">Cloud Sync is Active</h3>
-             <p className="text-text-secondary text-sm leading-relaxed mb-4">
-               Your site is now connected to a secure cloud database. All changes you make here are saved instantly and permanently. You no longer need to click "Save & Publish".
-             </p>
-             <ol className="list-decimal list-inside text-sm text-text-secondary space-y-2 mb-4">
-               <li>Make your edits below (Images, Text, Blogs).</li>
-               <li>Click "Save Post" or edit a page field.</li>
-               <li>Changes are instantly live on your website.</li>
-             </ol>
-             <p className="text-xs font-bold text-accent uppercase tracking-wider">
-               Important: Image URLs must be public links (e.g. from Unsplash or a website), not files on your computer.
-             </p>
-           </div>
-        </div>
-
-        <div className="grid lg:grid-cols-4 gap-8">
-          
-          {/* Left Sidebar - Navigation */}
-          <div className="lg:col-span-1 space-y-6">
-             <div className="bg-secondary p-6 shadow-sm border border-border rounded-[2rem]">
-               <h3 className="font-bold text-sm uppercase tracking-wider text-accent mb-4">Content Types</h3>
-               <nav className="space-y-2">
-                 <button 
-                   onClick={() => setView('blogs')}
-                   className={`w-full flex items-center gap-3 px-4 py-3 font-bold rounded-xl text-sm transition-colors ${view === 'blogs' ? 'bg-primary text-text-primary border border-border' : 'text-text-secondary hover:bg-primary/50 hover:text-text-primary'}`}
-                 >
-                   <FileText size={18} /> Blog Posts
-                 </button>
-                 <button 
-                   onClick={() => setView('pages')}
-                   className={`w-full flex items-center gap-3 px-4 py-3 font-bold rounded-xl text-sm transition-colors ${view === 'pages' ? 'bg-primary text-text-primary border border-border' : 'text-text-secondary hover:bg-primary/50 hover:text-text-primary'}`}
-                 >
-                   <Layout size={18} /> Pages
-                 </button>
-               </nav>
-             </div>
-
-             {/* List Panel */}
-             <div className="bg-secondary p-6 shadow-sm border border-border rounded-[2rem] h-fit">
-               {view === 'blogs' ? (
-                 <>
-                  <div className="flex justify-between items-center mb-6">
-                    <h2 className="font-bold text-sm uppercase tracking-wider text-text-primary">Posts ({blogPosts.length})</h2>
-                    <button 
-                      type="button"
-                      onClick={() => { setEditingId(null); setPostFormData({ ...EMPTY_POST, id: Date.now().toString() }); }}
-                      className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider bg-accent text-white px-3 py-1.5 rounded-full hover:opacity-90 transition-colors"
-                    >
-                      <Plus size={12} /> New
-                    </button>
-                  </div>
-                  <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-                    {blogPosts.map(post => (
-                      <div 
-                        key={post.id} 
-                        className={`p-4 border rounded-xl cursor-pointer transition-all duration-200 group ${editingId === post.id ? 'border-accent bg-primary ring-1 ring-accent' : 'border-border hover:border-accent hover:bg-primary'}`}
-                        onClick={() => setEditingId(post.id)}
-                      >
-                        <h3 className="font-bold text-text-primary text-sm truncate mb-1">
-                          {post.title}
-                          {post.status === 'draft' && (
-                            <span className="ml-2 inline-block bg-yellow-500/10 text-yellow-600 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Draft</span>
-                          )}
-                        </h3>
-                        <div className="flex justify-between items-center text-xs text-text-secondary">
-                          <span>{post.date}</span>
-                          <div className="flex gap-1">
-                            <button 
-                              type="button"
-                              onClick={(e) => { 
-                                e.stopPropagation(); 
-                                const newPost = { ...post, id: Date.now().toString(), title: `${post.title} (Copy)`, slug: `${post.slug}-copy` };
-                                updateBlogPosts([...blogPosts, newPost]);
-                              }}
-                              className="text-text-secondary hover:text-accent transition-colors p-1"
-                              title="Duplicate Post"
-                            >
-                              <Copy size={14} />
-                            </button>
-                            <button 
-                              type="button"
-                              onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id); }}
-                              className="text-text-secondary hover:text-red-500 transition-colors p-1"
-                              title="Delete Post"
-                            >
-                              <Trash2 size={14} />
-                            </button>
-                          </div>
+        <div className="grid lg:grid-cols-12 gap-12">
+          {/* LEFT SIDEBAR: LIST */}
+          <div className="lg:col-span-4 space-y-6">
+            {view === 'blogs' ? (
+              <>
+                <div className="flex justify-between items-center bg-secondary p-4 rounded-xl border border-border">
+                  <h2 className="font-bold uppercase tracking-wider text-sm text-text-primary">All Posts ({blogPosts.length})</h2>
+                  <Button onClick={() => { setEditingId(null); setPostFormData({ ...EMPTY_POST, id: Date.now().toString() }); }}>
+                    <Plus size={16} className="mr-2" /> New Post
+                  </Button>
+                </div>
+                <div className="space-y-3">
+                  {blogPosts.map(post => (
+                    <div key={post.id} className={`p-4 rounded-xl border transition-all cursor-pointer ${editingId === post.id ? 'border-accent bg-secondary/50' : 'border-border bg-secondary hover:border-text-secondary/30'}`} onClick={() => setEditingId(post.id)}>
+                      <h3 className="font-bold text-text-primary mb-1 line-clamp-1">{post.title || 'Untitled Post'}</h3>
+                      <div className="flex justify-between items-center mt-3">
+                        <span className="text-xs text-text-secondary">{post.isoDate || post.date}</span>
+                        <div className="flex gap-1">
+                          <button type="button" onClick={(e) => { e.stopPropagation(); handleDeletePost(post.id); }} className="text-text-secondary hover:text-red-500 p-1"><Trash2 size={14} /></button>
                         </div>
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Pre-Publish Checklist */}
-                  <div className="mt-8 pt-6 border-t border-border">
-                    <h3 className="font-bold text-sm uppercase tracking-wider text-accent mb-4">Pre-Publish Checklist</h3>
-                    <ul className="space-y-2 text-xs text-text-secondary">
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.title ? 'bg-green-500' : 'bg-red-500'}`}></span> Title
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.slug ? 'bg-green-500' : 'bg-red-500'}`}></span> Slug
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.seoTitle ? 'bg-green-500' : 'bg-red-500'}`}></span> Meta Title
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.seoDescription ? 'bg-green-500' : 'bg-red-500'}`}></span> Meta Description
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.excerpt ? 'bg-green-500' : 'bg-red-500'}`}></span> Excerpt
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.image.url && postFormData.image.url !== 'https://picsum.photos/800/600' ? 'bg-green-500' : 'bg-red-500'}`}></span> Featured Image
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.image.alt && postFormData.image.alt !== 'Default blog post image' ? 'bg-green-500' : 'bg-red-500'}`}></span> Image Alt Text
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.content && postFormData.content.length > 50 ? 'bg-green-500' : 'bg-red-500'}`}></span> Body Content
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.content && (postFormData.content.includes('##') || postFormData.content.includes('###')) ? 'bg-green-500' : 'bg-yellow-500'}`}></span> Headings Present
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${postFormData.ctaText ? 'bg-green-500' : 'bg-yellow-500'}`}></span> CTA Added
-                      </li>
-                    </ul>
-                    
-                    <div className="mt-4 pt-4 border-t border-border grid grid-cols-2 gap-2 text-xs text-text-secondary">
-                      <div>
-                        <span className="block font-bold text-text-primary">Words</span>
-                        {postFormData.content ? postFormData.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(w => w.length > 0).length : 0}
-                      </div>
-                      <div>
-                        <span className="block font-bold text-text-primary">Read Time</span>
-                        {postFormData.content ? Math.ceil(postFormData.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(w => w.length > 0).length / 200) : 0} min
-                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="bg-secondary p-4 rounded-xl border border-border mb-6">
+                  <h2 className="font-bold uppercase tracking-wider text-sm text-text-primary">Site Pages</h2>
+                </div>
+                <div className="space-y-2">
+                  {Object.keys(pageContent).map(pageKey => (
+                    <button key={pageKey} onClick={() => setSelectedPage(pageKey as keyof PageContent)} className={`w-full text-left p-4 rounded-xl border transition-all ${selectedPage === pageKey ? 'border-accent bg-secondary/50 text-accent' : 'border-border bg-secondary hover:border-text-secondary/30 text-text-primary'}`}>
+                      <span className="font-bold uppercase tracking-wider text-sm">{PAGE_LABELS[pageKey as keyof PageContent] || pageKey}</span>
+                    </button>
+                  ))}
+                </div>
+                
+                <div className="mt-12 bg-secondary p-6 rounded-2xl border border-border space-y-4">
+                  <h3 className="font-bold uppercase tracking-wider text-sm text-text-primary border-b border-border pb-2">Global Data</h3>
+                  <p className="text-xs text-text-secondary">Backup your entire site content or upload a previous backup.</p>
+                  <div className="flex gap-3 pt-2">
+                    <Button variant="secondary" onClick={handleDownload} className="flex-1"><Download size={14} className="mr-2" /> Backup</Button>
+                    <div className="flex-1 relative">
+                      <input type="file" accept=".json" onChange={handleFileUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                      <Button variant="secondary" className="w-full pointer-events-none"><Upload size={14} className="mr-2" /> Restore</Button>
                     </div>
                   </div>
-
-                  {/* SEO Preview */}
-                  <div className="mt-8 pt-6 border-t border-border">
-                    <h3 className="font-bold text-sm uppercase tracking-wider text-accent mb-4">SEO Preview</h3>
-                    <div className="bg-primary p-4 rounded-xl border border-border">
-                      <div className="text-[12px] text-text-secondary mb-1 flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-[10px]">W</span>
-                        <span className="truncate">wrkpersonaltraining.co.nz › blog › {postFormData.slug || 'your-slug'}</span>
-                      </div>
-                      <h4 className="text-[18px] text-blue-600 dark:text-blue-400 hover:underline cursor-pointer truncate mb-1 leading-[1.2]">
-                        {postFormData.seoTitle || postFormData.title || 'Your Meta Title'}
-                      </h4>
-                      <p className="text-[13px] text-text-secondary line-clamp-2 leading-snug">
-                        {postFormData.seoDescription || postFormData.excerpt || 'Your meta description will appear here. Keep it under 160 characters for best results.'}
-                      </p>
-                    </div>
-                  </div>
-                 </>
-               ) : (
-                 <>
-                   <div className="mb-6">
-                    <h2 className="font-bold text-sm uppercase tracking-wider text-text-primary">Select Page</h2>
-                   </div>
-                   <div className="space-y-3">
-                     {Object.keys(pageContent).map((key) => (
-                       <div 
-                         key={key}
-                         className={`p-4 border rounded-xl cursor-pointer transition-all duration-200 ${selectedPage === key ? 'border-accent bg-primary ring-1 ring-accent' : 'border-border hover:border-accent hover:bg-primary'}`}
-                         onClick={() => setSelectedPage(key as keyof PageContent)}
-                       >
-                         <h3 className="font-bold text-text-primary text-sm">{PAGE_LABELS[key] || key}</h3>
-                       </div>
-                     ))}
-                   </div>
-                 </>
-               )}
-             </div>
+                </div>
+              </>
+            )}
           </div>
 
-          {/* Main: Editor */}
-          <div className="lg:col-span-3 bg-secondary p-8 shadow-sm border border-border rounded-[2rem]">
+          {/* RIGHT SIDE: EDITOR */}
+          <div className="lg:col-span-8 bg-secondary p-8 rounded-3xl border border-border">
             {view === 'blogs' ? (
-              // BLOG EDITOR
               <form onSubmit={handleSavePost} className="space-y-8">
-                <div className="flex justify-between items-center border-b border-border pb-4">
-                  <h2 className="font-bold text-2xl text-text-primary">
-                    {editingId ? 'Edit Post' : 'Create New Post'}
-                  </h2>
-                  <div className="flex gap-4">
-                    {editingId && (
-                      <Button type="button" variant="secondary" onClick={() => { setEditingId(null); setPostFormData({ ...EMPTY_POST, id: Date.now().toString() }); }}>
-                        Cancel
-                      </Button>
-                    )}
-                    <Button type="submit">
-                      <Save size={16} className="mr-2" /> {editingId ? 'Update Post' : 'Save Post'}
-                    </Button>
-                  </div>
-                </div>
-
-                {/* BASIC INFO */}
+                <h2 className="font-bold text-2xl mb-8 text-text-primary border-b border-border pb-4">{editingId ? 'Edit Post' : 'Create New Post'}</h2>
+                
+                {/* 1. BASIC INFO */}
                 <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
-                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">1. Basic Info</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">1. Core Information</h3>
+                  <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Title</label>
-                      <input
-                        type="text"
-                        name="title"
-                        value={postFormData.title || ''}
-                        onChange={handlePostChange}
-                        required
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
+                      <input type="text" name="title" value={postFormData.title || ''} onChange={handlePostChange} required className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                     </div>
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Slug / URL</label>
-                      <input
-                        type="text"
-                        name="slug"
-                        value={postFormData.slug || ''}
-                        onChange={handlePostChange}
-                        required
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Slug</label>
+                      <input type="text" name="slug" value={postFormData.slug || ''} onChange={handlePostChange} required className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                     </div>
                   </div>
-                  <div className="grid md:grid-cols-4 gap-6">
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Category</label>
-                      <input
-                        type="text"
-                        name="category"
-                        value={postFormData.category || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Status</label>
-                      <select
-                        name="status"
-                        value={postFormData.status || 'draft'}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      >
-                        <option value="draft">Draft</option>
-                        <option value="published">Published</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Publish Date</label>
-                      <input
-                        type="text"
-                        name="date"
-                        value={postFormData.date || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Updated Date</label>
-                      <input
-                        type="text"
-                        name="updatedDate"
-                        value={postFormData.updatedDate || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Status</label>
+                    <select name="status" value={postFormData.status || 'draft'} onChange={handlePostChange} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all">
+                      <option value="draft">Draft (Hidden)</option>
+                      <option value="published">Published</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Excerpt</label>
+                    <textarea name="excerpt" value={postFormData.excerpt || ''} onChange={handlePostChange} required rows={3} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none" />
                   </div>
                 </div>
 
-                {/* SEO & METADATA */}
+                {/* 2. CONTENT */}
                 <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
-                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">2. SEO & Metadata</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Meta Title</label>
-                      <input
-                        type="text"
-                        name="seoTitle"
-                        value={postFormData.seoTitle || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Meta Description</label>
-                      <input
-                        type="text"
-                        name="seoDescription"
-                        value={postFormData.seoDescription || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">2. Content</h3>
+                  <div>
+                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Main Blog Body</label>
+                     <MarkdownEditor value={postFormData.content || ''} onChange={(md) => handleRichTextChange('content', md)} />
                   </div>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Primary Keyword</label>
-                      <input
-                        type="text"
-                        name="primaryKeyword"
-                        value={postFormData.primaryKeyword || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Secondary Keywords</label>
-                      <input
-                        type="text"
-                        name="secondaryKeywords"
-                        value={postFormData.secondaryKeywords || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Location</label>
-                      <input
-                        type="text"
-                        name="localLocation"
-                        value={postFormData.localLocation || ''}
-                        onChange={handlePostChange}
-                        placeholder="e.g., Christchurch"
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Service Category</label>
-                      <input
-                        type="text"
-                        name="localServiceCategory"
-                        value={postFormData.localServiceCategory || ''}
-                        onChange={handlePostChange}
-                        placeholder="e.g., Personal Training"
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Service Page URL</label>
-                      <input
-                        type="text"
-                        name="localServicePage"
-                        value={postFormData.localServicePage || ''}
-                        onChange={handlePostChange}
-                        placeholder="/services/personal-training"
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Local Keyword Note</label>
-                      <input
-                        type="text"
-                        name="localKeywordNote"
-                        value={postFormData.localKeywordNote || ''}
-                        onChange={handlePostChange}
-                        placeholder="Internal notes for local SEO"
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
-                    </div>
+                  <div>
+                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">FAQ Section</label>
+                     <MarkdownEditor value={postFormData.faq || ''} onChange={(md) => handleRichTextChange('faq', md)} />
                   </div>
                 </div>
 
-                {/* MEDIA */}
+                {/* 3. MEDIA */}
                 <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
                   <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">3. Media</h3>
                   <div className="flex justify-between items-start mb-4">
                     <div className="w-full space-y-4">
                        <div>
                          <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Upload Image (Auto-converts to WebP)</label>
-                         <input
-                           type="file"
-                           accept="image/*"
-                           onChange={handleImageUpload}
-                           className="w-full p-2 bg-secondary text-text-primary border border-border rounded-lg text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-accent file:text-white hover:file:bg-accent/90"
-                         />
+                         <input type="file" ref={imageInputRef} onChange={handleImageUpload} accept="image/*" className="hidden" />
+                         <Button type="button" variant="secondary" onClick={() => imageInputRef.current?.click()} className="w-full">
+                           <ImageIcon size={16} className="mr-2" /> Select Image
+                         </Button>
                        </div>
                        <div>
-                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Or enter Image URL</label>
-                         <input
-                           type="text"
-                           value={postFormData.image?.url || ''}
-                           onChange={(e) => handleBlogImageChange('url', e.target.value)}
-                           className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
-                           placeholder="https://..."
-                         />
+                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image URL (Fallback)</label>
+                         <input type="text" value={postFormData.image?.url || ''} onChange={(e) => handleBlogImageChange('url', e.target.value)} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
+                       </div>
+                       <div>
+                         <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image Alt Text</label>
+                         <input type="text" value={postFormData.image?.alt || ''} onChange={(e) => handleBlogImageChange('alt', e.target.value)} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                        </div>
                     </div>
-                    {postFormData.image.url && (
-                      <div className="w-32 h-24 rounded-lg overflow-hidden border border-border shadow-sm ml-4 shrink-0">
-                        <img referrerPolicy="no-referrer" src={postFormData.image.url} alt={postFormData.image.alt} className="w-full h-full object-cover" />
-                      </div>
-                    )}
+                  </div>
+                </div>
+
+                {/* 4. SEO & ADVANCED */}
+                <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">4. SEO & Advanced</h3>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Meta Title (SEO)</label>
+                      <input type="text" name="seoTitle" value={postFormData.seoTitle || ''} onChange={handlePostChange} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Primary Keyword</label>
+                      <input type="text" name="primaryKeyword" value={postFormData.primaryKeyword || ''} onChange={handlePostChange} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Meta Description (SEO)</label>
+                    <textarea name="seoDescription" value={postFormData.seoDescription || ''} onChange={handlePostChange} rows={2} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none" />
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Featured Image Alt Text</label>
-                      <input
-                        type="text"
-                        value={postFormData.image.alt || ''}
-                        onChange={(e) => handleBlogImageChange('alt', e.target.value)}
-                        className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
-                        placeholder="Image description..."
-                      />
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Publish Date</label>
+                      <input type="text" name="date" value={postFormData.date || ''} onChange={handlePostChange} placeholder="e.g., October 15, 2026" className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                     </div>
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1">Image SEO Description</label>
-                      <input
-                        type="text"
-                        value={postFormData.image.seoDescription || ''}
-                        onChange={(e) => handleBlogImageChange('seoDescription', e.target.value)}
-                        className="w-full p-3 bg-secondary text-text-primary border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
-                        placeholder="SEO context..."
-                      />
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Category</label>
+                      <input type="text" name="category" value={postFormData.category || ''} onChange={handlePostChange} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                     </div>
                   </div>
-                </div>
-
-                {/* CONTENT */}
-                <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
-                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">4. Content</h3>
+                  
                   <div>
-                    <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Excerpt / Summary</label>
-                    <textarea
-                      name="excerpt"
-                      value={postFormData.excerpt || ''}
-                      onChange={handlePostChange}
-                      rows={2}
-                      className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none"
-                    />
-                  </div>
-
-                  <div>
-                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Main Blog Body</label>
-                     <MarkdownEditor 
-                        value={postFormData.content || ''} 
-                        onChange={(md) => handleRichTextChange('content', md)} 
-                     />
-                  </div>
-
-                  <div>
-                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">FAQ Section</label>
-                     <MarkdownEditor 
-                        value={postFormData.faq || ''} 
-                        onChange={(md) => handleRichTextChange('faq', md)} 
-                     />
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Author Name</label>
+                    <input type="text" value={postFormData.author?.name || ''} onChange={(e) => setPostFormData(prev => ({ ...prev, author: { ...prev.author, name: e.target.value, role: prev.author?.role || '', bio: prev.author?.bio || '', avatarUrl: prev.author?.avatarUrl || '' } }))} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                   </div>
                 </div>
 
-                {/* CTA & REFERENCES */}
+                {/* 5. CTA & CONNECTED CONTENT */}
                 <div className="bg-primary p-6 rounded-2xl border border-border space-y-6">
-                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">5. CTA & References</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <h3 className="font-bold text-sm uppercase tracking-wider text-accent border-b border-border pb-2">5. Call to Action & Connected Content</h3>
+                  <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">CTA Text</label>
-                      <input
-                        type="text"
-                        name="ctaText"
-                        value={postFormData.ctaText || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
+                      <input type="text" name="ctaText" value={postFormData.ctaText || ''} onChange={handlePostChange} placeholder="e.g., Book your free assessment" className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">CTA Link</label>
-                      <input
-                        type="text"
-                        name="ctaLink"
-                        value={postFormData.ctaLink || ''}
-                        onChange={handlePostChange}
-                        className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                      />
+                      <input type="text" name="ctaLink" value={postFormData.ctaLink || ''} onChange={handlePostChange} placeholder="e.g., /contact" className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
                     </div>
                   </div>
-
                   <div>
-                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">References</label>
-                     <MarkdownEditor 
-                        value={postFormData.references || ''} 
-                        onChange={(md) => handleRichTextChange('references', md)} 
-                        minHeight="200px"
-                     />
-                  </div>
-
-                  <div>
-                     <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Related Posts</label>
-                     <div className="flex flex-col gap-2">
-                       {blogPosts.filter(p => p.id !== postFormData.id).map(p => (
-                         <label key={p.id} className="flex items-center gap-2 text-sm text-text-primary">
-                           <input 
-                             type="checkbox" 
-                             checked={postFormData.relatedPosts?.includes(p.id) || false}
-                             onChange={(e) => {
-                               const checked = e.target.checked;
-                               setPostFormData(prev => {
-                                 const related = prev.relatedPosts || [];
-                                 if (checked) {
-                                   return { ...prev, relatedPosts: [...related, p.id] };
-                                 } else {
-                                   return { ...prev, relatedPosts: related.filter(id => id !== p.id) };
-                                 }
-                               });
-                             }}
-                             className="rounded border-border text-accent focus:ring-accent"
-                           />
-                           {p.title}
-                         </label>
-                       ))}
-                     </div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Connected Posts</label>
+                    <div className="space-y-2 max-h-48 overflow-y-auto p-4 bg-secondary border border-border rounded-lg">
+                      {blogPosts.filter(p => p.id !== editingId).map(post => (
+                        <label key={post.id} className="flex items-center space-x-3 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={postFormData.relatedPosts?.includes(post.slug) || false}
+                            onChange={(e) => {
+                              const checked = e.target.checked;
+                              setPostFormData(prev => {
+                                const current = prev.relatedPosts || [];
+                                if (checked) {
+                                  return { ...prev, relatedPosts: [...current, post.slug] };
+                                } else {
+                                  return { ...prev, relatedPosts: current.filter(s => s !== post.slug) };
+                                }
+                              });
+                            }}
+                            className="form-checkbox h-4 w-4 text-accent border-border rounded bg-primary focus:ring-accent"
+                          />
+                          <span className="text-sm text-text-primary">{post.title}</span>
+                        </label>
+                      ))}
+                      {blogPosts.filter(p => p.id !== editingId).length === 0 && (
+                        <p className="text-xs text-text-secondary">No other posts available.</p>
+                      )}
+                    </div>
                   </div>
                 </div>
                 
@@ -971,7 +655,7 @@ export const Admin: React.FC = () => {
                                  <div key={index} className="p-4 border border-border rounded-xl bg-secondary">
                                    <div className="flex gap-4 items-start mb-4">
                                       <div className="w-20 h-20 rounded-lg overflow-hidden border border-border shrink-0">
-                                        <img referrerPolicy="no-referrer" src={item.url} alt={item.alt} className="w-full h-full object-cover" />
+                                        <img loading="lazy"  referrerPolicy="no-referrer" src={item.url} alt={item.alt} className="w-full h-full object-cover" />
                                       </div>
                                       <div className="flex-grow space-y-3">
                                         <div>
@@ -1026,7 +710,7 @@ export const Admin: React.FC = () => {
                              </div>
                              {imageUrl && (
                                <div className="w-24 h-16 rounded-lg overflow-hidden border border-border shadow-sm">
-                                 <img referrerPolicy="no-referrer" src={imageUrl} alt={value.alt} className="w-full h-full object-cover" />
+                                 <img loading="lazy"  referrerPolicy="no-referrer" src={imageUrl} alt={value.alt} className="w-full h-full object-cover" />
                                </div>
                              )}
                            </div>

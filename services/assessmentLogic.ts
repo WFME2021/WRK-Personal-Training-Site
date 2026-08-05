@@ -1,108 +1,106 @@
 import { assessmentData } from '../data/assessmentData.ts';
+import { goalFrames, modificationBlocks } from '../data/assessmentContent.ts';
 
 export type Answers = Record<string, string>;
 
 export function calculateArchetype(answers: Answers) {
-  const scores: Record<string, number> = {
-    time_crunched: 0,
-    stress_stacked: 0,
-    pain_limited: 0,
-    nutrition_drifting: 0,
-    motivation_drifting: 0,
-    reset_mode: 0
+  const q4Map: Record<string, string> = {
+    time: 'time_crunched',
+    stress: 'stress_stacked',
+    pain: 'pain_limited',
+    nutrition: 'nutrition_drifting',
+    motivation: 'motivation_drifting'
   };
 
-  // 1. Apply scoring rules
-  for (const rule of assessmentData.scoring.rules) {
-    if (answers[rule.when.qId] === rule.when.optionId) {
-      for (const [archId, points] of Object.entries(rule.add)) {
-        scores[archId] += points;
-      }
-    }
+  const archId = q4Map[answers['q4_constraint']];
+  const archetype = assessmentData.archetypes.find(a => a.id === archId);
+
+  if (!archetype) {
+    // Fallback if somehow not found
+    return assessmentData.archetypes[0];
   }
 
-  // 2. Apply overrides
-  for (const override of assessmentData.scoring.overrides) {
-    if (answers[override.when.qId] === override.when.optionId) {
-      return assessmentData.archetypes.find(a => a.id === override.forceArchetypeId);
-    }
-  }
-
-  // 3. Find max score
-  let maxScore = -1;
-  let topArchetypes: string[] = [];
+  // Clone to avoid mutating original data
+  const result = JSON.parse(JSON.stringify(archetype));
   
-  for (const [archId, score] of Object.entries(scores)) {
-    if (score > maxScore) {
-      maxScore = score;
-      topArchetypes = [archId];
-    } else if (score === maxScore) {
-      topArchetypes.push(archId);
+  // Apply goal frame
+  const goalFrame = goalFrames[answers['q2_goal'] as keyof typeof goalFrames];
+  if (goalFrame && result.postGate) {
+    result.postGate.protocolCopy = goalFrame.protocolCopy;
+    result.postGate.progressChecks = goalFrame.progressChecks;
+  }
+
+  // Apply modification block if any
+  if (answers['q6_flags'] && answers['q6_flags'] !== 'none') {
+    let subAnswer = answers['q6_sub'];
+    
+    let block;
+    if (answers['q6_flags'] === 'manageable') {
+      block = modificationBlocks.manageable(subAnswer as any);
+    } else if (answers['q6_flags'] === 'limits') {
+      block = modificationBlocks.limits(subAnswer as any);
+    } else if (answers['q6_flags'] === 'menopause') {
+      block = modificationBlocks.menopause();
+    } else if (answers['q6_flags'] === 'postpartum') {
+      block = modificationBlocks.postpartum();
+    }
+
+    if (block) {
+      result.modificationBlock = block;
     }
   }
 
-  // 4. Apply tiebreakers if needed
-  let finalArchId = topArchetypes[0];
-  if (topArchetypes.length > 1) {
-    for (const tieBreaker of assessmentData.scoring.tieBreakers) {
-      if (tieBreaker.type === 'prefer_q4_constraint') {
-        const constraintAnswer = answers['q4_constraint'];
-        const mappedArch = {
-          time: 'time_crunched',
-          stress: 'stress_stacked',
-          pain: 'pain_limited',
-          nutrition: 'nutrition_drifting',
-          motivation: 'motivation_drifting'
-        }[constraintAnswer];
-        if (mappedArch && topArchetypes.includes(mappedArch)) {
-          finalArchId = mappedArch;
-          break;
-        }
-      } else if (tieBreaker.type === 'prefer_pain_if_q6_in') {
-        if (tieBreaker.optionIds?.includes(answers['q6_flags']) && topArchetypes.includes('pain_limited')) {
-          finalArchId = 'pain_limited';
-          break;
-        }
-      } else if (tieBreaker.type === 'prefer_reset_if_q5_is') {
-        if (tieBreaker.optionIds?.includes(answers['q5_consistency']) && topArchetypes.includes('reset_mode')) {
-          finalArchId = 'reset_mode';
-          break;
-        }
-      }
-    }
-  }
-
-  return assessmentData.archetypes.find(a => a.id === finalArchId);
+  return result;
 }
 
 export function calculateRecommendation(answers: Answers) {
-  for (const rule of assessmentData.recommendation.rules) {
-    let match = false;
-
-    if (rule.whenAlways) {
-      match = true;
-    } else if (rule.whenAll) {
-      match = rule.whenAll.every(cond => answers[cond.qId] === cond.optionId);
-      if (match && rule.whenAny) {
-        match = rule.whenAny.some(cond => answers[cond.qId] === cond.optionId);
+  // New routing logic table from brief 4.6
+  
+  // Location
+  const loc = answers['q1_location']; // chch, nz_other, international
+  const q6 = answers['q6_flags']; // none, manageable, limits, postpartum, menopause
+  const q4 = answers['q4_constraint']; // time, stress, pain, nutrition, motivation
+  
+  let recommendId = 'online';
+  let alternateId = 'reset';
+  let reason = '';
+  
+  if (loc === 'chch') {
+    if (q6 === 'limits') {
+      recommendId = 'inPerson';
+      alternateId = 'online';
+      reason = "If pain or injury is involved, precision is the highest-return move.";
+    } else if (q6 === 'manageable' || q6 === 'menopause' || q6 === 'postpartum') {
+      recommendId = 'inPerson';
+      alternateId = 'online';
+      reason = "Given what your body needs right now, in-person precision gets you there faster and safer.";
+    } else if (q6 === 'none') {
+      if (q4 === 'time' || q4 === 'stress') {
+        recommendId = 'online';
+        alternateId = 'inPerson';
+        reason = "Since time and stress are the limiters, a flexible online structure wins over fixed gym times.";
+      } else {
+        recommendId = 'inPerson';
+        alternateId = 'online';
+        reason = "With your schedule clear, in-person coaching is the fastest way to build momentum.";
       }
-    } else if (rule.whenAny) {
-      match = rule.whenAny.some(cond => answers[cond.qId] === cond.optionId);
     }
-
-    if (match) {
-      return {
-        recommend: rule.recommend,
-        alternate: rule.alternate,
-        reason: assessmentData.recommendation.reasons[rule.recommend.serviceId as keyof typeof assessmentData.recommendation.reasons]
-      };
-    }
+  } else if (loc === 'nz_other' || loc === 'international') {
+    recommendId = 'online';
+    alternateId = 'reset';
+    reason = "Online coaching gives you the structure and accountability you need, wherever you are.";
   }
-
-  // Fallback
+  
+  const hrefs = {
+    inPerson: "/personal-training",
+    online: "/online-coaching",
+    reset: "/14-day-fat-loss-foundations",
+    corporate: "/workplace-wellness-program-nz"
+  };
+  
   return {
-    recommend: { serviceId: "online", href: "/online-personal-training-nz" },
-    alternate: { serviceId: "reset", href: "/fitness-challenge-nz" },
-    reason: assessmentData.recommendation.reasons.online
+    recommend: { serviceId: recommendId, href: hrefs[recommendId as keyof typeof hrefs] },
+    alternate: { serviceId: alternateId, href: hrefs[alternateId as keyof typeof hrefs] },
+    reason: reason
   };
 }

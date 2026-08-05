@@ -14,7 +14,7 @@ export const CalorieCalculator: React.FC = () => {
     targetWeight: 80, // kg
     activity: 1.375,
     goal: 'maintenance', // maintenance, gain, recomp
-    proteinTier: 1.5, // 1.0, 1.5, 2.0
+    proteinTier: 1.6, // 1.6, 2.0, 2.3
     alcoholDrinks: 0 // weekly drinks
   });
 
@@ -96,7 +96,7 @@ export const CalorieCalculator: React.FC = () => {
       <div className="p-8 md:p-12 border-b border-border bg-secondary">
         <div className="flex items-center gap-3 mb-4">
           <Flame className="text-accent" size={28} />
-          <h2 className="font-display text-3xl md:text-4xl uppercase text-text-primary">Nutrition Engine</h2>
+          <div className="font-display text-3xl md:text-4xl uppercase text-text-primary">Nutrition Engine</div>
         </div>
         <p className="text-text-secondary max-w-2xl">
           Fueling for performance, not starvation. Adjust your inputs to see how your daily targets change based on your goal and lifestyle.
@@ -202,9 +202,9 @@ export const CalorieCalculator: React.FC = () => {
                     onChange={(e) => handleChange('proteinTier', Number(e.target.value))}
                     className="w-full bg-secondary border border-border rounded-lg p-3 text-text-primary focus:border-accent outline-none transition-colors appearance-none cursor-pointer"
                   >
-                    <option value={1.0}>1.0g/kg (Standard)</option>
-                    <option value={1.5}>1.5g/kg (Active)</option>
-                    <option value={2.0}>2.0g/kg (Athlete)</option>
+                    <option value={1.6}>1.6g/kg (Standard)</option>
+                    <option value={2.0}>2.0g/kg (Body Recomp / Fat Loss)</option>
+                    <option value={2.3}>2.3g/kg (Mass Gain)</option>
                   </select>
                </div>
              </div>

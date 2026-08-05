@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { Loader2 } from 'lucide-react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
-import { CheckCircle2, ArrowRight, Calendar, Activity, ShieldCheck, Zap } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Calendar, Activity, ShieldCheck, Zap, Dumbbell } from 'lucide-react';
 import { assessmentData } from '../data/assessmentData';
 import { calculateArchetype, calculateRecommendation, Answers } from '../services/assessmentLogic';
 
@@ -19,9 +23,12 @@ export const Results: React.FC = () => {
   }
 
   const { answers, name } = state;
-  const archetype = calculateArchetype(answers);
-  const recommendation = calculateRecommendation(answers);
-  const doseKey = answers['q3_time'] || 'three_days';
+  const composedResult = (state as any)?.composedResult;
+  const archetype = composedResult?.archetype || calculateArchetype(answers);
+  const recommendation = composedResult?.recommendation || calculateRecommendation(answers);
+  const doseKey = composedResult?.doseKey || answers['q3_time'] || 'three_days';
+  const goalLabel = composedResult?.goalLabel || assessmentData.derived.goalLabels[answers['q2_goal'] as keyof typeof assessmentData.derived.goalLabels] || 'your goal';
+  
   
   const postGate = archetype?.postGate;
   const schedule = postGate ? postGate.scheduleByDose[doseKey as keyof typeof postGate.scheduleByDose] : undefined;
@@ -38,9 +45,14 @@ export const Results: React.FC = () => {
         
         {/* Header */}
         <section className="pt-32 pb-12 px-6 max-w-4xl mx-auto text-center">
-          <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-6">
-            {assessmentData.uiCopy.postGate.headline}
-          </span>
+          <div className="flex flex-col items-center gap-2 mb-6">
+            <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full">
+              A copy has been sent to your inbox
+            </span>
+            <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full">
+              {assessmentData.uiCopy.postGate.headline}
+            </span>
+          </div>
           <h1 className="font-display text-4xl md:text-6xl uppercase mb-6">
             Hey {name || 'there'}, here is your <span className="text-accent">Blueprint.</span>
           </h1>
@@ -105,6 +117,69 @@ export const Results: React.FC = () => {
             </div>
           </div>
 
+          
+          
+          {/* Movement Patterns Section */}
+          {assessmentData.movementPatternsSection && (
+            <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center shrink-0">
+                  <Dumbbell className="w-6 h-6 text-accent" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-display uppercase text-text-primary">
+                  {assessmentData.movementPatternsSection.title}
+                </h2>
+              </div>
+              <p className="text-lg text-text-secondary leading-relaxed mb-6">
+                {assessmentData.movementPatternsSection.intro}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                {assessmentData.movementPatternsSection.patterns.map((pattern, i) => (
+                  <div key={i} className="bg-primary p-4 rounded-xl border border-border flex items-start gap-3">
+                    <span className="text-accent font-bold mt-0.5">•</span>
+                    <span className="text-text-secondary">{pattern}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-4">
+                {assessmentData.movementPatternsSection.outroParagraphs.map((p, i) => (
+                  <p key={i} className="text-lg text-text-secondary leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 2.5 Modification Block */}
+          {archetype?.modificationBlock && (
+            <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
+              <h2 className="text-2xl md:text-3xl font-display uppercase mb-6 text-text-primary">
+                {archetype.modificationBlock.title}
+              </h2>
+              <div className="space-y-4 mb-6">
+                {archetype.modificationBlock.paragraphs.map((p: string, i: number) => (
+                  <p key={i} className="text-lg text-text-secondary leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
+              {archetype.modificationBlock.swaps && archetype.modificationBlock.swaps.length > 0 && (
+                <div className="bg-primary p-6 rounded-2xl border border-border">
+                   <h3 className="font-bold text-lg mb-4">Your Swaps</h3>
+                   <ul className="space-y-3">
+                     {archetype.modificationBlock.swaps.map((swap: string, i: number) => (
+                       <li key={i} className="flex items-start gap-3 text-text-secondary">
+                         <span className="text-accent mt-0.5">•</span>
+                         <span>{swap}</span>
+                       </li>
+                     ))}
+                   </ul>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* 3. Next 7 Days (Detailed) */}
           <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
             <h2 className="text-2xl md:text-3xl font-display uppercase mb-8">
@@ -126,6 +201,18 @@ export const Results: React.FC = () => {
               ))}
             </div>
           </div>
+
+          {/* Stress Valve */}
+          {archetype?.stressValveTitle && archetype?.stressValveCopy && (
+            <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
+              <h2 className="text-2xl md:text-3xl font-display uppercase mb-4">
+                {archetype.stressValveTitle}
+              </h2>
+              <p className="text-lg text-text-secondary leading-relaxed">
+                {archetype.stressValveCopy}
+              </p>
+            </div>
+          )}
 
           {/* 3.5 4-Week Progression Model */}
           {postGate?.progressionModel4Weeks && (

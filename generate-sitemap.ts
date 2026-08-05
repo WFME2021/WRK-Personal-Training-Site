@@ -27,13 +27,14 @@ const generateSitemap = async () => {
     const baseUrl = 'https://www.wrkpersonaltraining.co.nz';
     const staticPages = [
       '',
-      '/personal-trainer-christchurch',
+      '/personal-training',
       '/assessment',
       '/results',
       '/contact',
-      '/online-personal-training-nz',
+      '/online-coaching',
       '/workplace-wellness-program-nz',
-      '/fitness-challenge-nz',
+      '/14-day-fat-loss-foundations',
+      '/couch-to-5km',
       '/blog',
       '/tools',
       '/calorie-calculator',

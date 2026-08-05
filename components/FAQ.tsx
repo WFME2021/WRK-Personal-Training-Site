@@ -1,10 +1,11 @@
 
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: ReactNode;
+  answerText?: string;
 }
 
 interface FAQProps {
@@ -29,7 +30,7 @@ export const FAQ: React.FC<FAQProps> = ({ items, title = "Frequently Asked Quest
       "name": item.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": item.answer
+        "text": item.answerText || (typeof item.answer === 'string' ? item.answer : "")
       }
     }))
   };

@@ -11,6 +11,10 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.token.email == "wfme2021@gmail.com";
     }
 
+    match /assessments/{assessmentId} {
+      allow read, create: if true;
+    }
+
     match /blogs/{blogId} {
       // Anyone can read blogs
       allow read: if true;

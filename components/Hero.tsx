@@ -5,6 +5,7 @@ import { Button } from './Button';
 
 interface HeroProps {
   image: string;
+  imageAlt?: string;
   title: string;
   subtitle: string;
   bullets: string[];
@@ -21,6 +22,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({
   image,
+  imageAlt,
   title,
   subtitle,
   bullets,
@@ -43,13 +45,13 @@ export const Hero: React.FC<HeroProps> = ({
       />
       
       <div className="w-full max-w-[1800px] h-[60vh] md:h-[75vh] mx-auto relative rounded-[2rem] md:rounded-[3rem] overflow-hidden">
-        <img 
+        <img loading="lazy"  
           src={image} 
-          alt="Hero background" 
+          alt={imageAlt || "Hero background"} 
           className={`w-full h-full object-cover object-center ${disableGrayscale ? '' : 'grayscale contrast-125'}`}
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className={`absolute inset-0 ${disableGrayscale ? 'bg-black/60' : 'bg-black/40'}`}></div>
         
         {/* Overlay Text Container */}
         <div className="absolute inset-0 p-8 md:p-16 flex flex-col justify-center sm:justify-end md:justify-center items-center sm:items-start text-center sm:text-left">

@@ -24,9 +24,9 @@ export const About: React.FC = () => {
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-             <img 
+             <img loading="lazy"  
                referrerPolicy="no-referrer" 
-               loading="eager" 
+                
                src="https://i.postimg.cc/1t9HjpcR/508833357-30407543532163264-7406991278294427854-n.jpg" 
                alt="ABOUT WRK" 
                className="w-full h-full object-cover object-top" 
@@ -52,7 +52,7 @@ export const About: React.FC = () => {
         <section className="py-16 md:py-24 px-5 lg:px-12 bg-primary">
           <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-16">
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-[2rem] overflow-hidden shrink-0 grayscale contrast-125 border border-border shadow-xl">
-               <img referrerPolicy="no-referrer" src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png" alt="Hayden Richards" className="w-full h-full object-cover object-top" />
+               <img loading="lazy"  referrerPolicy="no-referrer" src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png" alt="Hayden Richards" className="w-full h-full object-cover object-top" />
             </div>
             <div className="text-center md:text-left">
               <h2 className="font-display text-[32px] md:text-[40px] uppercase text-text-primary mb-6">

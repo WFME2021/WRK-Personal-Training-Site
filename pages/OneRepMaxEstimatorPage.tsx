@@ -26,6 +26,7 @@ export const OneRepMaxEstimatorPage: React.FC = () => {
           subtitle={hero.subhead}
           bullets={hero.bullets}
           kicker={hero.kicker}
+          disableGrayscale={true}
           secondaryCta={{
             label: "Back to Tools",
             href: "/tools"
@@ -40,6 +41,7 @@ export const OneRepMaxEstimatorPage: React.FC = () => {
           image={banner.image}
           tagline={banner.tagline}
           support={banner.support}
+          disableGrayscale={true}
         />
       </div>
     </>

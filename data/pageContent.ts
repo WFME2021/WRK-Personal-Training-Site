@@ -10,6 +10,7 @@ export interface PageContentConfig {
     subhead: string;
     bullets: string[];
     image: string;
+    imageAlt?: string;
     kicker?: string;
     eyebrow?: string;
     url?: string;
@@ -44,7 +45,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   home: {
     seo: {
       title: "Personal Trainer Christchurch & Online Coaching | WRK PT",
-      description: "Looking for a personal trainer in Christchurch or online coaching? WRK PT helps busy adults build consistency, lose fat, and train smarter for life outside the gym."
+      description: "Christchurch personal trainer Hayden Richards — expert 1:1 and online fat loss coaching for busy professionals aged 35–60 across NZ. No fluff, real results."
     },
     hero: {
       h1: "Train Smarter. <br/><span class='text-accent'>Play Harder.</span>",
@@ -228,7 +229,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Recovery Protocols",
         "High-Performance Living"
       ],
-      image: "https://i.postimg.cc/59gkxvcS/Screen-Shot-2026-06-23-at-2-11-19-PM.png",
+      image: "https://i.postimg.cc/pLSrrkPs/Google-Cover-Photo.png",
       kicker: "No fluff. Just what works."
     },
     banner: {
@@ -262,7 +263,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   calorieCalculator: {
     seo: {
       title: "Free Calorie Calculator | TDEE & Macros | WRK PT",
-      description: "Use this calorie calculator to estimate your daily calorie needs for fat loss, maintenance, or muscle gain. Includes protein targets and a “Party Fund” to account for weekly drinks while staying on track."
+      description: "Use this calorie calculator to work out your daily calories for fat loss, maintenance, or muscle gain. Includes protein targets and a Party Fund for real life."
     },
     hero: {
       h1: "Calorie Calculator",
@@ -272,13 +273,14 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Protein Targets",
         "Party Fund"
       ],
-      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
+      image: "https://i.postimg.cc/kXGL3fbx/pexels-ardit-mbrati-216809103-16966339.jpg",
+      imageAlt: "Calorie calculator by WRK Personal Training",
       eyebrow: "Nutrition Engine"
     },
     banner: {
       tagline: "Start with a target. Adjust like an adult.",
       support: "A sensible baseline, then refine based on results and recovery.",
-      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
+      image: "https://i.postimg.cc/7PRpNYnj/detox-salad-3.jpg"
     }
   },
   oneRmEstimator: {
@@ -294,13 +296,13 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
         "Training Percentages",
         "Progress Tracking"
       ],
-      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg",
+      image: "https://i.postimg.cc/4NZ9cK18/pexels-jessie-kiermayr-2156410560-35986387.jpg",
       kicker: "Train smart, not just heavy."
     },
     banner: {
       tagline: "Train smart—without maxing out every week.",
       support: "Estimate loads so progress is repeatable and joint-friendly.",
-      image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
+      image: "https://i.postimg.cc/kXGL3fbx/pexels-ardit-mbrati-216809103-16966339.jpg"
     }
   },
   contact: {

@@ -44,8 +44,27 @@ export const PersonalTraining: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="1 on 1 Personal Trainer Christchurch | Fat Loss & Strength | WRK"
-        description="Expert 1 on 1 personal training in Christchurch for adults 35–60. Bespoke programme design, thirty-minute sessions, and a coach who actually keeps you accountable. 20 years experience."
+        title="Personal Trainer Christchurch | 1:1 Coaching with Hayden Richards | WRK"
+        description="Looking for a personal trainer in Christchurch? Hayden Richards offers 1:1 coaching for busy professionals aged 35 to 60. Fat loss, strength, and programmes built around your real life."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "1 on 1 Personal Training",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "WRK Personal Training",
+              "areaServed": "Christchurch, New Zealand"
+            },
+            "description": "1 on 1 personal training in Christchurch for adults aged 35–60, specialising in fat loss and strength. Bespoke 30-minute sessions with 20 years of coaching experience.",
+            "offers": {
+              "@type": "Offer",
+              "price": "55.00",
+              "priceCurrency": "NZD",
+              "description": "30-minute 1 on 1 session"
+            }
+          }
+        ]}
       />
 
       <div className="flex flex-col w-full overflow-x-hidden bg-primary pb-24">
@@ -53,11 +72,10 @@ export const PersonalTraining: React.FC = () => {
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-             <img 
-               referrerPolicy="no-referrer" 
-               loading="eager" 
+             <img loading="lazy" referrerPolicy="no-referrer"
+                 
                src="https://i.postimg.cc/kMshn8rN/Screen-Shot-2026-06-23-at-2-10-37-PM.png" 
-               alt="1:1 PERSONAL TRAINING" 
+               alt="1 on 1 personal training session in Christchurch with coach Hayden Richards" 
                className="w-full h-full object-cover object-top" 
              />
              <div 
@@ -72,10 +90,13 @@ export const PersonalTraining: React.FC = () => {
               1 ON 1 PERSONAL TRAINING — CHRISTCHURCH
             </span>
             <h1 className="font-display text-[44px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-[1.1] sm:leading-[1.1] text-white mb-6 uppercase max-w-[1000px]">
-              Your Own Coach. Thirty Minute Focus. Results That Stick.
+              Personal Trainer Christchurch
             </h1>
+            <p className="font-sans text-[20px] md:text-[24px] text-accent font-medium max-w-[640px] mb-4 leading-[1.4]">
+              Your own coach. Thirty-minute focus. Results that stick.
+            </p>
             <p className="font-sans text-[18px] md:text-[20px] text-off-white font-medium max-w-[640px] mb-8 leading-[1.6]">
-              Hayden Richards has been delivering 1 on 1 personal training in Christchurch for over 20 years — working with busy professionals aged 35–60 who want fat loss, strength, and a programme built around their real life.
+              Twenty years as a 1:1 personal trainer in Christchurch means I've coached nearly every version of busy, injured, and starting over. Everything about my in person coaching is about you. Built around your goals and tailored for your current situation.
             </p>
             <div className="flex flex-col md:flex-row items-start gap-4">
               <Link to="/contact">
@@ -180,7 +201,7 @@ export const PersonalTraining: React.FC = () => {
               PERSONAL TRAINING FOR PROFESSIONALS 35–60
             </span>
             <h2 className="font-display text-4xl md:text-5xl uppercase text-text-primary mb-8 leading-[1.25]">
-              Built for People Who Need It to Work Around Real Life.
+              1 on 1 Personal Training Built Around Real Life
             </h2>
             <p className="text-xl text-text-secondary leading-relaxed font-medium">
               You're 35–60, time-poor, and done wasting sessions on programmes that don't fit. You might have a bad knee, a dodgy shoulder, or a back that's been off for a while — that's not a problem, it's just part of the brief. Every session is planned, every movement earns its place, and the programme moves with you as you progress.
@@ -204,7 +225,7 @@ export const PersonalTraining: React.FC = () => {
             <div className="flex flex-col gap-6 w-full max-w-sm mx-auto items-center">
               <Link to="/contact" className="w-full">
                 <Button size="lg" className="w-full px-8 py-5 text-[15px] sm:text-[16px] flex items-center justify-center gap-3">
-                  Book a Free Consult <ArrowRight size={20} />
+                  Start With a Free Consult <ArrowRight size={20} />
                 </Button>
               </Link>
               <Link to="/online-coaching" className="text-[13px] uppercase tracking-[0.1em] font-bold text-text-secondary hover:text-white transition-colors flex items-center justify-center mt-2">

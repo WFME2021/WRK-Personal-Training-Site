@@ -1,16 +1,33 @@
 export const assessmentData = {
   "assessmentId": "wrk_capacity_blueprint",
   "version": "1.1.0",
+  "movementPatternsSection": {
+    "title": "HOW TO FILL YOUR SESSIONS",
+    "intro": "Every session should be built around movement patterns. There are seven important ones to include:",
+    "patterns": [
+      "Hinge (deadlift variation, kettlebell swing, good morning)",
+      "Squat (goblet, box squat, front squat)",
+      "Single leg (split squat, step-up, reverse lunge)",
+      "Push (press variation - horizontal or vertical)",
+      "Pull (row or pull variation - horizontal or vertical)",
+      "Carry (farmer carry, suitcase carry, trap bar carry)",
+      "Core / anti-rotation (dead bug, plank, Pallof press, rotational med ball)"
+    ],
+    "outroParagraphs": [
+      "Aim to hit 4–5 patterns, at ecah session. Rotate which patterns lead across your workouts so everything gets covered across the week. Fill the remaining time with auxiliary work - isolation or accessory movements like curls, lateral raises, or calf raises.",
+      "The right exercise within each pattern depends on your movement history, any niggles, and what you have available. That's the conversation we have in a movement screen - this gives you the framework to train intelligently until we have a chance to catch up."
+    ]
+  },
   "routes": {
     "home": "/",
     "contact": "/contact",
     "assessment": "/assessment",
     "services": {
-      "inPerson": "/personal-trainer-christchurch",
-      "online": "/online-personal-training-nz",
+      "inPerson": "/personal-training",
+      "online": "/online-coaching",
       "corporate": "/workplace-wellness-program-nz",
-      "reset": "/fitness-challenge-nz",
-      "philosophy": "/personal-training-christchurch-philosophy"
+      "reset": "/14-day-fat-loss-foundations",
+      "philosophy": "/about"
     }
   },
   "ctaPolicy": {
@@ -55,30 +72,28 @@ export const assessmentData = {
         {
           "id": "philosophy",
           "label": "Read the WRK philosophy",
-          "href": "/personal-training-christchurch-philosophy"
+          "href": "/about"
         }
       ]
     }
   },
   "uiCopy": {
     "interstitial": {
-      "title": "Building your Capacity Blueprint…",
-      "durationMs": 2500,
+      "title": "Building your blueprint...",
+      "durationMs": 1500,
       "rotatingLines": [
-        "Checking schedule + stress load…",
-        "Identifying your primary bottleneck…",
-        "Setting your minimum effective dose…",
-        "Generating your next 7 days…"
+        ""
       ]
     },
     "preGate": {
       "headline": "Diagnostic Complete",
       "unlockTitleTemplate": "Unlock {blueprintName}",
       "unlockSubtitle": "Enter your name and email to instantly unlock the 4-Week Progression Model, Warm-up Protocols, and your specific blueprint.",
-      "emailFieldLabel": "Send my blueprint to:",
+      "emailFieldLabel": "Your email",
       "nameFieldLabel": "Name",
       "buttonLabel": "Unlock my blueprint",
-      "reassuranceLine": "No spam. Useful info only. Unsubscribe anytime."
+      "reassuranceLine": "No spam. Useful info only. Unsubscribe anytime.",
+      "deliveryLine": "Delivered instantly — your full blueprint appears on screen the second you hit the button."
     },
     "postGate": {
       "headline": "Blueprint Unlocked",
@@ -233,6 +248,33 @@ export const assessmentData = {
           "label": "Menopause/peri-menopause changes are impacting recovery/energy"
         }
       ]
+    },
+    {
+      "id": "q6_sub",
+      "type": "single_select",
+      "prompt": "Where's it at?",
+      "options": [
+        {
+          "id": "knee",
+          "label": "Knee"
+        },
+        {
+          "id": "lower_back",
+          "label": "Lower back"
+        },
+        {
+          "id": "shoulder",
+          "label": "Shoulder"
+        },
+        {
+          "id": "hip",
+          "label": "Hip"
+        },
+        {
+          "id": "somewhere_else",
+          "label": "Somewhere else"
+        }
+      ]
     }
   ],
   "derived": {
@@ -283,11 +325,11 @@ export const assessmentData = {
       "weeklyStructureTitle": "Weekly Structure",
       "weeklyStructureCopyByDose": {
         "two_days": {
-          "title": "2-Day Full Body (High Return)",
+          "title": "2-Day Full Body",
           "bullets": [
-            "2 strength sessions (full body)",
-            "Daily steps (baseline + small bump)",
-            "Optional 1 low-intensity movement day if time allows"
+            "2 full-body strength sessions (45-60 min)",
+            "At least 2 days recovery between sessions",
+            "Daily steps anchor carries the other days"
           ]
         },
         "three_days": {
@@ -299,19 +341,19 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 + 1 (Still Repeatable)",
+          "title": "3 Strength + 1 Conditioning",
           "bullets": [
-            "3 strength sessions (full body or upper/lower split)",
-            "1 conditioning day (low impact)",
-            "Steps baseline + small bump"
+            "3 full-body or upper/lower strength sessions",
+            "1 low-impact conditioning / zone-2 session",
+            "Daily steps anchor"
           ]
         },
         "chaos": {
-          "title": "Chaos Mode: Minimum Effective Dose",
+          "title": "Chaos Mode (Floating 2-Day)",
           "bullets": [
-            "2 strength sessions max",
-            "Fallback session option when time blows up",
-            "Steps become the non-negotiable"
+            "2 anchor strength sessions that land wherever they can",
+            "No fixed days—if you have 45 mins, you hit it",
+            "Steps are the non-negotiable on non-training days"
           ]
         }
       },
@@ -335,53 +377,45 @@ export const assessmentData = {
             {
               "label": "Day 1: Full Body A",
               "items": [
-                "Squat pattern (goblet/back squat)",
-                "Horizontal press (DB bench)",
-                "Horizontal pull (row)",
-                "Carry or finisher"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 2: Active Recovery",
               "items": [
                 "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Light movement"
               ]
             },
             {
-              "label": "Day 3: Rest",
+              "label": "Day 3: Active Recovery",
               "items": [
-                "Focus on protein anchors",
-                "Hydration"
+                "Daily steps baseline",
+                "Mobility if needed"
               ]
             },
             {
               "label": "Day 4: Full Body B",
               "items": [
-                "Hinge pattern (RDL/trap bar)",
-                "Vertical press (landmine/DB overhead)",
-                "Vertical pull (lat pulldown/pull-up assist)",
-                "Core (dead bug)"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 5: Active Recovery",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
+                "Daily steps baseline",
                 "Stay active"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
@@ -448,103 +482,74 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 + 1 Week",
+          "title": "3 + 1 Structure",
           "days": [
             {
-              "label": "Day 1: Strength A",
+              "label": "Day 1: Strength",
               "items": [
-                "Full body focus (A template)"
+                "Session A"
               ]
             },
             {
-              "label": "Day 2: Strength B",
+              "label": "Day 2: Active Recovery",
               "items": [
-                "Full body focus (B template)"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 3: Active Recovery",
+              "label": "Day 3: Strength",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Session B"
               ]
             },
             {
-              "label": "Day 4: Strength C",
+              "label": "Day 4: Conditioning",
               "items": [
-                "Full body focus (C template)"
+                "Zone-2 or low impact"
               ]
             },
             {
-              "label": "Day 5: Low Intensity",
+              "label": "Day 5: Strength",
               "items": [
-                "Walk/bike/swim 20–30 min"
+                "Session C"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
-                "Stay active"
+                "Daily steps baseline"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
           ]
         },
         "chaos": {
-          "title": "Chaos Mode Week",
+          "title": "Floating 2-Day Structure",
           "days": [
             {
-              "label": "Day 1: Full Body A",
+              "label": "Floating Session 1",
               "items": [
-                "Use the A template (30–40 min)"
+                "Full Body Anchor 1",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 2: Steps & Protein",
+              "label": "Floating Session 2",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
+                "Full Body Anchor 2",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 3: Steps & Protein",
+              "label": "All Other Days",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 4: Minimum Session",
-              "items": [
-                "20 min circuit + steps"
-              ]
-            },
-            {
-              "label": "Day 5: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
+                "Hit your daily step minimum",
+                "No guilt if you can't train"
               ]
             }
           ]
@@ -557,8 +562,9 @@ export const assessmentData = {
           "two_days": {
             "title": "2-Day Full Body",
             "lines": [
-              "Tue: Full Body A",
-              "Fri: Full Body B"
+              "Day A: Full Body Strength (45-60 min)",
+              "Day B: Full Body Strength (45-60 min)",
+              "Space these with at least two rest days between."
             ]
           },
           "three_days": {
@@ -570,19 +576,19 @@ export const assessmentData = {
             ]
           },
           "four_plus": {
-            "title": "3 + 1",
+            "title": "3 Strength + 1 Conditioning",
             "lines": [
-              "Mon: Strength",
-              "Wed: Strength",
-              "Fri: Strength",
-              "Sat: Low intensity"
+              "3x Strength Sessions",
+              "1x Zone-2 / Conditioning Session",
+              "Never 4 heavy sessions in a row"
             ]
           },
           "chaos": {
-            "title": "Chaos Mode (2-Day)",
+            "title": "Floating 2-Day",
             "lines": [
-              "Pick 2 days you can commit to",
-              "Use Minimum Session if the week blows up"
+              "2x Anchor Sessions per week",
+              "No set days. Fit them where the schedule allows.",
+              "Steps cover the rest."
             ]
           }
         },
@@ -654,11 +660,11 @@ export const assessmentData = {
       "weeklyStructureTitle": "Weekly Structure",
       "weeklyStructureCopyByDose": {
         "two_days": {
-          "title": "2 + 2 (Repeatable)",
+          "title": "2-Day Full Body",
           "bullets": [
-            "2 strength sessions",
-            "2 low-intensity movement days",
-            "Steps baseline daily"
+            "2 full-body strength sessions (45-60 min)",
+            "At least 2 days recovery between sessions",
+            "Daily steps anchor carries the other days"
           ]
         },
         "three_days": {
@@ -670,19 +676,19 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 Total Training Days (Still Recovery-Friendly)",
+          "title": "3 Strength + 1 Conditioning",
           "bullets": [
-            "2 strength sessions",
-            "1 low-intensity movement day",
-            "Optional 1 mobility/primer day"
+            "3 full-body or upper/lower strength sessions",
+            "1 low-impact conditioning / zone-2 session",
+            "Daily steps anchor"
           ]
         },
         "chaos": {
-          "title": "Chaos Mode: Keep the rhythm",
+          "title": "Chaos Mode (Floating 2-Day)",
           "bullets": [
-            "2 sessions max",
-            "Low intensity beats skipping",
-            "Steps minimum daily"
+            "2 anchor strength sessions that land wherever they can",
+            "No fixed days—if you have 45 mins, you hit it",
+            "Steps are the non-negotiable on non-training days"
           ]
         }
       },
@@ -701,52 +707,50 @@ export const assessmentData = {
       "next7DaysTitle": "Your Next 7 Days",
       "next7DaysByDose": {
         "two_days": {
-          "title": "2 Strength + 2 Low Intensity",
+          "title": "2-Day Full Body",
           "days": [
             {
-              "label": "Day 1: Full Body A (moderate)",
+              "label": "Day 1: Full Body A",
               "items": [
-                "Full body session (leave 2 reps in the tank)"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 2: Active Recovery",
               "items": [
                 "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Light movement"
               ]
             },
             {
-              "label": "Day 3: Rest",
+              "label": "Day 3: Active Recovery",
               "items": [
-                "Focus on protein anchors",
-                "Hydration"
+                "Daily steps baseline",
+                "Mobility if needed"
               ]
             },
             {
-              "label": "Day 4: Low intensity",
+              "label": "Day 4: Full Body B",
               "items": [
-                "Walk/bike/swim 20–30 min"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 5: Active Recovery",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
+                "Daily steps baseline",
                 "Stay active"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
@@ -804,103 +808,74 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3-Day Recovery-Friendly Week",
+          "title": "3 + 1 Structure",
           "days": [
             {
               "label": "Day 1: Strength",
               "items": [
-                "Moderate effort session"
+                "Session A"
               ]
             },
             {
-              "label": "Day 2: Low intensity",
+              "label": "Day 2: Active Recovery",
               "items": [
-                "20–30 min easy"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 3: Active Recovery",
+              "label": "Day 3: Strength",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Session B"
               ]
             },
             {
-              "label": "Day 4: Strength",
+              "label": "Day 4: Conditioning",
               "items": [
-                "Moderate effort session"
+                "Zone-2 or low impact"
               ]
             },
             {
-              "label": "Day 5: Optional: Primer",
+              "label": "Day 5: Strength",
               "items": [
-                "8–12 min mobility/primer"
+                "Session C"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
-                "Stay active"
+                "Daily steps baseline"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
           ]
         },
         "chaos": {
-          "title": "Chaos Mode Week",
+          "title": "Floating 2-Day Structure",
           "days": [
             {
-              "label": "Day 1: Strength (short)",
+              "label": "Floating Session 1",
               "items": [
-                "30 min full body"
+                "Full Body Anchor 1",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 2: Steps & Protein",
+              "label": "Floating Session 2",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
+                "Full Body Anchor 2",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 3: Steps & Protein",
+              "label": "All Other Days",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 4: Low intensity",
-              "items": [
-                "20 min walk + steps"
-              ]
-            },
-            {
-              "label": "Day 5: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
+                "Hit your daily step minimum",
+                "No guilt if you can't train"
               ]
             }
           ]
@@ -911,12 +886,11 @@ export const assessmentData = {
         "scheduleTitle": "The Schedule",
         "scheduleByDose": {
           "two_days": {
-            "title": "2 Strength + 2 Low",
+            "title": "2-Day Full Body",
             "lines": [
-              "Mon: Strength",
-              "Tue: Low",
-              "Thu: Strength",
-              "Sat: Low"
+              "Day A: Full Body Strength (45-60 min)",
+              "Day B: Full Body Strength (45-60 min)",
+              "Space these with at least two rest days between."
             ]
           },
           "three_days": {
@@ -928,19 +902,19 @@ export const assessmentData = {
             ]
           },
           "four_plus": {
-            "title": "3 Total",
+            "title": "3 Strength + 1 Conditioning",
             "lines": [
-              "Mon: Strength",
-              "Wed: Low",
-              "Fri: Strength",
-              "Optional: Primer"
+              "3x Strength Sessions",
+              "1x Zone-2 / Conditioning Session",
+              "Never 4 heavy sessions in a row"
             ]
           },
           "chaos": {
-            "title": "Chaos Mode",
+            "title": "Floating 2-Day",
             "lines": [
-              "2 sessions max",
-              "Keep low intensity + steps"
+              "2x Anchor Sessions per week",
+              "No set days. Fit them where the schedule allows.",
+              "Steps cover the rest."
             ]
           }
         },
@@ -1012,11 +986,11 @@ export const assessmentData = {
       "weeklyStructureTitle": "Weekly Structure",
       "weeklyStructureCopyByDose": {
         "two_days": {
-          "title": "2 Strength + Primer",
+          "title": "2-Day Full Body",
           "bullets": [
-            "2 strength sessions (modified)",
-            "Daily 8–12 min primer",
-            "Low-impact conditioning as tolerated"
+            "2 full-body strength sessions (45-60 min)",
+            "At least 2 days recovery between sessions",
+            "Daily steps anchor carries the other days"
           ]
         },
         "three_days": {
@@ -1028,19 +1002,19 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 Strength + 1 Low Impact",
+          "title": "3 Strength + 1 Conditioning",
           "bullets": [
-            "3 strength sessions (modified)",
-            "1 low impact conditioning day",
-            "Primer most days"
+            "3 full-body or upper/lower strength sessions",
+            "1 low-impact conditioning / zone-2 session",
+            "Daily steps anchor"
           ]
         },
         "chaos": {
-          "title": "Chaos Mode: Primer + 2 sessions",
+          "title": "Chaos Mode (Floating 2-Day)",
           "bullets": [
-            "2 sessions max",
-            "Primer becomes the non-negotiable",
-            "Steps/low impact movement"
+            "2 anchor strength sessions that land wherever they can",
+            "No fixed days—if you have 45 mins, you hit it",
+            "Steps are the non-negotiable on non-training days"
           ]
         }
       },
@@ -1059,56 +1033,50 @@ export const assessmentData = {
       "next7DaysTitle": "Your Next 7 Days",
       "next7DaysByDose": {
         "two_days": {
-          "title": "2 Strength + Primer",
+          "title": "2-Day Full Body",
           "days": [
             {
-              "label": "Day 1: Modified Full Body A",
+              "label": "Day 1: Full Body A",
               "items": [
-                "Squat/hinge variation (pain-free range)",
-                "Press",
-                "Pull",
-                "Core"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 2: Active Recovery",
               "items": [
                 "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Light movement"
               ]
             },
             {
-              "label": "Day 3: Rest",
+              "label": "Day 3: Active Recovery",
               "items": [
-                "Focus on protein anchors",
-                "Hydration"
+                "Daily steps baseline",
+                "Mobility if needed"
               ]
             },
             {
-              "label": "Day 4: Primer + walk",
+              "label": "Day 4: Full Body B",
               "items": [
-                "8–12 min primer",
-                "20–30 min walk"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 5: Active Recovery",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
+                "Daily steps baseline",
                 "Stay active"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
@@ -1167,103 +1135,74 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 + 1 Week",
+          "title": "3 + 1 Structure",
           "days": [
             {
               "label": "Day 1: Strength",
               "items": [
-                "Modified template"
+                "Session A"
               ]
             },
             {
-              "label": "Day 2: Strength",
+              "label": "Day 2: Active Recovery",
               "items": [
-                "Modified template"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 3: Active Recovery",
+              "label": "Day 3: Strength",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Session B"
               ]
             },
             {
-              "label": "Day 4: Strength",
+              "label": "Day 4: Conditioning",
               "items": [
-                "Modified template"
+                "Zone-2 or low impact"
               ]
             },
             {
-              "label": "Day 5: Low impact",
+              "label": "Day 5: Strength",
               "items": [
-                "20–30 min easy"
+                "Session C"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
-                "Stay active"
+                "Daily steps baseline"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
           ]
         },
         "chaos": {
-          "title": "Chaos Mode Week",
+          "title": "Floating 2-Day Structure",
           "days": [
             {
-              "label": "Day 1: Modified Strength (short)",
+              "label": "Floating Session 1",
               "items": [
-                "30 min template"
+                "Full Body Anchor 1",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 2: Steps & Protein",
+              "label": "Floating Session 2",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
+                "Full Body Anchor 2",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 3: Steps & Protein",
+              "label": "All Other Days",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 4: Primer + steps",
-              "items": [
-                "Primer + daily steps"
-              ]
-            },
-            {
-              "label": "Day 5: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
+                "Hit your daily step minimum",
+                "No guilt if you can't train"
               ]
             }
           ]
@@ -1274,11 +1213,11 @@ export const assessmentData = {
         "scheduleTitle": "The Schedule",
         "scheduleByDose": {
           "two_days": {
-            "title": "2 Strength + Primer",
+            "title": "2-Day Full Body",
             "lines": [
-              "Tue: Strength",
-              "Thu/Fri: Strength",
-              "Primer most days"
+              "Day A: Full Body Strength (45-60 min)",
+              "Day B: Full Body Strength (45-60 min)",
+              "Space these with at least two rest days between."
             ]
           },
           "three_days": {
@@ -1291,18 +1230,19 @@ export const assessmentData = {
             ]
           },
           "four_plus": {
-            "title": "3 + 1",
+            "title": "3 Strength + 1 Conditioning",
             "lines": [
-              "3 modified strength days",
-              "1 low impact day",
-              "Primer most days"
+              "3x Strength Sessions",
+              "1x Zone-2 / Conditioning Session",
+              "Never 4 heavy sessions in a row"
             ]
           },
           "chaos": {
-            "title": "Chaos Mode",
+            "title": "Floating 2-Day",
             "lines": [
-              "2 sessions max",
-              "Primer becomes the non-negotiable"
+              "2x Anchor Sessions per week",
+              "No set days. Fit them where the schedule allows.",
+              "Steps cover the rest."
             ]
           }
         },
@@ -1373,11 +1313,11 @@ export const assessmentData = {
       "weeklyStructureTitle": "Weekly Structure",
       "weeklyStructureCopyByDose": {
         "two_days": {
-          "title": "2 Strength + Daily Anchors",
+          "title": "2-Day Full Body",
           "bullets": [
-            "2 strength sessions",
-            "Steps baseline + bump",
-            "Nutrition anchors daily"
+            "2 full-body strength sessions (45-60 min)",
+            "At least 2 days recovery between sessions",
+            "Daily steps anchor carries the other days"
           ]
         },
         "three_days": {
@@ -1389,19 +1329,19 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 + 1 + Anchors",
+          "title": "3 Strength + 1 Conditioning",
           "bullets": [
-            "3 strength sessions",
-            "1 conditioning day",
-            "Nutrition anchors daily"
+            "3 full-body or upper/lower strength sessions",
+            "1 low-impact conditioning / zone-2 session",
+            "Daily steps anchor"
           ]
         },
         "chaos": {
-          "title": "Chaos Mode: Anchors win",
+          "title": "Chaos Mode (Floating 2-Day)",
           "bullets": [
-            "Protein + steps = win",
-            "2 sessions max",
-            "Keep it simple"
+            "2 anchor strength sessions that land wherever they can",
+            "No fixed days—if you have 45 mins, you hit it",
+            "Steps are the non-negotiable on non-training days"
           ]
         }
       },
@@ -1420,53 +1360,50 @@ export const assessmentData = {
       "next7DaysTitle": "Your Next 7 Days",
       "next7DaysByDose": {
         "two_days": {
-          "title": "Anchors + 2 Sessions",
+          "title": "2-Day Full Body",
           "days": [
             {
-              "label": "Day 1: Strength",
+              "label": "Day 1: Full Body A",
               "items": [
-                "Full body session"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 2: Active Recovery",
               "items": [
                 "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Light movement"
               ]
             },
             {
-              "label": "Day 3: Rest",
+              "label": "Day 3: Active Recovery",
               "items": [
-                "Focus on protein anchors",
-                "Hydration"
+                "Daily steps baseline",
+                "Mobility if needed"
               ]
             },
             {
-              "label": "Day 4: Steps + protein anchors",
+              "label": "Day 4: Full Body B",
               "items": [
-                "3 protein meals",
-                "Steps baseline + bump"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 5: Active Recovery",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
+                "Daily steps baseline",
                 "Stay active"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
@@ -1524,104 +1461,74 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 + 1 Week",
+          "title": "3 + 1 Structure",
           "days": [
             {
               "label": "Day 1: Strength",
               "items": [
-                "Session"
+                "Session A"
               ]
             },
             {
-              "label": "Day 2: Strength",
+              "label": "Day 2: Active Recovery",
               "items": [
-                "Session"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 3: Active Recovery",
+              "label": "Day 3: Strength",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Session B"
               ]
             },
             {
-              "label": "Day 4: Strength",
+              "label": "Day 4: Conditioning",
               "items": [
-                "Session"
+                "Zone-2 or low impact"
               ]
             },
             {
-              "label": "Day 5: Conditioning",
+              "label": "Day 5: Strength",
               "items": [
-                "Low intensity 20–30 min"
+                "Session C"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
-                "Stay active"
+                "Daily steps baseline"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
           ]
         },
         "chaos": {
-          "title": "Chaos Mode Week",
+          "title": "Floating 2-Day Structure",
           "days": [
             {
-              "label": "Day 1: Protein + steps",
+              "label": "Floating Session 1",
               "items": [
-                "3 protein meals",
-                "Steps minimum"
+                "Full Body Anchor 1",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 2: Steps & Protein",
+              "label": "Floating Session 2",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
+                "Full Body Anchor 2",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 3: Steps & Protein",
+              "label": "All Other Days",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 4: One short session",
-              "items": [
-                "20–30 min full body"
-              ]
-            },
-            {
-              "label": "Day 5: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
+                "Hit your daily step minimum",
+                "No guilt if you can't train"
               ]
             }
           ]
@@ -1632,11 +1539,11 @@ export const assessmentData = {
         "scheduleTitle": "The Schedule",
         "scheduleByDose": {
           "two_days": {
-            "title": "2 Sessions + Anchors",
+            "title": "2-Day Full Body",
             "lines": [
-              "2 strength days",
-              "Protein anchors daily",
-              "Steps daily"
+              "Day A: Full Body Strength (45-60 min)",
+              "Day B: Full Body Strength (45-60 min)",
+              "Space these with at least two rest days between."
             ]
           },
           "three_days": {
@@ -1648,18 +1555,19 @@ export const assessmentData = {
             ]
           },
           "four_plus": {
-            "title": "3 + 1 + Anchors",
+            "title": "3 Strength + 1 Conditioning",
             "lines": [
-              "3 strength days",
-              "1 low intensity day",
-              "Anchors daily"
+              "3x Strength Sessions",
+              "1x Zone-2 / Conditioning Session",
+              "Never 4 heavy sessions in a row"
             ]
           },
           "chaos": {
-            "title": "Chaos Mode",
+            "title": "Floating 2-Day",
             "lines": [
-              "Protein + steps win",
-              "2 sessions max"
+              "2x Anchor Sessions per week",
+              "No set days. Fit them where the schedule allows.",
+              "Steps cover the rest."
             ]
           }
         },
@@ -1731,11 +1639,11 @@ export const assessmentData = {
       "weeklyStructureTitle": "Weekly Structure",
       "weeklyStructureCopyByDose": {
         "two_days": {
-          "title": "2 Templates + Steps",
+          "title": "2-Day Full Body",
           "bullets": [
-            "2 template sessions",
-            "Steps minimum daily",
-            "Optional short mobility"
+            "2 full-body strength sessions (45-60 min)",
+            "At least 2 days recovery between sessions",
+            "Daily steps anchor carries the other days"
           ]
         },
         "three_days": {
@@ -1747,19 +1655,19 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 + 1",
+          "title": "3 Strength + 1 Conditioning",
           "bullets": [
-            "3 template sessions",
-            "1 low intensity day",
-            "Steps minimum daily"
+            "3 full-body or upper/lower strength sessions",
+            "1 low-impact conditioning / zone-2 session",
+            "Daily steps anchor"
           ]
         },
         "chaos": {
-          "title": "Chaos Mode: Minimums",
+          "title": "Chaos Mode (Floating 2-Day)",
           "bullets": [
-            "Minimum session option",
-            "Steps minimum daily",
-            "No make-up workouts"
+            "2 anchor strength sessions that land wherever they can",
+            "No fixed days—if you have 45 mins, you hit it",
+            "Steps are the non-negotiable on non-training days"
           ]
         }
       },
@@ -1778,52 +1686,50 @@ export const assessmentData = {
       "next7DaysTitle": "Your Next 7 Days",
       "next7DaysByDose": {
         "two_days": {
-          "title": "2-Day Templates",
+          "title": "2-Day Full Body",
           "days": [
             {
-              "label": "Day 1: Template A",
+              "label": "Day 1: Full Body A",
               "items": [
-                "Full body A"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 2: Active Recovery",
               "items": [
                 "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Light movement"
               ]
             },
             {
-              "label": "Day 3: Rest",
+              "label": "Day 3: Active Recovery",
               "items": [
-                "Focus on protein anchors",
-                "Hydration"
+                "Daily steps baseline",
+                "Mobility if needed"
               ]
             },
             {
-              "label": "Day 4: Template B",
+              "label": "Day 4: Full Body B",
               "items": [
-                "Full body B"
+                "Strength session (45-60 min)"
               ]
             },
             {
               "label": "Day 5: Active Recovery",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
+                "Daily steps baseline",
                 "Stay active"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
@@ -1881,103 +1787,74 @@ export const assessmentData = {
           ]
         },
         "four_plus": {
-          "title": "3 + 1 Week",
+          "title": "3 + 1 Structure",
           "days": [
             {
-              "label": "Day 1: A",
+              "label": "Day 1: Strength",
               "items": [
-                "Template A"
+                "Session A"
               ]
             },
             {
-              "label": "Day 2: B",
+              "label": "Day 2: Active Recovery",
               "items": [
-                "Template B"
+                "Daily steps baseline"
               ]
             },
             {
-              "label": "Day 3: Active Recovery",
+              "label": "Day 3: Strength",
               "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
+                "Session B"
               ]
             },
             {
-              "label": "Day 4: A",
+              "label": "Day 4: Conditioning",
               "items": [
-                "Template A"
+                "Zone-2 or low impact"
               ]
             },
             {
-              "label": "Day 5: Low intensity",
+              "label": "Day 5: Strength",
               "items": [
-                "20–30 min walk/bike"
+                "Session C"
               ]
             },
             {
-              "label": "Day 6: Weekend Flexibility",
+              "label": "Day 6: Active Recovery",
               "items": [
-                "1 planned social meal",
-                "Stay active"
+                "Daily steps baseline"
               ]
             },
             {
               "label": "Day 7: Rest & Prep",
               "items": [
-                "Grocery shop / meal prep",
                 "Review upcoming week"
               ]
             }
           ]
         },
         "chaos": {
-          "title": "Chaos Mode Week",
+          "title": "Floating 2-Day Structure",
           "days": [
             {
-              "label": "Day 1: Minimum session",
+              "label": "Floating Session 1",
               "items": [
-                "15–20 min full body"
+                "Full Body Anchor 1",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 2: Steps & Protein",
+              "label": "Floating Session 2",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
+                "Full Body Anchor 2",
+                "Deploy when you have a 45-minute window"
               ]
             },
             {
-              "label": "Day 3: Steps & Protein",
+              "label": "All Other Days",
               "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 4: Steps minimum",
-              "items": [
-                "Keep the routine alive"
-              ]
-            },
-            {
-              "label": "Day 5: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
+                "Hit your daily step minimum",
+                "No guilt if you can't train"
               ]
             }
           ]
@@ -1988,10 +1865,11 @@ export const assessmentData = {
         "scheduleTitle": "The Schedule",
         "scheduleByDose": {
           "two_days": {
-            "title": "2 Templates",
+            "title": "2-Day Full Body",
             "lines": [
-              "2 sessions",
-              "Steps minimum daily"
+              "Day A: Full Body Strength (45-60 min)",
+              "Day B: Full Body Strength (45-60 min)",
+              "Space these with at least two rest days between."
             ]
           },
           "three_days": {
@@ -2003,15 +1881,19 @@ export const assessmentData = {
             ]
           },
           "four_plus": {
-            "title": "3 + 1",
+            "title": "3 Strength + 1 Conditioning",
             "lines": [
-              "3 templates + 1 low intensity"
+              "3x Strength Sessions",
+              "1x Zone-2 / Conditioning Session",
+              "Never 4 heavy sessions in a row"
             ]
           },
           "chaos": {
-            "title": "Chaos Mode",
+            "title": "Floating 2-Day",
             "lines": [
-              "Minimum session + steps"
+              "2x Anchor Sessions per week",
+              "No set days. Fit them where the schedule allows.",
+              "Steps cover the rest."
             ]
           }
         },
@@ -2053,360 +1935,6 @@ export const assessmentData = {
               "week": "Week 3",
               "title": "Add load OR sets",
               "description": "Choose one; do not do both. Keep same templates."
-            },
-            {
-              "week": "Week 4",
-              "title": "Consolidate / deload-lite",
-              "description": "Reduce sets 20–30%, keep quality."
-            }
-          ],
-          "guardrailsTitle": "Progression Guardrails",
-          "guardrails": [
-            "RIR: stop sets with 1–2 reps in reserve",
-            "Sleep rule: poor sleep 2 nights → reduce volume, keep technique",
-            "Niggle rule: regress/swap movement, keep training"
-          ]
-        }
-      }
-    },
-    {
-      "id": "reset_mode",
-      "label": "Reset Mode",
-      "primaryBottleneck": "You’ve drifted — you need momentum before optimisation.",
-      "microRevealLine": "Momentum first. Optimisation later.",
-      "strategyName": "Momentum Reset",
-      "strategyBlurb": "You don’t need optimisation yet. You need rhythm.",
-      "focusTemplate": "Based on your goal of Reset + momentum and your recent consistency, we optimise for Structure + Small Wins.",
-      "stressValveTitle": "The Stress Valve: Busy Week Fallback",
-      "stressValveCopy": "When life gets messy, you don’t stop — you switch to the fallback and keep moving.",
-      "weeklyStructureTitle": "Weekly Structure",
-      "weeklyStructureCopyByDose": {
-        "two_days": {
-          "title": "2 Sessions + Steps + Protein",
-          "bullets": [
-            "2 simple sessions",
-            "Steps baseline + bump",
-            "Protein anchors daily"
-          ]
-        },
-        "three_days": {
-          "title": "3 Sessions (Rhythm first)",
-          "bullets": [
-            "3 sessions/week (repeatable)",
-            "Steps daily",
-            "Protein anchors daily"
-          ]
-        },
-        "four_plus": {
-          "title": "3 + 1",
-          "bullets": [
-            "3 sessions",
-            "1 low intensity",
-            "Steps + anchors"
-          ]
-        },
-        "chaos": {
-          "title": "Chaos Mode: keep it alive",
-          "bullets": [
-            "Minimum session",
-            "Steps minimum daily",
-            "Protein anchors"
-          ]
-        }
-      },
-      "guardrailsTitle": "Guardrails",
-      "guardrails": [
-        "No hero weeks. Repeatable effort wins.",
-        "If you miss a day, continue — don’t restart.",
-        "Keep sessions short enough to finish."
-      ],
-      "nutritionTitle": "Nutrition: Keep it realistic",
-      "nutritionRules": [
-        "Protein anchor: 3 meals/day.",
-        "One simple swap per day (upgrade one meal).",
-        "Hydration daily."
-      ],
-      "next7DaysTitle": "Your Next 7 Days",
-      "next7DaysByDose": {
-        "two_days": {
-          "title": "2-Day Reset Week",
-          "days": [
-            {
-              "label": "Day 1: Full Body",
-              "items": [
-                "Simple full body session"
-              ]
-            },
-            {
-              "label": "Day 2: Active Recovery",
-              "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
-              ]
-            },
-            {
-              "label": "Day 3: Rest",
-              "items": [
-                "Focus on protein anchors",
-                "Hydration"
-              ]
-            },
-            {
-              "label": "Day 4: Steps + anchors",
-              "items": [
-                "Protein anchors + steps"
-              ]
-            },
-            {
-              "label": "Day 5: Active Recovery",
-              "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
-              ]
-            }
-          ]
-        },
-        "three_days": {
-          "title": "3-Day Reset Week",
-          "days": [
-            {
-              "label": "Day 1: Session A",
-              "items": [
-                "Simple session"
-              ]
-            },
-            {
-              "label": "Day 2: Active Recovery",
-              "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
-              ]
-            },
-            {
-              "label": "Day 3: Session B",
-              "items": [
-                "Simple session"
-              ]
-            },
-            {
-              "label": "Day 4: Rest",
-              "items": [
-                "Focus on protein anchors",
-                "Hydration"
-              ]
-            },
-            {
-              "label": "Day 5: Session C",
-              "items": [
-                "Simple session"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
-              ]
-            }
-          ]
-        },
-        "four_plus": {
-          "title": "3 + 1 Week",
-          "days": [
-            {
-              "label": "Day 1: Session",
-              "items": [
-                "Simple session"
-              ]
-            },
-            {
-              "label": "Day 2: Session",
-              "items": [
-                "Simple session"
-              ]
-            },
-            {
-              "label": "Day 3: Active Recovery",
-              "items": [
-                "Daily steps baseline",
-                "Light movement (walk/bike)"
-              ]
-            },
-            {
-              "label": "Day 4: Session",
-              "items": [
-                "Simple session"
-              ]
-            },
-            {
-              "label": "Day 5: Low intensity",
-              "items": [
-                "20–30 min easy"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
-              ]
-            }
-          ]
-        },
-        "chaos": {
-          "title": "Chaos Mode Week",
-          "days": [
-            {
-              "label": "Day 1: Minimum session",
-              "items": [
-                "15–20 min full body"
-              ]
-            },
-            {
-              "label": "Day 2: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 3: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 4: Protein + steps",
-              "items": [
-                "Anchors win"
-              ]
-            },
-            {
-              "label": "Day 5: Steps & Protein",
-              "items": [
-                "Hit protein targets",
-                "Daily steps minimum"
-              ]
-            },
-            {
-              "label": "Day 6: Weekend Flexibility",
-              "items": [
-                "1 planned social meal",
-                "Stay active"
-              ]
-            },
-            {
-              "label": "Day 7: Rest & Prep",
-              "items": [
-                "Grocery shop / meal prep",
-                "Review upcoming week"
-              ]
-            }
-          ]
-        }
-      },
-      "postGate": {
-        "blueprintName": "The Reset Blueprint",
-        "scheduleTitle": "The Schedule",
-        "scheduleByDose": {
-          "two_days": {
-            "title": "2-Day Reset",
-            "lines": [
-              "2 sessions",
-              "Steps daily",
-              "Protein anchors"
-            ]
-          },
-          "three_days": {
-            "title": "3-Day Reset",
-            "lines": [
-              "3 sessions",
-              "Steps daily",
-              "Protein anchors"
-            ]
-          },
-          "four_plus": {
-            "title": "3 + 1",
-            "lines": [
-              "3 sessions + 1 low intensity",
-              "Steps daily"
-            ]
-          },
-          "chaos": {
-            "title": "Chaos Mode",
-            "lines": [
-              "Minimum session + steps + anchors"
-            ]
-          }
-        },
-        "protocolTitle": "The Protocol",
-        "protocolCopy": "Momentum first. Optimisation later. Your job is to complete the week, not crush it.",
-        "keyRuleTitle": "Key Rule",
-        "keyRuleCopy": "If life is messy: fallback session + steps. Keep the chain alive.",
-        "warmupTitle": "Warm-up Protocol (5–8 min)",
-        "warmupSteps": [
-          "2 min easy movement",
-          "2 mobility moves",
-          "2 ramp sets",
-          "Start"
-        ],
-        "autoregulationTitle": "Autoregulation Management",
-        "autoregulationRules": [
-          "Busy week → fallback sessions",
-          "Good week → add reps then load"
-        ],
-        "progressChecksTitle": "Progress Checks (weekly)",
-        "progressChecks": [
-          "Sessions completed",
-          "Steps average",
-          "Energy trend"
-        ],
-        "progressionModel4Weeks": {
-          "title": "Your 4-Week Progression Model",
-          "weeks": [
-            {
-              "week": "Week 1",
-              "title": "Set the base",
-              "description": "Prioritise rhythm. Focus on consistency and technique."
-            },
-            {
-              "week": "Week 2",
-              "title": "Add reps",
-              "description": "Prioritise rhythm. Add 1–2 reps per set on main lifts."
-            },
-            {
-              "week": "Week 3",
-              "title": "Add load OR sets",
-              "description": "Choose one; do not do both."
             },
             {
               "week": "Week 4",
@@ -2604,11 +2132,11 @@ export const assessmentData = {
         ],
         "recommend": {
           "serviceId": "reset",
-          "href": "/fitness-challenge-nz"
+          "href": "/14-day-fat-loss-foundations"
         },
         "alternate": {
           "serviceId": "online",
-          "href": "/online-personal-training-nz"
+          "href": "/online-coaching"
         }
       },
       {
@@ -2647,11 +2175,11 @@ export const assessmentData = {
         ],
         "recommend": {
           "serviceId": "inPerson",
-          "href": "/personal-trainer-christchurch"
+          "href": "/personal-training"
         },
         "alternate": {
           "serviceId": "online",
-          "href": "/online-personal-training-nz"
+          "href": "/online-coaching"
         }
       },
       {
@@ -2659,11 +2187,11 @@ export const assessmentData = {
         "whenAlways": true,
         "recommend": {
           "serviceId": "online",
-          "href": "/online-personal-training-nz"
+          "href": "/online-coaching"
         },
         "alternate": {
           "serviceId": "reset",
-          "href": "/fitness-challenge-nz"
+          "href": "/14-day-fat-loss-foundations"
         }
       }
     ],

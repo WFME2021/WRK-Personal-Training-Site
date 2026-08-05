@@ -20,14 +20,14 @@ export const MidPageBanner: React.FC<MidPageBannerProps> = ({
       <div className={`relative h-[60vh] md:h-[70vh] max-w-[1800px] mx-auto flex items-center justify-center overflow-hidden rounded-[2rem] md:rounded-[3rem]`}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img referrerPolicy="no-referrer" 
+          <img loading="lazy"  referrerPolicy="no-referrer" 
             src={image} 
             alt={tagline} 
             className={`w-full h-full object-cover object-center ${disableGrayscale ? '' : 'grayscale contrast-125'}`}
-            loading="lazy"
+            
           />
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className={`absolute inset-0 ${disableGrayscale ? 'bg-black/60' : 'bg-black/50'}`}></div>
         </div>
 
         {/* Content */}

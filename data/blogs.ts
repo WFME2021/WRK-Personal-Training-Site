@@ -36,10 +36,10 @@ export interface BlogPost {
 }
 
 const DEFAULT_AUTHOR: Author = {
-  name: "Hayden Richards",
-  role: "Founder & Head Coach",
-  bio: "A movement specialist with 20 years of experience, Hayden delivers precision training for high performers - some run companies, some run households...they all require an approach that doesn't dominate their diary.",
-  avatarUrl: "https://i.postimg.cc/MKnbjvN1/dad-carrypack-hiking.jpg"
+  name: "H. Richards",
+  role: "Personal Trainer",
+  bio: "With over 20 years of experience coaching high performers, H. Richards delivers precision training frameworks built on evidence and practical application. His approach cuts through the noise to help you achieve sustainable results, backed by consistently excellent 5-star client reviews.",
+  avatarUrl: "https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
 };
 
 // This acts as our initial "posts.json" data

@@ -37,7 +37,7 @@ export const Tools: React.FC = () => {
             {/* Nutrition Engine Card */}
             <Link to="/calorie-calculator" className="group bg-secondary border border-border rounded-[2rem] overflow-hidden hover:border-accent transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col">
                <div className="h-48 w-full overflow-hidden border-b border-border bg-black relative">
-                 <img src="https://i.postimg.cc/T2VQgtDM/mushroom-brie-omelette-8.jpg" alt="Nutrition Engine" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" />
+                 <img loading="lazy"  src="https://i.postimg.cc/T2VQgtDM/mushroom-brie-omelette-8.jpg" alt="Nutrition Engine" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                  <div className="absolute bottom-4 left-6 bg-primary/90 backdrop-blur-sm w-14 h-14 rounded-[1rem] flex items-center justify-center border border-border">
                    <Flame className="text-accent" size={28} />
@@ -57,7 +57,7 @@ export const Tools: React.FC = () => {
             {/* 1RM Estimator Card */}
             <Link to="/tools/1rm-estimator" className="group bg-secondary border border-border rounded-[2rem] overflow-hidden hover:border-accent transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col">
                <div className="h-48 w-full overflow-hidden border-b border-border bg-black relative">
-                 <img src="https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png" alt="1RM Estimator" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100 object-top" />
+                 <img loading="lazy"  src="https://i.postimg.cc/ZRgR3MtP/recipe-tracking.png" alt="1RM Estimator" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100 object-top" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                  <div className="absolute bottom-4 left-6 bg-primary/90 backdrop-blur-sm w-14 h-14 rounded-[1rem] flex items-center justify-center border border-border">
                    <Activity className="text-accent" size={28} />

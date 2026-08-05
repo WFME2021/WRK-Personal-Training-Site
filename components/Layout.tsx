@@ -1,17 +1,20 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { BRAND_NAME, NAVIGATION_LINKS, SERVICE_LINKS, EMAIL_CONTACT } from '../constants';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { BRAND_NAME, NAVIGATION_LINKS, SERVICE_LINKS, PROGRAMMES_LINKS, EMAIL_CONTACT } from '../constants';
 import { Button } from './Button';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileProgrammesOpen, setMobileProgrammesOpen] = useState(false);
   const location = useLocation();
   
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
+    setMobileServicesOpen(false);
+    setMobileProgrammesOpen(false);
   }, [location]);
 
   return (
@@ -41,6 +44,21 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                  ))}
                </div>
             </div>
+            
+            <div className="relative group py-4">
+               <span className="text-[14px] font-medium text-off-white group-hover:text-white transition-colors cursor-pointer flex items-center gap-1.5">
+                 Programmes
+                 <svg className="w-3.5 h-3.5 text-off-white/70 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+               </span>
+               <div className="absolute top-full left-1/2 -translate-x-1/2 w-[280px] opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 bg-navy/95 backdrop-blur-md border border-navy-light rounded-xl shadow-2xl py-2 z-50">
+                 {PROGRAMMES_LINKS.map(link => (
+                   <Link key={link.path} to={link.path} className="block px-5 py-3 text-[14px] font-medium text-off-white hover:text-white hover:bg-navy-light/50 transition-colors">
+                     {link.label}
+                   </Link>
+                 ))}
+               </div>
+            </div>
+
             {NAVIGATION_LINKS.map((link: any) => {
               if (link.isPrimary || link.isHighlight) return null; // Rendered elsewhere
               return (
@@ -101,11 +119,47 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
            <Link onClick={() => setIsMenuOpen(false)} to="/" className="h-[56px] flex items-center px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt">
              Home
            </Link>
-           {SERVICE_LINKS.map(link => (
-             <Link onClick={() => setIsMenuOpen(false)} key={link.path} to={link.path} className="h-[56px] flex items-center px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt">
-               {link.label}
-             </Link>
-           ))}
+           
+           {/* Mobile Services Accordion */}
+           <div>
+             <button 
+               onClick={() => setMobileServicesOpen(!mobileServicesOpen)} 
+               className="w-full h-[56px] flex items-center justify-between px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt"
+             >
+               Services
+               <ChevronDown size={20} className={`transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+             </button>
+             {mobileServicesOpen && (
+               <div className="bg-navy/30 py-2">
+                 {SERVICE_LINKS.map(link => (
+                   <Link onClick={() => setIsMenuOpen(false)} key={link.path} to={link.path} className="h-[48px] flex items-center pl-10 pr-6 text-[16px] font-medium text-off-white hover:text-white hover:bg-navy transition-colors">
+                     {link.label}
+                   </Link>
+                 ))}
+               </div>
+             )}
+           </div>
+
+           {/* Mobile Programmes Accordion */}
+           <div>
+             <button 
+               onClick={() => setMobileProgrammesOpen(!mobileProgrammesOpen)} 
+               className="w-full h-[56px] flex items-center justify-between px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt"
+             >
+               Programmes
+               <ChevronDown size={20} className={`transition-transform duration-200 ${mobileProgrammesOpen ? 'rotate-180' : ''}`} />
+             </button>
+             {mobileProgrammesOpen && (
+               <div className="bg-navy/30 py-2">
+                 {PROGRAMMES_LINKS.map(link => (
+                   <Link onClick={() => setIsMenuOpen(false)} key={link.path} to={link.path} className="h-[48px] flex items-center pl-10 pr-6 text-[16px] font-medium text-off-white hover:text-white hover:bg-navy transition-colors">
+                     {link.label}
+                   </Link>
+                 ))}
+               </div>
+             )}
+           </div>
+
            {NAVIGATION_LINKS.filter((l:any) => !l.isPrimary && !l.isHighlight).map((link: any) => (
              <Link 
                key={link.path} 
@@ -136,6 +190,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       {/* Footer */}
       <footer className="footer-bg relative mt-16 pt-[48px] pb-[32px] px-5 sm:px-12">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gold-rule opacity-40"></div>
+        
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
             
@@ -153,10 +208,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div>
               <h4 className="font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-orange-burnt mb-6">Company</h4>
               <ul className="space-y-4">
+                <li><Link to="/assessment" className="text-[15px] font-semibold text-white hover:text-orange-burnt transition-colors">Free Custom Diagnostic</Link></li>
                 <li><Link to="/about" className="text-[15px] text-grey-mid hover:text-white transition-colors">About</Link></li>
                 <li><Link to="/blog" className="text-[15px] text-grey-mid hover:text-white transition-colors">Blog</Link></li>
                 <li><Link to="/tools" className="text-[15px] text-grey-mid hover:text-white transition-colors">Tools</Link></li>
                 <li><Link to="/contact" className="text-[15px] text-grey-mid hover:text-white transition-colors">Contact</Link></li>
+                <li><Link to="/admin" className="text-[15px] text-grey-mid hover:text-white transition-colors">Admin</Link></li>
               </ul>
             </div>
 
@@ -164,11 +221,16 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div>
               <h4 className="font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-orange-burnt mb-6">Services</h4>
               <ul className="space-y-4">
-                <li><Link to="/assessment" className="text-[15px] font-semibold text-white hover:text-orange-burnt transition-colors">Free Custom Diagnostic</Link></li>
-                <li><Link to="/personal-training" className="text-[15px] text-grey-mid hover:text-white transition-colors">1:1 Personal Training</Link></li>
-                <li><Link to="/online-coaching" className="text-[15px] text-grey-mid hover:text-white transition-colors">Online Coaching</Link></li>
-                <li><Link to="/corporate-wellness" className="text-[15px] text-grey-mid hover:text-white transition-colors">Corporate Wellness</Link></li>
-                <li><Link to="/14-day-fat-loss-foundations" className="text-[15px] text-grey-mid hover:text-white transition-colors">14-Day Programme</Link></li>
+                {SERVICE_LINKS.map(link => (
+                   <li key={link.path}><Link to={link.path} className="text-[15px] text-grey-mid hover:text-white transition-colors">{link.label}</Link></li>
+                ))}
+              </ul>
+
+              <h4 className="font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-orange-burnt mt-10 mb-6">Programmes</h4>
+              <ul className="space-y-4">
+                {PROGRAMMES_LINKS.map(link => (
+                   <li key={link.path}><Link to={link.path} className="text-[15px] text-grey-mid hover:text-white transition-colors">{link.label}</Link></li>
+                ))}
               </ul>
             </div>
             
@@ -182,7 +244,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <p><a href="tel:+6421393160" className="hover:text-white transition-colors">021 393 160</a></p>
               </address>
             </div>
-            
+          
           </div>
           
           <div className="pt-8 border-t border-navy-light flex flex-col md:flex-row justify-between items-center gap-4">

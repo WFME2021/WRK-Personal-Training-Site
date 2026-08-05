@@ -1,0 +1,350 @@
+
+=== ARCHETYPE: Time-Crunched ===
+
+  -- DOSE: two_days --
+    Day 1: Full Body A:
+      - Strength session (45-60 min)
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement
+    Day 3: Active Recovery:
+      - Daily steps baseline
+      - Mobility if needed
+    Day 4: Full Body B:
+      - Strength session (45-60 min)
+    Day 5: Active Recovery:
+      - Daily steps baseline
+    Day 6: Active Recovery:
+      - Daily steps baseline
+      - Stay active
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: three_days --
+    Day 1: Full Body A:
+      - Squat pattern
+      - Horizontal press
+      - Horizontal pull
+      - Carry/finisher
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement (walk/bike)
+    Day 3: Full Body B:
+      - Hinge pattern
+      - Vertical press
+      - Vertical pull
+      - Core
+    Day 4: Rest:
+      - Focus on protein anchors
+      - Hydration
+    Day 5: Full Body C:
+      - Single leg (split squat)
+      - Incline press
+      - Row variation
+      - Conditioning (10 min easy/moderate)
+    Day 6: Weekend Flexibility:
+      - 1 planned social meal
+      - Stay active
+    Day 7: Rest & Prep:
+      - Grocery shop / meal prep
+      - Review upcoming week
+
+  -- DOSE: four_plus --
+    Day 1: Strength:
+      - Session A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+    Day 3: Strength:
+      - Session B
+    Day 4: Conditioning:
+      - Zone-2 or low impact
+    Day 5: Strength:
+      - Session C
+    Day 6: Active Recovery:
+      - Daily steps baseline
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: chaos --
+    Floating Session 1:
+      - Full Body Anchor 1
+      - Deploy when you have a 45-minute window
+    Floating Session 2:
+      - Full Body Anchor 2
+      - Deploy when you have a 45-minute window
+    All Other Days:
+      - Hit your daily step minimum
+      - No guilt if you can't train
+
+=== ARCHETYPE: Stress-Stacked ===
+
+  -- DOSE: two_days --
+    Day 1: Full Body A:
+      - Strength session (45-60 min)
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement
+    Day 3: Active Recovery:
+      - Daily steps baseline
+      - Mobility if needed
+    Day 4: Full Body B:
+      - Strength session (45-60 min)
+    Day 5: Active Recovery:
+      - Daily steps baseline
+    Day 6: Active Recovery:
+      - Daily steps baseline
+      - Stay active
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: three_days --
+    Day 1: Full Body A (moderate):
+      - Strength session
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement (walk/bike)
+    Day 3: Low intensity:
+      - Walk/bike/swim 20–30 min
+    Day 4: Rest:
+      - Focus on protein anchors
+      - Hydration
+    Day 5: Full Body B (moderate):
+      - Strength session
+    Day 6: Weekend Flexibility:
+      - 1 planned social meal
+      - Stay active
+    Day 7: Rest & Prep:
+      - Grocery shop / meal prep
+      - Review upcoming week
+
+  -- DOSE: four_plus --
+    Day 1: Strength:
+      - Session A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+    Day 3: Strength:
+      - Session B
+    Day 4: Conditioning:
+      - Zone-2 or low impact
+    Day 5: Strength:
+      - Session C
+    Day 6: Active Recovery:
+      - Daily steps baseline
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: chaos --
+    Floating Session 1:
+      - Full Body Anchor 1
+      - Deploy when you have a 45-minute window
+    Floating Session 2:
+      - Full Body Anchor 2
+      - Deploy when you have a 45-minute window
+    All Other Days:
+      - Hit your daily step minimum
+      - No guilt if you can't train
+
+=== ARCHETYPE: Pain-Limited ===
+
+  -- DOSE: two_days --
+    Day 1: Full Body A:
+      - Strength session (45-60 min)
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement
+    Day 3: Active Recovery:
+      - Daily steps baseline
+      - Mobility if needed
+    Day 4: Full Body B:
+      - Strength session (45-60 min)
+    Day 5: Active Recovery:
+      - Daily steps baseline
+    Day 6: Active Recovery:
+      - Daily steps baseline
+      - Stay active
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: three_days --
+    Day 1: Strength (modified):
+      - Full body template A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement (walk/bike)
+    Day 3: Primer + low impact:
+      - Primer
+      - 20–30 min easy movement
+    Day 4: Rest:
+      - Focus on protein anchors
+      - Hydration
+    Day 5: Strength (modified):
+      - Full body template B
+    Day 6: Weekend Flexibility:
+      - 1 planned social meal
+      - Stay active
+    Day 7: Rest & Prep:
+      - Grocery shop / meal prep
+      - Review upcoming week
+
+  -- DOSE: four_plus --
+    Day 1: Strength:
+      - Session A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+    Day 3: Strength:
+      - Session B
+    Day 4: Conditioning:
+      - Zone-2 or low impact
+    Day 5: Strength:
+      - Session C
+    Day 6: Active Recovery:
+      - Daily steps baseline
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: chaos --
+    Floating Session 1:
+      - Full Body Anchor 1
+      - Deploy when you have a 45-minute window
+    Floating Session 2:
+      - Full Body Anchor 2
+      - Deploy when you have a 45-minute window
+    All Other Days:
+      - Hit your daily step minimum
+      - No guilt if you can't train
+
+=== ARCHETYPE: Nutrition-Drifting ===
+
+  -- DOSE: two_days --
+    Day 1: Full Body A:
+      - Strength session (45-60 min)
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement
+    Day 3: Active Recovery:
+      - Daily steps baseline
+      - Mobility if needed
+    Day 4: Full Body B:
+      - Strength session (45-60 min)
+    Day 5: Active Recovery:
+      - Daily steps baseline
+    Day 6: Active Recovery:
+      - Daily steps baseline
+      - Stay active
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: three_days --
+    Day 1: Strength:
+      - Session A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement (walk/bike)
+    Day 3: Strength:
+      - Session B
+    Day 4: Rest:
+      - Focus on protein anchors
+      - Hydration
+    Day 5: Strength:
+      - Session C
+    Day 6: Weekend Flexibility:
+      - 1 planned social meal
+      - Stay active
+    Day 7: Rest & Prep:
+      - Grocery shop / meal prep
+      - Review upcoming week
+
+  -- DOSE: four_plus --
+    Day 1: Strength:
+      - Session A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+    Day 3: Strength:
+      - Session B
+    Day 4: Conditioning:
+      - Zone-2 or low impact
+    Day 5: Strength:
+      - Session C
+    Day 6: Active Recovery:
+      - Daily steps baseline
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: chaos --
+    Floating Session 1:
+      - Full Body Anchor 1
+      - Deploy when you have a 45-minute window
+    Floating Session 2:
+      - Full Body Anchor 2
+      - Deploy when you have a 45-minute window
+    All Other Days:
+      - Hit your daily step minimum
+      - No guilt if you can't train
+
+=== ARCHETYPE: Motivation-Drifting ===
+
+  -- DOSE: two_days --
+    Day 1: Full Body A:
+      - Strength session (45-60 min)
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement
+    Day 3: Active Recovery:
+      - Daily steps baseline
+      - Mobility if needed
+    Day 4: Full Body B:
+      - Strength session (45-60 min)
+    Day 5: Active Recovery:
+      - Daily steps baseline
+    Day 6: Active Recovery:
+      - Daily steps baseline
+      - Stay active
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: three_days --
+    Day 1: Template A:
+      - Full body A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+      - Light movement (walk/bike)
+    Day 3: Template B:
+      - Full body B
+    Day 4: Rest:
+      - Focus on protein anchors
+      - Hydration
+    Day 5: Template A:
+      - Repeat A (progress reps)
+    Day 6: Weekend Flexibility:
+      - 1 planned social meal
+      - Stay active
+    Day 7: Rest & Prep:
+      - Grocery shop / meal prep
+      - Review upcoming week
+
+  -- DOSE: four_plus --
+    Day 1: Strength:
+      - Session A
+    Day 2: Active Recovery:
+      - Daily steps baseline
+    Day 3: Strength:
+      - Session B
+    Day 4: Conditioning:
+      - Zone-2 or low impact
+    Day 5: Strength:
+      - Session C
+    Day 6: Active Recovery:
+      - Daily steps baseline
+    Day 7: Rest & Prep:
+      - Review upcoming week
+
+  -- DOSE: chaos --
+    Floating Session 1:
+      - Full Body Anchor 1
+      - Deploy when you have a 45-minute window
+    Floating Session 2:
+      - Full Body Anchor 2
+      - Deploy when you have a 45-minute window
+    All Other Days:
+      - Hit your daily step minimum
+      - No guilt if you can't train

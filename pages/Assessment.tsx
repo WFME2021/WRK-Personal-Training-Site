@@ -4,7 +4,7 @@ import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
 import { ArrowLeft, CheckCircle2, Loader2 } from 'lucide-react';
 import { assessmentData } from '../data/assessmentData';
-import { calculateArchetype, Answers } from '../services/assessmentLogic';
+import { calculateArchetype, calculateRecommendation, Answers } from '../services/assessmentLogic';
 import { submitAssessment } from '../services/apiService';
 
 export const Assessment: React.FC = () => {
@@ -35,16 +35,35 @@ export const Assessment: React.FC = () => {
     return () => clearInterval(interval);
   }, [isCalculating]);
 
-  const handleNext = (qId: string, optionId: string) => {
-    const newAnswers = { ...answers, [qId]: optionId };
+  const handleNext = (questionId: string, optionId: string) => {
+    const newAnswers = { ...answers, [questionId]: optionId };
     setAnswers(newAnswers);
+    
+    setTimeout(() => {
+      if (questionId === 'q6_flags') {
+        if (optionId === 'manageable' || optionId === 'limits') {
+          setCurrentStep(questions.length - 1); // Jump to q6_sub, assuming it's the last question in the array
+          return;
+        }
+      }
+      
+      // Calculate next step
+      let nextStep = currentStep + 1;
+      // Skip q6_sub if we are at q6_flags and answer is 'none'
+      if (questionId === 'q6_flags' && optionId === 'none') {
+        setIsCalculating(true);
+        return;
+      }
 
-    if (currentStep === questions.length - 1) {
-      setIsCalculating(true);
-    } else {
-      setCurrentStep(prev => prev + 1);
-      window.scrollTo(0, 0);
-    }
+      if (nextStep >= questions.length - 1 && questionId === 'q6_sub') {
+         setIsCalculating(true);
+      } else if (nextStep < questions.length) {
+        setCurrentStep(nextStep);
+        window.scrollTo(0, 0);
+      } else {
+        setIsCalculating(true);
+      }
+    }, 400);
   };
 
   const handleBack = () => {
@@ -61,13 +80,30 @@ export const Assessment: React.FC = () => {
     
     setIsSubmitting(true);
 
+    const composedResult = {
+      archetype: calculateArchetype(answers),
+      recommendation: calculateRecommendation(answers),
+      doseKey: answers['q3_time'] || 'three_days',
+      goalLabel: assessmentData.derived.goalLabels[answers['q2_goal'] as keyof typeof assessmentData.derived.goalLabels] || 'your goal'
+    };
+    
+    let resToken = null;
+
     try {
-      await submitAssessment({ name, email, answers });
+      const response = await submitAssessment({ name, email, answers, composedResult });
+      if (response && response.token) {
+        resToken = response.token;
+      }
     } catch (error) {
       console.error('Failed to submit assessment:', error);
+      localStorage.setItem('pendingAssessmentSync', JSON.stringify({ name, email, answers, timestamp: Date.now() }));
     } finally {
       setIsSubmitting(false);
-      navigate('/results', { state: { answers, email, name } });
+      if (resToken) {
+        navigate(`/assessment/result/${resToken}`, { state: { answers, email, name, composedResult } });
+      } else {
+        navigate('/results', { state: { answers, email, name, composedResult }, replace: true });
+      }
     }
   };
 
@@ -78,9 +114,7 @@ export const Assessment: React.FC = () => {
         <h2 className="text-3xl font-display uppercase mb-4">
           {assessmentData.uiCopy.interstitial.title}
         </h2>
-        <p className="text-text-secondary text-lg animate-pulse">
-          {assessmentData.uiCopy.interstitial.rotatingLines[calculatingLine]}
-        </p>
+        
       </div>
     );
   }
@@ -136,13 +170,27 @@ export const Assessment: React.FC = () => {
           </div>
 
           <div className="bg-secondary p-8 rounded-2xl shadow-xl border border-border text-center">
+            <div className="mb-8 space-y-3">
+              <div className="flex items-center gap-3 justify-center p-3 rounded-lg border border-border bg-primary/50 text-text-secondary opacity-75">
+                <span className="text-xl">🔒</span>
+                <span className="font-bold">Progression Guardrails</span>
+              </div>
+              <div className="flex items-center gap-3 justify-center p-3 rounded-lg border border-border bg-primary/50 text-text-secondary opacity-75">
+                <span className="text-xl">🔒</span>
+                <span className="font-bold">Nutrition Anchor</span>
+              </div>
+              <div className="flex items-center gap-3 justify-center p-3 rounded-lg border border-border bg-primary/50 text-text-secondary opacity-75">
+                <span className="text-xl">🔒</span>
+                <span className="font-bold">Your Next 7 Days</span>
+              </div>
+            </div>
+            
             <h2 className="text-3xl font-display uppercase text-text-primary mb-4">
               {assessmentData.uiCopy.preGate.unlockTitleTemplate.replace('{blueprintName}', archetype?.postGate.blueprintName || 'Blueprint')}
             </h2>
             <p className="text-text-secondary mb-8">
               {assessmentData.uiCopy.preGate.unlockSubtitle}
             </p>
-
             <form onSubmit={handleUnlock} className="max-w-md mx-auto space-y-4 text-left">
               <div>
                 <label className="block text-sm font-bold text-text-primary mb-2 uppercase tracking-wider">
@@ -173,9 +221,13 @@ export const Assessment: React.FC = () => {
               <Button type="submit" variant="primary" className="w-full py-4 text-lg mt-4" disabled={isSubmitting}>
                 {isSubmitting ? 'Unlocking...' : assessmentData.uiCopy.preGate.buttonLabel}
               </Button>
+              <p className="text-sm text-center text-text-primary mt-3 font-medium">
+                {assessmentData.uiCopy.preGate.deliveryLine}
+              </p>
               <p className="text-xs text-center text-text-secondary mt-4">
                 {assessmentData.uiCopy.preGate.reassuranceLine}
               </p>
+              
             </form>
           </div>
         </div>
@@ -188,27 +240,37 @@ export const Assessment: React.FC = () => {
     return (
       <>
         <SeoHead 
-          title="Capacity Blueprint Diagnostic | WRK Personal Training"
-          description="Take our 2-minute diagnostic to get a personalised training plan built around your schedule, stress load, and goals."
+          title="Free Training Plan Diagnostic | WRK Personal Training Christchurch"
+          description="6 questions, 2 minutes. Get a training week built around your schedule, stress load and goals. Built by a coach with 20 years experience."
         />
-        <div className="min-h-screen bg-primary pt-32 pb-24 px-6 flex flex-col">
-          <div className="max-w-2xl mx-auto w-full flex-grow flex flex-col justify-center">
-            <div className="text-center mb-12">
-              <span className="inline-block px-3 py-1 bg-secondary text-text-secondary text-xs font-bold uppercase tracking-wider rounded-full mb-6">
-                (2 minutes)
+        <div className="min-h-screen bg-primary pt-32 pb-24 px-5 sm:px-6 flex flex-col">
+          <div className="max-w-[360px] sm:max-w-xl mx-auto w-full flex-grow flex flex-col justify-center">
+            <div className="text-left sm:text-center mb-12">
+              <span className="inline-block text-accent text-sm font-bold uppercase tracking-wider mb-6">
+                Free. 6 questions. 2 minutes.
               </span>
-              <h1 className="text-5xl md:text-6xl font-display uppercase mb-6">
-                Capacity Blueprint Diagnostic
+              <h1 className="text-[32px] leading-tight sm:text-5xl md:text-6xl font-display uppercase mb-6 text-text-primary">
+                Get a training week built around your schedule, your stress load and your body.
               </h1>
-              <p className="text-xl text-text-secondary mb-8">
-                Answer 6 questions and I’ll give you a personalised plan you can execute this week — built around your schedule, stress load, and goals.
+              <p className="text-base sm:text-xl text-text-secondary mb-6">
+                Answer 6 questions. You'll get a specific plan you can start this week. Not generic tips. An actual week of training with the reasoning behind it.
               </p>
-              <p className="text-sm text-text-secondary italic mb-12">
-                No fluff. No guilt. Just the most beneficial approach for where you’re at.
-              </p>
-              <Button onClick={() => setCurrentStep(0)} variant="primary" className="px-12 py-4 text-lg">
-                Start Diagnostic
+              
+              <div className="flex items-center gap-4 mb-10 sm:justify-center">
+                <div className="w-12 h-12 rounded-full bg-secondary overflow-hidden shrink-0 border border-border">
+                  <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=200&auto=format&fit=crop" alt="Hayden Richards" className="w-full h-full object-cover" />
+                </div>
+                <p className="text-sm sm:text-base text-text-secondary font-medium text-left">
+                  Built by Hayden Richards. 20 years coaching busy people aged 35 to 60, in Christchurch and online.
+                </p>
+              </div>
+
+              <Button onClick={() => setCurrentStep(0)} variant="primary" className="w-full sm:w-auto px-12 py-4 h-12 text-base font-bold">
+                Start. Takes 2 minutes.
               </Button>
+              <p className="text-xs text-text-secondary mt-3 text-center">
+                No email needed to start.
+              </p>
             </div>
           </div>
         </div>
@@ -218,7 +280,7 @@ export const Assessment: React.FC = () => {
 
   // QUESTION STEPS
   const question = questions[currentStep];
-  const progress = ((currentStep) / questions.length) * 100;
+  const progress = ((currentStep + 1) / questions.length) * 100;
 
   return (
     <>
@@ -243,7 +305,7 @@ export const Assessment: React.FC = () => {
 
           <div className="mb-12">
             <span className="text-accent text-sm font-bold uppercase tracking-wider mb-4 block">
-              Question {currentStep + 1} of {questions.length}
+              Question {currentStep + 1 > 6 ? 6 : currentStep + 1} of 6
             </span>
             <h2 className="text-3xl md:text-4xl font-display uppercase">
               {question.prompt}

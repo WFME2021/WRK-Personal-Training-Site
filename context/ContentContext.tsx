@@ -90,9 +90,10 @@ const mergeDeep = (target: any, source: any) => {
   return output;
 };
 
-export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(BLOG_POSTS);
-  const [pageContent, setPageContent] = useState<PageContentState>(PAGE_CONTENT);
+export const ContentProvider: React.FC<{ children: React.ReactNode; initialData?: any }> = ({ children, initialData }) => {
+console.log("ContentProvider mounted, initialData length:", initialData?.blogs?.length);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(initialData?.blogs || BLOG_POSTS);
+  const [pageContent, setPageContent] = useState<PageContentState>(initialData?.pages || PAGE_CONTENT);
   const [isAuthReady, setIsAuthReady] = useState(false);
 
   useEffect(() => {
@@ -110,7 +111,11 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       if (!snapshot.empty) {
         const posts: BlogPost[] = [];
         snapshot.forEach((doc) => {
-          posts.push(doc.data() as BlogPost);
+          const post = doc.data() as BlogPost;
+          if (post.slug && post.slug.startsWith('/')) {
+            post.slug = post.slug.substring(1);
+          }
+          posts.push(post);
         });
         // Sort by date descending
         posts.sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime());
@@ -138,8 +143,16 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/T2VQgtDM\/mushroom-brie-omelette-8\.jpg/g, 'https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg');
         pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/ZRgR3MtP\/recipe-tracking\.png/g, 'https://i.postimg.cc/nhnTcBRr/banana-walnut-porridge-3.jpg');
         pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/fyFscJdc\/pexels-allan-mas-5383718\.jpg/g, 'https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg');
+        pagesStr = pagesStr.replace(/https:\/\/i\.postimg\.cc\/59gkxvcS\/Screen-Shot-2026-06-23-at-2-11-19-PM\.png/g, 'https://i.postimg.cc/pLSrrkPs/Google-Cover-Photo.png');
+        pagesStr = pagesStr.replace(/\/src\/assets\/images\/blog_header_image_[0-9]+\.jpg/g, 'https://i.postimg.cc/pLSrrkPs/Google-Cover-Photo.png');
 
         const migratedPages = JSON.parse(pagesStr);
+        
+        // Fix Blog Title and Image
+        if (migratedPages.blog && migratedPages.blog.hero) {
+          migratedPages.blog.hero.image = 'https://i.postimg.cc/pLSrrkPs/Google-Cover-Photo.png';
+          migratedPages.blog.hero.h1 = 'WRK | Health & Fitness Blog';
+        }
         
         // Force the tools page images to match what was requested
         if (migratedPages.tools) {
@@ -148,6 +161,26 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
           }
           if (migratedPages.tools.banner) {
             migratedPages.tools.banner.image = 'https://i.postimg.cc/nhnTcBRr/banana-walnut-porridge-3.jpg';
+          }
+        }
+        
+        // Force the calorieCalculator page images to match what was requested
+        if (migratedPages.calorieCalculator) {
+          if (migratedPages.calorieCalculator.hero) {
+            migratedPages.calorieCalculator.hero.image = 'https://i.postimg.cc/kXGL3fbx/pexels-ardit-mbrati-216809103-16966339.jpg';
+          }
+          if (migratedPages.calorieCalculator.banner) {
+            migratedPages.calorieCalculator.banner.image = 'https://i.postimg.cc/7PRpNYnj/detox-salad-3.jpg';
+          }
+        }
+        
+        // Force the oneRmEstimator page images to match what was requested
+        if (migratedPages.oneRmEstimator) {
+          if (migratedPages.oneRmEstimator.hero) {
+            migratedPages.oneRmEstimator.hero.image = 'https://i.postimg.cc/4NZ9cK18/pexels-jessie-kiermayr-2156410560-35986387.jpg';
+          }
+          if (migratedPages.oneRmEstimator.banner) {
+            migratedPages.oneRmEstimator.banner.image = 'https://i.postimg.cc/kXGL3fbx/pexels-ardit-mbrati-216809103-16966339.jpg';
           }
         }
 

@@ -9,8 +9,23 @@ export const CorporateWellness: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Workplace Wellness Programme NZ | WRK Personal Training"
-        description="A 12-month, coach-led employee wellbeing programme for New Zealand businesses. Built around real workplace demands and backed by 20 years of coaching experience."
+        title="Wellbeing in the Workplace | WRK Corporate Wellness Programme NZ"
+        description="WRK's 12-month corporate wellness programme improves wellbeing in the workplace for New Zealand teams up to 500 employees. Coach-led, app-delivered, and built around real behaviour change."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Workplace Wellness Programme",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "WRK Personal Training"
+          },
+          "areaServed": "New Zealand",
+          "audience": {
+            "@type": "BusinessAudience",
+            "name": "New Zealand businesses up to 500 employees"
+          },
+          "description": "A 12-month, coach-led workplace wellness programme for New Zealand businesses. Built around the Te Whare Tapa Whā and Five Ways to Wellbeing frameworks, delivered by a trainer with 20 years of coaching experience."
+        }}
       />
 
       <div className="flex flex-col w-full overflow-x-hidden bg-primary pb-24">
@@ -18,11 +33,11 @@ export const CorporateWellness: React.FC = () => {
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-             <img 
+             <img loading="lazy"  
                referrerPolicy="no-referrer" 
-               loading="eager" 
+                
                src="https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg" 
-               alt="CORPORATE WELLNESS" 
+               alt="WRK Workplace Wellness Programme session for a New Zealand team" 
                className="w-full h-full object-cover object-top" 
              />
              <div 
@@ -34,16 +49,16 @@ export const CorporateWellness: React.FC = () => {
           </div>
           <div className="relative z-10 w-full px-5 pt-32 pb-12 md:pb-24 max-w-[1200px] mx-auto md:px-12 text-left">
             <span className="block font-sans font-medium text-[11px] md:text-[13px] uppercase tracking-[0.15em] text-orange-burnt mb-4">
-              EMPLOYEE WELLBEING PROGRAMME — NEW ZEALAND
+              WORKPLACE WELLNESS PROGRAMME — NEW ZEALAND
             </span>
             <h1 className="font-display text-[11vw] sm:text-[50px] md:text-[72px] lg:text-[84px] break-words leading-[1.1] text-white mb-6 uppercase max-w-[1000px]">
-              Wellbeing in the Workplace That Builds a Better Business
+              Wellbeing in the Workplace - WRK Corporate Wellness for NZ Teams
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-white font-medium max-w-[640px] mb-4 leading-[1.5]">
               <span className="text-accent font-bold">A PT in Every Employee's Pocket.</span>
             </p>
             <p className="font-sans text-[16px] md:text-[17px] text-off-white font-normal max-w-[560px] mb-8 leading-[1.6]">
-              A 12-month, coach-led wellbeing programme for New Zealand businesses up to 500 employees. Personalised fitness pathways, nutrition support, and real accountability - delivered through the WRK Wellness App.
+              Wellbeing in the workplace fails when it's passive, generic, or disconnected from how people actually work. Gym subsidies go unused. Wellness apps get downloaded once. Webinars are forgotten by Friday. WRK offers a 12-month, coach-led programme that improves wellbeing in the workplace through structured daily habits, personalised fitness pathways, and real accountability - precision wellness delivered through the WRK Wellness App at scale.
             </p>
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6">
               <Link to="/contact" className="w-full sm:w-auto">
@@ -305,41 +320,43 @@ export const CorporateWellness: React.FC = () => {
               Why not just a gym subsidy?
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-8 text-lg font-medium max-w-5xl mx-auto">
-              <div className="bg-secondary border border-border p-8 rounded-2xl">
-                <h3 className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</h3>
-                <h4 className="font-display text-2xl uppercase mb-4 text-text-primary">Gym subsidy</h4>
-                <p className="text-text-secondary">Access only. No pathway, no accountability, no engagement data.</p>
-              </div>
-              <div className="bg-secondary border border-border p-8 rounded-2xl">
-                <h3 className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</h3>
-                <h4 className="font-display text-2xl uppercase mb-4 text-text-primary">Generic wellness app</h4>
-                <p className="text-text-secondary">Self-serve. No coach. No structure. Staff don't use them.</p>
-              </div>
-              <div className="bg-secondary border border-border p-8 rounded-2xl">
-                <h3 className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</h3>
-                <h4 className="font-display text-2xl uppercase mb-4 text-text-primary">One-off webinar</h4>
-                <p className="text-text-secondary">Nobody remembers it by Friday.</p>
-              </div>
-              <div className="bg-secondary border border-border p-8 rounded-2xl">
-                <h3 className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</h3>
-                <h4 className="font-display text-2xl uppercase mb-4 text-text-primary">Step challenge</h4>
-                <p className="text-text-secondary">Two weeks of fun. Nothing lasting.</p>
-              </div>
-              <div className="bg-accent/10 border-2 border-accent p-8 rounded-2xl md:col-span-2">
-                <h3 className="font-bold uppercase tracking-widest text-sm text-accent mb-2">The Solution</h3>
-                <h4 className="font-display text-3xl uppercase mb-4 text-text-primary">WRK Corporate Wellness</h4>
-                <p className="text-text-primary font-bold text-xl">12-month structured programme. Coach-led. App-delivered. Trackable.</p>
-              </div>
+            <div className="max-w-4xl mx-auto">
+              <ul className="grid md:grid-cols-2 gap-8 text-lg font-medium">
+                <li className="bg-secondary border border-border p-8 rounded-2xl flex flex-col">
+                  <span className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</span>
+                  <strong className="font-display text-2xl uppercase mb-4 text-text-primary font-normal">Gym subsidy</strong>
+                  <span className="text-text-secondary">Access only. No pathway, no accountability, no engagement data.</span>
+                </li>
+                <li className="bg-secondary border border-border p-8 rounded-2xl flex flex-col">
+                  <span className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</span>
+                  <strong className="font-display text-2xl uppercase mb-4 text-text-primary font-normal">Generic wellness app</strong>
+                  <span className="text-text-secondary">Self-serve. No coach. No structure. Staff don't use them.</span>
+                </li>
+                <li className="bg-secondary border border-border p-8 rounded-2xl flex flex-col">
+                  <span className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</span>
+                  <strong className="font-display text-2xl uppercase mb-4 text-text-primary font-normal">One-off webinar</strong>
+                  <span className="text-text-secondary">Nobody remembers it by Friday.</span>
+                </li>
+                <li className="bg-secondary border border-border p-8 rounded-2xl flex flex-col">
+                  <span className="font-bold uppercase tracking-widest text-sm text-text-secondary mb-2">Alternative</span>
+                  <strong className="font-display text-2xl uppercase mb-4 text-text-primary font-normal">Step challenge</strong>
+                  <span className="text-text-secondary">Two weeks of fun. Nothing lasting.</span>
+                </li>
+                <li className="bg-accent/10 border-2 border-accent p-8 rounded-2xl md:col-span-2 flex flex-col">
+                  <span className="font-bold uppercase tracking-widest text-sm text-accent mb-2">The Solution</span>
+                  <strong className="font-display text-3xl uppercase mb-4 text-text-primary font-normal">WRK Corporate Wellness</strong>
+                  <span className="text-text-primary font-bold text-xl">12-month structured programme. Coach-led. App-delivered. Trackable.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* SECTION 6 — ABOUT HAYDEN */}
+        {/* SECTION 8 — ABOUT HAYDEN */}
         <section className="py-24 px-6 lg:px-12 bg-secondary border-t border-border">
           <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-20">
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shrink-0 grayscale contrast-125 border-4 border-primary shadow-xl">
-               <img referrerPolicy="no-referrer" src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png" alt="Hayden Richards" className="w-full h-full object-cover" />
+               <img loading="lazy"  referrerPolicy="no-referrer" src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png" alt="Hayden Richards" className="w-full h-full object-cover" />
             </div>
             <div className="text-center md:text-left">
                <h2 className="font-display text-4xl uppercase text-text-primary mb-6 leading-[1.25]">
@@ -347,8 +364,8 @@ export const CorporateWellness: React.FC = () => {
                </h2>
                <div className="text-lg md:text-xl text-text-secondary leading-relaxed font-medium space-y-6">
                  <p>Hayden Richards has been coaching adults in Christchurch for 20+ years. He's worked with 200+ clients across a wide range of fitness levels, physical considerations, and life stages.</p>
-                 <p>The WRK Corporate Wellness Programme was built from the same principles that drive his personal training — minimum effective dose, practical nutrition, and accountability that actually works.</p>
-                 <p className="text-text-primary font-bold">This isn't a generic product with Hayden's name on it. It's a programme he designed and runs.</p>
+                 <p>The WRK Corporate Wellness Programme was built from the same principles that drive his <Link to="/personal-training" className="text-accent underline hover:text-accent/80 transition-colors">1 on 1 personal training in Christchurch</Link> — minimum effective dose, practical nutrition, and accountability that actually works.</p>
+                 <p className="text-text-primary font-bold">This isn't a generic product with Hayden's name on it. It's a programme he designed and runs. <Link to="/about" className="text-accent underline hover:text-accent/80 transition-colors">Meet Hayden</Link>.</p>
                </div>
             </div>
           </div>

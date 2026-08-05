@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Smartphone, BookOpen, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
@@ -34,15 +35,102 @@ export const Free14Day: React.FC = () => {
     },
     {
       question: "What happens after the 14 days?",
-      answer: "You'll have a clear foundation — a baseline, better habits, and a practical understanding of what actually works for fat loss. If you want to keep going with structured coaching, the 16-week WRK Online Coaching programme is the natural next step."
+      answer: (
+        <>
+          You'll have a clear foundation — a baseline, better habits, and a practical understanding of what actually works for fat loss. If you want to keep going with structured coaching, the 16-week <Link to="/online-coaching" className="text-accent underline hover:text-accent/80 transition-colors">WRK Online Coaching programme</Link> is the natural next step.
+        </>
+      ),
+      answerText: "You'll have a clear foundation — a baseline, better habits, and a practical understanding of what actually works for fat loss. If you want to keep going with structured coaching, the 16-week WRK Online Coaching programme is the natural next step."
     }
   ];
 
   return (
     <>
       <SeoHead 
-        title="14-Day Fat Loss Foundations | WRK Personal Training"
-        description="A structured starter programme for busy adults who want to lose fat, build better habits, and finally have a system that fits real life."
+        title="14-Day Fat Loss Programme | WRK Personal Training NZ"
+        description="The WRK 14-Day Fat Loss Programme gives busy adults a structured daily plan, three coaching guides, and a message from Hayden every morning. $14. Start anytime."
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "14-Day Fat Loss Programme",
+            "description": "A structured 14-day fat loss programme for busy adults across New Zealand. App-delivered, home or gym, built to establish the habits that drive sustainable fat loss.",
+            "brand": {
+              "@type": "Brand",
+              "name": "WRK Personal Training"
+            },
+            "image": "https://www.wrkpersonaltraining.co.nz/images/fat-loss-tracking.png",
+            "offers": {
+              "@type": "Offer",
+              "price": "14.00",
+              "priceCurrency": "NZD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://wrkpersonaltraining.mypthub.net/p/233801"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Is this suitable for complete beginners?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The programme is built around fundamentals — not intensity. You don't need any prior training experience. The workouts include gym and home options and the coaching guides are written in plain language, not fitness jargon."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much time does it take each day?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The training sessions run 30–45 minutes. The daily coaching message takes about two minutes to read. That's it. This is built for people with full schedules — not people with spare hours."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need a gym membership?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. All you need is a foam roller, a mat, and a pair of dumbbells. The programme works equally well at home or in the gym — your choice each day."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Will I need to track calories or follow a strict meal plan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The nutrition guide focuses on practical principles — protein, portion awareness, and consistency — not calorie counting or elimination diets. You'll learn how to make better choices without obsessing over numbers."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "I've tried programmes before and not finished them. How is this different?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most programmes fail because they're too complicated or too demanding to fit around real life. This one is 14 days, structured day by day, with a coaching message each morning to keep you on track. The goal isn't perfection — it's building enough momentum to make the next right choice."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What exactly do I get for $14?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A 14-day day-by-day training plan delivered through the WRK app, three practical coaching guides (Nutrition Basics, Meal Builder, Training + Recovery), and a daily coaching message from Hayden every morning throughout the programme."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens after the 14 days?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You'll have a clear foundation — a baseline, better habits, and a practical understanding of what actually works for fat loss. If you want to keep going with structured coaching, the 16-week WRK Online Coaching programme is the natural next step."
+                }
+              }
+            ]
+          }
+        ]}
       />
 
       <div className="flex flex-col w-full overflow-x-hidden bg-primary pb-24">
@@ -50,11 +138,11 @@ export const Free14Day: React.FC = () => {
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-             <img 
+             <img loading="lazy"  
                referrerPolicy="no-referrer" 
-               loading="eager" 
+                
                src="https://i.postimg.cc/WzYJSZSH/510454462-10227054382375367-4268206283149160141-n.jpg" 
-               alt="14-DAY FAT LOSS FOUNDATIONS" 
+               alt="14-day fat loss programme by WRK Personal Training, New Zealand" 
                className="w-full h-full object-cover object-top" 
              />
              <div 
@@ -69,10 +157,10 @@ export const Free14Day: React.FC = () => {
               14 DAYS · APP-DELIVERED · GYM OR HOME · $14
             </span>
             <h1 className="font-display text-[11vw] sm:text-[50px] md:text-[72px] lg:text-[84px] break-words leading-[1.1] text-white mb-6 uppercase max-w-[1000px]">
-              14-Day Fat Loss Foundations
+              14-Day Fat Loss Programme
             </h1>
             <div className="font-sans text-[18px] md:text-[20px] text-off-white font-medium max-w-[640px] mb-8 leading-[1.6]">
-              <p>A structured starter programme for busy adults who want to lose fat, build better habits, and finally have a system that fits real life.</p>
+              <p>The WRK 14-Day Fat Loss Programme is a structured starting point for busy adults who want to lose fat without extreme dieting or complicated meal plans. Fourteen days. A day-by-day plan in the WRK app. Three practical coaching guides. And regular supportive message and guidance. This fat loss programme is built with the real day to day stressors in mind.. $14. Start anytime.</p>
             </div>
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
               <a href={trialLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
@@ -153,7 +241,7 @@ export const Free14Day: React.FC = () => {
               Who It's For
             </h2>
             <div className="text-[18px] md:text-[20px] text-text-secondary leading-[1.6] font-medium space-y-6">
-              <p>Busy adults 35+ who want to lose fat without extreme diets, complicated meal plans, or hours of cardio.</p>
+              <p>Busy adults 35+ across New Zealand who want to lose fat without extreme diets, complicated meal plans, or hours of cardio.</p>
               <p>People who want a clear starting point and a simple system they can actually stick to.</p>
             </div>
           </div>
@@ -167,21 +255,21 @@ export const Free14Day: React.FC = () => {
               {/* Screenshot 1 */}
               <div className="snap-center shrink-0 w-[280px] md:w-auto flex flex-col gap-4">
                 <div className="aspect-[9/19] bg-primary rounded-[2rem] border-4 border-border shadow-xl overflow-hidden relative flex items-center justify-center bg-gradient-to-b from-primary to-secondary">
-                  <img referrerPolicy="no-referrer" src="https://i.postimg.cc/QdYrjgxT/IMG-2178.png" alt="Day 1/2 Plan View" className="w-full h-full object-cover" />
+                  <img loading="lazy"  referrerPolicy="no-referrer" src="https://i.postimg.cc/QdYrjgxT/IMG-2178.png" alt="Day 1/2 Plan View" className="w-full h-full object-cover" />
                 </div>
               </div>
 
               {/* Screenshot 2 */}
               <div className="snap-center shrink-0 w-[280px] md:w-auto flex flex-col gap-4 mt-0 md:mt-12">
                 <div className="aspect-[9/19] bg-primary rounded-[2rem] border-4 border-border shadow-xl overflow-hidden relative flex items-center justify-center bg-gradient-to-b from-primary to-secondary">
-                  <img referrerPolicy="no-referrer" src="https://i.postimg.cc/sgHR3PDG/IMG-2177.png" alt="Workout Detail View" className="w-full h-full object-cover" />
+                  <img loading="lazy"  referrerPolicy="no-referrer" src="https://i.postimg.cc/sgHR3PDG/IMG-2177.png" alt="Workout Detail View" className="w-full h-full object-cover" />
                 </div>
               </div>
 
               {/* Screenshot 3 */}
               <div className="snap-center shrink-0 w-[280px] md:w-auto flex flex-col gap-4">
                 <div className="aspect-[9/19] bg-primary rounded-[2rem] border-4 border-border shadow-xl overflow-hidden relative flex items-center justify-center bg-gradient-to-b from-primary to-secondary">
-                  <img referrerPolicy="no-referrer" src="https://i.postimg.cc/8zXVTdPr/IMG-2179.jpg" alt="PDF Resource View" className="w-full h-full object-cover" />
+                  <img loading="lazy"  referrerPolicy="no-referrer" src="https://i.postimg.cc/8zXVTdPr/IMG-2179.jpg" alt="PDF Resource View" className="w-full h-full object-cover" />
                 </div>
               </div>
 
@@ -193,12 +281,12 @@ export const Free14Day: React.FC = () => {
         <section className="py-24 px-6 lg:px-12 bg-primary">
           <div className="max-w-[800px] mx-auto text-center flex flex-col items-center">
             <h2 className="font-display text-4xl md:text-5xl uppercase text-text-primary mb-10 leading-[1.25]">
-              About The Programme
+              About The Fat Loss Programme
             </h2>
             <div className="text-lg md:text-[20px] text-text-secondary leading-relaxed font-medium space-y-6 text-left md:text-center">
               <p>Fourteen days. Three PDFs. A structured daily plan. Daily coaching messages.</p>
               <p>Not a crash diet. Not a transformation challenge. A foundation — built around the habits and fundamentals that actually drive fat loss over time.</p>
-              <p>By the end you'll know how to structure your training, make better nutrition choices without tracking everything, and build the consistency that makes results stick.</p>
+              <p>By the end you'll know how to structure your training, make better nutrition choices without tracking everything, and build the consistency that makes results stick. Built here in Christchurch, delivered anywhere in NZ through the WRK app — using the same approach behind Hayden's <Link to="/personal-training" className="text-accent underline hover:text-accent/80 transition-colors">1:1 personal training in Christchurch</Link>.</p>
             </div>
           </div>
         </section>
@@ -207,7 +295,7 @@ export const Free14Day: React.FC = () => {
         <section className="py-24 px-6 lg:px-12 bg-secondary border-t border-border">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-16">
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-[2rem] overflow-hidden shrink-0 grayscale contrast-125 border border-border shadow-xl">
-               <img referrerPolicy="no-referrer" src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png" alt="Hayden Richards" className="w-full h-full object-cover object-top" />
+               <img loading="lazy"  referrerPolicy="no-referrer" src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png" alt="Hayden Richards" className="w-full h-full object-cover object-top" />
             </div>
             <div className="text-center md:text-left flex-1">
                <h3 className="font-display text-3xl md:text-4xl uppercase text-text-primary mb-2">Hayden Richards — WRK Personal Training</h3>

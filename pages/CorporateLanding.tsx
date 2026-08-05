@@ -137,12 +137,12 @@ export const CorporateLanding: React.FC = () => {
             ].map((item, i) => (
               <div key={i} className="group flex flex-col">
                 <div className="rounded-[2rem] overflow-hidden mb-8 border border-border bg-primary aspect-[4/5] relative">
-                  <img 
+                  <img loading="lazy"  
                     src={item.image} 
                     alt={item.title} 
                     className="absolute inset-0 w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0" 
                     referrerPolicy="no-referrer"
-                    loading="lazy"
+                    
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>

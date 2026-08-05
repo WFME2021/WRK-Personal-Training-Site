@@ -74,8 +74,22 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
   };
 
   const addLink = () => {
-    const url = window.prompt('Enter the URL:');
-    if (url) exec('createLink', url);
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) {
+      alert('Please select some text first to create a link.');
+      return;
+    }
+    
+    // Save the selection range
+    const range = selection.getRangeAt(0);
+    
+    const url = window.prompt('Enter the URL (e.g., https://www.wrkpersonaltraining.co.nz/about):');
+    if (url) {
+      // Restore the selection range
+      selection.removeAllRanges();
+      selection.addRange(range);
+      exec('createLink', url);
+    }
   };
 
   const fileInputRef = useRef<HTMLInputElement>(null);

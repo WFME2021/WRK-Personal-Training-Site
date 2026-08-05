@@ -6,12 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/personal-trainer-christchurch</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/personal-training-christchurch-philosophy</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/personal-training</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -31,12 +26,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/services</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/online-personal-training-nz</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/online-coaching</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -46,7 +36,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/fitness-challenge-nz</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/14-day-fat-loss-foundations</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/couch-to-5km</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -69,5 +64,89 @@
     <loc>https://www.wrkpersonaltraining.co.nz/tools/1rm-estimator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/creatine-benefits-dosage-safety</loc>
+    <lastmod>2026-03-16T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/healthy-meal-prep-for-busy-adults</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/how-to-start-strength-training</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/why-you-keep-starting-and-stopping-exercise</loc>
+    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/personal-trainer-christchurch-what-to-look-for</loc>
+    <lastmod>2026-03-26T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/high-protein-breakfast-ideas</loc>
+    <lastmod>2026-03-27T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/menopause-nutrition</loc>
+    <lastmod>2026-03-29T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/strength-training-during-menopause</loc>
+    <lastmod>2026-03-30T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/how-often-should-you-train-for-fat-loss</loc>
+    <lastmod>2026-04-10T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/low-energy-after-work</loc>
+    <lastmod>2026-04-20T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/can-you-still-lose-weight-and-drink-alcohol</loc>
+    <lastmod>2026-05-04T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/couch-to-5km-run</loc>
+    <lastmod>2026-07-11T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/is-it-worth-hiring-a-personal-trainer</loc>
+    <lastmod>2026-07-13T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/calorie-calculator</loc>
+    <lastmod>2026-07-22T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

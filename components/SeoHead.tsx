@@ -65,6 +65,16 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
       script.textContent = JSON.stringify(schema);
     }
 
+
+    // 5. Update Canonical Tag
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', canonicalUrl);
+
     // Cleanup function
     return () => {
       // Optional: Reset title or meta tags if needed on unmount

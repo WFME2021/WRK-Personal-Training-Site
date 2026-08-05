@@ -9,6 +9,10 @@ import { FAQ } from '../components/FAQ';
 export const OnlineCoaching: React.FC = () => {
   const faqItems = [
     {
+      question: "Do I need to be in Christchurch or NZ for online coaching?",
+      answer: "No. The whole point of online coaching is that location doesn't matter. Most of my online clients are based around New Zealand, but I coach people wherever they are. Same programme, same standard, delivered through the app."
+    },
+    {
       question: "What happens in the initial consult?",
       answer: "A free 20–30 minute call covering your goals, training history, injuries, physical considerations, and your available equipment and environment. Everything discussed becomes the foundation of your programme. Nothing is assumed. Nothing is generic."
     },
@@ -57,8 +61,24 @@ export const OnlineCoaching: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Online Fitness Coach New Zealand | 16-Week Coaching | WRK"
-        description="Hayden Richards - WRK Personal Training. Structured fat loss and strength coaching for adults 35+ across New Zealand. Expert programming, practical nutrition, and an online personal trainer who actually keeps you accountable."
+        title="Online Fitness Coach NZ | 16-Week Fat Loss & Strength Programme | WRK"
+        description="WRK is an online fitness coach for busy New Zealanders aged 35 to 60. A bespoke 16-week fat loss and strength programme, delivered through the WRK app with bi-weekly check-ins from Hayden Richards."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Online Fitness Coaching",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "WRK Personal Training"
+          },
+          "areaServed": ["New Zealand", "Worldwide"],
+          "description": "Online fitness coaching for busy professionals aged 35–60. A structured 16-week fat loss and strength programme delivered through the WRK app, coached by Hayden Richards.",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "NZD",
+            "description": "16-week online coaching programme — free consult, $99 programme design, weekly ongoing rate"
+          }
+        }}
       />
 
       <div className="flex flex-col w-full overflow-x-hidden bg-primary pb-24">
@@ -66,9 +86,9 @@ export const OnlineCoaching: React.FC = () => {
         {/* SECTION 1 — HERO */}
         <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
           <div className="absolute inset-0 z-0">
-             <img 
+             <img loading="lazy"  
                referrerPolicy="no-referrer" 
-               loading="eager" 
+                
                src="https://i.postimg.cc/1t9HjpcR/508833357-30407543532163264-7406991278294427854-n.jpg" 
                alt="ONLINE FITNESS COACH | NEW ZEALAND" 
                className="w-full h-full object-cover object-top" 
@@ -82,13 +102,13 @@ export const OnlineCoaching: React.FC = () => {
           </div>
           <div className="relative z-10 w-full px-5 pt-32 pb-12 md:pb-24 max-w-[1200px] mx-auto md:px-12 text-left">
             <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-orange-burnt mb-4">
-              ONLINE FITNESS COACH · 16-WEEK PROGRAMME · WORLDWIDE
+              ONLINE FITNESS COACH · NEW ZEALAND & WORLDWIDE · 16-WEEK PROGRAMME
             </span>
             <h1 className="font-display text-[44px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-[1.1] sm:leading-[1.1] text-white mb-6 uppercase max-w-[1000px]">
-              Online Fitness Coaching for Busy Professionals 35–60
+              Online Fitness Coach NZ
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-off-white font-medium max-w-[640px] mb-8 leading-[1.6]">
-              Twenty years of coaching distilled into one structured 16-week fat loss and strength programme. Built around your schedule, your goals, and a body that's ready to perform — not just survive the week.
+              Online fitness coach for busy New Zealanders aged 35 to 60. Same standard as in-person, delivered anywhere in NZ through the WRK app. As your online fitness coach, I build a bespoke 16-week fat loss and strength programme around your schedule, your goals, and your body - with regular check-ins and direct access to me throughout.
             </p>
             <div className="flex flex-col md:flex-row items-start gap-4">
               <Link to="/contact" className="w-full sm:w-auto">
@@ -265,7 +285,7 @@ export const OnlineCoaching: React.FC = () => {
               WHO THIS WORKS FOR
             </span>
             <h2 className="font-display text-4xl md:text-5xl uppercase text-text-primary mb-12 leading-[1.25]">
-              Who This Works For
+              Who This Online Coaching Works For
             </h2>
             <div className="text-xl text-text-secondary leading-relaxed font-medium space-y-6 text-left w-full max-w-3xl">
               <ul className="space-y-6">
@@ -283,9 +303,14 @@ export const OnlineCoaching: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="mr-4 text-text-primary font-black opacity-30 mt-1">•</span>
-                  <p className="text-text-primary font-medium">If you want a coach — not a content library and a chatbot.</p>
+                  <p className="text-text-primary font-medium">If you want a coach — not a content library and a chatbot. <Link to="/about" className="text-accent underline hover:text-accent/80 transition-colors">Meet Hayden</Link>.</p>
                 </li>
               </ul>
+              <div className="pt-6 border-t border-border mt-8">
+                <p className="text-lg text-text-secondary">
+                  Prefer to train in person? <Link to="/personal-training" className="text-accent underline hover:text-accent/80 transition-colors">See 1:1 Personal Training in Christchurch</Link>.
+                </p>
+              </div>
             </div>
           </div>
         </section>
