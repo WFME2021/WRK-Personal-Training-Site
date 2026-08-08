@@ -1,340 +1,209 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
-import { ArrowLeft, CheckCircle2, Loader2 } from 'lucide-react';
-import { assessmentData } from '../data/assessmentData';
-import { calculateArchetype, calculateRecommendation, Answers } from '../services/assessmentLogic';
-import { submitAssessment } from '../services/apiService';
+import { Button } from '../components/Button';
 
 export const Assessment: React.FC = () => {
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(-1); // -1 is intro
-  const [answers, setAnswers] = useState<Answers>({});
-  const [isCalculating, setIsCalculating] = useState(false);
-  const [showPreGate, setShowPreGate] = useState(false);
-  const [calculatingLine, setCalculatingLine] = useState(0);
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({ path: '', weights: '', protein: '', fatigue: '' });
+  const [riskProfile, setRiskProfile] = useState('Medium');
+  const [leadData, setLeadData] = useState({ name: '', email: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const questions = assessmentData.questions;
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isCalculating) {
-      interval = setInterval(() => {
-        setCalculatingLine(prev => (prev + 1) % assessmentData.uiCopy.interstitial.rotatingLines.length);
-      }, assessmentData.uiCopy.interstitial.durationMs / assessmentData.uiCopy.interstitial.rotatingLines.length);
-      
-      setTimeout(() => {
-        setIsCalculating(false);
-        setShowPreGate(true);
-      }, assessmentData.uiCopy.interstitial.durationMs);
-    }
-    return () => clearInterval(interval);
-  }, [isCalculating]);
-
-  const handleNext = (questionId: string, optionId: string) => {
-    const newAnswers = { ...answers, [questionId]: optionId };
-    setAnswers(newAnswers);
-    
-    setTimeout(() => {
-      if (questionId === 'q6_flags') {
-        if (optionId === 'manageable' || optionId === 'limits') {
-          setCurrentStep(questions.length - 1); // Jump to q6_sub, assuming it's the last question in the array
-          return;
-        }
-      }
-      
-      // Calculate next step
-      let nextStep = currentStep + 1;
-      // Skip q6_sub if we are at q6_flags and answer is 'none'
-      if (questionId === 'q6_flags' && optionId === 'none') {
-        setIsCalculating(true);
-        return;
-      }
-
-      if (nextStep >= questions.length - 1 && questionId === 'q6_sub') {
-         setIsCalculating(true);
-      } else if (nextStep < questions.length) {
-        setCurrentStep(nextStep);
-        window.scrollTo(0, 0);
-      } else {
-        setIsCalculating(true);
-      }
-    }, 400);
-  };
-
-  const handleBack = () => {
-    if (currentStep === -1) {
-      navigate(-1);
-    } else {
-      setCurrentStep(prev => prev - 1);
-    }
-  };
-
-  const handleUnlock = async (e: React.FormEvent) => {
+  const handleAssessmentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !name || isSubmitting) return;
+    
+    if (formData.weights === 'high-risk' || formData.protein === 'high-risk' || formData.fatigue === 'high-risk') {
+      setRiskProfile('High');
+    } else if (formData.weights === 'low-risk' && formData.protein === 'low-risk') {
+      setRiskProfile('Low');
+    } else {
+      setRiskProfile('Medium');
+    }
+    setStep(2);
+  };
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!leadData.name || !leadData.email) {
+      setError('Please provide both name and email.');
+      return;
+    }
     
     setIsSubmitting(true);
-
-    const composedResult = {
-      archetype: calculateArchetype(answers),
-      recommendation: calculateRecommendation(answers),
-      doseKey: answers['q3_time'] || 'three_days',
-      goalLabel: assessmentData.derived.goalLabels[answers['q2_goal'] as keyof typeof assessmentData.derived.goalLabels] || 'your goal'
-    };
-    
-    let resToken = null;
+    setError('');
 
     try {
-      const response = await submitAssessment({ name, email, answers, composedResult });
-      if (response && response.token) {
-        resToken = response.token;
-      }
-    } catch (error) {
-      console.error('Failed to submit assessment:', error);
-      localStorage.setItem('pendingAssessmentSync', JSON.stringify({ name, email, answers, timestamp: Date.now() }));
-    } finally {
-      setIsSubmitting(false);
-      if (resToken) {
-        navigate(`/assessment/result/${resToken}`, { state: { answers, email, name, composedResult } });
+      const response = await fetch('/api/assessment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: leadData.name,
+          email: leadData.email,
+          answers: formData,
+          intervention: formData.path,
+          challenge: formData.fatigue,
+          riskProfile,
+          tag: `GLP1_${riskProfile}_Risk`
+        }),
+      });
+
+      if (response.ok) {
+        navigate('/results', { state: { name: leadData.name, answers: formData, riskProfile } });
       } else {
-        navigate('/results', { state: { answers, email, name, composedResult }, replace: true });
+        throw new Error('Failed to submit assessment');
       }
+    } catch (err: any) {
+      setError(err.message || 'An error occurred. Please try again.');
+      setIsSubmitting(false);
     }
   };
-
-  if (isCalculating) {
-    return (
-      <div className="min-h-screen bg-primary flex flex-col items-center justify-center p-6 text-center">
-        <Loader2 className="w-12 h-12 text-accent animate-spin mb-8" />
-        <h2 className="text-3xl font-display uppercase mb-4">
-          {assessmentData.uiCopy.interstitial.title}
-        </h2>
-        
-      </div>
-    );
-  }
-
-  if (showPreGate) {
-    const archetype = calculateArchetype(answers);
-    const doseKey = answers['q3_time'] || 'three_days';
-    const goalLabel = assessmentData.derived.goalLabels[answers['q2_goal'] as keyof typeof assessmentData.derived.goalLabels] || 'your goal';
-    const doseLabel = assessmentData.derived.dose[doseKey as keyof typeof assessmentData.derived.dose]?.label || '3-Day';
-    
-    const focusText = archetype?.focusTemplate.replace('{goalLabel}', goalLabel);
-    const weeklyStructure = archetype ? archetype.weeklyStructureCopyByDose[doseKey as keyof typeof archetype.weeklyStructureCopyByDose] : undefined;
-
-    return (
-      <div className="min-h-screen bg-primary pt-32 pb-24 px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-4">
-              {assessmentData.uiCopy.preGate.headline}
-            </span>
-            <h1 className="text-4xl md:text-5xl font-display uppercase mb-6">
-              {archetype?.primaryBottleneck}
-            </h1>
-            <p className="text-xl text-text-secondary">
-              {archetype?.microRevealLine}
-            </p>
-          </div>
-
-          <div className="bg-secondary p-8 rounded-2xl mb-12 border border-border">
-            <h2 className="text-2xl font-bold mb-4">{archetype?.strategyName}</h2>
-            <p className="text-text-secondary mb-6">{archetype?.strategyBlurb}</p>
-            <p className="font-medium text-text-primary mb-8">{focusText}</p>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-lg font-bold mb-3">{archetype?.stressValveTitle}</h3>
-                <p className="text-text-secondary">{archetype?.stressValveCopy}</p>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold mb-3">{archetype?.weeklyStructureTitle}</h3>
-                <p className="font-medium mb-2">{weeklyStructure?.title}</p>
-                <ul className="space-y-2">
-                  {weeklyStructure?.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-3 text-text-secondary">
-                      <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-secondary p-8 rounded-2xl shadow-xl border border-border text-center">
-            <div className="mb-8 space-y-3">
-              <div className="flex items-center gap-3 justify-center p-3 rounded-lg border border-border bg-primary/50 text-text-secondary opacity-75">
-                <span className="text-xl">🔒</span>
-                <span className="font-bold">Progression Guardrails</span>
-              </div>
-              <div className="flex items-center gap-3 justify-center p-3 rounded-lg border border-border bg-primary/50 text-text-secondary opacity-75">
-                <span className="text-xl">🔒</span>
-                <span className="font-bold">Nutrition Anchor</span>
-              </div>
-              <div className="flex items-center gap-3 justify-center p-3 rounded-lg border border-border bg-primary/50 text-text-secondary opacity-75">
-                <span className="text-xl">🔒</span>
-                <span className="font-bold">Your Next 7 Days</span>
-              </div>
-            </div>
-            
-            <h2 className="text-3xl font-display uppercase text-text-primary mb-4">
-              {assessmentData.uiCopy.preGate.unlockTitleTemplate.replace('{blueprintName}', archetype?.postGate.blueprintName || 'Blueprint')}
-            </h2>
-            <p className="text-text-secondary mb-8">
-              {assessmentData.uiCopy.preGate.unlockSubtitle}
-            </p>
-            <form onSubmit={handleUnlock} className="max-w-md mx-auto space-y-4 text-left">
-              <div>
-                <label className="block text-sm font-bold text-text-primary mb-2 uppercase tracking-wider">
-                  {assessmentData.uiCopy.preGate.nameFieldLabel}
-                </label>
-                <input 
-                  type="text" 
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-primary focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all text-text-primary"
-                  placeholder="Your first name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-text-primary mb-2 uppercase tracking-wider">
-                  {assessmentData.uiCopy.preGate.emailFieldLabel}
-                </label>
-                <input 
-                  type="email" 
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-primary focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all text-text-primary"
-                  placeholder="you@example.com"
-                />
-              </div>
-              <Button type="submit" variant="primary" className="w-full py-4 text-lg mt-4" disabled={isSubmitting}>
-                {isSubmitting ? 'Unlocking...' : assessmentData.uiCopy.preGate.buttonLabel}
-              </Button>
-              <p className="text-sm text-center text-text-primary mt-3 font-medium">
-                {assessmentData.uiCopy.preGate.deliveryLine}
-              </p>
-              <p className="text-xs text-center text-text-secondary mt-4">
-                {assessmentData.uiCopy.preGate.reassuranceLine}
-              </p>
-              
-            </form>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // INTRO STEP
-  if (currentStep === -1) {
-    return (
-      <>
-        <SeoHead 
-          title="Free Training Plan Diagnostic | WRK Personal Training Christchurch"
-          description="6 questions, 2 minutes. Get a training week built around your schedule, stress load and goals. Built by a coach with 20 years experience."
-        />
-        <div className="min-h-screen bg-primary pt-32 pb-24 px-5 sm:px-6 flex flex-col">
-          <div className="max-w-[360px] sm:max-w-xl mx-auto w-full flex-grow flex flex-col justify-center">
-            <div className="text-left sm:text-center mb-12">
-              <span className="inline-block text-accent text-sm font-bold uppercase tracking-wider mb-6">
-                Free. 6 questions. 2 minutes.
-              </span>
-              <h1 className="text-[32px] leading-tight sm:text-5xl md:text-6xl font-display uppercase mb-6 text-text-primary">
-                Get a training week built around your schedule, your stress load and your body.
-              </h1>
-              <p className="text-base sm:text-xl text-text-secondary mb-6">
-                Answer 6 questions. You'll get a specific plan you can start this week. Not generic tips. An actual week of training with the reasoning behind it.
-              </p>
-              
-              <div className="flex items-center gap-4 mb-10 sm:justify-center">
-                <div className="w-12 h-12 rounded-full bg-secondary overflow-hidden shrink-0 border border-border">
-                  <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=200&auto=format&fit=crop" alt="Hayden Richards" className="w-full h-full object-cover" />
-                </div>
-                <p className="text-sm sm:text-base text-text-secondary font-medium text-left">
-                  Built by Hayden Richards. 20 years coaching busy people aged 35 to 60, in Christchurch and online.
-                </p>
-              </div>
-
-              <Button onClick={() => setCurrentStep(0)} variant="primary" className="w-full sm:w-auto px-12 py-4 h-12 text-base font-bold">
-                Start. Takes 2 minutes.
-              </Button>
-              <p className="text-xs text-text-secondary mt-3 text-center">
-                No email needed to start.
-              </p>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  // QUESTION STEPS
-  const question = questions[currentStep];
-  const progress = ((currentStep + 1) / questions.length) * 100;
 
   return (
     <>
-      <SeoHead title={`Question ${currentStep + 1} | Capacity Blueprint`} />
-      <div className="min-h-screen bg-primary pt-24 pb-24 px-6 flex flex-col">
-        {/* Progress Bar */}
-        <div className="fixed top-0 left-0 w-full h-1 bg-secondary z-50">
-          <div 
-            className="h-full bg-accent transition-all duration-500 ease-out"
-            style={{ width: `${progress}%` }}
-          />
+      <SeoHead 
+        title="Free Metabolic Defense Screener | WRK Personal Training"
+        description="Take our rapid, non-diagnostic screening tool to review general indicators of potential lean mass and bone density protection during rapid weight loss."
+      />
+      
+      <div className="flex flex-col w-full min-h-screen bg-navy text-white pt-24 pb-12 px-5 md:px-12 items-center justify-center relative">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-navy opacity-90" />
         </div>
+        
+        <div className="relative z-10 max-w-[800px] w-full mx-auto p-8 bg-navy-mid rounded-[24px] shadow-2xl border border-navy-light my-12">
+          {step === 1 ? (
+            <form onSubmit={handleAssessmentSubmit} className="space-y-8">
+              <div className="text-center mb-8">
+                <h1 className="font-display text-[40px] md:text-[56px] uppercase leading-[1.1] mb-4 text-white">Muscle Preservation & Structural Support Screener</h1>
+                <p className="font-sans text-[16px] text-off-white/80">
+                  Review how your current physical habits align with universal physiological parameters during rapid medical weight loss. This tool is educational and does not constitute medical advice.
+                </p>
+              </div>
 
-        <div className="max-w-2xl mx-auto w-full">
-          <button 
-            onClick={handleBack}
-            className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors mb-12 group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm font-bold uppercase tracking-wider">Back</span>
-          </button>
+              {/* Q1: Clinical Journey Context */}
+              <div className="space-y-3">
+                <label className="block font-sans font-bold text-[16px] text-white">1. What is your current medical weight loss pathway?</label>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.path} onChange={(e) => setFormData({...formData, path: e.target.value})}>
+                  <option value="">Select your current framework...</option>
+                  <option value="glp1">I am using a prescribed GLP-1 intervention (e.g., tirzepatide, retatrutide, or variants)</option>
+                  <option value="bariatric">I am post-operative or recovering from metabolic/bariatric surgery</option>
+                  <option value="general">I am pursuing holistic, standard rapid fat-loss protocols</option>
+                </select>
+              </div>
 
-          <div className="mb-12">
-            <span className="text-accent text-sm font-bold uppercase tracking-wider mb-4 block">
-              Question {currentStep + 1 > 6 ? 6 : currentStep + 1} of 6
-            </span>
-            <h2 className="text-3xl md:text-4xl font-display uppercase">
-              {question.prompt}
-            </h2>
-          </div>
+              {/* Q2: Resistance Stimulus */}
+              <div className="space-y-3">
+                <label className="block font-sans font-bold text-[16px] text-white">2. How many times per week do you perform structured resistance or strength training?</label>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.weights} onChange={(e) => setFormData({...formData, weights: e.target.value})}>
+                  <option value="">Select an option...</option>
+                  <option value="low-risk">2 or more sessions weekly using intentional progressive overload</option>
+                  <option value="med-risk">1 casual session or baseline bodyweight/mobility protocols</option>
+                  <option value="high-risk">Primarily lower-intensity cardio tracking or minimal movement at present</option>
+                </select>
+              </div>
 
-          <div className="space-y-4">
-            {question.options.map((option) => (
-              <button
-                key={option.id}
-                onClick={() => handleNext(question.id, option.id)}
-                className={`w-full text-left p-6 rounded-xl border-2 transition-all duration-200 flex items-center justify-between group
-                  ${answers[question.id] === option.id 
-                    ? 'border-accent bg-accent/5' 
-                    : 'border-border bg-secondary hover:border-accent/50 hover:bg-secondary/80'
-                  }
-                `}
-              >
-                <span className="text-lg font-medium text-text-primary group-hover:text-accent transition-colors">
-                  {option.label}
-                </span>
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors
-                  ${answers[question.id] === option.id ? 'border-accent bg-accent' : 'border-text-secondary/30 group-hover:border-accent/50'}
-                `}>
-                  {answers[question.id] === option.id && <div className="w-2 h-2 bg-primary rounded-full" />}
-                </div>
-              </button>
-            ))}
-          </div>
+              {/* Q3: Protein Prioritisation */}
+              <div className="space-y-3">
+                <label className="block font-sans font-bold text-[16px] text-white">3. On a typical day, how would you describe your nutritional protein focus?</label>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.protein} onChange={(e) => setFormData({...formData, protein: e.target.value})}>
+                  <option value="">Select an option...</option>
+                  <option value="low-risk">High focus: I intentionally track intake targets daily</option>
+                  <option value="med-risk">Moderate focus: Appetite suppression makes consuming consistent solid proteins difficult</option>
+                  <option value="high-risk">Low focus: Substantial appetite suppression means protein tracking is rare</option>
+                </select>
+              </div>
+
+              {/* Q4: Physiological Response */}
+              <div className="space-y-3">
+                <label className="block font-sans font-bold text-[16px] text-white">4. Which indicator best describes your current systemic physical feedback?</label>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.fatigue} onChange={(e) => setFormData({...formData, fatigue: e.target.value})}>
+                  <option value="">Select an option...</option>
+                  <option value="high-risk">Experiencing notable feelings of lingering fatigue, weakness, or physical exhaustion</option>
+                  <option value="med-risk">Experiencing occasional bouts of mild nausea, low motivation, or joint stiffness</option>
+                  <option value="low-risk">Physical energy feels consistently stable and supported</option>
+                </select>
+              </div>
+
+              <Button type="submit" size="lg" className="w-full mt-8">
+                Review Immediate On-Screen Insights
+              </Button>
+            </form>
+          ) : (
+            <div className="space-y-8">
+              <div className="p-6 rounded-[16px] border bg-navy border-navy-light">
+                <h2 className="font-display text-[28px] uppercase mb-4 text-white">📊 Preliminary Analysis Complete</h2>
+                
+                {riskProfile === 'High' && (
+                  <div className="text-off-white/90 space-y-4 font-sans text-[16px]">
+                    <p className="font-bold text-red-400">⚠️ Risk Status Indicators Suggest Potential Lean Tissue Vulnerability</p>
+                    <p>
+                      Your tracking inputs indicate a behavioral pattern that frequently correlates with accelerated lean mass and skeletal density reduction during periods of rapid weight loss <a href="/resources#sarcopenia" className="text-orange-burnt hover:underline text-sm">[1]</a>. 
+                    </p>
+                    <p>
+                      When caloric variables fall drastically short of foundational metabolic demands without targeted muscular loading, data suggests a possibility of structural fatigue rather than optimal fat metabolism <a href="/resources#deficit" className="text-orange-burnt hover:underline text-sm">[2]</a>.
+                    </p>
+                  </div>
+                )}
+
+                {riskProfile === 'Medium' && (
+                  <div className="text-off-white/90 space-y-4 font-sans text-[16px]">
+                    <p className="font-bold text-gold-rule">⚡ Risk Status Indicators Suggest An Elevated Stagnation Pattern</p>
+                    <p>
+                      Your variables suggest your routine may be entering a common plateau window. While your general activity pathway is positive, clinical trends note that inconsistent load progression can create vulnerabilities where the body may draw on muscle tissue for adaptive fuel <a href="/resources#progression" className="text-orange-burnt hover:underline text-sm">[3]</a>.
+                    </p>
+                  </div>
+                )}
+
+                {riskProfile === 'Low' && (
+                  <div className="text-off-white/90 space-y-4 font-sans text-[16px]">
+                    <p className="font-bold text-green-400">✅ Risk Status Indicators Suggest An Active Muscle Defense Baseline</p>
+                    <p>
+                      Your current tracking trends match well with recommended sports science frameworks designed to help keep lean skeletal framework structures protected during metabolic updates <a href="/resources#preservation" className="text-orange-burnt hover:underline text-sm">[4]</a>.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Tier 2: Email Capture Box */}
+              <div className="p-8 bg-navy border border-navy-light rounded-[16px] text-center space-y-6">
+                <h3 className="font-display text-[28px] uppercase text-white">Unlock Your Complete Position-Specific Support Breakdown</h3>
+                <p className="font-sans text-[16px] text-off-white/80 max-w-[500px] mx-auto">
+                  Enter your email to receive an expert, position-specific automated email breakdown detailing general protein threshold calculations and a 3-step structured physical loading layout tailored around your risk layer.
+                </p>
+                
+                <form onSubmit={handleLeadSubmit} className="space-y-4 max-w-[400px] mx-auto">
+                  <input type="hidden" name="tag" value={`GLP1_${riskProfile}_Risk`} />
+                  <input 
+                    type="text" 
+                    name="name" 
+                    value={leadData.name}
+                    onChange={(e) => setLeadData({...leadData, name: e.target.value})}
+                    placeholder="First Name" 
+                    required 
+                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:border-orange-burnt transition-colors" 
+                  />
+                  <input 
+                    type="email" 
+                    name="email" 
+                    value={leadData.email}
+                    onChange={(e) => setLeadData({...leadData, email: e.target.value})}
+                    placeholder="Email Address" 
+                    required 
+                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:border-orange-burnt transition-colors" 
+                  />
+                  {error && <p className="text-red-400 text-sm font-sans">{error}</p>}
+                  <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting}>
+                    {isSubmitting ? 'Processing...' : 'Unlock My Complete Breakdown'}
+                  </Button>
+                </form>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>

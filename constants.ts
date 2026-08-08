@@ -6,16 +6,11 @@ export const LOCATION = "Christchurch, New Zealand";
 export const SERVICE_LINKS = [
   { label: "1:1 Personal Training", path: "/personal-training" },
   { label: "Online Coaching", path: "/online-coaching" },
-  { label: "Corporate Wellness", path: "/workplace-wellness-program-nz" },
 ];
 
-export const PROGRAMMES_LINKS = [
-  { label: "14-Day Fat Loss Programme", path: "/14-day-fat-loss-foundations" },
-  { label: "Couch to 5km", path: "/couch-to-5km" },
-];
+export const PROGRAMMES_LINKS = [{ label: "12-Week Programs", path: "/programs" }];
 
 export const NAVIGATION_LINKS = [
-  { label: "Tools", path: "/tools" },
   { label: "Blog", path: "/blog" },
-  { label: "Free Assessment", path: "/assessment", isPrimary: true },
+  { label: "Free Screening", path: "/assessment", isPrimary: true },
 ];

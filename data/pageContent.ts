@@ -45,7 +45,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   home: {
     seo: {
       title: "Personal Trainer Christchurch & Online Coaching | WRK PT",
-      description: "Christchurch personal trainer Hayden Richards — expert 1:1 and online fat loss coaching for busy professionals aged 35–60 across NZ. No fluff, real results."
+      description: "Christchurch personal trainer Hayden Richards — expert 1:1 and online muscle preservation coaching for busy professionals aged 35–60 across NZ. No fluff, real results."
     },
     hero: {
       h1: "Train Smarter. <br/><span class='text-accent'>Play Harder.</span>",
@@ -90,11 +90,11 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   services: {
     seo: {
       title: "Services | WRK Personal Training",
-      description: "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting."
+      description: "Choose the coaching option that fits your life—muscle preservation, less pain, and consistency without gym dominance or restrictive dieting."
     },
     hero: {
       h1: "PERSONAL TRAINING <span class='text-accent'>SERVICES</span>",
-      subhead: "Choose the coaching option that fits your life—fat loss, less pain, and consistency without gym dominance or restrictive dieting.",
+      subhead: "Choose the coaching option that fits your life—muscle preservation, less pain, and consistency without gym dominance or restrictive dieting.",
       bullets: [
         "1:1 Christchurch Coaching",
         "Online Coaching (12-Week Mini)",
@@ -234,7 +234,7 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
     },
     banner: {
       tagline: "Less fluff. More progress you can repeat.",
-      support: "Practical guidance for fat loss, pain reduction, and consistency.",
+      support: "Practical guidance for muscle preservation, pain reduction, and consistency.",
       image: "https://i.postimg.cc/WbYZJ20S/Start-Strength-Training-When-You-Feel-Unfit.jpg"
     }
   },
@@ -263,11 +263,11 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   calorieCalculator: {
     seo: {
       title: "Free Calorie Calculator | TDEE & Macros | WRK PT",
-      description: "Use this calorie calculator to work out your daily calories for fat loss, maintenance, or muscle gain. Includes protein targets and a Party Fund for real life."
+      description: "Use this calorie calculator to work out your daily calories for muscle preservation, maintenance, or muscle gain. Includes protein targets and a Party Fund for real life."
     },
     hero: {
       h1: "Calorie Calculator",
-      subhead: "Use this calorie calculator to estimate your daily calorie needs based on your body, activity level, and goal (fat loss, maintenance, or muscle gain). It gives you a clear starting target you can actually follow — without crash dieting, over-tracking, or guessing what “healthy” means.",
+      subhead: "Use this calorie calculator to estimate your daily calorie needs based on your body, activity level, and goal (muscle preservation, maintenance, or muscle gain). It gives you a clear starting target you can actually follow — without crash dieting, over-tracking, or guessing what “healthy” means.",
       bullets: [
         "Daily Calorie Target",
         "Protein Targets",

@@ -1,328 +1,105 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { db } from '../firebase';
-import { doc, getDoc } from 'firebase/firestore';
-import { Loader2 } from 'lucide-react';
+import React, { useEffect } from 'react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
-import { CheckCircle2, ArrowRight, Calendar, Activity, ShieldCheck, Zap, Dumbbell } from 'lucide-react';
-import { assessmentData } from '../data/assessmentData';
-import { calculateArchetype, calculateRecommendation, Answers } from '../services/assessmentLogic';
 
 export const Results: React.FC = () => {
   const location = useLocation();
-  const state = location.state as { answers?: Answers; email?: string; name?: string };
+  const state = location.state as { answers?: Record<string, string>; name?: string; riskProfile?: string };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!state?.answers || !state?.email) {
+  if (!state?.name) {
     return <Navigate to="/assessment" replace />;
   }
 
-  const { answers, name } = state;
-  const composedResult = (state as any)?.composedResult;
-  const archetype = composedResult?.archetype || calculateArchetype(answers);
-  const recommendation = composedResult?.recommendation || calculateRecommendation(answers);
-  const doseKey = composedResult?.doseKey || answers['q3_time'] || 'three_days';
-  const goalLabel = composedResult?.goalLabel || assessmentData.derived.goalLabels[answers['q2_goal'] as keyof typeof assessmentData.derived.goalLabels] || 'your goal';
+  const { name, answers, riskProfile = 'Medium' } = state;
+
+  let riskLevel = riskProfile;
+  let riskDescription = 'Your variables suggest a moderate pattern. While your general activity pathway may be positive, clinical trends indicate that inconsistent load progression can create vulnerabilities where the body may draw on muscle tissue for adaptive fuel.';
   
-  
-  const postGate = archetype?.postGate;
-  const schedule = postGate ? postGate.scheduleByDose[doseKey as keyof typeof postGate.scheduleByDose] : undefined;
-  const next7Days = archetype ? archetype.next7DaysByDose[doseKey as keyof typeof archetype.next7DaysByDose] : undefined;
+  if (riskProfile === 'High') {
+    riskDescription = 'Your tracking inputs indicate a behavioral pattern that frequently correlates with potential accelerated lean mass and skeletal density reduction during periods of rapid weight loss. Targeted structural resistance training is highly recommended to support metabolism.';
+  } else if (riskProfile === 'Low') {
+    riskDescription = 'Your current tracking trends match well with recommended sports science frameworks designed to help keep lean skeletal framework structures protected during metabolic updates. Consistency is key to long-term preservation.';
+  }
 
   return (
     <>
       <SeoHead 
-        title={`${postGate?.blueprintName || 'Your Blueprint'} | WRK Personal Training`} 
-        description="Your personalised training blueprint."
+        title="Your Muscular Preservation Report | WRK"
+        description="Your diagnostic screening results and actionable movement guide for medical weight loss."
       />
-
-      <div className="bg-primary min-h-screen font-sans selection:bg-accent selection:text-white pb-24 transition-colors duration-300">
-        
-        {/* Header */}
-        <section className="pt-32 pb-12 px-6 max-w-4xl mx-auto text-center">
-          <div className="flex flex-col items-center gap-2 mb-6">
-            <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full">
-              A copy has been sent to your inbox
-            </span>
-            <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full">
-              {assessmentData.uiCopy.postGate.headline}
-            </span>
-          </div>
-          <h1 className="font-display text-4xl md:text-6xl uppercase mb-6">
-            Hey {name || 'there'}, here is your <span className="text-accent">Blueprint.</span>
-          </h1>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-            {assessmentData.uiCopy.postGate.subhead}
-          </p>
-        </section>
-
-        <div className="max-w-4xl mx-auto px-6 space-y-12">
+      
+      <div className="flex flex-col w-full min-h-screen bg-navy text-white pt-24 pb-12 px-5 md:px-12 items-center relative">
+        <div className="max-w-[800px] w-full mx-auto space-y-12">
           
-          {/* 1. The Schedule */}
-          <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center shrink-0">
-                <Calendar className="w-6 h-6 text-accent" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-display uppercase">
-                {postGate?.scheduleTitle}
-              </h2>
-            </div>
-            <div className="bg-primary p-6 rounded-2xl border border-border">
-              <h3 className="font-bold text-lg mb-4">{schedule?.title}</h3>
-              <ul className="space-y-3">
-                {schedule?.lines.map((line, i) => (
-                  <li key={i} className="flex items-start gap-3 text-text-secondary">
-                    <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>{line}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* 2. The Protocol & Key Rule */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-secondary p-8 rounded-3xl border border-border">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center shrink-0">
-                  <Activity className="w-5 h-5 text-accent" />
-                </div>
-                <h2 className="text-xl font-display uppercase">
-                  {postGate?.protocolTitle}
-                </h2>
-              </div>
-              <p className="text-text-secondary leading-relaxed">
-                {postGate?.protocolCopy}
-              </p>
-            </div>
-
-            <div className="bg-accent text-white p-8 rounded-3xl shadow-lg">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-5 h-5 text-white" />
-                </div>
-                <h2 className="text-xl font-display uppercase">
-                  {postGate?.keyRuleTitle}
-                </h2>
-              </div>
-              <p className="font-medium text-lg leading-relaxed">
-                {postGate?.keyRuleCopy}
-              </p>
-            </div>
-          </div>
-
-          
-          
-          {/* Movement Patterns Section */}
-          {assessmentData.movementPatternsSection && (
-            <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center shrink-0">
-                  <Dumbbell className="w-6 h-6 text-accent" />
-                </div>
-                <h2 className="text-2xl md:text-3xl font-display uppercase text-text-primary">
-                  {assessmentData.movementPatternsSection.title}
-                </h2>
-              </div>
-              <p className="text-lg text-text-secondary leading-relaxed mb-6">
-                {assessmentData.movementPatternsSection.intro}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                {assessmentData.movementPatternsSection.patterns.map((pattern, i) => (
-                  <div key={i} className="bg-primary p-4 rounded-xl border border-border flex items-start gap-3">
-                    <span className="text-accent font-bold mt-0.5">•</span>
-                    <span className="text-text-secondary">{pattern}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="space-y-4">
-                {assessmentData.movementPatternsSection.outroParagraphs.map((p, i) => (
-                  <p key={i} className="text-lg text-text-secondary leading-relaxed">
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* 2.5 Modification Block */}
-          {archetype?.modificationBlock && (
-            <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-              <h2 className="text-2xl md:text-3xl font-display uppercase mb-6 text-text-primary">
-                {archetype.modificationBlock.title}
-              </h2>
-              <div className="space-y-4 mb-6">
-                {archetype.modificationBlock.paragraphs.map((p: string, i: number) => (
-                  <p key={i} className="text-lg text-text-secondary leading-relaxed">
-                    {p}
-                  </p>
-                ))}
-              </div>
-              {archetype.modificationBlock.swaps && archetype.modificationBlock.swaps.length > 0 && (
-                <div className="bg-primary p-6 rounded-2xl border border-border">
-                   <h3 className="font-bold text-lg mb-4">Your Swaps</h3>
-                   <ul className="space-y-3">
-                     {archetype.modificationBlock.swaps.map((swap: string, i: number) => (
-                       <li key={i} className="flex items-start gap-3 text-text-secondary">
-                         <span className="text-accent mt-0.5">•</span>
-                         <span>{swap}</span>
-                       </li>
-                     ))}
-                   </ul>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* 3. Next 7 Days (Detailed) */}
-          <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-            <h2 className="text-2xl md:text-3xl font-display uppercase mb-8">
-              {archetype?.next7DaysTitle}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {next7Days?.days.map((day, i) => (
-                <div key={i} className={`bg-primary p-6 rounded-2xl border border-border ${i === 6 ? 'sm:col-span-2' : ''}`}>
-                  <h4 className="font-bold text-text-primary mb-3">{day.label}</h4>
-                  <ul className="space-y-2">
-                    {day.items.map((item, j) => (
-                      <li key={j} className="text-sm text-text-secondary flex items-start gap-2">
-                        <span className="text-accent mt-0.5">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Stress Valve */}
-          {archetype?.stressValveTitle && archetype?.stressValveCopy && (
-            <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-              <h2 className="text-2xl md:text-3xl font-display uppercase mb-4">
-                {archetype.stressValveTitle}
-              </h2>
-              <p className="text-lg text-text-secondary leading-relaxed">
-                {archetype.stressValveCopy}
-              </p>
-            </div>
-          )}
-
-          {/* 3.5 4-Week Progression Model */}
-          {postGate?.progressionModel4Weeks && (
-            <div className="bg-secondary p-8 md:p-10 rounded-3xl border border-border">
-              <h2 className="text-2xl md:text-3xl font-display uppercase mb-8">
-                {postGate.progressionModel4Weeks.title}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                {postGate.progressionModel4Weeks.weeks.map((week: any, i: number) => (
-                  <div key={i} className="bg-primary p-6 rounded-2xl border border-border flex flex-col h-full">
-                    <div className="text-xs font-bold text-accent uppercase tracking-wider mb-2">
-                      {week.week}
-                    </div>
-                    <h4 className="font-bold text-lg text-text-primary mb-3">{week.title}</h4>
-                    <p className="text-sm text-text-secondary mt-auto">{week.description}</p>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="bg-primary p-6 rounded-2xl border border-border">
-                <h3 className="font-bold text-lg mb-4">{postGate.progressionModel4Weeks.guardrailsTitle}</h3>
-                <ul className="space-y-3">
-                  {postGate.progressionModel4Weeks.guardrails.map((guardrail: string, i: number) => (
-                    <li key={i} className="text-sm text-text-secondary flex items-start gap-3">
-                      <ShieldCheck className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                      <span>{guardrail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-
-          {/* 4. Warm-up & Autoregulation */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-secondary p-8 rounded-3xl border border-border">
-              <h3 className="text-xl font-bold mb-6">{postGate?.warmupTitle}</h3>
-              <ul className="space-y-4">
-                {postGate?.warmupSteps.map((step, i) => (
-                  <li key={i} className="flex items-start gap-3 text-text-secondary">
-                    <div className="w-6 h-6 rounded-full bg-primary border border-border flex items-center justify-center shrink-0 text-xs font-bold">
-                      {i + 1}
-                    </div>
-                    <span className="mt-0.5">{step}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-secondary p-8 rounded-3xl border border-border">
-              <h3 className="text-xl font-bold mb-6">{postGate?.autoregulationTitle}</h3>
-              <ul className="space-y-4">
-                {postGate?.autoregulationRules.map((rule, i) => (
-                  <li key={i} className="flex items-start gap-3 text-text-secondary">
-                    <Zap className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>{rule}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* 5. Progress Checks */}
-          <div className="bg-secondary p-8 rounded-3xl border border-border">
-            <h3 className="text-xl font-bold mb-6">{postGate?.progressChecksTitle}</h3>
-            <div className="flex flex-wrap gap-4">
-              {postGate?.progressChecks.map((check, i) => (
-                <div key={i} className="bg-primary px-4 py-3 rounded-xl border border-border text-sm font-medium text-text-primary">
-                  {check}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 6. Dynamic Recommendation */}
-          <div className="mt-16 bg-secondary p-8 md:p-12 rounded-3xl shadow-xl border border-border text-center">
-            <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-6">
-              {assessmentData.recommendation.ui.recommendedTitle}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-display uppercase text-text-primary mb-4">
-              {assessmentData.recommendation.ui.recommendedSubtitleTemplate.replace('{serviceName}', assessmentData.recommendation.serviceNames[recommendation.recommend.serviceId as keyof typeof assessmentData.recommendation.serviceNames])}
-            </h2>
-            <p className="text-lg text-text-secondary mb-8 max-w-2xl mx-auto">
-              {assessmentData.recommendation.ui.whyTemplate.replace('{reason}', recommendation.reason)}
+          <div className="text-center space-y-4">
+            <h1 className="font-display text-[40px] md:text-[56px] uppercase leading-[1.1]">
+              Diagnostic Complete
+            </h1>
+            <p className="font-sans text-[18px] text-off-white/90">
+              Thank you, {name}. Here is your customized Muscular Preservation Risk Score and protocol.
             </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to={recommendation.recommend.href} className="w-full sm:w-auto">
-                <Button variant="primary" className="w-full py-4 px-8 text-lg flex items-center justify-center gap-2">
-                  Continue with support <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
+          </div>
 
-            <div className="mt-8 pt-8 border-t border-gray-100">
-              <p className="text-sm text-text-secondary mb-4">
-                {assessmentData.recommendation.ui.alternateTitle}
-              </p>
-              <Link 
-                to={recommendation.alternate.href}
-                className="text-accent font-bold hover:underline"
-              >
-                {assessmentData.recommendation.ui.alternateSubtitleTemplate.replace('{alternateServiceName}', assessmentData.recommendation.serviceNames[recommendation.alternate.serviceId as keyof typeof assessmentData.recommendation.serviceNames])}
-              </Link>
+          {/* Risk Score */}
+          <div className="bg-navy-mid border border-navy-light rounded-[24px] p-8 shadow-2xl">
+            <h2 className="font-display text-[28px] uppercase mb-4 text-orange-burnt">Muscular Preservation Risk Indicator: {riskLevel}</h2>
+            <p className="font-sans text-[16px] text-off-white/90 leading-[1.6]">
+              {riskDescription}
+            </p>
+          </div>
+
+          {/* Protein Metrics */}
+          <div className="bg-navy-mid border border-navy-light rounded-[24px] p-8 shadow-2xl">
+            <h2 className="font-display text-[28px] uppercase mb-4">General Protein Thresholds</h2>
+            <p className="font-sans text-[16px] text-off-white/90 leading-[1.6] mb-4">
+              During rapid weight loss, baseline protein recommendations may be insufficient. To estimate your general daily requirement:
+            </p>
+            <ul className="list-disc pl-5 font-sans text-[16px] text-off-white/90 space-y-2">
+              <li><strong>Target:</strong> General clinical consensus suggests 1.6g to 2.2g of protein per kilogram of your <em>target</em> body weight.</li>
+              <li><strong>Action:</strong> Distributing this across 3-4 meals may help support muscle protein synthesis throughout the day.</li>
+              <li><strong>Why:</strong> Medication-induced appetite suppression often leads to severe under-eating, which may force the body to break down muscle for essential amino acids.</li>
+            </ul>
+          </div>
+
+          {/* 3-Step Guide */}
+          <div className="bg-navy-mid border border-navy-light rounded-[24px] p-8 shadow-2xl">
+            <h2 className="font-display text-[28px] uppercase mb-6">3-Step Actionable Movement Guide</h2>
+            <div className="space-y-6 font-sans text-[16px] text-off-white/90 leading-[1.6]">
+              <div>
+                <h3 className="font-bold text-white text-[18px]">1. Prioritize Compound Movements</h3>
+                <p>Consider shifting focus toward structurally loading exercises like goblet squats, assisted pull-ups, and hinges, which are indicated to stimulate muscle retention more effectively than excessive cardio.</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-[18px]">2. Auto-Regulate Intensity</h3>
+                <p>On high-fatigue days, clinical patterns suggest avoiding absolute failure. Leaving 2-3 reps in the tank (RPE 7-8) can stimulate growth without unnecessarily exhausting your central nervous system.</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-[18px]">3. Implement Progressive Overload Safely</h3>
+                <p>Gradually aim to increase the weight or reps each week. Since your center of gravity may be changing rapidly, prioritizing form perfection before adding load is critical to help protect your joints.</p>
+              </div>
             </div>
           </div>
 
-          <p className="text-center text-sm text-text-secondary italic mt-8">
-            {assessmentData.uiCopy.postGate.resultsFooterNote}
-          </p>
+          {/* CTA */}
+          <div className="text-center bg-navy-light/20 rounded-[24px] p-10 border border-orange-burnt/30 shadow-[0_0_50px_rgba(217,92,20,0.1)]">
+            <h2 className="font-display text-[32px] md:text-[40px] uppercase mb-4 text-white">Continue With Support</h2>
+            <p className="font-sans text-[16px] text-off-white/80 mb-8 max-w-[600px] mx-auto">
+              If you want a structured, evidence-based program that handles the programming, progressive overload, and side-effect management for you—let's work together.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/online-coaching">
+                <Button size="lg" className="w-full sm:w-auto">Explore Online Coaching</Button>
+              </Link>
+              <Link to="/personal-training">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto">Explore In-Person Training</Button>
+              </Link>
+            </div>
+          </div>
 
         </div>
       </div>

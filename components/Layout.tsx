@@ -208,10 +208,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div>
               <h4 className="font-sans font-medium text-[11px] uppercase tracking-[0.12em] text-orange-burnt mb-6">Company</h4>
               <ul className="space-y-4">
-                <li><Link to="/assessment" className="text-[15px] font-semibold text-white hover:text-orange-burnt transition-colors">Free Custom Diagnostic</Link></li>
+                <li><Link to="/assessment" className="text-[15px] font-semibold text-white hover:text-orange-burnt transition-colors">Free Screening</Link></li>
                 <li><Link to="/about" className="text-[15px] text-grey-mid hover:text-white transition-colors">About</Link></li>
                 <li><Link to="/blog" className="text-[15px] text-grey-mid hover:text-white transition-colors">Blog</Link></li>
-                <li><Link to="/tools" className="text-[15px] text-grey-mid hover:text-white transition-colors">Tools</Link></li>
                 <li><Link to="/contact" className="text-[15px] text-grey-mid hover:text-white transition-colors">Contact</Link></li>
                 <li><Link to="/admin" className="text-[15px] text-grey-mid hover:text-white transition-colors">Admin</Link></li>
               </ul>
@@ -253,6 +252,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <Link to="/terms" className="text-[12px] text-grey-mid hover:text-white transition-colors">Terms</Link>
                 <Link to="/privacy" className="text-[12px] text-grey-mid hover:text-white transition-colors">Privacy</Link>
                 <Link to="/health-disclaimer" className="text-[12px] text-grey-mid hover:text-white transition-colors">Health Disclaimer</Link>
+                <Link to="/resources" className="text-[12px] text-grey-mid hover:text-white transition-colors">Clinical Evidence &amp; Resources</Link>
              </div>
           </div>
           

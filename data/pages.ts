@@ -116,7 +116,7 @@ export const INITIAL_PAGE_CONTENT: PageContent = {
       {
         url: 'https://i.postimg.cc/8CS5D0LN/fat-loss-tracking.png',
         alt: 'WRK App Fat Loss Tracking',
-        seoDescription: 'Screenshot of the WRK app displaying fat loss progress.'
+        seoDescription: 'Screenshot of the WRK app displaying muscle preservation progress.'
       },
       {
         url: 'https://i.postimg.cc/YSrhwFz6/macro-tracking-app.jpg',

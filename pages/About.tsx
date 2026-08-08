@@ -9,7 +9,7 @@ export const About: React.FC = () => {
     <>
       <SeoHead 
         title="About Hayden Richards | WRK Personal Training Christchurch"
-        description="Hayden Richards is a Christchurch personal trainer with 20+ years' experience. Specialising in fat loss and strength training for adults 35–60. Learn more."
+        description="Hayden Richards is a Christchurch personal trainer with 20+ years' experience. Specialising in strength training and muscle preservation for medical weight loss. Learn more."
         schema={{
           "@context": "https://schema.org",
           "@type": "Person",
@@ -132,11 +132,6 @@ export const About: React.FC = () => {
               <Link to="/contact" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full sm:w-auto px-8 py-5 text-[15px] sm:text-[16px] flex items-center justify-center gap-3">
                   Book a Free Consult <ArrowRight size={20} />
-                </Button>
-              </Link>
-              <Link to="/14-day-fat-loss-foundations" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 py-5 text-[15px] sm:text-[16px]">
-                  Start the 14-Day Programme
                 </Button>
               </Link>
             </div>

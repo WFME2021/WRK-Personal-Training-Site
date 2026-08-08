@@ -27,7 +27,7 @@ export const Contact: React.FC = () => {
     <>
       <SeoHead 
         title="Book a Free Consult | WRK Personal Training Christchurch"
-        description="Book a free 20-minute consult with Hayden Richards at WRK Personal Training. Christchurch personal trainer for fat loss, strength, and corporate wellness."
+        description="Book a free 20-minute consult with Hayden Richards at WRK Personal Training. Specialist clinical fitness coaching in Christchurch."
       />
 
       <div className="flex flex-col w-full bg-navy pt-[64px] pb-[64px] md:pt-[96px] md:pb-[96px]">
