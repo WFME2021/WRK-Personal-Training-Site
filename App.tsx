@@ -13,6 +13,8 @@ import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { TdeeCalculator } from './pages/TdeeCalculator';
 import { ProteinTargeter } from './pages/ProteinTargeter';
+import { HydrationCalculator } from './pages/HydrationCalculator';
+import { ToolsIndex } from './pages/ToolsIndex';
 import { Admin } from './pages/Admin';
 import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
@@ -56,8 +58,16 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/resources" element={<Resources />} />
             <Route path="/results" element={<Results />} />
             <Route path="/assessment/result/:token" element={<Results />} />
-            <Route path="/tdee-calculator" element={<TdeeCalculator />} />
-            <Route path="/protein-targeter" element={<ProteinTargeter />} />
+            <Route path="/tools" element={<ToolsIndex />} />
+            <Route path="/tools/tdee-calculator" element={<TdeeCalculator />} />
+            <Route path="/tools/protein-targeter" element={<ProteinTargeter />} />
+            <Route path="/tools/hydration-calculator" element={<HydrationCalculator />} />
+            
+            {/* Redirects for old tool URLs if needed */}
+            <Route path="/tdee-calculator" element={<Navigate to="/tools/tdee-calculator" replace />} />
+            <Route path="/protein-targeter" element={<Navigate to="/tools/protein-targeter" replace />} />
+            <Route path="/hydration-calculator" element={<Navigate to="/tools/hydration-calculator" replace />} />
+            
             <Route path="/contact" element={<Contact />} />
             
             <Route path="/personal-training" element={<PersonalTraining />} />

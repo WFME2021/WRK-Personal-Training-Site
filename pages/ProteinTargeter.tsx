@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { Button } from '../components/Button';
-import { Dna } from 'lucide-react';
+import { Dna, ArrowLeft, ChevronRight } from 'lucide-react';
 
 export const ProteinTargeter: React.FC = () => {
   useEffect(() => {
@@ -30,6 +30,21 @@ export const ProteinTargeter: React.FC = () => {
       <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 items-center overflow-x-hidden pt-[80px] md:pt-[100px] pb-24">
         <div className="max-w-[800px] w-full px-5 md:px-12 mx-auto">
           
+          {/* Breadcrumb & Back Link */}
+          <div className="mb-8 space-y-4">
+            <nav className="flex items-center text-[13px] text-neutral-400 font-sans">
+              <Link to="/" className="hover:text-teal-400 transition-colors">Home</Link>
+              <ChevronRight size={14} className="mx-2 text-neutral-600" />
+              <Link to="/tools" className="hover:text-teal-400 transition-colors">Tools</Link>
+              <ChevronRight size={14} className="mx-2 text-neutral-600" />
+              <span className="text-neutral-200">Protein Targeter</span>
+            </nav>
+            <Link to="/tools" className="inline-flex items-center text-[14px] text-teal-400 hover:text-teal-300 transition-colors font-medium">
+              <ArrowLeft size={16} className="mr-2" />
+              Back to All Tools
+            </Link>
+          </div>
+
           <div className="mb-12">
             <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-neutral-100 mb-6">
               Muscle-Preservation Protein Targeter
@@ -129,30 +144,45 @@ export const ProteinTargeter: React.FC = () => {
             </div>
           </div>
 
-          <div className="space-y-12 mb-16">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4">
-              Frequently Asked Questions: Optimizing Protein Targets
-            </h2>
-            
-            <div className="space-y-8">
-              <div>
-                <h3 className="font-serif text-[22px] text-teal-400 mb-3">Why do I use target weight instead of my current weight for this tool?</h3>
-                <p className="font-sans text-[16px] text-neutral-300 leading-relaxed">
-                  Calculating protein targets based on a high starting weight while undergoing rapid medical intervention can lead to an unsustainably high food volume requirement. By anchoring your calculation to your realistic <strong>target goal weight</strong>, the tool maps out a safe, structurally sufficient amino acid threshold that supports your lean mass without over-burdening your digestive capacity or causing medication-induced nausea <Link to="/resources#deficit" className="text-teal-400 hover:text-teal-300 underline text-[12px] align-super transition-colors">2</Link>.
+          <div className="space-y-16 mb-20 mt-20">
+            <div>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
+                Why protein tracking matters during rapid fat loss
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
+                <p>
+                  When you undergo rapid weight reduction—whether through GLP-1 receptor agonists or bariatric surgery—your body enters a profound caloric deficit. In this state, the body does not exclusively burn adipose tissue (fat). Without a sufficient stimulus and adequate building blocks, it will readily break down active skeletal muscle and bone matrix to meet its energy and amino acid demands.
+                </p>
+                <p>
+                  Tracking your protein intake is not about body-building; it is about preservation. Protecting your lean mass ensures that your resting metabolic rate remains stable, your physical strength is maintained, and your structural integrity is defended against the fatigue that often accompanies severe caloric restriction.
                 </p>
               </div>
+            </div>
 
-              <div>
-                <h3 className="font-serif text-[22px] text-teal-400 mb-3">What happens if my protein drops below these estimated baselines?</h3>
-                <p className="font-sans text-[16px] text-neutral-300 leading-relaxed">
-                  When your system is in a deep, clinically induced calorie deficit, it will seek out alternative energy paths to sustain basic biological functions. If dietary protein drops below recommended thresholds, literature suggests the body may begin to break down its own skeletal muscle tissue and structural bone matrix to source necessary amino acids. This process can significantly contribute to systemic fatigue, poor recovery, and premature weight-loss plateaus.
+            <div>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
+                How clinical weight loss interventions alter nitrogen balance
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
+                <p>
+                  Clinical interventions inherently suppress appetite and slow gastric emptying, severely reducing the total volume of food you can consume. This shift immediately puts your body into a negative nitrogen balance, a state where protein breakdown exceeds protein synthesis.
+                </p>
+                <p>
+                  To counteract this, nutrition must pivot from volume-based eating to density-based eating. You must introduce high-quality, bioavailable protein sources in smaller, more frequent doses to force the body back into a positive nitrogen balance. This prevents the systemic fatigue and muscle wasting commonly associated with untreated rapid weight loss, ensuring the weight you lose is fat, not functional tissue.
                 </p>
               </div>
+            </div>
 
-              <div>
-                <h3 className="font-serif text-[22px] text-teal-400 mb-3">How do I reach my target if solid food causes nausea?</h3>
-                <p className="font-sans text-[16px] text-neutral-300 leading-relaxed">
-                  Appetite suppression from treatments can make eating dense meats or large portions incredibly difficult. In these specific environments, evidence indicates it is highly beneficial to prioritize clean, liquid-based nutrition. Shifting to cold, low-viscosity clear whey protein isolates or mixing unflavored collagen into liquids allows you to protect your muscular integrity without triggering gastrointestinal distress during peak medication cycles <Link to="/resources#protein" className="text-teal-400 hover:text-teal-300 underline text-[12px] align-super transition-colors">3</Link>.
+            <div>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
+                Evidence-based protein guidelines for lean mass defense
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
+                <p>
+                  Current sports science and clinical nutrition guidelines recommend establishing a protein target based on your <em>goal</em> body weight, rather than your current weight, to avoid prescribing an unachievable volume of food. The standard therapeutic threshold ranges from 1.2g to 1.6g of protein per kilogram of your target weight.
+                </p>
+                <p>
+                  Achieving this requires strategic structuring. Given the early satiety experienced during treatment, breaking your daily target into four distinct intakes utilizing clear whey isolates, collagen peptides, and lean animal proteins is the most effective way to protect your physical baseline without triggering gastrointestinal distress.
                 </p>
               </div>
             </div>

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { Button } from '../components/Button';
-import { Calculator } from 'lucide-react';
+import { Calculator, ArrowLeft, ChevronRight } from 'lucide-react';
 
 export const TdeeCalculator: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
 
   const [age, setAge] = useState<string>('');
   const [gender, setGender] = useState<'male' | 'female'>('female');
@@ -54,6 +55,21 @@ export const TdeeCalculator: React.FC = () => {
       <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 items-center overflow-x-hidden pt-[80px] md:pt-[100px] pb-24">
         <div className="max-w-[800px] w-full px-5 md:px-12 mx-auto">
           
+          {/* Breadcrumb & Back Link */}
+          <div className="mb-8 space-y-4">
+            <nav className="flex items-center text-[13px] text-neutral-400 font-sans">
+              <Link to="/" className="hover:text-teal-400 transition-colors">Home</Link>
+              <ChevronRight size={14} className="mx-2 text-neutral-600" />
+              <Link to="/tools" className="hover:text-teal-400 transition-colors">Tools</Link>
+              <ChevronRight size={14} className="mx-2 text-neutral-600" />
+              <span className="text-neutral-200">Medical TDEE Calculator</span>
+            </nav>
+            <Link to="/tools" className="inline-flex items-center text-[14px] text-teal-400 hover:text-teal-300 transition-colors font-medium">
+              <ArrowLeft size={16} className="mr-2" />
+              Back to All Tools
+            </Link>
+          </div>
+
           <div className="mb-12">
             <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-neutral-100 mb-6">
               TDEE Calculator for Medical Weight Loss & Bariatric Support
@@ -266,36 +282,45 @@ export const TdeeCalculator: React.FC = () => {
             Calculations provided by this tool suggest general physiological baseline estimations based on standard formulas and do not serve as a clinical medical prescription. Actual individual absorption thresholds and physiological variables can change considerably throughout your care timeline. Always verify your daily macro positions with your primary healthcare provider.
           </p>
 
-          <div className="space-y-12 mb-16">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4">
-              Frequently Asked Questions: Navigating Energy Demands
-            </h2>
-            
-            <div className="space-y-8">
-              <div>
-                <h3 className="font-serif text-[22px] text-teal-400 mb-3">Should I force myself to eat to match my calculated TDEE?</h3>
-                <p className="font-sans text-[16px] text-neutral-300 leading-relaxed">
-                  Evidence suggests that attempting to force-feed large volumes of solid food to satisfy a traditional gym deficit number while experiencing intense medication-induced satiety or surgical volume restrictions can lead to severe gastrointestinal discomfort or acute nausea. 
-                  <br/><br/>
-                  Instead of chasing a high caloric floor, contemporary bariatric guidelines recommend prioritizing the quality and density of your nutrient intake—ensuring your daily lifestyle selections remain highly optimized to support tissue recovery <Link to="/resources#protein" className="text-teal-400 hover:text-teal-300 underline text-[12px] align-super transition-colors">2</Link>.
+          <div className="space-y-16 mb-20 mt-20">
+            <div>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
+                How GLP-1 medications and bariatric surgery alter metabolic expenditure
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
+                <p>
+                  Total Daily Energy Expenditure (TDEE) is traditionally calculated using basal metabolic rate (BMR) and physical activity levels. However, clinical interventions disrupt this standard equation. GLP-1 medications and bariatric surgery alter gastric emptying rates, hormonal hunger signals, and systemic inflammation profiles, fundamentally changing how your body processes and stores energy.
+                </p>
+                <p>
+                  As you undergo rapid weight loss, your BMR naturally decreases because a smaller body requires less baseline energy to function. Furthermore, the body may initiate adaptive thermogenesis—a defensive slowdown of metabolic rate in response to severe caloric restriction. Monitoring these shifts is vital to prevent long-term metabolic stalling.
                 </p>
               </div>
+            </div>
 
-              <div>
-                <h3 className="font-serif text-[22px] text-teal-400 mb-3">How can I protect my resting metabolic rate from dropping quickly?</h3>
-                <p className="font-sans text-[16px] text-neutral-300 leading-relaxed">
-                  To help insulate your metabolism against premature plateaus during rapid physical adjustments, data indicates that the body requires a clear external stimulus. 
-                  <br/><br/>
-                  Implementing structured, 30-minute progressive resistance training blocks two to three times per week transmits a powerful neurological signal to your system to safeguard its lean muscle mass, allowing you to sustain a robust functional baseline as your total body weight scales down <Link to="/resources#resistance" className="text-teal-400 hover:text-teal-300 underline text-[12px] align-super transition-colors">3</Link>.
+            <div>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
+                The difference between standard TDEE and medical weight loss tracking
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
+                <p>
+                  In the traditional fitness space, TDEE is used to establish a strict daily caloric deficit (often 500 calories below maintenance). In medical weight loss, this approach is counterproductive and potentially dangerous. The medication or surgical intervention is already enforcing a massive deficit—often far beyond what standard calculators recommend.
+                </p>
+                <p>
+                  Medical weight loss tracking flips the paradigm. Instead of using TDEE to find a maximum caloric ceiling, we use it to understand the gap between your energy output and your drastically reduced intake. The goal shifts from "eating less" to "eating defensively"—ensuring that the small volume of food you can tolerate is hyper-optimized for protein density and micronutrient value to prevent malnutrition and muscle wasting.
                 </p>
               </div>
+            </div>
 
-              <div>
-                <h3 className="font-serif text-[22px] text-teal-400 mb-3">Why does tracking protein matter more than cutting calories on GLP-1s?</h3>
-                <p className="font-sans text-[16px] text-neutral-300 leading-relaxed">
-                  When your system is operating under a substantial, clinically induced energy deficit, your body naturally seeks alternative fuel sources. If your daily protein intake drops below recommended thresholds, your physiology may break down its own structural framework to meet basic amino acid demands. 
-                  <br/><br/>
-                  Tracking your protein metrics ensures your body is supported to burn stored fat cleanly while preserving the active skeletal tissue essential for lifelong health, strength, and physical vitality.
+            <div>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
+                Adapting your energy intake for long-term metabolic maintenance
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
+                <p>
+                  As you approach your goal weight, or if you begin tapering off clinical interventions, your energy intake must be carefully reverse-engineered. Remaining in a severe caloric deficit indefinitely will degrade your skeletal muscle and compromise your bone density.
+                </p>
+                <p>
+                  The long-term maintenance phase requires a strategic reintroduction of calories, paired with progressive resistance training. This combination sends a clear physiological signal to your body to rebuild lean tissue, thereby increasing your resting metabolic rate and securing your weight loss results for the future. Your TDEE calculation becomes the roadmap for this safe, upward adjustment.
                 </p>
               </div>
             </div>

@@ -10,11 +10,13 @@ export const SERVICE_LINKS = [
 
 export const PROGRAMMES_LINKS = [
   { label: "12-Week Programs", path: "/programs" },
-  { label: "TDEE Calculator", path: "/tdee-calculator" },
-  { label: "Protein Targeter", path: "/protein-targeter" }
 ];
 
-export const NAVIGATION_LINKS = [
-  { label: "Blog", path: "/blog" },
-  { label: "Free Screening", path: "/assessment", isPrimary: true },
+export const TOOLS_LINKS = [
+  { label: "Tools Hub", path: "/tools" },
+  { label: "Protein Targeter", path: "/tools/protein-targeter" },
+  { label: "TDEE Calculator", path: "/tools/tdee-calculator" },
+  { label: "Hydration & Electrolytes", path: "/tools/hydration-calculator" }
 ];
+
+

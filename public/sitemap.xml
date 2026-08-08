@@ -149,4 +149,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/tdee-vs-bmr</loc>
+    <lastmod>2026-07-23T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
