@@ -10,6 +10,7 @@ export const Assessment: React.FC = () => {
   const [riskProfile, setRiskProfile] = useState('Medium');
   const [leadData, setLeadData] = useState({ name: '', email: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState('');
 
   const handleAssessmentSubmit = (e: React.FormEvent) => {
@@ -22,7 +23,12 @@ export const Assessment: React.FC = () => {
     } else {
       setRiskProfile('Medium');
     }
-    setStep(2);
+    
+    setIsAnalyzing(true);
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      setStep(2);
+    }, 1500);
   };
 
   const handleLeadSubmit = async (e: React.FormEvent) => {
@@ -88,7 +94,7 @@ export const Assessment: React.FC = () => {
               {/* Q1: Clinical Journey Context */}
               <div className="space-y-3">
                 <label className="block font-sans font-bold text-[16px] text-white">1. What is your current medical weight loss pathway?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.path} onChange={(e) => setFormData({...formData, path: e.target.value})}>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.path} onChange={(e) => setFormData({...formData, path: e.target.value})}>
                   <option value="">Select your current framework...</option>
                   <option value="glp1">I am using a prescribed GLP-1 intervention (e.g., tirzepatide, retatrutide, or variants)</option>
                   <option value="bariatric">I am post-operative or recovering from metabolic/bariatric surgery</option>
@@ -99,7 +105,7 @@ export const Assessment: React.FC = () => {
               {/* Q2: Resistance Stimulus */}
               <div className="space-y-3">
                 <label className="block font-sans font-bold text-[16px] text-white">2. How many times per week do you perform structured resistance or strength training?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.weights} onChange={(e) => setFormData({...formData, weights: e.target.value})}>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.weights} onChange={(e) => setFormData({...formData, weights: e.target.value})}>
                   <option value="">Select an option...</option>
                   <option value="low-risk">2 or more sessions weekly using intentional progressive overload</option>
                   <option value="med-risk">1 casual session or baseline bodyweight/mobility protocols</option>
@@ -110,7 +116,7 @@ export const Assessment: React.FC = () => {
               {/* Q3: Protein Prioritisation */}
               <div className="space-y-3">
                 <label className="block font-sans font-bold text-[16px] text-white">3. On a typical day, how would you describe your nutritional protein focus?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.protein} onChange={(e) => setFormData({...formData, protein: e.target.value})}>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.protein} onChange={(e) => setFormData({...formData, protein: e.target.value})}>
                   <option value="">Select an option...</option>
                   <option value="low-risk">High focus: I intentionally track intake targets daily</option>
                   <option value="med-risk">Moderate focus: Appetite suppression makes consuming consistent solid proteins difficult</option>
@@ -121,7 +127,7 @@ export const Assessment: React.FC = () => {
               {/* Q4: Physiological Response */}
               <div className="space-y-3">
                 <label className="block font-sans font-bold text-[16px] text-white">4. Which indicator best describes your current systemic physical feedback?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:border-orange-burnt transition-colors" value={formData.fatigue} onChange={(e) => setFormData({...formData, fatigue: e.target.value})}>
+                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.fatigue} onChange={(e) => setFormData({...formData, fatigue: e.target.value})}>
                   <option value="">Select an option...</option>
                   <option value="high-risk">Experiencing notable feelings of lingering fatigue, weakness, or physical exhaustion</option>
                   <option value="med-risk">Experiencing occasional bouts of mild nausea, low motivation, or joint stiffness</option>
@@ -129,8 +135,18 @@ export const Assessment: React.FC = () => {
                 </select>
               </div>
 
-              <Button type="submit" size="lg" className="w-full mt-8">
-                Review Immediate On-Screen Insights
+              <Button type="submit" size="lg" className="w-full mt-8" disabled={isAnalyzing}>
+                {isAnalyzing ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Analyzing Metrics...
+                  </span>
+                ) : (
+                  'Review Immediate On-Screen Insights'
+                )}
               </Button>
             </form>
           ) : (
@@ -185,7 +201,7 @@ export const Assessment: React.FC = () => {
                     onChange={(e) => setLeadData({...leadData, name: e.target.value})}
                     placeholder="First Name" 
                     required 
-                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:border-orange-burnt transition-colors" 
+                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" 
                   />
                   <input 
                     type="email" 
@@ -194,7 +210,7 @@ export const Assessment: React.FC = () => {
                     onChange={(e) => setLeadData({...leadData, email: e.target.value})}
                     placeholder="Email Address" 
                     required 
-                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:border-orange-burnt transition-colors" 
+                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" 
                   />
                   {error && <p className="text-red-400 text-sm font-sans">{error}</p>}
                   <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting}>

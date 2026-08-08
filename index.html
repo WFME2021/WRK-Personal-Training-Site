@@ -54,10 +54,9 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap">
-
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -65,26 +64,25 @@
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
-              display: ['Bebas Neue', 'sans-serif'],
+              display: ['Playfair Display', 'serif'],
+              serif: ['Playfair Display', 'serif'],
             },
             colors: {
               navy: {
-                DEFAULT: '#023047',
-                mid: '#0B425E',
-                light: '#1A5070',
+                DEFAULT: '#171717', // Slate Dark
+                mid: '#0a0a0a',     // Muted Dark
+                light: '#262626',   // border (neutral-800)
               },
               orange: {
-                burnt: '#FB8500',
-                hover: '#E07600',
+                burnt: '#2dd4bf',   // Healing Teal
+                hover: '#0d9488',   // teal-600
               },
-              white: '#FFFFFF',
-              'off-white': '#F8FAFC',
-              'grey-mid': '#8ECAE6',
+              white: '#f5f5f5',     // Soft White
+              'off-white': '#d4d4d8', // neutral-300
+              'grey-mid': '#9ca3af',  // neutral-400
               gold: {
-                rule: '#FFB703',
+                rule: '#34d399',    // Sage Calm (emerald-400)
               },
-              // Keep original variables around but map to new colors if necessary,
-              // or we can just use the variables defined below.
               primary: 'var(--bg-primary)',
               secondary: 'var(--bg-secondary)',
               'text-primary': 'var(--text-primary)',
@@ -107,12 +105,12 @@
     </script>
     <style>
       :root, .dark {
-        --bg-primary: #023047;   /* navy */
-        --bg-secondary: #0A3B54; /* slightly lighter navy */
-        --text-primary: #FFFFFF; /* white */
-        --text-secondary: #8ECAE6; /* light blue */
-        --border: #1A5070;       /* navy-light */
-        --accent: #FFB703;       /* yellow */
+        --bg-primary: #171717;
+        --bg-secondary: #0a0a0a;
+        --text-primary: #f5f5f5;
+        --text-secondary: #9ca3af;
+        --border: #262626;
+        --accent: #2dd4bf;
       }
 
       body {

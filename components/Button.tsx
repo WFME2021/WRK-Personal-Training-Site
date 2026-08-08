@@ -13,21 +13,22 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'md',
   fullWidth = false, 
   className = '',
+  disabled,
   ...props 
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-bold tracking-wide rounded-[8px] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed uppercase";
+  const baseStyles = "inline-flex items-center justify-center font-semibold tracking-wide rounded-2xl transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-70 disabled:cursor-not-allowed";
   
   const sizeStyles = {
-    sm: "px-5 py-3 text-[13px] md:text-[14px]",
-    md: "px-7 py-4.5 md:py-4 text-[15px] md:text-[16px]",
-    lg: "px-8 py-5 md:py-5 text-[15px] md:text-[16px]" 
+    sm: "px-5 py-3 text-sm",
+    md: "px-7 py-4 text-base",
+    lg: "px-8 py-5 text-base" 
   };
 
   const variants = {
-    primary: "bg-orange-burnt text-white hover:bg-orange-hover hover:shadow-lg hover:shadow-orange-burnt/20 hover:-translate-y-[2px]",
-    secondary: "bg-white text-navy hover:bg-off-white hover:shadow-lg hover:shadow-black/10 hover:-translate-y-[2px]",
-    outline: "bg-transparent border-[2px] border-white/30 text-white hover:border-white hover:bg-white/5",
-    text: "text-orange-burnt tracking-[0.1em] text-[13px] hover:text-orange-hover p-0 border-none bg-transparent hover:after:w-full relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-0 after:bg-orange-hover after:transition-all after:duration-300"
+    primary: "bg-teal-600 text-white hover:bg-teal-500 hover:shadow-lg hover:shadow-teal-900/30 hover:-translate-y-1",
+    secondary: "bg-neutral-800 text-neutral-100 hover:bg-neutral-700 hover:shadow-lg hover:shadow-black/20 hover:-translate-y-1",
+    outline: "bg-transparent border-2 border-neutral-700 text-neutral-100 hover:border-teal-500 hover:bg-neutral-800 hover:-translate-y-1",
+    text: "text-teal-400 text-sm hover:text-teal-300 p-0 border-none bg-transparent hover:after:w-full relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-0 after:bg-teal-300 after:transition-all after:duration-300"
   };
 
   const widthClass = fullWidth ? 'w-full' : 'w-full md:w-auto';
@@ -35,6 +36,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button 
       className={`${baseStyles} ${variant !== 'text' ? sizeStyles[size] : ''} ${variants[variant]} ${widthClass} ${className}`}
+      disabled={disabled}
       {...props}
     >
       {children}

@@ -8,7 +8,11 @@ export const SERVICE_LINKS = [
   { label: "Online Coaching", path: "/online-coaching" },
 ];
 
-export const PROGRAMMES_LINKS = [{ label: "12-Week Programs", path: "/programs" }];
+export const PROGRAMMES_LINKS = [
+  { label: "12-Week Programs", path: "/programs" },
+  { label: "TDEE Calculator", path: "/tdee-calculator" },
+  { label: "Protein Targeter", path: "/protein-targeter" }
+];
 
 export const NAVIGATION_LINKS = [
   { label: "Blog", path: "/blog" },

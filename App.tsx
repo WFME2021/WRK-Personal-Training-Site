@@ -11,6 +11,8 @@ import { PersonalTraining } from './pages/PersonalTraining';
 import { OnlineCoaching } from './pages/OnlineCoaching';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { TdeeCalculator } from './pages/TdeeCalculator';
+import { ProteinTargeter } from './pages/ProteinTargeter';
 import { Admin } from './pages/Admin';
 import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
@@ -54,6 +56,8 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/resources" element={<Resources />} />
             <Route path="/results" element={<Results />} />
             <Route path="/assessment/result/:token" element={<Results />} />
+            <Route path="/tdee-calculator" element={<TdeeCalculator />} />
+            <Route path="/protein-targeter" element={<ProteinTargeter />} />
             <Route path="/contact" element={<Contact />} />
             
             <Route path="/personal-training" element={<PersonalTraining />} />
