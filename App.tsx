@@ -76,7 +76,7 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/personal-trainer-christchurch" element={<Navigate to="/personal-training" replace />} />
             <Route path="/online-personal-training-nz" element={<Navigate to="/online-coaching" replace />} />
             <Route path="/personal-training-christchurch-philosophy" element={<Navigate to="/about" replace />} />
-            <Route path="/services" element={<Navigate to="/" replace />} />
+            <Route path="/services" element={<Programs />} />
             
             
             <Route path="/blog" element={<Blog />} />

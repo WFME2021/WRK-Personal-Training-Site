@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { Button } from '../components/Button';
-import { Shield, Activity, Dna, AlignVerticalJustifyCenter, Scale, Columns3, ShieldCheck, HeartPulse } from 'lucide-react';
+import { Shield, Activity, Dna, AlignVerticalJustifyCenter, Scale, Columns3, ShieldCheck, HeartPulse, FileText, Droplets, Gift } from 'lucide-react';
 
 export const Programs: React.FC = () => {
   useEffect(() => {
@@ -183,6 +183,99 @@ export const Programs: React.FC = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Low-Ticket Digital Offer Bento Grid Card */}
+          <section className="mt-16 pt-8 border-t border-neutral-800">
+            <div className="bg-neutral-950 border border-neutral-800 hover:border-teal-500/50 transition-all duration-300 rounded-2xl shadow-lg overflow-hidden group">
+              <div className="p-8 md:p-12">
+                <div className="mb-8">
+                  <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-teal-400 mb-4">
+                    Self-Guided Medical Weight Loss Support
+                  </span>
+                  <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 mb-4 leading-tight">
+                    The GLP-1 Side-Effect Mitigation &amp; Muscle Defense Blueprint
+                  </h2>
+                  <h3 className="font-sans text-[18px] md:text-[20px] font-medium text-neutral-300 leading-relaxed mb-6">
+                    A practical, data-driven digital toolkit to counter suppressed thirst loops, manage food aversion, and prevent GLP-1 muscle loss during rapid fat loss.
+                  </h3>
+                  <p className="font-sans text-[32px] text-teal-400 font-bold mb-8">$29 <span className="text-[16px] text-neutral-400 font-normal">NZD (One-Off Access)</span></p>
+                  
+                  <div className="font-sans text-[16px] text-neutral-400 leading-relaxed space-y-6">
+                    <p>
+                      Starting a prescription GLP-1 receptor agonist or recovering from bariatric surgery completely changes your relationship with nutrition and exercise. Traditional fitness plans tell you to push harder. But conventional training doesn't understand constant nausea, deep medication fatigue, or the total food aversion that makes eating protein feel impossible.
+                    </p>
+                    <p>
+                      When voluntary food intake drops too low, up to 40% of the weight you lose can come from lean muscle tissue rather than fat. This triggers adaptive thermogenesis, which slows down your baseline metabolism and leads to severe weight loss plateaus. Furthermore, because these advanced clinical therapies suppress your brain's natural thirst signals, chronic bariatric dehydration and fluid shifts frequently cause persistent headaches, muscle cramps, and orthostatic dizziness upon standing.
+                    </p>
+                    <p>
+                      You don't need a grueling, exhausting gym workout plan. You need an automated, practical framework to help manage GLP-1 side effects, maintain your structural safety, stay comfortable, and defend your hard-earned lean muscle mass.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                  {/* Item 1 */}
+                  <div className="bg-neutral-900/50 p-6 rounded-xl border border-neutral-800">
+                    <h4 className="font-serif text-[18px] text-neutral-100 mb-3 flex items-center gap-2">
+                      <span className="text-teal-400"><FileText size={20} /></span>
+                      The GLP-1 Liquid Nutrition Matrix (PDF)
+                    </h4>
+                    <p className="font-sans text-[14px] text-neutral-400 leading-relaxed">
+                      Learn how to comfortably build nutrient-dense, high-protein liquid meals when solid food feels completely unappealing. Protect your nitrogen balance and avoid sarcopenic muscle wasting without bloating a slow-emptying stomach.
+                    </p>
+                  </div>
+
+                  {/* Item 2 */}
+                  <div className="bg-neutral-900/50 p-6 rounded-xl border border-neutral-800">
+                    <h4 className="font-serif text-[18px] text-neutral-100 mb-3 flex items-center gap-2">
+                      <span className="text-teal-400"><Activity size={20} /></span>
+                      The 30-Minute Fatigue Shield Exercise Guide (PDF)
+                    </h4>
+                    <p className="font-sans text-[14px] text-neutral-400 leading-relaxed">
+                      A low-intensity, self-guided home movement blueprint using body weight and basic bands. Engineered to stimulate muscle tissue and protect bone mineral density without draining your energy reserves.
+                    </p>
+                  </div>
+
+                  {/* Item 3 */}
+                  <div className="bg-neutral-900/50 p-6 rounded-xl border border-neutral-800">
+                    <h4 className="font-serif text-[18px] text-neutral-100 mb-3 flex items-center gap-2">
+                      <span className="text-teal-400"><Droplets size={20} /></span>
+                      The Micro-Volume Fluid &amp; Electrolyte Grid (PDF)
+                    </h4>
+                    <p className="font-sans text-[14px] text-neutral-400 leading-relaxed">
+                      A precise daily spacing layout to hit critical sodium, potassium, and magnesium targets. Hydrate by design rather than by thirst to eliminate dehydration headaches and standing dizziness.
+                    </p>
+                  </div>
+
+                  {/* Item 4 */}
+                  <div className="bg-neutral-900/50 p-6 rounded-xl border border-neutral-800">
+                    <h4 className="font-serif text-[18px] text-neutral-100 mb-3 flex items-center gap-2">
+                      <span className="text-teal-400"><Gift size={20} /></span>
+                      Bonus: High-Protein Gastro-Shield Smoothie Guide (PDF)
+                    </h4>
+                    <p className="font-sans text-[14px] text-neutral-400 leading-relaxed">
+                      Easy-to-digest blender recipes utilizing clinical ingredients like fresh ginger and mint to soothe the stomach lining while delivering essential amino acids.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-neutral-900/80 p-8 rounded-xl border border-neutral-800 text-center">
+                  <a href="#" className="inline-block w-full sm:w-auto px-8 py-4 bg-teal-500 hover:bg-teal-400 text-neutral-950 font-sans font-semibold text-[16px] rounded-md transition-colors shadow-lg hover:shadow-teal-500/20 mb-4">
+                    Get The Blueprint Toolkit &mdash; $29
+                  </a>
+                  <p className="font-sans text-[13px] text-neutral-400 max-w-[500px] mx-auto">
+                    ⚡ Instant Access. Closes checkout page and automatically delivers your digital asset suite via the My PT Hub dashboard mobile app framework.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="bg-neutral-900 px-8 py-6 border-t border-neutral-800">
+                <p className="font-sans text-[12px] text-neutral-500 leading-relaxed text-center">
+                  Disclaimer: This digital toolkit provides generalized operational support parameters based on sports science and clinical nutrition guidelines. It is not medical advice, diagnosis, or treatment. Individual requirements vary based on medical history and prescription parameters. Always consult your prescribing physician before changing your dietary or hydration targets.
+                </p>
               </div>
             </div>
           </section>
