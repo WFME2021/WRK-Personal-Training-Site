@@ -1,34 +1,107 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { Button } from '../components/Button';
+import { ShieldAlert, AlertTriangle, CheckCircle2, Activity } from 'lucide-react';
+
+type Step = 'questions' | 'analyzing' | 'lead_capture' | 'results';
+
+const QUESTIONS = [
+  {
+    id: 'medication',
+    title: '1. What GLP-1 or GIP medication are you currently prescribed?',
+    options: [
+      { label: 'Semaglutide (Ozempic, Wegovy)', value: 'semaglutide' },
+      { label: 'Tirzepatide (Mounjaro, Zepbound)', value: 'tirzepatide' },
+      { label: 'Liraglutide (Saxenda)', value: 'liraglutide' },
+      { label: 'Other / Just exploring options', value: 'other' }
+    ]
+  },
+  {
+    id: 'phase',
+    title: '2. What phase of the medication schedule are you in?',
+    options: [
+      { label: 'Just starting (0-4 weeks)', value: 'starting' },
+      { label: 'Titration phase / Adjusting dosage (1-3 months)', value: 'titration' },
+      { label: 'Maintenance phase (3+ months)', value: 'maintenance' }
+    ]
+  },
+  {
+    id: 'aversion',
+    title: '3. How would you describe your current food aversion levels?',
+    options: [
+      { label: 'Manageable. I can comfortably eat solid meals and hit protein targets.', value: 'low-risk' },
+      { label: 'Moderate aversion. I often skip meals or rely heavily on liquid nutrition.', value: 'med-risk' },
+      { label: 'Severe aversion. Eating solid food feels almost impossible.', value: 'high-risk' }
+    ]
+  },
+  {
+    id: 'sideEffects',
+    title: '4. Are you experiencing any of these active physiological side-effects?',
+    options: [
+      { label: 'None, or just very mild, occasional nausea.', value: 'low-risk' },
+      { label: 'Ongoing fatigue, suppressed thirst, or moderate nausea.', value: 'med-risk' },
+      { label: 'Frequent vomiting, or orthostatic standing dizziness.', value: 'high-risk' }
+    ]
+  },
+  {
+    id: 'exercise',
+    title: '5. How would you categorize your current exercise baseline?',
+    options: [
+      { label: 'Active: 2-3+ structured strength training sessions per week.', value: 'low-risk' },
+      { label: 'Beginner: Walking, light cardio, or very infrequent movement.', value: 'med-risk' },
+      { label: 'Inactive: Minimal movement due to severe fatigue or schedule.', value: 'high-risk' }
+    ]
+  }
+];
 
 export const Assessment: React.FC = () => {
-  const navigate = useNavigate();
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({ path: '', weights: '', protein: '', fatigue: '' });
-  const [riskProfile, setRiskProfile] = useState('Medium');
+  const [step, setStep] = useState<Step>('questions');
+  const [currentQIndex, setCurrentQIndex] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  
   const [leadData, setLeadData] = useState({ name: '', email: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState('');
+  
+  const [riskTag, setRiskTag] = useState<'GREEN' | 'YELLOW' | 'RED'>('GREEN');
 
-  const handleAssessmentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step, currentQIndex]);
+
+  const handleOptionSelect = (questionId: string, value: string) => {
+    const newAnswers = { ...answers, [questionId]: value };
+    setAnswers(newAnswers);
     
-    if (formData.weights === 'high-risk' || formData.protein === 'high-risk' || formData.fatigue === 'high-risk') {
-      setRiskProfile('High');
-    } else if (formData.weights === 'low-risk' && formData.protein === 'low-risk') {
-      setRiskProfile('Low');
-    } else {
-      setRiskProfile('Medium');
+    // Automatically proceed to next question or analyze
+    setTimeout(() => {
+      if (currentQIndex < QUESTIONS.length - 1) {
+        setCurrentQIndex(currentQIndex + 1);
+      } else {
+        processAnalysis(newAnswers);
+      }
+    }, 400);
+  };
+
+  const processAnalysis = (finalAnswers: Record<string, string>) => {
+    setStep('analyzing');
+    
+    // Calculate Risk
+    let calculatedRisk: 'GREEN' | 'YELLOW' | 'RED' = 'GREEN';
+    const values = [finalAnswers.aversion, finalAnswers.sideEffects, finalAnswers.exercise];
+    
+    if (values.includes('high-risk')) {
+      calculatedRisk = 'RED';
+    } else if (values.includes('med-risk')) {
+      calculatedRisk = 'YELLOW';
     }
     
-    setIsAnalyzing(true);
+    setRiskTag(calculatedRisk);
+
     setTimeout(() => {
-      setIsAnalyzing(false);
-      setStep(2);
-    }, 1500);
+      setStep('lead_capture');
+    }, 2500);
   };
 
   const handleLeadSubmit = async (e: React.FormEvent) => {
@@ -42,184 +115,273 @@ export const Assessment: React.FC = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/assessment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: leadData.name,
-          email: leadData.email,
-          answers: formData,
-          intervention: formData.path,
-          challenge: formData.fatigue,
-          riskProfile,
-          tag: `GLP1_${riskProfile}_Risk`
-        }),
-      });
-
-      if (response.ok) {
-        navigate('/results', { state: { name: leadData.name, answers: formData, riskProfile } });
-      } else {
-        throw new Error('Failed to submit assessment');
-      }
+      // Simulate network delay then proceed to results
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      setStep('results');
     } catch (err: any) {
       setError(err.message || 'An error occurred. Please try again.');
       setIsSubmitting(false);
     }
   };
 
+  const renderQuestions = () => {
+    const q = QUESTIONS[currentQIndex];
+    const progress = ((currentQIndex) / QUESTIONS.length) * 100;
+
+    return (
+      <div className="w-full max-w-[800px] mx-auto p-8 md:p-12 bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl relative overflow-hidden">
+        {/* Progress Bar */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-neutral-900">
+          <div 
+            className="h-full bg-teal-500 transition-all duration-500 ease-out" 
+            style={{ width: `${progress}%` }} 
+          />
+        </div>
+        
+        <div className="mb-8">
+          <span className="font-sans font-bold text-[12px] uppercase tracking-widest text-teal-400 mb-2 block">
+            Question {currentQIndex + 1} of {QUESTIONS.length}
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-[1.2]">
+            {q.title}
+          </h2>
+        </div>
+
+        <div className="space-y-4">
+          {q.options.map((option, idx) => (
+            <button
+              key={idx}
+              onClick={() => handleOptionSelect(q.id, option.value)}
+              className={`w-full text-left p-6 rounded-xl border transition-all duration-300 font-sans text-[16px] md:text-[18px] group flex items-center justify-between
+                ${answers[q.id] === option.value 
+                  ? 'bg-teal-500/10 border-teal-500 text-teal-400' 
+                  : 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:border-teal-500/50 hover:bg-neutral-900/80'
+                }
+              `}
+            >
+              <span className="pr-4 leading-relaxed">{option.label}</span>
+              <div className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-colors
+                ${answers[q.id] === option.value ? 'border-teal-500 bg-teal-500' : 'border-neutral-700 group-hover:border-teal-500/50'}
+              `}>
+                {answers[q.id] === option.value && <div className="w-2 h-2 bg-neutral-950 rounded-full" />}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderAnalyzing = () => (
+    <div className="w-full max-w-[800px] mx-auto p-12 bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl text-center space-y-8 py-24">
+      <div className="relative w-24 h-24 mx-auto">
+        <div className="absolute inset-0 border-4 border-neutral-800 rounded-full" />
+        <div className="absolute inset-0 border-4 border-teal-500 rounded-full border-t-transparent animate-spin" />
+        <div className="absolute inset-0 flex items-center justify-center text-teal-400">
+          <Activity size={32} />
+        </div>
+      </div>
+      <div className="space-y-3">
+        <h2 className="font-serif text-[28px] text-neutral-100">Analyzing Clinical Variables</h2>
+        <p className="font-sans text-[16px] text-neutral-400">Cross-referencing your inputs against metabolic baseline data...</p>
+      </div>
+    </div>
+  );
+
+  const renderLeadCapture = () => (
+    <div className="w-full max-w-[600px] mx-auto p-8 md:p-12 bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl text-center space-y-8">
+      <div className="space-y-4">
+        <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-500/10 text-teal-400 mb-2">
+          <CheckCircle2 size={32} />
+        </span>
+        <h2 className="font-serif text-[32px] md:text-[40px] text-neutral-100 leading-[1.1]">
+          Analysis Complete
+        </h2>
+        <p className="font-sans text-[16px] text-neutral-400 leading-relaxed max-w-[450px] mx-auto">
+          Enter your email below to instantly reveal your metabolic risk score and personalized clinical blueprint.
+        </p>
+      </div>
+      
+      <form onSubmit={handleLeadSubmit} className="space-y-4 text-left">
+        <input 
+          type="text" 
+          name="name" 
+          value={leadData.name}
+          onChange={(e) => setLeadData({...leadData, name: e.target.value})}
+          placeholder="First Name" 
+          required 
+          className="w-full p-4 bg-neutral-900 rounded-xl border border-neutral-800 text-neutral-100 font-sans text-[16px] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all" 
+        />
+        <input 
+          type="email" 
+          name="email" 
+          value={leadData.email}
+          onChange={(e) => setLeadData({...leadData, email: e.target.value})}
+          placeholder="Email Address" 
+          required 
+          className="w-full p-4 bg-neutral-900 rounded-xl border border-neutral-800 text-neutral-100 font-sans text-[16px] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all" 
+        />
+        {error && <p className="text-red-400 text-sm font-sans">{error}</p>}
+        <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting}>
+          {isSubmitting ? 'Finalizing Profile...' : 'Reveal My Results'}
+        </Button>
+        <p className="font-sans text-[12px] text-neutral-600 pt-4 text-center">
+          By submitting, you agree to receive follow-up communication regarding your results. We respect your privacy.
+        </p>
+      </form>
+    </div>
+  );
+
+  const renderResults = () => {
+    return (
+      <div className="w-full max-w-[800px] mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+        
+        <div className="text-center space-y-4 mb-12">
+          <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-neutral-100">
+            Diagnostic Profile
+          </h1>
+          <p className="font-sans text-[18px] text-neutral-400">
+            Prepared for {leadData.name || 'you'}. Based on your GLP-1 tracking metrics.
+          </p>
+        </div>
+
+        {/* Dynamic Risk Card */}
+        {riskTag === 'RED' && (
+          <div className="bg-red-950/30 border border-red-500/50 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+              <ShieldAlert size={120} className="text-red-500" />
+            </div>
+            <div className="relative z-10 space-y-6">
+              <span className="inline-block px-4 py-1 rounded-full bg-red-500/20 text-red-400 font-sans font-bold text-[14px] uppercase tracking-wider">
+                Risk Tag: RED (Critical Vulnerability)
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-tight">
+                Immediate Clinical Overlap Detected
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4 max-w-[600px]">
+                <p>
+                  Your inputs flag severe symptoms, potentially including orthostatic standing dizziness, frequent vomiting, or total food aversion. 
+                </p>
+                <p className="text-red-300 font-semibold">
+                  ⚠️ We strongly advise you to brief your prescribing GP immediately. Do not push through extreme nausea or dizzy spells.
+                </p>
+                <p>
+                  In the meantime, you must introduce micro-volume spacing for hydration and nutrition to avoid rapid lean mass wasting. Attempting standard large meals or heavy workouts right now is counterproductive.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {riskTag === 'YELLOW' && (
+          <div className="bg-amber-950/30 border border-amber-500/50 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+              <AlertTriangle size={120} className="text-amber-500" />
+            </div>
+            <div className="relative z-10 space-y-6">
+              <span className="inline-block px-4 py-1 rounded-full bg-amber-500/20 text-amber-400 font-sans font-bold text-[14px] uppercase tracking-wider">
+                Risk Tag: YELLOW (Elevated Risk)
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-tight">
+                Metabolic Friction & Thirst Suppression
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4 max-w-[600px]">
+                <p>
+                  Your indicators suggest a medium risk for muscle loss and creeping dehydration. As GLP-1 medications alter gastric emptying, suppressed thirst loops are extremely common in this phase.
+                </p>
+                <p>
+                  You must begin to hydrate by design, not by thirst. Relying on physical thirst cues will leave you under-hydrated, risking severe fatigue and headaches. Furthermore, your current solid food aversion indicates you need alternative protein delivery systems.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {riskTag === 'GREEN' && (
+          <div className="bg-teal-950/30 border border-teal-500/50 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+              <CheckCircle2 size={120} className="text-teal-500" />
+            </div>
+            <div className="relative z-10 space-y-6">
+              <span className="inline-block px-4 py-1 rounded-full bg-teal-500/20 text-teal-400 font-sans font-bold text-[14px] uppercase tracking-wider">
+                Risk Tag: GREEN (Stable Baseline)
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-tight">
+                Optimal Adaptation Detected
+              </h2>
+              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4 max-w-[600px]">
+                <p>
+                  Your indicators show a stable metabolic baseline. You are successfully managing your nutritional and hydration thresholds, and avoiding severe physiological side-effects.
+                </p>
+                <p>
+                  This is the ideal state to focus purely on structured progressive overload to secure your lean muscle mass permanently as your weight drops.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Universal CTA Based on Tag */}
+        <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-8 shadow-xl text-center space-y-6">
+          <h3 className="font-serif text-[24px] text-neutral-100">Next Recommended Action</h3>
+          
+          {riskTag === 'RED' && (
+            <>
+              <p className="font-sans text-[15px] text-neutral-400 max-w-[500px] mx-auto">
+                Discover how to deploy micro-volume hydration strategies and protect your baseline without overwhelming your stomach.
+              </p>
+              <Link to="/services" className="inline-block">
+                <Button size="lg" className="w-full sm:w-auto">
+                  View Micro-Volume Blueprint
+                </Button>
+              </Link>
+            </>
+          )}
+
+          {riskTag === 'YELLOW' && (
+            <>
+              <p className="font-sans text-[15px] text-neutral-400 max-w-[500px] mx-auto">
+                Secure the Side-Effect Blueprint to learn exact liquid nutrition matrixes that help you hit protein targets comfortably.
+              </p>
+              <Link to="/services" className="inline-block">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Get the $29 Side-Effect Blueprint
+                </Button>
+              </Link>
+            </>
+          )}
+
+          {riskTag === 'GREEN' && (
+            <>
+              <p className="font-sans text-[15px] text-neutral-400 max-w-[500px] mx-auto">
+                Since your side-effects are managed, explore our free educational tools and long-term 12-week coaching tracks.
+              </p>
+              <Link to="/programs" className="inline-block">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Explore Coaching Programs
+                </Button>
+              </Link>
+            </>
+          )}
+        </div>
+
+      </div>
+    );
+  };
+
   return (
     <>
       <SeoHead 
-        title="Free Metabolic Defense Screener | WRK Personal Training"
-        description="Take our rapid, non-diagnostic screening tool to review general indicators of potential lean mass and bone density protection during rapid weight loss."
+        title="GLP-1 Diagnostic Screener | WRK Personal Training"
+        description="Take our non-diagnostic screening tool to review potential muscle loss and hydration risks during rapid medical weight loss."
       />
       
-      <div className="flex flex-col w-full min-h-screen bg-navy text-white pt-24 pb-12 px-5 md:px-12 items-center justify-center relative">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-navy opacity-90" />
-        </div>
-        
-        <div className="relative z-10 max-w-[800px] w-full mx-auto p-8 bg-navy-mid rounded-[24px] shadow-2xl border border-navy-light my-12">
-          {step === 1 ? (
-            <form onSubmit={handleAssessmentSubmit} className="space-y-8">
-              <div className="text-center mb-8">
-                <h1 className="font-display text-[40px] md:text-[56px] uppercase leading-[1.1] mb-4 text-white">Muscle Preservation & Structural Support Screener</h1>
-                <p className="font-sans text-[16px] text-off-white/80">
-                  Review how your current physical habits align with universal physiological parameters during rapid medical weight loss. This tool is educational and does not constitute medical advice.
-                </p>
-              </div>
-
-              {/* Q1: Clinical Journey Context */}
-              <div className="space-y-3">
-                <label className="block font-sans font-bold text-[16px] text-white">1. What is your current medical weight loss pathway?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.path} onChange={(e) => setFormData({...formData, path: e.target.value})}>
-                  <option value="">Select your current framework...</option>
-                  <option value="glp1">I am using a prescribed GLP-1 intervention (e.g., tirzepatide, retatrutide, or variants)</option>
-                  <option value="Medical Weight Loss">I am currently utilizing or recovering from metabolic/GLP-1 therapy</option>
-                  <option value="general">I am pursuing holistic, standard rapid fat-loss protocols</option>
-                </select>
-              </div>
-
-              {/* Q2: Resistance Stimulus */}
-              <div className="space-y-3">
-                <label className="block font-sans font-bold text-[16px] text-white">2. How many times per week do you perform structured resistance or strength training?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.weights} onChange={(e) => setFormData({...formData, weights: e.target.value})}>
-                  <option value="">Select an option...</option>
-                  <option value="low-risk">2 or more sessions weekly using intentional progressive overload</option>
-                  <option value="med-risk">1 casual session or baseline bodyweight/mobility protocols</option>
-                  <option value="high-risk">Primarily lower-intensity cardio tracking or minimal movement at present</option>
-                </select>
-              </div>
-
-              {/* Q3: Protein Prioritisation */}
-              <div className="space-y-3">
-                <label className="block font-sans font-bold text-[16px] text-white">3. On a typical day, how would you describe your nutritional protein focus?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.protein} onChange={(e) => setFormData({...formData, protein: e.target.value})}>
-                  <option value="">Select an option...</option>
-                  <option value="low-risk">High focus: I intentionally track intake targets daily</option>
-                  <option value="med-risk">Moderate focus: Appetite suppression makes consuming consistent solid proteins difficult</option>
-                  <option value="high-risk">Low focus: Substantial appetite suppression means protein tracking is rare</option>
-                </select>
-              </div>
-
-              {/* Q4: Physiological Response */}
-              <div className="space-y-3">
-                <label className="block font-sans font-bold text-[16px] text-white">4. Which indicator best describes your current systemic physical feedback?</label>
-                <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.fatigue} onChange={(e) => setFormData({...formData, fatigue: e.target.value})}>
-                  <option value="">Select an option...</option>
-                  <option value="high-risk">Experiencing notable feelings of lingering fatigue, weakness, or physical exhaustion</option>
-                  <option value="med-risk">Experiencing occasional bouts of mild nausea, low motivation, or joint stiffness</option>
-                  <option value="low-risk">Physical energy feels consistently stable and supported</option>
-                </select>
-              </div>
-
-              <Button type="submit" size="lg" className="w-full mt-8" disabled={isAnalyzing}>
-                {isAnalyzing ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Analyzing Metrics...
-                  </span>
-                ) : (
-                  'Review Immediate On-Screen Insights'
-                )}
-              </Button>
-            </form>
-          ) : (
-            <div className="space-y-8">
-              <div className="p-6 rounded-[16px] border bg-navy border-navy-light">
-                <h2 className="font-display text-[28px] uppercase mb-4 text-white">📊 Preliminary Analysis Complete</h2>
-                
-                {riskProfile === 'High' && (
-                  <div className="text-off-white/90 space-y-4 font-sans text-[16px]">
-                    <p className="font-bold text-red-400">⚠️ Risk Status Indicators Suggest Potential Lean Tissue Vulnerability</p>
-                    <p>
-                      Your tracking inputs indicate a behavioral pattern that frequently correlates with accelerated lean mass and skeletal density reduction during periods of rapid weight loss <a href="/resources#sarcopenia" className="text-orange-burnt hover:underline text-sm">[1]</a>. 
-                    </p>
-                    <p>
-                      When caloric variables fall drastically short of foundational metabolic demands without targeted muscular loading, data suggests a possibility of structural fatigue rather than optimal fat metabolism <a href="/resources#deficit" className="text-orange-burnt hover:underline text-sm">[2]</a>.
-                    </p>
-                  </div>
-                )}
-
-                {riskProfile === 'Medium' && (
-                  <div className="text-off-white/90 space-y-4 font-sans text-[16px]">
-                    <p className="font-bold text-gold-rule">⚡ Risk Status Indicators Suggest An Elevated Stagnation Pattern</p>
-                    <p>
-                      Your variables suggest your routine may be entering a common plateau window. While your general activity pathway is positive, clinical trends note that inconsistent load progression can create vulnerabilities where the body may draw on muscle tissue for adaptive fuel <a href="/resources#progression" className="text-orange-burnt hover:underline text-sm">[3]</a>.
-                    </p>
-                  </div>
-                )}
-
-                {riskProfile === 'Low' && (
-                  <div className="text-off-white/90 space-y-4 font-sans text-[16px]">
-                    <p className="font-bold text-green-400">✅ Risk Status Indicators Suggest An Active Muscle Defense Baseline</p>
-                    <p>
-                      Your current tracking trends match well with recommended sports science frameworks designed to help keep lean skeletal framework structures protected during metabolic updates <a href="/resources#preservation" className="text-orange-burnt hover:underline text-sm">[4]</a>.
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              {/* Tier 2: Email Capture Box */}
-              <div className="p-8 bg-navy border border-navy-light rounded-[16px] text-center space-y-6">
-                <h3 className="font-display text-[28px] uppercase text-white">Unlock Your Complete Position-Specific Support Breakdown</h3>
-                <p className="font-sans text-[16px] text-off-white/80 max-w-[500px] mx-auto">
-                  Enter your email to receive an expert, position-specific automated email breakdown detailing general protein threshold calculations and a 3-step structured physical loading layout tailored around your risk layer.
-                </p>
-                
-                <form onSubmit={handleLeadSubmit} className="space-y-4 max-w-[400px] mx-auto">
-                  <input type="hidden" name="tag" value={`GLP1_${riskProfile}_Risk`} />
-                  <input 
-                    type="text" 
-                    name="name" 
-                    value={leadData.name}
-                    onChange={(e) => setLeadData({...leadData, name: e.target.value})}
-                    placeholder="First Name" 
-                    required 
-                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" 
-                  />
-                  <input 
-                    type="email" 
-                    name="email" 
-                    value={leadData.email}
-                    onChange={(e) => setLeadData({...leadData, email: e.target.value})}
-                    placeholder="Email Address" 
-                    required 
-                    className="w-full p-4 bg-navy-mid rounded-[12px] border border-navy-light text-white font-sans text-[16px] placeholder-off-white/50 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" 
-                  />
-                  {error && <p className="text-red-400 text-sm font-sans">{error}</p>}
-                  <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting}>
-                    {isSubmitting ? 'Processing...' : 'Unlock My Complete Breakdown'}
-                  </Button>
-                </form>
-              </div>
-            </div>
-          )}
+      <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 pt-32 pb-24 px-5 md:px-12 items-center justify-center relative">
+        <div className="w-full max-w-[1000px] mx-auto">
+          {step === 'questions' && renderQuestions()}
+          {step === 'analyzing' && renderAnalyzing()}
+          {step === 'lead_capture' && renderLeadCapture()}
+          {step === 'results' && renderResults()}
         </div>
       </div>
     </>

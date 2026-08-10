@@ -91,7 +91,7 @@ export const Services: React.FC = () => {
                       Bonus: 4-Week Tracking Timeline
                     </h4>
                     <p className="font-sans text-[14px] text-neutral-400 leading-relaxed">
-                      Automated instant access via the My PT Hub software app files dashboard.
+                      Automated instant access via the secure files tab inside the WRK Training App.
                     </p>
                   </div>
                 </div>
@@ -100,9 +100,14 @@ export const Services: React.FC = () => {
                   <a href="#" className="inline-block w-full sm:w-auto px-8 py-4 bg-teal-500 hover:bg-teal-400 text-neutral-950 font-sans font-semibold text-[16px] rounded-md transition-colors shadow-lg hover:shadow-teal-500/20 mb-4">
                     Get The Blueprint Toolkit &mdash; $29
                   </a>
-                  <p className="font-sans text-[13px] text-neutral-400 max-w-[500px] mx-auto">
-                    ⚡ Instant Access. Closes checkout page and automatically delivers your digital asset suite via the My PT Hub dashboard mobile app framework.
+                  <p className="font-sans text-[13px] text-neutral-400 max-w-[500px] mx-auto mb-6">
+                    ⚡ Instant Access. Closes checkout page and automatically delivers your digital asset suite via the custom WRK Training App dashboard.
                   </p>
+                  <div className="pt-6 border-t border-neutral-800 max-w-lg mx-auto">
+                    <Link to="/contact" className="font-sans text-[14px] text-teal-400 hover:text-teal-300 transition-colors underline-offset-4 hover:underline">
+                      Not sure if the self-guided toolkit or 1-on-1 coaching is right for your medication phase? Click here to message our specialist support team directly.
+                    </Link>
+                  </div>
                 </div>
               </div>
               
@@ -131,9 +136,17 @@ export const Services: React.FC = () => {
                   <p className="text-[14px] text-neutral-500">Billed weekly on a recurring cycle</p>
                 </div>
                 <div className="space-y-4 flex-grow font-sans text-[15px] text-neutral-300">
-                  <p><strong className="text-neutral-100">Delivery Mode:</strong> Fully remote 12-week programming tracks managed via My PT Hub.</p>
+                  <p><strong className="text-neutral-100">Delivery Mode:</strong> Fully remote 12-week programming tracks managed via the WRK Training App.</p>
                   <p><strong className="text-neutral-100">Inclusions:</strong> Weekly digital check-ins and precise calorie recalibrations adapted to your GLP-1 responses.</p>
                   <p><strong className="text-neutral-100">Alignment:</strong> Fits perfectly with Track 1 (The Foundations Track) or Track 2 (The Kinetic Defense Track).</p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-neutral-800 space-y-3">
+                  <Link to="/assessment" className="block w-full text-center px-6 py-3 bg-teal-500 hover:bg-teal-400 text-neutral-950 font-sans font-bold text-[15px] rounded-lg transition-colors">
+                    Take the Free 2-Min Safety Assessment
+                  </Link>
+                  <a href="/contact#on-page-enquiry-form" className="block w-full text-center px-6 py-3 bg-transparent hover:bg-neutral-900 border border-neutral-700 text-teal-400 font-sans font-semibold text-[14px] rounded-lg transition-colors">
+                    Have questions? Submit a Direct Coaching Enquiry
+                  </a>
                 </div>
               </div>
 
@@ -148,6 +161,14 @@ export const Services: React.FC = () => {
                   <p><strong className="text-neutral-100">Delivery Mode:</strong> Full remote tracking infrastructure + In-Person Training.</p>
                   <p><strong className="text-neutral-100">Inclusions:</strong> 1x weekly 30-minute in-person muscle defense tracking session at our Addington, Christchurch facility, plus all digital programming.</p>
                   <p><strong className="text-neutral-100">Alignment:</strong> Ideal for securing your daily protein target block and executing either The Foundations Track or The Kinetic Defense Track with hands-on guidance.</p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-neutral-800 space-y-3">
+                  <Link to="/assessment" className="block w-full text-center px-6 py-3 bg-teal-500 hover:bg-teal-400 text-neutral-950 font-sans font-bold text-[15px] rounded-lg transition-colors">
+                    Take the Free 2-Min Safety Assessment
+                  </Link>
+                  <a href="/contact#on-page-enquiry-form" className="block w-full text-center px-6 py-3 bg-transparent hover:bg-neutral-900 border border-neutral-700 text-teal-400 font-sans font-semibold text-[14px] rounded-lg transition-colors">
+                    Have questions? Submit a Direct Coaching Enquiry
+                  </a>
                 </div>
               </div>
             </div>

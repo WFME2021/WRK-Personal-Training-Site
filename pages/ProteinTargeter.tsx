@@ -195,7 +195,7 @@ export const ProteinTargeter: React.FC = () => {
             <p className="font-sans text-[16px] text-neutral-300 leading-relaxed mb-6">
               Managing protein thresholds, meal allocations, and progressive training blocks while navigating your medical timeline can feel incredibly complex. 
               <br/><br/>
-              At WRK, our specialized <strong>12-Week Medical Weight Loss Support Programs</strong> take the guessing out of your daily routine. We deliver custom position-specific nutrition templates and short, 30-minute progressive resistance workouts straight to your <strong>My PT Hub</strong> dashboard—giving you professional accountability from our private training facility in Addington, Christchurch, or completely online anywhere across New Zealand.
+              At WRK, our specialized <strong>12-Week Medical Weight Loss Support Programs</strong> take the guessing out of your daily routine. We deliver custom position-specific nutrition templates and short, 30-minute progressive resistance workouts straight to your <strong>WRK Training App</strong> dashboard—giving you professional accountability from our private training facility in Addington, Christchurch, or completely online anywhere across New Zealand.
             </p>
           </div>
 

@@ -44,7 +44,7 @@ export const OnlineCoaching: React.FC = () => {
               </span>
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-neutral-300 font-medium max-w-[650px] mx-auto md:mx-0 mb-8 leading-relaxed">
-              Rapid physical transformation requires distinct, scientific oversight. As specialist <strong>personal trainers for GLP-1 patients</strong> and GLP-1 patients, WRK delivers a highly scalable, premium online infrastructure built directly into My PT Hub.
+              Rapid physical transformation requires distinct, scientific oversight. As specialist <strong>personal trainers for GLP-1 patients</strong> and GLP-1 patients, WRK delivers a highly scalable, premium online infrastructure built directly into the WRK Training App.
               <br/><br/>
               We don't offer generic templates. We program around your specific clinical intervention, monitoring your physiological feedback every single week.
             </p>

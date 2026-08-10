@@ -333,7 +333,7 @@ export const TdeeCalculator: React.FC = () => {
             <p className="font-sans text-[16px] text-neutral-300 leading-relaxed mb-6">
               Balancing estimated metabolic math with real-world side effects, medication steps, or prescription GLP-1 recovery timelines can feel incredibly complex. 
               <br/><br/>
-              At WRK, our premium 12-Week Hybrid Coaching Program (located at our private training facility in Addington, Christchurch) and our Remote Support Tracks across New Zealand provide direct, evidence-based guidance. We build position-specific resistance training tracks and adaptive lifestyle templates straight into your My PT Hub profile, ensuring your structural health matches your lighter frame.
+              At WRK, our premium 12-Week Hybrid Coaching Program (located at our private training facility in Addington, Christchurch) and our Remote Support Tracks across New Zealand provide direct, evidence-based guidance. We build position-specific resistance training tracks and adaptive lifestyle templates straight into your WRK Training App profile, ensuring your structural health matches your lighter frame.
             </p>
           </div>
 

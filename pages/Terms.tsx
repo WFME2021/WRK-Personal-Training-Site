@@ -81,7 +81,7 @@ export const Terms: React.FC = () => {
 
             <div>
               <h2 className="text-2xl font-bold text-text-primary mb-4">9) Digital services and third-party platforms</h2>
-              <p>Some services may be delivered through third-party platforms (e.g., training app providers, payment processors). Your use of those platforms may be subject to their own terms. For example, the 42-Day Reset purchase and access may involve MyPTHub and/or Stripe.</p>
+              <p>Some services may be delivered through third-party platforms (e.g., training app providers, payment processors). Your use of those platforms may be subject to their own terms. For example, the 42-Day Reset purchase and access may involve the WRK Training App and/or Stripe.</p>
             </div>
 
             <div>

@@ -46,7 +46,7 @@ export const Refunds: React.FC = () => {
                 <li>you have not downloaded/used any gated programme materials (where applicable).</li>
               </ul>
               <p className="mt-4">If you’ve accessed/started the programme, refunds are generally not offered (digital delivery).</p>
-              <p className="mt-4 text-sm italic">Note: Payment processing and access may involve third-party platforms (e.g., MyPTHub/Stripe).</p>
+              <p className="mt-4 text-sm italic">Note: Payment processing and access may involve third-party platforms (e.g., WRK Training App/Stripe).</p>
               <p className="mt-4">To request a refund, contact us via the Contact page with your purchase email and the date of purchase.</p>
             </div>
 

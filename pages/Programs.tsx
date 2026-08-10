@@ -57,6 +57,27 @@ export const Programs: React.FC = () => {
                 <p className="font-sans text-neutral-400 text-sm leading-relaxed">We refine your movement patterns and optimize your weekly nutrition templates, focusing on general macro positions that support your long-term metabolic health as your clinical dosages scale.</p>
               </div>
             </div>
+
+            {/* CARD MODULE 1: Foundations Track Sign-Up */}
+            <div className="max-w-3xl mx-auto bg-neutral-100 rounded-2xl p-8 md:p-12 shadow-xl border border-neutral-200 mt-12 text-center">
+              <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-teal-600 mb-4">
+                Your Path to Lifestyle Stability
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-slate-900 mb-6 leading-tight">
+                Ready to Begin Your Foundations Track?
+              </h2>
+              <p className="font-sans text-[16px] text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+                Secure your premium, personalized 12-week lifestyle framework today. Let’s stabilize your medication side effects, protect your hard-earned metabolic engine, and build safe, sustainable movement habits together. We are here to bridge the gap between your prescription and your daily reality.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link to="/assessment" className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-sans font-semibold text-[16px] rounded-lg transition-colors shadow-lg">
+                  Take the Free 2-Min Safety Assessment
+                </Link>
+                <a href="/contact#on-page-enquiry-form" className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-slate-900 hover:bg-slate-100 text-slate-900 font-sans font-semibold text-[16px] rounded-lg transition-colors">
+                  Submit a Direct Track Enquiry
+                </a>
+              </div>
+            </div>
           </section>
 
           {/* Track 2 */}
@@ -86,6 +107,27 @@ export const Programs: React.FC = () => {
                 <div className="text-teal-400 mb-4 group-hover:scale-110 transition-transform"><AlignVerticalJustifyCenter size={32} /></div>
                 <h4 className="font-serif font-semibold text-neutral-100 text-[18px] mb-2">Weeks 9–12 | Lean Mass Consolidation</h4>
                 <p className="font-sans text-neutral-400 text-sm leading-relaxed">Adjusting physical workloads to align with your prescription GLP-1 nutritional volume. Integrating high-utilization movement strategies that help you move dynamically and pain-free.</p>
+              </div>
+            </div>
+
+            {/* CARD MODULE 2: Kinetic Defense Track Sign-Up */}
+            <div className="max-w-3xl mx-auto bg-neutral-100 rounded-2xl p-8 md:p-12 shadow-xl border border-neutral-200 mt-12 text-center">
+              <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-teal-600 mb-4">
+                Performance Preservation Under Deficits
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-slate-900 mb-6 leading-tight">
+                Secure Your Kinetic Defense Shield
+              </h2>
+              <p className="font-sans text-[16px] text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+                Don't let a clinical calorie deficit strip away your muscle tone, flatten your strength, or drain your active lifestyle energy. Lock in your advanced 12-week weight-bearing framework to force muscle retention, activate fast-twitch fibers safely, and protect your metabolic rate. Keep the results you've worked so hard to build.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link to="/assessment" className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-sans font-semibold text-[16px] rounded-lg transition-colors shadow-lg">
+                  Take the Free 2-Min Safety Assessment
+                </Link>
+                <a href="/contact#on-page-enquiry-form" className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-slate-900 hover:bg-slate-100 text-slate-900 font-sans font-semibold text-[16px] rounded-lg transition-colors">
+                  Submit a Direct Track Enquiry
+                </a>
               </div>
             </div>
           </section>
@@ -149,8 +191,22 @@ export const Programs: React.FC = () => {
                       Bonus: 4-Week Tracking Timeline
                     </h4>
                     <p className="font-sans text-[14px] text-neutral-400 leading-relaxed">
-                      Automated instant access via the My PT Hub software app files dashboard.
+                      Automated instant access via the secure files tab inside the WRK Training App.
                     </p>
+                  </div>
+                </div>
+
+                <div className="bg-neutral-900/80 p-8 rounded-xl border border-neutral-800 text-center">
+                  <a href="#" className="inline-block w-full sm:w-auto px-8 py-4 bg-teal-500 hover:bg-teal-400 text-neutral-950 font-sans font-semibold text-[16px] rounded-md transition-colors shadow-lg hover:shadow-teal-500/20 mb-4">
+                    Get The Blueprint Toolkit &mdash; $29
+                  </a>
+                  <p className="font-sans text-[13px] text-neutral-400 max-w-[500px] mx-auto mb-6">
+                    ⚡ Instant Access. Closes checkout page and automatically delivers your digital asset suite via the custom WRK Training App dashboard.
+                  </p>
+                  <div className="pt-6 border-t border-neutral-800 max-w-lg mx-auto">
+                    <Link to="/contact" className="font-sans text-[14px] text-teal-400 hover:text-teal-300 transition-colors underline-offset-4 hover:underline">
+                      Not sure if the self-guided toolkit or 1-on-1 coaching is right for your medication phase? Click here to message our specialist support team directly.
+                    </Link>
                   </div>
                 </div>
               </div>

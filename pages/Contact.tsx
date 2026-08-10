@@ -124,7 +124,7 @@ export const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="interest" className={labelClasses}>Reason for Enquiry</label>
+                    <label htmlFor="interest" className={labelClasses}>Your Prescribed GLP-1 Medication Track</label>
                     <div className="relative">
                       <select 
                         id="interest"
@@ -134,10 +134,12 @@ export const Contact = () => {
                         className={`${inputClasses} appearance-none`}
                       >
                         <option value="">Select an option...</option>
-                        <option value="Seeking exercise support alongside GLP-1 therapy">Seeking exercise support alongside GLP-1 therapy</option>
-                        <option value="Medical weight loss movement coaching">Medical weight loss movement coaching</option>
-                        <option value="Medical professional / Clinic referral enquiry">Medical professional / Clinic referral enquiry</option>
-                        <option value="General coaching enquiry">General coaching enquiry</option>
+                        <option value="Semaglutide (Ozempic/Wegovy) Support Track">Semaglutide (Ozempic/Wegovy) Support Track</option>
+                        <option value="Tirzepatide (Mounjaro) Support Track">Tirzepatide (Mounjaro) Support Track</option>
+                        <option value="Liraglutide (Saxenda) Support Track">Liraglutide (Saxenda) Support Track</option>
+                        <option value="Exploring GLP-1 Prescription Options">Exploring GLP-1 Prescription Options</option>
+                        <option value="Medical Professional / GP Patient Referral">Medical Professional / GP Patient Referral</option>
+                        <option value="General Personal Training Inquiry (Non-Medicated)">General Personal Training Inquiry (Non-Medicated)</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 pt-1">
                         <svg className="fill-current h-4 w-4 text-grey-mid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
