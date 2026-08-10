@@ -1,225 +1,126 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, Search } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
-import { useContent } from '../context/ContentContext';
-
-import { Hero } from '../components/Hero';
-import { MidPageBanner } from '../components/MidPageBanner';
 
 export const Blog: React.FC = () => {
-  const { blogPosts, pageContent } = useContent();
-  const { hero, banner, seo } = pageContent.blog;
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const POSTS_PER_PAGE = 6;
-
-  // Extract unique categories from published posts
-  const categories = useMemo(() => {
-    const publishedPosts = blogPosts.filter(post => post.status !== 'draft');
-    const cats = ['All', ...new Set(publishedPosts.map(post => post.category))];
-    return cats;
-  }, [blogPosts]);
-
-  // Filter posts by Category AND Search Query
-  const filteredPosts = useMemo(() => {
-    return blogPosts.filter(post => {
-      if (post.status === 'draft') return false;
-      const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
-      const matchesSearch = 
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.content.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      return matchesCategory && matchesSearch;
-    });
-  }, [selectedCategory, searchQuery, blogPosts]);
-
-  // Reset page when filters change
-  React.useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedCategory, searchQuery]);
-
-  // Calculate pagination
-  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
-  const paginatedPosts = filteredPosts.slice(
-    (currentPage - 1) * POSTS_PER_PAGE,
-    currentPage * POSTS_PER_PAGE
-  );
-
-  // Calculate read time helper
-  const getReadTime = (content: string) => {
-    const words = content.replace(/<[^>]*>/g, '').split(' ').length;
-    return Math.ceil(words / 200);
-  };
-
-  // Schema for the Blog Collection
-  const collectionSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "headline": "WRK Blog",
-    "description": "Articles on strength training, longevity, and high-performance living.",
-    "url": "https://www.wrkpersonaltraining.co.nz/blog",
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": filteredPosts.map((post, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "url": `https://www.wrkpersonaltraining.co.nz/blog/${post.slug}`,
-        "name": post.title
-      }))
-    }
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <>
-      <SeoHead 
-        title={seo.title}
-        description={seo.description}
-        schema={collectionSchema}
+    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
+      <SeoHead
+        title="The Medical Weight Loss Support Blog | WRK Personal Training"
+        description="Read research-backed insights on muscle preservation, metabolic adaptation, and side-effect mitigation strategies for prescription GLP-1 weight loss pathways."
       />
-      
-      <div className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
-        {/* Hero Section */}
-        <Hero 
-          image={hero.image}
-          title={hero.h1}
-          subtitle={hero.subhead}
-          bullets={hero.bullets}
-          kicker={hero.kicker}
-          secondaryCta={{
-            label: "Search Articles",
-            onClick: () => document.getElementById('search-bar')?.focus()
-          }}
-        />
 
-        <div className="max-w-5xl mx-auto px-6 py-24">
-          {/* Search Bar */}
-          <div className="relative max-w-lg mx-auto mb-12">
-            <input 
-              id="search-bar"
-              type="text" 
-              placeholder="Search articles..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-secondary border border-border text-text-primary placeholder-text-secondary rounded-full focus:outline-none focus:ring-2 focus:ring-accent focus:bg-primary transition-all shadow-sm"
-            />
-            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-text-secondary" size={20} />
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Page Header */}
+        <header className="text-center mb-20 max-w-3xl mx-auto">
+          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+            The Clinical Lifestyle Blog
+          </h1>
+          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
+            Evidence-based articles, research-backed nutrition matrices, and practical sports science insights designed to support your daily medical weight loss journey.
+          </p>
+        </header>
+
+        {/* 3-Article Card Display Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          
+          {/* CARD 1 */}
+          <div className="bg-white border border-neutral-200 rounded-3xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="aspect-[4/3] bg-neutral-100 flex items-center justify-center relative">
+               <div className="absolute inset-0 bg-[#8A9A86]/10"></div>
+               {/* Thumbnail Placeholder */}
+               <svg className="w-12 h-12 text-[#8A9A86]/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+               </svg>
+            </div>
+            <div className="p-8 flex flex-col flex-grow">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#8A9A86] mb-3">
+                4 Min Read &bull; Clinical Sports Nutrition
+              </div>
+              <h2 className="font-serif text-[22px] text-[#2C3539] mb-4 leading-snug">
+                The Science of Proximity-to-Failure During Deficits
+              </h2>
+              <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-8 flex-grow">
+                Why lifting close to your mechanical limit is the ultimate signal required to protect your lean muscle tissue from wasting under deep medication-induced calorie restriction.
+              </p>
+              <Link to="/blog/proximity-to-failure" className="text-[14px] font-medium text-[#8A9A86] hover:text-[#768672] transition-colors flex items-center">
+                Read Article <span className="ml-2">&rarr;</span>
+              </Link>
+            </div>
           </div>
 
-          {/* Category Pills */}
-          <nav className="flex flex-wrap gap-3 mb-16 border-b border-border pb-8 justify-center" aria-label="Blog categories">
-            {categories.map(category => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200 rounded-full ${
-                  selectedCategory === category
-                    ? 'bg-text-primary text-primary shadow-lg'
-                    : 'bg-secondary text-text-secondary hover:bg-border hover:text-text-primary'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </nav>
-
-          {/* Posts Grid */}
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
-            {paginatedPosts.map((post) => (
-              <article key={post.id} className="group cursor-pointer flex flex-col h-full">
-                <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
-                  <div className="relative overflow-hidden mb-6 aspect-[16/10] bg-secondary rounded-2xl border border-border">
-                    {post.image?.url && (
-                      <img loading="lazy"  referrerPolicy="no-referrer" 
-                        src={post.image.url} 
-                        alt={post.image.alt || post.title}
-                        
-                        className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
-                      />
-                    )}
-                    <div className="absolute top-4 left-4 bg-secondary/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-text-primary shadow-sm rounded-full border border-border">
-                      {post.category}
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-col flex-grow">
-                    <div className="flex items-center text-xs font-bold uppercase tracking-wider text-text-secondary mb-3 space-x-4">
-                      <time dateTime={post.isoDate}>{post.date}</time>
-                      <span className="w-1 h-1 bg-accent rounded-full"></span>
-                      <span className="flex items-center"><Clock size={12} className="mr-1" /> {getReadTime(post.content)} min read</span>
-                    </div>
-                    
-                    <h2 className="text-3xl font-display group-hover:text-accent transition-colors leading-[1.25] mb-4 text-text-primary uppercase">
-                      {post.title}
-                    </h2>
-                    
-                    <p className="text-text-secondary line-clamp-3 leading-relaxed mb-6 flex-grow">
-                      {post.excerpt}
-                    </p>
-                    
-                    <div className="pt-2 flex items-center text-xs font-bold uppercase tracking-widest border-b-2 border-transparent group-hover:border-text-primary inline-flex self-start transition-all text-text-primary">
-                      Read Article <ArrowRight size={14} className="ml-2" />
-                    </div>
-                  </div>
-                </Link>
-              </article>
-            ))}
+          {/* CARD 2 */}
+          <div className="bg-white border border-neutral-200 rounded-3xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="aspect-[4/3] bg-neutral-100 flex items-center justify-center relative">
+               <div className="absolute inset-0 bg-[#8A9A86]/10"></div>
+               {/* Thumbnail Placeholder */}
+               <svg className="w-12 h-12 text-[#8A9A86]/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+               </svg>
+            </div>
+            <div className="p-8 flex flex-col flex-grow">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#8A9A86] mb-3">
+                5 Min Read &bull; Side-Effect Mitigation
+              </div>
+              <h2 className="font-serif text-[22px] text-[#2C3539] mb-4 leading-snug">
+                Navigating Suppressed Thirst Loops on GLP-1s
+              </h2>
+              <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-8 flex-grow">
+                Deep dive into the neurological pathways where weight loss medications suppress your brain's natural urge to drink fluids, and how chronic low-grade dehydration triggers headaches and nausea.
+              </p>
+              <Link to="/blog/suppressed-thirst-loops" className="text-[14px] font-medium text-[#8A9A86] hover:text-[#768672] transition-colors flex items-center">
+                Read Article <span className="ml-2">&rarr;</span>
+              </Link>
+            </div>
           </div>
 
-          {filteredPosts.length === 0 && (
-            <div className="py-20 text-center border border-dashed border-border rounded-3xl bg-secondary">
-              <p className="text-text-secondary mb-4 text-lg">No articles found matching "{searchQuery}"</p>
-              <button 
-                onClick={() => { setSearchQuery(''); setSelectedCategory('All'); }}
-                className="text-text-primary font-bold uppercase tracking-widest text-sm underline hover:text-accent transition-colors"
-              >
-                Clear filters
-              </button>
+          {/* CARD 3 */}
+          <div className="bg-white border border-neutral-200 rounded-3xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="aspect-[4/3] bg-neutral-100 flex items-center justify-center relative">
+               <div className="absolute inset-0 bg-[#8A9A86]/10"></div>
+               {/* Thumbnail Placeholder */}
+               <svg className="w-12 h-12 text-[#8A9A86]/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+               </svg>
             </div>
-          )}
+            <div className="p-8 flex flex-col flex-grow">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#8A9A86] mb-3">
+                6 Min Read &bull; Metabolic Protection
+              </div>
+              <h2 className="font-serif text-[22px] text-[#2C3539] mb-4 leading-snug">
+                Adaptive Thermogenesis: Why Your Calorie Calculator is Wrong
+              </h2>
+              <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-8 flex-grow">
+                Unveiling the metabolic slowdown survival mechanisms that trigger sudden weight loss plateaus, and how to use the medical TDEE equation to safely realign your energy targets.
+              </p>
+              <Link to="/blog/adaptive-thermogenesis" className="text-[14px] font-medium text-[#8A9A86] hover:text-[#768672] transition-colors flex items-center">
+                Read Article <span className="ml-2">&rarr;</span>
+              </Link>
+            </div>
+          </div>
 
-          {/* Pagination Controls */}
-          {totalPages > 1 && (
-            <div className="mt-16 flex justify-center items-center space-x-4">
-              <button
-                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-colors ${
-                  currentPage === 1 
-                    ? 'bg-secondary text-text-secondary opacity-50 cursor-not-allowed' 
-                    : 'bg-secondary text-text-primary hover:bg-border'
-                }`}
-              >
-                Previous
-              </button>
-              <span className="text-sm font-bold text-text-secondary">
-                Page {currentPage} of {totalPages}
-              </span>
-              <button
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                disabled={currentPage === totalPages}
-                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-colors ${
-                  currentPage === totalPages 
-                    ? 'bg-secondary text-text-secondary opacity-50 cursor-not-allowed' 
-                    : 'bg-secondary text-text-primary hover:bg-border'
-                }`}
-              >
-                Next
-              </button>
-            </div>
-          )}
         </div>
 
-        <MidPageBanner 
-          image={banner.image}
-          tagline={banner.tagline}
-          support={banner.support}
-        />
+        {/* Contextual Lead Bridge */}
+        <div className="bg-white/50 border border-neutral-200 rounded-3xl p-10 md:p-14 text-center max-w-4xl mx-auto shadow-sm">
+          <p className="font-serif text-[22px] md:text-[26px] text-[#2C3539] leading-snug mb-8">
+            Experiencing these metabolic shifts or side effects yourself? Take our Free 2-Minute Weight Loss Safety Assessment to check your current baseline safety parameters today.
+          </p>
+          <Link 
+            to="/assessment"
+            className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-[#1A1F22] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[15px]"
+          >
+            Launch Free Assessment
+          </Link>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 };

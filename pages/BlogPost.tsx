@@ -31,7 +31,7 @@ export const BlogPost: React.FC = () => {
     "author": [{
       "@type": "Person",
       "name": post.author?.name || 'WRK Personal Training',
-      "url": "https://www.wrkpersonaltraining.co.nz" // Updated to main site since /about isn't explicit yet
+      "url": "https://www.wrkpersonaltraining.co.nz"
     }],
     "description": post.seoDescription || post.excerpt
   };
@@ -48,63 +48,76 @@ export const BlogPost: React.FC = () => {
         authorName={post.author?.name}
       />
 
-      <article className="bg-primary min-h-screen text-text-primary transition-colors duration-300">
+      <article className="bg-[#FAFAF9] min-h-screen text-[#2C3539] transition-colors duration-300">
+        {/* Micro-trust banner */}
+        <div className="w-full bg-[#FAFAF9] border-b border-neutral-200 py-3 hidden md:block">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-center space-x-6 md:space-x-12 text-[11px] uppercase tracking-[0.15em] text-[#2C3539]/60 font-semibold">
+            <span>GLP-1 Specialized</span>
+            <span className="hidden md:inline text-[#8A9A86]">&bull;</span>
+            <span>Muscle Preservation Focus</span>
+            <span className="hidden md:inline text-[#8A9A86]">&bull;</span>
+            <span>Data-Driven Tracking</span>
+            <span className="hidden md:inline text-[#8A9A86]">&bull;</span>
+            <span>GP Referral Network</span>
+          </div>
+        </div>
+
         {/* Post Header */}
-        <header className="bg-secondary py-20 px-6 border-b border-border">
+        <header className="py-16 md:py-20 px-6 border-b border-neutral-200">
           <div className="max-w-3xl mx-auto">
-            <Link to="/blog" className="inline-flex items-center text-sm font-medium text-text-secondary hover:text-text-primary mb-8 transition-colors group">
+            <Link to="/blog" className="inline-flex items-center text-[14px] font-medium text-[#2C3539]/60 hover:text-[#2C3539] mb-8 transition-colors group">
               <ArrowLeft size={16} className="mr-2 transition-transform group-hover:-translate-x-1" /> Back to Blog
             </Link>
             
-            <div className="flex flex-wrap items-center gap-4 text-sm mb-6">
-              <span className="font-bold bg-primary text-text-primary px-3 py-1 border border-border shadow-sm">{post.category}</span>
-              <span className="flex items-center text-text-secondary">
-                <Calendar size={14} className="mr-1" /> <time dateTime={post.isoDate}>{post.date}</time>
+            <div className="flex flex-wrap items-center gap-4 text-[13px] mb-8 text-[#2C3539]/60">
+              <span className="font-bold tracking-wider uppercase text-[#8A9A86] bg-[#8A9A86]/10 px-3 py-1 rounded-sm">{post.category}</span>
+              <span className="flex items-center">
+                <Calendar size={14} className="mr-1.5" /> <time dateTime={post.isoDate}>{post.date}</time>
               </span>
               {post.updatedDate && (
-                <span className="flex items-center text-text-secondary italic">
+                <span className="flex items-center italic">
                   (Updated: {post.updatedDate})
                 </span>
               )}
-              <span className="flex items-center text-text-secondary">
-                <Clock size={14} className="mr-1" /> {readTime} min read
+              <span className="flex items-center">
+                <Clock size={14} className="mr-1.5" /> {readTime} min read
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-bold leading-[1.25] mb-6 text-text-primary">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6 text-[#2C3539]">
               {post.title}
             </h1>
             
-            <p className="text-xl text-text-secondary leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-[#2C3539]/70 leading-relaxed font-light">
               {post.excerpt}
             </p>
           </div>
         </header>
 
-        <div className="max-w-3xl mx-auto px-6 py-16">
+        <div className="max-w-3xl mx-auto px-4 md:px-8 py-16">
           {/* Main Image */}
           {post.image?.url && (
-            <figure className="mb-16 -mx-6 md:mx-0">
-               <img loading="lazy"  referrerPolicy="no-referrer" 
+            <figure className="mb-16 -mx-4 md:mx-0">
+               <img loading="lazy" referrerPolicy="no-referrer" 
                  src={post.image.url} 
                  alt={post.image.alt || post.title} 
-                 className="w-full h-auto object-cover md:rounded-sm shadow-sm border border-border"
+                 className="w-full h-auto object-cover md:rounded-2xl shadow-sm border border-neutral-200"
                />
             </figure>
           )}
 
           {/* Post Content */}
           <div 
-            className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-12 prose-headings: prose-headings:uppercase prose-headings:font-display prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
+            className="prose prose-lg max-w-none mb-16 prose-p:text-[#2C3539] prose-p:leading-relaxed prose-p:font-sans prose-headings:text-[#2C3539] prose-h2:font-serif prose-h2:text-[#8A9A86] prose-a:text-[#8A9A86] hover:prose-a:opacity-80 prose-li:text-[#2C3539] prose-strong:text-[#2C3539] prose-strong:font-bold"
             dangerouslySetInnerHTML={{ __html: marked.parse(post.content || '') as string }}
           />
 
           {/* FAQ Section */}
           {post.faq && (
-            <div className="mb-16">
-              <h2 className="text-2xl md:text-3xl uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Frequently Asked Questions</h2>
+            <div className="mb-16 border-t border-neutral-200 pt-12">
+              <h2 className="text-3xl font-serif mb-8 text-[#8A9A86]">Frequently Asked Questions</h2>
               <div 
-                className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-xl prose-a:text-accent prose-a:no-underline prose-a:border-b prose-a:border-accent hover:prose-a:opacity-80"
+                className="prose prose-lg max-w-none prose-p:text-[#2C3539] prose-p:leading-relaxed prose-headings:font-serif prose-headings:text-[#2C3539] prose-a:text-[#8A9A86] hover:prose-a:opacity-80 prose-strong:text-[#2C3539]"
                 dangerouslySetInnerHTML={{ __html: marked.parse(post.faq || '') as string }}
               />
             </div>
@@ -112,26 +125,26 @@ export const BlogPost: React.FC = () => {
 
           {/* References Section */}
           {post.references && (
-            <div className="mb-16 bg-secondary p-6 rounded-xl border border-border">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-text-secondary mb-4">References & Sources</h3>
+            <div className="mb-16 bg-white p-8 rounded-2xl border border-neutral-200 shadow-sm">
+              <h3 className="text-[12px] font-bold uppercase tracking-widest text-[#2C3539]/50 mb-4">References & Sources</h3>
               <div 
-                className="prose prose-sm prose-slate dark:prose-invert max-w-none prose-a:text-accent prose-a:no-underline hover:prose-a:underline text-text-secondary"
+                className="prose prose-sm max-w-none prose-p:text-[#2C3539]/70 prose-a:text-[#8A9A86] hover:prose-a:underline"
                 dangerouslySetInnerHTML={{ __html: marked.parse(post.references || '') as string }}
               />
             </div>
           )}
 
           {/* Author Bio (E-E-A-T) */}
-          <section className="bg-secondary p-8 md:p-10 rounded-sm mb-16 flex flex-col md:flex-row items-center md:items-start gap-8 border border-border">
-             <img loading="lazy"  referrerPolicy="no-referrer" 
+          <section className="bg-white p-8 md:p-10 rounded-2xl mb-16 flex flex-col md:flex-row items-center md:items-start gap-8 border border-neutral-200 shadow-sm">
+             <img loading="lazy" referrerPolicy="no-referrer" 
                src={post.author.avatarUrl} 
                alt={post.author.name}
-               className="w-24 h-24 rounded-full object-cover border-2 border-primary shadow-sm shrink-0"
+               className="w-24 h-24 rounded-full object-cover border border-neutral-200 shrink-0"
              />
              <div className="text-center md:text-left">
-               <h3 className="text-lg font-bold text-text-primary mb-1">Written by {post.author.name}</h3>
-               <p className="text-sm font-medium text-text-secondary uppercase tracking-wider mb-3">{post.author.role}</p>
-               <p className="text-text-secondary leading-relaxed text-sm">
+               <h3 className="text-lg font-serif font-bold text-[#2C3539] mb-1">Written by {post.author.name}</h3>
+               <p className="text-[12px] font-bold text-[#8A9A86] uppercase tracking-wider mb-4">{post.author.role}</p>
+               <p className="text-[#2C3539]/70 leading-relaxed text-[15px]">
                  {post.author.bio}
                </p>
              </div>
@@ -139,22 +152,22 @@ export const BlogPost: React.FC = () => {
           
           {/* Related Posts */}
           {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <div className="mb-16">
-              <h2 className="text-2xl uppercase font-display mb-6 text-text-primary border-b border-border pb-2">Related Articles</h2>
+            <div className="mb-16 border-t border-neutral-200 pt-12">
+              <h2 className="text-3xl font-serif mb-8 text-[#8A9A86]">Related Articles</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {post.relatedPosts.map(relatedId => {
                   const relatedPost = blogPosts.find(p => p.id === relatedId);
                   if (!relatedPost) return null;
                   return (
-                    <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="group block bg-secondary border border-border rounded-xl overflow-hidden hover:border-accent transition-colors">
-                      <div className="h-40 overflow-hidden">
+                    <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="group block bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[#8A9A86]/50 transition-colors shadow-sm">
+                      <div className="h-48 overflow-hidden bg-neutral-100">
                         {relatedPost.image?.url && (
-                          <img loading="lazy"  referrerPolicy="no-referrer" src={relatedPost.image.url} alt={relatedPost.image.alt || relatedPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <img loading="lazy" referrerPolicy="no-referrer" src={relatedPost.image.url} alt={relatedPost.image.alt || relatedPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" />
                         )}
                       </div>
                       <div className="p-6">
-                        <h3 className="font-bold text-lg text-text-primary mb-2 group-hover:text-accent transition-colors">{relatedPost.title}</h3>
-                        <p className="text-sm text-text-secondary line-clamp-2">{relatedPost.excerpt}</p>
+                        <h3 className="font-serif font-medium text-xl text-[#2C3539] mb-3 group-hover:text-[#8A9A86] transition-colors leading-snug">{relatedPost.title}</h3>
+                        <p className="text-[15px] text-[#2C3539]/70 line-clamp-2 leading-relaxed">{relatedPost.excerpt}</p>
                       </div>
                     </Link>
                   );
@@ -163,26 +176,23 @@ export const BlogPost: React.FC = () => {
             </div>
           )}
 
-          {/* Conversion Area */}
-          <div className="border-t border-border pt-16">
-            <div className="bg-text-primary text-primary p-10 md:p-14 text-center rounded-sm shadow-lg">
-               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                 {post.ctaText || "Ready to apply this?"}
-               </h3>
-               {!post.ctaText && (
-                 <p className="text-primary/70 mb-8 max-w-lg mx-auto text-lg">
-                   Knowledge is potential power. Execution is real power. Start your journey with a structured assessment today.
-                 </p>
-               )}
-               <Link to={post.ctaLink || "/assessment"}>
-                 <Button variant="primary" className="bg-primary text-text-primary hover:bg-accent hover:text-white border-0">
-                   {post.ctaText ? "Get Started" : "Start Assessment"}
-                 </Button>
-               </Link>
-            </div>
+          {/* Contextual Call-to-Action (Bento Card) */}
+          <div className="bg-white border border-neutral-200 p-8 md:p-12 text-center rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+             <h3 className="text-2xl md:text-3xl font-serif text-[#2C3539] mb-4">
+               {post.ctaText || "Experiencing these metabolic shifts or medication side effects yourself?"}
+             </h3>
+             <p className="text-[#2C3539]/70 mb-8 max-w-lg mx-auto text-[16px] leading-relaxed">
+               {post.ctaText ? "" : "Take our Free 2-Minute Weight Loss Safety Assessment to check your current baseline safety thresholds today."}
+             </p>
+             <Link to={post.ctaLink || "/assessment"}>
+               <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full md:w-auto">
+                 {post.ctaText ? "Get Started" : "Launch Free Assessment"}
+               </button>
+             </Link>
           </div>
         </div>
       </article>
     </>
   );
 };
+

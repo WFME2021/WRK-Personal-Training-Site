@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { Button } from '../components/Button';
-import { Calculator, ArrowLeft, ChevronRight } from 'lucide-react';
+import { Calculator, ChevronRight } from 'lucide-react';
 
 export const TdeeCalculator: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   const [age, setAge] = useState<string>('');
   const [gender, setGender] = useState<'male' | 'female'>('female');
@@ -46,112 +44,85 @@ export const TdeeCalculator: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
       <SeoHead 
-        title="TDEE Calculator for Medical Weight Loss Support | WRK"
-        description="Calculate your baseline energy expenditure while navigating GLP-1 medications or prescription GLP-1 support. Discover specialized tracking metrics in Christchurch."
+        title="GLP-1 Metabolism & Calorie Calculator | WRK"
+        description="Establish your adjusted Total Daily Energy Expenditure tracking during metabolic adaptation phases."
       />
 
-      <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 items-center overflow-x-hidden pt-[80px] md:pt-[100px] pb-24">
-        <div className="max-w-[800px] w-full px-5 md:px-12 mx-auto">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Breadcrumbs */}
+        <nav className="flex items-center text-[13px] font-medium text-[#2C3539]/60 mb-8 max-w-4xl mx-auto">
+          <Link to="/" className="hover:text-[#8A9A86] transition-colors">Home</Link>
+          <ChevronRight size={14} className="mx-2" />
+          <Link to="/tools" className="hover:text-[#8A9A86] transition-colors">Tools</Link>
+          <ChevronRight size={14} className="mx-2" />
+          <span className="text-[#2C3539]">Metabolism Calculator</span>
+        </nav>
+
+        {/* Page Header */}
+        <header className="mb-16 max-w-4xl mx-auto">
+          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+            GLP-1 Metabolism & Calorie Calculator
+          </h1>
+          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70 max-w-3xl">
+            Understanding your body’s daily energy expenditure is foundational. However, if you are navigating a rapid weight reduction journey via prescribed clinical pathways—such as GLP-1 receptor agonists—standard fitness calculations change fundamentally. This specialized tool estimates your baseline metabolic markers while shifting focus toward defensive, structural tissue tracking.
+          </p>
+        </header>
+
+        {/* Interactive Calculator Container (Bento Card) */}
+        <div className="max-w-4xl mx-auto bg-white/70 backdrop-blur-md border border-neutral-200 rounded-3xl p-8 md:p-12 shadow-sm mb-20">
           
-          {/* Breadcrumb & Back Link */}
-          <div className="mb-8 space-y-4">
-            <nav className="flex items-center text-[13px] text-neutral-400 font-sans">
-              <Link to="/" className="hover:text-teal-400 transition-colors">Home</Link>
-              <ChevronRight size={14} className="mx-2 text-neutral-600" />
-              <Link to="/tools" className="hover:text-teal-400 transition-colors">Tools</Link>
-              <ChevronRight size={14} className="mx-2 text-neutral-600" />
-              <span className="text-neutral-200">Medical TDEE Calculator</span>
-            </nav>
-            <Link to="/tools" className="inline-flex items-center text-[14px] text-teal-400 hover:text-teal-300 transition-colors font-medium">
-              <ArrowLeft size={16} className="mr-2" />
-              Back to All Tools
-            </Link>
-          </div>
-
-          <div className="mb-12">
-            <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-neutral-100 mb-6">
-              TDEE Calculator for Medical Weight Loss & GLP-1 therapy support
-            </h1>
-            <div className="font-sans text-[16px] md:text-[18px] text-neutral-300 leading-relaxed space-y-4">
-              <p>
-                Understanding your body’s daily energy expenditure is a foundational component of managing a physical transformation. However, if you are navigating a rapid weight reduction journey via prescribed clinical pathways—such as GLP-1 receptor agonists (tirzepatide, retatrutide) or GLP-1 therapy—standard fitness calculations change fundamentally.
-              </p>
-              <p>
-                This specialized <strong>TDEE calculator for medical weight loss support</strong> is designed to estimate your baseline metabolic markers while helping you shift your daily focus away from aggressive gym-style calorie counting and toward defensive, structural tissue tracking.
-              </p>
+          <div className="flex items-center gap-4 mb-10 pb-8 border-b border-neutral-200">
+            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center shrink-0">
+              <Calculator size={28} />
+            </div>
+            <div>
+              <h2 className="font-serif text-[26px] text-[#2C3539]">Metabolic Baseline Calculator</h2>
+              <p className="text-[15px] text-[#2C3539]/60 font-medium">Estimate your adjusted maintenance energy requirements.</p>
             </div>
           </div>
 
-          <div className="mb-16">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 mb-6">
-              What is TDEE and How Does Medical Weight Loss Affect It?
-            </h2>
-            <div className="font-sans text-[16px] md:text-[18px] text-neutral-300 leading-relaxed space-y-4">
-              <p>
-                <strong>Total Daily Energy Expenditure (TDEE)</strong> represents the estimated total number of calories your body burns across a 24-hour window to maintain your current mass. This figure is comprised of your Basal Metabolic Rate (BMR), the thermic effect of food, and your daily movement patterns.
-              </p>
-              <p>
-                When utilizing medical interventions, your physical baseline encounters specific physiological adjustments:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 mt-4 text-neutral-400">
-                <li>
-                  <strong className="text-neutral-200">Profound Appetite Muting:</strong> Strong chemical satiety signals mean your actual daily intake may naturally fall significantly below your calculated TDEE.
-                </li>
-                <li>
-                  <strong className="text-neutral-200">The Risk of Adaptive Thermogenesis:</strong> Rapid mass drops can cause your resting metabolic rate to slow down down-regulate as a protective mechanism.
-                </li>
-                <li>
-                  <strong className="text-neutral-200">Lean Tissue Vulnerability:</strong> Without an explicit muscular stimulus, a notable portion of rapid weight reduction may draw directly from active skeletal muscle mass rather than stored adipose tissue <Link to="/resources#sarcopenia" className="text-teal-400 hover:text-teal-300 underline text-[12px] align-super">1</Link>.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* CALCULATOR COMPONENT */}
-          <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-6 md:p-10 mb-6 shadow-2xl">
-            <div className="flex items-center gap-4 mb-8 pb-6 border-b border-neutral-800">
-              <div className="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center shrink-0">
-                <Calculator size={24} className="text-teal-400" />
-              </div>
-              <div>
-                <h3 className="font-serif text-[24px] text-neutral-100">Metabolic Baseline Calculator</h3>
-                <p className="font-sans text-sm text-neutral-400">Estimate your maintenance energy requirements.</p>
-              </div>
-            </div>
-
-            <form onSubmit={calculateTdee} className="space-y-6">
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Form Section */}
+            <form onSubmit={calculateTdee} className="flex-1 space-y-6">
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-300">Gender</label>
-                  <select 
-                    value={gender} 
-                    onChange={(e) => setGender(e.target.value as 'male' | 'female')}
-                    className="w-full p-4 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-100 font-sans focus:outline-none focus:ring-2 focus:ring-teal-500/50"
-                  >
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                  </select>
+                  <label className="block text-[15px] font-medium text-[#2C3539]/80">Gender</label>
+                  <div className="relative">
+                    <select 
+                      value={gender} 
+                      onChange={(e) => { setGender(e.target.value as 'male' | 'female'); setCalculatedTdee(null); }}
+                      className="w-full h-14 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors cursor-pointer text-[15px]"
+                    >
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-[#2C3539]/40">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-300">Age (years)</label>
+                  <label className="block text-[15px] font-medium text-[#2C3539]/80">Age (years)</label>
                   <input 
                     type="number" 
                     required 
                     min="18" 
                     max="100"
                     value={age} 
-                    onChange={(e) => setAge(e.target.value)}
-                    className="w-full p-4 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-100 font-sans focus:outline-none focus:ring-2 focus:ring-teal-500/50"
+                    onChange={(e) => { setAge(e.target.value); setCalculatedTdee(null); }}
+                    className="w-full h-14 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px] placeholder:text-[#2C3539]/30"
                     placeholder="e.g. 45"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-300">Weight (kg)</label>
+                  <label className="block text-[15px] font-medium text-[#2C3539]/80">Weight (kg)</label>
                   <input 
                     type="number" 
                     required 
@@ -159,53 +130,57 @@ export const TdeeCalculator: React.FC = () => {
                     max="250"
                     step="0.1"
                     value={weight} 
-                    onChange={(e) => setWeight(e.target.value)}
-                    className="w-full p-4 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-100 font-sans focus:outline-none focus:ring-2 focus:ring-teal-500/50"
+                    onChange={(e) => { setWeight(e.target.value); setCalculatedTdee(null); }}
+                    className="w-full h-14 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px] placeholder:text-[#2C3539]/30"
                     placeholder="e.g. 85"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-300">Height (cm)</label>
+                  <label className="block text-[15px] font-medium text-[#2C3539]/80">Height (cm)</label>
                   <input 
                     type="number" 
                     required 
                     min="120" 
                     max="220"
                     value={height} 
-                    onChange={(e) => setHeight(e.target.value)}
-                    className="w-full p-4 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-100 font-sans focus:outline-none focus:ring-2 focus:ring-teal-500/50"
+                    onChange={(e) => { setHeight(e.target.value); setCalculatedTdee(null); }}
+                    className="w-full h-14 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px] placeholder:text-[#2C3539]/30"
                     placeholder="e.g. 165"
                   />
                 </div>
 
                 <div className="space-y-2 md:col-span-2">
-                  <label className="block text-sm font-medium text-neutral-300">Activity Level</label>
-                  <select 
-                    value={activityLevel} 
-                    onChange={(e) => setActivityLevel(e.target.value)}
-                    className="w-full p-4 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-100 font-sans focus:outline-none focus:ring-2 focus:ring-teal-500/50"
-                  >
-                    <option value="sedentary">Sedentary (office job, little to no exercise)</option>
-                    <option value="light">Light Activity (1-3 days/week of light exercise)</option>
-                    <option value="moderate">Moderate Activity (3-5 days/week of moderate exercise)</option>
-                    <option value="active">Active (6-7 days/week of hard exercise)</option>
-                    <option value="very_active">Very Active (physical job + hard training)</option>
-                  </select>
+                  <label className="block text-[15px] font-medium text-[#2C3539]/80">Activity Level</label>
+                  <div className="relative">
+                    <select 
+                      value={activityLevel} 
+                      onChange={(e) => { setActivityLevel(e.target.value); setCalculatedTdee(null); }}
+                      className="w-full h-14 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors cursor-pointer text-[15px]"
+                    >
+                      <option value="sedentary">Sedentary (office job, little to no exercise)</option>
+                      <option value="light">Light Activity (1-3 days/week of light exercise)</option>
+                      <option value="moderate">Moderate Activity (3-5 days/week of moderate exercise)</option>
+                      <option value="active">Active (6-7 days/week of hard exercise)</option>
+                      <option value="very_active">Very Active (physical job + hard training)</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-[#2C3539]/40">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                  </div>
                 </div>
-
               </div>
 
-              <div className="pt-4 border-t border-neutral-800 mt-4">
+              <div className="pt-6 border-t border-neutral-200">
                 <label className="flex items-start gap-4 cursor-pointer group">
-                  <div className="relative flex items-center justify-center mt-1">
+                  <div className="relative flex items-center justify-center mt-0.5 shrink-0">
                     <input 
                       type="checkbox" 
                       className="sr-only" 
                       checked={isMedicalClient}
                       onChange={(e) => setIsMedicalClient(e.target.checked)}
                     />
-                    <div className={`w-6 h-6 rounded-md border flex items-center justify-center transition-colors ${isMedicalClient ? 'bg-teal-500 border-teal-500' : 'bg-neutral-900 border-neutral-700 group-hover:border-teal-500/50'}`}>
+                    <div className={`w-6 h-6 rounded-md border flex items-center justify-center transition-colors ${isMedicalClient ? 'bg-[#8A9A86] border-[#8A9A86]' : 'bg-[#FAFAF9] border-neutral-300 group-hover:border-[#8A9A86]'}`}>
                       {isMedicalClient && (
                         <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -213,144 +188,122 @@ export const TdeeCalculator: React.FC = () => {
                       )}
                     </div>
                   </div>
-                  <span className="font-sans text-[15px] md:text-[16px] text-neutral-300 leading-relaxed font-medium">
+                  <span className="text-[15px] md:text-[16px] text-[#2C3539]/80 leading-relaxed font-medium select-none">
                     I am currently utilizing GLP-1 medications and experiencing rapid adaptive thermogenesis.
                   </span>
                 </label>
               </div>
 
-              <Button type="submit" size="lg" fullWidth className="mt-8">
+              <button 
+                type="submit"
+                className="w-full h-14 bg-[#8A9A86] hover:bg-[#768672] text-white rounded-xl font-medium transition-colors text-[16px] shadow-sm mt-8"
+              >
                 Calculate Baseline Expenditure
-              </Button>
+              </button>
             </form>
 
-            {calculatedTdee !== null && (
-              <div className="mt-10 pt-10 border-t border-neutral-800 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                {isMedicalClient ? (
-                  <div className="p-6 rounded-xl bg-neutral-950 border border-neutral-800 space-y-5">
-                    <h3 className="font-serif text-xl font-semibold text-neutral-100">
-                      📊 Baseline Metabolic Analysis Complete
-                    </h3>
-                    
-                    <p className="font-sans text-[15px] text-neutral-300">
-                      Based on your physical baselines, your estimated Total Daily Energy Expenditure (TDEE) indicates a potential baseline pattern of <span className="text-teal-400 font-bold text-lg">{calculatedTdee} calories</span> per day to maintain homeostasis.
-                    </p>
-
-                    {/* Specialized Medical Target Alert Callout Box */}
-                    <div className="p-5 rounded-lg bg-neutral-900/80 border-l-4 border-teal-500 text-left space-y-3">
-                      <h4 className="font-sans text-[15px] font-semibold text-teal-400">
-                        ⚠️ Critical Tracking Adjustment for Your Pathway
-                      </h4>
-                      <p className="font-sans text-sm text-neutral-400 leading-relaxed">
-                        Clinical research suggests that intense medication-induced appetite suppression or prescription GLP-1 volume restrictions frequently make hitting a standard calorie floor highly difficult. 
-                      </p>
-                      <p className="font-sans text-sm text-neutral-400 leading-relaxed">
-                        When using these interventions, attempting to force huge amounts of solid food to reach a high caloric baseline can result in severe gastrointestinal discomfort or intense nausea. 
-                      </p>
-                      <p className="font-sans text-sm text-neutral-300 leading-relaxed font-medium">
-                        Our coaching recommendation is to shift your daily focus away from aggressive calorie-cutting numbers. Instead, prioritize your <Link to="/resources#protein" className="text-teal-400 hover:text-teal-300 underline transition-colors">structural lean mass tracking metrics</Link>—ensuring your physical loading signals remain strong while body weight updates.
-                      </p>
-                    </div>
-
-                    {/* Anchor Link to the next tool */}
-                    <div className="text-center pt-4">
-                      <p className="font-sans text-sm text-neutral-400 mb-3">Want to see how much protein your muscles require to protect against wasting?</p>
-                      <Link to="/assessment" className="inline-block bg-teal-600 hover:bg-teal-500 text-white text-sm font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
-                        Advance to the Protein Targeter Tool
-                      </Link>
-                    </div>
+            {/* Output Section */}
+            <div className={`lg:w-[320px] shrink-0 bg-[#FAFAF9] rounded-2xl border border-neutral-200 p-8 flex flex-col justify-center transition-all duration-500 ${calculatedTdee !== null ? 'opacity-100 translate-y-0' : 'opacity-40 blur-[2px] pointer-events-none'}`}>
+              <div className="text-center">
+                <span className="block text-[11px] font-bold uppercase tracking-wider text-[#2C3539]/50 mb-4">
+                  {isMedicalClient ? 'Adjusted Medical TDEE' : 'Estimated Standard TDEE'}
+                </span>
+                
+                {calculatedTdee !== null ? (
+                  <div className="font-serif text-[42px] text-[#2C3539] leading-none mb-3 font-medium">
+                    {calculatedTdee.toLocaleString()}
                   </div>
                 ) : (
-                  <div className="p-6 rounded-xl bg-neutral-900 border border-neutral-800 text-center space-y-4">
-                    <h3 className="font-serif text-xl font-semibold text-neutral-100">
-                      Baseline TDEE Estimate
-                    </h3>
-                    <p className="font-serif text-[48px] text-teal-400 leading-none">
-                      {calculatedTdee}
-                    </p>
-                    <p className="font-sans text-sm text-neutral-400 uppercase tracking-widest">Calories / Day</p>
-                    <p className="font-sans text-[15px] text-neutral-300 mt-4 max-w-md mx-auto">
-                      This is the estimated number of calories required to maintain your current weight based on your selected activity level.
-                    </p>
+                  <div className="font-serif text-[42px] text-[#2C3539]/20 leading-none mb-3 font-medium">
+                    ----
                   </div>
                 )}
+                
+                <span className="text-[15px] font-medium text-[#2C3539]/60">kcal / day</span>
               </div>
-            )}
+
+              {calculatedTdee !== null && isMedicalClient && (
+                <div className="mt-8 pt-6 border-t border-neutral-200">
+                  <div className="text-[13px] leading-relaxed text-[#2C3539]/80 space-y-4">
+                    <p>
+                      <strong className="text-[#8A9A86] font-semibold block mb-1">Critical Tracking Note</strong>
+                      Appetite muting may make hitting a standard calorie floor difficult. Instead of aggressive tracking, prioritize reaching your protein targets to protect your skeletal lean mass.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
           </div>
 
-          <p className="text-[11px] text-neutral-500 max-w-md mx-auto mb-16 text-center leading-relaxed">
-            Calculations provided by this tool suggest general physiological baseline estimations based on standard formulas and do not serve as a clinical medical prescription. Actual individual absorption thresholds and physiological variables can change considerably throughout your care timeline. Always verify your daily macro positions with your primary healthcare provider.
-          </p>
-
-          <div className="space-y-16 mb-20 mt-20">
-            <div>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                How GLP-1 medications alter metabolic expenditure
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
-                <p>
-                  Total Daily Energy Expenditure (TDEE) is traditionally calculated using basal metabolic rate (BMR) and physical activity levels. However, clinical interventions disrupt this standard equation. GLP-1 medications alter gastric emptying rates, hormonal hunger signals, and systemic inflammation profiles, fundamentally changing how your body processes and stores energy.
-                </p>
-                <p>
-                  As you undergo rapid weight loss, your BMR naturally decreases because a smaller body requires less baseline energy to function. Furthermore, the body may initiate adaptive thermogenesis—a defensive slowdown of metabolic rate in response to severe caloric restriction. Monitoring these shifts is vital to prevent long-term metabolic stalling.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                The difference between standard TDEE and medical weight loss tracking
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
-                <p>
-                  In the traditional fitness space, TDEE is used to establish a strict daily caloric deficit (often 500 calories below maintenance). In medical weight loss, this approach is counterproductive and potentially dangerous. The medication is already enforcing a massive deficit—often far beyond what standard calculators recommend.
-                </p>
-                <p>
-                  Medical weight loss tracking flips the paradigm. Instead of using TDEE to find a maximum caloric ceiling, we use it to understand the gap between your energy output and your drastically reduced intake. The goal shifts from "eating less" to "eating defensively"—ensuring that the small volume of food you can tolerate is hyper-optimized for protein density and micronutrient value to prevent malnutrition and muscle wasting.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                Adapting your energy intake for long-term metabolic maintenance
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
-                <p>
-                  As you approach your goal weight, or if you begin tapering off clinical interventions, your energy intake must be carefully reverse-engineered. Remaining in a severe caloric deficit indefinitely will degrade your skeletal muscle and compromise your bone density.
-                </p>
-                <p>
-                  The long-term maintenance phase requires a strategic reintroduction of calories, paired with progressive resistance training. This combination sends a clear physiological signal to your body to rebuild lean tissue, thereby increasing your resting metabolic rate and securing your weight loss results for the future. Your TDEE calculation becomes the roadmap for this safe, upward adjustment.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-8">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 mb-6">
-              Professional Coaching Verification & Support
-            </h2>
-            <p className="font-sans text-[16px] text-neutral-300 leading-relaxed mb-6">
-              Balancing estimated metabolic math with real-world side effects, medication steps, or prescription GLP-1 recovery timelines can feel incredibly complex. 
-              <br/><br/>
-              At WRK, our premium 12-Week Hybrid Coaching Program (located at our private training facility in Addington, Christchurch) and our Remote Support Tracks across New Zealand provide direct, evidence-based guidance. We build position-specific resistance training tracks and adaptive lifestyle templates straight into your WRK Training App profile, ensuring your structural health matches your lighter frame.
+          <div className="text-center mt-12 border-t border-neutral-200 pt-6">
+            <p className="text-[12px] text-[#2C3539]/50 max-w-2xl mx-auto leading-relaxed">
+              Calculations suggest general physiological baseline estimations and do not serve as a clinical medical prescription. Actual individual absorption thresholds vary. Verify your daily macro positions with your healthcare provider.
             </p>
           </div>
-
-          <div className="p-8 md:p-10 bg-neutral-950 border border-teal-500/20 rounded-2xl text-center shadow-lg hover:border-teal-500/40 transition-colors">
-            <h3 className="font-serif text-[24px] text-white mb-4">Want to discover how much protein your muscles require to protect against wasting?</h3>
-            <p className="font-sans text-[16px] text-neutral-400 max-w-lg mx-auto mb-8 leading-relaxed">
-              Advance to our specialized tool to view a safe baseline estimation tailored directly to your long-term goal parameters.
-            </p>
-            <Link to="/assessment">
-              <Button size="lg" className="w-full md:w-auto shadow-2xl">
-                Take the Muscle Preservation Screener
-              </Button>
-            </Link>
-          </div>
-
         </div>
+
+        {/* Mobile-Responsive Accordion Sections */}
+        <div className="max-w-4xl mx-auto space-y-4 mb-20">
+          <details className="group bg-white border border-neutral-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex items-center justify-between p-6 cursor-pointer font-serif text-[20px] md:text-[22px] text-[#2C3539]">
+              How GLP-1 medications alter metabolic expenditure
+              <span className="ml-6 flex-shrink-0 transition duration-300 group-open:-rotate-180">
+                <svg className="w-6 h-6 text-[#8A9A86]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="p-6 pt-0 text-[15px] leading-relaxed text-[#2C3539]/70 space-y-4 border-t border-neutral-100 mt-2">
+              <p>
+                Total Daily Energy Expenditure (TDEE) is traditionally calculated using basal metabolic rate (BMR) and physical activity levels. However, clinical interventions disrupt this standard equation. GLP-1 medications alter gastric emptying rates, hormonal hunger signals, and systemic inflammation profiles, fundamentally changing how your body processes and stores energy.
+              </p>
+              <p>
+                As you undergo rapid weight loss, your BMR naturally decreases because a smaller body requires less baseline energy to function. Furthermore, the body may initiate adaptive thermogenesis—a defensive slowdown of metabolic rate in response to severe caloric restriction. Monitoring these shifts is vital to prevent long-term metabolic stalling.
+              </p>
+            </div>
+          </details>
+
+          <details className="group bg-white border border-neutral-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex items-center justify-between p-6 cursor-pointer font-serif text-[20px] md:text-[22px] text-[#2C3539]">
+              The difference between standard TDEE and medical weight loss tracking
+              <span className="ml-6 flex-shrink-0 transition duration-300 group-open:-rotate-180">
+                <svg className="w-6 h-6 text-[#8A9A86]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="p-6 pt-0 text-[15px] leading-relaxed text-[#2C3539]/70 space-y-4 border-t border-neutral-100 mt-2">
+              <p>
+                In the traditional fitness space, TDEE is used to establish a strict daily caloric deficit (often 500 calories below maintenance). In medical weight loss, this approach is counterproductive and potentially dangerous. The medication is already enforcing a massive deficit—often far beyond what standard calculators recommend.
+              </p>
+              <p>
+                Medical weight loss tracking flips the paradigm. Instead of using TDEE to find a maximum caloric ceiling, we use it to understand the gap between your energy output and your drastically reduced intake. The goal shifts from "eating less" to "eating defensively"—ensuring that the small volume of food you can tolerate is hyper-optimized for protein density and micronutrient value to prevent malnutrition and muscle wasting.
+              </p>
+            </div>
+          </details>
+
+          <details className="group bg-white border border-neutral-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex items-center justify-between p-6 cursor-pointer font-serif text-[20px] md:text-[22px] text-[#2C3539]">
+              Adapting your energy intake for long-term metabolic maintenance
+              <span className="ml-6 flex-shrink-0 transition duration-300 group-open:-rotate-180">
+                <svg className="w-6 h-6 text-[#8A9A86]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="p-6 pt-0 text-[15px] leading-relaxed text-[#2C3539]/70 space-y-4 border-t border-neutral-100 mt-2">
+              <p>
+                As you approach your goal weight, or if you begin tapering off clinical interventions, your energy intake must be carefully reverse-engineered. Remaining in a severe caloric deficit indefinitely will degrade your skeletal muscle and compromise your bone density.
+              </p>
+              <p>
+                The long-term maintenance phase requires a strategic reintroduction of calories, paired with progressive resistance training. This combination sends a clear physiological signal to your body to rebuild lean tissue, thereby increasing your resting metabolic rate and securing your weight loss results for the future. Your TDEE calculation becomes the roadmap for this safe, upward adjustment.
+              </p>
+            </div>
+          </details>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 };

@@ -1,389 +1,346 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { Button } from '../components/Button';
-import { ShieldAlert, AlertTriangle, CheckCircle2, Activity } from 'lucide-react';
+import { ShieldCheck, AlertTriangle, AlertOctagon, CheckCircle2 } from 'lucide-react';
 
-type Step = 'questions' | 'analyzing' | 'lead_capture' | 'results';
+type Step = 1 | 2 | 3 | 4 | 5;
 
-const QUESTIONS = [
-  {
-    id: 'medication',
-    title: '1. What GLP-1 or GIP medication are you currently prescribed?',
-    options: [
-      { label: 'Semaglutide (Ozempic, Wegovy)', value: 'semaglutide' },
-      { label: 'Tirzepatide (Mounjaro, Zepbound)', value: 'tirzepatide' },
-      { label: 'Liraglutide (Saxenda)', value: 'liraglutide' },
-      { label: 'Other / Just exploring options', value: 'other' }
-    ]
-  },
-  {
-    id: 'phase',
-    title: '2. What phase of the medication schedule are you in?',
-    options: [
-      { label: 'Just starting (0-4 weeks)', value: 'starting' },
-      { label: 'Titration phase / Adjusting dosage (1-3 months)', value: 'titration' },
-      { label: 'Maintenance phase (3+ months)', value: 'maintenance' }
-    ]
-  },
-  {
-    id: 'aversion',
-    title: '3. How would you describe your current food aversion levels?',
-    options: [
-      { label: 'Manageable. I can comfortably eat solid meals and hit protein targets.', value: 'low-risk' },
-      { label: 'Moderate aversion. I often skip meals or rely heavily on liquid nutrition.', value: 'med-risk' },
-      { label: 'Severe aversion. Eating solid food feels almost impossible.', value: 'high-risk' }
-    ]
-  },
-  {
-    id: 'sideEffects',
-    title: '4. Are you experiencing any of these active physiological side-effects?',
-    options: [
-      { label: 'None, or just very mild, occasional nausea.', value: 'low-risk' },
-      { label: 'Ongoing fatigue, suppressed thirst, or moderate nausea.', value: 'med-risk' },
-      { label: 'Frequent vomiting, or orthostatic standing dizziness.', value: 'high-risk' }
-    ]
-  },
-  {
-    id: 'exercise',
-    title: '5. How would you categorize your current exercise baseline?',
-    options: [
-      { label: 'Active: 2-3+ structured strength training sessions per week.', value: 'low-risk' },
-      { label: 'Beginner: Walking, light cardio, or very infrequent movement.', value: 'med-risk' },
-      { label: 'Inactive: Minimal movement due to severe fatigue or schedule.', value: 'high-risk' }
-    ]
-  }
-];
+type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH';
 
 export const Assessment: React.FC = () => {
-  const [step, setStep] = useState<Step>('questions');
-  const [currentQIndex, setCurrentQIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [step, setStep] = useState<Step>(1);
+  const [name, setName] = useState('');
+  const [medication, setMedication] = useState('');
   
-  const [leadData, setLeadData] = useState({ name: '', email: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const [phase, setPhase] = useState('');
+  const [exercise, setExercise] = useState('');
   
-  const [riskTag, setRiskTag] = useState<'GREEN' | 'YELLOW' | 'RED'>('GREEN');
-
+  const [symptoms, setSymptoms] = useState<string[]>([]);
+  
+  const [email, setEmail] = useState('');
+  
+  const [risk, setRisk] = useState<RiskLevel>('LOW');
+  
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [step, currentQIndex]);
+  }, [step]);
 
-  const handleOptionSelect = (questionId: string, value: string) => {
-    const newAnswers = { ...answers, [questionId]: value };
-    setAnswers(newAnswers);
-    
-    // Automatically proceed to next question or analyze
-    setTimeout(() => {
-      if (currentQIndex < QUESTIONS.length - 1) {
-        setCurrentQIndex(currentQIndex + 1);
-      } else {
-        processAnalysis(newAnswers);
-      }
-    }, 400);
-  };
-
-  const processAnalysis = (finalAnswers: Record<string, string>) => {
-    setStep('analyzing');
-    
-    // Calculate Risk
-    let calculatedRisk: 'GREEN' | 'YELLOW' | 'RED' = 'GREEN';
-    const values = [finalAnswers.aversion, finalAnswers.sideEffects, finalAnswers.exercise];
-    
-    if (values.includes('high-risk')) {
-      calculatedRisk = 'RED';
-    } else if (values.includes('med-risk')) {
-      calculatedRisk = 'YELLOW';
+  const handleSymptomToggle = (val: string) => {
+    if (symptoms.includes(val)) {
+      setSymptoms(symptoms.filter(s => s !== val));
+    } else {
+      setSymptoms([...symptoms, val]);
     }
-    
-    setRiskTag(calculatedRisk);
-
-    setTimeout(() => {
-      setStep('lead_capture');
-    }, 2500);
   };
 
-  const handleLeadSubmit = async (e: React.FormEvent) => {
+  const calculateRisk = () => {
+    if (symptoms.includes('dizziness') || symptoms.length >= 3) {
+      setRisk('HIGH');
+    } else if (symptoms.length > 0) {
+      setRisk('MEDIUM');
+    } else {
+      setRisk('LOW');
+    }
+  };
+
+  const submitAssessment = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!leadData.name || !leadData.email) {
-      setError('Please provide both name and email.');
-      return;
-    }
-    
-    setIsSubmitting(true);
-    setError('');
-
-    try {
-      // Simulate network delay then proceed to results
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      setStep('results');
-    } catch (err: any) {
-      setError(err.message || 'An error occurred. Please try again.');
-      setIsSubmitting(false);
-    }
-  };
-
-  const renderQuestions = () => {
-    const q = QUESTIONS[currentQIndex];
-    const progress = ((currentQIndex) / QUESTIONS.length) * 100;
-
-    return (
-      <div className="w-full max-w-[800px] mx-auto p-8 md:p-12 bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl relative overflow-hidden">
-        {/* Progress Bar */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-neutral-900">
-          <div 
-            className="h-full bg-teal-500 transition-all duration-500 ease-out" 
-            style={{ width: `${progress}%` }} 
-          />
-        </div>
-        
-        <div className="mb-8">
-          <span className="font-sans font-bold text-[12px] uppercase tracking-widest text-teal-400 mb-2 block">
-            Question {currentQIndex + 1} of {QUESTIONS.length}
-          </span>
-          <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-[1.2]">
-            {q.title}
-          </h2>
-        </div>
-
-        <div className="space-y-4">
-          {q.options.map((option, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleOptionSelect(q.id, option.value)}
-              className={`w-full text-left p-6 rounded-xl border transition-all duration-300 font-sans text-[16px] md:text-[18px] group flex items-center justify-between
-                ${answers[q.id] === option.value 
-                  ? 'bg-teal-500/10 border-teal-500 text-teal-400' 
-                  : 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:border-teal-500/50 hover:bg-neutral-900/80'
-                }
-              `}
-            >
-              <span className="pr-4 leading-relaxed">{option.label}</span>
-              <div className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-colors
-                ${answers[q.id] === option.value ? 'border-teal-500 bg-teal-500' : 'border-neutral-700 group-hover:border-teal-500/50'}
-              `}>
-                {answers[q.id] === option.value && <div className="w-2 h-2 bg-neutral-950 rounded-full" />}
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const renderAnalyzing = () => (
-    <div className="w-full max-w-[800px] mx-auto p-12 bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl text-center space-y-8 py-24">
-      <div className="relative w-24 h-24 mx-auto">
-        <div className="absolute inset-0 border-4 border-neutral-800 rounded-full" />
-        <div className="absolute inset-0 border-4 border-teal-500 rounded-full border-t-transparent animate-spin" />
-        <div className="absolute inset-0 flex items-center justify-center text-teal-400">
-          <Activity size={32} />
-        </div>
-      </div>
-      <div className="space-y-3">
-        <h2 className="font-serif text-[28px] text-neutral-100">Analyzing Clinical Variables</h2>
-        <p className="font-sans text-[16px] text-neutral-400">Cross-referencing your inputs against metabolic baseline data...</p>
-      </div>
-    </div>
-  );
-
-  const renderLeadCapture = () => (
-    <div className="w-full max-w-[600px] mx-auto p-8 md:p-12 bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl text-center space-y-8">
-      <div className="space-y-4">
-        <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-500/10 text-teal-400 mb-2">
-          <CheckCircle2 size={32} />
-        </span>
-        <h2 className="font-serif text-[32px] md:text-[40px] text-neutral-100 leading-[1.1]">
-          Analysis Complete
-        </h2>
-        <p className="font-sans text-[16px] text-neutral-400 leading-relaxed max-w-[450px] mx-auto">
-          Enter your email below to instantly reveal your metabolic risk score and personalized clinical blueprint.
-        </p>
-      </div>
-      
-      <form onSubmit={handleLeadSubmit} className="space-y-4 text-left">
-        <input 
-          type="text" 
-          name="name" 
-          value={leadData.name}
-          onChange={(e) => setLeadData({...leadData, name: e.target.value})}
-          placeholder="First Name" 
-          required 
-          className="w-full p-4 bg-neutral-900 rounded-xl border border-neutral-800 text-neutral-100 font-sans text-[16px] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all" 
-        />
-        <input 
-          type="email" 
-          name="email" 
-          value={leadData.email}
-          onChange={(e) => setLeadData({...leadData, email: e.target.value})}
-          placeholder="Email Address" 
-          required 
-          className="w-full p-4 bg-neutral-900 rounded-xl border border-neutral-800 text-neutral-100 font-sans text-[16px] placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all" 
-        />
-        {error && <p className="text-red-400 text-sm font-sans">{error}</p>}
-        <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting}>
-          {isSubmitting ? 'Finalizing Profile...' : 'Reveal My Results'}
-        </Button>
-        <p className="font-sans text-[12px] text-neutral-600 pt-4 text-center">
-          By submitting, you agree to receive follow-up communication regarding your results. We respect your privacy.
-        </p>
-      </form>
-    </div>
-  );
-
-  const renderResults = () => {
-    return (
-      <div className="w-full max-w-[800px] mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-        
-        <div className="text-center space-y-4 mb-12">
-          <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-neutral-100">
-            Diagnostic Profile
-          </h1>
-          <p className="font-sans text-[18px] text-neutral-400">
-            Prepared for {leadData.name || 'you'}. Based on your GLP-1 tracking metrics.
-          </p>
-        </div>
-
-        {/* Dynamic Risk Card */}
-        {riskTag === 'RED' && (
-          <div className="bg-red-950/30 border border-red-500/50 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-              <ShieldAlert size={120} className="text-red-500" />
-            </div>
-            <div className="relative z-10 space-y-6">
-              <span className="inline-block px-4 py-1 rounded-full bg-red-500/20 text-red-400 font-sans font-bold text-[14px] uppercase tracking-wider">
-                Risk Tag: RED (Critical Vulnerability)
-              </span>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-tight">
-                Immediate Clinical Overlap Detected
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4 max-w-[600px]">
-                <p>
-                  Your inputs flag severe symptoms, potentially including orthostatic standing dizziness, frequent vomiting, or total food aversion. 
-                </p>
-                <p className="text-red-300 font-semibold">
-                  ⚠️ We strongly advise you to brief your prescribing GP immediately. Do not push through extreme nausea or dizzy spells.
-                </p>
-                <p>
-                  In the meantime, you must introduce micro-volume spacing for hydration and nutrition to avoid rapid lean mass wasting. Attempting standard large meals or heavy workouts right now is counterproductive.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {riskTag === 'YELLOW' && (
-          <div className="bg-amber-950/30 border border-amber-500/50 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-              <AlertTriangle size={120} className="text-amber-500" />
-            </div>
-            <div className="relative z-10 space-y-6">
-              <span className="inline-block px-4 py-1 rounded-full bg-amber-500/20 text-amber-400 font-sans font-bold text-[14px] uppercase tracking-wider">
-                Risk Tag: YELLOW (Elevated Risk)
-              </span>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-tight">
-                Metabolic Friction & Thirst Suppression
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4 max-w-[600px]">
-                <p>
-                  Your indicators suggest a medium risk for muscle loss and creeping dehydration. As GLP-1 medications alter gastric emptying, suppressed thirst loops are extremely common in this phase.
-                </p>
-                <p>
-                  You must begin to hydrate by design, not by thirst. Relying on physical thirst cues will leave you under-hydrated, risking severe fatigue and headaches. Furthermore, your current solid food aversion indicates you need alternative protein delivery systems.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {riskTag === 'GREEN' && (
-          <div className="bg-teal-950/30 border border-teal-500/50 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-              <CheckCircle2 size={120} className="text-teal-500" />
-            </div>
-            <div className="relative z-10 space-y-6">
-              <span className="inline-block px-4 py-1 rounded-full bg-teal-500/20 text-teal-400 font-sans font-bold text-[14px] uppercase tracking-wider">
-                Risk Tag: GREEN (Stable Baseline)
-              </span>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 leading-tight">
-                Optimal Adaptation Detected
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4 max-w-[600px]">
-                <p>
-                  Your indicators show a stable metabolic baseline. You are successfully managing your nutritional and hydration thresholds, and avoiding severe physiological side-effects.
-                </p>
-                <p>
-                  This is the ideal state to focus purely on structured progressive overload to secure your lean muscle mass permanently as your weight drops.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Universal CTA Based on Tag */}
-        <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-8 shadow-xl text-center space-y-6">
-          <h3 className="font-serif text-[24px] text-neutral-100">Next Recommended Action</h3>
-          
-          {riskTag === 'RED' && (
-            <>
-              <p className="font-sans text-[15px] text-neutral-400 max-w-[500px] mx-auto">
-                Discover how to deploy micro-volume hydration strategies and protect your baseline without overwhelming your stomach.
-              </p>
-              <Link to="/services" className="inline-block">
-                <Button size="lg" className="w-full sm:w-auto">
-                  View Micro-Volume Blueprint
-                </Button>
-              </Link>
-            </>
-          )}
-
-          {riskTag === 'YELLOW' && (
-            <>
-              <p className="font-sans text-[15px] text-neutral-400 max-w-[500px] mx-auto">
-                Secure the Side-Effect Blueprint to learn exact liquid nutrition matrixes that help you hit protein targets comfortably.
-              </p>
-              <Link to="/services" className="inline-block">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Get the $29 Side-Effect Blueprint
-                </Button>
-              </Link>
-            </>
-          )}
-
-          {riskTag === 'GREEN' && (
-            <>
-              <p className="font-sans text-[15px] text-neutral-400 max-w-[500px] mx-auto">
-                Since your side-effects are managed, explore our free educational tools and long-term 12-week coaching tracks.
-              </p>
-              <Link to="/programs" className="inline-block">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Explore Coaching Programs
-                </Button>
-              </Link>
-            </>
-          )}
-        </div>
-
-      </div>
-    );
+    if (!email) return;
+    calculateRisk();
+    setStep(5);
   };
 
   return (
-    <>
-      <SeoHead 
-        title="GLP-1 Diagnostic Screener | WRK Personal Training"
-        description="Take our non-diagnostic screening tool to review potential muscle loss and hydration risks during rapid medical weight loss."
+    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
+      <SeoHead
+        title="Free Weight Loss Safety Assessment | WRK Personal Training"
+        description="Take our evidence-based weight loss safety assessment. Screen for GLP-1 side effects, monitor muscle-retention thresholds, and secure your risk profile report."
       />
-      
-      <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 pt-32 pb-24 px-5 md:px-12 items-center justify-center relative">
-        <div className="w-full max-w-[1000px] mx-auto">
-          {step === 'questions' && renderQuestions()}
-          {step === 'analyzing' && renderAnalyzing()}
-          {step === 'lead_capture' && renderLeadCapture()}
-          {step === 'results' && renderResults()}
+
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Page Header */}
+        <header className="text-center mb-12 max-w-3xl mx-auto">
+          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+            Weight Loss Safety Assessment
+          </h1>
+          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
+            A fast, conversational 2-minute screening tool to help you identify suppressed thirst loops, assess muscle-wasting risks, and lock in your safety thresholds.
+          </p>
+        </header>
+
+        {/* Form Wrapper Container */}
+        <div className="max-w-2xl mx-auto bg-white border border-neutral-200 rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+          
+          {/* Progress Indicator */}
+          {step < 5 && (
+            <div className="flex justify-center space-x-2 mb-10">
+              {[1, 2, 3, 4].map(s => (
+                <div 
+                  key={s} 
+                  className={`h-2 rounded-full transition-all duration-500 ${step >= s ? 'bg-[#8A9A86] w-8' : 'bg-neutral-100 w-4'}`}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* STEP 1 */}
+          {step === 1 && (
+            <div className="space-y-8 animate-in fade-in duration-500">
+              <h2 className="font-serif text-[28px] text-[#2C3539] text-center">Let's start with the basics</h2>
+              
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Your First Name</label>
+                  <input 
+                    type="text"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    placeholder="Enter your name"
+                    className="w-full bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 py-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Current Prescribed Medication Track</label>
+                  <div className="relative">
+                    <select 
+                      value={medication}
+                      onChange={e => setMedication(e.target.value)}
+                      className="w-full bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 py-4 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors cursor-pointer"
+                    >
+                      <option value="" disabled>Select your medication...</option>
+                      <option value="Semaglutide">Semaglutide (Ozempic, Wegovy)</option>
+                      <option value="Tirzepatide">Tirzepatide (Mounjaro, Zepbound)</option>
+                      <option value="Liraglutide">Liraglutide (Saxenda)</option>
+                      <option value="Exploring Options">Exploring Options / Not currently prescribed</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-neutral-400">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button 
+                onClick={() => setStep(2)}
+                disabled={!name || !medication}
+                className="w-full bg-[#8A9A86] disabled:bg-neutral-200 disabled:text-neutral-400 disabled:cursor-not-allowed hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px] mt-8"
+              >
+                Continue Assessment
+              </button>
+            </div>
+          )}
+
+          {/* STEP 2 */}
+          {step === 2 && (
+            <div className="space-y-8 animate-in fade-in duration-500">
+              <h2 className="font-serif text-[28px] text-[#2C3539] text-center">Timeline & Context</h2>
+              
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Dosing Schedule Phase</label>
+                  <div className="grid grid-cols-1 gap-3">
+                    {['Onboarding (Just started)', 'Escalation (Increasing dose)', 'Maintenance (Stable dose)'].map(opt => (
+                      <button
+                        key={opt}
+                        onClick={() => setPhase(opt)}
+                        className={`text-left px-5 py-4 rounded-xl border transition-colors ${phase === opt ? 'border-[#8A9A86] bg-[#8A9A86]/5 text-[#2C3539]' : 'border-neutral-200 bg-[#FAFAF9] text-[#2C3539]/70 hover:border-neutral-300'}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="pt-4">
+                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Current Exercise Baseline</label>
+                  <div className="grid grid-cols-1 gap-3">
+                    {['Beginner (Minimal movement/walking)', 'Already Active (Consistent workouts)'].map(opt => (
+                      <button
+                        key={opt}
+                        onClick={() => setExercise(opt)}
+                        className={`text-left px-5 py-4 rounded-xl border transition-colors ${exercise === opt ? 'border-[#8A9A86] bg-[#8A9A86]/5 text-[#2C3539]' : 'border-neutral-200 bg-[#FAFAF9] text-[#2C3539]/70 hover:border-neutral-300'}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex space-x-4 mt-8">
+                <button 
+                  onClick={() => setStep(1)}
+                  className="w-1/3 bg-[#FAFAF9] hover:bg-[#F0F0EE] border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                >
+                  Back
+                </button>
+                <button 
+                  onClick={() => setStep(3)}
+                  disabled={!phase || !exercise}
+                  className="w-2/3 bg-[#8A9A86] disabled:bg-neutral-200 disabled:text-neutral-400 disabled:cursor-not-allowed hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 3 */}
+          {step === 3 && (
+            <div className="space-y-8 animate-in fade-in duration-500">
+              <h2 className="font-serif text-[28px] text-[#2C3539] text-center">Symptom Screen</h2>
+              <p className="text-center text-[15px] text-[#2C3539]/70">Please select any active physiological side-effects you are currently experiencing (Select all that apply).</p>
+              
+              <div className="space-y-3">
+                {[
+                  { id: 'nausea', label: 'Persistent Nausea / Food Aversion' },
+                  { id: 'fatigue', label: 'Severe Fatigue' },
+                  { id: 'thirst', label: 'Headaches / Suppressed Thirst' },
+                  { id: 'dizziness', label: 'Standing Dizziness / Lightheadedness' }
+                ].map(opt => (
+                  <button
+                    key={opt.id}
+                    onClick={() => handleSymptomToggle(opt.id)}
+                    className={`w-full flex items-center text-left px-5 py-4 rounded-xl border transition-colors ${symptoms.includes(opt.id) ? 'border-[#8A9A86] bg-[#8A9A86]/5 text-[#2C3539]' : 'border-neutral-200 bg-[#FAFAF9] text-[#2C3539]/70 hover:border-neutral-300'}`}
+                  >
+                    <div className={`w-5 h-5 rounded flex items-center justify-center mr-4 border ${symptoms.includes(opt.id) ? 'bg-[#8A9A86] border-[#8A9A86] text-white' : 'border-neutral-300 bg-white'}`}>
+                      {symptoms.includes(opt.id) && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5"/></svg>}
+                    </div>
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex space-x-4 mt-8">
+                <button 
+                  onClick={() => setStep(2)}
+                  className="w-1/3 bg-[#FAFAF9] hover:bg-[#F0F0EE] border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                >
+                  Back
+                </button>
+                <button 
+                  onClick={() => setStep(4)}
+                  className="w-2/3 bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                >
+                  Analyze Results
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 4 */}
+          {step === 4 && (
+            <div className="space-y-8 animate-in fade-in duration-500 text-center">
+              <div className="w-16 h-16 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mx-auto mb-2">
+                <CheckCircle2 size={32} />
+              </div>
+              <h2 className="font-serif text-[28px] text-[#2C3539]">Analysis Complete</h2>
+              <p className="text-[15px] text-[#2C3539]/80 leading-relaxed bg-[#FAFAF9] p-4 rounded-xl border border-neutral-200 font-medium">
+                🔒 SECURE YOUR SAFETY SCORECARD: Enter your primary email address below to calculate your risk profile score. We will instantly email your position-specific report alongside your daily target parameters via MailerLite.
+              </p>
+              
+              <form onSubmit={submitAssessment} className="space-y-5 text-left mt-8">
+                <div>
+                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Email Address</label>
+                  <input 
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                    className="w-full bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 py-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors"
+                  />
+                </div>
+                
+                <div className="flex space-x-4 pt-4">
+                  <button 
+                    type="button"
+                    onClick={() => setStep(3)}
+                    className="w-1/3 bg-[#FAFAF9] hover:bg-[#F0F0EE] border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                  >
+                    Back
+                  </button>
+                  <button 
+                    type="submit"
+                    disabled={!email}
+                    className="w-2/3 bg-[#2C3539] disabled:bg-neutral-200 disabled:text-neutral-400 disabled:cursor-not-allowed hover:bg-[#1A1F22] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                  >
+                    Reveal My Results
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {/* STEP 5 (RESULTS) */}
+          {step === 5 && (
+            <div className="space-y-8 animate-in slide-in-from-bottom-8 duration-700">
+              
+              {risk === 'LOW' && (
+                <div className="text-center space-y-6">
+                  <div className="w-20 h-20 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mx-auto">
+                    <ShieldCheck size={40} />
+                  </div>
+                  <h2 className="font-serif text-[32px] text-[#2C3539] leading-tight">Status: Stable Baseline</h2>
+                  <p className="text-[16px] leading-relaxed text-[#2C3539]/80">
+                    Your metrics suggest your lifestyle thresholds are aligning well. Protect your metabolism by tracking your daily protein targets using our free tools.
+                  </p>
+                  <div className="pt-6">
+                    <Link 
+                      to="/tools/protein-targeter"
+                      className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                    >
+                      Calculate Protein Target
+                    </Link>
+                  </div>
+                </div>
+              )}
+
+              {risk === 'MEDIUM' && (
+                <div className="text-center space-y-6">
+                  <div className="w-20 h-20 bg-amber-500/10 text-amber-600 rounded-full flex items-center justify-center mx-auto">
+                    <AlertTriangle size={40} />
+                  </div>
+                  <h2 className="font-serif text-[32px] text-[#2C3539] leading-tight">Status: Mitigation Indicated</h2>
+                  <p className="text-[16px] leading-relaxed text-[#2C3539]/80">
+                    Your answers suggest moderate side effects or suppressed thirst loops common with advanced interventions. Prioritize structured tracking using our Hydration Calculator.
+                  </p>
+                  <div className="pt-6">
+                    <Link 
+                      to="/tools/hydration-calculator"
+                      className="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-700 text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                    >
+                      Access Hydration Calculator
+                    </Link>
+                  </div>
+                </div>
+              )}
+
+              {risk === 'HIGH' && (
+                <div className="text-center space-y-6">
+                  <div className="w-20 h-20 bg-red-500/10 text-red-600 rounded-full flex items-center justify-center mx-auto">
+                    <AlertOctagon size={40} />
+                  </div>
+                  <h2 className="font-serif text-[32px] text-[#2C3539] leading-tight">Status: High-Priority Adjustment Suggested</h2>
+                  <p className="text-[16px] leading-relaxed text-[#2C3539]/80">
+                    Your reported symptoms indicate significant fluid volume shifts or rapid mineral depletion. We highly suggest alerting your prescribing clinical care team to review these parameters. Access our Micro-Volume Fluid Grid immediately to protect your comfort.
+                  </p>
+                  <div className="pt-6">
+                    <Link 
+                      to="/tools/hydration-calculator"
+                      className="inline-flex items-center justify-center w-full bg-[#2C3539] hover:bg-[#1A1F22] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+                    >
+                      View Micro-Volume Grid
+                    </Link>
+                  </div>
+                </div>
+              )}
+
+            </div>
+          )}
+
         </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -1,215 +1,199 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { Button } from '../components/Button';
-import { Dna, ArrowLeft, ChevronRight } from 'lucide-react';
+import { Dna, ChevronRight } from 'lucide-react';
 
 export const ProteinTargeter: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [targetWeight, setTargetWeight] = useState(70); // Default 70kg target
+  const [targetWeight, setTargetWeight] = useState(70);
   const [activity, setActivity] = useState('moderate');
   const [showResults, setShowResults] = useState(false);
 
-  // Clinical positioning parameters: 1.2g (low-bound) to 1.6g (high-bound) per target kg
   const lowBound = Math.round(targetWeight * 1.2);
   const highBound = Math.round(targetWeight * 1.6);
-  
-  // Estimate optimal per-meal protein division across 4 mini-intakes
   const mealAllocation = Math.round(lowBound / 4);
 
   return (
-    <>
+    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
       <SeoHead 
-        title="Protein Targeter for Muscle Preservation | WRK New Zealand"
-        description="Calculate your daily baseline protein thresholds during rapid medical weight loss. Protect lean tissue and combat fatigue with evidence-based targets."
+        title="GLP-1 Muscle Loss Calculator | WRK"
+        description="Calculate your exact daily protein thresholds required to prevent lean muscle mass wasting during rapid fat loss with GLP-1 medications."
       />
 
-      <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 items-center overflow-x-hidden pt-[80px] md:pt-[100px] pb-24">
-        <div className="max-w-[800px] w-full px-5 md:px-12 mx-auto">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Breadcrumbs */}
+        <nav className="flex items-center text-[13px] font-medium text-[#2C3539]/60 mb-8 max-w-4xl mx-auto">
+          <Link to="/" className="hover:text-[#8A9A86] transition-colors">Home</Link>
+          <ChevronRight size={14} className="mx-2" />
+          <Link to="/tools" className="hover:text-[#8A9A86] transition-colors">Tools</Link>
+          <ChevronRight size={14} className="mx-2" />
+          <span className="text-[#2C3539]">Muscle Loss Calculator</span>
+        </nav>
+
+        {/* Page Header */}
+        <header className="mb-16 max-w-4xl mx-auto">
+          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+            GLP-1 Muscle Loss Calculator
+          </h1>
+          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70 max-w-3xl">
+            When navigating rapid body mass adjustment via prescribed clinical pathways, monitoring your nutritional density becomes a critical priority. Use this evidence-based calculator to establish a position-specific, daily macro threshold to protect active skeletal muscle while total body weight scales down.
+          </p>
+        </header>
+
+        {/* Interactive Calculator Container (Bento Card) */}
+        <div className="max-w-4xl mx-auto bg-white/70 backdrop-blur-md border border-neutral-200 rounded-3xl p-8 md:p-12 shadow-sm mb-20 relative overflow-hidden">
           
-          {/* Breadcrumb & Back Link */}
-          <div className="mb-8 space-y-4">
-            <nav className="flex items-center text-[13px] text-neutral-400 font-sans">
-              <Link to="/" className="hover:text-teal-400 transition-colors">Home</Link>
-              <ChevronRight size={14} className="mx-2 text-neutral-600" />
-              <Link to="/tools" className="hover:text-teal-400 transition-colors">Tools</Link>
-              <ChevronRight size={14} className="mx-2 text-neutral-600" />
-              <span className="text-neutral-200">Protein Targeter</span>
-            </nav>
-            <Link to="/tools" className="inline-flex items-center text-[14px] text-teal-400 hover:text-teal-300 transition-colors font-medium">
-              <ArrowLeft size={16} className="mr-2" />
-              Back to All Tools
-            </Link>
-          </div>
-
-          <div className="mb-12">
-            <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-neutral-100 mb-6">
-              Muscle-Preservation Protein Targeter
-            </h1>
-            <div className="font-sans text-[16px] md:text-[18px] text-neutral-300 leading-relaxed space-y-4">
-              <p>
-                When navigating rapid body mass adjustment via prescribed clinical pathways—such as GLP-1 medications or prescription GLP-1 support—monitoring your nutritional density becomes a critical priority. 
-              </p>
-              <p>
-                Because medication-induced appetite suppression or prescription GLP-1 volume limits heavily restrict how much food you can physically consume, tracking random calorie counts becomes less useful than protecting your lean tissue structure.
-              </p>
-              <p>
-                This evidence-based <strong>Protein Targeter for muscle preservation</strong> calculates a position-specific, general daily macro threshold to help keep your active skeletal muscle and bone matrix protected while your total body weight scales down.
-              </p>
-            </div>
-          </div>
-
-          <div className="mb-16">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 mb-6">
-              Interactive Protein Baseline Targeter
-            </h2>
-            <div className="font-sans text-[16px] md:text-[18px] text-neutral-300 leading-relaxed space-y-4 mb-8">
-              <p>
-                <em>Utilize this educational tool to map out a safe, estimated baseline matching your long-term wellness targets. Input your realistic <strong>Target Goal Body Weight</strong> rather than your current weight to establish an accurate preservation benchmark.</em>
-              </p>
-            </div>
-
-            {/* CALCULATOR COMPONENT */}
-            <div className="max-w-xl mx-auto p-6 md:p-8 bg-neutral-950 border border-neutral-800 rounded-2xl shadow-2xl font-sans">
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-teal-500/10 flex items-center justify-center shrink-0">
-                  <Dna size={20} className="text-teal-400" />
+          <div className="flex flex-col md:flex-row gap-12">
+            
+            <div className="flex-1 space-y-10">
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center shrink-0">
+                  <Dna size={24} />
                 </div>
-                <h3 className="font-serif text-[24px] text-neutral-100 font-semibold text-center">
-                  Define Your Muscular Defense Target
-                </h3>
+                <h2 className="font-serif text-[26px] text-[#2C3539]">Define Your Parameters</h2>
               </div>
               
-              <div className="space-y-8">
-                {/* Slider Input for Target Weight */}
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-sm text-neutral-300">
-                    <label className="font-medium text-[15px]">What is your Target / Goal Body Weight?</label>
-                    <span className="text-teal-400 font-bold text-lg">{targetWeight} kg</span>
+              <div className="space-y-6">
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <label className="text-[15px] font-medium text-[#2C3539]/80">Target / Goal Body Weight</label>
+                    <span className="text-[#8A9A86] font-bold text-[22px]">{targetWeight} kg</span>
                   </div>
                   <input 
                     type="range" 
                     min="45" 
                     max="150" 
                     value={targetWeight} 
-                    onChange={(e) => { setTargetWeight(Number(e.target.value)); setShowResults(true); }} 
-                    className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-teal-500" 
+                    onChange={(e) => { setTargetWeight(Number(e.target.value)); setShowResults(false); }} 
+                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[#8A9A86]" 
                   />
-                  <div className="flex justify-between text-[11px] text-neutral-500 font-medium uppercase tracking-wider">
+                  <div className="flex justify-between text-[11px] text-[#2C3539]/50 font-bold uppercase tracking-wider mt-2">
                     <span>45 kg</span>
                     <span>150 kg</span>
                   </div>
                 </div>
 
-                {/* Activity Modifier */}
-                <div className="space-y-3">
-                  <label className="block text-sm font-medium text-neutral-300 text-[15px]">Intended Weekly Resistance Loading</label>
-                  <select 
-                    value={activity} 
-                    onChange={(e) => { setActivity(e.target.value); setShowResults(true); }} 
-                    className="w-full p-3.5 bg-neutral-900 border border-neutral-800 text-neutral-200 rounded-xl text-[15px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 transition-colors"
-                  >
-                    <option value="low">Minimal resistance training / Transition phase</option>
-                    <option value="moderate">Committing to 2x 30-minute structured resistance blocks weekly</option>
-                    <option value="high">Committing to 3x or more progressive overloaded strength tracks weekly</option>
-                  </select>
-                </div>
-
-                {/* Dynamic Result Panel */}
-                <div className="mt-8 p-6 bg-neutral-900 rounded-xl border border-neutral-800 space-y-6">
-                  <div className="text-center">
-                    <h4 className="text-xs uppercase tracking-widest text-neutral-400 font-semibold mb-2">Suggested Daily Retention Range</h4>
-                    <p className="text-[36px] font-serif text-teal-400 font-bold leading-none">
-                      {lowBound}g – {highBound}g <span className="text-sm font-sans text-neutral-400 font-normal">/ day</span>
-                    </p>
-                  </div>
-
-                  <div className="border-t border-neutral-800 pt-5 space-y-4 text-[13px] text-neutral-400 leading-relaxed">
-                    <p>
-                      <span className="text-teal-400 font-bold text-[16px] mr-2">📌</span> <strong className="text-neutral-200">The Position Matrix:</strong> Your inputs suggest an estimated daily baseline target of <span className="text-teal-400 font-semibold">{lowBound}g</span> to support basic securing your daily protein target block and lean tissue repair <Link to="/resources#protein" className="text-teal-500 hover:text-teal-400 underline text-[10px] align-super">1</Link>.
-                    </p>
-                    <p>
-                      <span className="text-teal-400 font-bold text-[16px] mr-2">📌</span> <strong className="text-neutral-200">The Meal Allocation position:</strong> To optimize synthesis while navigating severe appetite muting, clinical data implies dividing this total into smaller, frequent exposures is beneficial. Aiming for approximately <span className="text-teal-400 font-semibold">{mealAllocation}g of protein per intake</span> across 4 small mini-meals or liquid isolates is a recommended starting blueprint.
-                    </p>
+                <div>
+                  <label className="block text-[15px] font-medium text-[#2C3539]/80 mb-3">Intended Weekly Resistance Loading</label>
+                  <div className="relative">
+                    <select 
+                      value={activity} 
+                      onChange={(e) => { setActivity(e.target.value); setShowResults(false); }} 
+                      className="w-full bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 py-4 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors cursor-pointer text-[15px]"
+                    >
+                      <option value="low">Minimal resistance training / Transition phase</option>
+                      <option value="moderate">Committing to 2x 30-minute structured resistance blocks weekly</option>
+                      <option value="high">Committing to 3x or more progressive overloaded strength tracks weekly</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-neutral-400">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              <button 
+                onClick={() => setShowResults(true)}
+                className="w-full h-14 bg-[#8A9A86] hover:bg-[#768672] text-white rounded-xl font-medium transition-colors text-[16px] shadow-sm"
+              >
+                Calculate Muscle Defense Target
+              </button>
+            </div>
+
+            {/* Output Panel */}
+            <div className={`flex-1 bg-[#FAFAF9] rounded-2xl border border-neutral-200 p-8 flex flex-col justify-center transition-all duration-500 ${showResults ? 'opacity-100 translate-y-0' : 'opacity-50 blur-sm pointer-events-none'}`}>
+              <div className="text-center mb-8">
+                <span className="block text-[11px] font-bold uppercase tracking-wider text-[#2C3539]/50 mb-4">Suggested Daily Retention Range</span>
+                <div className="font-serif text-[48px] md:text-[56px] text-[#8A9A86] leading-none mb-2">
+                  {lowBound}g &ndash; {highBound}g
+                </div>
+                <span className="text-[15px] font-medium text-[#2C3539]/60">Total Daily Protein</span>
               </div>
               
-              <p className="text-[11px] text-neutral-500 text-center mt-6 max-w-sm mx-auto leading-relaxed">
-                Calculations suggest universal sports-science baseline benchmarks and are not clinical medical prescriptions. Always verify your daily macro structures with your consulting medical practitioner.
-              </p>
+              <div className="border-t border-neutral-200 pt-8 space-y-6 text-[14px] leading-relaxed text-[#2C3539]/80">
+                <p>
+                  <strong className="text-[#2C3539] font-medium">The Position Matrix:</strong> Your inputs suggest an estimated daily baseline target of <span className="font-bold text-[#8A9A86]">{lowBound}g</span> to support basic lean tissue repair.
+                </p>
+                <p>
+                  <strong className="text-[#2C3539] font-medium">Meal Allocation:</strong> To optimize synthesis while navigating severe appetite muting, dividing this total into smaller, frequent exposures is beneficial. Aim for roughly <span className="font-bold text-[#8A9A86]">{mealAllocation}g of protein</span> across 4 small intakes.
+                </p>
+              </div>
             </div>
+
           </div>
-
-          <div className="space-y-16 mb-20 mt-20">
-            <div>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                Why protein tracking matters during rapid fat loss
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
-                <p>
-                  When you undergo rapid weight reduction—whether through GLP-1 receptor agonists or GLP-1 therapy—your body enters a profound caloric deficit. In this state, the body does not exclusively burn adipose tissue (fat). Without a sufficient stimulus and adequate building blocks, it will readily break down active skeletal muscle and bone matrix to meet its energy and amino acid demands.
-                </p>
-                <p>
-                  Tracking your protein intake is not about body-building; it is about preservation. Protecting your lean mass ensures that your resting metabolic rate remains stable, your physical strength is maintained, and your structural integrity is defended against the fatigue that often accompanies severe caloric restriction.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                How clinical weight loss interventions alter your daily protein targets
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
-                <p>
-                  Clinical interventions inherently suppress appetite and slow gastric emptying, severely reducing the total volume of food you can consume. This shift immediately puts your body into a negative securing your daily protein target block, a state where protein breakdown exceeds protein synthesis.
-                </p>
-                <p>
-                  To counteract this, nutrition must pivot from volume-based eating to density-based eating. You must introduce high-quality, bioavailable protein sources in smaller, more frequent doses to force the body back into a positive securing your daily protein target block. This prevents the systemic fatigue and muscle wasting commonly associated with untreated rapid weight loss, ensuring the weight you lose is fat, not functional tissue.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                Evidence-based protein guidelines for lean mass defense
-              </h2>
-              <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
-                <p>
-                  Current sports science and clinical nutrition guidelines recommend establishing a protein target based on your <em>goal</em> body weight, rather than your current weight, to avoid prescribing an unachievable volume of food. The standard therapeutic threshold ranges from 1.2g to 1.6g of protein per kilogram of your target weight.
-                </p>
-                <p>
-                  Achieving this requires strategic structuring. Given the early satiety experienced during treatment, breaking your daily target into four distinct intakes utilizing clear whey isolates, collagen peptides, and lean animal proteins is the most effective way to protect your physical baseline without triggering gastrointestinal distress.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-8">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 mb-6">
-              Step Into a Managed 12-Week Track
-            </h2>
-            <p className="font-sans text-[16px] text-neutral-300 leading-relaxed mb-6">
-              Managing protein thresholds, meal allocations, and progressive training blocks while navigating your medical timeline can feel incredibly complex. 
-              <br/><br/>
-              At WRK, our specialized <strong>12-Week Medical Weight Loss Support Programs</strong> take the guessing out of your daily routine. We deliver custom position-specific nutrition templates and short, 30-minute progressive resistance workouts straight to your <strong>WRK Training App</strong> dashboard—giving you professional accountability from our private training facility in Addington, Christchurch, or completely online anywhere across New Zealand.
+          
+          <div className="text-center mt-12 border-t border-neutral-200 pt-6">
+            <p className="text-[12px] text-[#2C3539]/50 max-w-2xl mx-auto leading-relaxed">
+              Calculations suggest universal sports-science baseline benchmarks and are not clinical medical prescriptions. Always verify your daily macro structures with your consulting medical practitioner.
             </p>
           </div>
-
-          <div className="p-8 md:p-10 bg-neutral-950 border border-teal-500/20 rounded-2xl text-center shadow-lg hover:border-teal-500/40 transition-colors">
-            <h3 className="font-serif text-[24px] text-white mb-6">Explore Our 12-Week Specialized Programs</h3>
-            <Link to="/programs">
-              <Button size="lg" className="w-full md:w-auto shadow-2xl">
-                View 12-Week Programs &rarr;
-              </Button>
-            </Link>
-          </div>
-
         </div>
+
+        {/* Mobile-Responsive Accordion Sections */}
+        <div className="max-w-4xl mx-auto space-y-4 mb-20">
+          <details className="group bg-white border border-neutral-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex items-center justify-between p-6 cursor-pointer font-serif text-[20px] md:text-[22px] text-[#2C3539]">
+              Why protein tracking matters during rapid fat loss
+              <span className="ml-6 flex-shrink-0 transition duration-300 group-open:-rotate-180">
+                <svg className="w-6 h-6 text-[#8A9A86]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="p-6 pt-0 text-[15px] leading-relaxed text-[#2C3539]/70 space-y-4 border-t border-neutral-100 mt-2">
+              <p>
+                When you undergo rapid weight reduction—whether through GLP-1 receptor agonists or lifestyle intervention—your body enters a profound caloric deficit. In this state, the body does not exclusively burn adipose tissue (fat). Without a sufficient stimulus and adequate building blocks, it will readily break down active skeletal muscle and bone matrix to meet its energy and amino acid demands.
+              </p>
+              <p>
+                Tracking your protein intake is not about body-building; it is about preservation. Protecting your lean mass ensures that your resting metabolic rate remains stable, your physical strength is maintained, and your structural integrity is defended against the fatigue that often accompanies severe caloric restriction.
+              </p>
+            </div>
+          </details>
+
+          <details className="group bg-white border border-neutral-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex items-center justify-between p-6 cursor-pointer font-serif text-[20px] md:text-[22px] text-[#2C3539]">
+              How clinical weight loss interventions alter nitrogen balance
+              <span className="ml-6 flex-shrink-0 transition duration-300 group-open:-rotate-180">
+                <svg className="w-6 h-6 text-[#8A9A86]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="p-6 pt-0 text-[15px] leading-relaxed text-[#2C3539]/70 space-y-4 border-t border-neutral-100 mt-2">
+              <p>
+                Clinical interventions inherently suppress appetite and slow gastric emptying, severely reducing the total volume of food you can consume. This shift immediately puts your body into a negative nitrogen balance, a state where protein breakdown exceeds protein synthesis.
+              </p>
+              <p>
+                To counteract this, nutrition must pivot from volume-based eating to density-based eating. You must introduce high-quality, bioavailable protein sources in smaller, more frequent doses to force the body back into a positive balance. This prevents the systemic fatigue and muscle wasting commonly associated with untreated rapid weight loss, ensuring the weight you lose is fat, not functional tissue.
+              </p>
+            </div>
+          </details>
+
+          <details className="group bg-white border border-neutral-200 rounded-2xl [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex items-center justify-between p-6 cursor-pointer font-serif text-[20px] md:text-[22px] text-[#2C3539]">
+              Evidence-based protein guidelines for lean mass defense
+              <span className="ml-6 flex-shrink-0 transition duration-300 group-open:-rotate-180">
+                <svg className="w-6 h-6 text-[#8A9A86]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="p-6 pt-0 text-[15px] leading-relaxed text-[#2C3539]/70 space-y-4 border-t border-neutral-100 mt-2">
+              <p>
+                Current sports science and clinical nutrition guidelines recommend establishing a protein target based on your <em>goal</em> body weight, rather than your current weight, to avoid prescribing an unachievable volume of food. The standard therapeutic threshold ranges from 1.2g to 1.6g of protein per kilogram of your target weight.
+              </p>
+              <p>
+                Achieving this requires strategic structuring. Given the early satiety experienced during treatment, breaking your daily target into four distinct intakes utilizing clear whey isolates, collagen peptides, and lean animal proteins is the most effective way to protect your physical baseline without triggering gastrointestinal distress.
+              </p>
+            </div>
+          </details>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 };

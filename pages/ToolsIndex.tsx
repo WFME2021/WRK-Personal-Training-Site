@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { Dna, Calculator, Droplet } from 'lucide-react';
-import { Button } from '../components/Button';
 
 export const ToolsIndex: React.FC = () => {
   useEffect(() => {
@@ -10,84 +9,95 @@ export const ToolsIndex: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <SeoHead 
-        title="Medical Weight Loss Tools & Calculators | WRK"
-        description="Evidence-based calculators and tools for GLP-1 therapy and prescription GLP-1 support. Calculate TDEE, protein targets, and hydration needs."
+    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
+      <SeoHead
+        title="Free GLP-1 Calculators: Muscle Loss, Metabolism, & Hydration | WRK"
+        description="Calculate your exact daily protein thresholds, adjusted metabolic expenditure, and micro-volume fluid targets with our free, standalone GLP-1 web tools."
       />
 
-      <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 items-center overflow-x-hidden pt-[80px] md:pt-[100px] pb-24">
-        <div className="max-w-[1000px] w-full px-5 md:px-12 mx-auto">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Page Header */}
+        <header className="text-center mb-20 max-w-3xl mx-auto">
+          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+            GLP-1 Daily Calibration Tools
+          </h1>
+          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
+            Do not guess your metrics. Use our evidence-based, problem-first web tools to calculate your precise operational targets as your medication dosage changes.
+          </p>
+        </header>
+
+        {/* 3-Tool Card Directory (Bento Grid Interface) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
           
-          <div className="mb-12 text-center md:text-left">
-            <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.15] text-neutral-100 mb-4">
-              Medical Weight Loss Tools
-            </h1>
-            <p className="font-sans text-[16px] md:text-[18px] text-neutral-300 leading-relaxed max-w-2xl">
-              Specialized clinical tracking and calculation tools designed to protect your physical baseline while navigating rapid mass reduction pathways.
+          {/* CARD 1 */}
+          <div className="bg-white border border-neutral-200 p-10 rounded-2xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8">
+              <Dna size={28} />
+            </div>
+            <div className="mb-6">
+              <h2 className="font-serif text-[26px] text-[#2C3539] mt-3 leading-tight">GLP-1 Muscle Loss Calculator</h2>
+            </div>
+            <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-10 flex-grow">
+              Calculate your exact daily protein threshold to protect lean muscle mass, defend body tone, and prevent a severe metabolic slowdown during rapid fat loss.
             </p>
+            <Link 
+              to="/tools/protein-targeter"
+              className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+            >
+              Launch Muscle Calculator &rarr;
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            
-            {/* Card 1: Protein Targeter */}
-            <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-8 flex flex-col hover:border-teal-500/50 transition-colors shadow-lg group relative overflow-hidden">
-              <div className="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center mb-6 shrink-0 group-hover:scale-110 transition-transform duration-500">
-                <Dna className="text-teal-400" size={24} />
-              </div>
-              <h2 className="font-serif text-[22px] text-neutral-100 mb-3">Muscle-Preservation Protein Targeter</h2>
-              <p className="font-sans text-[15px] text-neutral-400 leading-relaxed mb-8 flex-grow">
-                Calculate your exact daily protein threshold to protect lean muscle mass and defend bone density during rapid fat loss phase transitions.
-              </p>
-              <Link to="/tools/protein-targeter">
-                <Button variant="outline" className="w-full justify-center group-hover:bg-teal-500/10 group-hover:text-teal-400 group-hover:border-teal-500/30">
-                  Launch Tool &rarr;
-                </Button>
-              </Link>
+          {/* CARD 2 */}
+          <div className="bg-white border border-neutral-200 p-10 rounded-2xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8">
+              <Calculator size={28} />
             </div>
-
-            {/* Card 2: TDEE Calculator */}
-            <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-8 flex flex-col hover:border-teal-500/50 transition-colors shadow-lg group relative overflow-hidden">
-              <div className="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center mb-6 shrink-0 group-hover:scale-110 transition-transform duration-500">
-                <Calculator className="text-teal-400" size={24} />
-              </div>
-              <h2 className="font-serif text-[22px] text-neutral-100 mb-3">Medical TDEE & Metabolic Calculator</h2>
-              <p className="font-sans text-[15px] text-neutral-400 leading-relaxed mb-8 flex-grow">
-                Establish your adjusted Total Daily Energy Expenditure. Features clinical baseline modifiers specifically optimized for GLP-1 therapy and medical weight loss tracking.
-              </p>
-              <Link to="/tools/tdee-calculator">
-                <Button variant="outline" className="w-full justify-center group-hover:bg-teal-500/10 group-hover:text-teal-400 group-hover:border-teal-500/30">
-                  Launch Tool &rarr;
-                </Button>
-              </Link>
+            <div className="mb-6">
+              <h2 className="font-serif text-[26px] text-[#2C3539] mt-3 leading-tight">GLP-1 Metabolism & Calorie Calculator</h2>
             </div>
-
-            {/* Card 3: Hydration */}
-            <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-8 flex flex-col hover:border-teal-500/50 transition-colors shadow-lg group relative overflow-hidden">
-              <div className="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center mb-6 shrink-0 group-hover:scale-110 transition-transform duration-500">
-                <Droplet className="text-teal-400" size={24} />
-              </div>
-              <h2 className="font-serif text-[22px] text-neutral-100 mb-3">Hydration & Electrolyte Optimizer</h2>
-              <p className="font-sans text-[15px] text-neutral-400 leading-relaxed mb-8 flex-grow">
-                Manage gastrointestinal fluid shifts and counter suppressed thirst signals by calculating your precise fluid volumes and mineral targets.
-              </p>
-              <Link to="/tools/hydration-calculator">
-                <Button variant="outline" className="w-full justify-center group-hover:bg-teal-500/10 group-hover:text-teal-400 group-hover:border-teal-500/30">
-                  Launch Tool &rarr;
-                </Button>
-              </Link>
-            </div>
-
+            <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-10 flex-grow">
+              Establish your clinically adjusted Total Daily Energy Expenditure. Features baseline modifiers specifically calibrated to track and manage adaptive thermogenesis on weight loss medications.
+            </p>
+            <Link 
+              to="/tools/tdee-calculator"
+              className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+            >
+              Launch Metabolism Calculator &rarr;
+            </Link>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <p className="text-[11px] text-neutral-500 text-center leading-relaxed">
-              <strong>Disclaimer:</strong> These tools provide general operational metrics based on evidence-based sports science and clinical guidelines. They do not substitute for personalized medical advice or clinical prescriptions. Always consult your healthcare team.
+          {/* CARD 3 */}
+          <div className="bg-white border border-neutral-200 p-10 rounded-2xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8">
+              <Droplet size={28} />
+            </div>
+            <div className="mb-6">
+              <h2 className="font-serif text-[26px] text-[#2C3539] mt-3 leading-tight">GLP-1 Dehydration & Nausea Calculator</h2>
+            </div>
+            <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-10 flex-grow">
+              Counter suppressed brain thirst signals and manage sudden fluid volume shifts by calculating your precise micro-volume fluid spacing layouts and daily mineral targets.
             </p>
+            <Link 
+              to="/tools/hydration-calculator"
+              className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+            >
+              Launch Hydration Calculator &rarr;
+            </Link>
           </div>
 
         </div>
+
+        {/* Global Hub Disclaimer */}
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <p className="text-[13px] leading-relaxed text-[#2C3539]/60">
+            <strong>Disclaimer:</strong> These utility tools provide generalized operational metrics based on sports science and clinical nutrition datasets. They do not substitute for personalized medical advice or clinical prescriptions. Always coordinate your health targets with your prescribing physician.
+          </p>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 };
+
