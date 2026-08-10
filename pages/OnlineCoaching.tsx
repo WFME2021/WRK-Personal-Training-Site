@@ -13,7 +13,7 @@ export const OnlineCoaching: React.FC = () => {
     <>
       <SeoHead 
         title="Online Fitness Coaching & Support | Personal Trainers for GLP-1 Patients"
-        description="Premium online 12-week fitness coaching tailored for GLP-1 patients and bariatric recovery. Protect your muscle mass from anywhere in New Zealand."
+        description="Premium online 12-week fitness coaching tailored for GLP-1 patients and prescription GLP-1 support. Protect your muscle mass from anywhere in New Zealand."
       />
       <div className="flex flex-col w-full overflow-x-hidden bg-neutral-900 pb-24 text-neutral-100">
         
@@ -33,7 +33,7 @@ export const OnlineCoaching: React.FC = () => {
 
           <div className="relative z-10 w-full px-5 pt-32 pb-12 md:pb-24 max-w-[1200px] mx-auto md:px-12 text-center md:text-left">
             <span className="block font-sans font-medium text-xs uppercase tracking-widest text-teal-400 mb-4">
-              GLP-1 & BARIATRIC RECOVERY SUPPORT
+              GLP-1 THERAPY SUPPORT
             </span>
             <h1 className="flex flex-col mb-6">
               <span className="font-serif text-[40px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-tight text-neutral-100">
@@ -44,7 +44,7 @@ export const OnlineCoaching: React.FC = () => {
               </span>
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-neutral-300 font-medium max-w-[650px] mx-auto md:mx-0 mb-8 leading-relaxed">
-              Rapid physical transformation requires distinct, scientific oversight. As specialist <strong>personal trainers for GLP-1 patients</strong> and post-surgical bariatric individuals, WRK delivers a highly scalable, premium online infrastructure built directly into My PT Hub.
+              Rapid physical transformation requires distinct, scientific oversight. As specialist <strong>personal trainers for GLP-1 patients</strong> and GLP-1 patients, WRK delivers a highly scalable, premium online infrastructure built directly into My PT Hub.
               <br/><br/>
               We don't offer generic templates. We program around your specific clinical intervention, monitoring your physiological feedback every single week.
             </p>

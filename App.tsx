@@ -4,6 +4,7 @@ import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { Assessment } from './pages/Assessment';
 import { Programs } from './pages/Programs';
+import { Services } from './pages/Services';
 import { Resources } from './pages/Resources';
 import { Results } from './pages/Results';
 import { Contact } from './pages/Contact';
@@ -76,7 +77,7 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/personal-trainer-christchurch" element={<Navigate to="/personal-training" replace />} />
             <Route path="/online-personal-training-nz" element={<Navigate to="/online-coaching" replace />} />
             <Route path="/personal-training-christchurch-philosophy" element={<Navigate to="/about" replace />} />
-            <Route path="/services" element={<Programs />} />
+            <Route path="/services" element={<Services />} />
             
             
             <Route path="/blog" element={<Blog />} />

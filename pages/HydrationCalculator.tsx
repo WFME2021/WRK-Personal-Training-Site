@@ -315,7 +315,7 @@ export const HydrationCalculator: React.FC = () => {
               <p className="leading-relaxed mb-2">Rapid weight loss and GLP-1 receptor agonists alter fluid dynamics and electrolyte excretion.</p>
               <ul className="space-y-2">
                 <li><Link to="/resources#gi-events" className="text-teal-500 hover:text-teal-400 underline">Gastrointestinal Adverse Events with GLP-1 Receptor Agonists</Link></li>
-                <li><Link to="/resources#fluid-management" className="text-teal-500 hover:text-teal-400 underline">Fluid and Electrolyte Management in Bariatric and Metabolic Medicine</Link></li>
+                <li><Link to="/resources#fluid-management" className="text-teal-500 hover:text-teal-400 underline">Fluid and Electrolyte Management in Medical Weight Loss and Metabolic Medicine</Link></li>
               </ul>
             </div>
           </div>
@@ -324,7 +324,7 @@ export const HydrationCalculator: React.FC = () => {
           <div className="mt-16 p-8 md:p-10 bg-neutral-950 border border-teal-500/20 rounded-2xl text-center shadow-lg hover:border-teal-500/40 transition-colors max-w-4xl mx-auto">
             <h3 className="font-serif text-[24px] text-white mb-4">Need help managing your physical baseline?</h3>
             <p className="font-sans text-[16px] text-neutral-400 max-w-2xl mx-auto mb-8 leading-relaxed">
-              Managing fluid, electrolytes, and lean muscle retention while navigating your medical timeline can feel incredibly complex. Step into a structured program designed specifically for bariatric and medical weight loss recovery.
+              Managing fluid, electrolytes, and lean muscle retention while navigating your medical timeline can feel incredibly complex. Step into a structured program designed specifically for medical weight loss recovery.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/programs">

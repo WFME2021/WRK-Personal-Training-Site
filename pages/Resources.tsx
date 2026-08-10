@@ -34,10 +34,10 @@ export const Resources: React.FC = () => {
               Clinical Evidence & Scientific Resources
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] leading-[1.6] text-off-white/90">
-              At WRK Personal Training, our frameworks are entirely built on peer-reviewed sports science, clinical nutrition guidelines, and bariatric metabolic research.
+              At WRK Personal Training, our frameworks are entirely built on peer-reviewed sports science, clinical nutrition guidelines, and medical weight loss research.
             </p>
             <p className="font-sans text-[16px] md:text-[18px] leading-[1.6] text-off-white/80">
-              When navigating rapid weight reduction via GLP-1 receptor agonists (such as semaglutide, tirzepatide, or retatrutide) or post-operative bariatric recovery, body composition tracking shifts fundamentally. The resources below outline the foundational evidence supporting our specialized 12-week resistance and nutritional strategies.
+              When navigating rapid weight reduction via GLP-1 receptor agonists (such as semaglutide, tirzepatide, or retatrutide) or GLP-1 therapy, body composition tracking shifts fundamentally. The resources below outline the foundational evidence supporting our specialized 12-week resistance and nutritional strategies.
             </p>
           </header>
 
@@ -98,17 +98,17 @@ export const Resources: React.FC = () => {
             
             <div className="space-y-4 font-sans text-[16px] text-off-white/90 leading-[1.6]">
               <p>
-                <strong>The Science:</strong> Inadequate dietary protein intake after bariatric surgery or during high-dose GLP-1 treatment puts individuals at higher risk for unfavorable lean mass reduction, low immune function, and severe systemic fatigue. High-quality, fast-absorbing protein supplements (like whey isolates) assist in hitting baseline amino acid synthesis.
+                <strong>The Science:</strong> Inadequate dietary protein intake after GLP-1 therapy or during high-dose GLP-1 treatment puts individuals at higher risk for unfavorable lean mass reduction, low immune function, and severe systemic fatigue. High-quality, fast-absorbing protein supplements (like whey isolates) assist in hitting baseline amino acid synthesis.
               </p>
               
               <div className="space-y-3 bg-navy-mid p-6 rounded-[16px] border border-navy-light">
                 <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>The Role of Whey Protein in Maintaining Fat-Free Mass and Improving Body Composition After Bariatric Surgery</em> (2025). Published in <strong>MDPI / Interventional Studies</strong>. A double-blind, placebo-controlled clinical trial illustrating that targeted whey protein supplementation directly mitigates lean mass wasting during rapid physical transformations.
+                    <em>The Role of Whey Protein in Maintaining Fat-Free Mass and Improving Body Composition After GLP-1 therapy</em> (2025). Published in <strong>MDPI / Interventional Studies</strong>. A double-blind, placebo-controlled clinical trial illustrating that targeted whey protein supplementation directly mitigates lean mass wasting during rapid physical transformations.
                   </li>
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>Inadequate Protein Intake after Bariatric Surgery: Effects on Body Composition</em> (2018). Published in <strong>Bariatric Times</strong>. This nursing review establishes that post-surgical volumes struggle to exceed 60g of protein from food alone, cementing the requirement for clinical tracking models.
+                    <em>Inadequate Protein Intake after GLP-1 therapy: Effects on Body Composition</em> (2018). Published in <strong>Clinical Nutrition</strong>. This nursing review establishes that prescription GLP-1 volumes struggle to exceed 60g of protein from food alone, cementing the requirement for clinical tracking models.
                   </li>
                 </ul>
               </div>
@@ -131,10 +131,10 @@ export const Resources: React.FC = () => {
                 <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>Resistance Training Plus Protein Improves Body Composition After Gastric Bypass</em> (2021). Published via <strong>Examine / Randomized Controlled Trials</strong>. This 12-week trial evaluated bariatric patients divided into exercise and nutrition groups. The data concluded that combining structured resistance loops with optimal protein intake generated the most profound defense against skeletal tissue wasting.
+                    <em>Resistance Training Plus Protein Improves Body Composition After GLP-1 therapy</em> (2021). Published via <strong>Examine / Randomized Controlled Trials</strong>. This 12-week trial evaluated GLP-1 patients divided into exercise and nutrition groups. The data concluded that combining structured resistance loops with optimal protein intake generated the most profound defense against losing your metabolic engine.
                   </li>
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>Nutritional and Exercise Interventions in Individuals with Sarcopenic Obesity</em> (2023). Published in <strong>National Institutes of Health (NIH) PMC</strong>. A comprehensive systematic review confirming that a dedicated resistance training program led to significant reductions in body fat percentage, a 2.72% average increase in muscle mass, and marked improvements in relative functional strength.
+                    <em>Nutritional and Exercise Interventions in Individuals with Metabolic Decline</em> (2023). Published in <strong>National Institutes of Health (NIH) PMC</strong>. A comprehensive systematic review confirming that a dedicated resistance training program led to significant reductions in body fat percentage, a 2.72% average increase in muscle mass, and marked improvements in relative functional strength.
                   </li>
                 </ul>
               </div>
@@ -157,7 +157,7 @@ export const Resources: React.FC = () => {
                 <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>The Impact of Exercise on Prevention of Sarcopenia After Bariatric Surgery</em> (2022). Published in <strong>PMC Clinical Practice</strong>. This study highlights the need for patients undergoing rapid weight adjustments to execute multi-joint compound resistance movements at least two days a week to safeguard total skeletal structural integrity.
+                    <em>The Impact of Exercise on Prevention of Sarcopenia After GLP-1 therapy</em> (2022). Published in <strong>PMC Clinical Practice</strong>. This study highlights the need for patients undergoing rapid weight adjustments to execute multi-joint compound resistance movements at least two days a week to safeguard total skeletal structural integrity.
                   </li>
                 </ul>
               </div>

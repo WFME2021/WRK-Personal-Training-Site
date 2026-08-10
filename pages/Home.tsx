@@ -44,7 +44,7 @@ export const Home: React.FC = () => {
               </span>
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-neutral-300 font-medium max-w-[700px] mx-auto md:mx-0 mb-8 leading-relaxed">
-              If you are navigating rapid weight loss via GLP-1 medications or bariatric surgery, standard fitness routines simply won't cut it. At WRK, we bridge the gap between clinical intervention and real-world long-term health. 
+              If you are navigating rapid weight loss via GLP-1 medications or GLP-1 therapy, standard fitness routines simply won't cut it. At WRK, we bridge the gap between clinical intervention and real-world long-term health. 
               <br /><br />
               We specialize in <strong>strength training after weight loss drugs</strong> to stop lean muscle wasting, protect bone density, and build lasting, supportive movement and nutrition behaviors.
               <br /><br />
@@ -136,7 +136,7 @@ export const Home: React.FC = () => {
                <div className="flex flex-col gap-4 bg-gradient-to-br from-neutral-900 to-neutral-950 p-8 rounded-2xl border border-neutral-800 hover:border-teal-500/50 transition-all duration-300 shadow-lg group">
                  <h3 className="text-neutral-100 font-serif text-[28px] tracking-tight">Online Coaching</h3>
                  <p className="font-sans text-[16px] text-neutral-400 leading-relaxed flex-1">
-                   Premium online coaching tailored for GLP-1 patients and bariatric recovery. Protect your muscle mass from anywhere in New Zealand.
+                   Premium online coaching tailored for GLP-1 patients and prescription GLP-1 support. Protect your muscle mass from anywhere in New Zealand.
                  </p>
                  <Link to="/online-coaching" className="text-teal-400 font-sans text-[14px] font-semibold hover:text-teal-300 transition-colors mt-4 inline-flex items-center group-hover:translate-x-1">
                    Learn more <span className="ml-1">&rarr;</span>

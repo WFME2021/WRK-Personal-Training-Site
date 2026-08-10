@@ -13,7 +13,7 @@ export const ToolsIndex: React.FC = () => {
     <>
       <SeoHead 
         title="Medical Weight Loss Tools & Calculators | WRK"
-        description="Evidence-based calculators and tools for GLP-1 therapy and bariatric recovery. Calculate TDEE, protein targets, and hydration needs."
+        description="Evidence-based calculators and tools for GLP-1 therapy and prescription GLP-1 support. Calculate TDEE, protein targets, and hydration needs."
       />
 
       <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 items-center overflow-x-hidden pt-[80px] md:pt-[100px] pb-24">
@@ -53,7 +53,7 @@ export const ToolsIndex: React.FC = () => {
               </div>
               <h2 className="font-serif text-[22px] text-neutral-100 mb-3">Medical TDEE & Metabolic Calculator</h2>
               <p className="font-sans text-[15px] text-neutral-400 leading-relaxed mb-8 flex-grow">
-                Establish your adjusted Total Daily Energy Expenditure. Features clinical baseline modifiers specifically optimized for GLP-1 therapy and post-surgical bariatric tracking.
+                Establish your adjusted Total Daily Energy Expenditure. Features clinical baseline modifiers specifically optimized for GLP-1 therapy and medical weight loss tracking.
               </p>
               <Link to="/tools/tdee-calculator">
                 <Button variant="outline" className="w-full justify-center group-hover:bg-teal-500/10 group-hover:text-teal-400 group-hover:border-teal-500/30">

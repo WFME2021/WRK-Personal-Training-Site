@@ -97,7 +97,7 @@ export const Assessment: React.FC = () => {
                 <select required className="w-full p-4 bg-navy border border-navy-light rounded-[12px] text-white font-sans text-[16px] focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 bg-neutral-800 transition-all transition-colors" value={formData.path} onChange={(e) => setFormData({...formData, path: e.target.value})}>
                   <option value="">Select your current framework...</option>
                   <option value="glp1">I am using a prescribed GLP-1 intervention (e.g., tirzepatide, retatrutide, or variants)</option>
-                  <option value="bariatric">I am post-operative or recovering from metabolic/bariatric surgery</option>
+                  <option value="Medical Weight Loss">I am currently utilizing or recovering from metabolic/GLP-1 therapy</option>
                   <option value="general">I am pursuing holistic, standard rapid fat-loss protocols</option>
                 </select>
               </div>

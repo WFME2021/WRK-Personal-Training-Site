@@ -31,34 +31,24 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex flex-grow justify-center items-center space-x-5 lg:space-x-8">
-            <div className="relative group py-4">
-               <button className="text-[14px] font-medium text-off-white group-hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 focus:outline-none">
-                 Services
-                 <ChevronDown size={14} className="text-off-white/70 group-hover:text-white" />
-               </button>
-               <div className="absolute top-full left-1/2 -translate-x-1/2 w-[240px] opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 bg-navy/95 backdrop-blur-md border border-navy-light rounded-xl shadow-2xl py-2 z-50">
-                 {SERVICE_LINKS.map(link => (
-                   <Link key={link.path} to={link.path} className="block px-5 py-3 text-[14px] font-medium text-off-white hover:text-white hover:bg-navy-light/50 transition-colors">
-                     {link.label}
-                   </Link>
-                 ))}
-               </div>
-            </div>
-
+            <Link 
+              to="/services"
+              className="text-[14px] font-medium text-off-white hover:text-white transition-colors"
+            >
+              Services
+            </Link>
             <Link 
               to="/programs"
               className="text-[14px] font-medium text-off-white hover:text-white transition-colors"
             >
               Programs
             </Link>
-
             <Link 
               to="/tools"
               className="text-[14px] font-medium text-off-white hover:text-white transition-colors"
             >
               Tools
             </Link>
-
             <Link 
               to="/blog"
               className="text-[14px] font-medium text-off-white hover:text-white transition-colors"
@@ -106,26 +96,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
              Home
            </Link>
 
-           {/* Mobile Services Accordion */}
-           <div>
-             <button 
-               onClick={() => setMobileServicesOpen(!mobileServicesOpen)} 
-               className="w-full h-[56px] flex items-center justify-between px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt"
-             >
-               Services
-               <ChevronDown size={20} className={`transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
-             </button>
-             {mobileServicesOpen && (
-               <div className="bg-navy/30 py-2">
-                 {SERVICE_LINKS.map(link => (
-                   <Link onClick={() => setIsMenuOpen(false)} key={link.path} to={link.path} className="h-[48px] flex items-center pl-10 pr-6 text-[16px] font-medium text-off-white hover:text-white hover:bg-navy transition-colors">
-                     {link.label}
-                   </Link>
-                 ))}
-               </div>
-             )}
-           </div>
-
+           <Link onClick={() => setIsMenuOpen(false)} to="/services" className="h-[56px] flex items-center px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt">
+             Services
+           </Link>
            <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[56px] flex items-center px-6 text-[20px] font-semibold text-white hover:bg-navy transition-colors border-l-3 border-transparent hover:border-orange-burnt">
              Programs
            </Link>

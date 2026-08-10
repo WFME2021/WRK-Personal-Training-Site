@@ -27,7 +27,7 @@ export const Contact = () => {
     "@type": "ContactPage",
     "name": "Contact WRK Personal Training",
     "url": "https://wrkpersonaltraining.co.nz",
-    "description": "Secure communication hub for medical weight loss fitness coaching enquiries, GLP-1 patient exercise support, and bariatric clinical referrals.",
+    "description": "Secure communication hub for medical weight loss fitness coaching enquiries, GLP-1 patient exercise support, and GLP-1 clinical referrals.",
     "mainEntity": {
       "@type": "ExerciseAndDietAndNutritionService",
       "name": "WRK Personal Training",
@@ -47,8 +47,8 @@ export const Contact = () => {
   return (
     <>
       <SeoHead 
-        title="Contact WRK | GLP-1 & Bariatric Fitness Support Christchurch"
-        description="Connect with WRK Personal Training. Submit a secure clinical referral or medical weight loss coaching enquiry for GLP-1 and bariatric support."
+        title="Contact WRK | GLP-1 & Medical Weight Loss Fitness Support Christchurch"
+        description="Connect with WRK Personal Training. Submit a secure clinical referral or medical weight loss coaching enquiry for GLP-1 therapy support."
         schema={schema}
       />
       <div className="flex flex-col w-full bg-navy pt-[64px] pb-[64px] md:pt-[96px] md:pb-[96px]">
@@ -135,7 +135,7 @@ export const Contact = () => {
                       >
                         <option value="">Select an option...</option>
                         <option value="Seeking exercise support alongside GLP-1 therapy">Seeking exercise support alongside GLP-1 therapy</option>
-                        <option value="Post-surgical bariatric movement coaching">Post-surgical bariatric movement coaching</option>
+                        <option value="Medical weight loss movement coaching">Medical weight loss movement coaching</option>
                         <option value="Medical professional / Clinic referral enquiry">Medical professional / Clinic referral enquiry</option>
                         <option value="General coaching enquiry">General coaching enquiry</option>
                       </select>

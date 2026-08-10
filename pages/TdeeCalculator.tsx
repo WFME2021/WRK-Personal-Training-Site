@@ -49,7 +49,7 @@ export const TdeeCalculator: React.FC = () => {
     <>
       <SeoHead 
         title="TDEE Calculator for Medical Weight Loss Support | WRK"
-        description="Calculate your baseline energy expenditure while navigating GLP-1 medications or bariatric recovery. Discover specialized tracking metrics in Christchurch."
+        description="Calculate your baseline energy expenditure while navigating GLP-1 medications or prescription GLP-1 support. Discover specialized tracking metrics in Christchurch."
       />
 
       <div className="flex flex-col w-full min-h-screen bg-neutral-900 text-neutral-100 items-center overflow-x-hidden pt-[80px] md:pt-[100px] pb-24">
@@ -72,11 +72,11 @@ export const TdeeCalculator: React.FC = () => {
 
           <div className="mb-12">
             <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-neutral-100 mb-6">
-              TDEE Calculator for Medical Weight Loss & Bariatric Support
+              TDEE Calculator for Medical Weight Loss & GLP-1 therapy support
             </h1>
             <div className="font-sans text-[16px] md:text-[18px] text-neutral-300 leading-relaxed space-y-4">
               <p>
-                Understanding your body’s daily energy expenditure is a foundational component of managing a physical transformation. However, if you are navigating a rapid weight reduction journey via prescribed clinical pathways—such as GLP-1 receptor agonists (tirzepatide, retatrutide) or post-operative bariatric recovery—standard fitness calculations change fundamentally.
+                Understanding your body’s daily energy expenditure is a foundational component of managing a physical transformation. However, if you are navigating a rapid weight reduction journey via prescribed clinical pathways—such as GLP-1 receptor agonists (tirzepatide, retatrutide) or GLP-1 therapy—standard fitness calculations change fundamentally.
               </p>
               <p>
                 This specialized <strong>TDEE calculator for medical weight loss support</strong> is designed to estimate your baseline metabolic markers while helping you shift your daily focus away from aggressive gym-style calorie counting and toward defensive, structural tissue tracking.
@@ -214,7 +214,7 @@ export const TdeeCalculator: React.FC = () => {
                     </div>
                   </div>
                   <span className="font-sans text-[15px] md:text-[16px] text-neutral-300 leading-relaxed font-medium">
-                    I am currently utilizing GLP-1 medications or recovering from bariatric/metabolic surgery.
+                    I am currently utilizing GLP-1 medications and experiencing rapid adaptive thermogenesis.
                   </span>
                 </label>
               </div>
@@ -242,7 +242,7 @@ export const TdeeCalculator: React.FC = () => {
                         ⚠️ Critical Tracking Adjustment for Your Pathway
                       </h4>
                       <p className="font-sans text-sm text-neutral-400 leading-relaxed">
-                        Clinical research suggests that intense medication-induced appetite suppression or post-surgical volume restrictions frequently make hitting a standard calorie floor highly difficult. 
+                        Clinical research suggests that intense medication-induced appetite suppression or prescription GLP-1 volume restrictions frequently make hitting a standard calorie floor highly difficult. 
                       </p>
                       <p className="font-sans text-sm text-neutral-400 leading-relaxed">
                         When using these interventions, attempting to force huge amounts of solid food to reach a high caloric baseline can result in severe gastrointestinal discomfort or intense nausea. 
@@ -285,11 +285,11 @@ export const TdeeCalculator: React.FC = () => {
           <div className="space-y-16 mb-20 mt-20">
             <div>
               <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                How GLP-1 medications and bariatric surgery alter metabolic expenditure
+                How GLP-1 medications alter metabolic expenditure
               </h2>
               <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
                 <p>
-                  Total Daily Energy Expenditure (TDEE) is traditionally calculated using basal metabolic rate (BMR) and physical activity levels. However, clinical interventions disrupt this standard equation. GLP-1 medications and bariatric surgery alter gastric emptying rates, hormonal hunger signals, and systemic inflammation profiles, fundamentally changing how your body processes and stores energy.
+                  Total Daily Energy Expenditure (TDEE) is traditionally calculated using basal metabolic rate (BMR) and physical activity levels. However, clinical interventions disrupt this standard equation. GLP-1 medications alter gastric emptying rates, hormonal hunger signals, and systemic inflammation profiles, fundamentally changing how your body processes and stores energy.
                 </p>
                 <p>
                   As you undergo rapid weight loss, your BMR naturally decreases because a smaller body requires less baseline energy to function. Furthermore, the body may initiate adaptive thermogenesis—a defensive slowdown of metabolic rate in response to severe caloric restriction. Monitoring these shifts is vital to prevent long-term metabolic stalling.
@@ -303,7 +303,7 @@ export const TdeeCalculator: React.FC = () => {
               </h2>
               <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
                 <p>
-                  In the traditional fitness space, TDEE is used to establish a strict daily caloric deficit (often 500 calories below maintenance). In medical weight loss, this approach is counterproductive and potentially dangerous. The medication or surgical intervention is already enforcing a massive deficit—often far beyond what standard calculators recommend.
+                  In the traditional fitness space, TDEE is used to establish a strict daily caloric deficit (often 500 calories below maintenance). In medical weight loss, this approach is counterproductive and potentially dangerous. The medication is already enforcing a massive deficit—often far beyond what standard calculators recommend.
                 </p>
                 <p>
                   Medical weight loss tracking flips the paradigm. Instead of using TDEE to find a maximum caloric ceiling, we use it to understand the gap between your energy output and your drastically reduced intake. The goal shifts from "eating less" to "eating defensively"—ensuring that the small volume of food you can tolerate is hyper-optimized for protein density and micronutrient value to prevent malnutrition and muscle wasting.
@@ -331,7 +331,7 @@ export const TdeeCalculator: React.FC = () => {
               Professional Coaching Verification & Support
             </h2>
             <p className="font-sans text-[16px] text-neutral-300 leading-relaxed mb-6">
-              Balancing estimated metabolic math with real-world side effects, medication steps, or post-surgical recovery timelines can feel incredibly complex. 
+              Balancing estimated metabolic math with real-world side effects, medication steps, or prescription GLP-1 recovery timelines can feel incredibly complex. 
               <br/><br/>
               At WRK, our premium 12-Week Hybrid Coaching Program (located at our private training facility in Addington, Christchurch) and our Remote Support Tracks across New Zealand provide direct, evidence-based guidance. We build position-specific resistance training tracks and adaptive lifestyle templates straight into your My PT Hub profile, ensuring your structural health matches your lighter frame.
             </p>

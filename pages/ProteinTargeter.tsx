@@ -51,10 +51,10 @@ export const ProteinTargeter: React.FC = () => {
             </h1>
             <div className="font-sans text-[16px] md:text-[18px] text-neutral-300 leading-relaxed space-y-4">
               <p>
-                When navigating rapid body mass adjustment via prescribed clinical pathways—such as GLP-1 medications or bariatric recovery—monitoring your nutritional density becomes a critical priority. 
+                When navigating rapid body mass adjustment via prescribed clinical pathways—such as GLP-1 medications or prescription GLP-1 support—monitoring your nutritional density becomes a critical priority. 
               </p>
               <p>
-                Because medication-induced appetite suppression or post-surgical volume limits heavily restrict how much food you can physically consume, tracking random calorie counts becomes less useful than protecting your lean tissue structure.
+                Because medication-induced appetite suppression or prescription GLP-1 volume limits heavily restrict how much food you can physically consume, tracking random calorie counts becomes less useful than protecting your lean tissue structure.
               </p>
               <p>
                 This evidence-based <strong>Protein Targeter for muscle preservation</strong> calculates a position-specific, general daily macro threshold to help keep your active skeletal muscle and bone matrix protected while your total body weight scales down.
@@ -129,10 +129,10 @@ export const ProteinTargeter: React.FC = () => {
 
                   <div className="border-t border-neutral-800 pt-5 space-y-4 text-[13px] text-neutral-400 leading-relaxed">
                     <p>
-                      <span className="text-teal-400 font-bold text-[16px] mr-2">📌</span> <strong className="text-neutral-200">The Position Matrix:</strong> Your inputs suggest an estimated daily baseline target of <span className="text-teal-400 font-semibold">{lowBound}g</span> to support basic nitrogen balance and lean tissue repair <Link to="/resources#protein" className="text-teal-500 hover:text-teal-400 underline text-[10px] align-super">1</Link>.
+                      <span className="text-teal-400 font-bold text-[16px] mr-2">📌</span> <strong className="text-neutral-200">The Position Matrix:</strong> Your inputs suggest an estimated daily baseline target of <span className="text-teal-400 font-semibold">{lowBound}g</span> to support basic securing your daily protein target block and lean tissue repair <Link to="/resources#protein" className="text-teal-500 hover:text-teal-400 underline text-[10px] align-super">1</Link>.
                     </p>
                     <p>
-                      <span className="text-teal-400 font-bold text-[16px] mr-2">📌</span> <strong className="text-neutral-200">The Meal Allocation position:</strong> To optimize synthesis while navigating severe appetite muting or surgical volume reductions, clinical data implies dividing this total into smaller, frequent exposures is beneficial. Aiming for approximately <span className="text-teal-400 font-semibold">{mealAllocation}g of protein per intake</span> across 4 small mini-meals or liquid isolates is a recommended starting blueprint.
+                      <span className="text-teal-400 font-bold text-[16px] mr-2">📌</span> <strong className="text-neutral-200">The Meal Allocation position:</strong> To optimize synthesis while navigating severe appetite muting, clinical data implies dividing this total into smaller, frequent exposures is beneficial. Aiming for approximately <span className="text-teal-400 font-semibold">{mealAllocation}g of protein per intake</span> across 4 small mini-meals or liquid isolates is a recommended starting blueprint.
                     </p>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export const ProteinTargeter: React.FC = () => {
               </h2>
               <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
                 <p>
-                  When you undergo rapid weight reduction—whether through GLP-1 receptor agonists or bariatric surgery—your body enters a profound caloric deficit. In this state, the body does not exclusively burn adipose tissue (fat). Without a sufficient stimulus and adequate building blocks, it will readily break down active skeletal muscle and bone matrix to meet its energy and amino acid demands.
+                  When you undergo rapid weight reduction—whether through GLP-1 receptor agonists or GLP-1 therapy—your body enters a profound caloric deficit. In this state, the body does not exclusively burn adipose tissue (fat). Without a sufficient stimulus and adequate building blocks, it will readily break down active skeletal muscle and bone matrix to meet its energy and amino acid demands.
                 </p>
                 <p>
                   Tracking your protein intake is not about body-building; it is about preservation. Protecting your lean mass ensures that your resting metabolic rate remains stable, your physical strength is maintained, and your structural integrity is defended against the fatigue that often accompanies severe caloric restriction.
@@ -161,14 +161,14 @@ export const ProteinTargeter: React.FC = () => {
 
             <div>
               <h2 className="font-serif text-[28px] md:text-[36px] text-neutral-100 border-b border-neutral-800 pb-4 mb-6">
-                How clinical weight loss interventions alter nitrogen balance
+                How clinical weight loss interventions alter your daily protein targets
               </h2>
               <div className="font-sans text-[16px] text-neutral-300 leading-relaxed space-y-4">
                 <p>
-                  Clinical interventions inherently suppress appetite and slow gastric emptying, severely reducing the total volume of food you can consume. This shift immediately puts your body into a negative nitrogen balance, a state where protein breakdown exceeds protein synthesis.
+                  Clinical interventions inherently suppress appetite and slow gastric emptying, severely reducing the total volume of food you can consume. This shift immediately puts your body into a negative securing your daily protein target block, a state where protein breakdown exceeds protein synthesis.
                 </p>
                 <p>
-                  To counteract this, nutrition must pivot from volume-based eating to density-based eating. You must introduce high-quality, bioavailable protein sources in smaller, more frequent doses to force the body back into a positive nitrogen balance. This prevents the systemic fatigue and muscle wasting commonly associated with untreated rapid weight loss, ensuring the weight you lose is fat, not functional tissue.
+                  To counteract this, nutrition must pivot from volume-based eating to density-based eating. You must introduce high-quality, bioavailable protein sources in smaller, more frequent doses to force the body back into a positive securing your daily protein target block. This prevents the systemic fatigue and muscle wasting commonly associated with untreated rapid weight loss, ensuring the weight you lose is fat, not functional tissue.
                 </p>
               </div>
             </div>

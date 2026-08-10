@@ -12,7 +12,7 @@ export const PersonalTraining: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="In-Person Personal Training | Bariatric Exercise Program Christchurch"
+        title="In-Person Personal Training | GLP-1 Exercise Program Christchurch"
         description="Premium 1:1 personal training in Addington, Christchurch. Safe, 30-minute resistance training sessions tailored for medical weight loss support."
       />
       <div className="flex flex-col w-full overflow-x-hidden bg-neutral-900 pb-24 text-neutral-100">
@@ -41,7 +41,7 @@ export const PersonalTraining: React.FC = () => {
               </span>
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-neutral-300 font-medium max-w-[650px] mx-auto md:mx-0 mb-8 leading-relaxed">
-              Standard personal training models often push rapid weight loss clients into severe physical exhaustion, compounding systemic fatigue. Our specialized <strong>bariatric exercise program in Christchurch</strong> delivers highly intentional, focused 30-minute 1:1 resistance training sessions.
+              Standard personal training models often push rapid weight loss clients into severe physical exhaustion, compounding systemic fatigue. Our specialized <strong>GLP-1 Exercise Program in Christchurch</strong> delivers highly intentional, focused 30-minute 1:1 resistance training sessions.
               <br/><br/>
               Located at our premium training facility in Addington, we work alongside your medical timeline to provide the exact physical stimulus your body needs to thrive.
             </p>

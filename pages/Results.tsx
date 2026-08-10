@@ -76,7 +76,7 @@ export const Results: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-bold text-white text-[18px]">2. Auto-Regulate Intensity</h3>
-                <p>On high-fatigue days, clinical patterns suggest avoiding absolute failure. Leaving 2-3 reps in the tank (RPE 7-8) can stimulate growth without unnecessarily exhausting your central nervous system.</p>
+                <p>On high-fatigue days, clinical patterns suggest stimulating muscle tissue safely. Leaving a few reps in the tank can retain lean tone without unnecessarily exhausting your central nervous system.</p>
               </div>
               <div>
                 <h3 className="font-bold text-white text-[18px]">3. Implement Progressive Overload Safely</h3>

@@ -35,7 +35,7 @@ export const About: React.FC = () => {
                 Why Traditional Fitness Models Fail Clinical Patients
               </h2>
               <div className="font-sans text-[16px] md:text-[18px] text-slate-700 leading-relaxed space-y-5">
-                <p>When prescription GLP-1 receptor agonists and bariatric surgeries scale down appetite, weight drops rapidly. However, the fitness industry largely ignores a critical medical reality: without targeted, protective programming, a massive portion of that lost weight comes from functional skeletal muscle tissue rather than fat. This triggers adaptive thermogenesis, driving down your metabolic rate and leaving you weak.</p>
+                <p>When prescription GLP-1 receptor agonists and GLP-1 therapies scale down appetite, weight drops rapidly. However, the fitness industry largely ignores a critical medical reality: without targeted, protective programming, a massive portion of that lost weight comes from functional skeletal muscle tissue rather than fat. This triggers adaptive thermogenesis, driving down your metabolic rate and leaving you weak.</p>
                 <p>Traditional personal training pushes clients to exhaustion. At WRK, we do the exact opposite. We coach by design, focusing on structural defense, metabolic preservation, and keeping your body strong throughout your transition phases.</p>
               </div>
             </div>
@@ -46,7 +46,7 @@ export const About: React.FC = () => {
                 The Ally Between Clinical Care and Real Life
               </h2>
               <p className="font-sans text-[16px] text-slate-700 leading-relaxed mt-auto">
-                I founded WRK to solve a real-world integration problem. Prescribing doctors and clinical care teams excel at managing your medication dosages and surgical recovery, but they don't have the hours to sit down and teach you how to hit elevated protein targets when you have total food aversion. They aren't there to help you space out micro-volumes of fluid to prevent dehydration headaches, or structure a low-intensity, 30-minute workout that builds strength without causing exhaustion. WRK is your clinical lifestyle partner, operating in full support of your medical directives.
+                I founded WRK to solve a real-world integration problem. Prescribing doctors and clinical care teams excel at managing your medication dosages, but they don't have the hours to sit down and teach you how to hit elevated protein targets when you have total food aversion. They aren't there to help you space out micro-volumes of fluid to prevent dehydration headaches, or structure a low-intensity, 30-minute workout that builds strength without causing exhaustion. WRK is your clinical lifestyle partner, operating in full support of your medical directives.
               </p>
             </div>
 
@@ -62,7 +62,7 @@ export const About: React.FC = () => {
                     <Shield size={22} className="text-teal-600" />
                   </div>
                   <div>
-                    <h3 className="font-sans font-bold text-[17px] text-slate-900 mb-2">Pillar 1: Skeletal Muscle Defense</h3>
+                    <h3 className="font-sans font-bold text-[17px] text-slate-900 mb-2">Pillar 1: Protecting Your Metabolic Engine</h3>
                     <p className="font-sans text-[15px] text-slate-700 leading-relaxed">Elevating amino acid delivery and using smart, low-intensity resistance targets to protect lean mass and preserve long-term bone mineral density.</p>
                   </div>
                 </div>
