@@ -12,14 +12,43 @@ export const Contact = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Submit logic
+    setStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          phone: '',
+          interest: formData.goal,
+          referralSource: `Phase: ${formData.phase}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      setSubmitted(true);
+      setStatus('success');
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+    }
   };
 
   const schema = {
@@ -176,12 +205,16 @@ export const Contact = () => {
                   <p className="text-[12px] text-[#2C3539]/50 leading-relaxed flex-1">
                     Your health privacy is paramount. All information submitted through this secure portal is handled with absolute clinical confidentiality.
                   </p>
-                  <button 
-                    type="submit"
-                    className="w-full md:w-auto bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[15px] whitespace-nowrap"
-                  >
-                    Send a Friendly Message
-                  </button>
+                  <div className="w-full md:w-auto flex flex-col items-center">
+                    {errorMessage && <p className="text-red-500 text-sm mb-2">{errorMessage}</p>}
+                    <button 
+                      type="submit"
+                      disabled={status === 'submitting'}
+                      className="w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[15px] whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {status === 'submitting' ? 'Sending...' : 'Send a Friendly Message'}
+                    </button>
+                  </div>
                 </div>
               </form>
             )}

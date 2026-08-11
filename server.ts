@@ -139,121 +139,6 @@ ${message}
         console.error("Failed to send email:", emailError);
       }
 
-      // --- MailerLite Integration ---
-      const rawKey = process.env.MAILERLITE_API_KEY || "";
-      const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
-      
-      const MAILERLITE_GROUPS = {
-        time_crunched: "MAILERLITE_GROUP_TIME_CRUNCHED",
-        stress_stacked: "MAILERLITE_GROUP_STRESS_STACKED",
-        pain_limited: "MAILERLITE_GROUP_PAIN_LIMITED",
-        nutrition_drifting: "MAILERLITE_GROUP_NUTRITION_DRIFTING",
-        motivation_drifting: "MAILERLITE_GROUP_MOTIVATION_DRIFTING"
-      };
-
-      const { archetype, goalLabel, timeLabel, constraintLabel, flagsLabel, primaryBottleneck, ruleThisWeek, recommendedServiceName, resultUrl } = req.body.composedResult || {};
-      const locationLabel = req.body.answers?.q1_location || "Unknown";
-      const archetypeLabel = archetype?.label || "Unknown Blueprint";
-      const archId = archetype?.id || 'time_crunched';
-      const MAILERLITE_GROUP_ID = MAILERLITE_GROUPS[archId] || "";
-
-      if (MAILERLITE_API_KEY) {
-        try {
-          
-
-          const fields = {
-            name: name,
-            diagnosis_type: constraintLabel, // Q4
-            goal: goalLabel, // Q2
-            location: locationLabel, // Q1
-            q6_category: flagsLabel, // Q6
-            blueprint_url: resultUrl
-          };
-
-          const subscriberPayloadV3 = {
-            email: email,
-            fields: fields,
-            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
-          };
-
-          let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify(subscriberPayloadV3)
-          });
-
-          if (!mlResponse.ok && mlResponse.status === 401) {
-            console.log('MailerLite v3 failed with 401, trying v2 API...');
-            const subscriberPayloadV2 = {
-              email: email,
-              name: name,
-              fields: fields
-            };
-            
-            const v2Endpoint = MAILERLITE_GROUP_ID 
-              ? `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_ID}/subscribers`
-              : 'https://api.mailerlite.com/api/v2/subscribers';
-
-            mlResponse = await fetch(v2Endpoint, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-MailerLite-ApiKey': MAILERLITE_API_KEY,
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify(subscriberPayloadV2)
-            });
-          }
-
-          if (!mlResponse.ok) {
-            const errorText = await mlResponse.text();
-            console.error('MailerLite API Error:', mlResponse.status, errorText);
-          } else {
-            console.log('Successfully added assessment lead to MailerLite');
-          }
-        } catch (mlError: any) {
-          console.error('MailerLite Integration Failed:', mlError.message);
-        }
-      }
-
-      // Send direct email to owner
-      try {
-        const mailOptions = {
-          from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
-          to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
-          subject: `Assessment Unlocked — ${name} — ${archetypeLabel} — ${locationLabel}`,
-          text: `=== New Assessment Unlocked ===
-  
-  Name: ${name}
-  Email: ${email}
-  Location: ${locationLabel}
-  
-  --- Quick Summary ---
-  Goal: ${goalLabel}
-  Time available: ${timeLabel}
-  Main constraint: ${constraintLabel}
-  Pain/Recovery flag: ${flagsLabel}
-  
-  --- Diagnostic Result ---
-  Archetype / Bottleneck: ${archetypeLabel}
-  Bottleneck statement: ${primaryBottleneck}
-  Rule this week: ${ruleThisWeek}
-  
-  Recommended next step: ${recommendedServiceName}
-  Result URL: https://www.wrkpersonaltraining.co.nz/assessment/result/${req.body.token}
-  `
-        };
-  
-        await transporter.sendMail(mailOptions);
-        console.log("Email sent to owner successfully.");
-      } catch (emailError) {
-         console.error("Failed to send email to owner", emailError);
-      }
-
       // --- Google Sheets Webhook Integration ---
       const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
       if (sheetsWebhookUrl) {
@@ -562,16 +447,35 @@ WRK Personal Training</p>
       // --- MailerLite Integration ---
       const rawKey = process.env.MAILERLITE_API_KEY || "";
       const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
-      const rawGroupId = process.env.MAILERLITE_GROUP_ID || "";
-      const MAILERLITE_GROUP_ID = rawGroupId.replace(/^"|"$/g, '').trim();
+      
+      const MAILERLITE_GROUPS = {
+        time_crunched: "MAILERLITE_GROUP_TIME_CRUNCHED",
+        stress_stacked: "MAILERLITE_GROUP_STRESS_STACKED",
+        pain_limited: "MAILERLITE_GROUP_PAIN_LIMITED",
+        nutrition_drifting: "MAILERLITE_GROUP_NUTRITION_DRIFTING",
+        motivation_drifting: "MAILERLITE_GROUP_MOTIVATION_DRIFTING"
+      };
+      
+      const MAILERLITE_GROUP_ID_DEFAULT = process.env.MAILERLITE_GROUP_ID?.replace(/^"|"$/g, '').trim() || "";
+      
+      const archId = archetype?.id || 'time_crunched';
+      const groupKey = MAILERLITE_GROUPS[archId as keyof typeof MAILERLITE_GROUPS];
+      const MAILERLITE_GROUP_ID = process.env[groupKey as keyof typeof process.env]?.replace(/^"|"$/g, '').trim() || MAILERLITE_GROUP_ID_DEFAULT;
 
       if (MAILERLITE_API_KEY) {
         try {
+          const fields = {
+            name: name,
+            diagnosis_type: constraintLabel, // Q4
+            goal: goalLabel, // Q2
+            location: locationLabel, // Q1
+            q6_category: flagsLabel, // Q6
+            blueprint_url: resultUrl
+          };
+
           const subscriberPayloadV3 = {
             email: email,
-            fields: {
-              name: name,
-            },
+            fields: fields,
             groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
           };
 
@@ -590,9 +494,7 @@ WRK Personal Training</p>
             const subscriberPayloadV2 = {
               email: email,
               name: name,
-              fields: {
-                name: name
-              }
+              fields: fields
             };
             
             const v2Endpoint = MAILERLITE_GROUP_ID 
@@ -639,13 +541,10 @@ WRK Personal Training</p>
               constraint: constraintLabel,
               flags: flagsLabel,
               archetype: archetypeLabel,
-              bottleneck: primaryBottleneck,
-              recommendedService: recommendedServiceName,
-              rawAnswers: answers,
-              resultUrl: resultUrl
+              resultUrl
             })
           });
-          console.log('Successfully sent assessment to Google Sheets Webhook');
+          console.log('Successfully sent to Google Sheets Webhook');
         } catch (sheetsError: any) {
           console.error('Google Sheets Webhook Failed:', sheetsError.message);
         }
