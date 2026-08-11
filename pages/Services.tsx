@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { Activity, Smartphone, ShieldCheck } from 'lucide-react';
+import { Activity, Smartphone, ShieldCheck, MapPin } from 'lucide-react';
 
 export const Services: React.FC = () => {
   useEffect(() => {
@@ -22,66 +22,103 @@ export const Services: React.FC = () => {
             clear options to suit your lifestyle
           </p>
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            Honest GLP-1 Online Fitness Coach Pricing & Support Options
+            GLP-1 Fitness Coaching & Support Options
           </h1>
           <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70 max-w-2xl mx-auto">
             Finding the right support shouldn't be complicated. Whether you are looking for close, step-by-step guidance or a simple structure to follow on your own, we offer transparent options designed to respect your pace, your lifestyle, and your budget.
           </p>
         </header>
 
+        {/* 12-Week Coaching Intro */}
+        <div className="mb-12 max-w-3xl mx-auto text-center">
+          <h2 className="font-serif text-[32px] md:text-[40px] text-[#2C3539] mb-4">
+            Guided 12-Week Coaching Partnerships
+          </h2>
+          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
+            Our core 1-on-1 coaching partnerships are built completely around your chosen 1-on-1 pathway. Whether your goal is active phase muscle protection or a long-term transition program, we design and deliver your customized routine with complete support, daily messaging, and supportive weekly check-ins to monitor your energy and physical well-being.
+          </p>
+        </div>
+
         {/* Services & Investment Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           
-          {/* Card 1: Premium Private Online Coaching */}
+          {/* Card 1: Online Guided Coaching */}
           <div className="bg-white border border-[#8A9A86]/30 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 relative overflow-hidden">
             <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
               <Activity size={28} />
             </div>
             <div className="mb-6 flex-grow">
               <h3 className="font-serif text-[24px] md:text-[30px] text-[#2C3539] leading-tight mb-4">
-                Fully Supported Online Fitness Coaching for Medical Weight Loss Clients
+                Online Guided Coaching
               </h3>
               <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/70 mb-8">
-                Our most supportive experience. If you want a dedicated partner to design your weekly routine, monitor your energy, and adjust your goals alongside your medication timeline, this is for you. Includes complete custom movement mapping, daily app messaging, and supportive weekly video check-ins.
+                <strong className="font-medium text-[#2C3539]">The Experience:</strong> Perfect for clients who want full professional accountability, custom movement mapping via app tracking, and consistent daily guidance from the comfort of home.
               </p>
               <div className="bg-[#FAFAF9] rounded-xl p-6 border border-neutral-200 mb-8">
                 <p className="text-[14px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Pricing Highlight</p>
-                <p className="text-[16px] text-[#2C3539] font-medium">Fully customized monthly partnerships.</p>
+                <p className="text-[16px] text-[#2C3539] font-medium">$49 NZD per week</p>
               </div>
             </div>
             <Link 
               to="/contact"
               className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
             >
-              Click here to enquire about private 1-on-1 coaching
+              Click here to enquire about online coaching
             </Link>
           </div>
 
-          {/* Card 2: Self-Paced Digital Guide */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="w-14 h-14 bg-[#FAFAF9] text-[#2C3539]/50 rounded-full flex items-center justify-center mb-8 shrink-0 border border-neutral-200">
-              <Smartphone size={28} />
+          {/* Card 2: In-Person Guided Coaching */}
+          <div className="bg-white border border-[#8A9A86]/30 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 relative overflow-hidden">
+            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
+              <MapPin size={28} />
             </div>
             <div className="mb-6 flex-grow">
               <h3 className="font-serif text-[24px] md:text-[30px] text-[#2C3539] leading-tight mb-4">
-                The $29 Introductory GLP-1 Workout Plan & Nutrition Support Guide
+                In-Person Guided Coaching
               </h3>
               <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/70 mb-8">
-                Perfect for self-starters who want clear, reliable structure without the ongoing commitment of 1-on-1 coaching. This digital toolkit maps out gentle, 30-minute home or gym strength routines, simple protein tracking guides, and essential hydration protocols to keep you feeling energized and strong.
+                <strong className="font-medium text-[#2C3539]">The Experience:</strong> Built for those who value hands-on instruction. This option combines all of our mobile app tracking and routine design with face-to-face coaching sessions to ensure every movement is safe, low-stress, and completely comfortable.
               </p>
               <div className="bg-[#FAFAF9] rounded-xl p-6 border border-neutral-200 mb-8">
                 <p className="text-[14px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Pricing Highlight</p>
-                <p className="text-[16px] text-[#2C3539] font-medium">$29 NZD (One-off digital download)</p>
+                <p className="text-[16px] text-[#2C3539] font-medium">$89 NZD per week</p>
               </div>
             </div>
             <Link 
               to="/contact"
-              className="inline-flex items-center justify-center w-full bg-white hover:bg-[#FAFAF9] text-[#2C3539] border border-neutral-200 hover:border-[#8A9A86] px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
+              className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
+            >
+              Click here to enquire about in-person coaching
+            </Link>
+          </div>
+
+        </div>
+
+        {/* Card 3: Self-Paced Digital Guide (Full width) */}
+        <div className="bg-white border border-neutral-200 p-8 md:p-12 rounded-3xl flex flex-col md:flex-row shadow-sm hover:shadow-md transition-shadow duration-300 mb-16 gap-10">
+          <div className="flex-1">
+            <div className="w-14 h-14 bg-[#FAFAF9] text-[#2C3539]/50 rounded-full flex items-center justify-center mb-8 shrink-0 border border-neutral-200">
+              <Smartphone size={28} />
+            </div>
+            <h3 className="font-serif text-[24px] md:text-[30px] text-[#2C3539] leading-tight mb-4">
+              The $29 Introductory GLP-1 Workout Plan & Nutrition Support Guide
+            </h3>
+            <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/70 mb-0">
+              Perfect for self-starters who want a clear, reliable structure to get educated and started without the ongoing commitment of weekly coaching. This digital toolkit maps out gentle, 30-minute home or gym strength routines, simple protein tracking guides, and essential hydration protocols to keep you feeling energized and balanced.
+            </p>
+          </div>
+          <div className="md:w-[320px] flex flex-col justify-center shrink-0">
+            <div className="bg-[#FAFAF9] rounded-xl p-6 border border-neutral-200 mb-8">
+              <p className="text-[14px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Pricing Highlight</p>
+              <p className="text-[16px] text-[#2C3539] font-medium">$29 NZD <span className="text-[#2C3539]/60 font-normal block md:inline mt-1 md:mt-0 text-[14px]">(One-off digital download)</span></p>
+            </div>
+            <Link 
+              to="/contact"
+              className="inline-flex items-center justify-center w-full bg-white hover:bg-[#FAFAF9] text-[#2C3539] border border-neutral-200 hover:border-[#8A9A86] px-6 py-4 rounded-xl font-medium transition-colors text-[15px] text-center"
             >
               Click here to download the digital toolkit and get started
             </Link>
           </div>
-
         </div>
 
         {/* The Value Framework Card (Bento Item) */}
@@ -91,7 +128,7 @@ export const Services: React.FC = () => {
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl font-serif text-[#2C3539] mb-4 leading-tight">
-              Investing in a Healthy Future with a Medical Weight Loss Personal Trainer
+              Investing in a Healthy Future
             </h2>
             <p className="text-[#2C3539]/70 text-[16px] md:text-[18px] leading-relaxed">
               Your physical well-being is the foundation for everything else in life. We focus heavily on muscle preservation and steady metabolic strength so that every dollar you invest today rewards you with a capable, vibrant body you can enjoy for decades to come.
