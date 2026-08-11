@@ -44,36 +44,36 @@ export const Home: React.FC = () => {
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-32">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* Card A */}
+          {/* Card 1 */}
           <div className="bg-white/80 backdrop-blur-md border border-neutral-200/60 p-10 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8">
               <ShieldCheck size={28} />
             </div>
-            <h3 className="font-serif text-[24px] text-[#2C3539] mb-4">Skeletal Muscle Defense</h3>
-            <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
-              Utilizing smart, low-intensity resistance targets to protect lean mass and preserve long-term bone mineral density as scale weight drops.
+            <h3 className="font-serif text-[24px] text-[#2C3539] mb-4">Reclaiming Your Natural Energy</h3>
+            <p className="text-[16px] md:text-[17px] leading-relaxed text-[#2C3539]/80">
+              Combat medication fatigue and restore your daily vitality. We focus on fueling your body effectively so you have the sustained, all-day energy to enjoy the outdoors and live actively without constantly feeling drained.
             </p>
           </div>
 
-          {/* Card B */}
+          {/* Card 2 */}
           <div className="bg-white/80 backdrop-blur-md border border-neutral-200/60 p-10 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8">
               <Activity size={28} />
             </div>
-            <h3 className="font-serif text-[24px] text-[#2C3539] mb-4">Clinical Side-Effect Mitigation</h3>
-            <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
-              Practical tracking parameters designed to counter suppressed brain thirst loops, ease food aversion, and combat medication fatigue.
+            <h3 className="font-serif text-[24px] text-[#2C3539] mb-4">Limitless Real-World Movement</h3>
+            <p className="text-[16px] md:text-[17px] leading-relaxed text-[#2C3539]/80">
+              Build the strength and mobility that translates into real life. Whether it's playing on the floor with your grandkids, working in the backyard, or protecting your joints, we train your body for effortless daily agility.
             </p>
           </div>
 
-          {/* Card C */}
+          {/* Card 3 */}
           <div className="bg-white/80 backdrop-blur-md border border-neutral-200/60 p-10 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8">
               <Target size={28} />
             </div>
-            <h3 className="font-serif text-[24px] text-[#2C3539] mb-4">Metabolic Rate Protection</h3>
-            <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
-              Continuously monitoring and managing adaptive thermogenesis to ensure fat-loss progress remains safe and sustainable.
+            <h3 className="font-serif text-[24px] text-[#2C3539] mb-4">Independence Beyond the Scale</h3>
+            <p className="text-[16px] md:text-[17px] leading-relaxed text-[#2C3539]/80">
+              True freedom isn't just a number—it’s the lifestyle autonomy and metabolic confidence to live on your own terms. We bridge the gap between medical weight loss and long-term physical independence.
             </p>
           </div>
 

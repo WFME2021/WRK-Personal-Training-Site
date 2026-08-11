@@ -1,101 +1,119 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { Smartphone, Activity, MapPin } from 'lucide-react';
+import { Activity, Smartphone, ShieldCheck } from 'lucide-react';
 
 export const Services: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
       <SeoHead
-        title="GLP-1 Muscle Preservation Programs & Services | WRK"
-        description="Explore our specialized GLP-1 fitness coaching tracks. Discover our 4-week side-effect digital blueprint and our premium 12-week personalized muscle defense coaching."
+        title="GLP-1 Online Fitness Coach Pricing | WRK"
+        description="Transparent pricing for our medical weight loss personal trainer packages and self-paced GLP-1 workout plans."
       />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Intro Section */}
         <header className="text-center mb-20 max-w-3xl mx-auto">
+          <p className="text-[12px] font-bold uppercase tracking-widest text-[#8A9A86] mb-4">
+            clear options to suit your lifestyle
+          </p>
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            Our Specialized Coaching Tracks
+            Honest GLP-1 Online Fitness Coach Pricing & Support Options
           </h1>
-          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
-            Evidence-based, supportive fitness frameworks built exclusively to help you defend muscle mass, navigate medication side effects, and optimize your metabolic health.
+          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70 max-w-2xl mx-auto">
+            Finding the right support shouldn't be complicated. Whether you are looking for close, step-by-step guidance or a simple structure to follow on your own, we offer transparent options designed to respect your pace, your lifestyle, and your budget.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+        {/* Services & Investment Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           
-          {/* CARD 1 */}
-          <div className="bg-white border border-neutral-200 p-10 rounded-2xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="w-14 h-14 bg-[#FAFAF9] text-[#2C3539]/50 rounded-full flex items-center justify-center mb-8">
-              <Smartphone size={28} />
-            </div>
-            <div className="mb-6">
-              <span className="text-[11px] font-bold tracking-wider uppercase text-[#2C3539]/40">The 4-Week Blueprint</span>
-              <h2 className="font-serif text-[26px] text-[#2C3539] mt-3">The Self-Guided Digital Toolkit</h2>
-            </div>
-            <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-10 flex-grow">
-              A practical, data-driven digital manual designed to counter suppressed thirst loops, manage intense food aversion, and protect your baseline metabolic rate. Includes instant access to our Fatigue Shield home video workouts and nutrition spacing grids inside the custom WRK Training App dashboard.
-            </p>
-            <a 
-              href="#" 
-              className="inline-flex items-center justify-center w-full bg-[#FAFAF9] hover:bg-[#F0F0EE] text-[#2C3539] border border-neutral-200 px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-            >
-              Get The Blueprint Toolkit — $29
-            </a>
-          </div>
-
-          {/* CARD 2 */}
-          <div className="bg-white border-2 border-[#8A9A86]/40 p-10 rounded-2xl flex flex-col shadow-md hover:shadow-lg transition-shadow duration-300 relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-[#8A9A86] text-white text-[10px] font-bold uppercase tracking-wider py-1.5 px-4 rounded-bl-xl">
-              Most Popular
-            </div>
-            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8">
+          {/* Card 1: Premium Private Online Coaching */}
+          <div className="bg-white border border-[#8A9A86]/30 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 relative overflow-hidden">
+            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
               <Activity size={28} />
             </div>
-            <div className="mb-6">
-              <span className="text-[11px] font-bold tracking-wider uppercase text-[#8A9A86]">Remote Defense Coaching</span>
-              <h2 className="font-serif text-[26px] text-[#2C3539] mt-3">12-Week Premium Personalized Remote Coaching</h2>
+            <div className="mb-6 flex-grow">
+              <h3 className="font-serif text-[24px] md:text-[30px] text-[#2C3539] leading-tight mb-4">
+                Fully Supported Online Fitness Coaching for Medical Weight Loss Clients
+              </h3>
+              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/70 mb-8">
+                Our most supportive experience. If you want a dedicated partner to design your weekly routine, monitor your energy, and adjust your goals alongside your medication timeline, this is for you. Includes complete custom movement mapping, daily app messaging, and supportive weekly video check-ins.
+              </p>
+              <div className="bg-[#FAFAF9] rounded-xl p-6 border border-neutral-200 mb-8">
+                <p className="text-[14px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Pricing Highlight</p>
+                <p className="text-[16px] text-[#2C3539] font-medium">Fully customized monthly partnerships.</p>
+              </div>
             </div>
-            <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-10 flex-grow">
-              Fully remote, high-accountability lifestyle and resistance programming managed entirely within the WRK Training App. Includes weekly digital check-ins, calorie and fluid recalibrations, and custom full-body compound blueprints designed to shield your lean muscle mass from rapid wasting.
-            </p>
             <Link 
-              to="/assessment"
-              className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+              to="/contact"
+              className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
             >
-              Apply for Remote Coaching
+              Click here to enquire about private 1-on-1 coaching
             </Link>
           </div>
 
-          {/* CARD 3 */}
-          <div className="bg-white border border-neutral-200 p-10 rounded-2xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="w-14 h-14 bg-[#FAFAF9] text-[#2C3539]/50 rounded-full flex items-center justify-center mb-8">
-              <MapPin size={28} />
+          {/* Card 2: Self-Paced Digital Guide */}
+          <div className="bg-white border border-neutral-200 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="w-14 h-14 bg-[#FAFAF9] text-[#2C3539]/50 rounded-full flex items-center justify-center mb-8 shrink-0 border border-neutral-200">
+              <Smartphone size={28} />
             </div>
-            <div className="mb-6">
-              <span className="text-[11px] font-bold tracking-wider uppercase text-[#2C3539]/40">Hybrid Specialist Coaching</span>
-              <h2 className="font-serif text-[26px] text-[#2C3539] mt-3">12-Week Elite In-Person & Digital Hybrid Coaching</h2>
+            <div className="mb-6 flex-grow">
+              <h3 className="font-serif text-[24px] md:text-[30px] text-[#2C3539] leading-tight mb-4">
+                The $29 Introductory GLP-1 Workout Plan & Nutrition Support Guide
+              </h3>
+              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/70 mb-8">
+                Perfect for self-starters who want clear, reliable structure without the ongoing commitment of 1-on-1 coaching. This digital toolkit maps out gentle, 30-minute home or gym strength routines, simple protein tracking guides, and essential hydration protocols to keep you feeling energized and strong.
+              </p>
+              <div className="bg-[#FAFAF9] rounded-xl p-6 border border-neutral-200 mb-8">
+                <p className="text-[14px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Pricing Highlight</p>
+                <p className="text-[16px] text-[#2C3539] font-medium">$29 NZD (One-off digital download)</p>
+              </div>
             </div>
-            <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-10 flex-grow">
-              Our highest-tier support structure. Combines our full digital app tracking and communication infrastructure with one weekly 30-minute in-person muscle preservation training session at our Addington, Christchurch facility. Complete, hands-on physical accountability.
-            </p>
             <Link 
-              to="/assessment"
-              className="inline-flex items-center justify-center w-full bg-[#2C3539] hover:bg-[#1A1F22] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
+              to="/contact"
+              className="inline-flex items-center justify-center w-full bg-white hover:bg-[#FAFAF9] text-[#2C3539] border border-neutral-200 hover:border-[#8A9A86] px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
             >
-              Apply for Hybrid Coaching
+              Click here to download the digital toolkit and get started
             </Link>
           </div>
 
         </div>
 
-        {/* Contextual Sign-Up & Help Text Row */}
-        <div className="bg-white/50 border border-neutral-200 rounded-2xl p-8 text-center max-w-3xl mx-auto">
-          <p className="text-[15px] text-[#2C3539]/80 leading-relaxed">
-            Not sure if the self-guided toolkit or 1-on-1 personalized coaching aligns with your current medication phase?{' '}
-            <Link to="/contact" className="text-[#8A9A86] font-medium hover:underline underline-offset-4">
-              Click here to message our specialist support team directly
-            </Link>.
+        {/* The Value Framework Card (Bento Item) */}
+        <div className="bg-white border border-neutral-200 p-8 md:p-14 rounded-3xl shadow-sm mb-16 flex flex-col md:flex-row items-center gap-10">
+          <div className="w-16 h-16 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center shrink-0">
+            <ShieldCheck size={32} />
+          </div>
+          <div>
+            <h2 className="text-2xl md:text-3xl font-serif text-[#2C3539] mb-4 leading-tight">
+              Investing in a Healthy Future with a Medical Weight Loss Personal Trainer
+            </h2>
+            <p className="text-[#2C3539]/70 text-[16px] md:text-[18px] leading-relaxed">
+              Your physical well-being is the foundation for everything else in life. We focus heavily on muscle preservation and steady metabolic strength so that every dollar you invest today rewards you with a capable, vibrant body you can enjoy for decades to come.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Call-to-Action Layout */}
+        <div className="bg-white border border-[#8A9A86]/30 p-8 md:p-14 text-center rounded-3xl shadow-sm hover:shadow-md transition-shadow max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif text-[#2C3539] mb-6">
+            Not Sure Which Option Feels Right for You?
+          </h2>
+          <p className="text-[#2C3539]/70 mb-10 max-w-2xl mx-auto text-[16px] md:text-[18px] leading-relaxed">
+            Let's keep it simple. Reach out for a casual, no-pressure chat, and we can discuss your current routine and see which option matches where you are today.
           </p>
+          <div className="flex justify-center">
+            <Link to="/contact">
+              <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
+                Start a Friendly Conversation
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
