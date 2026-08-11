@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Activity, Droplets } from 'lucide-react';
+import { Shield, Activity, Droplets, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 
 export const About: React.FC = () => {
@@ -9,102 +9,196 @@ export const About: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <SeoHead 
+    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
+      <SeoHead
         title="About WRK | Medical Weight Loss & Muscle Preservation Fitness Coaching"
         description="Discover the philosophy behind WRK. We bridge the gap between medical weight loss interventions and real-world exercise, protecting muscle mass and metabolic health."
       />
-      {/* We are manually appending canonical tag into the head if SeoHead doesn't already, but SeoHead uses window.location. This is requested by user. */}
-      
-      <div className="flex flex-col w-full min-h-screen bg-slate-50 text-slate-900 pt-32 pb-24 px-5 md:px-12 items-center">
-        <div className="max-w-[1200px] w-full mx-auto space-y-12 md:space-y-16">
-          
-          {/* PAGE HEADER */}
-          <header className="space-y-6 max-w-[800px] mx-auto text-center">
-            <h1 className="font-serif text-[40px] md:text-[56px] leading-[1.1] text-slate-900">
-              Bridging the Gap in Medical Weight Loss
-            </h1>
-          </header>
 
-          {/* BENTO GRID */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
-            
-            {/* CARD 1 (Our Core Mission - Large Spanning Card) */}
-            <div className="lg:col-span-12 bg-[#F8F9FA] rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-slate-200 p-8 md:p-12 transition-all duration-300 hover:shadow-[0_4px_32px_rgba(0,0,0,0.05)]">
-              <h2 className="font-serif text-[28px] md:text-[36px] text-slate-900 mb-6 leading-tight">
-                Why Traditional Fitness Models Fail Clinical Patients
-              </h2>
-              <div className="font-sans text-[16px] md:text-[18px] text-slate-700 leading-relaxed space-y-5">
-                <p>When prescription GLP-1 receptor agonists and GLP-1 therapies scale down appetite, weight drops rapidly. However, the fitness industry largely ignores a critical medical reality: without targeted, protective programming, a massive portion of that lost weight comes from functional skeletal muscle tissue rather than fat. This triggers adaptive thermogenesis, driving down your metabolic rate and leaving you weak.</p>
-                <p>Traditional personal training pushes clients to exhaustion. At WRK, we do the exact opposite. We coach by design, focusing on structural defense, metabolic preservation, and keeping your body strong throughout your transition phases.</p>
+      <div className="max-w-4xl mx-auto px-4 md:px-8">
+        
+        {/* Page Header */}
+        <header className="text-center mb-20">
+          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+            Beyond the Prescription
+          </h1>
+          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
+            Medicine opens the door. WRK maps the way forward.
+          </h2>
+        </header>
+
+        {/* Content Body */}
+        <div className="space-y-16 md:space-y-24">
+          
+          <section className="space-y-6 text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80">
+            <p>
+              GLP-1 medications have changed what is possible for people struggling with weight management.
+            </p>
+            <p>
+              But losing weight is only part of the journey.
+            </p>
+            <p>
+              When bodyweight changes, your strength, muscle mass, fitness, nutrition and daily habits matter too. That is where WRK comes in.
+            </p>
+            <p>
+              I founded WRK Personal Training to help people using GLP-1 medications navigate the fitness side of weight loss - with intelligent training, practical nutrition support and coaching built around where you are now.
+            </p>
+            <div className="pt-2 pb-2 space-y-1 font-medium text-[#2C3539]">
+              <p>Not punishment.</p>
+              <p>Not extreme diets.</p>
+              <p>Not hours in the gym.</p>
+            </div>
+            <p className="font-serif text-[22px] md:text-[24px] text-[#2C3539] mt-8">
+              Just a smarter way to build a stronger, fitter body while you lose weight.
+            </p>
+          </section>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-neutral-200" />
+
+          <section className="flex flex-col md:flex-row gap-10 md:gap-16 items-center md:items-start">
+            <div className="w-full max-w-[320px] md:max-w-md md:w-5/12 flex-shrink-0 mx-auto md:mx-0">
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-neutral-100">
+                <img 
+                  src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
+                  alt="Hayden, Founder and Coach of WRK Personal Training"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
-            {/* CARD 2 (The Personal Operator Statement) */}
-            <div className="lg:col-span-5 bg-[#F8F9FA] rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-slate-200 p-8 md:p-10 flex flex-col transition-all duration-300 hover:shadow-[0_4px_32px_rgba(0,0,0,0.05)]">
-              <h2 className="font-serif text-[24px] md:text-[28px] text-slate-900 mb-6 leading-tight">
-                The Ally Between Clinical Care and Real Life
-              </h2>
-              <p className="font-sans text-[16px] text-slate-700 leading-relaxed mt-auto">
-                I founded WRK to solve a real-world integration problem. Prescribing doctors and clinical care teams excel at managing your medication dosages, but they don't have the hours to sit down and teach you how to hit elevated protein targets when you have total food aversion. They aren't there to help you space out micro-volumes of fluid to prevent dehydration headaches, or structure a low-intensity, 30-minute workout that builds strength without causing exhaustion. WRK is your clinical lifestyle partner, operating in full support of your medical directives.
+            <div className="w-full md:w-7/12 space-y-6">
+              <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-[#2C3539] text-center md:text-left mb-2 md:mb-8">
+                Meet Your Coach
+              </h3>
+              <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
+                <p>
+                  I'm Hayden.
+                </p>
+                <p>
+                  I've spent 20 years coaching people who want to lose weight, get stronger and improve their health - without turning fitness into another full-time job.
+                </p>
+                <p>
+                  As GLP-1 medications became increasingly common, I saw a gap in the conversation.
+                </p>
+                <p>
+                  People were getting medical support for weight loss, but often had little guidance around what to do alongside it.
+                </p>
+                <ul className="list-disc pl-5 space-y-2 text-[#2C3539]/90">
+                  <li>How should you train?</li>
+                  <li>How do you prioritise muscle?</li>
+                  <li>What happens when your appetite changes?</li>
+                  <li>How do you adapt when energy and recovery fluctuate?</li>
+                </ul>
+                <div className="pt-2 space-y-2">
+                  <p>
+                    And perhaps most importantly:
+                  </p>
+                  <p className="font-medium text-[#2C3539]">
+                    How do you build the habits and physical capacity to support your results long term?
+                  </p>
+                </div>
+                <p>
+                  That's the problem WRK is built to solve.
+                </p>
+                <p>
+                  You don't need another generic fat-loss programme.
+                </p>
+                <p className="font-serif text-[22px] md:text-[24px] text-[#2C3539] mt-8 text-center md:text-left">
+                  You need coaching that understands the unique challenges of training while using a GLP-1.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-neutral-200" />
+
+          <section>
+            <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-[#2C3539] mb-8">
+              The WRK Philosophy
+            </h3>
+            <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 mb-10">
+              Every program, app interaction, and personal training session I design is anchored in three core principles:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white border border-neutral-200 p-8 rounded-3xl flex flex-col">
+                <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
+                  <Shield size={24} />
+                </div>
+                <h4 className="font-serif text-[20px] text-[#2C3539] mb-4">Muscular Defence First</h4>
+                <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
+                  Rapid weight loss without targeted resistance training can compromise your strength and long-term metabolic health. We focus heavily on protective, efficient movement patterns to ensure that the weight you lose is fat, while the muscle that keeps you strong and vibrant is preserved.
+                </p>
+              </div>
+
+              <div className="bg-white border border-neutral-200 p-8 rounded-3xl flex flex-col">
+                <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
+                  <Activity size={24} />
+                </div>
+                <h4 className="font-serif text-[20px] text-[#2C3539] mb-4">Compassionate Calibration</h4>
+                <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
+                  Your body is changing rapidly, and your energy levels or nutritional needs might vary from week to week. My coaching adapts to where you are today, shifting away from rigid perfectionism toward intuitive, specialised guidance.
+                </p>
+              </div>
+
+              <div className="bg-white border border-neutral-200 p-8 rounded-3xl flex flex-col">
+                <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
+                  <Droplets size={24} />
+                </div>
+                <h4 className="font-serif text-[20px] text-[#2C3539] mb-4">Real-World Integration</h4>
+                <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
+                  The goal isn’t to make fitness your entire life; it’s to make your fitness support the life you want to live. We work together on foundational habits - like protein tracking, hydration protocols, and simple 30-minute routines - that stick with you long after your initial 12-week track.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-neutral-200" />
+
+          <section className="space-y-8">
+            <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-[#2C3539]">
+              You Don't Have to Do This Alone
+            </h3>
+            <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
+              <p>
+                You don't need to figure out training, nutrition and lifestyle changes on your own.
+              </p>
+              <p>
+                Whether we work together in person or through the WRK Training App, you'll have a coach helping you make sense of the fitness side of your GLP-1 journey.
+              </p>
+              <p>
+                The goal isn't simply to weigh less.
+              </p>
+              <p>
+                It's to become stronger, fitter and more capable - and build habits that support the life you want to live.
+              </p>
+              <p className="font-serif text-[22px] md:text-[24px] text-[#2C3539] mt-8">
+                Your medication is one part of the journey. What you do alongside it matters too.
               </p>
             </div>
-
-            {/* CARD 3 (Our Three Non-Negotiable Operational Pillars) */}
-            <div className="lg:col-span-7 bg-[#F8F9FA] rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-slate-200 p-8 md:p-10 transition-all duration-300 hover:shadow-[0_4px_32px_rgba(0,0,0,0.05)]">
-              <h2 className="font-serif text-[24px] md:text-[28px] text-slate-900 mb-8 leading-tight">
-                Our Strategic Focus Areas
-              </h2>
-              <div className="space-y-8">
-                {/* Pillar 1 */}
-                <div className="flex gap-5">
-                  <div className="mt-1 flex-shrink-0 w-12 h-12 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center">
-                    <Shield size={22} className="text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-sans font-bold text-[17px] text-slate-900 mb-2">Pillar 1: Protecting Your Metabolic Engine</h3>
-                    <p className="font-sans text-[15px] text-slate-700 leading-relaxed">Elevating amino acid delivery and using smart, low-intensity resistance targets to protect lean mass and preserve long-term bone mineral density.</p>
-                  </div>
-                </div>
-
-                {/* Pillar 2 */}
-                <div className="flex gap-5">
-                  <div className="mt-1 flex-shrink-0 w-12 h-12 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center">
-                    <Activity size={22} className="text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-sans font-bold text-[17px] text-slate-900 mb-2">Pillar 2: Active Metabolic Tracking</h3>
-                    <p className="font-sans text-[15px] text-slate-700 leading-relaxed">Adjusting baseline energy expenditure parameters over time to ensure fat-loss plateaus are managed safely and sustainably.</p>
-                  </div>
-                </div>
-
-                {/* Pillar 3 */}
-                <div className="flex gap-5">
-                  <div className="mt-1 flex-shrink-0 w-12 h-12 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center">
-                    <Droplets size={22} className="text-teal-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-sans font-bold text-[17px] text-slate-900 mb-2">Pillar 3: Gastrointestinal Fluid Strategy</h3>
-                    <p className="font-sans text-[15px] text-slate-700 leading-relaxed">Designing structured fluid and mineral intake routines to address suppressed thirst loops and keep your system energized.</p>
-                  </div>
-                </div>
-              </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-8">
+              <Link 
+                to="/programs"
+                className="flex items-center justify-center gap-2 bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
+              >
+                Explore the 12-Week Coaching Tracks
+                <ArrowRight size={18} />
+              </Link>
+              <Link 
+                to="/contact"
+                className="flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
+              >
+                Book a Private Consultation
+              </Link>
             </div>
-
-          </div>
-
-          {/* CALL TO ACTION CONTAINER */}
-          <div className="text-center mt-8 bg-[#F8F9FA] rounded-2xl p-10 md:p-16 border border-slate-200 shadow-[0_4px_24px_rgba(0,0,0,0.03)] flex flex-col items-center">
-            <Link to="/assessment" className="inline-block w-full sm:w-auto px-10 py-5 bg-teal-600 hover:bg-teal-700 text-white font-sans font-bold text-[16px] rounded-lg transition-colors shadow-lg hover:shadow-teal-600/20 mb-5">
-              Take the Weight Loss Safety Assessment
-            </Link>
-            <p className="font-sans text-[15px] text-slate-600 max-w-[500px] mx-auto leading-relaxed">
-              Analyze your current baseline parameters and secure your tailored 12-week layout map.
-            </p>
-          </div>
+          </section>
 
         </div>
       </div>
-    </>
+    </div>
   );
 };

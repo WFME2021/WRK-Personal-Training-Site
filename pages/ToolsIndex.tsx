@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { Dna, Calculator, Droplet } from 'lucide-react';
 
 export const ToolsIndex: React.FC = () => {
-  const navigate = useNavigate();
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleNavigate = (e: React.FormEvent, path: string) => {
-    e.preventDefault();
-    navigate(path);
-  };
 
   return (
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
@@ -53,27 +46,14 @@ export const ToolsIndex: React.FC = () => {
                 When eating less comes naturally, prioritizing the right nutrients keeps you strong. This tool calculates a gentle daily protein target to help protect your lean muscle and keep your metabolism steady.
               </p>
             </div>
-            <form onSubmit={(e) => handleNavigate(e, '/tools/protein-targeter')} className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="block text-[13px] font-medium text-[#2C3539]/80">Weight (kg)</label>
-                <input type="number" placeholder="e.g. 80" className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]" />
-              </div>
-              <div className="space-y-1.5">
-                <label className="block text-[13px] font-medium text-[#2C3539]/80">Activity Level</label>
-                <select className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]">
-                  <option>Sedentary</option>
-                  <option>Lightly Active</option>
-                  <option>Moderately Active</option>
-                  <option>Very Active</option>
-                </select>
-              </div>
-              <button 
-                type="submit"
-                className="w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-12 mt-4 rounded-xl font-medium transition-colors text-[15px]"
+            <div className="mt-auto">
+              <Link 
+                to="/tools/protein-targeter"
+                className="flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-12 rounded-xl font-medium transition-colors text-[15px]"
               >
                 Calculate Target
-              </button>
-            </form>
+              </Link>
+            </div>
           </div>
 
           {/* CARD 2 */}
@@ -89,22 +69,14 @@ export const ToolsIndex: React.FC = () => {
                 GLP-1 medications can naturally quieten your body’s thirst signals. Use this quick guide to make sure you’re getting enough water and essential minerals to keep your energy up and avoid mid-day fatigue.
               </p>
             </div>
-            <form onSubmit={(e) => handleNavigate(e, '/tools/hydration-calculator')} className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="block text-[13px] font-medium text-[#2C3539]/80">Current Weight</label>
-                <input type="number" placeholder="e.g. 80" className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]" />
-              </div>
-              <div className="space-y-1.5">
-                <label className="block text-[13px] font-medium text-[#2C3539]/80">Daily Exercise Minutes</label>
-                <input type="number" placeholder="e.g. 30" className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]" />
-              </div>
-              <button 
-                type="submit"
-                className="w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-12 mt-4 rounded-xl font-medium transition-colors text-[15px]"
+            <div className="mt-auto">
+              <Link 
+                to="/tools/hydration-calculator"
+                className="flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-12 rounded-xl font-medium transition-colors text-[15px]"
               >
                 Check Hydration Needs
-              </button>
-            </form>
+              </Link>
+            </div>
           </div>
 
           {/* CARD 3 */}
@@ -120,45 +92,14 @@ export const ToolsIndex: React.FC = () => {
                 Understanding your body's energy baseline helps you transition smoothly between different phases of your journey. This calculator helps you map out your daily energy spend with gentle accuracy.
               </p>
             </div>
-            <form onSubmit={(e) => handleNavigate(e, '/tools/tdee-calculator')} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="block text-[13px] font-medium text-[#2C3539]/80">Age</label>
-                  <input type="number" placeholder="Years" className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]" />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="block text-[13px] font-medium text-[#2C3539]/80">Gender</label>
-                  <select className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]">
-                    <option>Female</option>
-                    <option>Male</option>
-                  </select>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="block text-[13px] font-medium text-[#2C3539]/80">Weight</label>
-                  <input type="number" placeholder="kg" className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]" />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="block text-[13px] font-medium text-[#2C3539]/80">Height</label>
-                  <input type="number" placeholder="cm" className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]" />
-                </div>
-              </div>
-              <div className="space-y-1.5 pt-1.5">
-                <select className="w-full h-12 bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-4 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors text-[15px]">
-                  <option>Activity Level...</option>
-                  <option>Sedentary</option>
-                  <option>Lightly Active</option>
-                  <option>Moderately Active</option>
-                </select>
-              </div>
-              <button 
-                type="submit"
-                className="w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-12 mt-4 rounded-xl font-medium transition-colors text-[15px]"
+            <div className="mt-auto pt-4">
+              <Link 
+                to="/tools/tdee-calculator"
+                className="flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-12 rounded-xl font-medium transition-colors text-[15px]"
               >
                 Find Baseline
-              </button>
-            </form>
+              </Link>
+            </div>
           </div>
 
         </div>

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { SeoHead } from '../components/SeoHead';
 import { CheckCircle2, MapPin } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 
 export const Contact = () => {
+  const [searchParams] = useSearchParams();
+  const initialPhase = searchParams.get('phase') || '';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phase: '',
+    phase: initialPhase,
     goal: '',
     message: ''
   });
@@ -161,6 +165,7 @@ export const Contact = () => {
                       <option value="I am currently in the active weight loss phase">I am currently in the active weight loss phase</option>
                       <option value="I am preparing to transition/wean off medication">I am preparing to transition/wean off medication</option>
                       <option value="I am post-medication and looking to maintain my habits">I am post-medication and looking to maintain my habits</option>
+                      <option value="General personal training enquiry">General personal training enquiry</option>
                     </select>
                     <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-neutral-400">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
