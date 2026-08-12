@@ -42,6 +42,14 @@ export const Programs: React.FC = () => {
               Choose the pathway that best matches where you are today.
             </p>
           </div>
+
+          <div className="mt-16 mb-8 w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-sm border border-neutral-200">
+            <img 
+              src="/images/programs_training_1786530048583.jpg" 
+              alt="Close up of a hand gripping a barbell" 
+              className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] object-cover bg-neutral-100"
+            />
+          </div>
         </header>
 
         {/* Tracks Vertical Layout */}

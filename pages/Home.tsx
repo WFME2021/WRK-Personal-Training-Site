@@ -64,6 +64,14 @@ export const Home: React.FC = () => {
           </Link>
           <p className="text-[13px] text-[#2C3539]/60">Online coaching available worldwide.</p>
         </div>
+
+        <div className="mt-20 w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-neutral-100">
+          <img 
+            src="/images/home_hero_gym_1786530022719.jpg" 
+            alt="Clean minimal fitness studio with a single kettlebell"
+            className="w-full h-auto object-cover aspect-[21/9] md:aspect-[2.5/1] bg-neutral-100"
+          />
+        </div>
       </section>
 
       {/* SECTION 2 — WHAT IS GLP-1 FITNESS COACHING? */}
