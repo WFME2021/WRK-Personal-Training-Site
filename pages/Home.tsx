@@ -68,7 +68,7 @@ export const Home: React.FC = () => {
         <div className="mt-20 w-full max-w-6xl mx-auto rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-neutral-100 wrk-photo-container">
           <div className="wrk-photo-overlay"></div>
           <img 
-            src="https://images.unsplash.com/photo-1475506631979-72412c606f4d?auto=format&fit=crop&q=80&w=2940" 
+            src="https://i.postimg.cc/vBXwJPvy/family-activity.jpg" 
             alt="Active couple hiking outdoors, representing a capable and fulfilling life"
             className="w-full h-auto aspect-[21/9] md:aspect-[2.5/1] wrk-photo"
           />

@@ -24,7 +24,7 @@ export const OnlineCoaching: React.FC = () => {
                <div className="wrk-photo-overlay"></div>
                <img loading="lazy"
                   referrerPolicy="no-referrer"
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=2940"
+                  src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg"
                   alt="Online fitness coaching and training outdoors"
                   className="w-full h-full object-cover object-top opacity-50 wrk-photo"
                 />

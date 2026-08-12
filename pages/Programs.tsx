@@ -46,7 +46,7 @@ export const Programs: React.FC = () => {
           <div className="mt-16 mb-8 w-full max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
             <div className="wrk-photo-overlay"></div>
             <img 
-              src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80&w=2940" 
+              src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg" 
               alt="Active adult hiking outdoors, demonstrating the outcome of functional training" 
               className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
             />

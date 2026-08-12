@@ -73,7 +73,7 @@ export const Blog: React.FC = () => {
         <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
           <div className="wrk-photo-overlay"></div>
           <img 
-            src="https://images.unsplash.com/photo-1517404215738-15263e9f9178?auto=format&fit=crop&q=80&w=2940" 
+            src="https://i.postimg.cc/BvhHyvM7/pexels-marwen-larafa-2159807713-38241567.jpg" 
             alt="Person enjoying an active lifestyle and reading, representing continuous learning" 
             className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
           />

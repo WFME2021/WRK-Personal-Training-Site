@@ -24,7 +24,7 @@ export const PersonalTraining: React.FC = () => {
                <div className="wrk-photo-overlay"></div>
                <img loading="lazy"
                   referrerPolicy="no-referrer"
-                  src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=2940"
+                  src="https://i.postimg.cc/tCHyKN1c/pexels-zeynep-38928850.jpg"
                   alt="Strength training and active lifestyle"
                   className="w-full h-full object-cover object-top opacity-50 wrk-photo"
                 />

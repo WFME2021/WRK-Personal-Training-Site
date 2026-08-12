@@ -41,7 +41,7 @@ export const ToolsIndex: React.FC = () => {
         <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
           <div className="wrk-photo-overlay"></div>
           <img 
-            src="https://images.unsplash.com/photo-1502224562085-6dde11eb6574?auto=format&fit=crop&q=80&w=2940" 
+            src="https://i.postimg.cc/J4Wmf5y2/pexels-truckrun-19373190.jpg" 
             alt="Person outdoors checking a smartwatch, representing practical fitness tracking" 
             className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
           />

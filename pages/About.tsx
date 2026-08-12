@@ -158,7 +158,7 @@ export const About: React.FC = () => {
             <div className="mt-16 w-full max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
               <div className="wrk-photo-overlay"></div>
               <img 
-                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=2940" 
+                src="https://i.postimg.cc/J4Wmf5y2/pexels-truckrun-19373190.jpg" 
                 alt="Active lifestyle representation" 
                 className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
               />
