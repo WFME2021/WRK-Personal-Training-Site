@@ -75,7 +75,7 @@ export const ToolsIndex: React.FC = () => {
                 </div>
               </div>
               <Link 
-                to="/tools/protein-targeter"
+                to="/tools/protein-calculator"
                 className="flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-14 rounded-xl font-medium transition-colors text-[16px]"
               >
                 Calculate Your Protein Target <ArrowRight size={18} className="ml-2" />
@@ -125,7 +125,7 @@ export const ToolsIndex: React.FC = () => {
             </div>
           </div>
 
-          {/* Tool 3: TDEE Calculator */}
+          {/* Tool 3: GLP-1 Calorie & Macro Calculator */}
           <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
               <Calculator size={28} />
@@ -133,7 +133,7 @@ export const ToolsIndex: React.FC = () => {
             
             <div className="mb-8 flex-grow">
               <h3 className="font-serif text-[26px] md:text-[30px] text-[#2C3539] leading-tight mb-2">
-                TDEE Calculator
+                GLP-1 Calorie & Macro Calculator
               </h3>
               <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">What are your estimated daily energy needs?</p>
               

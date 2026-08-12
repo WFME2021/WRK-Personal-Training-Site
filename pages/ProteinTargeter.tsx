@@ -280,7 +280,7 @@ export const ProteinTargeter: React.FC = () => {
         </div>
 
         {/* Final CTAs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 max-w-5xl mx-auto">
+        <div className="mb-24 max-w-2xl mx-auto">
           <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl text-center shadow-sm flex flex-col">
             <h2 className="text-[26px] font-serif text-[#2C3539] mb-4">
               Want Help Putting It Into Practice?
@@ -298,28 +298,6 @@ export const ProteinTargeter: React.FC = () => {
                 Take the Free GLP-1 Fitness Assessment
               </Link>
             </div>
-          </div>
-
-          <div className="bg-[#1A1C1D] text-white border border-neutral-800 p-8 md:p-10 rounded-3xl text-center shadow-sm flex flex-col">
-            <h2 className="text-[26px] font-serif mb-4">
-              Have a Question?
-            </h2>
-            <div className="text-[16px] text-neutral-400 leading-relaxed space-y-4 mb-8 flex-grow">
-              <p>Not sure where to start?</p>
-              <p>Tell me where you are in your GLP-1 journey and what you're trying to achieve.</p>
-              <div className="pt-2">
-                <p className="text-white text-[14px] font-medium mb-3 uppercase tracking-wider text-left pl-2">Select your current phase:</p>
-                <ul className="text-left space-y-2 text-[14px]">
-                  <li className="flex items-start"><span className="text-[#8A9A86] mr-2">•</span> I'm currently in the active weight-loss phase</li>
-                  <li className="flex items-start"><span className="text-[#8A9A86] mr-2">•</span> I'm preparing for maintenance</li>
-                  <li className="flex items-start"><span className="text-[#8A9A86] mr-2">•</span> I'm post-medication and want to maintain my habits</li>
-                  <li className="flex items-start"><span className="text-[#8A9A86] mr-2">•</span> I have a general fitness question</li>
-                </ul>
-              </div>
-            </div>
-            <Link to="/contact" className="block w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]">
-              Send a Message
-            </Link>
           </div>
         </div>
 

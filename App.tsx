@@ -61,12 +61,12 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/assessment/result/:token" element={<Results />} />
             <Route path="/tools" element={<ToolsIndex />} />
             <Route path="/tools/tdee-calculator" element={<TdeeCalculator />} />
-            <Route path="/tools/protein-targeter" element={<ProteinTargeter />} />
+            <Route path="/tools/protein-calculator" element={<ProteinTargeter />} />
             <Route path="/tools/hydration-calculator" element={<HydrationCalculator />} />
             
             {/* Redirects for old tool URLs if needed */}
             <Route path="/tdee-calculator" element={<Navigate to="/tools/tdee-calculator" replace />} />
-            <Route path="/protein-targeter" element={<Navigate to="/tools/protein-targeter" replace />} />
+            <Route path="/protein-calculator" element={<Navigate to="/tools/protein-calculator" replace />} />
             <Route path="/hydration-calculator" element={<Navigate to="/tools/hydration-calculator" replace />} />
             
             <Route path="/contact" element={<Contact />} />
