@@ -38,6 +38,15 @@ export const ToolsIndex: React.FC = () => {
           </div>
         </header>
 
+        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
+          <div className="wrk-photo-overlay"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1502224562085-6dde11eb6574?auto=format&fit=crop&q=80&w=2940" 
+            alt="Person outdoors checking a smartwatch, representing practical fitness tracking" 
+            className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
+          />
+        </div>
+
         {/* Tools Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
           

@@ -70,6 +70,15 @@ export const Blog: React.FC = () => {
           </div>
         </header>
 
+        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
+          <div className="wrk-photo-overlay"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1517404215738-15263e9f9178?auto=format&fit=crop&q=80&w=2940" 
+            alt="Person enjoying an active lifestyle and reading, representing continuous learning" 
+            className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
+          />
+        </div>
+
         {/* Article Library & Filters */}
         <div className="mb-24">
           <div className="text-center mb-10">
@@ -108,9 +117,9 @@ export const Blog: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
               <div key={post.id} className="bg-white border border-neutral-200 rounded-3xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 group">
-                <Link to={`/blog/${post.slug}`} className="block relative aspect-[4/3] bg-neutral-100 overflow-hidden">
-                  <img src={post.image?.url || '/api/placeholder/600/400'} alt={post.image?.alt || post.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" />
-                  <div className="absolute inset-0 bg-[#2C3539]/0 group-hover:bg-[#2C3539]/10 transition-colors duration-500 z-10"></div>
+                <Link to={`/blog/${post.slug}`} className="block relative aspect-[4/3] bg-neutral-100 overflow-hidden wrk-photo-container">
+                  <div className="wrk-photo-overlay group-hover:bg-black/10 transition-colors duration-500 z-10"></div>
+                  <img src={post.image?.url || '/api/placeholder/600/400'} alt={post.image?.alt || post.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out wrk-photo" />
                   {post.category && (
                     <div className="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[12px] font-bold uppercase tracking-wider text-[#8A9A86] shadow-sm">
                       {post.category}

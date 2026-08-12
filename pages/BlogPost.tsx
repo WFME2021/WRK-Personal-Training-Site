@@ -98,11 +98,14 @@ export const BlogPost: React.FC = () => {
           {/* Main Image */}
           {post.image?.url && (
             <figure className="mb-16 -mx-4 md:mx-0">
-               <img loading="lazy" referrerPolicy="no-referrer" 
-                 src={post.image.url} 
-                 alt={post.image.alt || post.title} 
-                 className="w-full h-auto object-cover md:rounded-2xl shadow-sm border border-neutral-200"
-               />
+               <div className="md:rounded-2xl shadow-sm border border-neutral-200 wrk-photo-container">
+                 <div className="wrk-photo-overlay"></div>
+                 <img loading="lazy" referrerPolicy="no-referrer" 
+                   src={post.image.url} 
+                   alt={post.image.alt || post.title} 
+                   className="w-full h-auto object-cover wrk-photo"
+                 />
+               </div>
             </figure>
           )}
 

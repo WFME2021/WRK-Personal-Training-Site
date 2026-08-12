@@ -19,16 +19,16 @@ export const PersonalTraining: React.FC = () => {
         
         {/* HERO */}
         <section className="relative min-h-[80svh] md:min-h-[90svh] w-full flex flex-col justify-end">
-          <div className="absolute inset-0 z-0">
-             <img loading="lazy"
-                referrerPolicy="no-referrer"
-                src="https://i.postimg.cc/Qx9M2XvH/Google-Cover-Photo.png"
-                alt="Strength training after weight loss drugs tracking markers"
-                className="w-full h-full object-cover object-top opacity-30 mix-blend-luminosity"
-              />
-             <div 
-               className="absolute inset-0 bg-neutral-900/80" 
-             />
+          <div className="absolute inset-0 z-0 bg-neutral-900">
+             <div className="absolute inset-0 wrk-photo-container">
+               <div className="wrk-photo-overlay"></div>
+               <img loading="lazy"
+                  referrerPolicy="no-referrer"
+                  src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=2940"
+                  alt="Strength training and active lifestyle"
+                  className="w-full h-full object-cover object-top opacity-50 wrk-photo"
+                />
+             </div>
           </div>
 
           <div className="relative z-10 w-full px-5 pt-32 pb-12 md:pb-24 max-w-[1200px] mx-auto md:px-12 text-center md:text-left">

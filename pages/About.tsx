@@ -58,11 +58,12 @@ export const About: React.FC = () => {
 
           <section className="flex flex-col md:flex-row gap-10 md:gap-16 items-center md:items-start">
             <div className="w-full max-w-[320px] md:max-w-md md:w-5/12 flex-shrink-0 mx-auto md:mx-0">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-neutral-100">
+              <div className="aspect-[4/5] rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-neutral-100 wrk-photo-container">
+                <div className="wrk-photo-overlay"></div>
                 <img 
                   src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
                   alt="Hayden, Founder and Coach of WRK Personal Training"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full wrk-photo"
                 />
               </div>
             </div>
@@ -152,6 +153,15 @@ export const About: React.FC = () => {
                   The goal isn’t to make fitness your entire life; it’s to make your fitness support the life you want to live. We work together on foundational habits - like protein tracking, hydration protocols, and simple 30-minute routines - that stick with you long after your initial 12-week track.
                 </p>
               </div>
+            </div>
+            
+            <div className="mt-16 w-full max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
+              <div className="wrk-photo-overlay"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=2940" 
+                alt="Active lifestyle representation" 
+                className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
+              />
             </div>
           </section>
 

@@ -38,6 +38,15 @@ export const Services: React.FC = () => {
           </div>
         </header>
 
+        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
+          <div className="wrk-photo-overlay"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=2940" 
+            alt="Personal trainer supporting a client with a kettlebell" 
+            className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
+          />
+        </div>
+
         {/* Programs Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           

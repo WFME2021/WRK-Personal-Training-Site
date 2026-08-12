@@ -65,11 +65,12 @@ export const Home: React.FC = () => {
           <p className="text-[13px] text-[#2C3539]/60">Online coaching available worldwide.</p>
         </div>
 
-        <div className="mt-20 w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-neutral-100">
+        <div className="mt-20 w-full max-w-6xl mx-auto rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-neutral-100 wrk-photo-container">
+          <div className="wrk-photo-overlay"></div>
           <img 
-            src="/images/home_hero_gym_1786530022719.jpg" 
-            alt="Clean minimal fitness studio with a single kettlebell"
-            className="w-full h-auto object-cover aspect-[21/9] md:aspect-[2.5/1] bg-neutral-100"
+            src="https://images.unsplash.com/photo-1475506631979-72412c606f4d?auto=format&fit=crop&q=80&w=2940" 
+            alt="Active couple hiking outdoors, representing a capable and fulfilling life"
+            className="w-full h-auto aspect-[21/9] md:aspect-[2.5/1] wrk-photo"
           />
         </div>
       </section>
@@ -221,38 +222,27 @@ export const Home: React.FC = () => {
       <section className="py-24 bg-[#FAFAF9] px-4 md:px-8 border-t border-b border-neutral-200">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 lg:gap-20 items-center">
           <div className="w-full md:w-5/12 flex justify-center">
-            <div className="w-[280px] md:w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden shadow-sm border border-neutral-100">
+            <div className="w-[280px] md:w-full max-w-[380px] aspect-[4/5] rounded-3xl shadow-sm border border-neutral-100 wrk-photo-container">
+              <div className="wrk-photo-overlay"></div>
               <img 
                 src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
                 alt="Hayden, Founder and Coach of WRK Personal Training"
-                className="w-full h-full object-cover"
+                className="w-full h-full wrk-photo"
               />
             </div>
           </div>
           <div className="w-full md:w-7/12 space-y-8">
             <h2 className="font-serif text-[32px] md:text-[40px] text-[#2C3539]">Meet Hayden</h2>
             <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
-              <p>I've spent years coaching people who want to lose weight, get stronger and improve their health without turning fitness into another full-time job.</p>
-              <p>As GLP-1 medications became increasingly common, I saw a gap in the conversation.</p>
-              <p>People were getting medical support for weight loss, but often had little guidance around what to do alongside it.</p>
-              <ul className="list-disc pl-5 space-y-2 text-[#2C3539]/90 py-2">
-                <li>How should you train?</li>
-                <li>How do you prioritise muscle?</li>
-                <li>What happens when your appetite changes?</li>
-                <li>How do you adapt when energy and recovery fluctuate?</li>
-              </ul>
-              <div className="pt-2 space-y-2">
-                <p>And perhaps most importantly:</p>
-                <p className="font-medium text-[#2C3539]">How do you build the habits and physical capacity to support your results long term?</p>
-              </div>
-              <p>That's the problem WRK is built to solve.</p>
+              <p>I help people lose weight, build strength and improve their health without turning fitness into another full-time job.</p>
+              <p>As a GLP-1 Fitness Coach, I help you make the most of your weight-loss journey by combining nutrition, strength training and sustainable habits that support the life you want to live.</p>
             </div>
             <div className="pt-4">
               <Link
                 to="/about"
                 className="inline-flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
               >
-                Learn More About WRK
+                Meet Hayden <span className="ml-2">→</span>
               </Link>
             </div>
           </div>

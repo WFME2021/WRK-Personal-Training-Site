@@ -43,11 +43,12 @@ export const Programs: React.FC = () => {
             </p>
           </div>
 
-          <div className="mt-16 mb-8 w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-sm border border-neutral-200">
+          <div className="mt-16 mb-8 w-full max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
+            <div className="wrk-photo-overlay"></div>
             <img 
-              src="/images/programs_training_1786530048583.jpg" 
-              alt="Close up of a hand gripping a barbell" 
-              className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] object-cover bg-neutral-100"
+              src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80&w=2940" 
+              alt="Active adult hiking outdoors, demonstrating the outcome of functional training" 
+              className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
             />
           </div>
         </header>
