@@ -19,6 +19,15 @@ const DEFAULT_AUTHOR: Author = {
   avatarUrl: "https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
 };
 
+const BLOG_CATEGORIES = [
+  'Training & Exercise',
+  'Muscle & Strength',
+  'Nutrition & Protein',
+  'Hydration & Recovery',
+  'Weight Loss & Maintenance',
+  'Life After GLP-1s'
+];
+
 const EMPTY_POST: BlogPost = {
   id: '',
   slug: '',
@@ -29,7 +38,7 @@ const EMPTY_POST: BlogPost = {
   date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
   isoDate: new Date().toISOString(),
   updatedDate: '',
-  category: 'General',
+  category: 'Training & Exercise',
   image: {
     url: 'https://picsum.photos/800/600',
     alt: 'Default blog post image',
@@ -559,7 +568,11 @@ export const Admin: React.FC = () => {
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-2">Category</label>
-                      <input type="text" name="category" value={postFormData.category || ''} onChange={handlePostChange} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
+                      <select name="category" value={postFormData.category || ''} onChange={(e) => setPostFormData({ ...postFormData, category: e.target.value })} className="w-full p-3 bg-secondary border border-border text-text-primary rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all">
+                        {BLOG_CATEGORIES.map(cat => (
+                          <option key={cat} value={cat}>{cat}</option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                   
