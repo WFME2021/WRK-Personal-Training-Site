@@ -83,7 +83,7 @@ async function startServer() {
 
       const mailOptions = {
         from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
-        to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
+        to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz, wfme2021@gmail.com",
         subject: `New Inquiry from ${name} - ${interest || 'General'}`,
         text: `
 Name: ${name}
@@ -137,6 +137,66 @@ ${message}
         console.log("Email sent successfully");
       } catch (emailError) {
         console.error("Failed to send email:", emailError);
+      }
+
+      // --- MailerLite Integration ---
+      const rawKey = process.env.MAILERLITE_API_KEY || "";
+      const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
+      
+      const MAILERLITE_GROUP_ID_DEFAULT = process.env.MAILERLITE_GROUP_ID?.replace(/^"|"$/g, '').trim() || "";
+      const MAILERLITE_GROUP_CONTACT = process.env.MAILERLITE_GROUP_CONTACT?.replace(/^"|"$/g, '').trim() || MAILERLITE_GROUP_ID_DEFAULT;
+
+      if (MAILERLITE_API_KEY) {
+        try {
+          const fields = {
+            name: name,
+            phone: phone || '',
+            interest: interest || '',
+            referral_source: referralSource || ''
+          };
+          const subscriberPayloadV3 = {
+            email: email,
+            fields: fields,
+            groups: MAILERLITE_GROUP_CONTACT ? [MAILERLITE_GROUP_CONTACT] : []
+          };
+          let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(subscriberPayloadV3)
+          });
+          if (!mlResponse.ok && mlResponse.status === 401) {
+            console.log('MailerLite v3 failed with 401, trying v2 API...');
+            const subscriberPayloadV2 = {
+              email: email,
+              name: name,
+              fields: fields
+            };
+            const v2Endpoint = MAILERLITE_GROUP_CONTACT 
+              ? `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_CONTACT}/subscribers`
+              : 'https://api.mailerlite.com/api/v2/subscribers';
+            mlResponse = await fetch(v2Endpoint, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-MailerLite-ApiKey': MAILERLITE_API_KEY,
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(subscriberPayloadV2)
+            });
+          }
+          if (!mlResponse.ok) {
+            const errorText = await mlResponse.text();
+            console.error('MailerLite API Error:', mlResponse.status, errorText);
+          } else {
+            console.log('Successfully added contact lead to MailerLite');
+          }
+        } catch (mlError: any) {
+          console.error('MailerLite Integration Failed:', mlError.message);
+        }
       }
 
       // --- Google Sheets Webhook Integration ---
@@ -248,7 +308,7 @@ ${message}
 
       const mailOptions = {
         from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
-        to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
+        to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz, wfme2021@gmail.com",
         subject: `Assessment Unlocked — ${name} — ${archetypeLabel} — ${locationLabel}`,
         text: `=== New Assessment Unlocked ===
 
@@ -461,6 +521,8 @@ WRK Personal Training</p>
       const archId = archetype?.id || 'time_crunched';
       const groupKey = MAILERLITE_GROUPS[archId as keyof typeof MAILERLITE_GROUPS];
       const MAILERLITE_GROUP_ID = process.env[groupKey as keyof typeof process.env]?.replace(/^"|"$/g, '').trim() || MAILERLITE_GROUP_ID_DEFAULT;
+      
+      const MAILERLITE_PROSPECT_GROUP = "195641787200570883";
 
       if (MAILERLITE_API_KEY) {
         try {
@@ -472,11 +534,16 @@ WRK Personal Training</p>
             q6_category: flagsLabel, // Q6
             blueprint_url: resultUrl
           };
+          
+          const groupsArray = [MAILERLITE_PROSPECT_GROUP];
+          if (MAILERLITE_GROUP_ID && MAILERLITE_GROUP_ID !== MAILERLITE_PROSPECT_GROUP) {
+            groupsArray.push(MAILERLITE_GROUP_ID);
+          }
 
           const subscriberPayloadV3 = {
             email: email,
             fields: fields,
-            groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
+            groups: groupsArray
           };
 
           let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
@@ -497,9 +564,7 @@ WRK Personal Training</p>
               fields: fields
             };
             
-            const v2Endpoint = MAILERLITE_GROUP_ID 
-              ? `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_ID}/subscribers`
-              : 'https://api.mailerlite.com/api/v2/subscribers';
+            const v2Endpoint = `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_PROSPECT_GROUP}/subscribers`;
 
             mlResponse = await fetch(v2Endpoint, {
               method: 'POST',
