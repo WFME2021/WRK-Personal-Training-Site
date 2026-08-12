@@ -62,7 +62,7 @@ export const Assessment: React.FC = () => {
         {/* Page Header */}
         <header className="text-center mb-12 max-w-3xl mx-auto">
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            Weight Loss Safety Assessment
+            Weight Loss Safety <span className="wrk-highlight">Assessment</span>
           </h1>
           <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
             A fast, conversational 2-minute screening tool to help you identify suppressed thirst loops, assess muscle-wasting risks, and lock in your safety thresholds.

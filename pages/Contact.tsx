@@ -93,7 +93,7 @@ export const Contact = () => {
             take the next step whenever you are ready
           </p>
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            Contact a GLP-1 Fitness Coach Based in New Zealand
+            Contact a GLP-1 Fitness <span className="wrk-highlight">Coach</span> Based in New Zealand
           </h1>
           <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
             You don't have to navigate this chapter of your health journey alone. Whether you have a quick question about our tools, want to learn more about our 1-on-1 support, or simply want to chat about your routine, we are always here to listen and help.

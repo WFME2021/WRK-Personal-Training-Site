@@ -49,7 +49,7 @@ export const Home: React.FC = () => {
           </h1>
         </div>
         <p className="font-serif text-[42px] md:text-[64px] leading-[1.1] text-[#2C3539] mb-5 md:mb-8 max-w-4xl tracking-tight">
-          Lose the weight. Keep your strength. Build the fitness to keep it off.
+          Lose the weight. <span className="wrk-highlight">Keep your strength.</span> Build the fitness to keep it off.
         </p>
         <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70 max-w-2xl mb-6 md:mb-10 space-y-4">
           <p>GLP-1 medication can help you lose weight. WRK helps you make the most of that journey.</p>

@@ -49,7 +49,7 @@ export const Blog: React.FC = () => {
         {/* Hero Section */}
         <header className="text-center mb-16 max-w-4xl mx-auto">
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 Fitness Blog
+            GLP-1 Fitness <span className="wrk-highlight">Blog</span>
           </h1>
           <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
             Practical guidance for training, nutrition and life on a GLP-1.

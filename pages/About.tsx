@@ -20,7 +20,7 @@ export const About: React.FC = () => {
         {/* Page Header */}
         <header className="text-center mb-20">
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            Beyond the Prescription
+            Beyond the <span className="wrk-highlight">Prescription</span>
           </h1>
           <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
             Medicine opens the door. WRK maps the way forward.

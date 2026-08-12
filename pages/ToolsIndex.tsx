@@ -20,7 +20,7 @@ export const ToolsIndex: React.FC = () => {
         {/* Page Header */}
         <header className="text-center mb-20 max-w-4xl mx-auto">
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 Tools & Calculators
+            GLP-1 <span className="wrk-highlight">Tools</span> & Calculators
           </h1>
           <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
             Simple tools to help you make better decisions around your GLP-1 journey.

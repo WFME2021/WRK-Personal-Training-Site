@@ -37,7 +37,7 @@ export const OnlineCoaching: React.FC = () => {
             </span>
             <h1 className="flex flex-col mb-6">
               <span className="font-serif text-[40px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-tight text-neutral-100">
-                Premium Online Coaching
+                Premium Online <span className="wrk-highlight-dark">Coaching</span>
               </span>
               <span className="font-serif text-[20px] sm:text-[24px] md:text-[28px] text-teal-400 mt-2">
                 Specialized Support Wherever You Are

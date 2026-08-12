@@ -400,7 +400,7 @@ export const TdeeCalculator: React.FC = () => {
               <Calculator size={32} />
             </div>
             <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-              GLP-1 Calorie & Macro Calculator
+              GLP-1 <span className="wrk-highlight">Calorie</span> & Macro Calculator
             </h1>
             <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6 max-w-2xl mx-auto">
               Estimate your energy needs, set a sensible calorie target and build your macros around protein, strength and sustainable fat loss.

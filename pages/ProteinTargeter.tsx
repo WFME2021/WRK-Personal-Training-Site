@@ -43,7 +43,7 @@ export const ProteinTargeter: React.FC = () => {
             <Dna size={32} />
           </div>
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 Protein Calculator
+            GLP-1 <span className="wrk-highlight">Protein</span> Calculator
           </h1>
           <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
             How much protein should you eat while losing weight?

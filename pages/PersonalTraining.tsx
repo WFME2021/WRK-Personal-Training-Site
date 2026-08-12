@@ -37,7 +37,7 @@ export const PersonalTraining: React.FC = () => {
             </span>
             <h1 className="flex flex-col mb-6">
               <span className="font-serif text-[40px] sm:text-[56px] md:text-[80px] lg:text-[88px] break-words leading-tight text-neutral-100">
-                Elite 1:1 Personal Training
+                Elite 1:1 Personal <span className="wrk-highlight-dark">Training</span>
               </span>
             </h1>
             <p className="font-sans text-[18px] md:text-[20px] text-neutral-300 font-medium max-w-[650px] mx-auto md:mx-0 mb-8 leading-relaxed">

@@ -20,7 +20,7 @@ export const Services: React.FC = () => {
         {/* Page Header */}
         <header className="text-center mb-20 max-w-4xl mx-auto">
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 Fitness Coaching Programs
+            GLP-1 Fitness <span className="wrk-highlight">Coaching</span> Programs
           </h1>
           <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
             Choose the level of support that fits your life.
