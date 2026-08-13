@@ -216,51 +216,63 @@ export const Services: React.FC = () => {
           </div>
         </div>
 
-        {/* Which Option Is Right For You? */}
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#2C3539]">
-              Which Option Is Right For You?
-            </h2>
+        {/* Which Option Is Right For You? (GLASSMORPHISM) */}
+        <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-24 px-4 md:px-8 bg-[#2C3539] overflow-hidden my-16">
+          {/* Background Image & Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://i.postimg.cc/256x75Wd/pexels-khezez-34080009.jpg" 
+              alt="Outdoor activity"
+              className="w-full h-full object-cover object-center opacity-60"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white border border-neutral-200 p-8 rounded-3xl">
-              <p className="text-[#8A9A86] font-medium mb-3">I want someone to guide me</p>
-              <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">Online Guided Coaching</h3>
-              <p className="text-[15px] text-[#2C3539]/80 mb-6">
-                Personalised programming, accountability and ongoing support - without needing to train face to face.
-              </p>
-              <p className="text-[14px] text-[#2C3539] font-medium flex items-start">
-                <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-[#8A9A86]" />
-                <span>Best for: Independent training with professional guidance.</span>
-              </p>
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif text-white">
+                Which Option Is Right For You?
+              </h2>
             </div>
-            
-            <div className="bg-white border border-neutral-200 p-8 rounded-3xl">
-              <p className="text-[#8A9A86] font-medium mb-3">I want a coach beside me</p>
-              <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">In-Person Guided Coaching</h3>
-              <p className="text-[15px] text-[#2C3539]/80 mb-6">
-                Face-to-face personal training combined with your personalised online programme and ongoing support.
-              </p>
-              <p className="text-[14px] text-[#2C3539] font-medium flex items-start">
-                <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-[#8A9A86]" />
-                <span>Best for: People who value hands-on coaching and accountability.</span>
-              </p>
-            </div>
-            
-            <div className="bg-white border border-neutral-200 p-8 rounded-3xl">
-              <p className="text-[#8A9A86] font-medium mb-3">I want to do it myself</p>
-              <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">GLP-1 Workout & Nutrition Toolkit</h3>
-              <p className="text-[15px] text-[#2C3539]/80 mb-6">
-                A simple, affordable starting point with structured training and practical education.
-              </p>
-              <p className="text-[14px] text-[#2C3539] font-medium flex items-start">
-                <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-[#8A9A86]" />
-                <span>Best for: Self-starters who want a plan to follow.</span>
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <p className="text-white/60 font-medium tracking-wide text-[13px] uppercase mb-3">I want someone to guide me</p>
+                <h3 className="font-serif text-[22px] text-white mb-4">Online Guided Coaching</h3>
+                <p className="text-[15px] text-white/70 mb-6">
+                  Personalised programming, accountability and ongoing support - without needing to train face to face.
+                </p>
+                <p className="text-[14px] text-white/90 font-medium flex items-start">
+                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-white/60" />
+                  <span>Best for: Independent training with professional guidance.</span>
+                </p>
+              </div>
+              
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <p className="text-white/60 font-medium tracking-wide text-[13px] uppercase mb-3">I want a coach beside me</p>
+                <h3 className="font-serif text-[22px] text-white mb-4">In-Person Guided Coaching</h3>
+                <p className="text-[15px] text-white/70 mb-6">
+                  Face-to-face personal training combined with your personalised online programme and ongoing support.
+                </p>
+                <p className="text-[14px] text-white/90 font-medium flex items-start">
+                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-white/60" />
+                  <span>Best for: People who value hands-on coaching and accountability.</span>
+                </p>
+              </div>
+              
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <p className="text-white/60 font-medium tracking-wide text-[13px] uppercase mb-3">I want to do it myself</p>
+                <h3 className="font-serif text-[22px] text-white mb-4">GLP-1 Workout & Nutrition Toolkit</h3>
+                <p className="text-[15px] text-white/70 mb-6">
+                  A simple, affordable starting point with structured training and practical education.
+                </p>
+                <p className="text-[14px] text-white/90 font-medium flex items-start">
+                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-white/60" />
+                  <span>Best for: Self-starters who want a plan to follow.</span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Built Around Your GLP-1 Journey */}
         <div className="bg-[#2C3539] p-10 md:p-16 rounded-3xl shadow-sm mb-24 flex flex-col md:flex-row items-center gap-10 lg:gap-16">

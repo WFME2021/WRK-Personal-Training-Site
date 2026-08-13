@@ -55,47 +55,57 @@ export const PersonalTraining: React.FC = () => {
           </div>
         </section>
 
-        {/* CLINICAL SAFETY BENTO GRID */}
-        <section className="py-20 md:py-32 px-5 bg-neutral-950 md:px-12 relative border-t border-neutral-800">
-          <div className="max-w-[1200px] mx-auto">
+        {/* CLINICAL SAFETY BENTO GRID (GLASSMORPHISM) */}
+        <section className="py-24 md:py-32 px-5 md:px-12 relative bg-neutral-950 overflow-hidden border-t border-neutral-800">
+          {/* Background Image & Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2670&auto=format&fit=crop" 
+              alt="Intense focus training background"
+              className="w-full h-full object-cover object-center opacity-50 grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-900/50 to-neutral-950/90"></div>
+          </div>
+
+          <div className="max-w-[1200px] mx-auto relative z-10">
             <div className="max-w-[800px] mx-auto text-center mb-16">
               <h2 className="font-serif text-[32px] md:text-[48px] text-neutral-100 leading-[1.1] mb-6">
                 Clinical Safety Meets Sports Science
               </h2>
-              <p className="font-sans text-[18px] text-neutral-400 leading-relaxed">
+              <p className="font-sans text-[18px] text-neutral-300 leading-relaxed">
                 Every session is engineered around your current energetic capacity, joint mechanics, and lean mass preservation goals.
               </p>
             </div>
-
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               
-              <div className="col-span-1 p-8 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-teal-500/30 transition-all duration-300 shadow-lg group">
+              <div className="col-span-1 backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-3xl transition-transform hover:-translate-y-1 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] group">
                 <div className="text-teal-400 mb-4 group-hover:scale-110 transition-transform"><Clock size={32} /></div>
                 <h3 className="font-serif text-[24px] text-neutral-100 mb-4">Focused 30-Minute Windows</h3>
-                <p className="font-sans text-[15px] text-neutral-400 leading-relaxed">
+                <p className="font-sans text-[15px] text-neutral-300 leading-relaxed">
                   High-intensity, low-exhaustion training maximizes lean muscle recruitment without overwhelming your central nervous system or spiking nausea.
                 </p>
               </div>
 
-              <div className="col-span-1 p-8 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-teal-500/30 transition-all duration-300 shadow-lg group">
+              <div className="col-span-1 backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-3xl transition-transform hover:-translate-y-1 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] group">
                 <div className="text-teal-400 mb-4 group-hover:scale-110 transition-transform"><FileWarning size={32} /></div>
                 <h3 className="font-serif text-[24px] text-neutral-100 mb-4">Biometric & Form Tracking</h3>
-                <p className="font-sans text-[15px] text-neutral-400 leading-relaxed">
+                <p className="font-sans text-[15px] text-neutral-300 leading-relaxed">
                   Exacting oversight on structural execution to protect joints that are adjusting to rapidly changing center-of-gravity dynamics.
                 </p>
               </div>
 
-              <div className="col-span-1 p-8 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-teal-500/30 transition-all duration-300 shadow-lg group">
+              <div className="col-span-1 backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-3xl transition-transform hover:-translate-y-1 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] group">
                 <div className="text-teal-400 mb-4 group-hover:scale-110 transition-transform"><Handshake size={32} /></div>
                 <h3 className="font-serif text-[24px] text-neutral-100 mb-4">Coordinated Support</h3>
-                <p className="font-sans text-[15px] text-neutral-400 leading-relaxed">
+                <p className="font-sans text-[15px] text-neutral-300 leading-relaxed">
                   A bridging service that respects your medical practitioner's guidelines while ensuring you execute the physical work necessary for a healthy metabolism.
                 </p>
               </div>
 
             </div>
             
-            <div className="text-center mt-12">
+            <div className="text-center mt-12 relative z-10">
               <p className="font-sans text-sm text-neutral-500 italic">
                 *Premium weekly billing options available for continuous, premium accountability.
               </p>

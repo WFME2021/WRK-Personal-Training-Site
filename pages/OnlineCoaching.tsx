@@ -58,51 +58,61 @@ export const OnlineCoaching: React.FC = () => {
           </div>
         </section>
 
-        {/* ROADMAP BENTO GRID */}
-        <section className="py-20 md:py-32 px-5 md:px-12 relative bg-neutral-950 border-t border-neutral-800">
-          <div className="max-w-[1200px] mx-auto">
+        {/* ROADMAP BENTO GRID (GLASSMORPHISM) */}
+        <section className="py-24 md:py-32 px-5 md:px-12 relative bg-neutral-950 overflow-hidden border-t border-neutral-800">
+          {/* Background Image & Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2670&auto=format&fit=crop" 
+              alt="Outdoor adventure lifestyle"
+              className="w-full h-full object-cover object-center opacity-50 grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-900/50 to-neutral-950/90"></div>
+          </div>
+
+          <div className="max-w-[1200px] mx-auto relative z-10">
             <div className="max-w-[800px] mx-auto text-center mb-16">
               <h2 className="font-serif text-[32px] md:text-[48px] text-neutral-100 leading-[1.1] mb-6">
                 The 12-Week Muscle & Longevity Roadmap
               </h2>
-              <p className="font-sans text-[18px] text-neutral-400 leading-relaxed">
+              <p className="font-sans text-[18px] text-neutral-300 leading-relaxed">
                 Our program is structured into intentional 12-week training phases designed to align perfectly with your medication or recovery timeline.
               </p>
             </div>
-
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               
-              <div className="col-span-1 p-8 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-teal-500/30 transition-all duration-300 shadow-lg group">
+              <div className="col-span-1 backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-3xl transition-transform hover:-translate-y-1 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] group">
                 <div className="text-teal-400 font-sans font-bold tracking-widest text-sm mb-4">Phase 1: Weeks 1–4</div>
                 <div className="text-teal-400 mb-4 group-hover:scale-110 transition-transform"><Activity size={32} /></div>
                 <h3 className="font-serif text-[24px] text-neutral-100 mb-4">Baseline & Side Effect Management</h3>
-                <p className="font-sans text-[15px] text-neutral-400 leading-relaxed">
+                <p className="font-sans text-[15px] text-neutral-300 leading-relaxed">
                   Establish your strength baseline while proactively managing common side effects like severe appetite suppression, low energy, or nausea. We track your protein thresholds and introduce safe progressive overload variables to halt rapid muscle wasting early.
                 </p>
               </div>
 
-              <div className="col-span-1 p-8 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-teal-500/30 transition-all duration-300 shadow-lg group">
+              <div className="col-span-1 backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-3xl transition-transform hover:-translate-y-1 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] group">
                 <div className="text-teal-400 font-sans font-bold tracking-widest text-sm mb-4">Phase 2: Weeks 5–8</div>
                 <div className="text-teal-400 mb-4 group-hover:scale-110 transition-transform"><AlignVerticalJustifyCenter size={32} /></div>
                 <h3 className="font-serif text-[24px] text-neutral-100 mb-4">Progressive Strength & Lean Mass Focus</h3>
-                <p className="font-sans text-[15px] text-neutral-400 leading-relaxed">
+                <p className="font-sans text-[15px] text-neutral-300 leading-relaxed">
                   As your body adapts, we ramp up lean tissue stimulation. This phase focuses entirely on compound tracking, joint integrity, and bone density preservation, ensuring your strength matches your lighter frame.
                 </p>
               </div>
 
-              <div className="col-span-1 p-8 rounded-2xl bg-neutral-950 border border-neutral-800 hover:border-teal-500/30 transition-all duration-300 shadow-lg group">
+              <div className="col-span-1 backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-3xl transition-transform hover:-translate-y-1 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] group">
                 <div className="text-teal-400 font-sans font-bold tracking-widest text-sm mb-4">Phase 3: Weeks 9–12</div>
                 <div className="text-teal-400 mb-4 group-hover:scale-110 transition-transform"><ShieldCheck size={32} /></div>
                 <h3 className="font-serif text-[24px] text-neutral-100 mb-4">Metabolic Independence & Habit Lock</h3>
-                <p className="font-sans text-[15px] text-neutral-400 leading-relaxed">
+                <p className="font-sans text-[15px] text-neutral-300 leading-relaxed">
                   Transition into long-term behavioral autonomy. We optimize your weekly nutrition templates to secure lean muscle tissue permanently, setting up the exact movement patterns required to sustain your health when your medical dosages shift.
                 </p>
               </div>
 
             </div>
             
-            <div className="text-center mt-12">
-              <p className="font-sans text-sm text-neutral-500 italic">
+            <div className="text-center mt-12 relative z-10">
+              <p className="font-sans text-sm text-neutral-400 italic">
                 *Weekly billing intervals with a transparent, mutually fair cancellation policy apply.
               </p>
             </div>

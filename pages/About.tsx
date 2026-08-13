@@ -112,56 +112,55 @@ export const About: React.FC = () => {
             </div>
           </section>
 
-          {/* Divider */}
-          <div className="w-full h-px bg-neutral-200" />
-
-          <section>
-            <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-[#2C3539] mb-8">
-              The WRK Philosophy
-            </h3>
-            <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 mb-10">
-              Every program, app interaction, and personal training session I design is anchored in three core principles:
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white border border-neutral-200 p-8 rounded-3xl flex flex-col">
-                <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
-                  <Shield size={24} />
-                </div>
-                <h4 className="font-serif text-[20px] text-[#2C3539] mb-4">Muscular Defence First</h4>
-                <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
-                  Rapid weight loss without targeted resistance training can compromise your strength and long-term metabolic health. We focus heavily on protective, efficient movement patterns to ensure that the weight you lose is fat, while the muscle that keeps you strong and vibrant is preserved.
-                </p>
-              </div>
-
-              <div className="bg-white border border-neutral-200 p-8 rounded-3xl flex flex-col">
-                <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
-                  <Activity size={24} />
-                </div>
-                <h4 className="font-serif text-[20px] text-[#2C3539] mb-4">Compassionate Calibration</h4>
-                <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
-                  Your body is changing rapidly, and your energy levels or nutritional needs might vary from week to week. My coaching adapts to where you are today, shifting away from rigid perfectionism toward intuitive, specialised guidance.
-                </p>
-              </div>
-
-              <div className="bg-white border border-neutral-200 p-8 rounded-3xl flex flex-col">
-                <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
-                  <Droplets size={24} />
-                </div>
-                <h4 className="font-serif text-[20px] text-[#2C3539] mb-4">Real-World Integration</h4>
-                <p className="text-[15px] leading-relaxed text-[#2C3539]/70">
-                  The goal isn’t to make fitness your entire life; it’s to make your fitness support the life you want to live. We work together on foundational habits - like protein tracking, hydration protocols, and simple 30-minute routines - that stick with you long after your initial 12-week track.
-                </p>
-              </div>
-            </div>
-            
-            <div className="mt-16 w-full max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
-              <div className="wrk-photo-overlay"></div>
+          <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-24 px-4 md:px-8 bg-[#2C3539] overflow-hidden my-16">
+            <div className="absolute inset-0 z-0">
               <img 
-                src="https://i.postimg.cc/J4Wmf5y2/pexels-truckrun-19373190.jpg" 
-                alt="Active lifestyle representation" 
-                className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
+                src="https://i.postimg.cc/br2bFDYH/pexels-rachel-claire-7276646.jpg" 
+                alt="Forest adventure background"
+                className="w-full h-full object-cover object-center opacity-60"
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
+            </div>
+
+            <div className="relative z-10 max-w-4xl mx-auto">
+              <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-white mb-8">
+                The WRK Philosophy
+              </h3>
+              <p className="text-[16px] md:text-[18px] leading-relaxed text-white/80 mb-10">
+                Every program, app interaction, and personal training session I design is anchored in three core principles:
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
+                    <Shield size={24} />
+                  </div>
+                  <h4 className="font-serif text-[20px] text-white mb-4">Muscular Defence First</h4>
+                  <p className="text-[15px] leading-relaxed text-white/70">
+                    Rapid weight loss without targeted resistance training can compromise your strength and long-term metabolic health. We focus heavily on protective, efficient movement patterns to ensure that the weight you lose is fat, while the muscle that keeps you strong and vibrant is preserved.
+                  </p>
+                </div>
+
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
+                    <Activity size={24} />
+                  </div>
+                  <h4 className="font-serif text-[20px] text-white mb-4">Compassionate Calibration</h4>
+                  <p className="text-[15px] leading-relaxed text-white/70">
+                    Your body is changing rapidly, and your energy levels or nutritional needs might vary from week to week. My coaching adapts to where you are today, shifting away from rigid perfectionism toward intuitive, specialised guidance.
+                  </p>
+                </div>
+
+                <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
+                  <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
+                    <Droplets size={24} />
+                  </div>
+                  <h4 className="font-serif text-[20px] text-white mb-4">Real-World Integration</h4>
+                  <p className="text-[15px] leading-relaxed text-white/70">
+                    The goal isn’t to make fitness your entire life; it’s to make your fitness support the life you want to live. We work together on foundational habits - like protein tracking, hydration protocols, and simple 30-minute routines - that stick with you long after your initial 12-week track.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 

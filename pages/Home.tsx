@@ -111,36 +111,49 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 4 — THREE CORE BENEFITS */}
-      <section className="py-24 bg-white px-4 md:px-8">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <h2 className="font-serif text-[32px] md:text-[40px] text-[#2C3539]">What We Focus On</h2>
+      {/* SECTION 4 — THREE CORE BENEFITS (GLASSMORPHISM) */}
+      <section className="relative py-24 px-4 md:px-8 bg-[#2C3539] overflow-hidden">
+        {/* Background Image & Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg" 
+            alt="Adventure and lifestyle background"
+            className="w-full h-full object-cover object-center opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
         </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-[#FAFAF9] p-8 md:p-10 rounded-3xl border border-neutral-100 flex flex-col">
-            <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
+
+        <div className="relative z-10 max-w-7xl mx-auto text-center mb-16">
+          <h2 className="font-serif text-[32px] md:text-[40px] text-white">What We Focus On</h2>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 md:p-10 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
+            <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
               <Shield size={24} />
             </div>
-            <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">Protect Your Muscle</h3>
-            <p className="text-[15px] md:text-[16px] text-[#2C3539]/70 flex-grow leading-relaxed">
+            <h3 className="font-serif text-[22px] text-white mb-4">Protect Your Muscle</h3>
+            <p className="text-[15px] md:text-[16px] text-white/70 flex-grow leading-relaxed">
               Weight loss isn't the only thing that matters. When you're losing weight, maintaining muscle and strength should be a priority. We use progressive resistance training and practical nutrition strategies to help you preserve the muscle that keeps you strong, capable and independent.
             </p>
           </div>
-          <div className="bg-[#FAFAF9] p-8 md:p-10 rounded-3xl border border-neutral-100 flex flex-col">
-            <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
+          
+          <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 md:p-10 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
+            <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
               <Activity size={24} />
             </div>
-            <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">Build Real-World Fitness</h3>
-            <p className="text-[15px] md:text-[16px] text-[#2C3539]/70 flex-grow leading-relaxed">
+            <h3 className="font-serif text-[22px] text-white mb-4">Build Real-World Fitness</h3>
+            <p className="text-[15px] md:text-[16px] text-white/70 flex-grow leading-relaxed">
               The goal isn't to become someone who is good at going to the gym. It's to build a body that works better in everyday life — whether that's playing with your kids, getting outdoors, working in the garden or simply moving through your day with more confidence. Your training should make life easier, not become your entire life.
             </p>
           </div>
-          <div className="bg-[#FAFAF9] p-8 md:p-10 rounded-3xl border border-neutral-100 flex flex-col">
-            <div className="w-12 h-12 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-6 shrink-0">
+          
+          <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 md:p-10 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
+            <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
               <Target size={24} />
             </div>
-            <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">Build Beyond the Scale</h3>
-            <p className="text-[15px] md:text-[16px] text-[#2C3539]/70 flex-grow leading-relaxed">
+            <h3 className="font-serif text-[22px] text-white mb-4">Build Beyond the Scale</h3>
+            <p className="text-[15px] md:text-[16px] text-white/70 flex-grow leading-relaxed">
               The scale tells you what you weigh. It doesn't tell you how strong you are, how fit you are or how capable you feel. WRK helps you build the physical capacity and habits that support your health beyond weight loss — so you have something to take forward long after you've reached your goal.
             </p>
           </div>

@@ -1,53 +1,6 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { SeoHead } from '../components/SeoHead';
-import { Dna, Calculator, Droplet, ArrowRight, LayoutGrid } from 'lucide-react';
+const fs = require('fs');
 
-export const ToolsIndex: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
-      <SeoHead
-        title="GLP-1 Tools & Calculators | WRK Personal Training"
-        description="Free tools and calculators to help you navigate your GLP-1 journey. Calculate protein needs, hydration requirements, and daily energy expenditure."
-      />
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
-        {/* Page Header */}
-        <header className="text-center mb-20 max-w-4xl mx-auto">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 <span className="wrk-highlight">Tools</span> & Calculators
-          </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
-            Simple tools to help you make better decisions around your GLP-1 journey.
-          </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
-            <p>
-              When your appetite, activity and routine change, knowing where to start can be difficult.
-            </p>
-            <p>
-              WRK's free GLP-1 tools are designed to give you useful starting points for some of the practical questions that come with weight loss — from protein and hydration to energy needs.
-            </p>
-            <p className="font-medium text-[#2C3539]">
-              Use them as a guide, not a prescription.
-            </p>
-          </div>
-        </header>
-
-        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
-          <div className="wrk-photo-overlay"></div>
-          <img 
-            src="https://i.postimg.cc/J4Wmf5y2/pexels-truckrun-19373190.jpg" 
-            alt="Person outdoors checking a smartwatch, representing practical fitness tracking" 
-            className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
-          />
-        </div>
-
-                        {/* Tools Grid */}
+const originalContent = `        {/* Tools Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
           
           {/* Tool 1: Protein Targeter */}
@@ -175,63 +128,12 @@ export const ToolsIndex: React.FC = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </div>`;
 
-        {/* Coming Soon Section */}
-        <div className="bg-white border border-neutral-200 p-10 md:p-14 rounded-3xl shadow-sm mb-24 flex flex-col md:flex-row items-center gap-10">
-          <div className="w-16 h-16 bg-[#FAFAF9] text-[#2C3539]/40 border border-neutral-200 rounded-full flex items-center justify-center shrink-0">
-            <LayoutGrid size={32} />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-2xl md:text-3xl font-serif text-[#2C3539] mb-4 leading-tight">
-              More Tools Coming Soon
-            </h2>
-            <p className="text-[#2C3539]/80 text-[16px] md:text-[18px] leading-relaxed mb-6">
-              We're building a growing library of practical tools and resources to help you navigate the fitness side of your GLP-1 journey.
-            </p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-medium text-[#2C3539]">
-              <span>Training</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Nutrition</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Recovery</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Progress Tracking</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Strength</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Lifestyle</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Call-to-Action */}
-        <div className="bg-[#1A1C1D] text-center rounded-3xl shadow-sm p-10 md:p-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">
-            Tools Are a Starting Point.<br className="hidden md:block"/> Coaching Makes Them Personal.
-          </h2>
-          <div className="text-neutral-400 mb-10 max-w-2xl mx-auto text-[16px] md:text-[18px] leading-relaxed space-y-4">
-            <p>A calculator can give you a number.</p>
-            <p>It can't tell you how that number fits into your life.</p>
-            <p>
-              WRK coaching combines personalised training, practical nutrition support and ongoing accountability to help you turn information into action.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/services">
-              <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Explore the 12-Week Programmes
-              </button>
-            </Link>
-            <Link to="/assessment">
-              <button className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Take the Free GLP-1 Assessment
-              </button>
-            </Link>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-};
+let content = fs.readFileSync('pages/ToolsIndex.tsx', 'utf8');
+const targetContent = content.substring(
+  content.indexOf('{/* Tools Grid (GLASSMORPHISM) */}'),
+  content.indexOf('{/* Coming Soon Section */}')
+);
+content = content.replace(targetContent, originalContent + '\n\n        ');
+fs.writeFileSync('pages/ToolsIndex.tsx', content);

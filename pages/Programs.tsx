@@ -243,61 +243,75 @@ export const Programs: React.FC = () => {
           </div>
         </div>
 
-        {/* What Every 12-Week Programme Includes */}
-        <div className="mb-24">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#2C3539] mb-6">
-              What Every 12-Week Programme Includes
-            </h2>
-            <p className="text-[#2C3539]/80 text-[16px] md:text-[18px] leading-relaxed">
-              Whichever pathway you choose, you won't be handed a generic workout PDF and left to figure it out. Every WRK programme includes:
-            </p>
+        {/* What Every 12-Week Programme Includes (GLASSMORPHISM) */}
+        <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-24 px-4 md:px-8 bg-[#2C3539] overflow-hidden my-16">
+          {/* Background Image & Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://i.postimg.cc/TYJq8bqj/pexels-askar-abayev-5638749.jpg" 
+              alt="Focus and determination"
+              className="w-full h-full object-cover object-center opacity-60"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white border border-neutral-200 p-8 rounded-2xl">
-              <h3 className="font-serif text-[20px] text-[#2C3539] mb-3">Personalised Training</h3>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Structured workouts designed around your current ability, goals, training environment and lifestyle.
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16 max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">
+                What Every 12-Week Programme Includes
+              </h2>
+              <p className="text-white/80 text-[16px] md:text-[18px] leading-relaxed">
+                Whichever pathway you choose, you won't be handed a generic workout PDF and left to figure it out. Every WRK programme includes:
               </p>
             </div>
             
-            <div className="bg-white border border-neutral-200 p-8 rounded-2xl">
-              <h3 className="font-serif text-[20px] text-[#2C3539] mb-3">Progressive Programming</h3>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Your programme develops across the 12 weeks rather than simply repeating the same workouts.
-              </p>
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <h3 className="font-serif text-[20px] text-white mb-3">Personalised Training</h3>
+                <p className="text-[15px] text-white/70 leading-relaxed">
+                  Structured workouts designed around your current ability, goals, training environment and lifestyle.
+                </p>
+              </div>
+              
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <h3 className="font-serif text-[20px] text-white mb-3">Progressive Programming</h3>
+                <p className="text-[15px] text-white/70 leading-relaxed">
+                  Your programme develops across the 12 weeks rather than simply repeating the same workouts.
+                </p>
+              </div>
 
-            <div className="bg-white border border-neutral-200 p-8 rounded-2xl">
-              <h3 className="font-serif text-[20px] text-[#2C3539] mb-3">WRK Training App</h3>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Your workouts, progress tracking, resources and programme information in one place.
-              </p>
-            </div>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <h3 className="font-serif text-[20px] text-white mb-3">WRK Training App</h3>
+                <p className="text-[15px] text-white/70 leading-relaxed">
+                  Your workouts, progress tracking, resources and programme information in one place.
+                </p>
+              </div>
 
-            <div className="bg-white border border-neutral-200 p-8 rounded-2xl">
-              <h3 className="font-serif text-[20px] text-[#2C3539] mb-3">Coaching & Check-Ins</h3>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Regular check-ins help you stay accountable and make adjustments as your circumstances change.
-              </p>
-            </div>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <h3 className="font-serif text-[20px] text-white mb-3">Coaching & Check-Ins</h3>
+                <p className="text-[15px] text-white/70 leading-relaxed">
+                  Regular check-ins help you stay accountable and make adjustments as your circumstances change.
+                </p>
+              </div>
 
-            <div className="bg-white border border-neutral-200 p-8 rounded-2xl">
-              <h3 className="font-serif text-[20px] text-[#2C3539] mb-3">Nutrition & Lifestyle Support</h3>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Practical education around protein, nutrition, hydration, recovery and the everyday habits that support your training.
-              </p>
-            </div>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <h3 className="font-serif text-[20px] text-white mb-3">Nutrition & Lifestyle Support</h3>
+                <p className="text-[15px] text-white/70 leading-relaxed">
+                  Practical education around protein, nutrition, hydration, recovery and the everyday habits that support your training.
+                </p>
+              </div>
 
-            <div className="bg-white border border-neutral-200 p-8 rounded-2xl">
-              <h3 className="font-serif text-[20px] text-[#2C3539] mb-3">Flexible Training</h3>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Home or gym options, with workouts designed to fit into real life rather than requiring hours in the gym.
-              </p>
+              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <h3 className="font-serif text-[20px] text-white mb-3">Flexible Training</h3>
+                <p className="text-[15px] text-white/70 leading-relaxed">
+                  Home or gym options, with workouts designed to fit into real life rather than requiring hours in the gym.
+                </p>
+              </div>
+
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Which Pathway Is Right For You? */}
         <div className="bg-[#FAFAF9] border border-neutral-200 rounded-3xl p-8 md:p-14 mb-24">
