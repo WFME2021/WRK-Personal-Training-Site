@@ -1,344 +1,378 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SeoHead } from '../components/SeoHead';
-import { ShieldCheck, AlertTriangle, AlertOctagon, CheckCircle2 } from 'lucide-react';
-
-type Step = 1 | 2 | 3 | 4 | 5;
-
-type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH';
+import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
+import { calculateAssessmentResult } from '../assessment/scoring';
+import { AssessmentResult } from '../assessment/types';
 
 export const Assessment: React.FC = () => {
-  const [step, setStep] = useState<Step>(1);
-  const [name, setName] = useState('');
-  const [medication, setMedication] = useState('');
-  
-  const [phase, setPhase] = useState('');
-  const [exercise, setExercise] = useState('');
-  
-  const [symptoms, setSymptoms] = useState<string[]>([]);
-  
+  const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = email gate, N+2 = results
+  const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [email, setEmail] = useState('');
-  
-  const [risk, setRisk] = useState<RiskLevel>('LOW');
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [step]);
+  const [result, setResult] = useState<AssessmentResult | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSymptomToggle = (val: string) => {
-    if (symptoms.includes(val)) {
-      setSymptoms(symptoms.filter(s => s !== val));
-    } else {
-      setSymptoms([...symptoms, val]);
-    }
+  const handleSingleOption = (questionId: string, optionId: string) => {
+    setAnswers(prev => ({ ...prev, [questionId]: optionId }));
+    
+    // Automatically advance to next step after a short delay
+    setTimeout(() => {
+      handleNext();
+    }, 250);
   };
 
-  const calculateRisk = () => {
-    if (symptoms.includes('dizziness') || symptoms.length >= 3) {
-      setRisk('HIGH');
-    } else if (symptoms.length > 0) {
-      setRisk('MEDIUM');
-    } else {
-      setRisk('LOW');
-    }
+  const handleMultipleOption = (questionId: string, optionId: string) => {
+    setAnswers(prev => {
+      const current = (prev[questionId] as string[]) || [];
+      if (current.includes(optionId)) {
+        return { ...prev, [questionId]: current.filter(id => id !== optionId) };
+      } else {
+        return { ...prev, [questionId]: [...current, optionId] };
+      }
+    });
   };
 
-  const submitAssessment = (e: React.FormEvent) => {
+  const handleNext = () => {
+    setStep(prev => prev + 1);
+  };
+
+  const handleBack = () => {
+    setStep(prev => Math.max(0, prev - 1));
+  };
+
+  const submitAssessment = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    calculateRisk();
-    setStep(5);
+    setSubmitError('');
+    setIsSubmitting(true);
+
+    const calculatedResult = calculateAssessmentResult(answers);
+
+    try {
+      const response = await fetch('/api/assessment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          answers,
+          result: calculatedResult
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      setResult(calculatedResult);
+      setStep(ASSESSMENT_QUESTIONS.length + 2); // Go to results
+    } catch (err) {
+      setSubmitError('We couldn\'t send your results just yet. Your assessment is complete. Please check your email address and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
-      <SeoHead
-        title="Free Weight Loss Safety Assessment | WRK Personal Training"
-        description="Take our evidence-based weight loss safety assessment. Screen for GLP-1 side effects, monitor muscle-retention thresholds, and secure your risk profile report."
-      />
-
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
-        {/* Page Header */}
-        <header className="text-center mb-12 max-w-3xl mx-auto">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            Weight Loss Safety <span className="wrk-highlight">Assessment</span>
-          </h1>
-          <p className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70">
-            A fast, conversational 2-minute screening tool to help you identify suppressed thirst loops, assess muscle-wasting risks, and lock in your safety thresholds.
-          </p>
-        </header>
-
-        {/* Form Wrapper Container */}
-        <div className="max-w-2xl mx-auto bg-white border border-neutral-200 rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+  // Render Intro
+  if (step === 0) {
+    return (
+      <div className="bg-[#F6F5F2] min-h-screen py-16 px-6">
+        <div className="max-w-2xl mx-auto space-y-10 animate-in fade-in duration-700 pt-10">
+          <div className="space-y-6 text-center">
+            <h1 className="font-serif text-[40px] leading-[1.1] text-[#2C3539] tracking-tight">
+              GLP-1 FITNESS ASSESSMENT
+            </h1>
+            <h3 className="text-[22px] font-medium text-[#2C3539]/90">
+              Are you getting the most from your GLP-1 journey?
+            </h3>
+            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed max-w-xl mx-auto">
+              Answer a few simple questions about your training, nutrition, movement, hydration and recovery.
+              We'll identify your biggest opportunities and give you practical priorities to focus on.
+            </p>
+            <h3 className="text-[18px] font-medium text-[#2C3539] pt-4">
+              Takes about 2 minutes.
+            </h3>
+          </div>
           
-          {/* Progress Indicator */}
-          {step < 5 && (
-            <div className="flex justify-center space-x-2 mb-10">
-              {[1, 2, 3, 4].map(s => (
-                <div 
-                  key={s} 
-                  className={`h-2 rounded-full transition-all duration-500 ${step >= s ? 'bg-[#8A9A86] w-8' : 'bg-neutral-100 w-4'}`}
-                />
+          <div className="pt-4 flex justify-center">
+            <button
+              onClick={() => setStep(1)}
+              className="bg-[#2C3539] hover:bg-[#1A1F22] text-white px-8 py-4 rounded-full font-medium transition-colors text-[16px] flex items-center group"
+            >
+              START MY ASSESSMENT
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          <p className="text-[12px] text-[#2C3539]/60 text-center max-w-xl mx-auto leading-relaxed pt-12">
+            This assessment provides general fitness and nutrition education. It is not medical advice, diagnosis or treatment and does not replace advice from your prescribing clinician or other qualified healthcare professional.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Render Email Gate
+  if (step === ASSESSMENT_QUESTIONS.length + 1) {
+    return (
+      <div className="bg-[#F6F5F2] min-h-screen py-16 px-6">
+        <div className="max-w-xl mx-auto space-y-10 animate-in fade-in duration-500 pt-10">
+          <div className="text-center space-y-6">
+            <div className="w-16 h-16 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mx-auto mb-2">
+              <CheckCircle2 size={32} />
+            </div>
+            <h1 className="font-serif text-[36px] leading-[1.1] text-[#2C3539] tracking-tight">
+              YOUR PERSONALISED GLP-1 GAME PLAN
+            </h1>
+            <h3 className="text-[20px] font-medium text-[#2C3539]/90">
+              You've completed the assessment.
+            </h3>
+            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed text-left bg-white p-6 rounded-2xl border border-neutral-200">
+              Enter your email and we'll send you your personalised results, including:
+              <ul className="list-disc pl-5 pt-3 space-y-2">
+                <li>Your GLP-1 Fitness Score</li>
+                <li>Your strongest areas & biggest opportunities</li>
+                <li>Your top three priorities</li>
+                <li>Your personalised 7-day action plan</li>
+              </ul>
+            </p>
+          </div>
+
+          <form onSubmit={submitAssessment} className="space-y-6">
+            <div>
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                required
+                className="w-full bg-white border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl focus:outline-none focus:border-[#2C3539] focus:ring-1 focus:ring-[#2C3539] transition-all text-[16px]"
+              />
+            </div>
+            
+            {submitError && (
+              <div className="p-4 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100">
+                {submitError}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting || !email}
+              className="w-full bg-[#2C3539] hover:bg-[#1A1F22] disabled:bg-neutral-300 disabled:text-neutral-500 text-white px-6 py-4 rounded-xl font-medium transition-colors text-[16px] flex items-center justify-center"
+            >
+              {isSubmitting ? 'PROCESSING...' : 'SHOW ME MY RESULTS'}
+            </button>
+            
+            <p className="text-[13px] text-[#2C3539]/60 text-center leading-relaxed">
+              No spam. Just practical information to help you get more from your GLP-1 journey. You can unsubscribe at any time.
+            </p>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // Render Results
+  if (step === ASSESSMENT_QUESTIONS.length + 2 && result) {
+    return (
+      <div className="bg-[#F6F5F2] min-h-screen py-16 px-6">
+        <div className="max-w-3xl mx-auto space-y-16 animate-in slide-in-from-bottom-8 duration-700 pt-4">
+          
+          <div className="text-center space-y-6">
+            <h4 className="text-[14px] font-bold tracking-widest text-[#2C3539]/60 uppercase">
+              Your Result
+            </h4>
+            <h1 className="font-serif text-[44px] leading-[1.1] text-[#2C3539]">
+              YOUR GLP-1 FITNESS SCORE
+            </h1>
+            <div className="inline-block px-8 py-4 bg-white border border-neutral-200 rounded-3xl">
+              <div className="text-[48px] font-medium text-[#2C3539] leading-none">
+                {result.overallScore} <span className="text-[24px] text-[#2C3539]/50">/ 100</span>
+              </div>
+              <div className="text-[14px] font-bold tracking-wider text-[#8A9A86] uppercase pt-2">
+                {result.overallLabel}
+              </div>
+            </div>
+            <p className="text-[18px] text-[#2C3539]/80 leading-relaxed max-w-2xl mx-auto pt-4">
+              {result.overallScore >= 80 
+                ? "You've built a solid foundation. The focus now is consistency, progression and making your approach sustainable."
+                : result.overallScore >= 60
+                ? "You're already doing many of the important things well. Your biggest opportunity now is tightening up a few areas so your training and nutrition better support your goals."
+                : result.overallScore >= 40
+                ? "You're doing some things well, but there are a few areas worth prioritising to get more from your journey."
+                : "You have several areas where some simple changes could make a meaningful difference."}
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="font-serif text-[28px] text-[#2C3539] border-b border-neutral-200 pb-4">
+              YOUR PROFILE
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {result.domainScores.map(ds => (
+                <div key={ds.domain} className="bg-white p-6 rounded-2xl border border-neutral-200 flex flex-col">
+                  <div className="text-[14px] font-bold tracking-wider text-[#2C3539]/60 uppercase mb-2">
+                    {ds.domain}
+                  </div>
+                  <div className="text-[28px] font-medium text-[#2C3539] mb-1">
+                    {ds.score} <span className="text-[16px] text-[#2C3539]/50">/ 100</span>
+                  </div>
+                  <div className={`text-[14px] font-medium ${ds.score < 60 ? 'text-amber-600' : 'text-[#8A9A86]'}`}>
+                    {ds.label}
+                  </div>
+                </div>
               ))}
             </div>
-          )}
+          </div>
 
-          {/* STEP 1 */}
-          {step === 1 && (
-            <div className="space-y-8 animate-in fade-in duration-500">
-              <h2 className="font-serif text-[28px] text-[#2C3539] text-center">Let's start with the basics</h2>
-              
-              <div className="space-y-5">
-                <div>
-                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Your First Name</label>
-                  <input 
-                    type="text"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    placeholder="Enter your name"
-                    className="w-full bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 py-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Current Prescribed Medication Track</label>
-                  <div className="relative">
-                    <select 
-                      value={medication}
-                      onChange={e => setMedication(e.target.value)}
-                      className="w-full bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 py-4 rounded-xl appearance-none focus:outline-none focus:border-[#8A9A86] transition-colors cursor-pointer"
-                    >
-                      <option value="" disabled>Select your medication...</option>
-                      <option value="Semaglutide">Semaglutide (Ozempic, Wegovy)</option>
-                      <option value="Tirzepatide">Tirzepatide (Mounjaro, Zepbound)</option>
-                      <option value="Liraglutide">Liraglutide (Saxenda)</option>
-                      <option value="Exploring Options">Exploring Options / Not currently prescribed</option>
-                    </select>
-                    <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-neutral-400">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
+          <div className="space-y-8">
+            <h2 className="font-serif text-[28px] text-[#2C3539] border-b border-neutral-200 pb-4">
+              YOUR BIGGEST OPPORTUNITIES
+            </h2>
+            <div className="space-y-6">
+              {result.recommendations.map((rec, index) => (
+                <div key={rec.domain} className="bg-white p-8 rounded-2xl border border-neutral-200 space-y-4">
+                  <div className="text-[13px] font-bold tracking-widest text-[#2C3539]/50 uppercase mb-2">
+                    0{index + 1} — {rec.domain}
+                  </div>
+                  <h3 className="font-serif text-[22px] text-[#2C3539] uppercase">
+                    {rec.headline}
+                  </h3>
+                  <p className="text-[16px] text-[#2C3539]/80 leading-relaxed">
+                    {rec.explanation}
+                  </p>
+                  <div className="pt-4 border-t border-neutral-100">
+                    <h4 className="text-[14px] font-bold text-[#2C3539] mb-2">YOUR NEXT STEP</h4>
+                    <p className="text-[16px] text-[#8A9A86] font-medium">
+                      {rec.firstStep}
+                    </p>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
 
-              <button 
-                onClick={() => setStep(2)}
-                disabled={!name || !medication}
-                className="w-full bg-[#8A9A86] disabled:bg-neutral-200 disabled:text-neutral-400 disabled:cursor-not-allowed hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px] mt-8"
+          <div className="space-y-6">
+            <h2 className="font-serif text-[28px] text-[#2C3539] border-b border-neutral-200 pb-4">
+              YOUR NEXT 7 DAYS
+            </h2>
+            <div className="bg-[#2C3539] text-white p-8 rounded-2xl space-y-6">
+              {result.sevenDayPlan.map(item => (
+                <div key={item.domain} className="flex flex-col sm:flex-row sm:items-baseline border-b border-white/10 pb-4 last:border-0 last:pb-0">
+                  <div className="text-[14px] font-bold tracking-widest text-white/50 uppercase sm:w-32 mb-1 sm:mb-0">
+                    {item.label}
+                  </div>
+                  <div className="text-[16px] font-medium">
+                    {item.action}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white p-10 rounded-2xl border border-neutral-200 text-center space-y-6">
+            <h2 className="font-serif text-[28px] text-[#2C3539]">
+              WANT HELP PUTTING THIS INTO PRACTICE?
+            </h2>
+            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed max-w-lg mx-auto">
+              Your assessment gives you the starting point. Coaching helps you turn it into a plan that fits your life.
+            </p>
+            <div className="pt-4">
+              <Link 
+                to="/online-coaching"
+                className="inline-flex items-center justify-center bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
               >
-                Continue Assessment
+                EXPLORE GLP-1 FITNESS COACHING
+              </Link>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  // Render Question
+  const qIndex = step - 1;
+  const question = ASSESSMENT_QUESTIONS[qIndex];
+  
+  if (!question) return null;
+
+  const currentAnswer = answers[question.id];
+  const canProceed = question.type === 'single' ? !!currentAnswer : (currentAnswer as string[])?.length > 0;
+
+  return (
+    <div className="bg-[#F6F5F2] min-h-screen flex flex-col">
+      {/* Progress */}
+      <div className="w-full h-1 bg-neutral-200 fixed top-0 left-0 z-50">
+        <div 
+          className="h-full bg-[#8A9A86] transition-all duration-300 ease-out"
+          style={{ width: `${(step / ASSESSMENT_QUESTIONS.length) * 100}%` }}
+        />
+      </div>
+
+      <div className="flex-1 flex flex-col justify-center py-12 px-6">
+        <div className="max-w-2xl mx-auto w-full space-y-8 animate-in fade-in duration-300 slide-in-from-right-4">
+          <div className="text-[13px] font-bold tracking-widest text-[#2C3539]/50 uppercase mb-4">
+            Question {step} of {ASSESSMENT_QUESTIONS.length}
+          </div>
+          
+          <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] leading-tight">
+            {question.question}
+          </h2>
+
+          <div className="space-y-3 pt-6">
+            {question.options.map(opt => {
+              const isSelected = question.type === 'single' 
+                ? currentAnswer === opt.id
+                : ((currentAnswer as string[]) || []).includes(opt.id);
+
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => question.type === 'single' 
+                    ? handleSingleOption(question.id, opt.id)
+                    : handleMultipleOption(question.id, opt.id)
+                  }
+                  className={`w-full flex items-center text-left px-6 py-5 rounded-2xl border-2 transition-all ${
+                    isSelected 
+                      ? 'border-[#2C3539] bg-[#2C3539]/5 text-[#2C3539]' 
+                      : 'border-neutral-200 bg-white text-[#2C3539]/80 hover:border-neutral-300 hover:bg-neutral-50'
+                  }`}
+                >
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mr-4 flex-shrink-0 ${
+                    isSelected ? 'border-[#2C3539] bg-[#2C3539]' : 'border-neutral-300'
+                  }`}>
+                    {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
+                  </div>
+                  <span className="text-[16px] font-medium">{opt.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center justify-between pt-8 border-t border-neutral-200/50">
+            <button
+              onClick={handleBack}
+              className="flex items-center text-[15px] font-medium text-[#2C3539]/60 hover:text-[#2C3539] transition-colors p-2 -ml-2"
+            >
+              <ArrowLeft className="w-5 h-5 mr-2" />
+              BACK
+            </button>
+            
+            {question.type === 'multiple' && (
+              <button
+                onClick={handleNext}
+                disabled={!canProceed}
+                className="flex items-center bg-[#2C3539] hover:bg-[#1A1F22] disabled:bg-neutral-300 disabled:text-neutral-500 text-white px-6 py-3 rounded-full font-medium transition-colors text-[14px]"
+              >
+                NEXT
+                <ChevronRight className="w-5 h-5 ml-1" />
               </button>
-            </div>
-          )}
-
-          {/* STEP 2 */}
-          {step === 2 && (
-            <div className="space-y-8 animate-in fade-in duration-500">
-              <h2 className="font-serif text-[28px] text-[#2C3539] text-center">Timeline & Context</h2>
-              
-              <div className="space-y-5">
-                <div>
-                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Dosing Schedule Phase</label>
-                  <div className="grid grid-cols-1 gap-3">
-                    {['Onboarding (Just started)', 'Escalation (Increasing dose)', 'Maintenance (Stable dose)'].map(opt => (
-                      <button
-                        key={opt}
-                        onClick={() => setPhase(opt)}
-                        className={`text-left px-5 py-4 rounded-xl border transition-colors ${phase === opt ? 'border-[#8A9A86] bg-[#8A9A86]/5 text-[#2C3539]' : 'border-neutral-200 bg-[#FAFAF9] text-[#2C3539]/70 hover:border-neutral-300'}`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div className="pt-4">
-                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Current Exercise Baseline</label>
-                  <div className="grid grid-cols-1 gap-3">
-                    {['Beginner (Minimal movement/walking)', 'Already Active (Consistent workouts)'].map(opt => (
-                      <button
-                        key={opt}
-                        onClick={() => setExercise(opt)}
-                        className={`text-left px-5 py-4 rounded-xl border transition-colors ${exercise === opt ? 'border-[#8A9A86] bg-[#8A9A86]/5 text-[#2C3539]' : 'border-neutral-200 bg-[#FAFAF9] text-[#2C3539]/70 hover:border-neutral-300'}`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex space-x-4 mt-8">
-                <button 
-                  onClick={() => setStep(1)}
-                  className="w-1/3 bg-[#FAFAF9] hover:bg-[#F0F0EE] border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                >
-                  Back
-                </button>
-                <button 
-                  onClick={() => setStep(3)}
-                  disabled={!phase || !exercise}
-                  className="w-2/3 bg-[#8A9A86] disabled:bg-neutral-200 disabled:text-neutral-400 disabled:cursor-not-allowed hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                >
-                  Continue
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* STEP 3 */}
-          {step === 3 && (
-            <div className="space-y-8 animate-in fade-in duration-500">
-              <h2 className="font-serif text-[28px] text-[#2C3539] text-center">Symptom Screen</h2>
-              <p className="text-center text-[15px] text-[#2C3539]/70">Please select any active physiological side-effects you are currently experiencing (Select all that apply).</p>
-              
-              <div className="space-y-3">
-                {[
-                  { id: 'nausea', label: 'Persistent Nausea / Food Aversion' },
-                  { id: 'fatigue', label: 'Severe Fatigue' },
-                  { id: 'thirst', label: 'Headaches / Suppressed Thirst' },
-                  { id: 'dizziness', label: 'Standing Dizziness / Lightheadedness' }
-                ].map(opt => (
-                  <button
-                    key={opt.id}
-                    onClick={() => handleSymptomToggle(opt.id)}
-                    className={`w-full flex items-center text-left px-5 py-4 rounded-xl border transition-colors ${symptoms.includes(opt.id) ? 'border-[#8A9A86] bg-[#8A9A86]/5 text-[#2C3539]' : 'border-neutral-200 bg-[#FAFAF9] text-[#2C3539]/70 hover:border-neutral-300'}`}
-                  >
-                    <div className={`w-5 h-5 rounded flex items-center justify-center mr-4 border ${symptoms.includes(opt.id) ? 'bg-[#8A9A86] border-[#8A9A86] text-white' : 'border-neutral-300 bg-white'}`}>
-                      {symptoms.includes(opt.id) && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5"/></svg>}
-                    </div>
-                    {opt.label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex space-x-4 mt-8">
-                <button 
-                  onClick={() => setStep(2)}
-                  className="w-1/3 bg-[#FAFAF9] hover:bg-[#F0F0EE] border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                >
-                  Back
-                </button>
-                <button 
-                  onClick={() => setStep(4)}
-                  className="w-2/3 bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                >
-                  Analyze Results
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* STEP 4 */}
-          {step === 4 && (
-            <div className="space-y-8 animate-in fade-in duration-500 text-center">
-              <div className="w-16 h-16 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mx-auto mb-2">
-                <CheckCircle2 size={32} />
-              </div>
-              <h2 className="font-serif text-[28px] text-[#2C3539]">Analysis Complete</h2>
-              <p className="text-[15px] text-[#2C3539]/80 leading-relaxed bg-[#FAFAF9] p-4 rounded-xl border border-neutral-200 font-medium">
-                🔒 SECURE YOUR SAFETY SCORECARD: Enter your primary email address below to calculate your risk profile score. We will instantly email your position-specific report alongside your daily target parameters via MailerLite.
-              </p>
-              
-              <form onSubmit={submitAssessment} className="space-y-5 text-left mt-8">
-                <div>
-                  <label className="block text-[14px] font-medium text-[#2C3539]/70 mb-2">Email Address</label>
-                  <input 
-                    type="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="w-full bg-[#FAFAF9] border border-neutral-200 text-[#2C3539] px-5 py-4 rounded-xl focus:outline-none focus:border-[#8A9A86] transition-colors"
-                  />
-                </div>
-                
-                <div className="flex space-x-4 pt-4">
-                  <button 
-                    type="button"
-                    onClick={() => setStep(3)}
-                    className="w-1/3 bg-[#FAFAF9] hover:bg-[#F0F0EE] border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                  >
-                    Back
-                  </button>
-                  <button 
-                    type="submit"
-                    disabled={!email}
-                    className="w-2/3 bg-[#2C3539] disabled:bg-neutral-200 disabled:text-neutral-400 disabled:cursor-not-allowed hover:bg-[#1A1F22] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                  >
-                    Reveal My Results
-                  </button>
-                </div>
-              </form>
-            </div>
-          )}
-
-          {/* STEP 5 (RESULTS) */}
-          {step === 5 && (
-            <div className="space-y-8 animate-in slide-in-from-bottom-8 duration-700">
-              
-              {risk === 'LOW' && (
-                <div className="text-center space-y-6">
-                  <div className="w-20 h-20 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mx-auto">
-                    <ShieldCheck size={40} />
-                  </div>
-                  <h2 className="font-serif text-[32px] text-[#2C3539] leading-tight">Status: Stable Baseline</h2>
-                  <p className="text-[16px] leading-relaxed text-[#2C3539]/80">
-                    Your metrics suggest your lifestyle thresholds are aligning well. Protect your metabolism by tracking your daily protein targets using our free tools.
-                  </p>
-                  <div className="pt-6">
-                    <Link 
-                      to="/tools/protein-targeter"
-                      className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                    >
-                      Calculate Protein Target
-                    </Link>
-                  </div>
-                </div>
-              )}
-
-              {risk === 'MEDIUM' && (
-                <div className="text-center space-y-6">
-                  <div className="w-20 h-20 bg-amber-500/10 text-amber-600 rounded-full flex items-center justify-center mx-auto">
-                    <AlertTriangle size={40} />
-                  </div>
-                  <h2 className="font-serif text-[32px] text-[#2C3539] leading-tight">Status: Mitigation Indicated</h2>
-                  <p className="text-[16px] leading-relaxed text-[#2C3539]/80">
-                    Your answers suggest moderate side effects or suppressed thirst loops common with advanced interventions. Prioritize structured tracking using our Hydration Calculator.
-                  </p>
-                  <div className="pt-6">
-                    <Link 
-                      to="/tools/hydration-calculator"
-                      className="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-700 text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                    >
-                      Access Hydration Calculator
-                    </Link>
-                  </div>
-                </div>
-              )}
-
-              {risk === 'HIGH' && (
-                <div className="text-center space-y-6">
-                  <div className="w-20 h-20 bg-red-500/10 text-red-600 rounded-full flex items-center justify-center mx-auto">
-                    <AlertOctagon size={40} />
-                  </div>
-                  <h2 className="font-serif text-[32px] text-[#2C3539] leading-tight">Status: High-Priority Adjustment Suggested</h2>
-                  <p className="text-[16px] leading-relaxed text-[#2C3539]/80">
-                    Your reported symptoms indicate significant fluid volume shifts or rapid mineral depletion. We highly suggest alerting your prescribing clinical care team to review these parameters. Access our Micro-Volume Fluid Grid immediately to protect your comfort.
-                  </p>
-                  <div className="pt-6">
-                    <Link 
-                      to="/tools/hydration-calculator"
-                      className="inline-flex items-center justify-center w-full bg-[#2C3539] hover:bg-[#1A1F22] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]"
-                    >
-                      View Micro-Volume Grid
-                    </Link>
-                  </div>
-                </div>
-              )}
-
-            </div>
-          )}
-
+            )}
+          </div>
         </div>
       </div>
     </div>
