@@ -128,7 +128,7 @@ export const Assessment: React.FC = () => {
             <h3 className="text-[20px] font-medium text-[#2C3539]/90">
               You've completed the assessment.
             </h3>
-            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed text-left bg-white p-6 rounded-2xl border border-neutral-200">
+            <div className="text-[16px] text-[#2C3539]/80 leading-relaxed text-left bg-white p-6 rounded-2xl border border-neutral-200">
               Enter your email and we'll send you your personalised results, including:
               <ul className="list-disc pl-5 pt-3 space-y-2">
                 <li>Your GLP-1 Fitness Score</li>
@@ -136,7 +136,7 @@ export const Assessment: React.FC = () => {
                 <li>Your top three priorities</li>
                 <li>Your personalised 7-day action plan</li>
               </ul>
-            </p>
+            </div>
           </div>
 
           <form onSubmit={submitAssessment} className="space-y-6">
