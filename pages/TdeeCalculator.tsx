@@ -55,6 +55,7 @@ export const TdeeCalculator: React.FC = () => {
   const [preference, setPreference] = useState<Preference>('');
   
   const [currentIntakeChoice, setCurrentIntakeChoice] = useState<CurrentIntakeChoice>('');
+  const [meals, setMeals] = useState<string>('');
   const [currentIntake, setCurrentIntake] = useState<string>('');
 
   const [showResults, setShowResults] = useState(false);
@@ -88,7 +89,8 @@ export const TdeeCalculator: React.FC = () => {
     if (step === 3 && !resistance) return setError('Please select your resistance training frequency.');
     if (step === 4 && !goal) return setError('Please select your goal.');
     if (step === 5 && !preference) return setError('Please select your nutrition preference.');
-    if (step === 6) {
+    if (step === 6 && (!meals || isNaN(Number(meals)) || Number(meals) < 1 || Number(meals) > 8)) return setError('Please enter a valid number of meals (1-8).');
+    if (step === 7) {
       if (!currentIntakeChoice) return setError('Please select an option.');
       if (currentIntakeChoice === 'yes' && (!currentIntake || isNaN(Number(currentIntake)) || Number(currentIntake) < 500)) {
         return setError('Please enter a valid daily calorie intake.');
@@ -121,39 +123,41 @@ export const TdeeCalculator: React.FC = () => {
     const targetCaloriesRounded = Math.round(targetCaloriesUnrounded / 10) * 10;
 
     // Protein from TARGET weight
-    const proteinGrams = Math.round(PROTEIN_MULTIPLIERS[resistance as keyof typeof PROTEIN_MULTIPLIERS] * tw);
+    let proteinGrams = Math.round(PROTEIN_MULTIPLIERS[resistance as keyof typeof PROTEIN_MULTIPLIERS] * tw);
+    const eatingOccasions = Number(meals);
+    
+    // Per-meal floor check
+    if (proteinGrams / eatingOccasions < 25) {
+      proteinGrams = 25 * eatingOccasions;
+    }
     const proteinCals = proteinGrams * 4;
 
     const minProteinGrams = Math.round(1.2 * tw);
     const maxProteinGrams = Math.round(1.6 * tw);
 
     let fatCals = 0;
-    let carbCals = 0;
-
     if (preference === 'balanced') {
       fatCals = targetCaloriesRounded * 0.30;
     } else if (preference === 'higherProtein') {
       fatCals = targetCaloriesRounded * 0.25;
     } else if (preference === 'lowerCarb') {
-      carbCals = targetCaloriesRounded * 0.20;
-      fatCals = targetCaloriesRounded - proteinCals - carbCals;
-    }
-
-    if (preference === 'balanced' || preference === 'higherProtein') {
-      carbCals = targetCaloriesRounded - proteinCals - fatCals;
+      fatCals = targetCaloriesRounded - proteinCals - (targetCaloriesRounded * 0.20);
     }
 
     // Fat minimum enforcement
     const minFatCals = MIN_FAT_G * 9;
     if (fatCals < minFatCals) {
       fatCals = minFatCals;
-      carbCals = targetCaloriesRounded - proteinCals - fatCals;
     }
 
-    // Carb floor enforcement
+    // Carbs are flexible remainder
+    let carbCals = targetCaloriesRounded - proteinCals - fatCals;
+
+    // Mathematical impossibility check
     if (carbCals < 0) {
-      carbCals = 0;
-      fatCals = targetCaloriesRounded - proteinCals - carbCals;
+      setError('Your calorie target is too low to support the required protein and minimum fat targets. Please consider a smaller calorie deficit or fewer eating occasions.');
+      setShowResults(false);
+      return;
     }
 
     const fatGrams = Math.round(fatCals / 9);
@@ -171,6 +175,7 @@ export const TdeeCalculator: React.FC = () => {
       fat: fatGrams,
       carbs: carbGrams,
       deficitPercentage,
+      meals: eatingOccasions,
     });
     
     setShowResults(true);
@@ -190,6 +195,7 @@ export const TdeeCalculator: React.FC = () => {
     setPreference('');
     setCurrentIntakeChoice('');
     setCurrentIntake('');
+    setMeals('');
     setShowResults(false);
     setResults(null);
     scrollToTop();
@@ -280,17 +286,32 @@ export const TdeeCalculator: React.FC = () => {
               <h3 className="text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Your protein priority</h3>
               <div className="font-serif text-[36px] text-[#2C3539] mb-4">{results.protein} g/day</div>
               <p className="text-[15px] text-[#2C3539]/80 leading-relaxed mb-6">
-                Protein is prioritised first in your macro calculation because maintaining adequate protein intake is an important consideration during weight loss, particularly when resistance training.
+                Your daily protein target is prioritised to support muscle retention during weight loss. We've also set a practical minimum of 25 g protein per eating occasion so your protein is distributed meaningfully across the day. The remaining calories are allocated between fat and carbohydrates.
               </p>
               <div className="bg-[#FAFAF9] rounded-2xl p-5 border border-neutral-200">
-                <p className="text-[13px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Example distribution:</p>
-                <ul className="space-y-2 text-[14px] text-[#2C3539]">
-                  <li className="flex justify-between"><span>Breakfast</span> <span className="font-medium">{Math.round(results.protein * 0.22)} g</span></li>
-                  <li className="flex justify-between"><span>Lunch</span> <span className="font-medium">{Math.round(results.protein * 0.25)} g</span></li>
-                  <li className="flex justify-between"><span>Snack</span> <span className="font-medium">{Math.round(results.protein * 0.20)} g</span></li>
-                  <li className="flex justify-between"><span>Dinner</span> <span className="font-medium">{results.protein - Math.round(results.protein * 0.22) - Math.round(results.protein * 0.25) - Math.round(results.protein * 0.20)} g</span></li>
+                <p className="text-[13px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">PER-MEAL PROTEIN GUIDE:</p>
+                <div className="text-[24px] font-serif text-[#2C3539] mb-1">
+                  {Math.round(results.protein / results.meals)} g target
+                </div>
+                {Math.round(results.protein / results.meals) > 25 ? (
+                  <p className="text-[14px] text-[#2C3539]/70 mb-4">per eating occasion (25 g minimum floor)</p>
+                ) : (
+                  <p className="text-[14px] text-[#2C3539]/70 mb-4">per eating occasion (minimum floor)</p>
+                )}
+                
+                <ul className="space-y-2 text-[14px] text-[#2C3539] pt-4 border-t border-neutral-200">
+                  {Array.from({ length: results.meals }).map((_, idx) => {
+                    const isLast = idx === results.meals - 1;
+                    const baseAmount = Math.floor(results.protein / results.meals);
+                    const amount = isLast ? results.protein - (baseAmount * (results.meals - 1)) : baseAmount;
+                    return (
+                      <li key={idx} className="flex justify-between">
+                        <span>Meal {idx + 1}</span>
+                        <span className="font-medium">{amount} g</span>
+                      </li>
+                    );
+                  })}
                 </ul>
-                <p className="text-[13px] text-[#2C3539]/60 mt-4 italic">For example, you could spread your target across 3–4 meals or snacks.</p>
               </div>
             </div>
 
@@ -414,9 +435,9 @@ export const TdeeCalculator: React.FC = () => {
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-neutral-200 mb-24 relative overflow-hidden">
           
           <div className="flex items-center justify-between mb-10 pb-6 border-b border-neutral-100">
-            <span className="text-[13px] font-bold uppercase tracking-wider text-[#8A9A86]">Step {step} of 6</span>
+            <span className="text-[13px] font-bold uppercase tracking-wider text-[#8A9A86]">Step {step} of 7</span>
             <div className="flex gap-1.5">
-              {[1, 2, 3, 4, 5, 6].map(i => (
+              {[1, 2, 3, 4, 5, 6, 7].map(i => (
                 <div key={i} className={`h-2 rounded-full transition-all duration-300 ${step >= i ? 'w-8 bg-[#8A9A86]' : 'w-4 bg-neutral-100'}`} />
               ))}
             </div>
@@ -607,6 +628,20 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 6 */}
           {step === 6 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-8">How many eating occasions (meals or snacks) do you typically have per day?</h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Number of meals/snacks</label>
+                  <input type="number" value={meals} onChange={e => setMeals(e.target.value)} placeholder="e.g. 3" className="w-full h-14 px-5 bg-[#FAFAF9] border border-neutral-200 rounded-xl focus:ring-2 focus:ring-[#8A9A86] outline-none text-[16px] font-medium text-[#2C3539] transition-all" />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 7 */}
+          {step === 7 && (
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-8">Do you know roughly how many calories you're currently eating each day?</h2>
               
               <div className="space-y-4">
@@ -661,7 +696,7 @@ export const TdeeCalculator: React.FC = () => {
               onClick={handleNext}
               className="h-12 px-8 rounded-xl bg-[#8A9A86] text-white font-medium transition-colors hover:bg-[#768672] flex items-center"
             >
-              {step === 6 ? 'Calculate Results' : 'Continue'} <ArrowRight size={18} className="ml-2" />
+              {step === 7 ? 'Calculate Results' : 'Continue'} <ArrowRight size={18} className="ml-2" />
             </button>
           </div>
 
