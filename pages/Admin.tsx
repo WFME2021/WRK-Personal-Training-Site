@@ -84,15 +84,19 @@ export const Admin: React.FC = () => {
 
   // Check auth on mount
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
-      setIsAuthLoading(false);
+    import('firebase/auth').then(({ onAuthStateChanged }) => {
+      import('../firebase').then(({ auth }) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setIsAuthenticated(true);
+          } else {
+            setIsAuthenticated(false);
+          }
+          setIsAuthLoading(false);
+        });
+        return () => unsubscribe();
+      });
     });
-    return () => unsubscribe();
   }, []);
 
   // Handle Login
@@ -353,6 +357,10 @@ export const Admin: React.FC = () => {
                 </svg>
                 Sign in with Google
               </Button>
+              <div className="text-xs text-text-secondary mt-4 text-left border border-border p-3 rounded bg-primary/50">
+                <p className="font-bold mb-1">Popup not working?</p>
+                <p>If you are inside the AI Studio preview, the browser blocks login popups. Click the "Open in new tab" icon (arrow pointing up-right) at the top of the preview window to log in safely.</p>
+              </div>
             </form>
           )}
           <div className="mt-6 text-center">
