@@ -253,28 +253,36 @@ ${message}
       sevenDayPlan
     } = result;
 
-    try {
-      try {
-        // Lazy load nodemailer
-        const nodemailer = await import("nodemailer");
+    // Send immediate response so frontend doesn't wait for third-party APIs
+    res.status(200).json({ success: true, message: "Assessment received" });
 
-        const port = Number(process.env.SMTP_PORT) || 587;
-        const isSecure = port === 465;
-        const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST,
-          port: port,
-          secure: isSecure,
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS?.replace(/^"|"$/g, '').trim(),
-          },
-        });
+    // Process integrations in background
+    (async () => {
+      // 1. Send Emails
+      const emailPromise = (async () => {
+        try {
+          const nodemailer = await import("nodemailer");
+          const port = Number(process.env.SMTP_PORT) || 587;
+          const isSecure = port === 465;
 
-        const mailOptions = {
-          from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
-          to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz, wfme2021@gmail.com",
-          subject: `New GLP-1 Fitness Assessment — ${overallScore}/100`,
-          text: `=== New GLP-1 Assessment Unlocked ===
+          const transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST,
+            port: port,
+            secure: isSecure,
+            auth: {
+              user: process.env.SMTP_USER,
+              pass: process.env.SMTP_PASS?.replace(/^"|"$/g, '').trim(),
+            },
+            connectionTimeout: 10000,
+            greetingTimeout: 5000,
+            socketTimeout: 10000
+          });
+
+          const adminMailOptions = {
+            from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
+            to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz, wfme2021@gmail.com",
+            subject: `New GLP-1 Fitness Assessment — ${overallScore}/100`,
+            text: `=== New GLP-1 Assessment Unlocked ===
 Email: ${email}
 Overall Score: ${overallScore}/100 (${overallLabel})
 
@@ -290,166 +298,150 @@ GLP-1 Duration: ${glp1Duration || 'N/A'}
 
 --- Raw Answers ---
 ${JSON.stringify(answers, null, 2)}`,
-        };
+          };
 
-        const sendMailRobust = async (transporter, mailOptions, smtpUser) => {
-          try {
-            await transporter.sendMail(mailOptions);
-            return true;
-          } catch (error) {
-            if (error.code === 'EAUTH' || error.responseCode === 535) {
-              throw new Error("SMTP Authentication Failed");
-            }
-            if (
-              error.responseCode === 554 || 
-              error.responseCode === 550 || 
-              (error.message && (error.message.includes('Sender address rejected') || error.message.includes('Access denied')))
-            ) {
-              if (smtpUser && mailOptions.from !== smtpUser) {
-                const fallbackOptions = { ...mailOptions, from: smtpUser, replyTo: mailOptions.from };
-                await transporter.sendMail(fallbackOptions);
-                return true;
-              }
-            }
-            throw error;
-          }
-        };
-
-        await sendMailRobust(transporter, mailOptions, process.env.SMTP_USER);
-        console.log("Assessment admin email sent successfully");
-
-        // Send email to user
-        const userMailOptions = {
-          from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
-          to: email,
-          subject: `Your GLP-1 Fitness Assessment Results`,
-          html: `
-            <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #2C3539;">
-              <h2 style="color: #2C3539;">Your GLP-1 Fitness Assessment Results</h2>
-              <p>Hi there,</p>
-              <p>Thank you for completing the GLP-1 Fitness Assessment. Here are your personalized results and focus areas to help you get the most out of your journey.</p>
-              
-              <div style="background-color: #F6F5F2; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <h3 style="margin-top: 0; color: #2C3539;">Overall Score: ${overallScore}/100 (${overallLabel})</h3>
-                <h4 style="margin-bottom: 10px;">Your Top 3 Priorities:</h4>
-                <ol style="margin-top: 0;">
-                  <li><strong>${primaryFocus.toUpperCase()}</strong></li>
-                  <li><strong>${secondaryFocus.toUpperCase()}</strong></li>
-                  <li><strong>${thirdFocus.toUpperCase()}</strong></li>
-                </ol>
+          const userMailOptions = {
+            from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
+            to: email,
+            subject: `Your GLP-1 Fitness Assessment Results`,
+            html: `
+              <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #2C3539;">
+                <h2 style="color: #2C3539;">Your GLP-1 Fitness Assessment Results</h2>
+                <p>Hi there,</p>
+                <p>Thank you for completing the GLP-1 Fitness Assessment. Here are your personalized results and focus areas to help you get the most out of your journey.</p>
+                
+                <div style="background-color: #F6F5F2; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                  <h3 style="margin-top: 0; color: #2C3539;">Overall Score: ${overallScore}/100 (${overallLabel})</h3>
+                  <h4 style="margin-bottom: 10px;">Your Top 3 Priorities:</h4>
+                  <ol style="margin-top: 0;">
+                    <li><strong>${(primaryFocus || '').toUpperCase()}</strong></li>
+                    <li><strong>${(secondaryFocus || '').toUpperCase()}</strong></li>
+                    <li><strong>${(thirdFocus || '').toUpperCase()}</strong></li>
+                  </ol>
+                </div>
+                
+                <p>If you're ready to start building muscle and protecting your metabolism, <a href="https://www.wrkpersonaltraining.co.nz/contact" style="color: #2C3539; font-weight: bold;">reach out to us today</a> to discuss a personalized plan.</p>
+                
+                <p>Best regards,<br>Hayden Richards<br><strong>WRK Personal Training</strong></p>
               </div>
-              
-              <p>If you're ready to start building muscle and protecting your metabolism, <a href="https://www.wrkpersonaltraining.co.nz/contact" style="color: #2C3539; font-weight: bold;">reach out to us today</a> to discuss a personalized plan.</p>
-              
-              <p>Best regards,<br>Hayden Richards<br><strong>WRK Personal Training</strong></p>
-            </div>
-          `
-        };
+            `
+          };
 
-        try {
-          await sendMailRobust(transporter, userMailOptions, process.env.SMTP_USER);
+          const sendMailRobust = async (opts) => {
+            try {
+              await transporter.sendMail(opts);
+            } catch (err) {
+              if (err.responseCode === 554 || err.responseCode === 550 || (err.message && err.message.includes('rejected'))) {
+                 const fallback = { ...opts, from: process.env.SMTP_USER, replyTo: opts.from };
+                 await transporter.sendMail(fallback);
+                 return;
+              }
+              throw err;
+            }
+          };
+
+          await sendMailRobust(adminMailOptions);
+          console.log("Assessment admin email sent successfully");
+          
+          await sendMailRobust(userMailOptions);
           console.log("Assessment user email sent successfully");
-        } catch (userEmailError) {
-          console.warn("Failed to send assessment email to user, but continuing:", userEmailError.message);
+
+        } catch (error) {
+          if (error.message && error.message.includes("Authentication Failed") || error.code === 'EAUTH' || error.responseCode === 535) { 
+            console.warn("Skipping assessment email: SMTP Authentication Failed"); 
+          } else { 
+            console.error("Failed to send assessment email:", error); 
+          }
         }
+      })();
 
-      } catch (emailError) {
-        if (emailError.message && emailError.message.includes("SMTP Authentication Failed")) { console.warn("Skipping assessment email: SMTP Authentication Failed (check Settings)"); } else { console.error("Failed to send assessment email:", emailError); }
-      }
+      // 2. MailerLite Integration
+      const mailerlitePromise = (async () => {
+        const rawKey = process.env.MAILERLITE_API_KEY || "";
+        const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
+        const MAILERLITE_PROSPECT_GROUP = "195641787200570883";
 
-      // --- MailerLite Integration ---
-      const rawKey = process.env.MAILERLITE_API_KEY || "";
-      const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
-      
-      const MAILERLITE_PROSPECT_GROUP = "195641787200570883";
-
-      if (MAILERLITE_API_KEY) {
-        try {
-          const fields = {
-            glp1_fitness_score: overallScore,
-            primary_focus: primaryFocus,
-            secondary_focus: secondaryFocus,
-            third_focus: thirdFocus,
-            primary_goal: goal || '',
-            glp1_status: glp1Status || '',
-            assessment_version: assessmentVersion,
-            assessment_date: new Date().toISOString().split('T')[0]
-          };
-
-          const subscriberPayloadV3 = {
-            email: email,
-            fields: fields,
-            groups: [MAILERLITE_PROSPECT_GROUP]
-          };
-
-          let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify(subscriberPayloadV3)
-          });
-
-          if (!mlResponse.ok && mlResponse.status === 401) {
-            console.log('MailerLite v3 failed with 401, trying v2 API...');
-            const subscriberPayloadV2 = {
-              email: email,
-              fields: fields
+        if (MAILERLITE_API_KEY) {
+          try {
+            const fields = {
+              glp1_fitness_score: overallScore,
+              primary_focus: primaryFocus,
+              secondary_focus: secondaryFocus,
+              third_focus: thirdFocus,
+              primary_goal: goal || '',
+              glp1_status: glp1Status || '',
+              assessment_version: assessmentVersion,
+              assessment_date: new Date().toISOString().split('T')[0]
             };
-            
-            const v2Endpoint = `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_PROSPECT_GROUP}/subscribers`;
 
-            mlResponse = await fetch(v2Endpoint, {
+            const subscriberPayloadV3 = {
+              email: email,
+              fields: fields,
+              groups: [MAILERLITE_PROSPECT_GROUP]
+            };
+
+            let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'X-MailerLite-ApiKey': MAILERLITE_API_KEY,
+                'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
                 'Accept': 'application/json'
               },
-              body: JSON.stringify(subscriberPayloadV2)
+              body: JSON.stringify(subscriberPayloadV3)
             });
+
+            if (!mlResponse.ok && mlResponse.status === 401) {
+              const v2Endpoint = `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_PROSPECT_GROUP}/subscribers`;
+              mlResponse = await fetch(v2Endpoint, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-MailerLite-ApiKey': MAILERLITE_API_KEY,
+                  'Accept': 'application/json'
+                },
+                body: JSON.stringify({ email, fields })
+              });
+            }
+
+            if (!mlResponse.ok) {
+              console.error('MailerLite API Error:', mlResponse.status, await mlResponse.text());
+            } else {
+              console.log('Successfully added GLP-1 assessment lead to MailerLite');
+            }
+          } catch (mlError) {
+            console.error('MailerLite Integration Failed:', mlError.message);
           }
+        }
+      })();
 
-          if (!mlResponse.ok) {
-            const errorText = await mlResponse.text();
-            console.error('MailerLite API Error:', mlResponse.status, errorText);
-          } else {
-            console.log('Successfully added GLP-1 assessment lead to MailerLite');
+      // 3. Google Sheets Webhook Integration
+      const sheetsPromise = (async () => {
+        const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+        if (sheetsWebhookUrl) {
+          try {
+            await fetch(sheetsWebhookUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                type: 'glp1_assessment',
+                date: new Date().toISOString(),
+                email,
+                score: overallScore,
+                primary_focus: primaryFocus,
+                answers
+              })
+            });
+            console.log('Successfully added assessment lead to Google Sheets');
+          } catch (sheetsError) {
+            console.error('Google Sheets Integration Failed:', sheetsError);
           }
-        } catch (mlError) {
-          console.error('MailerLite Integration Failed:', mlError.message);
         }
-      }
+      })();
 
-      // --- Google Sheets Webhook Integration ---
-      const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
-      if (sheetsWebhookUrl) {
-        try {
-          await fetch(sheetsWebhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              type: 'glp1_assessment',
-              date: new Date().toISOString(),
-              email,
-              score: overallScore,
-              primary_focus: primaryFocus,
-              answers
-            })
-          });
-          console.log('Successfully added assessment lead to Google Sheets');
-        } catch (sheetsError) {
-          console.error('Google Sheets Integration Failed:', sheetsError);
-        }
-      }
+      // Wait for all to finish so they run in parallel
+      await Promise.allSettled([emailPromise, mailerlitePromise, sheetsPromise]);
 
-      res.status(200).json({ success: true });
-    } catch (error) {
-      console.error("Assessment processing error:", error);
-      res.status(500).json({ error: "Failed to process assessment" });
-    }
+    })(); // end background async
   });
 
   // Sitemap XML route
