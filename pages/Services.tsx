@@ -12,7 +12,7 @@ export const Services: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead
         title="GLP-1 Fitness Coaching Programs | WRK Personal Training"
-        description="Choose the right level of support for your GLP-1 weight loss journey. Online coaching, in-person training, and structured fitness toolkits."
+        description="Discover expert Personal Training Services in Christchurch. Choose the right level of support for your GLP-1 journey, including online coaching and in-person training."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -42,7 +42,7 @@ export const Services: React.FC = () => {
           <div className="wrk-photo-overlay"></div>
           <img 
             src="https://i.postimg.cc/tCHyKN1c/pexels-zeynep-38928850.jpg" 
-            alt="Personal trainer supporting a client with a kettlebell" 
+            alt="Expert providing Personal Training Services in Christchurch supporting a client" 
             className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
           />
         </div>
@@ -222,7 +222,7 @@ export const Services: React.FC = () => {
           <div className="absolute inset-0 z-0">
             <img 
               src="https://i.postimg.cc/256x75Wd/pexels-khezez-34080009.jpg" 
-              alt="Outdoor activity"
+              alt="Outdoor activity representing the outcomes of Personal Training Services in Christchurch"
               className="w-full h-full object-cover object-center opacity-60"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>

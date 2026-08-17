@@ -12,7 +12,7 @@ export const ToolsIndex: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead
         title="GLP-1 Tools & Calculators | WRK Personal Training"
-        description="Free tools and calculators to help you navigate your GLP-1 journey. Calculate protein needs, hydration requirements, and daily energy expenditure."
+        description="Free tools including our GLP-1 Macro Calculator and GLP-1 Protein Calculator to help you navigate your GLP-1 fitness journey."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -42,7 +42,7 @@ export const ToolsIndex: React.FC = () => {
           <div className="wrk-photo-overlay"></div>
           <img 
             src="https://i.postimg.cc/J4Wmf5y2/pexels-truckrun-19373190.jpg" 
-            alt="Person outdoors checking a smartwatch, representing practical fitness tracking" 
+            alt="Tracking progress with the GLP-1 Macro Calculator and GLP-1 Protein Calculator" 
             className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
           />
         </div>

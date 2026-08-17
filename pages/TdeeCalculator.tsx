@@ -206,7 +206,7 @@ export const TdeeCalculator: React.FC = () => {
       <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12" ref={topRef}>
         <SeoHead 
           title="GLP-1 Calorie & Macro Calculator | WRK Personal Training"
-          description="Calculate your estimated calorie needs and personalised protein, carbohydrate and fat targets with the WRK GLP-1 Calorie & Macro Calculator."
+          description="Calculate your estimated calorie needs and personalised protein, carbohydrate and fat targets with the WRK GLP-1 Macro Calculator."
         />
         <div className="max-w-3xl mx-auto px-4 md:px-8">
           

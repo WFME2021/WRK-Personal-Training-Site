@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SeoHead } from '../components/SeoHead';
 import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
 import { calculateAssessmentResult } from '../assessment/scoring';
 import { AssessmentResult } from '../assessment/types';
@@ -78,6 +79,10 @@ export const Assessment: React.FC = () => {
   if (step === 0) {
     return (
       <div className="bg-[#F6F5F2] min-h-screen py-16 px-6">
+        <SeoHead 
+          title="GLP-1 Fitness Assessment | WRK Personal Training"
+          description="Take our free assessment to see if your current routine is protecting your muscle mass. Start your Personal Training Consultation in Christchurch today."
+        />
         <div className="max-w-2xl mx-auto space-y-10 animate-in fade-in duration-700 pt-10">
           <div className="space-y-6 text-center">
             <h1 className="font-serif text-[40px] leading-[1.1] text-[#2C3539] tracking-tight">
@@ -211,7 +216,7 @@ export const Assessment: React.FC = () => {
               YOUR PROFILE
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {result.domainScores.map(ds => (
+              {(result.domainScores || []).map(ds => (
                 <div key={ds.domain} className="bg-white p-6 rounded-2xl border border-neutral-200 flex flex-col">
                   <div className="text-[14px] font-bold tracking-wider text-[#2C3539]/60 uppercase mb-2">
                     {ds.domain}
@@ -232,7 +237,7 @@ export const Assessment: React.FC = () => {
               YOUR BIGGEST OPPORTUNITIES
             </h2>
             <div className="space-y-6">
-              {result.recommendations.map((rec, index) => (
+              {(result.recommendations || []).map((rec, index) => (
                 <div key={rec.domain} className="bg-white p-8 rounded-2xl border border-neutral-200 space-y-4">
                   <div className="text-[13px] font-bold tracking-widest text-[#2C3539]/50 uppercase mb-2">
                     0{index + 1} — {rec.domain}
@@ -259,7 +264,7 @@ export const Assessment: React.FC = () => {
               YOUR NEXT 7 DAYS
             </h2>
             <div className="bg-[#2C3539] text-white p-8 rounded-2xl space-y-6">
-              {result.sevenDayPlan.map(item => (
+              {(result.sevenDayPlan || []).map(item => (
                 <div key={item.domain} className="flex flex-col sm:flex-row sm:items-baseline border-b border-white/10 pb-4 last:border-0 last:pb-0">
                   <div className="text-[14px] font-bold tracking-widest text-white/50 uppercase sm:w-32 mb-1 sm:mb-0">
                     {item.label}
@@ -305,6 +310,10 @@ export const Assessment: React.FC = () => {
 
   return (
     <div className="bg-[#F6F5F2] min-h-screen flex flex-col">
+        <SeoHead 
+          title="GLP-1 Fitness Assessment | WRK Personal Training"
+          description="Take our free assessment to see if your current routine is protecting your muscle mass. Start your Personal Training Consultation in Christchurch today."
+        />
       {/* Progress */}
       <div className="w-full h-1 bg-neutral-200 fixed top-0 left-0 z-50">
         <div 

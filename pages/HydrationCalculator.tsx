@@ -91,7 +91,7 @@ export const HydrationCalculator: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead 
         title="GLP-1 Hydration Calculator: Estimate Your Daily Fluid Needs | WRK"
-        description="Use the WRK GLP-1 Hydration Calculator to estimate your daily fluid needs and understand when exercise, heat or fluid loss may increase your hydration requirements."
+        description="Use the WRK GLP-1 Hydration Calculator to estimate your daily fluid needs. Enhance your GLP-1 Fitness Coaching results with proper hydration."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">

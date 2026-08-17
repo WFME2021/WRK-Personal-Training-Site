@@ -13,7 +13,7 @@ export const OnlineCoaching: React.FC = () => {
     <>
       <SeoHead 
         title="Online Fitness Coaching & Support | Personal Trainers for GLP-1 Patients"
-        description="Premium online 12-week fitness coaching tailored for GLP-1 patients and prescription GLP-1 support. Protect your muscle mass from anywhere in New Zealand."
+        description="Premium online Personal Training Services and fitness coaching tailored for GLP-1 patients. Protect your muscle mass from anywhere in New Zealand."
       />
       <div className="flex flex-col w-full overflow-x-hidden bg-neutral-900 pb-24 text-neutral-100">
         
@@ -25,7 +25,7 @@ export const OnlineCoaching: React.FC = () => {
                <img loading="lazy"
                   referrerPolicy="no-referrer"
                   src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg"
-                  alt="Online fitness coaching and training outdoors"
+                  alt="Premium online Personal Training Services in Christchurch and across New Zealand"
                   className="w-full h-full object-cover object-top opacity-50 wrk-photo"
                 />
              </div>
@@ -64,7 +64,7 @@ export const OnlineCoaching: React.FC = () => {
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2670&auto=format&fit=crop" 
-              alt="Outdoor adventure lifestyle"
+              alt="Enjoy an active outdoor lifestyle with our online personal training services"
               className="w-full h-full object-cover object-center opacity-50 grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-900/50 to-neutral-950/90"></div>

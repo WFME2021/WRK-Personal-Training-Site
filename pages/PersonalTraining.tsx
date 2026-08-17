@@ -13,7 +13,7 @@ export const PersonalTraining: React.FC = () => {
     <>
       <SeoHead 
         title="In-Person Personal Training | GLP-1 Exercise Program Christchurch"
-        description="Premium 1:1 personal training in Addington, Christchurch. Safe, 30-minute resistance training sessions tailored for medical weight loss support."
+        description="Premium Personal Training Services in Christchurch. Safe, 30-minute resistance training sessions in Addington tailored for medical weight loss support."
       />
       <div className="flex flex-col w-full overflow-x-hidden bg-neutral-900 pb-24 text-neutral-100">
         
@@ -25,7 +25,7 @@ export const PersonalTraining: React.FC = () => {
                <img loading="lazy"
                   referrerPolicy="no-referrer"
                   src="https://i.postimg.cc/tCHyKN1c/pexels-zeynep-38928850.jpg"
-                  alt="Strength training and active lifestyle"
+                  alt="In-person Personal Training Services in Christchurch focusing on strength and active lifestyle"
                   className="w-full h-full object-cover object-top opacity-50 wrk-photo"
                 />
              </div>
@@ -61,7 +61,7 @@ export const PersonalTraining: React.FC = () => {
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2670&auto=format&fit=crop" 
-              alt="Intense focus training background"
+              alt="Focused Personal Training Services in Christchurch for medical weight loss"
               className="w-full h-full object-cover object-center opacity-50 grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-900/50 to-neutral-950/90"></div>

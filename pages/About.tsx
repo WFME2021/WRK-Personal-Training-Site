@@ -12,7 +12,7 @@ export const About: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
       <SeoHead
         title="About WRK | Medical Weight Loss & Muscle Preservation Fitness Coaching"
-        description="Discover the philosophy behind WRK. We bridge the gap between medical weight loss interventions and real-world exercise, protecting muscle mass and metabolic health."
+        description="Discover the philosophy behind WRK. As an expert Personal Trainer in Christchurch, we bridge the gap between medical weight loss and real-world exercise."
       />
 
       <div className="max-w-4xl mx-auto px-4 md:px-8">
@@ -62,7 +62,7 @@ export const About: React.FC = () => {
                 <div className="wrk-photo-overlay"></div>
                 <img 
                   src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
-                  alt="Hayden, Founder and Coach of WRK Personal Training"
+                  alt="Hayden, Expert Personal Trainer in Christchurch and Founder of WRK Personal Training"
                   className="w-full h-full wrk-photo"
                 />
               </div>
@@ -116,7 +116,7 @@ export const About: React.FC = () => {
             <div className="absolute inset-0 z-0">
               <img 
                 src="https://i.postimg.cc/br2bFDYH/pexels-rachel-claire-7276646.jpg" 
-                alt="Forest adventure background"
+                alt="Expert personal trainer in Christchurch guiding a GLP-1 fitness coaching philosophy"
                 className="w-full h-full object-cover object-center opacity-60"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>

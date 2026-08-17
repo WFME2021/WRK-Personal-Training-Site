@@ -38,7 +38,7 @@ export const Home: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white md:pt-20">
       <SeoHead
         title="GLP-1 Fitness Coach | Strength & Fitness Coaching | WRK Personal Training"
-        description="Specialist GLP-1 fitness coaching to help you preserve muscle, build strength, improve fitness and develop sustainable habits while losing weight."
+        description="Expert Personal Trainer in Christchurch providing specialist GLP-1 fitness coaching. Preserve muscle, build strength, and develop sustainable habits."
       />
 
       {/* Hero Section */}
@@ -69,7 +69,7 @@ export const Home: React.FC = () => {
           <div className="wrk-photo-overlay"></div>
           <img 
             src="https://i.postimg.cc/vBXwJPvy/family-activity.jpg" 
-            alt="Active couple hiking outdoors, representing a capable and fulfilling life"
+            alt="Personal Trainer in Christchurch helping clients achieve a capable and fulfilling life through GLP-1 fitness coaching"
             className="w-full h-auto aspect-[21/9] md:aspect-[2.5/1] wrk-photo"
           />
         </div>
@@ -117,7 +117,7 @@ export const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://i.postimg.cc/FH4gLX6q/pexels-pnw-prod-7625047.jpg" 
-            alt="Adventure and lifestyle background"
+            alt="GLP-1 fitness coaching and lifestyle transformation by a Personal Trainer in Christchurch"
             className="w-full h-full object-cover object-center opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
@@ -239,7 +239,7 @@ export const Home: React.FC = () => {
               <div className="wrk-photo-overlay"></div>
               <img 
                 src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
-                alt="Hayden, Founder and Coach of WRK Personal Training"
+                alt="Hayden, Personal Trainer in Christchurch and founder of WRK GLP-1 Fitness Coaching"
                 className="w-full h-full wrk-photo"
               />
             </div>
