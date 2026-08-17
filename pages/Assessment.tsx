@@ -285,10 +285,10 @@ export const Assessment: React.FC = () => {
             </p>
             <div className="pt-4">
               <Link 
-                to="/online-coaching"
+                to="/services"
                 className="inline-flex items-center justify-center bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
               >
-                EXPLORE GLP-1 FITNESS COACHING
+                EXPLORE COACHING SERVICES
               </Link>
             </div>
           </div>

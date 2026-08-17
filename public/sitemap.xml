@@ -6,11 +6,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/personal-training</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.wrkpersonaltraining.co.nz/assessment</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -26,7 +21,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/online-coaching</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

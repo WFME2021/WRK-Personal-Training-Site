@@ -92,11 +92,11 @@ export const Results: React.FC = () => {
               If you want a structured, evidence-based program that handles the programming, progressive overload, and side-effect management for you—let's work together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/online-coaching">
-                <Button size="lg" className="w-full sm:w-auto">Explore Online Coaching</Button>
+              <Link to="/services">
+                <Button size="lg" className="w-full sm:w-auto">Explore Coaching Services</Button>
               </Link>
-              <Link to="/personal-training">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">Explore In-Person Training</Button>
+              <Link to="/contact">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto">Get in Touch</Button>
               </Link>
             </div>
           </div>

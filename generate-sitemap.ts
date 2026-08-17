@@ -27,11 +27,11 @@ const generateSitemap = async () => {
     const baseUrl = 'https://www.wrkpersonaltraining.co.nz';
     const staticPages = [
       '',
-      '/personal-training',
+      
       '/assessment',
       '/results',
       '/contact',
-      '/online-coaching',
+      '/services',
       '/workplace-wellness-program-nz',
       '/14-day-fat-loss-foundations',
       '/couch-to-5km',
