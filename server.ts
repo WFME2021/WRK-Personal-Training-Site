@@ -83,7 +83,8 @@ async function startServer() {
 
       const mailOptions = {
         from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
-        to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz, wfme2021@gmail.com",
+        to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
+        replyTo: email,
         subject: `New Inquiry from ${name} - ${interest || 'General'}`,
         text: `
 Name: ${name}
@@ -280,7 +281,8 @@ ${message}
 
           const adminMailOptions = {
             from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
-            to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz, wfme2021@gmail.com",
+            to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
+            replyTo: email,
             subject: `New GLP-1 Fitness Assessment — ${overallScore}/100`,
             text: `=== New GLP-1 Assessment Unlocked ===
 Email: ${email}

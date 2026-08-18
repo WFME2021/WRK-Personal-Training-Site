@@ -150,4 +150,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/how-to-maintain-muscle-on-glp-1</loc>
+    <lastmod>2026-08-17T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/glp-1-muscle-preservation</loc>
+    <lastmod>2026-08-18T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/glp-1-strength-training</loc>
+    <lastmod>2026-08-18T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
