@@ -50,7 +50,7 @@ async function startServer() {
   app.post("/api/contact", async (req, res) => {
     const { name, email, phone, message, interest, referralSource } = req.body;
 
-    if (!name || !email || !message) {
+    if (!name || !email) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
@@ -172,8 +172,8 @@ ${message}
             body: JSON.stringify(subscriberPayloadV3)
           });
           
-          if (!mlResponse.ok && mlResponse.status === 422) {
-             console.log("MailerLite v3 rejected custom fields. Retrying without fields...");
+          if (!mlResponse.ok && mlResponse.status !== 401) {
+             console.log(`MailerLite v3 failed with status ${mlResponse.status}. Retrying without fields...`);
              const fallbackPayload = { email: email, groups: MAILERLITE_GROUP_CONTACT ? [MAILERLITE_GROUP_CONTACT] : [] };
              mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
                method: 'POST',
@@ -404,8 +404,8 @@ ${JSON.stringify(answers, null, 2)}`,
               body: JSON.stringify(subscriberPayloadV3)
             });
             
-            if (!mlResponse.ok && mlResponse.status === 422) {
-               console.log("MailerLite v3 rejected assessment fields. Retrying without fields...");
+            if (!mlResponse.ok && mlResponse.status !== 401) {
+               console.log(`MailerLite v3 failed with status ${mlResponse.status}. Retrying without fields...`);
                const fallbackPayload = { email: email, groups: [MAILERLITE_PROSPECT_GROUP] };
                mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
                  method: 'POST',
