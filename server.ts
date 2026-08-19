@@ -153,7 +153,9 @@ ${message}
             name: name,
             phone: phone || '',
             interest: interest || '',
-            referral_source: referralSource || ''
+            referral_source: referralSource || '',
+            notes: message || '',
+            message: message || ''
           };
           const subscriberPayloadV3 = {
             email: email,

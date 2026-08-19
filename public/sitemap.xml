@@ -121,7 +121,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/blog/can-you-still-lose-weight-and-drink-alcohol</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/can-you-lose-weight-drink-alcohol-glp-1</loc>
     <lastmod>2026-05-04T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -141,6 +141,12 @@
   <url>
     <loc>https://www.wrkpersonaltraining.co.nz/blog/calorie-calculator</loc>
     <lastmod>2026-07-22T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/kj-to-calories</loc>
+    <lastmod>2026-07-23T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -165,6 +171,12 @@
   <url>
     <loc>https://www.wrkpersonaltraining.co.nz/blog/glp-1-strength-training</loc>
     <lastmod>2026-08-18T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/glp1-protein-intake-guide</loc>
+    <lastmod>2026-08-19T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
