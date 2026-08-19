@@ -145,7 +145,7 @@ ${message}
       const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
       
       const MAILERLITE_GROUP_ID_DEFAULT = process.env.MAILERLITE_GROUP_ID?.replace(/^"|"$/g, '').trim() || "";
-      const MAILERLITE_GROUP_CONTACT = process.env.MAILERLITE_GROUP_CONTACT?.replace(/^"|"$/g, '').trim() || MAILERLITE_GROUP_ID_DEFAULT;
+      const MAILERLITE_GROUP_CONTACT = process.env.MAILERLITE_GROUP_CONTACT?.replace(/^"|"$/g, '').trim() || MAILERLITE_GROUP_ID_DEFAULT || "195641787200570883";
 
       if (MAILERLITE_API_KEY) {
         try {
@@ -171,6 +171,16 @@ ${message}
             },
             body: JSON.stringify(subscriberPayloadV3)
           });
+          
+          if (!mlResponse.ok && mlResponse.status === 422) {
+             console.log("MailerLite v3 rejected custom fields. Retrying without fields...");
+             const fallbackPayload = { email: email, groups: MAILERLITE_GROUP_CONTACT ? [MAILERLITE_GROUP_CONTACT] : [] };
+             mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${MAILERLITE_API_KEY}`, 'Accept': 'application/json' },
+               body: JSON.stringify(fallbackPayload)
+             });
+          }
           if (!mlResponse.ok && mlResponse.status === 401) {
             console.log('MailerLite v3 failed with 401, trying v2 API...');
             const subscriberPayloadV2 = {
@@ -393,6 +403,16 @@ ${JSON.stringify(answers, null, 2)}`,
               },
               body: JSON.stringify(subscriberPayloadV3)
             });
+            
+            if (!mlResponse.ok && mlResponse.status === 422) {
+               console.log("MailerLite v3 rejected assessment fields. Retrying without fields...");
+               const fallbackPayload = { email: email, groups: [MAILERLITE_PROSPECT_GROUP] };
+               mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+                 method: 'POST',
+                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${MAILERLITE_API_KEY}`, 'Accept': 'application/json' },
+                 body: JSON.stringify(fallbackPayload)
+               });
+            }
 
             if (!mlResponse.ok && mlResponse.status === 401) {
               const v2Endpoint = `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_PROSPECT_GROUP}/subscribers`;
