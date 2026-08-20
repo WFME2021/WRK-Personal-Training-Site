@@ -520,6 +520,7 @@ ${routes.map(route => `  <url>
   const getCachedBlogs = async () => {
     if (cachedBlogs && Date.now() - cachedBlogsTime < 60000) return cachedBlogs;
     try {
+      
       const snapshot = await getDocs(collection(db, 'blogs'));
       const blogs = [];
       snapshot.forEach(doc => {
@@ -527,6 +528,7 @@ ${routes.map(route => `  <url>
         if (post.slug && post.slug.startsWith('/')) post.slug = post.slug.substring(1);
         blogs.push(post);
       });
+
       blogs.sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime());
       cachedBlogs = blogs;
       cachedBlogsTime = Date.now();

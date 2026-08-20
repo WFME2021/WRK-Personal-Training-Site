@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { initializeFirestore, collection, getDocs } from 'firebase/firestore';
 import firebaseConfig from './firebase-applet-config.json' assert { type: 'json' };
 
 const generateSitemap = async () => {
@@ -11,15 +11,19 @@ const generateSitemap = async () => {
     // Fetch blogs from Firestore using JS SDK
     try {
       const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
-      const querySnapshot = await getDocs(collection(db, 'blogs'));
+      const db = initializeFirestore(app, {
+        experimentalForceLongPolling: true,
+        databaseId: firebaseConfig.firestoreDatabaseId || '(default)'
+      });
       
+      const querySnapshot = await getDocs(collection(db, 'blogs'));
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         if (data.status !== 'draft' && data.slug) {
           blogPosts.push(data);
         }
       });
+
     } catch (err) {
       console.error("Error fetching from Firestore:", err);
     }
