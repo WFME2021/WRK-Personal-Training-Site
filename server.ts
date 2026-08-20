@@ -145,7 +145,7 @@ ${message}
       const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
       
       const MAILERLITE_GROUP_ID_DEFAULT = process.env.MAILERLITE_GROUP_ID?.replace(/^"|"$/g, '').trim() || "";
-      const MAILERLITE_GROUP_CONTACT = process.env.MAILERLITE_GROUP_CONTACT?.replace(/^"|"$/g, '').trim() || MAILERLITE_GROUP_ID_DEFAULT || "195641787200570883";
+      const MAILERLITE_GROUP_CONTACT = "195641787200570883";
 
       if (MAILERLITE_API_KEY) {
         try {
