@@ -9,6 +9,7 @@ import { AssessmentResult } from '../assessment/types';
 export const Assessment: React.FC = () => {
   const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = email gate, N+2 = results
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,6 +57,7 @@ export const Assessment: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          name,
           email,
           answers,
           result: calculatedResult
@@ -144,7 +146,15 @@ export const Assessment: React.FC = () => {
           </div>
 
           <form onSubmit={submitAssessment} className="space-y-6">
-            <div>
+            <div className="space-y-4">
+              <input
+                type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="Enter your first name"
+                required
+                className="w-full bg-white border border-neutral-200 text-[#2C3539] px-6 py-4 rounded-xl focus:outline-none focus:border-[#2C3539] focus:ring-1 focus:ring-[#2C3539] transition-all text-[16px]"
+              />
               <input
                 type="email"
                 value={email}
@@ -163,7 +173,7 @@ export const Assessment: React.FC = () => {
 
             <button
               type="submit"
-              disabled={isSubmitting || !email}
+              disabled={isSubmitting || !email || !name}
               className="w-full bg-[#2C3539] hover:bg-[#1A1F22] disabled:bg-neutral-300 disabled:text-neutral-500 text-white px-6 py-4 rounded-xl font-medium transition-colors text-[16px] flex items-center justify-center"
             >
               {isSubmitting ? 'PROCESSING...' : 'SHOW ME MY RESULTS'}

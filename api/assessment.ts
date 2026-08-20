@@ -6,11 +6,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { name, email, answers, intervention, challenge, riskProfile, tag } = req.body;
+  const { name: rawName, email, answers, intervention, challenge, riskProfile, tag } = req.body;
 
-  if (!name || !email) {
-    return res.status(400).json({ error: 'Name and email are required' });
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required' });
   }
+
+  const name = rawName || "Assessment Prospect";
 
   try {
     const transporter = nodemailer.createTransport({
