@@ -84,7 +84,7 @@ async function startServer() {
       const mailOptions = {
         from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
         to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
-        replyTo: email,
+        // // replyTo: email, // Temporarily disabled // Temporarily disabled to prevent Namecheap Jellyfish spoofing flags
         subject: `New Inquiry from ${name} - ${interest || 'General'}`,
         text: `
 Name: ${name}
@@ -160,7 +160,7 @@ ${message}
           const subscriberPayloadV3 = {
             email: email,
             fields: fields,
-            groups: MAILERLITE_GROUP_CONTACT ? [MAILERLITE_GROUP_CONTACT] : []
+            groups: ["195641787200570883"]
           };
           let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
             method: 'POST',
@@ -174,7 +174,7 @@ ${message}
           
           if (!mlResponse.ok && mlResponse.status !== 401) {
              console.log(`MailerLite v3 failed with status ${mlResponse.status}. Retrying without fields...`);
-             const fallbackPayload = { email: email, groups: MAILERLITE_GROUP_CONTACT ? [MAILERLITE_GROUP_CONTACT] : [] };
+             const fallbackPayload = { email: email, groups: ["195641787200570883"] };
              mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
                method: 'POST',
                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${MAILERLITE_API_KEY}`, 'Accept': 'application/json' },
