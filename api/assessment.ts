@@ -56,9 +56,7 @@ Tag: ${tag || 'Unknown'}
         const subscriberPayloadV3 = {
           email: email,
           fields: {
-            name: name,
-            risk_profile: riskProfile,
-            tag: tag
+            name: name
           },
           groups: MAILERLITE_GROUP_ID ? [MAILERLITE_GROUP_ID] : []
         };
@@ -79,9 +77,7 @@ Tag: ${tag || 'Unknown'}
             email: email,
             name: name,
             fields: {
-              name: name,
-              risk_profile: riskProfile,
-              tag: tag
+              name: name
             }
           };
           

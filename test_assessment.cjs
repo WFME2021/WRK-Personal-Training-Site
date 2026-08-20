@@ -1,12 +1,14 @@
 const fetch = require('node-fetch');
+
 async function test() {
-    const res = await fetch('http://localhost:3000/api/contact', {
+    const res = await fetch('https://wrkpersonaltraining.co.nz/api/assessment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: "Live ML Test",
-          email: "test_ml_success@example.com",
-          message: "Testing MailerLite after DNS changes"
+          name: "Assessment Test User",
+          email: "client.surfbreak.test@gmail.com",
+          riskProfile: "High",
+          tag: "Assessment"
         })
     });
     console.log(res.status, await res.text());
