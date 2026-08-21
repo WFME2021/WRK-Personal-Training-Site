@@ -19,30 +19,17 @@ async function startServer() {
   app.use(express.json({ limit: '50mb' }));
 
   // SEO 301 Redirects for old URLs
-  app.get('/42-day-reset', (req, res) => {
-    res.redirect(301, '/fitness-challenge-nz');
-  });
-  
-  
-  app.get('/personal-trainer-christchurch', (req, res) => {
-    res.redirect(301, '/personal-training');
-  });
-
-  app.get('/online-personal-training-nz', (req, res) => {
-    res.redirect(301, '/online-coaching');
-  });
-
-  app.get('/personal-training-christchurch-philosophy', (req, res) => {
-    res.redirect(301, '/about');
-  });
-
-  app.get('/services', (req, res) => {
-    res.redirect(301, '/');
-  });
-
-  app.get('/corporate-wellness', (req, res) => {
-    res.redirect(301, '/workplace-wellness-program-nz');
-  });
+  app.get("/42-day-reset", (req, res) => res.redirect(301, "/programs"));
+  app.get("/fitness-challenge-nz", (req, res) => res.redirect(301, "/programs"));
+  app.get("/personal-trainer-christchurch", (req, res) => res.redirect(301, "/personal-training"));
+  app.get("/online-personal-training-nz", (req, res) => res.redirect(301, "/online-coaching"));
+  app.get("/personal-training-christchurch-philosophy", (req, res) => res.redirect(301, "/about"));
+  app.get("/corporate-wellness", (req, res) => res.redirect(301, "/"));
+  app.get("/workplace-wellness-program-nz", (req, res) => res.redirect(301, "/"));
+  app.get("/14-day-fat-loss-foundations", (req, res) => res.redirect(301, "/programs"));
+  app.get("/couch-to-5km", (req, res) => res.redirect(301, "/programs"));
+  app.get("/calorie-calculator", (req, res) => res.redirect(301, "/tools/tdee-calculator"));
+  app.get("/tools/1rm-estimator", (req, res) => res.redirect(301, "/tools"));
 
   // API Routes
   app.get("/api/health", (req, res) => {
@@ -559,32 +546,52 @@ ${routes.map(route => `  <url>
       
       // Inject SEO tags based on route
       const initialBlogs = await getCachedBlogs();
-      let title = "Christchurch Personal Trainer Specialising in Fat Loss | WRK";
-      let desc = "1:1 and online fat loss coaching for busy professionals aged 35 to 60 in Christchurch and across NZ. Train around your schedule and old injuries. 20 years experience.";
+      let title = "GLP-1 Fitness Coach | Strength & Fitness Coaching | WRK Personal Training";
+      let desc = "Hire a dedicated GLP-1 Fitness Coach in Christchurch. We provide specialist strength & fitness coaching to preserve muscle and build sustainable habits during medical weight loss.";
       
-      if (url.includes('/online-coaching')) {
-        title = "Online Personal Trainer NZ | WRK";
-        desc = "Expert online personal trainer NZ. Get customised training and nutrition coaching tailored to your lifestyle.";
-      } else if (url.includes('/personal-training')) {
-        title = "Personal Trainer Christchurch | WRK";
-        desc = "Premium personal trainer Christchurch. 1:1 coaching, tailored programs, and real results with Hayden Richards.";
-      } else if (url.includes('/workplace-wellness-program-nz')) {
-        title = "Corporate Wellness NZ | WRK";
-        desc = "Corporate wellness NZ programs that build resilient, healthy, and high-performing teams.";
-      } else if (url.includes('/14-day-fat-loss-foundations')) {
-        title = "14-Day Fat Loss Foundation | WRK";
-        desc = "Jumpstart your fat loss journey with this free 14-day foundation programme.";
-      } else if (url.includes('/couch-to-5km')) {
-        title = "Couch to 5km NZ | 8-Week Beginner Running Plan | WRK";
-        desc = "An 8-week couch to 5km running plan built for beginners over 35. Run plan, plus strength, stretching, and nutrition guidance in the WRK app. $27, start anytime.";
-      } else if (url.includes('/fitness-challenge-nz')) {
-        title = "42-Day Fitness Challenge NZ | The Reset | WRK";
-        desc = "A 6-week fitness challenge you can run from your phone. Structured training, simple nutrition, and daily habits for busy NZ adults. One-off $47, start anytime.";
-      } else if (url.includes('/about')) {
-        title = "About | WRK Personal Training";
-        desc = "Learn about Hayden Richards and the WRK Personal Training philosophy.";
-      } else if (url.match(/\/blog\/([^\/]+)/)) {
-        const slug = url.match(/\/blog\/([^\/]+)/)[1];
+      const pathOnly = url.split('?')[0];
+
+      if (pathOnly === '/programs') {
+        title = "GLP-1 Fitness Programs | WRK Personal Training";
+        desc = "Explore our 12-week GLP-1 Fitness Programs. Structured training pathways built around your active weight loss, maintenance, or long-term habit building phases.";
+      } else if (pathOnly === '/services') {
+        title = "GLP-1 Fitness Coaching Programs | WRK Personal Training";
+        desc = "Compare our GLP-1 Fitness Coaching Programs. Choose between our in-person training in Christchurch or our comprehensive 12-week online coaching pathways.";
+      } else if (pathOnly === '/online-coaching') {
+        title = "Online Fitness Coaching & Support | Personal Trainers for GLP-1 Patients";
+        desc = "Expert Online Fitness Coaching tailored for GLP-1 patients. Work with specialist personal trainers to protect your muscle mass from anywhere in New Zealand.";
+      } else if (pathOnly === '/personal-training') {
+        title = "In-Person Personal Training | GLP-1 Exercise Program Christchurch";
+        desc = "Join our specialist GLP-1 Exercise Program in Christchurch. Safe, effective 30-minute in-person personal training sessions tailored for medical weight loss support.";
+      } else if (pathOnly === '/assessment') {
+        title = "GLP-1 Fitness Assessment | WRK Personal Training";
+        desc = "Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customized 12-week training recommendation.";
+      } else if (pathOnly === '/contact') {
+        title = "Contact GLP-1 Fitness Coach | WRK Personal Training";
+        desc = "Contact a GLP-1 Fitness Coach today to discuss your medical weight loss journey, ask questions about our 12-week pathways, or book an initial consultation.";
+      } else if (pathOnly === '/about') {
+        title = "About WRK | Medical Weight Loss & Muscle Preservation Fitness Coaching";
+        desc = "Discover our approach to Medical Weight Loss & Muscle Preservation Fitness Coaching. Learn how WRK bridges the gap between clinical treatments and real-world strength.";
+      } else if (pathOnly === '/resources') {
+        title = "Clinical Evidence & Resources | WRK Personal Training";
+        desc = "Review the Clinical Evidence & Resources backing our GLP-1 training methodologies. Explore medical studies on muscle preservation and metabolic support.";
+      } else if (pathOnly === '/tools') {
+        title = "GLP-1 Tools & Calculators | WRK Personal Training";
+        desc = "Access our free GLP-1 Tools & Calculators, including hydration, protein, and macro estimators designed specifically for patients on weight loss medication.";
+      } else if (pathOnly.includes('/tdee-calculator')) {
+        title = "GLP-1 Calorie & Macro Calculator | WRK Personal Training";
+        desc = "Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalize your protein, carbohydrate, and fat targets during weight loss.";
+      } else if (pathOnly.includes('/protein-calculator')) {
+        title = "GLP-1 Protein Calculator | WRK Personal Training";
+        desc = "Use our GLP-1 Protein Calculator to find your precise daily protein targets to support muscle retention and strength during your medical weight loss journey.";
+      } else if (pathOnly.includes('/hydration-calculator')) {
+        title = "GLP-1 Hydration Calculator: Estimate Your Daily Fluid Needs | WRK";
+        desc = "Use the WRK GLP-1 Hydration Calculator to estimate your daily fluid needs and enhance your medical weight loss results with proper water intake.";
+      } else if (pathOnly.includes('/results') || pathOnly.includes('/assessment/result')) {
+        title = "Your Muscular Preservation Report | WRK";
+        desc = "Review your GLP-1 Fitness Assessment results. Access your personalized 12-week strength training recommendation to protect muscle during medical weight loss.";
+      } else if (pathOnly.match(/\/blog\/([^\/]+)/)) {
+        const slug = pathOnly.match(/\/blog\/([^\/]+)/)[1];
         const post = initialBlogs.find(p => p.slug === slug);
         if (post) {
           title = post.seoTitle || post.title || (slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + " | WRK");
@@ -593,12 +600,9 @@ ${routes.map(route => `  <url>
           title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + " | WRK";
           desc = "Read our latest insights on " + title + " from WRK Personal Training.";
         }
-      } else if (url.includes('/blog')) {
-        title = "Blog | WRK Personal Training";
-        desc = "Insights on training, nutrition, and mindset from a Christchurch personal trainer.";
-      } else if (url.includes('/contact')) {
-        title = "Contact | WRK Personal Training";
-        desc = "Get in touch with WRK Personal Training to start your fitness journey.";
+      } else if (pathOnly === '/blog') {
+        title = "GLP-1 Fitness Blog | Training, Nutrition & Weight Loss | WRK";
+        desc = "Read the WRK GLP-1 Fitness Blog for evidence-informed guidance on strength training, muscle preservation, nutrition, and sustainable habits after weight loss.";
       }
       
       templateHtml = templateHtml.replace(

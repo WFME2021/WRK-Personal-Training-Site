@@ -28,18 +28,19 @@ const generateSitemap = async () => {
     const baseUrl = 'https://www.wrkpersonaltraining.co.nz';
     const staticPages = [
       '',
-      
+      '/programs',
+      '/personal-training',
+      '/online-coaching',
       '/assessment',
       '/results',
       '/contact',
-      '/services',
-      '/workplace-wellness-program-nz',
-      '/14-day-fat-loss-foundations',
-      '/couch-to-5km',
-      '/blog',
+      '/about',
+      '/resources',
       '/tools',
-      '/calorie-calculator',
-      '/tools/1rm-estimator'
+      '/tools/tdee-calculator',
+      '/tools/protein-calculator',
+      '/tools/hydration-calculator',
+      '/blog'
     ];
 
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;

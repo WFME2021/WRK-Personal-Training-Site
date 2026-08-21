@@ -6,6 +6,21 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/programs</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/personal-training</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/online-coaching</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.wrkpersonaltraining.co.nz/assessment</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -21,28 +36,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/services</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/workplace-wellness-program-nz</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/resources</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/14-day-fat-loss-foundations</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/couch-to-5km</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/blog</loc>
-    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
@@ -51,13 +51,23 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/calorie-calculator</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/tools/tdee-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/tools/1rm-estimator</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/tools/protein-calculator</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/tools/hydration-calculator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
