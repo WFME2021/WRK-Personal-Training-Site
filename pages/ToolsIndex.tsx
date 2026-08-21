@@ -12,7 +12,7 @@ export const ToolsIndex: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead
         title="GLP-1 Tools & Calculators | WRK Personal Training"
-        description="Free tools including our GLP-1 Macro Calculator and GLP-1 Protein Calculator to help you navigate your GLP-1 fitness journey."
+        description="Access our free GLP-1 Tools & Calculators, including hydration, protein, and macro estimators designed specifically for patients on weight loss medication."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">

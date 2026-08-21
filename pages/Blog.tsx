@@ -41,7 +41,7 @@ export const Blog: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead
         title="GLP-1 Fitness Blog | Training, Nutrition & Weight Loss | WRK"
-        description="Practical, evidence-informed guidance on GLP-1 fitness, strength training, muscle preservation, nutrition, recovery and life after weight loss."
+        description="Read the WRK GLP-1 Fitness Blog for evidence-informed guidance on strength training, muscle preservation, nutrition, and sustainable habits after weight loss."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">

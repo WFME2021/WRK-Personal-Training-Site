@@ -23,7 +23,7 @@ export const Resources: React.FC = () => {
     <>
       <SeoHead 
         title="Clinical Evidence & Resources | WRK Personal Training"
-        description="Examine the medical studies and sports science literature backing our muscle preservation and metabolic support coaching strategies."
+        description="Review the Clinical Evidence & Resources backing our GLP-1 training methodologies. Explore medical studies on muscle preservation and metabolic support."
       />
       
       <div className="flex flex-col w-full min-h-screen bg-navy text-white pt-32 pb-24 px-5 md:px-12 items-center">

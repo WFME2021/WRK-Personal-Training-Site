@@ -13,7 +13,7 @@ export const OnlineCoaching: React.FC = () => {
     <>
       <SeoHead 
         title="Online Fitness Coaching & Support | Personal Trainers for GLP-1 Patients"
-        description="Premium online Personal Training Services and fitness coaching tailored for GLP-1 patients. Protect your muscle mass from anywhere in New Zealand."
+        description="Expert Online Fitness Coaching tailored for GLP-1 patients. Work with specialist personal trainers to protect your muscle mass from anywhere in New Zealand."
       />
       <div className="flex flex-col w-full overflow-x-hidden bg-neutral-900 pb-24 text-neutral-100">
         

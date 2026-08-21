@@ -81,7 +81,7 @@ export const Contact = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
       <SeoHead 
         title="Contact GLP-1 Fitness Coach | WRK Personal Training"
-        description="Hire a medical weight loss personal trainer. We specialize in GLP-1 fitness coaching, muscle preservation, and post-GLP-1 weight maintenance programs in New Zealand."
+        description="Contact a GLP-1 Fitness Coach today to discuss your medical weight loss journey, ask questions about our 12-week pathways, or book an initial consultation."
         schema={schema}
       />
       

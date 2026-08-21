@@ -12,7 +12,7 @@ export const Programs: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead
         title="GLP-1 Fitness Programs | WRK Personal Training"
-        description="Join our 12-week GLP-1 Strength Training Program. Pathways built around where you are now in your journey to protect strength and build fitness."
+        description="Explore our 12-week GLP-1 Fitness Programs. Structured training pathways built around your active weight loss, maintenance, or long-term habit building phases."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">

@@ -12,7 +12,7 @@ export const Services: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead
         title="GLP-1 Fitness Coaching Programs | WRK Personal Training"
-        description="Discover expert Personal Training Services in Christchurch. Choose the right level of support for your GLP-1 journey, including online coaching and in-person training."
+        description="Compare our GLP-1 Fitness Coaching Programs. Choose between our in-person training in Christchurch or our comprehensive 12-week online coaching pathways."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">

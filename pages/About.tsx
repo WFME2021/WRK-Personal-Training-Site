@@ -12,7 +12,7 @@ export const About: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
       <SeoHead
         title="About WRK | Medical Weight Loss & Muscle Preservation Fitness Coaching"
-        description="Discover the philosophy behind WRK. As an expert Personal Trainer in Christchurch, we bridge the gap between medical weight loss and real-world exercise."
+        description="Discover our approach to Medical Weight Loss & Muscle Preservation Fitness Coaching. Learn how WRK bridges the gap between clinical treatments and real-world strength."
       />
 
       <div className="max-w-4xl mx-auto px-4 md:px-8">

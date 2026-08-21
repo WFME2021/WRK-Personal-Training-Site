@@ -13,7 +13,7 @@ export const PersonalTraining: React.FC = () => {
     <>
       <SeoHead 
         title="In-Person Personal Training | GLP-1 Exercise Program Christchurch"
-        description="Premium Personal Training Services in Christchurch. Safe, 30-minute resistance training sessions in Addington tailored for medical weight loss support."
+        description="Join our specialist GLP-1 Exercise Program in Christchurch. Safe, effective 30-minute in-person personal training sessions tailored for medical weight loss support."
       />
       <div className="flex flex-col w-full overflow-x-hidden bg-neutral-900 pb-24 text-neutral-100">
         

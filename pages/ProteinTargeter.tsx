@@ -23,7 +23,7 @@ export const ProteinTargeter: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
       <SeoHead 
         title="GLP-1 Protein Calculator | WRK Personal Training"
-        description="Use our GLP-1 Protein Calculator to find your daily protein targets to support muscle and strength during your weight loss journey."
+        description="Use our GLP-1 Protein Calculator to find your precise daily protein targets to support muscle retention and strength during your medical weight loss journey."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">

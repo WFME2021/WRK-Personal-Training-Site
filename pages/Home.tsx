@@ -38,7 +38,7 @@ export const Home: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white md:pt-20">
       <SeoHead
         title="GLP-1 Fitness Coach | Strength & Fitness Coaching | WRK Personal Training"
-        description="Expert Personal Trainer in Christchurch providing specialist GLP-1 fitness coaching. Preserve muscle, build strength, and develop sustainable habits."
+        description="Hire a dedicated GLP-1 Fitness Coach in Christchurch. We provide specialist strength & fitness coaching to preserve muscle and build sustainable habits during medical weight loss."
       />
 
       {/* Hero Section */}

@@ -1,7 +1,10 @@
 import "dotenv/config";
 import express from "express";
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from './firebase.ts';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { initializeApp } from 'firebase/app';
+import firebaseConfig from './firebase-applet-config.json' with { type: 'json' };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app, firebaseConfig.firestoreDatabaseId || '(default)');
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import fs from "fs";
@@ -48,7 +51,7 @@ async function startServer() {
 
   // Contact Form Submission
   app.post("/api/contact", async (req, res) => {
-    const { name, email, phone, message, interest, referralSource } = req.body;
+    const { name, email, phone, message, interest, referralSource, phase, goal } = req.body;
 
     if (!name || !email) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -155,7 +158,9 @@ ${message}
             interest: interest || '',
             referral_source: referralSource || '',
             notes: message || '',
-            message: message || ''
+            message: message || '',
+            phase: phase || '',
+            goal: goal || ''
           };
           const subscriberPayloadV3 = {
             email: email,

@@ -82,7 +82,7 @@ export const Assessment: React.FC = () => {
       <div className="bg-[#F6F5F2] min-h-screen py-16 px-6">
         <SeoHead 
           title="GLP-1 Fitness Assessment | WRK Personal Training"
-          description="Take our free assessment to see if your current routine is protecting your muscle mass. Start your Personal Training Consultation in Christchurch today."
+          description="Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customized 12-week training recommendation."
         />
         <div className="max-w-2xl mx-auto space-y-10 animate-in fade-in duration-700 pt-10">
           <div className="space-y-6 text-center">
@@ -321,7 +321,7 @@ export const Assessment: React.FC = () => {
     <div className="bg-[#F6F5F2] min-h-screen flex flex-col">
         <SeoHead 
           title="GLP-1 Fitness Assessment | WRK Personal Training"
-          description="Take our free assessment to see if your current routine is protecting your muscle mass. Start your Personal Training Consultation in Christchurch today."
+          description="Review your GLP-1 Fitness Assessment results. Access your personalized 12-week strength training recommendation to protect muscle during medical weight loss."
         />
       {/* Progress */}
       <div className="w-full h-1 bg-neutral-200 fixed top-0 left-0 z-50">
