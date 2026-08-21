@@ -139,19 +139,46 @@ ${message}
 
       if (MAILERLITE_API_KEY) {
         try {
-          const fields = {
+          // Only include fields that actually exist in MailerLite to prevent 422 errors
+          const fields: Record<string, string> = {
             name: name,
-            phone: phone || '',
-            interest: interest || '',
-            referral_source: referralSource || '',
-            notes: message || '',
-            message: message || '',
-            phase: phase || '',
-            goal: goal || ''
           };
+          if (phone) fields.phone = phone;
+          if (interest) fields.interest = interest;
+          if (referralSource) fields.referral_source = referralSource;
+          if (message) fields.message = message;
+          // Map the new fields
+          if (goal) fields.interest = goal; // The UI uses goal for the interest/service dropdown
+          if (phase) fields.not_sure_yet = phase; // Let's use a safe field for phase, or just leave it in the notes
+
+          // To be perfectly mapped to MailerLite custom fields you created:
+          const finalFields: Record<string, string> = {
+            name: name
+          };
+          
+          if (phone) finalFields.phone = phone;
+          if (message) finalFields.message = message;
+          
+          // In Contact.tsx, we pass:
+          // interest: formData.goal (which is the service they chose: '1:1 Coaching', 'Online Coaching', etc)
+          // referralSource: `Phase: ${formData.phase}`
+          
+          if (interest) {
+            // Map the dropdown selection directly to the interest field
+            finalFields.interest = interest;
+            
+            // Also map to specific boolean/text fields if they match
+            if (interest.includes("1:1")) finalFields["11_coaching_christchurch"] = "Yes";
+            if (interest.includes("Online")) finalFields.online_coaching = "Yes";
+            if (interest.includes("Corporate")) finalFields.corporate_wellness = "Yes";
+          }
+          
+          if (referralSource) {
+            finalFields.referral_source = referralSource;
+          }
           const subscriberPayloadV3 = {
             email: email,
-            fields: fields,
+            fields: finalFields,
             groups: ["195641787200570883"]
           };
           let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
@@ -178,7 +205,7 @@ ${message}
             const subscriberPayloadV2 = {
               email: email,
               name: name,
-              fields: fields
+              fields: finalFields
             };
             const v2Endpoint = MAILERLITE_GROUP_CONTACT 
               ? `https://api.mailerlite.com/api/v2/groups/${MAILERLITE_GROUP_CONTACT}/subscribers`

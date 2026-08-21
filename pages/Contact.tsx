@@ -106,7 +106,7 @@ export const Contact = () => {
           {/* Dynamic Inquiry Form (Bento Item) */}
           <div id="on-page-enquiry-form" className="lg:col-span-7 bg-white border border-neutral-200 rounded-3xl p-8 md:p-12 shadow-sm relative scroll-mt-24">
             <h2 className="font-serif text-[26px] md:text-[28px] text-[#2C3539] mb-4">
-              Schedule Your Consultation with a Medical Weight Loss Personal Trainer
+              Let’s Connect and Build Your Long-Term Plan
             </h2>
             <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-8">
               Fill out this brief, private form below. It helps us understand where you are on your timeline so we can have a truly supportive conversation.
