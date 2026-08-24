@@ -152,11 +152,17 @@ const run = async () => {
         `<div id="root">${appHtml}</div><script>window.__INITIAL_DATA__ = ${JSON.stringify(initialData).replace(/</g, '\\u003c')};</script>`
       );
       
-      const dir = url === '/' ? 'dist' : `dist${url}`;
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+      let filePath;
+      if (url === '/') {
+        filePath = 'dist/index.html';
+      } else {
+        const dirPath = path.dirname(`dist${url}`);
+        if (!fs.existsSync(dirPath)) {
+          fs.mkdirSync(dirPath, { recursive: true });
+        }
+        filePath = `dist${url}.html`;
       }
-      fs.writeFileSync(`${dir}/index.html`, finalHtml);
+      fs.writeFileSync(filePath, finalHtml);
       console.log(`Pre-rendered: ${url}`);
     } catch (e) {
       console.error(`Error pre-rendering ${url}:`, e);

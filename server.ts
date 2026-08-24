@@ -697,7 +697,21 @@ ${routes.map(route => `  <url>
     });
     app.use(vite.middlewares);
   } else {
-    app.use(express.static(path.resolve("dist"), { index: false }));
+    app.use((req, res, next) => {
+      // If there is no extension, check if [path].html exists to serve it directly without trailing slash redirect
+      if (!path.extname(req.path) && req.path !== '/') {
+        const htmlPath = path.resolve("dist", req.path.slice(1) + ".html");
+        if (require('fs').existsSync(htmlPath)) {
+          req.url = req.url + '.html';
+        }
+      }
+      next();
+    });
+    
+    app.use(express.static(path.resolve("dist"), { 
+      index: ['index.html'],
+      redirect: false 
+    }));
   }
   
   app.get('*all', ssrHandler);
