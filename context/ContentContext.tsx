@@ -82,7 +82,7 @@ const mergeDeep = (target: any, source: any) => {
           Object.assign(output, { [key]: source[key] });
         else
           output[key] = mergeDeep(target[key], source[key]);
-      } else {
+      } else if (!snapshot.metadata.fromCache) {
         Object.assign(output, { [key]: source[key] });
       }
     });
@@ -120,9 +120,9 @@ console.log("ContentProvider mounted, initialData length:", initialData?.blogs?.
         // Sort by date descending
         posts.sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime());
         setBlogPosts(posts);
-      } else {
+      } else if (!snapshot.metadata.fromCache) {
         // If empty, we could initialize it, but let's just use default for now
-        setBlogPosts(BLOG_POSTS);
+        setBlogPosts(prev => prev.length > 0 ? prev : BLOG_POSTS);
       }
     }, (error) => {
       handleFirestoreError(error, OperationType.LIST, 'blogs');
@@ -185,7 +185,7 @@ console.log("ContentProvider mounted, initialData length:", initialData?.blogs?.
         }
 
         setPageContent(mergeDeep(PAGE_CONTENT, migratedPages));
-      } else {
+      } else if (!snapshot.metadata.fromCache) {
         setPageContent(PAGE_CONTENT);
       }
     }, (error) => {

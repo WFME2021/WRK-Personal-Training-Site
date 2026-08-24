@@ -18,6 +18,7 @@ export interface BlogPost {
   isoDate: string; // ISO 8601 for Schema.org
   updatedDate?: string;
   category: string;
+  status?: 'draft' | 'published';
   image: CMSImage;
   author: Author;
   seoTitle?: string;
