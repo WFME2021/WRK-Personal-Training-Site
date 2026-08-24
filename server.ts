@@ -494,44 +494,6 @@ ${JSON.stringify(answers, null, 2)}`,
     res.send('User-agent: *\nAllow: /\nSitemap: https://www.wrkpersonaltraining.co.nz/sitemap.xml');
   });
 
-  app.get('/sitemap.xml', (req, res) => {
-    const baseUrl = 'https://www.wrkpersonaltraining.co.nz';
-    
-    // Core routes
-    const routes = [
-      '/',
-      '/about',
-      '/assessment',
-      '/results',
-      '/contact',
-      '/14-day-fat-loss-foundations',
-      
-      '/services',
-      '/workplace-wellness-program-nz',
-      '/fitness-challenge-nz',
-      '/blog',
-      '/tools',
-      '/calorie-calculator',
-      '/tools/1rm-estimator',
-      '/terms',
-      '/privacy',
-      '/health-disclaimer',
-      '/refunds'
-    ];
-
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(route => `  <url>
-    <loc>${baseUrl}${route}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>${route === '/' ? '1.0' : '0.8'}</priority>
-  </url>`).join('\n')}
-</urlset>`;
-
-    res.header('Content-Type', 'application/xml');
-    res.send(sitemap);
-  });
-
   // Vite middleware for development
   
   let cachedBlogs = null;
