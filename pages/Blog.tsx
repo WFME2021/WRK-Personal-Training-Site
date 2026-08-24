@@ -29,9 +29,9 @@ export const Blog: React.FC = () => {
   
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredPosts = publishedPosts.filter(post => 
-    activeCategory === 'All' || post.category === activeCategory
-  );
+  const filteredPosts = publishedPosts
+    .filter(post => activeCategory === 'All' || post.category === activeCategory)
+    .sort((a, b) => new Date(b.isoDate || 0).getTime() - new Date(a.isoDate || 0).getTime());
 
   useEffect(() => {
     window.scrollTo(0, 0);
