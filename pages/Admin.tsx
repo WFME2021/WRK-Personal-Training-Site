@@ -70,7 +70,8 @@ export const Admin: React.FC = () => {
   const [editingId, setEditingId] = useState<string | null>(null); // Post ID
   const [selectedPage, setSelectedPage] = useState<keyof PageContent | null>(null); // Page Key
   
-  const [postFormData, setPostFormData] = useState<BlogPost>(EMPTY_POST);
+  const [postFormData, setPostFormData] = useState<BlogPost>(() => { const saved = localStorage.getItem("wrk_blog_draft"); return saved ? JSON.parse(saved) : EMPTY_POST; });
+  useEffect(() => { localStorage.setItem("wrk_blog_draft", JSON.stringify(postFormData)); }, [postFormData]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
 
