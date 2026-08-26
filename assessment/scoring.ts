@@ -1,21 +1,21 @@
 import { ASSESSMENT_QUESTIONS } from "./questions";
-import { RECOMMENDATIONS, ACTION_PLAN_ITEMS } from "./recommendations";
+import { getDynamicRecommendations, getDynamicActionPlan } from "./recommendations";
 import { AssessmentResult, Domain, DomainScore, Recommendation, ActionItem } from "./types";
 
-const ASSESSMENT_VERSION = "1.0";
+const ASSESSMENT_VERSION = "2.0";
 
 const DOMAIN_WEIGHTS: Record<Domain, number> = {
-  strength: 0.20,
-  nutrition: 0.20,
+  strength: 0.25,
+  nutrition: 0.25,
   hydration: 0.10,
   movement: 0.15,
   recovery: 0.15,
-  sustainability: 0.20
+  sustainability: 0.10
 };
 
 const DOMAIN_TIE_BREAKER: Domain[] = [
-  "nutrition",
   "strength",
+  "nutrition",
   "sustainability",
   "recovery",
   "movement",
@@ -56,6 +56,17 @@ export function calculateAssessmentResult(answers: Record<string, string | strin
         if (opt && opt.score !== undefined) {
           domainScoresMap[dom].push(opt.score);
         }
+      } else if (answer && Array.isArray(answer)) {
+        // Handle multiple choice if we want to score it. Right now sustainability consistency is multiple choice but has no scores attached in the options.
+        // If it has scores, we could average them. Since it doesn't, we can just give a fixed score based on how many they selected.
+        if (q.id === "q11_sust_consistency") {
+          const numHurdles = answer.length;
+          let score = 100;
+          if (numHurdles >= 4) score = 25;
+          else if (numHurdles >= 2) score = 60;
+          else if (numHurdles === 1) score = 85;
+          domainScoresMap[dom].push(score);
+        }
       }
     }
   }
@@ -68,11 +79,13 @@ export function calculateAssessmentResult(answers: Record<string, string | strin
     const scores = domainScoresMap[dom];
     const avg = scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
     const roundedAvg = Math.round(avg);
+    
     domainScores.push({
       domain: dom,
       score: roundedAvg,
       label: getScoreLabel(roundedAvg)
     });
+    
     overallScore += roundedAvg * DOMAIN_WEIGHTS[dom];
   }
   
@@ -93,49 +106,39 @@ export function calculateAssessmentResult(answers: Record<string, string | strin
   const secondaryFocus = sortedDomains[1].domain;
   const thirdFocus = sortedDomains[2].domain;
 
+  const dynamicRecommendations = getDynamicRecommendations(answers);
+  const dynamicActionPlan = getDynamicActionPlan(answers);
+
   const recommendations: Recommendation[] = [
-    RECOMMENDATIONS[primaryFocus],
-    RECOMMENDATIONS[secondaryFocus],
-    RECOMMENDATIONS[thirdFocus]
+    dynamicRecommendations[primaryFocus],
+    dynamicRecommendations[secondaryFocus],
+    dynamicRecommendations[thirdFocus]
   ];
 
-  const sevenDayPlan: ActionItem[] = [
-    ACTION_PLAN_ITEMS[primaryFocus],
-    ACTION_PLAN_ITEMS[secondaryFocus],
-    ACTION_PLAN_ITEMS[thirdFocus],
-    // Let's add the remaining domains to the 7-day plan, or just the top priorities?
-    // "Automatically assemble a simple action plan from the user's top priorities"
-    // But the example showed 5 items. The spec says:
-    // "The plan should be short and practical. Do not overwhelm the user with 20 tasks."
-    // Let's include the top 3, or maybe all 6 but just the brief action.
-    // The example showed: TRAIN, EAT, MOVE, HYDRATE, RECOVER.
-  ];
-
-  // We'll assemble a 5-item plan based on standard priorities, just picking from the action plan items.
   const fullPlan = [
-    ACTION_PLAN_ITEMS["strength"],
-    ACTION_PLAN_ITEMS["nutrition"],
-    ACTION_PLAN_ITEMS["movement"],
-    ACTION_PLAN_ITEMS["hydration"],
-    ACTION_PLAN_ITEMS["recovery"]
+    dynamicActionPlan["strength"],
+    dynamicActionPlan["nutrition"],
+    dynamicActionPlan["movement"],
+    dynamicActionPlan["hydration"],
+    dynamicActionPlan["recovery"]
   ];
 
   let goalLabel = "";
-  if (answers["q19_goal"] && typeof answers["q19_goal"] === "string") {
-    const q19 = ASSESSMENT_QUESTIONS.find(q => q.id === "q19_goal");
-    goalLabel = q19?.options.find(o => o.id === answers["q19_goal"])?.label || "";
+  if (answers["q1_goal"] && typeof answers["q1_goal"] === "string") {
+    const q = ASSESSMENT_QUESTIONS.find(q => q.id === "q1_goal");
+    goalLabel = q?.options.find(o => o.id === answers["q1_goal"])?.label || "";
   }
 
   let glp1Status = "";
-  if (answers["q20_glp1_status"] && typeof answers["q20_glp1_status"] === "string") {
-    const q = ASSESSMENT_QUESTIONS.find(q => q.id === "q20_glp1_status");
-    glp1Status = q?.options.find(o => o.id === answers["q20_glp1_status"])?.label || "";
+  if (answers["q2_glp1_status"] && typeof answers["q2_glp1_status"] === "string") {
+    const q = ASSESSMENT_QUESTIONS.find(q => q.id === "q2_glp1_status");
+    glp1Status = q?.options.find(o => o.id === answers["q2_glp1_status"])?.label || "";
   }
   
   let glp1Duration = "";
-  if (answers["q21_glp1_duration"] && typeof answers["q21_glp1_duration"] === "string") {
-    const q = ASSESSMENT_QUESTIONS.find(q => q.id === "q21_glp1_duration");
-    glp1Duration = q?.options.find(o => o.id === answers["q21_glp1_duration"])?.label || "";
+  if (answers["q3_glp1_duration"] && typeof answers["q3_glp1_duration"] === "string") {
+    const q = ASSESSMENT_QUESTIONS.find(q => q.id === "q3_glp1_duration");
+    glp1Duration = q?.options.find(o => o.id === answers["q3_glp1_duration"])?.label || "";
   }
 
   return {
