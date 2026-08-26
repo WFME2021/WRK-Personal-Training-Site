@@ -82,7 +82,7 @@ const mergeDeep = (target: any, source: any) => {
           Object.assign(output, { [key]: source[key] });
         else
           output[key] = mergeDeep(target[key], source[key]);
-      } else if (!snapshot.metadata.fromCache) {
+      } else {
         Object.assign(output, { [key]: source[key] });
       }
     });

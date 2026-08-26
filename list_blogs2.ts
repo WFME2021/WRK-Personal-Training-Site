@@ -1,11 +1,9 @@
 import { initializeApp } from 'firebase/app';
-import { initializeFirestore, collection, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import firebaseConfig from './firebase-applet-config.json';
 
 const app = initializeApp(firebaseConfig);
-const db = initializeFirestore(app, {
-  databaseId: firebaseConfig.firestoreDatabaseId || '(default)'
-});
+const db = getFirestore(app, firebaseConfig.firestoreDatabaseId || '(default)');
 
 async function main() {
   const snapshot = await getDocs(collection(db, 'blogs'));

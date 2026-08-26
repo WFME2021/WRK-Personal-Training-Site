@@ -33,7 +33,6 @@ export interface BlogPost {
   localServiceCategory?: string;
   localServicePage?: string;
   localKeywordNote?: string;
-  status?: 'draft' | 'published';
 }
 
 const DEFAULT_AUTHOR: Author = {
