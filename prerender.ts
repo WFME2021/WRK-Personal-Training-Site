@@ -36,6 +36,10 @@ const run = async () => {
   
   const templateHtml = fs.readFileSync(path.resolve("dist/index.html"), "utf-8");
   
+  // Save a copy of the generic Vite template as the fallback for Vercel
+  // This prevents the homepage's canonical tag from bleeding into un-prerendered dynamic routes
+  fs.writeFileSync(path.resolve("dist/fallback.html"), templateHtml);
+  
   const routes = [
     '/',
     '/programs',
