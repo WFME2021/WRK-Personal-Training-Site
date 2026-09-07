@@ -243,12 +243,12 @@ export const Contact = () => {
               >
                 {/* Embed Google Map Location - Christchurch, NZ */}
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185185.91070085767!2d172.59900134999998!3d-43.51214245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26634d156304cd93%3A0x9e3eee8e863806bb!2sWRK%20Personal%20Training!5e0!3m2!1sen!2snz!4v1786227431486!5m2!1sen!2snz" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185185.91070085767!2d172.59900144999997!3d-43.51214245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26634d156304cd93%3A0x9e3eee8e863806bb!2sWRK%20Personal%20Training!5e0!3m2!1sen!2snz!4v1788775159827!5m2!1sen!2snz" 
                   className="absolute inset-0 w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{ border: 0 }} 
                   allowFullScreen={true} 
                   loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   title="WRK Personal Training Google Maps Location"
                 ></iframe>
                 <div className="absolute inset-0 bg-[#2C3539]/0 group-hover:bg-[#2C3539]/5 transition-colors duration-300 flex items-center justify-center">

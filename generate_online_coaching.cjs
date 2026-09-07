@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+const fs = require('fs');
+
+const content = `import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
@@ -334,7 +336,7 @@ export const OnlineCoaching: React.FC = () => {
                     </span>
                   </button>
                   <div 
-                    className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openFaq === idx ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+                    className={\`px-6 overflow-hidden transition-all duration-300 ease-in-out \${openFaq === idx ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}\`}
                   >
                     <p className="text-neutral-400 leading-relaxed border-t border-neutral-800 pt-4">{faq.a}</p>
                   </div>
@@ -376,3 +378,5 @@ export const OnlineCoaching: React.FC = () => {
     </>
   );
 };
+`
+fs.writeFileSync('pages/OnlineCoaching.tsx', content);

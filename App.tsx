@@ -8,6 +8,7 @@ import { Services } from './pages/Services';
 import { Resources } from './pages/Resources';
 import { Results } from './pages/Results';
 import { Contact } from './pages/Contact';
+import { Toolkit } from './pages/Toolkit';
 import { PersonalTraining } from './pages/PersonalTraining';
 import { OnlineCoaching } from './pages/OnlineCoaching';
 import { Blog } from './pages/Blog';
@@ -71,13 +72,14 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             
             <Route path="/contact" element={<Contact />} />
             
-            <Route path="/personal-training" element={<Navigate to="/services" replace />} />
-            <Route path="/online-coaching" element={<Navigate to="/services" replace />} />
+            <Route path="/personal-training" element={<PersonalTraining />} />
+            <Route path="/online-coaching" element={<OnlineCoaching />} />
             
             <Route path="/personal-trainer-christchurch" element={<Navigate to="/services" replace />} />
             <Route path="/online-personal-training-nz" element={<Navigate to="/services" replace />} />
             <Route path="/personal-training-christchurch-philosophy" element={<Navigate to="/about" replace />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/toolkit" element={<Toolkit />} />
             
             
             <Route path="/blog" element={<Blog />} />

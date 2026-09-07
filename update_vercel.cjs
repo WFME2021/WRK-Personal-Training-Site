@@ -1,4 +1,6 @@
-{
+const fs = require('fs');
+
+const vercel = {
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
@@ -49,4 +51,6 @@
       "destination": "/fallback"
     }
   ]
-}
+};
+
+fs.writeFileSync('vercel.json', JSON.stringify(vercel, null, 2));

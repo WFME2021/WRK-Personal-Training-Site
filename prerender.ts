@@ -40,11 +40,12 @@ const run = async () => {
   // This prevents the homepage's canonical tag from bleeding into un-prerendered dynamic routes
   fs.writeFileSync(path.resolve("dist/fallback.html"), templateHtml);
   
-  const routes = [
+      const routes = [
     '/',
     '/programs',
     '/personal-training',
     '/online-coaching',
+    '/toolkit',
     '/assessment',
     '/results',
     '/contact',
@@ -66,18 +67,18 @@ const run = async () => {
     let title = "GLP-1 Fitness Coach | Strength & Fitness Coaching | WRK Personal Training";
     let desc = "Hire a dedicated GLP-1 Fitness Coach in Christchurch. We provide specialist strength & fitness coaching to preserve muscle and build sustainable habits during medical weight loss.";
     
-    if (url === '/programs') {
+        if (url === '/programs') {
       title = "GLP-1 Fitness Programs | WRK Personal Training";
       desc = "Explore our 12-week GLP-1 Fitness Programs. Structured training pathways built around your active weight loss, maintenance, or long-term habit building phases.";
-    } else if (url === '/services') {
-      title = "GLP-1 Fitness Coaching Programs | WRK Personal Training";
-      desc = "Compare our GLP-1 Fitness Coaching Programs. Choose between our in-person training in Christchurch or our comprehensive 12-week online coaching pathways.";
+    } else if (url === '/toolkit') {
+      title = "GLP-1 Workout & Nutrition Toolkit | WRK Personal Training";
+      desc = "Download the comprehensive GLP-1 toolkit: gym and home workout templates, high-protein meal guides, and medication side-effect navigation for $29.";
     } else if (url === '/online-coaching') {
-      title = "Online Fitness Coaching & Support | Personal Trainers for GLP-1 Patients";
-      desc = "Expert Online Fitness Coaching tailored for GLP-1 patients. Work with specialist personal trainers to protect your muscle mass from anywhere in New Zealand.";
+      title = "Online GLP-1 Fitness Coach | Muscle Preservation & Strength | WRK";
+      desc = "Specialized online coaching for GLP-1 patients worldwide. Preserve muscle, overcome fatigue, and build lasting strength. Apply for remote coaching.";
     } else if (url === '/personal-training') {
-      title = "In-Person Personal Training | GLP-1 Exercise Program Christchurch";
-      desc = "Join our specialist GLP-1 Exercise Program in Christchurch. Safe, effective 30-minute in-person personal training sessions tailored for medical weight loss support.";
+      title = "Personal Trainer Christchurch | 1-on-1 Fitness Coaching | WRK";
+      desc = "Private 1-on-1 personal training in Addington, Christchurch. Evidence-based coaching tailored for strength, weight loss, and GLP-1 support. Book a session.";
     } else if (url === '/assessment') {
       title = "GLP-1 Fitness Assessment | WRK Personal Training";
       desc = "Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customized 12-week training recommendation.";

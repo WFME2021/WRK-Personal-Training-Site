@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+const fs = require('fs');
+
+const content = `import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
@@ -267,13 +269,13 @@ export const PersonalTraining: React.FC = () => {
                  
                  <div className="w-full aspect-[4/3] sm:aspect-video rounded-3xl overflow-hidden border border-neutral-200 shadow-md">
                     <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185185.91070085767!2d172.59900144999997!3d-43.51214245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26634d156304cd93%3A0x9e3eee8e863806bb!2sWRK%20Personal%20Training!5e0!3m2!1sen!2snz!4v1788775159827!5m2!1sen!2snz" 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d2892.428489725514!2d172.60281691550182!3d-43.53503257912537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d318a0a1a0b678b%3A0xc07a2a0eb9a27e05!2s12%20Show%20Place%2C%20Addington%2C%20Christchurch%208024%2C%20New%20Zealand!5e0!3m2!1sen!2sus!4v1714400000000!5m2!1sen!2sus" 
                       width="100%" 
                       height="100%" 
                       style={{ border: 0 }} 
                       allowFullScreen={true} 
                       loading="lazy" 
-                      referrerPolicy="strict-origin-when-cross-origin"
+                      referrerPolicy="no-referrer-when-downgrade"
                       title="Studio Location Map"
                     ></iframe>
                  </div>
@@ -296,7 +298,7 @@ export const PersonalTraining: React.FC = () => {
                <form className="space-y-4" onSubmit={(e) => {
                  e.preventDefault();
                  if (phaseSelection) {
-                    window.location.href = `/contact?phase=${encodeURIComponent(phaseSelection)}`;
+                    window.location.href = \`/contact?phase=\${encodeURIComponent(phaseSelection)}\`;
                  } else {
                     window.location.href = '/contact';
                  }
@@ -307,7 +309,7 @@ export const PersonalTraining: React.FC = () => {
                    "I am looking for private 1-on-1 strength training (General Fitness)",
                    "I have a specific question about the Addington studio"
                  ].map((option, idx) => (
-                   <label key={idx} className={`flex items-start p-4 rounded-xl border cursor-pointer transition-colors ${phaseSelection === option ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300'}`}>
+                   <label key={idx} className={\`flex items-start p-4 rounded-xl border cursor-pointer transition-colors \${phaseSelection === option ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300'}\`}>
                      <div className="mt-0.5">
                        <input 
                          type="radio" 
@@ -352,7 +354,7 @@ export const PersonalTraining: React.FC = () => {
                     </span>
                   </button>
                   <div 
-                    className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openFaq === idx ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+                    className={\`px-6 overflow-hidden transition-all duration-300 ease-in-out \${openFaq === idx ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}\`}
                   >
                     <p className="text-neutral-600 leading-relaxed border-t border-neutral-100 pt-4">{faq.a}</p>
                   </div>
@@ -366,3 +368,5 @@ export const PersonalTraining: React.FC = () => {
     </>
   );
 };
+`
+fs.writeFileSync('pages/PersonalTraining.tsx', content);

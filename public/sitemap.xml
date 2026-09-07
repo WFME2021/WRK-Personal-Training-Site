@@ -6,12 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/programs</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/personal-training</loc>
+    <loc>https://www.wrkpersonaltraining.co.nz/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -21,27 +16,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/personal-training</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/toolkit</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/programs</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.wrkpersonaltraining.co.nz/assessment</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/results</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/resources</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -66,6 +56,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.wrkpersonaltraining.co.nz/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -78,12 +73,6 @@
   </url>
   <url>
     <loc>https://www.wrkpersonaltraining.co.nz/blog/healthy-meal-prep-for-busy-adults</loc>
-    <lastmod>2026-03-17T00:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.wrkpersonaltraining.co.nz/blog/how-to-start-strength-training</loc>
     <lastmod>2026-03-17T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

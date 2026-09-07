@@ -26,20 +26,19 @@ const generateSitemap = async () => {
     }
 
     const baseUrl = 'https://www.wrkpersonaltraining.co.nz';
-    const staticPages = [
+        const staticPages = [
       '',
-      '/programs',
-      '/personal-training',
-      '/online-coaching',
-      '/assessment',
-      '/results',
-      '/contact',
       '/about',
-      '/resources',
+      '/online-coaching',
+      '/personal-training',
+      '/toolkit',
+      '/programs',
+      '/assessment',
       '/tools',
       '/tools/tdee-calculator',
       '/tools/protein-calculator',
       '/tools/hydration-calculator',
+      '/contact',
       '/blog'
     ];
 

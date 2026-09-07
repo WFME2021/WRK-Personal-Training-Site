@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { BRAND_NAME } from '../constants';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
   
   // Close menu on route change
@@ -25,22 +26,24 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex flex-grow justify-end items-center space-x-8">
-            <Link to="/about" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">
-              About
-            </Link>
-            <Link to="/services" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">
-              Services
-            </Link>
-            <Link to="/programs" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">
-              Programs
-            </Link>
-            <Link to="/tools" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">
-              Tools
-            </Link>
-            <Link to="/blog" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">
-              Blog
-            </Link>
+                    <nav className="hidden md:flex flex-grow justify-end items-center space-x-6 lg:space-x-8">
+            <Link to="/about" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">About</Link>
+            <div className="relative group">
+              <button className="flex items-center text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors py-2">
+                Services <ChevronDown className="w-4 h-4 ml-1 opacity-70 group-hover:rotate-180 transition-transform" />
+              </button>
+              <div className="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="bg-white border border-neutral-100 rounded-xl shadow-lg p-2 flex flex-col gap-1">
+                  <Link to="/online-coaching" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] hover:bg-neutral-50 rounded-lg px-3 py-2 transition-colors">Online Coaching</Link>
+                  <Link to="/personal-training" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] hover:bg-neutral-50 rounded-lg px-3 py-2 transition-colors">In-Person PT</Link>
+                  <Link to="/toolkit" className="text-[14px] font-medium text-teal-600 hover:text-teal-700 hover:bg-teal-50 rounded-lg px-3 py-2 transition-colors">GLP-1 Toolkit</Link>
+                </div>
+              </div>
+            </div>
+            <Link to="/programs" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">Programs</Link>
+            <Link to="/tools" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">Tools</Link>
+            <Link to="/blog" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">Blog</Link>
+            <Link to="/contact" className="text-[14px] font-medium text-[#2C3539]/80 hover:text-[#2C3539] transition-colors">Contact</Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -80,9 +83,28 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
            <Link onClick={() => setIsMenuOpen(false)} to="/about" className="h-[56px] flex items-center px-6 text-[18px] font-serif text-[#2C3539] hover:bg-neutral-50 transition-colors">
              About
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/services" className="h-[56px] flex items-center px-6 text-[18px] font-serif text-[#2C3539] hover:bg-neutral-50 transition-colors">
-             Services
-           </Link>
+           <div className="flex flex-col">
+             <button 
+               onClick={() => setIsServicesOpen(!isServicesOpen)}
+               className="h-[56px] w-full flex items-center justify-between px-6 text-[18px] font-serif text-[#2C3539] hover:bg-neutral-50 transition-colors"
+             >
+               Services
+               <ChevronDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+             </button>
+             {isServicesOpen && (
+               <div className="flex flex-col bg-neutral-50/50 pb-2">
+                 <Link onClick={() => setIsMenuOpen(false)} to="/online-coaching" className="h-[48px] flex items-center pl-10 pr-6 text-[16px] text-[#2C3539]/80 hover:bg-neutral-100 transition-colors">
+                   Online Coaching
+                 </Link>
+                 <Link onClick={() => setIsMenuOpen(false)} to="/personal-training" className="h-[48px] flex items-center pl-10 pr-6 text-[16px] text-[#2C3539]/80 hover:bg-neutral-100 transition-colors">
+                   In-Person PT
+                 </Link>
+                 <Link onClick={() => setIsMenuOpen(false)} to="/toolkit" className="h-[48px] flex items-center pl-10 pr-6 text-[16px] text-teal-600 hover:bg-neutral-100 transition-colors">
+                   GLP-1 Toolkit
+                 </Link>
+               </div>
+             )}
+           </div>
            <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[56px] flex items-center px-6 text-[18px] font-serif text-[#2C3539] hover:bg-neutral-50 transition-colors">
              Programs
            </Link>
