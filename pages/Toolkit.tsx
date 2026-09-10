@@ -63,7 +63,7 @@ export const Toolkit: React.FC = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <a href="#checkout" className="w-full sm:w-auto">
+              <a href="https://wrkpersonaltraining.mypthub.net/p/236048" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <Button size="lg" fullWidth className="group bg-teal-600 hover:bg-teal-500 text-white border-none py-6 px-10 text-lg">
                   Get Instant App Access — $29 NZD <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -273,13 +273,13 @@ export const Toolkit: React.FC = () => {
                  </ul>
 
                  <div className="space-y-4">
-                   <a href="mailto:info@wrkpersonaltraining.co.nz?subject=Toolkit%20Purchase%20Inquiry" className="block w-full">
+                   <a href="https://wrkpersonaltraining.mypthub.net/p/236048" target="_blank" rel="noopener noreferrer" className="block w-full">
                      <Button size="lg" fullWidth className="bg-teal-600 hover:bg-teal-500 text-white py-6 text-[17px] border-none">
                        Get Instant App Access — $29 NZD
                      </Button>
                    </a>
                    <div className="flex items-center justify-center text-xs text-neutral-500 mt-4 font-medium">
-                     <Lock className="w-3 h-3 mr-1" /> Secure SSL Checkout (Redirecting to manual inquiry while Stripe is configured)
+                     <Lock className="w-3 h-3 mr-1" /> Secure SSL Checkout
                    </div>
                  </div>
                  
