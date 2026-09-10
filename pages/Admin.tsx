@@ -85,19 +85,15 @@ export const Admin: React.FC = () => {
 
   // Check auth on mount
   useEffect(() => {
-    import('firebase/auth').then(({ onAuthStateChanged }) => {
-      import('../firebase').then(({ auth }) => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (user) {
-            setIsAuthenticated(true);
-          } else {
-            setIsAuthenticated(false);
-          }
-          setIsAuthLoading(false);
-        });
-        return () => unsubscribe();
-      });
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+      setIsAuthLoading(false);
     });
+    return () => unsubscribe();
   }, []);
 
   // Handle Login
@@ -189,7 +185,7 @@ export const Admin: React.FC = () => {
             const webpDataUrl = canvas.toDataURL('image/webp', 0.8);
             
             // Upload to Firebase Storage
-            const { uploadImageToStorage } = await import('../firebase');
+            
             const filename = `blog-featured-${Date.now()}.webp`;
             const downloadUrl = await uploadImageToStorage(webpDataUrl, `images/${filename}`);
             

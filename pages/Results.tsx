@@ -12,6 +12,7 @@ export const Results: React.FC = () => {
   }, []);
 
   if (!state?.name) {
+    if (typeof window === 'undefined') return null;
     return <Navigate to="/assessment" replace />;
   }
 

@@ -7,12 +7,20 @@ import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
 import { useContent } from '../context/ContentContext';
 
+// Helper to demote H1s to H2s in markdown content to prevent SEO multiple-h1 issues
+const parseMarkdownNoH1 = (content: string) => {
+  if (!content) return '';
+  const parsed = marked.parse(content) as string;
+  return parsed.replace(/<h1/g, '<h2').replace(/<\/h1>/g, '</h2>');
+};
+
 export const BlogPost: React.FC = () => {
   const { blogPosts } = useContent();
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find(p => p.slug === slug);
 
   if (!post) {
+    if (typeof window === 'undefined') return null;
     return <Navigate to="/blog" replace />;
   }
 
@@ -112,7 +120,7 @@ export const BlogPost: React.FC = () => {
           {/* Post Content */}
           <div 
             className="prose prose-lg max-w-none mb-16 prose-p:text-[#2C3539] prose-p:leading-relaxed prose-p:font-sans prose-headings:text-[#2C3539] prose-h2:font-serif prose-h2:text-[#8A9A86] prose-a:text-[#8A9A86] hover:prose-a:opacity-80 prose-li:text-[#2C3539] prose-strong:text-[#2C3539] prose-strong:font-bold"
-            dangerouslySetInnerHTML={{ __html: marked.parse(post.content || '') as string }}
+            dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.content || '') }}
           />
 
           {/* FAQ Section */}
@@ -121,7 +129,7 @@ export const BlogPost: React.FC = () => {
               <h2 className="text-3xl font-serif mb-8 text-[#8A9A86]">Frequently Asked Questions</h2>
               <div 
                 className="prose prose-lg max-w-none prose-p:text-[#2C3539] prose-p:leading-relaxed prose-headings:font-serif prose-headings:text-[#2C3539] prose-a:text-[#8A9A86] hover:prose-a:opacity-80 prose-strong:text-[#2C3539]"
-                dangerouslySetInnerHTML={{ __html: marked.parse(post.faq || '') as string }}
+                dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.faq || '') }}
               />
             </div>
           )}
@@ -132,7 +140,7 @@ export const BlogPost: React.FC = () => {
               <h3 className="text-[12px] font-bold uppercase tracking-widest text-[#2C3539]/50 mb-4">References & Sources</h3>
               <div 
                 className="prose prose-sm max-w-none prose-p:text-[#2C3539]/70 prose-a:text-[#8A9A86] hover:prose-a:underline"
-                dangerouslySetInnerHTML={{ __html: marked.parse(post.references || '') as string }}
+                dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.references || '') }}
               />
             </div>
           )}

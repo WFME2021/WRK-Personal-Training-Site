@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { marked } from 'marked';
+import { uploadImageToStorage } from "../firebase";
 import { Eye, Edit2, Image as ImageIcon, Link as LinkIcon } from 'lucide-react';
 
 interface MarkdownEditorProps {
@@ -121,7 +122,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
         const base64Data = await compressImage(file);
 
         // Upload to Firebase Storage
-        const { uploadImageToStorage } = await import('../firebase');
+        
         const ext = file.name.split('.').pop() || 'webp';
         const filename = `markdown-${Date.now()}.${ext}`;
         const downloadUrl = await uploadImageToStorage(base64Data, `images/${filename}`);
