@@ -24,6 +24,7 @@ import { HealthDisclaimer } from './pages/HealthDisclaimer';
 import { Refunds } from './pages/Refunds';
 import { NotFound } from './pages/NotFound';
 import { About } from './pages/About';
+import { ForReferrers } from './pages/ForReferrers';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -55,6 +56,7 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/for-referrers" element={<ForReferrers />} />
             <Route path="/assessment" element={<Assessment />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/resources" element={<Resources />} />

@@ -16,8 +16,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAF9] text-[#2C3539] transition-colors duration-300 overflow-x-hidden selection:bg-[#8A9A86] selection:text-white">
       
+      {/* Utility Bar */}
+      <div className="bg-[#1A1C1D] text-neutral-300 py-1.5 px-4 md:px-8 text-center md:text-right text-[12px] font-medium tracking-wide z-[60] relative">
+        <div className="max-w-7xl mx-auto flex justify-center md:justify-end">
+          <Link to="/for-referrers" className="hover:text-white transition-colors flex items-center">
+            Healthcare Providers & Referrals <span className="ml-1">→</span>
+          </Link>
+        </div>
+      </div>
+
       {/* Header */}
-      <header className="fixed w-full top-0 z-50 bg-[#FAFAF9]/90 backdrop-blur-md transition-colors duration-300 border-b border-neutral-200 h-[72px]">
+      <header className="fixed w-full top-[32px] md:top-[32px] z-50 bg-[#FAFAF9]/90 backdrop-blur-md transition-colors duration-300 border-b border-neutral-200 h-[72px]">
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-full flex items-center justify-between">
           
           {/* Logo / Wordmark */}
@@ -67,7 +76,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         />
       )}
       <div 
-        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[360px] bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-[72px] border-l border-neutral-200 shadow-2xl ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[360px] bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-[104px] border-l border-neutral-200 shadow-2xl ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
          <button 
            className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-[#2C3539]"
@@ -117,7 +126,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
          </div>
       </div>
 
-      <main className="flex-grow pt-[72px] bg-[#FAFAF9]">
+      <main className="flex-grow pt-[104px] bg-[#FAFAF9]">
         {children}
       </main>
 
@@ -182,6 +191,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <Link to="/privacy" className="text-[15px] text-neutral-400 hover:text-white transition-colors">Privacy Policy (Secure Data Handling)</Link>
                 <Link to="/terms" className="text-[15px] text-neutral-400 hover:text-white transition-colors">Terms of Service</Link>
                 <Link to="/health-disclaimer" className="text-[15px] text-neutral-400 hover:text-white transition-colors">Medical Disclaimer</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-white font-serif text-[20px] mb-4">Professionals</h4>
+              <div className="flex flex-col space-y-3">
+                <Link to="/for-referrers" className="text-[15px] text-neutral-400 hover:text-white transition-colors">Clinical & GP Referrals</Link>
               </div>
             </div>
           </div>

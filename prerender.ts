@@ -42,6 +42,7 @@ const run = async () => {
   
       const routes = [
     '/',
+    '/for-referrers',
     '/programs',
     '/personal-training',
     '/online-coaching',

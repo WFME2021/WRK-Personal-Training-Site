@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { MarkdownEditor } from '../components/MarkdownEditor';
 import { RichTextEditor } from '../components/RichTextEditor';
 import { useContent } from '../context/ContentContext';
-import { loginWithGoogle, logout, auth } from '../firebase';
+import { loginWithGoogle, logout, auth, uploadImageToStorage } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
 // Default Author for new posts

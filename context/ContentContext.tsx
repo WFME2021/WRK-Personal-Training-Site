@@ -53,7 +53,14 @@ function handleFirestoreError(error: unknown, operationType: OperationType, path
     path
   }
   console.error('Firestore Error: ', JSON.stringify(errInfo));
-  throw new Error(JSON.stringify(errInfo));
+  
+  // Do not crash the app on offline/network errors
+  const isNetworkError = errInfo.error.toLowerCase().includes('unavailable') || 
+                         errInfo.error.toLowerCase().includes('offline') ||
+                         errInfo.error.includes('Could not reach Cloud Firestore backend');
+  if (!isNetworkError) {
+    throw new Error(JSON.stringify(errInfo));
+  }
 }
 
 type PageContentState = Record<string, PageContentConfig>;

@@ -679,7 +679,10 @@ ${JSON.stringify(answers, null, 2)}`,
         `<div id="root">${appHtml}</div><script>window.__INITIAL_DATA__ = ${JSON.stringify(initialData).replace(/</g, '\\u003c')};</script><!-- debug:${appHtml.length} -->`
       );
       
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(finalHtml);
+      res.status(200).set({ 
+        'Content-Type': 'text/html',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
+      }).end(finalHtml);
     } catch (e) {
       if (process.env.NODE_ENV !== "production") vite.ssrFixStacktrace(e);
       console.error(e);

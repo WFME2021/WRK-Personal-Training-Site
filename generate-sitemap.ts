@@ -29,6 +29,7 @@ const generateSitemap = async () => {
         const staticPages = [
       '',
       '/about',
+      '/for-referrers',
       '/online-coaching',
       '/personal-training',
       '/toolkit',
