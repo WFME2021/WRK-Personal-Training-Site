@@ -30,11 +30,23 @@ export const OnlineCoaching: React.FC = () => {
     }
   ];
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Online Fitness Coaching",
+    "provider": {
+      "@type": "HealthAndFitnessBusiness",
+      "name": "WRK Personal Training"
+    },
+    "description": "Specialist online fitness and nutrition coaching for GLP-1 patients worldwide. Preserve lean muscle, simplify protein intake, and build lasting strength habits."
+  };
+
   return (
     <>
       <SeoHead 
         title="Online GLP-1 Fitness Coach | Protect Muscle & Build Strength | WRK"
         description="Specialist online fitness and nutrition coaching for GLP-1 patients worldwide. Preserve lean muscle, simplify protein intake, and build lasting strength habits."
+        schema={schema}
       />
       <div className="flex flex-col w-full overflow-x-hidden bg-neutral-900 pb-24 text-neutral-100 selection:bg-teal-500/30">
         

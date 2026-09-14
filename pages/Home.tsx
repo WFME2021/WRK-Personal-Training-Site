@@ -44,13 +44,13 @@ export const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative pt-4 pb-16 md:pt-28 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
         <div className="mb-4 md:mb-6 flex justify-center">
-          <h1 className="bg-[#8A9A86]/10 text-[#8A9A86] px-4 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-widest">
+          <span className="bg-[#8A9A86]/10 text-[#8A9A86] px-4 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-widest">
             GLP-1 Fitness Coaching
-          </h1>
+          </span>
         </div>
-        <p className="font-serif text-[42px] md:text-[64px] leading-[1.1] text-[#2C3539] mb-5 md:mb-8 max-w-4xl tracking-tight">
+        <h1 className="font-serif text-[42px] md:text-[64px] leading-[1.1] text-[#2C3539] mb-5 md:mb-8 max-w-4xl tracking-tight">
           Lose the weight. <span className="wrk-highlight">Keep your strength.</span> Build the fitness to keep it off.
-        </p>
+        </h1>
         <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/70 max-w-2xl mb-6 md:mb-10 space-y-4">
           <p>GLP-1 medication can help you lose weight. WRK helps you make the most of that journey.</p>
           <p>Specialist fitness coaching for people using GLP-1 medications, focused on <strong className="text-[#2C3539]">strength, muscle preservation, nutrition, fitness and sustainable habits</strong> — so you can become stronger and fitter while the weight comes off.</p>

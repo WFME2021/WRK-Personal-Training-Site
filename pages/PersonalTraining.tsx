@@ -31,36 +31,52 @@ export const PersonalTraining: React.FC = () => {
     }
   ];
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "HealthAndFitnessBusiness",
-    "name": "WRK Personal Training",
-    "image": "https://www.wrkpersonaltraining.co.nz/logo.png",
-    "url": "https://www.wrkpersonaltraining.co.nz/personal-training",
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "12 Show Place",
-      "addressLocality": "Addington",
-      "addressRegion": "Canterbury",
-      "postalCode": "8024",
-      "addressCountry": "NZ"
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthAndFitnessBusiness",
+      "name": "WRK Personal Training",
+      "image": "https://www.wrkpersonaltraining.co.nz/logo.png",
+      "url": "https://www.wrkpersonaltraining.co.nz/personal-training",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12 Show Place",
+        "addressLocality": "Addington",
+        "addressRegion": "Canterbury",
+        "postalCode": "8024",
+        "addressCountry": "NZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -43.5434,
+        "longitude": 172.6053
+      },
+      "areaServed": [
+        "Christchurch",
+        "Addington",
+        "Riccarton",
+        "Spreydon",
+        "Halswell",
+        "Cashmere"
+      ],
+      "priceRange": "$$"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -43.5434,
-      "longitude": 172.6053
-    },
-    "areaServed": [
-      "Christchurch",
-      "Addington",
-      "Riccarton",
-      "Spreydon",
-      "Halswell",
-      "Cashmere"
-    ],
-    "priceRange": "$$"
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "In-Person Personal Training",
+      "provider": {
+        "@type": "HealthAndFitnessBusiness",
+        "name": "WRK Personal Training"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Christchurch"
+      },
+      "description": "Semi-Private 1-on-1 personal training in Addington, Christchurch. Evidence-based coaching, zero gym crowds, and specialist GLP-1 muscle preservation."
+    }
+  ];
 
   return (
     <>

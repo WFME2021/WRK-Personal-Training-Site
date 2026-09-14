@@ -129,9 +129,9 @@ export const Assessment: React.FC = () => {
             <h4 className="text-[14px] font-bold tracking-widest text-[#2C3539]/60 uppercase">
               Assessment Complete
             </h4>
-            <h1 className="font-serif text-[40px] leading-[1.1] text-[#2C3539] tracking-tight">
+            <h2 className="font-serif text-[40px] leading-[1.1] text-[#2C3539] tracking-tight">
               YOUR SCORE: {teaseResult.overallScore} <span className="text-[24px] text-[#2C3539]/50">/ 100</span>
-            </h1>
+            </h2>
             <p className="text-[18px] text-[#2C3539]/80 leading-relaxed max-w-md mx-auto">
               Based on your answers, your biggest opportunities for improvement are <span className="font-bold capitalize">{teaseResult.primaryFocus}</span> and <span className="font-bold capitalize">{teaseResult.secondaryFocus}</span>.
             </p>
@@ -193,9 +193,9 @@ export const Assessment: React.FC = () => {
             <h4 className="text-[14px] font-bold tracking-widest text-[#2C3539]/60 uppercase">
               Your Result
             </h4>
-            <h1 className="font-serif text-[44px] leading-[1.1] text-[#2C3539]">
+            <h2 className="font-serif text-[44px] leading-[1.1] text-[#2C3539]">
               YOUR GLP-1 FITNESS SCORE
-            </h1>
+            </h2>
             <div className="inline-block px-8 py-4 bg-white border border-neutral-200 rounded-3xl">
               <div className="text-[48px] font-medium text-[#2C3539] leading-none">
                 {result.overallScore} <span className="text-[24px] text-[#2C3539]/50">/ 100</span>

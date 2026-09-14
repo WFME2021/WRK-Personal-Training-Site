@@ -211,9 +211,9 @@ export const TdeeCalculator: React.FC = () => {
         <div className="max-w-3xl mx-auto px-4 md:px-8">
           
           <div className="text-center mb-16">
-            <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-4 uppercase tracking-wide">
+            <h2 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-4 uppercase tracking-wide">
               YOUR RESULTS
-            </h1>
+            </h2>
           </div>
 
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-neutral-200 mb-12 text-center">
