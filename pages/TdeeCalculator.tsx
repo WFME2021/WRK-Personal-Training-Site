@@ -367,19 +367,28 @@ export const TdeeCalculator: React.FC = () => {
           )}
 
           {/* Final CTA */}
-          <div className="text-center bg-white border border-neutral-200 p-10 md:p-16 rounded-3xl shadow-sm mb-12">
-            <h2 className="text-[14px] font-bold uppercase tracking-widest text-[#8A9A86] mb-4">
-              THE CALCULATOR GIVES YOU THE NUMBERS. WRK HELPS YOU TURN THEM INTO A ROUTINE.
-            </h2>
-            <p className="text-[16px] md:text-[18px] text-[#2C3539]/80 leading-relaxed max-w-2xl mx-auto mb-10">
-              Learn how to build meals around your protein target, train to protect your strength and adapt your routine as your GLP-1 journey changes.
+          <div className="bg-white p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm mb-12 text-left">
+            <h3 className="font-serif text-[24px] md:text-[28px] text-[#2C3539] mb-4">
+              Knowing your targets is step one. Hitting them consistently is step two.
+            </h3>
+            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
+              Reduced appetite, nausea, and low energy can make meeting your daily targets challenging. Our 1-on-1 coaching builds progressive strength training and realistic nutrition habits tailored around your medication schedule.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link to={COACHING_URL} className="w-full sm:w-auto bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px]">
-                Explore GLP-1 Coaching
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <Link 
+                to="/online-coaching" 
+                className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+              >
+                Explore 1-on-1 Coaching
               </Link>
-              <button onClick={resetCalculator} className="w-full sm:w-auto bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px] flex items-center justify-center">
-                <RotateCcw size={18} className="mr-2"/> Recalculate
+              <Link 
+                to="/assessment" 
+                className="inline-flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+              >
+                Take the Free GLP-1 Assessment
+              </Link>
+              <button onClick={resetCalculator} className="inline-flex items-center justify-center text-[#2C3539]/60 hover:text-[#8A9A86] font-medium text-[14px] transition-colors w-full sm:w-auto sm:ml-auto pt-4 sm:pt-0">
+                <RotateCcw size={16} className="mr-2"/> Recalculate
               </button>
             </div>
           </div>

@@ -280,22 +280,26 @@ export const ProteinTargeter: React.FC = () => {
         </div>
 
         {/* Final CTAs */}
-        <div className="mb-24 max-w-2xl mx-auto">
-          <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl text-center shadow-sm flex flex-col">
-            <h2 className="text-[26px] font-serif text-[#2C3539] mb-4">
-              Want Help Putting It Into Practice?
-            </h2>
-            <div className="text-[16px] text-[#2C3539]/80 leading-relaxed space-y-4 mb-8 flex-grow">
-              <p>Knowing your protein target is one thing.</p>
-              <p>Knowing what that looks like across a normal week is another.</p>
-              <p>WRK can help you combine your protein target with personalised strength training, practical nutrition habits and a programme that fits your lifestyle.</p>
-            </div>
-            <div className="space-y-3">
-              <Link to="/programs" className="block w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[15px]">
-                Explore GLP-1 Fitness Programs
+        <div className="mb-24 max-w-3xl mx-auto">
+          <div className="bg-white p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm mb-12 text-left">
+            <h3 className="font-serif text-[24px] md:text-[28px] text-[#2C3539] mb-4">
+              Knowing your targets is step one. Hitting them consistently is step two.
+            </h3>
+            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
+              Reduced appetite, nausea, and low energy can make meeting your daily targets challenging. Our 1-on-1 coaching builds progressive strength training and realistic nutrition habits tailored around your medication schedule.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <Link 
+                to="/online-coaching" 
+                className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+              >
+                Explore 1-on-1 Coaching
               </Link>
-              <Link to="/assessment" className="block w-full bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-6 py-4 rounded-xl font-medium transition-colors text-[15px]">
-                Take the Free GLP-1 Fitness Assessment
+              <Link 
+                to="/assessment" 
+                className="inline-flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+              >
+                Take the Free GLP-1 Assessment
               </Link>
             </div>
           </div>

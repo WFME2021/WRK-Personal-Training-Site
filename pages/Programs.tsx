@@ -111,12 +111,28 @@ export const Programs: React.FC = () => {
                 </p>
               </div>
 
-              <Link 
-                to="/services"
-                className="inline-flex items-center text-[#2C3539] font-medium hover:text-[#8A9A86] transition-colors"
-              >
-                Explore Track 1 Options <ArrowRight size={18} className="ml-2" />
-              </Link>
+              <div className="flex flex-col gap-4 mt-8">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    to="/online-coaching"
+                    className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
+                  >
+                    Apply for Online Coaching
+                  </Link>
+                  <Link 
+                    to="/personal-training#book"
+                    className="inline-flex items-center justify-center bg-white border border-[#2C3539]/20 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
+                  >
+                    Book Studio Consult
+                  </Link>
+                </div>
+                <Link
+                  to="/assessment"
+                  className="inline-flex items-center text-[13px] text-[#2C3539]/60 hover:text-[#8A9A86] transition-colors mt-2"
+                >
+                  Not sure if this track fits? Take the 2-min assessment →
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -172,12 +188,28 @@ export const Programs: React.FC = () => {
                 </p>
               </div>
 
-              <Link 
-                to="/services"
-                className="inline-flex items-center text-[#2C3539] font-medium hover:text-[#8A9A86] transition-colors"
-              >
-                Explore Track 2 Options <ArrowRight size={18} className="ml-2" />
-              </Link>
+              <div className="flex flex-col gap-4 mt-8">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    to="/online-coaching"
+                    className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
+                  >
+                    Apply for Online Coaching
+                  </Link>
+                  <Link 
+                    to="/personal-training#book"
+                    className="inline-flex items-center justify-center bg-white border border-[#2C3539]/20 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
+                  >
+                    Book Studio Consult
+                  </Link>
+                </div>
+                <Link
+                  to="/assessment"
+                  className="inline-flex items-center text-[13px] text-[#2C3539]/60 hover:text-[#8A9A86] transition-colors mt-2"
+                >
+                  Not sure if this track fits? Take the 2-min assessment →
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -233,12 +265,28 @@ export const Programs: React.FC = () => {
                 </p>
               </div>
 
-              <Link 
-                to="/services"
-                className="inline-flex items-center text-[#2C3539] font-medium hover:text-[#8A9A86] transition-colors"
-              >
-                Explore Track 3 Options <ArrowRight size={18} className="ml-2" />
-              </Link>
+              <div className="flex flex-col gap-4 mt-8">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    to="/online-coaching"
+                    className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
+                  >
+                    Apply for Online Coaching
+                  </Link>
+                  <Link 
+                    to="/personal-training#book"
+                    className="inline-flex items-center justify-center bg-white border border-[#2C3539]/20 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
+                  >
+                    Book Studio Consult
+                  </Link>
+                </div>
+                <Link
+                  to="/assessment"
+                  className="inline-flex items-center text-[13px] text-[#2C3539]/60 hover:text-[#8A9A86] transition-colors mt-2"
+                >
+                  Not sure if this track fits? Take the 2-min assessment →
+                </Link>
+              </div>
             </div>
           </div>
         </div>

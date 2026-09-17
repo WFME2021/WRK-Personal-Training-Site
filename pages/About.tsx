@@ -191,17 +191,16 @@ export const About: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
               <Link 
-                to="/programs"
-                className="flex items-center justify-center gap-2 bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
+                to="/personal-training#book"
+                className="flex items-center justify-center bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] text-center"
               >
-                Explore the 12-Week Coaching Tracks
-                <ArrowRight size={18} />
+                Book Studio Consultation (Christchurch)
               </Link>
               <Link 
-                to="/contact"
-                className="flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
+                to="/online-coaching"
+                className="flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px] text-center"
               >
-                Book a Private Consultation
+                Explore Online Coaching (Worldwide)
               </Link>
             </div>
           </section>

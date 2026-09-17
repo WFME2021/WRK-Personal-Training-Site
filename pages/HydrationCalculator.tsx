@@ -531,6 +531,29 @@ export const HydrationCalculator: React.FC = () => {
             </div>
           </div>
 
+          <div className="bg-white p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm mb-12 text-left">
+            <h3 className="font-serif text-[24px] md:text-[28px] text-[#2C3539] mb-4">
+              Knowing your targets is step one. Hitting them consistently is step two.
+            </h3>
+            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
+              Reduced appetite, nausea, and low energy can make meeting your daily targets challenging. Our 1-on-1 coaching builds progressive strength training and realistic nutrition habits tailored around your medication schedule.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <Link 
+                to="/online-coaching" 
+                className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+              >
+                Explore 1-on-1 Coaching
+              </Link>
+              <Link 
+                to="/assessment" 
+                className="inline-flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+              >
+                Take the Free GLP-1 Assessment
+              </Link>
+            </div>
+          </div>
+
           <div className="bg-[#FAFAF9] border border-neutral-200 p-8 rounded-3xl text-[13px] text-[#2C3539]/60 leading-relaxed text-center">
             <h4 className="font-bold text-[#2C3539] mb-3 uppercase tracking-wider text-[12px]">Disclaimer</h4>
             <p className="max-w-3xl mx-auto space-y-3">

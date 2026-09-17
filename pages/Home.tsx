@@ -55,15 +55,21 @@ export const Home: React.FC = () => {
           <p>GLP-1 medication can help you lose weight. WRK helps you make the most of that journey.</p>
           <p>Specialist fitness coaching for people using GLP-1 medications, focused on <strong className="text-[#2C3539]">strength, muscle preservation, nutrition, fitness and sustainable habits</strong> — so you can become stronger and fitter while the weight comes off.</p>
         </div>
-        <div className="flex flex-col items-center gap-3 md:gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
           <Link
             to="/assessment"
             className="inline-flex items-center justify-center bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] shadow-sm"
           >
             Take the Free GLP-1 Fitness Assessment
           </Link>
-          <p className="text-[13px] text-[#2C3539]/60">Online coaching available worldwide.</p>
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center bg-transparent border border-[#2C3539]/20 hover:border-[#2C3539] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px]"
+          >
+            View Coaching & Pricing
+          </Link>
         </div>
+        <p className="text-[13px] text-[#2C3539]/60 mt-4 text-center">Online coaching available worldwide.</p>
 
         <div className="mt-12 md:mt-20 w-full max-w-6xl mx-auto rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-neutral-100 wrk-photo-container">
           <div className="wrk-photo-overlay"></div>
