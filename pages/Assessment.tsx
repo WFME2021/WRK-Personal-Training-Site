@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Sparkles, Loader2, Dumbbell, ShieldCheck, Activity } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Loader2, Activity, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
@@ -7,13 +7,19 @@ import { calculateAssessmentResult } from '../assessment/scoring';
 import { AssessmentResult } from '../assessment/types';
 
 export const Assessment: React.FC = () => {
-  const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = email gate, N+2 = results
+  const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = email & phone gate, N+2 = results
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  // 1-Click Coaching Triage Application State
+  const [isApplyingTriage, setIsApplyingTriage] = useState(false);
+  const [triageSubmitted, setTriageSubmitted] = useState(false);
+  const [preferredFormat, setPreferredFormat] = useState<'in_person' | 'online'>('in_person');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,6 +69,7 @@ export const Assessment: React.FC = () => {
         body: JSON.stringify({
           name,
           email,
+          phone,
           answers,
           result: calculatedResult
         }),
@@ -80,6 +87,35 @@ export const Assessment: React.FC = () => {
         setResult(calculatedResult);
         setStep(ASSESSMENT_QUESTIONS.length + 2);
       }, 700);
+    }
+  };
+
+  const handleTriageApplication = async () => {
+    setIsApplyingTriage(true);
+    try {
+      await fetch('/api/assessment/triage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          preferred_format: preferredFormat,
+          requested_consultation: true,
+          score: result?.overallScore,
+          answers,
+          result
+        }),
+      });
+    } catch (err) {
+      console.error('Triage dispatch error, proceeding gracefully:', err);
+    } finally {
+      setTimeout(() => {
+        setIsApplyingTriage(false);
+        setTriageSubmitted(true);
+      }, 600);
     }
   };
 
@@ -147,21 +183,21 @@ export const Assessment: React.FC = () => {
     );
   }
 
-  // 3. EMAIL GATE SCREEN (Step = Questions.length + 1)
+  // 3. EMAIL & PHONE GATE SCREEN (Step = Questions.length + 1)
+  // Curiosity preservation: mask numeric score until verified submission
   if (step === ASSESSMENT_QUESTIONS.length + 1) {
-    const teaseResult = calculateAssessmentResult(answers);
     return (
       <div className="bg-canvas min-h-[90vh] py-14 px-4 sm:px-6 flex flex-col justify-center items-center font-sans selection:bg-spruce-800 selection:text-sand-50">
         <div className="w-full max-w-xl bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm relative">
           <div className="text-center mb-8">
             <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-spruce-800 block mb-3">
-              ASSESSMENT COMPLETE
+              DIAGNOSTIC CALCULATION COMPLETE
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-charcoal mb-2 font-bold tracking-tight">
-              Score: {teaseResult.overallScore} <span className="text-xl text-charcoal/50 font-normal">/ 100</span>
+              Your GLP-1 Muscle Defense Profile is Ready.
             </h2>
             <p className="text-sm text-charcoal/70 max-w-md mx-auto leading-relaxed">
-              Based on your answers, your two highest-priority leverage areas are <span className="font-semibold text-spruce-900 capitalize">{teaseResult.primaryFocus}</span> and <span className="font-semibold text-spruce-900 capitalize">{teaseResult.secondaryFocus}</span>.
+              We have mapped your responses across strength stimulus, protein pacing, and recovery capacity.
             </p>
           </div>
 
@@ -170,7 +206,7 @@ export const Assessment: React.FC = () => {
               Unlock Your Custom Action Plan
             </h3>
             <p className="text-xs text-charcoal/70">
-              Where should we send your pillar breakdown and personalized 7-day strategy?
+              Where should we send your score, pillar breakdown, and personalized 7-day strategy?
             </p>
           </div>
 
@@ -203,13 +239,26 @@ export const Assessment: React.FC = () => {
               />
             </div>
 
+            <div>
+              <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal/70 mb-1.5">
+                Mobile / WhatsApp Number (For SMS Link)
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+                placeholder="e.g. 021 555 1234"
+                required
+                className="w-full px-4 py-3.5 rounded-xl border border-charcoal/15 bg-white focus:outline-none focus:ring-1 focus:ring-spruce-800 text-sm text-charcoal"
+              />
+            </div>
+
             <button
               type="submit"
               disabled={isSubmitting}
               className="w-full bg-spruce-800 hover:bg-spruce-900 disabled:opacity-50 text-sand-50 py-4 rounded-md text-xs uppercase tracking-widest font-semibold transition-colors flex items-center justify-center shadow-sm mt-4"
             >
-              View Full Action Plan
-              <ArrowRight className="w-4 h-4 ml-2" />
+              Reveal My Muscle Defense Score & Action Plan →
             </button>
 
             <p className="text-[11px] text-charcoal/50 text-center leading-relaxed pt-2">
@@ -351,32 +400,96 @@ export const Assessment: React.FC = () => {
             </div>
           </div>
 
-          {/* Primary Recommendation Offer Box */}
-          <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-center">
-            <span className="text-xs uppercase tracking-widest text-sand-200 mb-2 block font-semibold">
-              RECOMMENDED NEXT STEP
+          {/* Selective Coaching Triage Card */}
+          <div className="bg-spruce-800 text-sand-50 rounded-3xl p-8 sm:p-10 shadow-lg border border-spruce-700/50 mt-12 text-center">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans text-sand-200 font-semibold mb-2 block">
+              SELECTIVE INTAKE · STRICT CAPACITY LIMITS
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-3 font-bold tracking-tight">
-              {isStrong ? "12-Week Lean Mass & Progression Program" : "12-Week GLP-1 Recomposition & Muscle Defense"}
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-sand-50 tracking-tight mb-3">
+              Apply for a 1-on-1 Clinical Triage with Hayden
             </h2>
-            <p className="text-sand-100/80 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
-              Your assessment confirms that structured resistance training and digestible protein pacing will deliver the greatest return on your effort. Work with Hayden directly or train semi-privately in Christchurch.
+            <p className="text-sand-100/90 text-sm max-w-2xl mx-auto mb-6 leading-relaxed">
+              Due to our semi-private studio format and direct condition-aware oversight, in-person Addington coaching and 1-on-1 remote guidance are strictly capped. We review completed assessments once daily. If an opening aligns with your goals, Hayden will reach out directly via text/email within 24 hours to coordinate a brief, unhurried 10-minute discovery conversation.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <Link
-                to="/contact"
-                className="bg-sand-100 text-spruce-900 hover:bg-white px-8 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold transition-colors shadow-sm block text-center"
-              >
-                Book Consultation (Christchurch)
-              </Link>
-              <Link
-                to="/toolkit"
-                className="border border-sand-200/30 text-sand-50 hover:bg-spruce-900 px-8 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold transition-colors block text-center"
-              >
-                Explore the $29 App Toolkit
-              </Link>
-            </div>
+            {!triageSubmitted ? (
+              <div className="space-y-6">
+                {/* Format Preference Toggle */}
+                <div className="max-w-md mx-auto">
+                  <label className="block text-xs uppercase tracking-wider text-sand-200 font-semibold mb-2 text-center">
+                    Preferred Coaching Format:
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-spruce-900/70 p-1.5 rounded-xl border border-white/10">
+                    <button
+                      type="button"
+                      onClick={() => setPreferredFormat('in_person')}
+                      className={`py-2.5 px-3 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+                        preferredFormat === 'in_person'
+                          ? 'bg-sand-100 text-spruce-900 shadow-sm'
+                          : 'text-sand-100/70 hover:text-white'
+                      }`}
+                    >
+                      In-Person (Addington Studio)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPreferredFormat('online')}
+                      className={`py-2.5 px-3 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+                        preferredFormat === 'online'
+                          ? 'bg-sand-100 text-spruce-900 shadow-sm'
+                          : 'text-sand-100/70 hover:text-white'
+                      }`}
+                    >
+                      Remote / Online Coaching
+                    </button>
+                  </div>
+                </div>
+
+                {/* 1-Click Action Button */}
+                <div className="pt-2">
+                  <button
+                    onClick={handleTriageApplication}
+                    disabled={isApplyingTriage}
+                    className="w-full sm:w-auto bg-sand-100 hover:bg-white text-spruce-900 px-8 py-4 rounded-md text-xs uppercase tracking-widest font-semibold transition-all shadow-sm flex items-center justify-center group mx-auto cursor-pointer disabled:opacity-50"
+                  >
+                    {isApplyingTriage ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Attaching Diagnostic Profile...
+                      </>
+                    ) : (
+                      <>
+                        Request Priority Review for My Assessment (1-Click) →
+                      </>
+                    )}
+                  </button>
+                  
+                  <p className="text-xs text-sand-200/80 mt-3 block">
+                    ✓ Zero obligation · No high-pressure sales calls · Your 11 diagnostic answers will be attached directly to your file.
+                  </p>
+                </div>
+
+                {/* Secondary Self-Directed Link */}
+                <div className="pt-4 border-t border-white/10 max-w-lg mx-auto">
+                  <p className="text-xs text-sand-200/70">
+                    Prefer self-directed guidance?{' '}
+                    <Link to="/toolkit" className="underline hover:text-white transition-colors">
+                      Explore the $29 Self-Directed GLP-1 Tool Kit →
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 sm:p-8 text-center max-w-xl mx-auto my-6">
+                <CheckCircle2 className="text-sand-200 w-8 h-8 mx-auto mb-3" />
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-sand-50 mb-2">
+                  Priority Review Requested, {name || 'there'}.
+                </h3>
+                <p className="text-xs sm:text-sm text-sand-100 leading-relaxed max-w-md mx-auto">
+                  Hayden reviews new assessment files each morning. If an intake slot or cancellation matches your focus, you will receive a personal SMS or email directly to coordinate your 10-minute chat.
+                </p>
+              </div>
+            )}
           </div>
 
         </div>

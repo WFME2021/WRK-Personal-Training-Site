@@ -264,7 +264,7 @@ ${message}
 
   // Assessment Form Submission
   app.post("/api/assessment", async (req, res) => {
-    const { email, answers, result } = req.body;
+    const { name, email, phone, answers, result } = req.body;
 
     if (!email || !result) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -314,9 +314,11 @@ ${message}
             from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
             to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
             replyTo: email,
-            subject: `New GLP-1 Fitness Assessment — ${overallScore}/100`,
+            subject: `New GLP-1 Fitness Assessment — ${name ? `${name} (` : ''}${overallScore}/100${name ? ')' : ''}`,
             text: `=== New GLP-1 Assessment Unlocked ===
+Name: ${name || 'N/A'}
 Email: ${email}
+Phone: ${phone || 'N/A'}
 Overall Score: ${overallScore}/100 (${overallLabel})
 
 --- Priorities ---
@@ -520,6 +522,68 @@ ${JSON.stringify(answers, null, 2)}`,
       await Promise.allSettled([emailPromise, mailerlitePromise, sheetsPromise]);
 
     })(); // end background async
+  });
+
+  // 1-Click Priority Coaching Triage Application Submission
+  app.post("/api/assessment/triage", async (req, res) => {
+    const { name, email, phone, preferred_format, score, answers, result } = req.body;
+    res.status(200).json({ success: true, message: "Triage application received" });
+
+    (async () => {
+      try {
+        const nodemailer = await import("nodemailer");
+        const port = Number(process.env.SMTP_PORT) || 587;
+        const isSecure = port === 465;
+
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST,
+          port: port,
+          secure: isSecure,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS?.replace(/^"|"$/g, '').trim(),
+          },
+          connectionTimeout: 10000,
+          greetingTimeout: 5000,
+          socketTimeout: 10000
+        });
+
+        const formatLabel = preferred_format === 'online' ? 'Remote / Online Coaching' : 'In-Person (Show Place, Addington)';
+
+        const adminMail = {
+          from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
+          to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
+          replyTo: email,
+          subject: `🚨 PRIORITY TRIAGE: 1-Click Assessment Application - ${name || email}`,
+          text: `=== PRIORITY 1-CLICK CLINICAL TRIAGE APPLICATION ===
+Name: ${name || 'N/A'}
+Email: ${email || 'N/A'}
+Phone: ${phone || 'N/A'}
+Preferred Format: ${formatLabel}
+Diagnostic Score: ${score || 'N/A'}/100
+
+Answers & Context:
+${JSON.stringify(answers, null, 2)}
+`,
+          html: `
+            <h3>🚨 Priority 1-Click Clinical Triage Application</h3>
+            <p><strong>Name:</strong> ${name || 'N/A'}</p>
+            <p><strong>Email:</strong> ${email || 'N/A'}</p>
+            <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+            <p><strong>Preferred Format:</strong> ${formatLabel}</p>
+            <p><strong>Diagnostic Score:</strong> ${score || 'N/A'}/100</p>
+            <br/>
+            <h4>Diagnostic Responses:</h4>
+            <pre style="background:#f4f4f4;padding:12px;border-radius:6px;font-family:monospace;font-size:12px;">${JSON.stringify(answers, null, 2)}</pre>
+          `
+        };
+
+        await transporter.sendMail(adminMail);
+        console.log("Assessment triage priority email sent successfully");
+      } catch (err) {
+        console.error("Failed to send assessment triage email:", err);
+      }
+    })();
   });
 
   // Sitemap XML route
