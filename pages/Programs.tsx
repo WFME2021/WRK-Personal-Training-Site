@@ -23,8 +23,8 @@ export const Programs: React.FC = () => {
         <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-4">
           Targeted Coaching for Every Phase.
         </h1>
-        <p className="text-charcoal/80 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
-          Structured 12-week strength, nutrition, and recovery systems matched to where you are on your medication journey.
+        <p className="text-charcoal/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+          The goal isn't simply to weigh less. It’s to ensure that when the weight comes off, you maintain your resting metabolic rate, preserve joint stability, and carry everyday physical energy into your life and work.
         </p>
       </section>
 
@@ -88,7 +88,7 @@ export const Programs: React.FC = () => {
                   Forever Strong
                 </h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
-                  Building permanent movement and lifting habits designed to outlast medication weaning, ensuring lifelong physical independence and strength.
+                  Building permanent movement and lifting habits designed to outlast medication weaning—protecting resting metabolic rate, joint resilience, and everyday physical capability.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">

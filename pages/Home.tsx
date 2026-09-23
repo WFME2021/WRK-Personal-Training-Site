@@ -104,7 +104,7 @@ export const Home: React.FC = () => {
           </h1>
 
           <p className="text-sand-50/90 text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
-            Specialist coaching to protect your muscle, energy, and physical capability on GLP-1 medications.
+            Specialist coaching to safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4">
@@ -174,7 +174,7 @@ export const Home: React.FC = () => {
                   02 · REAL-WORLD CAPABILITY
                 </span>
                 <p className="text-sm md:text-base text-charcoal/80 leading-relaxed">
-                  Functional stamina and joint resilience that directly powers your daily life.
+                  The goal isn't simply to weigh less. It’s to ensure that when the weight comes off, you maintain your resting metabolic rate, preserve joint stability, and carry everyday physical energy into your life and work.
                 </p>
               </div>
 
@@ -263,7 +263,7 @@ export const Home: React.FC = () => {
             <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block">YOUR COACH</span>
             <h2 className="font-serif text-3xl md:text-4xl text-charcoal tracking-tight">Meet Hayden Richards</h2>
             <p className="text-charcoal/80 text-base md:text-lg leading-relaxed">
-              With over 20 years of coaching experience and REPs-registration, I help adults build resilient, capable bodies without turning fitness into another punishing full-time job. We handle the physical capability while your clinician manages your prescription.
+              Structured strength without the exhaustion. We replace extreme diets and high-volume gym routines with targeted, 30-minute sessions that protect your joints, your energy, and your metabolic health. With over 20 years of coaching experience, we handle physical capability while your clinician manages your prescription.
             </p>
             <div className="pt-2">
               <Link

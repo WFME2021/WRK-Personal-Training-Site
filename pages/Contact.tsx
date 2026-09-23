@@ -118,7 +118,7 @@ export const Contact: React.FC = () => {
                 PERSONAL GUIDANCE
               </span>
               <h2 className="font-serif text-2xl text-charcoal leading-snug">
-                A Friendly, No-Pressure Conversation
+                A Confidential, Low-Stress Conversation
               </h2>
             </div>
 
@@ -128,7 +128,7 @@ export const Contact: React.FC = () => {
                   Prompt Response Within 24–48 Hours
                 </span>
                 <p className="leading-relaxed">
-                  Every single inquiry is read directly by head coach Hayden. We reach out via email for a calm, supportive chat.
+                  We read every inquiry carefully and will reach out via email for an unhurried, supportive conversation to discuss your routine, assess your timeline, and explore whether our coaching is the right fit.
                 </p>
               </div>
 
@@ -295,7 +295,7 @@ export const Contact: React.FC = () => {
                   disabled={status === 'submitting'}
                   className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors shadow-xs disabled:opacity-50"
                 >
-                  {status === 'submitting' ? 'Sending Message...' : 'Send a Friendly Message →'}
+                  {status === 'submitting' ? 'Sending Message...' : 'Send Consultation Inquiry →'}
                 </button>
 
                 <p className="text-[11px] text-charcoal/50 text-center mt-4 block">
@@ -329,7 +329,7 @@ export const Contact: React.FC = () => {
             </button>
             {openFaq === 0 && (
               <div className="px-5 sm:px-6 pb-6 pt-1 text-sm text-charcoal/70 leading-relaxed border-t border-charcoal/5">
-                We read every single message carefully and will reach out to you via email for a friendly, no-pressure chat within 24–48 hours.
+                We read every inquiry carefully and will reach out via email for an unhurried, supportive conversation to discuss your routine, assess your timeline, and explore whether our coaching is the right fit.
               </div>
             )}
           </div>

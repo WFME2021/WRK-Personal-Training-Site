@@ -53,11 +53,11 @@ export const About: React.FC = () => {
 
           {/* Anti-Burnout Pledge Pills */}
           <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 text-xs text-charcoal/70">
-            <span className="flex items-center text-charcoal/80">✕ No punishment workouts</span>
+            <span className="flex items-center text-charcoal/80">✓ Joint-friendly resistance loading</span>
             <span className="hidden sm:inline text-charcoal/30">•</span>
-            <span className="flex items-center text-charcoal/80">✕ No extreme starvation diets</span>
+            <span className="flex items-center text-charcoal/80">✓ High-density, manageable protein pacing</span>
             <span className="hidden sm:inline text-charcoal/30">•</span>
-            <span className="flex items-center text-spruce-800 font-semibold">✓ Intelligent strength & real-world capability</span>
+            <span className="flex items-center text-spruce-800 font-semibold">✓ Sustainable strength & real-world capability</span>
           </div>
         </section>
 
@@ -93,11 +93,11 @@ export const About: React.FC = () => {
             </h2>
             
             <p className="text-charcoal/80 text-base leading-relaxed">
-              I’ve spent 20 years coaching people who want to get stronger, drop weight, and protect their health without turning fitness into another exhausting full-time job.
+              Structured strength without the exhaustion. We replace extreme diets and high-volume gym routines with targeted, 30-minute sessions that protect your joints, your energy, and your metabolic health.
             </p>
             
             <p className="text-charcoal/80 text-base leading-relaxed">
-              As GLP-1 medications emerged, I saw a glaring gap in the conversation. People were receiving medical support to reduce appetite, but had little guidance on what to do for their physical body: How do you protect muscle when eating less? How do you train when energy fluctuates? And how do you build habits that outlast the medication?
+              I founded WRK Personal Training to bridge the gap between medical weight management and physical capability—providing the supervised strength training, muscle preservation, and habit structure your body needs alongside medication.
             </p>
 
             <div className="p-4 rounded-xl bg-sand-100/70 border border-charcoal/5 font-serif text-base italic text-spruce-900 leading-snug">
@@ -223,7 +223,7 @@ export const About: React.FC = () => {
             </h2>
             
             <p className="text-sand-100/80 max-w-xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
-              Whether you train with us in person in Christchurch or through the WRK App anywhere in the world, we're here to guide the physical side of your journey.
+              Whether you train with us in person in Christchurch or through the WRK App anywhere in the world, we're here to safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">

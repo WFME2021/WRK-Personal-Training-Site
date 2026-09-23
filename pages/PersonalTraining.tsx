@@ -158,7 +158,7 @@ export const PersonalTraining: React.FC = () => {
                     A Low-Key, Welcoming Space
                   </h3>
                   <p className="text-sm text-charcoal/70 leading-relaxed">
-                    No crowded machine lines, loud music, or mirror flexing. Just a handful of good sorts getting on with their session while we focus entirely on yours.
+                    You will share the floor with only a handful of adults focused on their own routines—no crowds, no posturing, and no waiting for equipment while we focus entirely on your session.
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">

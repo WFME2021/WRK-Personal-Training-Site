@@ -35,7 +35,7 @@ export const ToolsIndex: React.FC = () => {
           </h1>
           
           <p className="text-charcoal/80 max-w-2xl mx-auto text-base sm:text-lg mb-6 leading-relaxed">
-            Simple, objective starting points to help you navigate protein targets, hydration needs, and daily energy while your appetite and routine change.
+            Simple, objective starting points to help you safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management while your appetite and routine change.
           </p>
 
           <div className="inline-block bg-sand-100/80 border border-charcoal/10 rounded-full px-4 py-1.5 text-xs text-charcoal/70 font-medium">
@@ -216,7 +216,7 @@ export const ToolsIndex: React.FC = () => {
           </h2>
           
           <p className="text-charcoal/80 max-w-2xl mx-auto text-base mb-8 leading-relaxed">
-            A calculator gives you a number. It cannot show you how that number integrates into your family dinners, your busy schedule, or your low-energy injection days. WRK combines personalized programming, nutrition strategy, and ongoing accountability to turn data into long-term habits.
+            A calculator gives you a number. It cannot show you how that number integrates into your family dinners, your busy schedule, or your low-energy injection days. WRK combines personalized programming, nutrition strategy, and ongoing accountability to safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
