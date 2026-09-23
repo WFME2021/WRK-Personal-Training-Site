@@ -1,7 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SeoHead } from '../components/SeoHead';
+import { Copy, Check, Download, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { ClinicianInquiryForm } from '../components/ClinicianInquiryForm';
 
 export const ForReferrers: React.FC = () => {
+  const [copiedOption, setCopiedOption] = useState<'A' | 'B' | null>(null);
+
+  const snippetOptionA = `Hi [Name], your doctor recommends pairing your GLP-1 medication with supervised strength training to protect muscle mass. Read more and book a free discovery chat with Hayden at WRK here: wrkpersonaltraining.co.nz/glp1`;
+
+  const snippetOptionB = `Hi [Name], here is the strength and nutrition support resource we discussed to help protect muscle mass alongside your treatment: wrkpersonaltraining.co.nz/glp1`;
+
+  const handleCopy = (text: string, option: 'A' | 'B') => {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.error('Fallback copy failed', err);
+      }
+      document.body.removeChild(textArea);
+    }
+    setCopiedOption(option);
+    setTimeout(() => {
+      setCopiedOption((prev) => (prev === option ? null : prev));
+    }, 2500);
+  };
+
   return (
     <>
       <SeoHead 
@@ -52,19 +82,104 @@ export const ForReferrers: React.FC = () => {
             <h3 className="font-bold text-[13px] tracking-widest uppercase text-[#8A9A86] mb-4">2. Share WRK With a Patient in Under 5 Seconds</h3>
             <div className="prose prose-lg text-[#2C3539]/80 max-w-none">
               <p className="italic mb-6">
-                No referral forms, logins, or paperwork required. Simply copy this SMS snippet into your Medtech, MyPractice, or Indici outbound messaging tool:
+                No referral forms, logins, or paperwork required. Choose either option below to paste into your Medtech, MyPractice, or Indici outbound messaging tool:
               </p>
               
-              <div className="bg-white border border-neutral-200 p-8 rounded-2xl shadow-sm mb-8 relative">
-                <p className="font-bold text-[13px] tracking-widest uppercase text-[#8A9A86] mb-3">[Copy SMS Snippet]</p>
-                <p className="italic text-[#2C3539] text-[18px] md:text-[20px] m-0">
-                  "Hi [Name], your doctor recommends pairing your GLP-1 medication with supervised strength training to protect muscle mass. Read more and book a free discovery chat with Hayden at WRK here: wrkpersonaltraining.co.nz/glp1"
-                </p>
+              {/* Stacked SMS Options with 1-Click Copy */}
+              <div className="space-y-6 mb-8">
+                
+                {/* Option A */}
+                <div className="bg-white border border-neutral-200 p-6 md:p-8 rounded-2xl shadow-sm transition-all hover:border-[#8A9A86]/50">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                    <span className="font-bold text-[12px] tracking-widest uppercase text-[#8A9A86]">
+                      Option A: Direct Recommendation
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(snippetOptionA, 'A')}
+                      className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-bold text-[12px] uppercase tracking-wider transition-all w-full sm:w-auto ${
+                        copiedOption === 'A'
+                          ? 'bg-[#8A9A86] text-white'
+                          : 'bg-neutral-100 hover:bg-[#2C3539] hover:text-white text-[#2C3539]'
+                      }`}
+                    >
+                      {copiedOption === 'A' ? (
+                        <>
+                          <Check size={14} />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={14} />
+                          <span>Copy Snippet</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <p className="italic text-[#2C3539] text-[16px] md:text-[18px] m-0 leading-relaxed font-sans bg-[#FAFAF9] p-4 rounded-xl border border-neutral-100">
+                    "{snippetOptionA}"
+                  </p>
+                </div>
+
+                {/* Option B */}
+                <div className="bg-white border border-neutral-200 p-6 md:p-8 rounded-2xl shadow-sm transition-all hover:border-[#8A9A86]/50">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                    <span className="font-bold text-[12px] tracking-widest uppercase text-[#8A9A86]">
+                      Option B: Collaborative / Resource Sharing
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(snippetOptionB, 'B')}
+                      className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-bold text-[12px] uppercase tracking-wider transition-all w-full sm:w-auto ${
+                        copiedOption === 'B'
+                          ? 'bg-[#8A9A86] text-white'
+                          : 'bg-neutral-100 hover:bg-[#2C3539] hover:text-white text-[#2C3539]'
+                      }`}
+                    >
+                      {copiedOption === 'B' ? (
+                        <>
+                          <Check size={14} />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={14} />
+                          <span>Copy Snippet</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <p className="italic text-[#2C3539] text-[16px] md:text-[18px] m-0 leading-relaxed font-sans bg-[#FAFAF9] p-4 rounded-xl border border-neutral-100">
+                    "{snippetOptionB}"
+                  </p>
+                </div>
+
+              </div>
+
+              {/* Downloadable 1-Page Summary Button */}
+              <div className="bg-[#FAFAF9] border border-neutral-200 p-6 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h4 className="font-bold text-[15px] text-[#2C3539] mb-1">
+                    Printable Handouts for Your Practice
+                  </h4>
+                  <p className="text-[14px] text-[#2C3539]/70 m-0">
+                    One-page clinical summary and patient tear-sheet for consulting desks.
+                  </p>
+                </div>
+                <a
+                  href="/docs/WRK-Clinician-Summary.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#2C3539] hover:bg-black text-white px-5 py-3 rounded-xl font-bold uppercase tracking-wider text-[12px] transition-colors whitespace-nowrap shrink-0"
+                >
+                  <Download size={15} />
+                  <span>Download 1-Page Practice Summary & Patient Handout (PDF)</span>
+                </a>
               </div>
 
               <ul className="list-disc pl-6 space-y-2 font-medium">
                 <li>Direct Patient Information Page: <strong>wrkpersonaltraining.co.nz/glp1</strong></li>
-                <li>Direct Practice Inquiries: <strong>info@wrkpersonaltraining.co.nz</strong> | <strong>021 393 160</strong></li>
+                <li>Direct Practice Inquiries: <strong>info@wrkpersonaltraining.co.nz</strong> | <strong>021 393 160</strong> (<a href="#clinician-inquiry" className="text-[#8A9A86] hover:underline">or send direct message below</a>)</li>
               </ul>
             </div>
           </div>
@@ -99,6 +214,18 @@ export const ForReferrers: React.FC = () => {
               <p>
                 This clinical familiarity ensures that deconditioned, hesitant, or co-morbid patients receive safe, patient, and biomechanically sound support.
               </p>
+
+              {/* Professional Credentials Sub-Bar */}
+              <div className="mt-8 pt-6 border-t border-neutral-200">
+                <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-3 rounded-xl bg-white border border-neutral-200 text-[#2C3539] text-[13px] md:text-[14px] font-medium shadow-sm">
+                  <ShieldCheck size={18} className="text-[#8A9A86] shrink-0" />
+                  <span className="font-semibold">REPs Registered Exercise Professional</span>
+                  <span className="text-neutral-300 hidden sm:inline">|</span>
+                  <span>Evidence-Based Functional Sarcopenia & Resistance Training</span>
+                  <span className="text-neutral-300 hidden sm:inline">|</span>
+                  <span>Clean Scope of Practice Adherence</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -125,13 +252,29 @@ export const ForReferrers: React.FC = () => {
               <ul className="space-y-4">
                 <li><strong>Zero Medical Alteration:</strong> We never advise on, adjust, or interfere with pharmacotherapy or dosages.</li>
                 <li><strong>Pre-Exercise Screening:</strong> All clients complete a PAR-Q+ health screening. Any acute contraindications are redirected to you for clearance.</li>
-                <li><strong>Closed-Loop Feedback (Zero Admin for You):</strong> When a patient attends their complimentary Discovery Assessment and provides consent, we send a brief 2-sentence confirmation email to your practice inbox so your clinic notes reflect that lifestyle intervention has commenced.</li>
               </ul>
+
+              {/* Styled Callout Card for Closed-Loop Feedback */}
+              <div className="mt-8 bg-white border-2 border-[#8A9A86]/40 p-6 md:p-8 rounded-2xl shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#8A9A86]/10 text-[#8A9A86] flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle2 size={22} />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-[20px] md:text-[22px] text-[#2C3539] mb-2 leading-snug">
+                      Zero-Admin Closed-Loop Feedback for Your Notes
+                    </h4>
+                    <p className="text-[15px] md:text-[16px] text-[#2C3539]/80 leading-relaxed m-0">
+                      When your patient attends their complimentary Discovery Assessment (with consent), we send a brief 2-sentence summary email to your clinic inbox. This ensures your patient records show lifestyle intervention and sarcopenia mitigation have commenced—requiring zero administrative follow-up from your team.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* SECTION 7 */}
-          <div className="pb-12">
+          <div>
             <h3 className="font-bold text-[13px] tracking-widest uppercase text-[#8A9A86] mb-4">7. Practice Information & Contact</h3>
             <div className="bg-white border border-neutral-200 p-8 rounded-2xl shadow-sm">
               <ul className="space-y-3 text-[16px] md:text-[18px] text-[#2C3539]">
@@ -142,6 +285,11 @@ export const ForReferrers: React.FC = () => {
                 <li><strong>Hours:</strong> Monday – Friday, 6:00 AM – 2:00 PM</li>
               </ul>
             </div>
+          </div>
+
+          {/* SECTION 8: ISOLATED CLINICIAN & PRACTICE INQUIRY FORM */}
+          <div>
+            <ClinicianInquiryForm />
           </div>
 
         </section>

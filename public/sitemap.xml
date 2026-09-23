@@ -137,6 +137,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/is-a-personal-trainer-worth-it</loc>
+    <lastmod>2026-07-13T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.wrkpersonaltraining.co.nz/blog/calorie-calculator</loc>
     <lastmod>2026-07-22T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
@@ -181,6 +187,12 @@
   <url>
     <loc>https://www.wrkpersonaltraining.co.nz/blog/glp-1-exercise-recommendations</loc>
     <lastmod>2026-09-08T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.wrkpersonaltraining.co.nz/blog/what-is-a-glp-1-how-it-works-weight-loss</loc>
+    <lastmod>2026-09-22T00:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
