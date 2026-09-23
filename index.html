@@ -62,20 +62,28 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Playfair Display', 'serif'],
-              serif: ['Playfair Display', 'serif'],
-            },
             colors: {
+              canvas: '#FAF8F5',
+              sand: {
+                50: '#FDFBF7',
+                100: '#F4ECE1',
+                200: '#EADBC8',
+              },
+              spruce: {
+                800: '#1F3325',
+                900: '#16281C',
+              },
+              charcoal: {
+                DEFAULT: '#2D2A26',
+                muted: '#68645E',
+              },
+              terracotta: '#C19388',
               navy: {
                 DEFAULT: '#171717', // Slate Dark
                 mid: '#0a0a0a',     // Muted Dark
@@ -98,6 +106,11 @@
               border: 'var(--border)',
               accent: 'var(--accent)',
             },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'Georgia', 'serif'],
+              display: ['"Cinzel"', 'serif'],
+              sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            },
             borderRadius: {
               '4xl': '2.5rem',
               '5xl': '3rem',
@@ -111,6 +124,16 @@
         }
       }
     </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          @apply bg-canvas text-charcoal font-sans antialiased;
+        }
+        h1, h2, h3, h4 {
+          @apply font-serif text-charcoal tracking-tight;
+        }
+      }
+    </style>
     <style>
       :root, .dark {
         --bg-primary: #171717;

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '../components/Button';
+import { Link, useNavigate } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { ArrowRight, Check, MapPin, Dumbbell, Shield, Activity, Plus, Minus, Calendar } from 'lucide-react';
+import { MapPin, Shield, Dumbbell, Activity, Check, ChevronDown, ArrowRight, Car, Compass, Clock } from 'lucide-react';
 
 export const PersonalTraining: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [phaseSelection, setPhaseSelection] = useState<string>('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,11 +15,11 @@ export const PersonalTraining: React.FC = () => {
   const faqs = [
     {
       q: "Where in Addington is the studio located?",
-      a: "We train out of 12 Show Place in Addington, Christchurch. It is a quiet business park location with easy parking right outside, just minutes from Moorhouse Ave and the Southern Motorway."
+      a: "We train out of 12 Show Place in Addington, Christchurch. It is a quiet business park location with easy parking right outside, just minutes from Moorhouse Ave, Riccarton, and the Southern Motorway."
     },
     {
       q: "I'm completely new to lifting weights. Is this suitable for beginners?",
-      a: "Absolutely. Most of our clients are not gym veterans. Because the studio is private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
+      a: "Absolutely. Most of our clients are not gym veterans. Because the studio is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
     },
     {
       q: "How does in-person coaching work alongside GLP-1 medication?",
@@ -78,6 +78,15 @@ export const PersonalTraining: React.FC = () => {
     }
   ];
 
+  const handleTriageSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (phaseSelection) {
+      navigate(`/contact?phase=${encodeURIComponent(phaseSelection)}`);
+    } else {
+      navigate('/contact');
+    }
+  };
+
   return (
     <>
       <SeoHead 
@@ -85,296 +94,400 @@ export const PersonalTraining: React.FC = () => {
         description="Semi-Private 1-on-1 personal training in Addington, Christchurch. Evidence-based coaching, zero gym crowds, and specialist GLP-1 muscle preservation. Book a consultation."
         schema={schema}
       />
-      <div className="flex flex-col w-full overflow-x-hidden bg-[#FAFAF9] pb-24 text-[#2C3539] selection:bg-[#8A9A86] selection:text-white">
+      <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         
-        {/* 1. HERO SECTION */}
-        <section className="relative min-h-[85svh] w-full flex flex-col justify-center items-center py-32 px-5 text-center">
-          <div className="absolute inset-0 z-0 bg-[#FAFAF9]">
-             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-200/50 via-[#FAFAF9] to-[#FAFAF9]"></div>
+        {/* 1. Hero Section */}
+        <section className="bg-canvas pt-14 pb-16 px-6 max-w-5xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-4">
+            12 SHOW PLACE · ADDINGTON, CHRISTCHURCH
+          </p>
+          
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-6">
+            1-on-1 Personal Training <span className="block sm:inline italic text-spruce-800">in Christchurch.</span>
+          </h1>
+          
+          <p className="text-charcoal/80 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
+            Skip the chaotic commercial gyms. Train in a focused, semi-private Addington studio with evidence-based coaching built around strength, muscle preservation, and long-term health.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/contact"
+              className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors shadow-sm"
+            >
+              Book a Free Consultation
+            </Link>
+            <a
+              href="#location"
+              className="border border-charcoal/20 text-charcoal hover:bg-sand-100 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors"
+            >
+              View Studio & Location
+            </a>
           </div>
           
-          <div className="relative z-10 w-full max-w-[900px] mx-auto mt-16 md:mt-24">
-            <span className="inline-flex items-center font-sans font-semibold text-xs uppercase tracking-widest text-[#5C6B56] bg-[#8A9A86]/10 border border-[#8A9A86]/20 px-4 py-1.5 rounded-full mb-8 backdrop-blur-sm">
-              <MapPin className="w-3.5 h-3.5 mr-2" /> 12 Show Place, Addington, Christchurch
-            </span>
-            
-            <h1 className="font-serif text-[42px] sm:text-[56px] md:text-[72px] lg:text-[84px] leading-[1.05] tracking-tight mb-8">
-              1-on-1 Personal Training<br className="hidden md:block"/>
-              <span className="text-[#8A9A86] italic font-light">in Christchurch.</span>
-            </h1>
-            
-            <p className="font-sans text-[18px] md:text-[22px] text-neutral-600 font-medium mx-auto mb-12 leading-relaxed max-w-[700px]">
-              Skip the chaotic commercial gyms. Train in a focused, private Addington studio with evidence-based coaching built around your strength, sustainable body composition, and long-term health.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <Link to="/contact" className="w-full sm:w-auto">
-                <Button size="lg" fullWidth className="group bg-[#2C3539] hover:bg-neutral-800 text-white border-none py-6 px-10 text-lg">
-                  Book a Free Consultation <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <a href="#location" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" fullWidth className="py-6 px-10 text-lg border-neutral-300 text-[#2C3539] hover:bg-neutral-100">
-                  View Location & Studio Details
-                </Button>
-              </a>
-            </div>
-            
-            {/* Trust Indicators */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-sm text-neutral-500 font-medium border-t border-neutral-200 pt-10">
-              <div className="flex items-center"><Check className="w-4 h-4 text-[#8A9A86] mr-2" /> Semi-Private Studio Setting (No Crowds)</div>
-              <div className="flex items-center"><Check className="w-4 h-4 text-[#8A9A86] mr-2" /> Evidence-Based Strength & Muscle Preservation</div>
-              <div className="flex items-center"><Check className="w-4 h-4 text-[#8A9A86] mr-2" /> Convenient Addington Location with Dedicated Parking</div>
-            </div>
+          {/* Trust Pills */}
+          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 mt-8 text-xs text-charcoal/70">
+            <span className="flex items-center">✓ Semi-private studio (no crowds)</span>
+            <span className="hidden sm:inline text-charcoal/30">•</span>
+            <span className="flex items-center">✓ Evidence-based muscle defense</span>
+            <span className="hidden sm:inline text-charcoal/30">•</span>
+            <span className="flex items-center">✓ Dedicated on-site parking</span>
           </div>
         </section>
 
-        {/* 2. THE STUDIO EXPERIENCE */}
-        <section className="py-24 px-5 md:px-12 bg-white border-t border-neutral-200">
-          <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <div className="md:col-span-5 relative">
-               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl relative border border-neutral-100">
-                 <img 
-                    src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=2000&auto=format&fit=crop" 
-                    alt="Private gym studio environment"
-                    className="w-full h-full object-cover grayscale opacity-90 mix-blend-luminosity hover:grayscale-0 hover:mix-blend-normal transition-all duration-700"
-                 />
-                 <div className="absolute inset-0 bg-[#8A9A86]/5 mix-blend-multiply"></div>
-               </div>
-            </div>
-            
-            <div className="md:col-span-7">
-              <span className="block text-sm text-[#8A9A86] font-semibold tracking-widest uppercase mb-4">The Environment</span>
-              <h2 className="font-serif text-[32px] md:text-[40px] text-[#2C3539] leading-[1.1] mb-6">
-                Expert Hands-On Coaching. Zero Gym Intimidation.
-              </h2>
-              <div className="prose prose-lg max-w-none text-neutral-600 font-sans leading-relaxed">
-                <p>
-                  Most commercial gyms in Christchurch are noisy, overcrowded, and intimidating. You spend half your workout waiting for equipment or wondering if your lifting form is actually safe.
-                </p>
-                <p>
-                  At WRK, sessions take place in a dedicated, Semi-private training studio at 12 Show Place, Addington. When you train here:
-                </p>
-                <ul className="space-y-4 my-8 list-none pl-0">
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 rounded-full bg-[#8A9A86] mt-2.5 mr-4 shrink-0"></span> 
-                    <span><strong>A low-key, welcoming space:</strong> No chaotic crowds, mirror flexing, or waiting for machines. You’ll be sharing the floor with just a handful of like-minded people - just a bunch of good sorts getting on with their session while we focus entirely on yours.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 rounded-full bg-[#8A9A86] mt-2.5 mr-4 shrink-0"></span> 
-                    <span><strong>Precision technique feedback:</strong> Every rep, tempo, and movement is calibrated in real-time to protect your joints and maximize results.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 rounded-full bg-[#8A9A86] mt-2.5 mr-4 shrink-0"></span> 
-                    <span><strong>Tailored for your body:</strong> Whether you are new to lifting, managing joint stiffness, or on GLP-1 weight loss medication, your session matches your exact daily energy and recovery.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. COACHING TRACKS */}
-        <section className="py-24 px-5 md:px-12 bg-[#FAFAF9] border-t border-neutral-200">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-16 md:mb-24">
-              <span className="block text-sm text-[#8A9A86] font-semibold tracking-widest uppercase mb-4">Our Approach</span>
-              <h2 className="font-serif text-[36px] md:text-[48px] text-[#2C3539] max-w-[800px] mx-auto leading-tight">
-                Tailored Coaching for Your Specific Goals
+        {/* 2. The Environment Split Band */}
+        <section className="bg-sand-100/70 py-16 px-6 border-y border-charcoal/5">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+                THE STUDIO EXPERIENCE
+              </span>
+              <h2 className="font-serif text-3xl text-charcoal">
+                Expert Hands-On Coaching. Zero Intimidation.
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-              <div className="bg-white border border-neutral-200 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 bg-neutral-50 border border-neutral-100 rounded-2xl flex items-center justify-center mb-6">
-                  <Shield className="w-7 h-7 text-[#5C6B56]" />
-                </div>
-                <h3 className="font-serif text-2xl text-[#2C3539] mb-4">GLP-1 & Medical Weight Loss Muscle Preservation</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Rapid weight loss often strips away vital lean muscle. We use targeted resistance training to maintain your metabolic rate, protect your strength, and shape your body as the scale drops.
-                </p>
-              </div>
-
-              <div className="bg-white border border-neutral-200 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow md:translate-y-8">
-                <div className="w-14 h-14 bg-neutral-50 border border-neutral-100 rounded-2xl flex items-center justify-center mb-6">
-                  <Dumbbell className="w-7 h-7 text-[#5C6B56]" />
-                </div>
-                <h3 className="font-serif text-2xl text-[#2C3539] mb-4">Foundational Strength & Body Recomposition</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Build bone density, master compound lifts (squats, hinges, presses), and develop functional strength that makes everyday life feel lighter.
-                </p>
-              </div>
-
-              <div className="bg-white border border-neutral-200 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 bg-neutral-50 border border-neutral-100 rounded-2xl flex items-center justify-center mb-6">
-                  <Activity className="w-7 h-7 text-[#5C6B56]" />
-                </div>
-                <h3 className="font-serif text-2xl text-[#2C3539] mb-4">Habit & Nutrition Integration</h3>
-                <p className="text-neutral-600 leading-relaxed">
-                  Personal training doesn't end when you leave the studio. Receive straightforward protein guidance, daily movement targets, and habit structures that integrate seamlessly into busy Christchurch workdays.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 4. PRICING & LOCATION GRID */}
-        <section id="location" className="py-24 px-5 md:px-12 bg-white border-y border-neutral-200">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              
-              {/* PRICING CARD */}
-              <div>
-                <span className="block text-sm text-[#8A9A86] font-semibold tracking-widest uppercase mb-4">Investment</span>
-                <h2 className="font-serif text-[32px] md:text-[40px] text-[#2C3539] mb-8">Transparent In-Person Coaching</h2>
-                
-                <div className="bg-[#2C3539] text-white rounded-[2rem] p-8 shadow-xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#3A4549] rounded-bl-full -mr-8 -mt-8 opacity-50"></div>
-                  <div className="relative z-10">
-                    <span className="inline-block bg-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full mb-6 border border-white/20">
-                      Complete Studio Experience
-                    </span>
-                    <h3 className="font-serif text-2xl mb-4">Weekly 1-on-1 In-Person Coaching</h3>
-                    
-                    <div className="flex items-end gap-2 mb-2">
-                      <span className="font-serif text-5xl md:text-6xl">$89</span>
-                      <span className="text-neutral-400 text-lg mb-1">NZD / week</span>
-                    </div>
-                    <div className="flex items-center text-sm text-neutral-400 mb-8 border-b border-neutral-700 pb-8">
-                      <MapPin className="w-4 h-4 mr-2 text-[#8A9A86]" /> 12 Show Place, Addington, Christchurch
-                    </div>
-
-                    <ul className="space-y-4 mb-10">
-                      {[
-                        "Weekly 1-on-1 private studio training session",
-                        "Full personalized resistance program for your independent days (via coaching app)",
-                        "Real-time lifting technique correction and intensity management",
-                        "Tailored nutritional guidance and protein/macro targets",
-                        "Dedicated GLP-1 muscle preservation protocols (if applicable)",
-                        "Full access to our private Addington facility during sessions",
-                        "Ongoing direct coach support between sessions"
-                      ].map((item, i) => (
-                        <li key={i} className="flex items-start">
-                          <Check className="w-5 h-5 text-[#8A9A86] mr-3 shrink-0" />
-                          <span className="text-neutral-300">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link to="/contact" className="block w-full">
-                      <Button size="lg" fullWidth className="bg-[#8A9A86] hover:bg-[#768672] text-white py-6 text-[15px] border-none">
-                        Book Your Consultation & Studio Walkthrough
-                      </Button>
-                    </Link>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Card 1 */}
+              <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-sand-100 text-spruce-800 flex items-center justify-center mb-4">
+                    <Shield size={20} />
                   </div>
+                  <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                    A Low-Key, Welcoming Space
+                  </h3>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    No crowded machine lines, loud music, or mirror flexing. Just a handful of good sorts getting on with their session while we focus entirely on yours.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                  Semi-private facility · Addington
                 </div>
               </div>
-              
-              {/* LOCATION DETAILS */}
-              <div className="lg:mt-32">
-                 <span className="block text-sm text-[#8A9A86] font-semibold tracking-widest uppercase mb-4">Find Us</span>
-                 <h2 className="font-serif text-[32px] md:text-[40px] text-[#2C3539] mb-8">Train in the Heart of Addington</h2>
-                 
-                 <div className="prose prose-lg text-neutral-600 font-sans mb-8">
-                   <p><strong>Address:</strong><br/> 12 Show Place, Addington, Christchurch 8024</p>
-                   <p><strong>Accessibility:</strong><br/> Easily accessible from Riccarton, Spreydon, Cashmere, Halswell, and the Christchurch Central City.</p>
-                   <p><strong>Parking:</strong><br/> Easy on-site parking directly outside the studio.</p>
-                 </div>
-                 
-                 <div className="w-full aspect-[4/3] sm:aspect-video rounded-3xl overflow-hidden border border-neutral-200 shadow-md">
-                    <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185185.91070085767!2d172.59900144999997!3d-43.51214245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26634d156304cd93%3A0x9e3eee8e863806bb!2sWRK%20Personal%20Training!5e0!3m2!1sen!2snz!4v1788775159827!5m2!1sen!2snz" 
-                      width="100%" 
-                      height="100%" 
-                      style={{ border: 0 }} 
-                      allowFullScreen={true} 
-                      loading="lazy" 
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      title="Studio Location Map"
-                    ></iframe>
-                 </div>
+
+              {/* Card 2 */}
+              <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-sand-100 text-spruce-800 flex items-center justify-center mb-4">
+                    <Dumbbell size={20} />
+                  </div>
+                  <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                    Precision Real-Time Feedback
+                  </h3>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    Every rep, tempo, and movement is calibrated face-to-face to safeguard joint longevity and ensure proper execution.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                  Technique mastery & safety
+                </div>
               </div>
-              
+
+              {/* Card 3 */}
+              <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-sand-100 text-spruce-800 flex items-center justify-center mb-4">
+                    <Activity size={20} />
+                  </div>
+                  <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                    Calibrated to Your Recovery
+                  </h3>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    Whether managing joint stiffness or GLP-1 fatigue, your training volume matches your exact daily energy levels.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                  Adaptive energy & biofeedback
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 5. INTERACTIVE INQUIRY */}
-        <section className="py-24 px-5 bg-[#FAFAF9]">
-          <div className="max-w-[700px] mx-auto text-center">
-             <span className="block text-sm text-[#8A9A86] font-semibold tracking-widest uppercase mb-4">Start Where You Are</span>
-             <h2 className="font-serif text-[32px] md:text-[40px] text-[#2C3539] mb-6">Have a Question or Not Sure Where to Begin?</h2>
-             <p className="text-lg text-neutral-600 mb-10 leading-relaxed">
-               Select where you are currently at, and we will tailor our initial chat around your exact situation.
-             </p>
-             
-             <div className="bg-white border border-neutral-200 rounded-3xl p-8 shadow-sm text-left">
-               <form className="space-y-4" onSubmit={(e) => {
-                 e.preventDefault();
-                 if (phaseSelection) {
-                    window.location.href = `/contact?phase=${encodeURIComponent(phaseSelection)}`;
-                 } else {
-                    window.location.href = '/contact';
-                 }
-               }}>
-                 {[
-                   "I am taking GLP-1 medication and want to protect muscle & build strength",
-                   "I am preparing to transition/wean off weight loss medication",
-                   "I am looking for private 1-on-1 strength training (General Fitness)",
-                   "I have a specific question about the Addington studio"
-                 ].map((option, idx) => (
-                   <label key={idx} className={`flex items-start p-4 rounded-xl border cursor-pointer transition-colors ${phaseSelection === option ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300'}`}>
-                     <div className="mt-0.5">
-                       <input 
-                         type="radio" 
-                         name="phase" 
-                         value={option}
-                         checked={phaseSelection === option}
-                         onChange={() => setPhaseSelection(option)}
-                         className="w-4 h-4 text-[#8A9A86] focus:ring-[#8A9A86] border-neutral-300"
-                       />
-                     </div>
-                     <span className="ml-3 text-[#2C3539]">{option}</span>
-                   </label>
-                 ))}
-                 
-                 <div className="pt-6">
-                   <Button type="submit" size="lg" fullWidth className="bg-[#2C3539] hover:bg-neutral-800 text-white">
-                     Continue to Contact Form <ArrowRight className="w-5 h-5 ml-2" />
-                   </Button>
-                 </div>
-               </form>
-             </div>
+        {/* 3. Core Focus Areas */}
+        <section className="py-20 px-6 max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+              OUR SPECIALTY
+            </span>
+            <h2 className="font-serif text-3xl text-center text-charcoal tracking-tight">
+              Targeted In-Person Coaching
+            </h2>
+            <p className="text-sm text-charcoal/70 mt-2">
+              Three pillars designed to preserve strength and establish lifelong physical autonomy.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                  PILLAR 01
+                </span>
+                <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                  GLP-1 Muscle Defense
+                </h3>
+                <p className="text-sm text-charcoal/70 leading-relaxed">
+                  Target resistance sessions specifically structured to preserve metabolic rate and lean mass during rapid weight loss.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                Safeguarding metabolic capacity
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                  PILLAR 02
+                </span>
+                <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                  Foundational Strength
+                </h3>
+                <p className="text-sm text-charcoal/70 leading-relaxed">
+                  Build bone density and master compound mechanics (squats, hinges, presses) for everyday capability and joint health.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                Compound movement patterns
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                  PILLAR 03
+                </span>
+                <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                  Real-Life Nutrition & Habits
+                </h3>
+                <p className="text-sm text-charcoal/70 leading-relaxed">
+                  Simple protein targets and daily habit systems that integrate seamlessly into busy Christchurch workdays.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                Digestible protein & daily structure
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* 6. FAQ */}
-        <section className="py-24 px-5 md:px-12 bg-white border-t border-neutral-200">
-          <div className="max-w-[800px] mx-auto">
-            <h2 className="font-serif text-[32px] md:text-[40px] text-center text-[#2C3539] mb-16">
+        {/* 4. Studio Investment Card */}
+        <section className="py-16 px-6 max-w-2xl mx-auto text-center">
+          <span className="text-xs uppercase tracking-widest text-spruce-800 font-semibold mb-2 block">
+            TRANSPARENT IN-PERSON COACHING
+          </span>
+          <h2 className="font-serif text-3xl text-charcoal mb-8 tracking-tight">
+            Complete Studio Experience
+          </h2>
+
+          <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
+            <span className="text-xs uppercase tracking-wider text-sand-200/90 mb-4 block font-medium">
+              📍 12 Show Place, Addington, Christchurch
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-4">
+              Weekly 1-on-1 Studio Coaching
+            </h3>
+
+            <div className="flex flex-wrap items-baseline gap-2 mb-2">
+              <span className="font-serif text-4xl sm:text-5xl font-bold text-sand-50">$89 NZD</span>
+              <span className="text-sand-200/80 text-sm">/ week</span>
+            </div>
+            <p className="text-xs text-sand-200/70 border-b border-sand-200/10 pb-6 mb-6">
+              Includes full weekly studio access, custom home programming, and nutrition support.
+            </p>
+
+            <ul className="space-y-3.5 my-8 text-sand-100 text-sm">
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0" />
+                <span>Weekly 1-on-1 private studio training session</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0" />
+                <span>Real-time technique correction and intensity management</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0" />
+                <span>Full independent workout programming via the WRK App</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0" />
+                <span>Tailored nutrition guidance and protein targets</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0" />
+                <span>Dedicated GLP-1 muscle preservation protocols</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0" />
+                <span>Full access to the private Addington facility during sessions</span>
+              </li>
+            </ul>
+
+            <div className="pt-2">
+              <Link
+                to="/contact"
+                className="bg-sand-100 text-spruce-900 hover:bg-white w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors shadow-sm"
+              >
+                Book Your Consultation & Studio Walkthrough
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Location & Accessibility Band */}
+        <section id="location" className="bg-sand-50 py-16 px-6 border-y border-charcoal/5">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+              LOCATION
+            </span>
+            <h2 className="font-serif text-3xl text-charcoal mb-8 tracking-tight">
+              Train in the Heart of Addington
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-8">
+              <div className="bg-white rounded-xl p-6 border border-charcoal/5 shadow-sm">
+                <div className="flex items-center gap-2 mb-2 text-spruce-800">
+                  <MapPin size={18} />
+                  <span className="text-xs font-bold uppercase tracking-wider">Address</span>
+                </div>
+                <p className="text-sm font-semibold text-charcoal">
+                  12 Show Place, Addington
+                </p>
+                <p className="text-xs text-charcoal/70 mt-1">
+                  Christchurch 8024
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 border border-charcoal/5 shadow-sm">
+                <div className="flex items-center gap-2 mb-2 text-spruce-800">
+                  <Compass size={18} />
+                  <span className="text-xs font-bold uppercase tracking-wider">Accessibility</span>
+                </div>
+                <p className="text-sm text-charcoal/80 leading-relaxed">
+                  Minutes from Riccarton, Spreydon, Cashmere, Halswell, and Christchurch Central City.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 border border-charcoal/5 shadow-sm">
+                <div className="flex items-center gap-2 mb-2 text-spruce-800">
+                  <Car size={18} />
+                  <span className="text-xs font-bold uppercase tracking-wider">Parking</span>
+                </div>
+                <p className="text-sm text-charcoal/80 leading-relaxed">
+                  Easy on-site parking directly outside the studio doors.
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full aspect-[4/3] sm:aspect-video rounded-2xl overflow-hidden border border-charcoal/10 shadow-sm mt-8">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185185.91070085767!2d172.59900144999997!3d-43.51214245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26634d156304cd93%3A0x9e3eee8e863806bb!2sWRK%20Personal%20Training!5e0!3m2!1sen!2snz!4v1788775159827!5m2!1sen!2snz" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Studio Location Map"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Starting Triage / Questionnaire Pre-Select */}
+        <section className="py-16 px-6 max-w-3xl mx-auto text-center">
+          <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 tracking-tight">
+            Have a Question or Not Sure Where to Begin?
+          </h2>
+          <p className="text-charcoal/80 text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+            Select your situation and we will tailor our initial consult chat around your goals.
+          </p>
+
+          <form onSubmit={handleTriageSubmit} className="space-y-3 text-left mb-8">
+            {[
+              "I am taking GLP-1 medication and want to protect muscle & build strength",
+              "I am preparing to transition/wean off weight loss medication",
+              "I am looking for private 1-on-1 strength training (General Fitness)",
+              "I have a specific question about the Addington studio"
+            ].map((option, idx) => {
+              const isSelected = phaseSelection === option;
+              return (
+                <label
+                  key={idx}
+                  className={`flex items-start p-4 rounded-lg border cursor-pointer transition-colors ${
+                    isSelected
+                      ? 'border-spruce-800 bg-sand-100/60 shadow-sm'
+                      : 'border-charcoal/10 bg-white hover:bg-sand-50'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="phase"
+                    value={option}
+                    checked={isSelected}
+                    onChange={() => setPhaseSelection(option)}
+                    className="mt-1 w-4 h-4 text-spruce-800 focus:ring-spruce-800 border-charcoal/20"
+                  />
+                  <span className="ml-3 text-sm font-medium text-charcoal leading-snug">
+                    {option}
+                  </span>
+                </label>
+              );
+            })}
+
+            <div className="pt-4 text-center">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center bg-spruce-800 text-sand-50 hover:bg-spruce-900 rounded-md px-8 py-3.5 text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm"
+              >
+                Continue to Contact Form <ArrowRight size={15} className="ml-2" />
+              </button>
+            </div>
+          </form>
+        </section>
+
+        {/* 7. Interactive FAQ Accordion */}
+        <section className="py-20 px-6 max-w-3xl mx-auto border-t border-charcoal/5">
+          <div className="text-center mb-12">
+            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+              FREQUENTLY ASKED QUESTIONS
+            </span>
+            <h2 className="font-serif text-3xl text-charcoal tracking-tight">
               Common Questions
             </h2>
-            
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => (
-                <div key={idx} className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm">
-                  <button 
-                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-neutral-50 transition-colors"
+          </div>
+
+          <div className="bg-white rounded-xl border border-charcoal/5 p-6 md:p-8 shadow-sm">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className="border-b border-charcoal/10 last:border-0">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full py-5 flex items-center justify-between text-left focus:outline-none group"
+                    aria-expanded={isOpen}
                   >
-                    <span className="font-sans font-medium text-lg text-[#2C3539] pr-4">{faq.q}</span>
-                    <span className="text-[#8A9A86] shrink-0">
-                      {openFaq === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                    <span className="font-serif text-lg text-charcoal group-hover:text-spruce-800 transition-colors pr-6">
+                      {faq.q}
                     </span>
+                    <ChevronDown
+                      className={`shrink-0 text-spruce-800 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                      size={20}
+                    />
                   </button>
-                  <div 
-                    className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openFaq === idx ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-5' : 'max-h-0 opacity-0'}`}
                   >
-                    <p className="text-neutral-600 leading-relaxed border-t border-neutral-100 pt-4">{faq.a}</p>
+                    <p className="text-charcoal/80 text-sm md:text-base leading-relaxed">
+                      {faq.a}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </section>
 

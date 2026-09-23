@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Activity, Target, CheckCircle, ArrowRight } from 'lucide-react';
+import { MapPin, Globe, Shield, Activity, Flame, Dumbbell, Utensils, Smartphone, Scale, Droplets, CheckCircle2 } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 
 export const Programs: React.FC = () => {
@@ -9,444 +9,285 @@ export const Programs: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
+    <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
       <SeoHead
-        title="GLP-1 Fitness Programs | WRK Personal Training"
-        description="Explore our 12-week GLP-1 Fitness Programs. Structured training pathways built around your active weight loss, maintenance, or long-term habit building phases."
+        title="GLP-1 Fitness Programs & 12-Week Coaching | Christchurch | WRK"
+        description="Explore our 12-week GLP-1 Fitness Programs in Christchurch and online. Specialist strength coaching and muscle preservation pathways for active weight loss and maintenance."
       />
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
-        {/* Page Header */}
-        <header className="text-center mb-20 max-w-4xl mx-auto">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 Fitness <span className="wrk-highlight">Programs</span>
-          </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
-            12-week training pathways built around where you are now.
+
+      {/* 1. Hero Header */}
+      <section className="bg-canvas pt-12 pb-14 text-center px-4 max-w-5xl mx-auto">
+        <p className="text-xs tracking-[0.2em] font-sans uppercase text-spruce-800 font-semibold mb-3">
+          COACHING & PATHWAYS
+        </p>
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-4">
+          Targeted Coaching for Every Phase.
+        </h1>
+        <p className="text-charcoal/80 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
+          Structured 12-week strength, nutrition, and recovery systems matched to where you are on your medication journey.
+        </p>
+      </section>
+
+      {/* 2. The 3 Phases / Triage Band */}
+      <section className="bg-sand-100/60 py-12 px-6 border-y border-charcoal/5">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-serif text-2xl text-charcoal text-center mb-8">
+            Choose Your Current Phase
           </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
-            <p>
-              Your training needs can change as your GLP-1 journey changes.
-            </p>
-            <p>
-              Whether you're actively losing weight, moving towards maintenance, or looking to build a sustainable fitness routine for the long term, WRK gives you a clear 12-week pathway to follow.
-            </p>
-            <p>
-              Each programme focuses on the same foundations:
-            </p>
-            <p className="font-serif text-[22px] md:text-[26px] text-[#2C3539] py-4">
-              Strength. Muscle. Fitness. Movement. Sustainable habits.
-            </p>
-            <p>
-              Choose the pathway that best matches where you are today.
-            </p>
-          </div>
 
-          <div className="mt-16 mb-8 w-full max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
-            <div className="wrk-photo-overlay"></div>
-            <img 
-              src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg" 
-              alt="Active adult enjoying the outdoors after completing our GLP-1 Strength Training Program" 
-              className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
-            />
-          </div>
-        </header>
-
-        {/* Tracks Vertical Layout */}
-        <div className="space-y-12 mb-24">
-          
-          {/* Track 1 */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-14 rounded-3xl shadow-sm flex flex-col md:flex-row gap-10">
-            <div className="md:w-1/3 flex flex-col">
-              <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
-                <Shield size={28} />
-              </div>
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] leading-tight mb-2">
-                Track 1 —<br/>GLP-1 Strength & Muscle
-              </h2>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">
-                Protect your strength while you lose weight.
-              </p>
-            </div>
-            
-            <div className="md:w-2/3 flex flex-col">
-              <div className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 space-y-4 mb-8">
-                <p>Designed for people currently in the active weight-loss phase.</p>
-                <p>
-                  When bodyweight is changing, maintaining strength and muscle should be a priority. This 12-week pathway builds a consistent resistance-training routine around your current ability, lifestyle and recovery.
-                </p>
-                <p>
-                  The goal isn't to train harder for the sake of it.
-                </p>
-                <p>
-                  It's to <strong className="text-[#2C3539] font-medium">train consistently, build strength and give your body a reason to hold onto muscle while you lose weight.</strong>
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mb-10">
-                <div className="col-span-full">
-                  <p className="font-medium text-[#2C3539] mb-4">You'll focus on:</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="bg-white rounded-xl p-6 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded">
+                    01 · Active Weight Loss
+                  </span>
                 </div>
-                {[
-                  'Progressive full-body strength training',
-                  '30-minute workouts designed around a busy schedule',
-                  'Building and maintaining strength',
-                  'Practical protein and nutrition habits',
-                  'Daily movement and fitness',
-                  'Recovery and training consistency',
-                  'Building confidence in the gym or at home'
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start text-[15px] text-[#2C3539]/80">
-                    <CheckCircle className="text-[#8A9A86] shrink-0 mr-3 mt-0.5" size={18} />
-                    <span className="leading-snug">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-8">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Best Suited To:</p>
-                <p className="text-[15px] text-[#2C3539]/90 font-medium leading-relaxed">
-                  People currently using a GLP-1 and actively working towards weight loss who want to prioritise strength and muscle.
+                <h3 className="font-serif text-xl font-bold text-charcoal mb-2">
+                  GLP-1 Strength & Muscle
+                </h3>
+                <p className="text-sm text-charcoal/70 leading-relaxed">
+                  Prioritising progressive resistance training and protein anchoring to safeguard lean tissue and preserve metabolic rate during caloric deficits.
                 </p>
               </div>
-
-              <div className="flex flex-col gap-4 mt-8">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    to="/online-coaching"
-                    className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
-                  >
-                    Apply for Online Coaching
-                  </Link>
-                  <Link 
-                    to="/personal-training#book"
-                    className="inline-flex items-center justify-center bg-white border border-[#2C3539]/20 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
-                  >
-                    Book Studio Consult
-                  </Link>
-                </div>
-                <Link
-                  to="/assessment"
-                  className="inline-flex items-center text-[13px] text-[#2C3539]/60 hover:text-[#8A9A86] transition-colors mt-2"
-                >
-                  Not sure if this track fits? Take the 2-min assessment →
-                </Link>
+              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                Focus: Muscle preservation & 1.2–1.6g/kg protein
               </div>
             </div>
-          </div>
 
-          {/* Track 2 */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-14 rounded-3xl shadow-sm flex flex-col md:flex-row gap-10">
-            <div className="md:w-1/3 flex flex-col">
-              <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
-                <Activity size={28} />
-              </div>
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] leading-tight mb-2">
-                Track 2 —<br/>GLP-1 Transition & Maintenance
-              </h2>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">
-                Build the habits that take you beyond weight loss.
-              </p>
-            </div>
-            
-            <div className="md:w-2/3 flex flex-col">
-              <div className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 space-y-4 mb-8">
-                <p>Weight loss is one phase of the journey.</p>
-                <p>
-                  This pathway is designed for people who are approaching their target, moving into maintenance, or wanting to shift their focus from <strong className="text-[#2C3539] font-medium">losing weight to building fitness.</strong>
-                </p>
-                <p>
-                  Rather than chasing another number on the scale, the focus moves towards strength, fitness, routine and long-term consistency.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mb-10">
-                <div className="col-span-full">
-                  <p className="font-medium text-[#2C3539] mb-4">You'll focus on:</p>
+            {/* Card 2 */}
+            <div className="bg-white rounded-xl p-6 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded">
+                    02 · Transition Phase
+                  </span>
                 </div>
-                {[
-                  'Progressive strength training',
-                  'Building cardiovascular fitness',
-                  'Increasing daily movement',
-                  'Establishing sustainable training habits',
-                  'Nutrition habits that support maintenance',
-                  'Understanding and tracking progress beyond bodyweight',
-                  'Building confidence and independence'
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start text-[15px] text-[#2C3539]/80">
-                    <CheckCircle className="text-[#8A9A86] shrink-0 mr-3 mt-0.5" size={18} />
-                    <span className="leading-snug">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-8">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Best Suited To:</p>
-                <p className="text-[15px] text-[#2C3539]/90 font-medium leading-relaxed">
-                  People approaching or entering weight maintenance who are ready to make fitness and sustainable habits the priority.
+                <h3 className="font-serif text-xl font-bold text-charcoal mb-2">
+                  Transition & Maintenance
+                </h3>
+                <p className="text-sm text-charcoal/70 leading-relaxed">
+                  Shifting focus from scale drop to building cardiovascular stamina, routine, energy, and joint resilience as target body composition nears.
                 </p>
               </div>
-
-              <div className="flex flex-col gap-4 mt-8">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    to="/online-coaching"
-                    className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
-                  >
-                    Apply for Online Coaching
-                  </Link>
-                  <Link 
-                    to="/personal-training#book"
-                    className="inline-flex items-center justify-center bg-white border border-[#2C3539]/20 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
-                  >
-                    Book Studio Consult
-                  </Link>
-                </div>
-                <Link
-                  to="/assessment"
-                  className="inline-flex items-center text-[13px] text-[#2C3539]/60 hover:text-[#8A9A86] transition-colors mt-2"
-                >
-                  Not sure if this track fits? Take the 2-min assessment →
-                </Link>
+              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                Focus: Stamina base & energetic stability
               </div>
             </div>
-          </div>
 
-          {/* Track 3 */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-14 rounded-3xl shadow-sm flex flex-col md:flex-row gap-10">
-            <div className="md:w-1/3 flex flex-col">
-              <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
-                <Target size={28} />
-              </div>
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] leading-tight mb-2">
-                Track 3 —<br/>Forever Strong
-              </h2>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">
-                Build a fitness routine you can actually keep.
-              </p>
-            </div>
-            
-            <div className="md:w-2/3 flex flex-col">
-              <div className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 space-y-4 mb-8">
-                <p>The long-term goal isn't to spend your life following a weight-loss programme.</p>
-                <p>
-                  It's to build a body that is strong, capable and fit — and a routine that fits naturally into your life.
-                </p>
-                <p>
-                  Forever Strong is designed for people who have completed their initial weight-loss phase and want to keep building from there.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mb-10">
-                <div className="col-span-full">
-                  <p className="font-medium text-[#2C3539] mb-4">You'll focus on:</p>
+            {/* Card 3 */}
+            <div className="bg-white rounded-xl p-6 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded">
+                    03 · Sustainable Lifestyle
+                  </span>
                 </div>
-                {[
-                  'Sustainable strength training',
-                  'Maintaining and progressing fitness',
-                  'Training around your lifestyle',
-                  'Home or gym-based options',
-                  'Building physical capacity',
-                  'Staying active without extremes',
-                  'Creating a routine you can maintain for years'
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start text-[15px] text-[#2C3539]/80">
-                    <CheckCircle className="text-[#8A9A86] shrink-0 mr-3 mt-0.5" size={18} />
-                    <span className="leading-snug">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-8">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Best Suited To:</p>
-                <p className="text-[15px] text-[#2C3539]/90 font-medium leading-relaxed">
-                  People who want to make strength and fitness a permanent part of their lifestyle.
+                <h3 className="font-serif text-xl font-bold text-charcoal mb-2">
+                  Forever Strong
+                </h3>
+                <p className="text-sm text-charcoal/70 leading-relaxed">
+                  Building permanent movement and lifting habits designed to outlast medication weaning, ensuring lifelong physical independence and strength.
                 </p>
               </div>
-
-              <div className="flex flex-col gap-4 mt-8">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    to="/online-coaching"
-                    className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
-                  >
-                    Apply for Online Coaching
-                  </Link>
-                  <Link 
-                    to="/personal-training#book"
-                    className="inline-flex items-center justify-center bg-white border border-[#2C3539]/20 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors"
-                  >
-                    Book Studio Consult
-                  </Link>
-                </div>
-                <Link
-                  to="/assessment"
-                  className="inline-flex items-center text-[13px] text-[#2C3539]/60 hover:text-[#8A9A86] transition-colors mt-2"
-                >
-                  Not sure if this track fits? Take the 2-min assessment →
-                </Link>
+              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                Focus: Habit longevity & total autonomy
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* What Every 12-Week Programme Includes (GLASSMORPHISM) */}
-        <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-24 px-4 md:px-8 bg-[#2C3539] overflow-hidden my-16">
-          {/* Background Image & Overlay */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="https://i.postimg.cc/TYJq8bqj/pexels-askar-abayev-5638749.jpg" 
-              alt="Focus and determination during the GLP-1 Strength Training Program"
-              className="w-full h-full object-cover object-center opacity-60"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
+      {/* 3. The Delivery Models (The 2 Core Offers) */}
+      <section className="py-16 px-6 max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">DELIVERY FORMATS</span>
+          <h2 className="font-serif text-3xl text-charcoal tracking-tight">Two Ways to Work Together</h2>
+          <p className="text-sm text-charcoal/70 mt-2">Choose hands-on private Christchurch coaching or remote app-based programming worldwide.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Card A: In-Person */}
+          <div className="bg-white rounded-2xl p-8 border border-charcoal/10 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-3 py-1 rounded">
+                  IN-PERSON COACHING
+                </span>
+                <span className="flex items-center text-xs text-charcoal/60 font-medium">
+                  <MapPin size={14} className="mr-1 text-spruce-800" />
+                  Addington, Christchurch
+                </span>
+              </div>
+              <h3 className="font-serif text-2xl text-charcoal mb-2">
+                Private Studio Coaching
+              </h3>
+              <p className="text-sm text-charcoal/70 leading-relaxed mb-6">
+                Hands-on lifting technique, private facility access, and in-person body composition accountability tailored to your weekly energy.
+              </p>
+              <ul className="space-y-2.5 text-xs text-charcoal/80 mb-8 border-t border-charcoal/5 pt-4">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
+                  <span>1-on-1 private training studio (no crowds or waiting)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
+                  <span>Bio-impedance & circumference muscle tracking</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
+                  <span>Immediate form feedback on compound resistance lifts</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Link
+                to="/contact"
+                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 px-6 py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-center block w-full transition-colors shadow-sm"
+              >
+                Book Studio Consult
+              </Link>
+            </div>
           </div>
 
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">
-                What Every 12-Week Programme Includes
-              </h2>
-              <p className="text-white/80 text-[16px] md:text-[18px] leading-relaxed">
-                Whichever pathway you choose, you won't be handed a generic workout PDF and left to figure it out. Every WRK programme includes:
+          {/* Card B: Online */}
+          <div className="bg-white rounded-2xl p-8 border border-charcoal/10 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-3 py-1 rounded">
+                  REMOTE COACHING
+                </span>
+                <span className="flex items-center text-xs text-charcoal/60 font-medium">
+                  <Globe size={14} className="mr-1 text-spruce-800" />
+                  Flexible · Worldwide
+                </span>
+              </div>
+              <h3 className="font-serif text-2xl text-charcoal mb-2">
+                Online Coaching Worldwide
+              </h3>
+              <p className="text-sm text-charcoal/70 leading-relaxed mb-6">
+                Custom programming delivered in the WRK app with weekly video check-ins, volume adjustments, and direct coach messaging.
               </p>
+              <ul className="space-y-2.5 text-xs text-charcoal/80 mb-8 border-t border-charcoal/5 pt-4">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
+                  <span>Delivered via WRK mobile app with video exercise cues</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
+                  <span>Weekly video feedback and medication titration adjustments</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
+                  <span>Direct message access for real-time training & meal questions</span>
+                </li>
+              </ul>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <h3 className="font-serif text-[20px] text-white mb-3">Personalised Training</h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  Structured workouts designed around your current ability, goals, training environment and lifestyle.
-                </p>
-              </div>
-              
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <h3 className="font-serif text-[20px] text-white mb-3">Progressive Programming</h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  Your programme develops across the 12 weeks rather than simply repeating the same workouts.
-                </p>
-              </div>
-
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <h3 className="font-serif text-[20px] text-white mb-3">WRK Training App</h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  Your workouts, progress tracking, resources and programme information in one place.
-                </p>
-              </div>
-
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <h3 className="font-serif text-[20px] text-white mb-3">Coaching & Check-Ins</h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  Regular check-ins help you stay accountable and make adjustments as your circumstances change.
-                </p>
-              </div>
-
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <h3 className="font-serif text-[20px] text-white mb-3">Nutrition & Lifestyle Support</h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  Practical education around protein, nutrition, hydration, recovery and the everyday habits that support your training.
-                </p>
-              </div>
-
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <h3 className="font-serif text-[20px] text-white mb-3">Flexible Training</h3>
-                <p className="text-[15px] text-white/70 leading-relaxed">
-                  Home or gym options, with workouts designed to fit into real life rather than requiring hours in the gym.
-                </p>
-              </div>
-
+            <div>
+              <Link
+                to="/online-coaching"
+                className="border border-spruce-800 text-spruce-800 hover:bg-spruce-800 hover:text-sand-50 px-6 py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-center block w-full transition-colors"
+              >
+                Apply for Online Coaching
+              </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Which Pathway Is Right For You? */}
-        <div className="bg-[#FAFAF9] border border-neutral-200 rounded-3xl p-8 md:p-14 mb-24">
-          <h2 className="text-3xl md:text-4xl font-serif text-[#2C3539] mb-12 text-center">
-            Which Pathway Is Right For You?
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div>
-              <p className="text-[18px] font-serif text-[#2C3539] mb-2">I'm actively losing weight</p>
-              <div className="flex items-center text-[#8A9A86] font-medium mb-3">
-                <ArrowRight size={18} className="mr-2 shrink-0" />
-                <span>Track 1: GLP-1 Strength & Muscle</span>
-              </div>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Prioritise strength, muscle and consistent training while your bodyweight is changing.
-              </p>
-            </div>
+      {/* 4. What Every 12-Week Pathway Delivers */}
+      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-charcoal/5">
+        <div className="text-center mb-10">
+          <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">EVIDENCE-BASED METHOD</span>
+          <h2 className="font-serif text-3xl text-charcoal tracking-tight">The 12-Week Standard</h2>
+          <p className="text-sm text-charcoal/70 mt-2 max-w-lg mx-auto">
+            Regardless of your delivery format, every 12-week training protocol includes our foundational coaching pillars.
+          </p>
+        </div>
 
-            <div>
-              <p className="text-[18px] font-serif text-[#2C3539] mb-2">I'm approaching my goal</p>
-              <div className="flex items-center text-[#8A9A86] font-medium mb-3">
-                <ArrowRight size={18} className="mr-2 shrink-0" />
-                <span>Track 2: GLP-1 Transition & Maintenance</span>
-              </div>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Shift your focus from weight loss towards fitness, habits and long-term maintenance.
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center mb-3">
+              <Dumbbell size={18} />
             </div>
-
-            <div>
-              <p className="text-[18px] font-serif text-[#2C3539] mb-2">I've finished losing weight</p>
-              <div className="flex items-center text-[#8A9A86] font-medium mb-3">
-                <ArrowRight size={18} className="mr-2 shrink-0" />
-                <span>Track 3: Forever Strong</span>
-              </div>
-              <p className="text-[15px] text-[#2C3539]/70 leading-relaxed">
-                Build a sustainable training routine and keep developing your strength and fitness for the long term.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-16 text-center border-t border-neutral-200 pt-12 max-w-2xl mx-auto">
-            <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">Not sure?</h3>
-            <p className="text-[16px] text-[#2C3539]/80 mb-8 leading-relaxed">
-              That's okay. Your pathway should reflect where <strong className="text-[#2C3539] font-medium">you</strong> are right now.
+            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Progressive Overload</h3>
+            <p className="text-sm text-charcoal/70 leading-relaxed">
+              Program updates week-over-week ensuring consistent mechanical tension for muscle preservation.
             </p>
-            <Link to="/assessment">
-              <button className="bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Take the Free GLP-1 Fitness Assessment
-              </button>
+          </div>
+
+          <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center mb-3">
+              <Utensils size={18} />
+            </div>
+            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Low-Appetite Fueling</h3>
+            <p className="text-sm text-charcoal/70 leading-relaxed">
+              Practical protein targets and meal anchors designed to be easily digested without nausea.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center mb-3">
+              <Smartphone size={18} />
+            </div>
+            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">WRK App Ecosystem</h3>
+            <p className="text-sm text-charcoal/70 leading-relaxed">
+              Workouts, habit tracking, metrics, and high-definition video demonstrations on your phone.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center mb-3">
+              <Scale size={18} />
+            </div>
+            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Weekly Dose Matching</h3>
+            <p className="text-sm text-charcoal/70 leading-relaxed">
+              Volume and intensity tuned to medication titration schedules and systemic energy levels.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center mb-3">
+              <Droplets size={18} />
+            </div>
+            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">GI & Fluid Protocols</h3>
+            <p className="text-sm text-charcoal/70 leading-relaxed">
+              Hydration and electrolyte systems built specifically for delayed gastric emptying.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center mb-3">
+              <CheckCircle2 size={18} />
+            </div>
+            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Long-Term Autonomy</h3>
+            <p className="text-sm text-charcoal/70 leading-relaxed">
+              Permanent lifting and lifestyle habits designed to maintain fitness well beyond medication.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Triage / Bottom Callout */}
+      <section className="bg-sand-100 py-16 px-6 text-center border-t border-charcoal/5">
+        <div className="max-w-xl mx-auto space-y-4">
+          <h2 className="font-serif text-2xl md:text-3xl text-charcoal tracking-tight">
+            Not sure which pathway or delivery fits your routine?
+          </h2>
+          <p className="text-charcoal/80 text-sm md:text-base leading-relaxed">
+            Take the 2-minute assessment to evaluate your training consistency and protein baseline.
+          </p>
+          <div className="pt-2">
+            <Link
+              to="/assessment"
+              className="inline-flex items-center justify-center bg-spruce-800 text-sand-50 hover:bg-spruce-900 rounded-md px-8 py-3.5 text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm"
+            >
+              Take the Free GLP-1 Fitness Assessment
             </Link>
           </div>
         </div>
-
-        {/* The Goal Isn't Just To Lose Weight */}
-        <div className="bg-[#1A1C1D] p-10 md:p-16 lg:p-20 rounded-3xl shadow-sm text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-serif text-white mb-8 leading-tight">
-              The Goal Isn't Just To Lose Weight
-            </h2>
-            <div className="text-neutral-400 text-[16px] md:text-[18px] leading-relaxed space-y-6 mb-12">
-              <p>GLP-1 medication can be a powerful tool for weight management.</p>
-              <p>But what you build alongside that weight loss matters.</p>
-              
-              <div className="py-4 space-y-2">
-                <p className="text-white font-medium text-[18px] md:text-[20px]">The strength you develop.</p>
-                <p className="text-white font-medium text-[18px] md:text-[20px]">The fitness you build.</p>
-                <p className="text-white font-medium text-[18px] md:text-[20px]">The habits you create.</p>
-                <p className="text-white font-medium text-[18px] md:text-[20px]">The confidence you gain.</p>
-              </div>
-              
-              <p>That's what WRK is here to help you build.</p>
-              
-              <p className="text-white font-serif text-[22px] md:text-[26px] leading-tight pt-4">
-                Lose the weight. Keep your strength. Build the fitness to keep it off.
-              </p>
-            </div>
-            
-            <Link to="/services">
-              <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Start Your 12-Week Journey
-              </button>
-            </Link>
-          </div>
-        </div>
-
-      </div>
+      </section>
     </div>
   );
 };
