@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { useContent } from '../context/ContentContext';
-import { ArrowRight, BookOpen, Clock, Calendar } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, Calendar, CheckCircle2 } from 'lucide-react';
 
 const CATEGORIES = [
   'All',
@@ -14,208 +14,265 @@ const CATEGORIES = [
   'Life After GLP-1s'
 ];
 
-const CATEGORY_DESCRIPTIONS: Record<string, string> = {
-  'Training & Exercise': 'Practical guidance on strength training, cardio, daily movement and building a fitness routine while using a GLP-1.',
-  'Muscle & Strength': 'Learn why strength and muscle matter during weight loss and how resistance training can support your goals.',
-  'Nutrition & Protein': 'Practical guidance around protein, food choices, appetite changes and building a sustainable approach to nutrition.',
-  'Hydration & Recovery': 'Simple strategies for hydration, recovery, sleep and supporting your body as your routine changes.',
-  'Weight Loss & Maintenance': 'Understand the wider weight-loss journey, including progress beyond the scale and building habits that last.',
-  'Life After GLP-1s': 'Guidance for the transition beyond active weight loss and building a sustainable long-term approach to fitness.'
-};
-
 export const Blog: React.FC = () => {
   const { blogPosts } = useContent();
-  const publishedPosts = blogPosts.filter(post => post.status === 'published');
+  const publishedPosts = blogPosts.filter(post => post.status === 'published' || !post.status);
   
   const [activeCategory, setActiveCategory] = useState('All');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
   const filteredPosts = publishedPosts
     .filter(post => activeCategory === 'All' || post.category === activeCategory)
-    .sort((a, b) => new Date(b.isoDate || 0).getTime() - new Date(a.isoDate || 0).getTime());
+    .sort((a, b) => new Date(b.isoDate || b.date || 0).getTime() - new Date(a.isoDate || a.date || 0).getTime());
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const calculateReadTime = (content?: string) => {
+    if (!content) return '4 min read';
+    const words = content.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+    const mins = Math.max(1, Math.ceil(words / 200));
+    return `${mins} min read`;
+  };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newsletterEmail) {
+      setNewsletterSubmitted(true);
+      setNewsletterEmail('');
+    }
+  };
+
+  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : null;
+  const remainingPosts = filteredPosts.length > 1 ? filteredPosts.slice(1) : [];
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "WRK GLP-1 Fitness Library",
+    "url": "https://www.wrkpersonaltraining.co.nz/blog",
+    "description": "Evidence-informed guides and essays on strength training, lean muscle preservation, protein fueling, and sustainable habits alongside medical weight loss.",
+    "publisher": {
+      "@type": "HealthAndFitnessBusiness",
+      "name": "WRK Personal Training"
+    }
+  };
+
   return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
+    <>
       <SeoHead
-        title="GLP-1 Fitness Blog | Training, Nutrition & Weight Loss | WRK"
-        description="Read the WRK GLP-1 Fitness Blog for evidence-informed guidance on strength training, muscle preservation, nutrition, and sustainable habits after weight loss."
+        title="GLP-1 Fitness Library | Training, Nutrition & Weight Loss | WRK"
+        description="Read the WRK GLP-1 Fitness Library for evidence-informed guidance on strength training, muscle preservation, nutrition, and sustainable habits after weight loss."
+        schema={schema}
       />
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         
-        {/* Hero Section */}
-        <header className="text-center mb-16 max-w-4xl mx-auto">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 Fitness <span className="wrk-highlight">Blog</span>
+        {/* 1. Masthead Header */}
+        <section className="bg-canvas pt-14 pb-12 px-6 max-w-5xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-4">
+            EVIDENCE-BASED GUIDES & ESSAYS
+          </p>
+          
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-4 leading-tight">
+            The GLP-1 Fitness <span className="italic text-spruce-800">Library.</span>
           </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
-            Practical guidance for training, nutrition and life on a GLP-1.
-          </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
-            <p>
-              GLP-1 medications have changed the way many people approach weight loss.
-            </p>
-            <p>
-              But knowing how to train, eat, recover and stay active alongside them can raise a whole new set of questions.
-            </p>
-            <p>
-              The WRK blog brings together practical, evidence-informed guidance to help you navigate the <strong className="text-[#2C3539] font-medium">fitness side of your GLP-1 journey</strong>.
-            </p>
-            <p>
-              From strength training and muscle preservation to protein, hydration, recovery and life after weight loss — we break the important stuff down into simple, useful information you can actually apply.
-            </p>
-          </div>
-        </header>
+          
+          <p className="text-charcoal/80 max-w-xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
+            Practical guidance for training, low-appetite fueling, and long-term capability alongside medical weight loss.
+          </p>
+        </section>
 
-        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
-          <div className="wrk-photo-overlay"></div>
-          <img 
-            src="https://i.postimg.cc/BvhHyvM7/pexels-marwen-larafa-2159807713-38241567.jpg" 
-            alt="Person enjoying an active lifestyle and reading, representing continuous learning" 
-            className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
-          />
-        </div>
-
-        {/* Article Library & Filters */}
-        <div className="mb-24">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#2C3539] mb-8">
-              Explore the GLP-1 Fitness Library
-            </h2>
-            
-            {/* Category Filters */}
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {CATEGORIES.map(category => (
+        {/* 2. Horizontal Category Filter Bar */}
+        <div className="max-w-6xl mx-auto px-6 mb-12">
+          <div className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            {CATEGORIES.map(category => {
+              const isActive = activeCategory === category;
+              return (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-5 py-2.5 rounded-full text-[14px] font-medium transition-colors ${
-                    activeCategory === category 
-                      ? 'bg-[#2C3539] text-white' 
-                      : 'bg-white text-[#2C3539]/70 border border-neutral-200 hover:border-[#8A9A86] hover:text-[#2C3539]'
+                  className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
+                    isActive
+                      ? 'bg-spruce-800 text-sand-50 shadow-sm'
+                      : 'bg-white hover:bg-sand-100 text-charcoal/80 border border-charcoal/10'
                   }`}
                 >
                   {category}
                 </button>
-              ))}
-            </div>
-
-            {/* Active Category Description */}
-            {activeCategory !== 'All' && CATEGORY_DESCRIPTIONS[activeCategory] && (
-              <div className="max-w-2xl mx-auto bg-white border border-neutral-200 rounded-2xl p-6 mb-10">
-                <p className="text-[16px] text-[#2C3539]/80 leading-relaxed">
-                  {CATEGORY_DESCRIPTIONS[activeCategory]}
-                </p>
-              </div>
-            )}
+              );
+            })}
           </div>
+        </div>
 
-          {/* Article Card Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
-              <div key={post.id} className="bg-white border border-neutral-200 rounded-3xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 group">
-                <Link to={`/blog/${post.slug}`} className="block relative aspect-[4/3] bg-neutral-100 overflow-hidden wrk-photo-container">
-                  <div className="wrk-photo-overlay group-hover:bg-black/10 transition-colors duration-500 z-10"></div>
-                  <img src={post.image?.url || '/api/placeholder/600/400'} alt={post.image?.alt || post.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out wrk-photo" />
-                  {post.category && (
-                    <div className="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[12px] font-bold uppercase tracking-wider text-[#8A9A86] shadow-sm">
-                      {post.category}
-                    </div>
-                  )}
+        {/* 3. Featured Story Card (First Post) */}
+        {featuredPost && (
+          <section className="max-w-6xl mx-auto px-6 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white rounded-2xl overflow-hidden border border-charcoal/5 shadow-sm hover:shadow-md transition-shadow group">
+              
+              {/* Image Column (7 cols) */}
+              <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto h-full overflow-hidden relative bg-sand-100 min-h-[280px]">
+                <Link to={`/blog/${featuredPost.slug}`} className="block h-full w-full">
+                  <img
+                    src={featuredPost.image?.url || 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1200&auto=format&fit=crop'}
+                    alt={featuredPost.image?.alt || featuredPost.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </Link>
-                
-                <div className="p-8 flex flex-col flex-grow">
-                  <Link to={`/blog/${post.slug}`}>
-                    <h3 className="font-serif text-[22px] md:text-[24px] text-[#2C3539] mb-4 leading-snug group-hover:text-[#8A9A86] transition-colors line-clamp-2">
-                      {post.title}
-                    </h3>
+                {featuredPost.category && (
+                  <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-xs text-charcoal text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
+                    {featuredPost.category}
+                  </span>
+                )}
+              </div>
+
+              {/* Content Column (5 cols) */}
+              <div className="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 text-xs text-spruce-800 font-semibold uppercase tracking-wider mb-3">
+                    <span>Featured Essay</span>
+                    <span>•</span>
+                    <span className="text-charcoal/50 font-normal">{calculateReadTime(featuredPost.content)}</span>
+                  </div>
+
+                  <Link to={`/blog/${featuredPost.slug}`}>
+                    <h2 className="font-serif text-2xl sm:text-3xl text-charcoal hover:text-spruce-800 transition-colors mb-3 leading-snug">
+                      {featuredPost.title}
+                    </h2>
                   </Link>
-                  
-                  <p className="text-[15px] leading-relaxed text-[#2C3539]/70 mb-8 flex-grow line-clamp-3">
-                    {post.excerpt}
+
+                  <p className="text-charcoal/70 text-sm sm:text-base leading-relaxed mb-6 line-clamp-3">
+                    {featuredPost.excerpt}
                   </p>
-                  
-                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-neutral-100">
-                    <div className="flex items-center text-[13px] text-[#2C3539]/50 font-medium">
-                      {post.publishedAt && (
-                        <span className="flex items-center mr-4">
-                          <Calendar size={14} className="mr-1.5" />
-                          {new Date(post.publishedAt).toLocaleDateString('en-NZ', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        </span>
-                      )}
+                </div>
+
+                <div className="pt-6 border-t border-charcoal/5 flex items-center justify-between">
+                  <span className="text-xs text-charcoal/60 font-medium">
+                    By {featuredPost.author?.name || 'Hayden Richards'}
+                  </span>
+                  <Link
+                    to={`/blog/${featuredPost.slug}`}
+                    className="text-xs font-semibold uppercase tracking-wider text-spruce-800 flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                  >
+                    Read Guide <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+          </section>
+        )}
+
+        {/* 4. Editorial Article Grid (Remaining Posts) */}
+        <section className="max-w-6xl mx-auto px-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {remainingPosts.map((post) => (
+              <article
+                key={post.id}
+                className="group bg-white rounded-2xl overflow-hidden border border-charcoal/5 shadow-sm hover:shadow-md transition-all flex flex-col"
+              >
+                {/* Image Container */}
+                <div className="aspect-[16/10] overflow-hidden relative bg-sand-100">
+                  <Link to={`/blog/${post.slug}`} className="block h-full w-full">
+                    <img
+                      src={post.image?.url || 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop'}
+                      alt={post.image?.alt || post.title}
+                      className="group-hover:scale-105 transition-transform duration-500 object-cover w-full h-full"
+                    />
+                  </Link>
+                  {post.category && (
+                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-charcoal text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
+                      {post.category}
+                    </span>
+                  )}
+                </div>
+
+                {/* Content Body */}
+                <div className="p-6 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center gap-2 text-[11px] text-charcoal/50 uppercase tracking-wider mb-2 font-medium">
+                      <span>{post.date || 'Guide'}</span>
+                      <span>•</span>
+                      <span>{calculateReadTime(post.content)}</span>
                     </div>
-                    <Link to={`/blog/${post.slug}`} className="text-[14px] font-medium text-[#8A9A86] hover:text-[#768672] transition-colors flex items-center">
-                      Read Article <ArrowRight size={16} className="ml-1.5" />
+
+                    <Link to={`/blog/${post.slug}`}>
+                      <h3 className="font-serif text-xl font-bold text-charcoal group-hover:text-spruce-800 transition-colors leading-snug mb-3 line-clamp-2">
+                        {post.title}
+                      </h3>
+                    </Link>
+
+                    <p className="text-charcoal/70 text-sm leading-relaxed line-clamp-2 mb-4">
+                      {post.excerpt}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-charcoal/5 flex items-center justify-between mt-auto">
+                    <span className="text-[11px] text-charcoal/50">
+                      By {post.author?.name || 'Hayden Richards'}
+                    </span>
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="text-xs font-semibold uppercase tracking-wider text-spruce-800 flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                    >
+                      Read Guide <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
 
             {filteredPosts.length === 0 && (
-               <div className="col-span-full bg-white border border-neutral-200 rounded-3xl p-16 text-center text-[#2C3539]/70">
-                 <BookOpen size={48} className="mx-auto text-neutral-200 mb-4" />
-                 <p className="text-[18px]">Articles for this category are currently being written.</p>
-                 <p className="mt-2 text-[15px]">Check back soon for practical guidance and resources.</p>
-               </div>
+              <div className="col-span-full bg-white border border-charcoal/5 rounded-2xl p-16 text-center text-charcoal/70">
+                <BookOpen size={40} className="mx-auto text-spruce-800/40 mb-4" />
+                <h3 className="font-serif text-xl text-charcoal mb-2">No guides found in this category yet.</h3>
+                <p className="text-sm text-charcoal/60">Select another category above or check back shortly for new publications.</p>
+              </div>
             )}
           </div>
-        </div>
+        </section>
 
-        {/* Introduction to the Content */}
-        <div className="bg-white border border-neutral-200 p-10 md:p-16 rounded-3xl shadow-sm mb-24 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-1">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#2C3539] mb-6 leading-tight">
-              Evidence-Informed. Built for Real Life.
+        {/* 5. Newsletter / Reader Subscription Band */}
+        <section className="bg-sand-100/70 py-16 px-6 border-t border-charcoal/5 text-center">
+          <div className="max-w-xl mx-auto">
+            <span className="text-xs uppercase tracking-widest text-spruce-800 font-semibold mb-2 block">
+              THE WRK DISPATCH
+            </span>
+            <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-3 tracking-tight">
+              Intelligent Guidance Delivered Weekly
             </h2>
-            <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-4">
-              <p>
-                There is a lot of information online about GLP-1 medications.
-              </p>
-              <p>
-                Some of it is useful. Some of it is complicated. And some of it is simply not relevant to the person trying to figure out what they should actually do.
-              </p>
-              <p>
-                WRK takes current research and translates it into practical guidance around <strong className="text-[#2C3539] font-medium">training, nutrition, recovery and sustainable habits</strong>.
-              </p>
-              <p className="text-[14px] italic text-[#2C3539]/60 pt-4">
-                Note: Our content is designed to educate and support — not replace advice from your doctor, pharmacist or other qualified healthcare professional.
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-
-        {/* Final CTA */}
-        <div className="bg-[#1A1C1D] text-center rounded-3xl shadow-sm p-10 md:p-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">
-            Have a Question About GLP-1 Fitness?
-          </h2>
-          <div className="text-neutral-400 mb-10 max-w-2xl mx-auto text-[16px] md:text-[18px] leading-relaxed space-y-4">
-            <p>You might find the answer in the library.</p>
-            <p>
-              If you want help applying it to your own training, lifestyle and goals, that's where coaching comes in.
+            <p className="text-charcoal/70 text-sm max-w-md mx-auto mb-6 leading-relaxed">
+              Join adults receiving evidence-based protocols on GLP-1 fitness, protein anchoring, and habit preservation.
             </p>
+
+            {newsletterSubmitted ? (
+              <div className="inline-flex items-center gap-2 bg-spruce-800 text-sand-50 px-6 py-3 rounded-lg text-xs font-medium">
+                <CheckCircle2 size={16} />
+                <span>Thank you. You’re on the list for next week's edition.</span>
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email address"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="flex-1 bg-white border border-charcoal/15 rounded-md px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/40 focus:outline-none focus:ring-1 focus:ring-spruce-800"
+                />
+                <button
+                  type="submit"
+                  className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 px-6 py-3 rounded-md text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </form>
+            )}
           </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/assessment">
-              <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Take the Free GLP-1 Fitness Assessment
-              </button>
-            </Link>
-            <Link to="/services">
-              <button className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Explore GLP-1 Coaching
-              </button>
-            </Link>
-          </div>
-        </div>
+        </section>
 
       </div>
-    </div>
+    </>
   );
 };

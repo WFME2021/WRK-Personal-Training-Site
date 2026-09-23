@@ -1,9 +1,7 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, Clock, Calendar } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, ArrowRight, BookOpen, Share2 } from 'lucide-react';
 import { marked } from 'marked';
-import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
 import { useContent } from '../context/ContentContext';
 
@@ -19,14 +17,25 @@ export const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find(p => p.slug === slug);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   if (!post) {
     if (typeof window === 'undefined') return null;
     return <Navigate to="/blog" replace />;
   }
 
   // Reading Time Calculation
-  const words = post.content.replace(/<[^>]*>/g, '').split(' ').length;
-  const readTime = Math.ceil(words / 200);
+  const words = (post.content || '').replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+  const readTime = Math.max(1, Math.ceil(words / 200));
+
+  // Related posts resolution: either explicitly configured IDs or posts in same category / newest
+  const relatedList = (post.relatedPosts && post.relatedPosts.length > 0)
+    ? post.relatedPosts.map(id => blogPosts.find(p => p.id === id)).filter((p): p is typeof post => Boolean(p))
+    : blogPosts
+        .filter(p => p.id !== post.id && (p.category === post.category || !post.category))
+        .slice(0, 3);
 
   // Generate Schema.org JSON-LD
   const schemaData = {
@@ -38,9 +47,15 @@ export const BlogPost: React.FC = () => {
     "dateModified": post.isoDate,
     "author": [{
       "@type": "Person",
-      "name": post.author?.name || 'WRK Personal Training',
-      "url": "https://www.wrkpersonaltraining.co.nz"
+      "name": post.author?.name || 'Hayden Richards',
+      "jobTitle": "Founder & Head Coach",
+      "url": "https://www.wrkpersonaltraining.co.nz/about"
     }],
+    "publisher": {
+      "@type": "HealthAndFitnessBusiness",
+      "name": "WRK Personal Training",
+      "url": "https://www.wrkpersonaltraining.co.nz"
+    },
     "description": post.seoDescription || post.excerpt
   };
 
@@ -53,157 +68,220 @@ export const BlogPost: React.FC = () => {
         type="article"
         imageUrl={post.image?.url}
         publishedTime={post.isoDate}
-        authorName={post.author?.name}
+        authorName={post.author?.name || 'Hayden Richards'}
       />
 
-      <article className="bg-[#FAFAF9] min-h-screen text-[#2C3539] transition-colors duration-300">
-        {/* Micro-trust banner */}
-        <div className="w-full bg-[#FAFAF9] border-b border-neutral-200 py-3 hidden md:block">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-center space-x-6 md:space-x-12 text-[11px] uppercase tracking-[0.15em] text-[#2C3539]/60 font-semibold">
-            <span>GLP-1 Specialized</span>
-            <span className="hidden md:inline text-[#8A9A86]">&bull;</span>
-            <span>Muscle Preservation Focus</span>
-            <span className="hidden md:inline text-[#8A9A86]">&bull;</span>
-            <span>Data-Driven Tracking</span>
-            <span className="hidden md:inline text-[#8A9A86]">&bull;</span>
-            <span>GP Referral Network</span>
-          </div>
-        </div>
-
-        {/* Post Header */}
-        <header className="py-16 md:py-20 px-6 border-b border-neutral-200">
-          <div className="max-w-3xl mx-auto">
-            <Link to="/blog" className="inline-flex items-center text-[14px] font-medium text-[#2C3539]/60 hover:text-[#2C3539] mb-8 transition-colors group">
-              <ArrowLeft size={16} className="mr-2 transition-transform group-hover:-translate-x-1" /> Back to Blog
+      <article className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
+        
+        {/* 1. Article Header & Masthead */}
+        <header className="bg-canvas pt-12 pb-8 px-6 max-w-3xl mx-auto text-center">
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              to="/blog"
+              className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-charcoal/60 hover:text-spruce-800 transition-colors group"
+            >
+              <ArrowLeft size={14} className="mr-1.5 transition-transform group-hover:-translate-x-1" />
+              Back to Library
             </Link>
-            
-            <div className="flex flex-wrap items-center gap-4 text-[13px] mb-8 text-[#2C3539]/60">
-              <span className="font-bold tracking-wider uppercase text-[#8A9A86] bg-[#8A9A86]/10 px-3 py-1 rounded-sm">{post.category}</span>
-              <span className="flex items-center">
-                <Calendar size={14} className="mr-1.5" /> <time dateTime={post.isoDate}>{post.date}</time>
-              </span>
-              {post.updatedDate && (
-                <span className="flex items-center italic">
-                  (Updated: {post.updatedDate})
-                </span>
-              )}
-              <span className="flex items-center">
-                <Clock size={14} className="mr-1.5" /> {readTime} min read
-              </span>
-            </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6 text-[#2C3539]">
-              {post.title}
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-[#2C3539]/70 leading-relaxed font-light">
-              {post.excerpt}
-            </p>
+            {post.category && (
+              <span className="bg-sand-100 text-spruce-800 text-[11px] font-semibold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full inline-block">
+                {post.category}
+              </span>
+            )}
           </div>
+
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal tracking-tight leading-[1.18] mb-6 font-bold">
+            {post.title}
+          </h1>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-charcoal/60 uppercase tracking-wider font-medium">
+            <span>By {post.author?.name || 'Hayden Richards'}</span>
+            <span>·</span>
+            <span>{post.date || 'Guide'}</span>
+            <span>·</span>
+            <span>{readTime} min read</span>
+          </div>
+
+          {post.excerpt && (
+            <p className="text-charcoal/70 text-base sm:text-lg leading-relaxed mt-6 max-w-2xl mx-auto italic font-serif">
+              "{post.excerpt}"
+            </p>
+          )}
         </header>
 
-        <div className="max-w-3xl mx-auto px-4 md:px-8 py-16">
-          {/* Main Image */}
-          {post.image?.url && (
-            <figure className="mb-16 -mx-4 md:mx-0">
-               <div className="md:rounded-2xl shadow-sm border border-neutral-200 wrk-photo-container">
-                 <div className="wrk-photo-overlay"></div>
-                 <img loading="lazy" referrerPolicy="no-referrer" 
-                   src={post.image.url} 
-                   alt={post.image.alt || post.title} 
-                   className="w-full h-auto object-cover wrk-photo"
-                 />
-               </div>
-            </figure>
-          )}
+        {/* 2. Featured Lead Image */}
+        {post.image?.url && (
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
+            <div className="aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border border-charcoal/5 shadow-sm relative bg-sand-100">
+              <img
+                src={post.image.url}
+                alt={post.image.alt || post.title}
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+        )}
 
-          {/* Post Content */}
+        {/* 3. Editorial Reading Body */}
+        <main className="max-w-3xl mx-auto px-6">
           <div 
-            className="prose prose-lg max-w-none mb-16 prose-p:text-[#2C3539] prose-p:leading-relaxed prose-p:font-sans prose-headings:text-[#2C3539] prose-h2:font-serif prose-h2:text-[#8A9A86] prose-a:text-[#8A9A86] hover:prose-a:opacity-80 prose-li:text-[#2C3539] prose-strong:text-[#2C3539] prose-strong:font-bold"
+            className="prose prose-lg max-w-none text-charcoal/90 prose-p:font-sans prose-p:text-base sm:prose-p:text-lg prose-p:leading-relaxed sm:prose-p:leading-[1.8] prose-p:mb-6 prose-headings:font-serif prose-headings:text-charcoal prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:text-spruce-900 prose-h2:border-b prose-h2:border-charcoal/5 prose-h2:pb-2 prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:text-charcoal prose-h3:mt-8 prose-h3:mb-3 prose-blockquote:bg-sand-100/70 prose-blockquote:border-l-4 prose-blockquote:border-spruce-800 prose-blockquote:rounded-r-xl prose-blockquote:p-6 prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:font-serif prose-blockquote:text-lg prose-blockquote:text-spruce-900 prose-blockquote:leading-snug prose-blockquote:not-italic prose-ul:my-6 prose-li:my-2 prose-li:text-charcoal/90 prose-a:text-spruce-800 prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-spruce-900 prose-strong:text-charcoal prose-strong:font-bold"
             dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.content || '') }}
           />
 
-          {/* FAQ Section */}
+          {/* FAQ Section if defined */}
           {post.faq && (
-            <div className="mb-16 border-t border-neutral-200 pt-12">
-              <h2 className="text-3xl font-serif mb-8 text-[#8A9A86]">Frequently Asked Questions</h2>
+            <div className="mt-14 pt-10 border-t border-charcoal/10">
+              <span className="text-xs uppercase tracking-widest text-spruce-800 font-semibold mb-2 block">
+                FREQUENTLY ASKED QUESTIONS
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl text-charcoal mb-6">
+                Common Inquiries on this Topic
+              </h2>
               <div 
-                className="prose prose-lg max-w-none prose-p:text-[#2C3539] prose-p:leading-relaxed prose-headings:font-serif prose-headings:text-[#2C3539] prose-a:text-[#8A9A86] hover:prose-a:opacity-80 prose-strong:text-[#2C3539]"
-                dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.faq || '') }}
+                className="prose prose-base max-w-none text-charcoal/80 prose-headings:font-serif prose-headings:text-charcoal prose-a:text-spruce-800"
+                dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.faq) }}
               />
             </div>
           )}
 
           {/* References Section */}
           {post.references && (
-            <div className="mb-16 bg-white p-8 rounded-2xl border border-neutral-200 shadow-sm">
-              <h3 className="text-[12px] font-bold uppercase tracking-widest text-[#2C3539]/50 mb-4">References & Sources</h3>
+            <div className="mt-12 bg-sand-50 p-6 sm:p-8 rounded-2xl border border-charcoal/5">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-charcoal/60 mb-3">
+                References & Clinical Sources
+              </h3>
               <div 
-                className="prose prose-sm max-w-none prose-p:text-[#2C3539]/70 prose-a:text-[#8A9A86] hover:prose-a:underline"
-                dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.references || '') }}
+                className="prose prose-sm max-w-none text-charcoal/70 prose-a:text-spruce-800 prose-a:underline"
+                dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.references) }}
               />
             </div>
           )}
 
-          {/* Author Bio (E-E-A-T) */}
-          <section className="bg-white p-8 md:p-10 rounded-2xl mb-16 flex flex-col md:flex-row items-center md:items-start gap-8 border border-neutral-200 shadow-sm">
-             <img loading="lazy" referrerPolicy="no-referrer" 
-               src={post.author.avatarUrl} 
-               alt={post.author.name}
-               className="w-24 h-24 rounded-full object-cover border border-neutral-200 shrink-0"
-             />
-             <div className="text-center md:text-left">
-               <h3 className="text-lg font-serif font-bold text-[#2C3539] mb-1">Written by {post.author.name}</h3>
-               <p className="text-[12px] font-bold text-[#8A9A86] uppercase tracking-wider mb-4">{post.author.role}</p>
-               <p className="text-[#2C3539]/70 leading-relaxed text-[15px]">
-                 {post.author.bio}
-               </p>
-             </div>
-          </section>
-          
-          {/* Related Posts */}
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <div className="mb-16 border-t border-neutral-200 pt-12">
-              <h2 className="text-3xl font-serif mb-8 text-[#8A9A86]">Related Articles</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {post.relatedPosts.map(relatedId => {
-                  const relatedPost = blogPosts.find(p => p.id === relatedId);
-                  if (!relatedPost) return null;
-                  return (
-                    <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="group block bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[#8A9A86]/50 transition-colors shadow-sm">
-                      <div className="h-48 overflow-hidden bg-neutral-100">
-                        {relatedPost.image?.url && (
-                          <img loading="lazy" referrerPolicy="no-referrer" src={relatedPost.image.url} alt={relatedPost.image.alt || relatedPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" />
-                        )}
-                      </div>
-                      <div className="p-6">
-                        <h3 className="font-serif font-medium text-xl text-[#2C3539] mb-3 group-hover:text-[#8A9A86] transition-colors leading-snug">{relatedPost.title}</h3>
-                        <p className="text-[15px] text-[#2C3539]/70 line-clamp-2 leading-relaxed">{relatedPost.excerpt}</p>
-                      </div>
-                    </Link>
-                  );
-                })}
+          {/* 4. Author Sign-off & Bio Box */}
+          <section className="mt-16 pt-10 border-t border-charcoal/10">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-charcoal/5 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              <img
+                src={post.author?.avatarUrl || "https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"}
+                alt={post.author?.name || "Hayden Richards"}
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover shrink-0 border border-charcoal/10"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop";
+                }}
+              />
+              <div className="text-center sm:text-left flex-1">
+                <span className="text-[10px] tracking-widest uppercase font-semibold text-spruce-800 block mb-1">
+                  ABOUT THE AUTHOR
+                </span>
+                <h3 className="font-serif text-xl font-bold text-charcoal mb-0.5">
+                  {post.author?.name || 'Hayden Richards'}
+                </h3>
+                <span className="text-xs text-charcoal/60 mb-3 block font-medium">
+                  {post.author?.role || 'Founder & Head Coach · REPs Registered'}
+                </span>
+                <p className="text-charcoal/80 text-sm leading-relaxed mb-4">
+                  {post.author?.bio || 'Hayden has spent 20 years helping adults build sustainable physical strength and resilience. At WRK, he provides evidence-informed coaching specifically tailored to the physiological realities of GLP-1 weight loss.'}
+                </p>
+                <Link
+                  to="/programs"
+                  className="text-xs font-semibold text-spruce-800 hover:text-spruce-900 uppercase tracking-wider inline-flex items-center gap-1 group"
+                >
+                  Explore Coaching Programs <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                </Link>
               </div>
             </div>
-          )}
+          </section>
 
-          {/* Contextual Call-to-Action (Bento Card) */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-12 text-center rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-             <h3 className="text-2xl md:text-3xl font-serif text-[#2C3539] mb-4">
-               {post.ctaText || "Experiencing these metabolic shifts or medication side effects yourself?"}
-             </h3>
-             <p className="text-[#2C3539]/70 mb-8 max-w-lg mx-auto text-[16px] leading-relaxed">
-               {post.ctaText ? "" : "Take our Free 2-Minute Weight Loss Safety Assessment to check your current baseline safety thresholds today."}
-             </p>
-             <Link to={post.ctaLink || "/assessment"}>
-               <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full md:w-auto">
-                 {post.ctaText ? "Get Started" : "Launch Free Assessment"}
-               </button>
-             </Link>
+          {/* 5. In-Article Conversion Banner */}
+          <div className="my-12">
+            <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-md text-center">
+              <h3 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-3 tracking-tight">
+                {post.ctaText || "Protect Your Muscle While the Weight Drops"}
+              </h3>
+              <p className="text-sand-100/80 text-sm max-w-md mx-auto mb-6 leading-relaxed">
+                Take our 2-minute assessment to evaluate your current protein intake and training consistency.
+              </p>
+              <Link
+                to={post.ctaLink || "/assessment"}
+                className="bg-sand-100 text-spruce-900 hover:bg-white px-6 py-3 rounded-md text-xs font-semibold uppercase tracking-wider inline-block transition-colors shadow-sm"
+              >
+                Take the Free Assessment
+              </Link>
+            </div>
           </div>
-        </div>
+
+        </main>
+
+        {/* 6. Related Articles Grid */}
+        {relatedList.length > 0 && (
+          <section className="bg-sand-50 py-16 px-6 border-t border-charcoal/5 mt-16">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-10">
+                <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+                  FURTHER READING
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl text-charcoal tracking-tight">
+                  Related Guides & Protocols
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {relatedList.map((relPost) => (
+                  <article
+                    key={relPost.id}
+                    className="group bg-white rounded-2xl overflow-hidden border border-charcoal/5 shadow-sm hover:shadow-md transition-all flex flex-col"
+                  >
+                    <div className="aspect-[16/10] overflow-hidden relative bg-sand-100">
+                      <Link to={`/blog/${relPost.slug}`} className="block h-full w-full">
+                        <img
+                          src={relPost.image?.url || 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop'}
+                          alt={relPost.image?.alt || relPost.title}
+                          className="group-hover:scale-105 transition-transform duration-500 object-cover w-full h-full"
+                        />
+                      </Link>
+                      {relPost.category && (
+                        <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-charcoal text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
+                          {relPost.category}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="p-6 flex flex-col justify-between flex-1">
+                      <div>
+                        <span className="text-[11px] text-charcoal/50 uppercase tracking-wider mb-2 font-medium block">
+                          {relPost.date || 'Guide'}
+                        </span>
+                        <Link to={`/blog/${relPost.slug}`}>
+                          <h3 className="font-serif text-lg font-bold text-charcoal group-hover:text-spruce-800 transition-colors leading-snug mb-2 line-clamp-2">
+                            {relPost.title}
+                          </h3>
+                        </Link>
+                        <p className="text-charcoal/70 text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4">
+                          {relPost.excerpt}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 border-t border-charcoal/5 flex items-center justify-between mt-auto">
+                        <span className="text-[11px] text-charcoal/50">
+                          By {relPost.author?.name || 'Hayden Richards'}
+                        </span>
+                        <Link
+                          to={`/blog/${relPost.slug}`}
+                          className="text-xs font-semibold uppercase tracking-wider text-spruce-800 flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                        >
+                          Read <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
       </article>
     </>
   );
 };
-

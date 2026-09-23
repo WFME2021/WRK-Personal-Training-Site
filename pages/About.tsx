@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Activity, Droplets, ArrowRight } from 'lucide-react';
+import { Shield, Activity, Droplets, CheckCircle2, Award, Clock, MapPin, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 
 export const About: React.FC = () => {
@@ -8,205 +8,242 @@ export const About: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hayden Richards",
+    "jobTitle": "Founder & Head Coach",
+    "worksFor": {
+      "@type": "HealthAndFitnessBusiness",
+      "name": "WRK Personal Training",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12 Show Place",
+        "addressLocality": "Addington",
+        "addressRegion": "Canterbury",
+        "postalCode": "8024",
+        "addressCountry": "NZ"
+      }
+    },
+    "description": "Hayden Richards is a REPs-registered personal trainer with over 20 years experience specializing in GLP-1 fitness coaching and muscle preservation in Christchurch, NZ."
+  };
+
   return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-32">
+    <>
       <SeoHead
-        title="About WRK | Medical Weight Loss & Muscle Preservation Fitness Coaching"
-        description="Discover our approach to Medical Weight Loss & Muscle Preservation Fitness Coaching. Learn how WRK bridges the gap between clinical treatments and real-world strength."
+        title="About Hayden Richards | GLP-1 Fitness Coach Christchurch | WRK"
+        description="Meet Hayden Richards, REPs-registered GLP-1 fitness coach with 20+ years experience in Christchurch. Learn how WRK combines intelligent strength and muscle preservation."
+        schema={schema}
       />
-
-      <div className="max-w-4xl mx-auto px-4 md:px-8">
+      <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         
-        {/* Page Header */}
-        <header className="text-center mb-20">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            Beyond the <span className="wrk-highlight">Prescription</span>
-          </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
-            Medicine opens the door. WRK maps the way forward.
-          </h2>
-        </header>
-
-        {/* Content Body */}
-        <div className="space-y-16 md:space-y-24">
+        {/* 1. Hero Header */}
+        <section className="bg-canvas pt-14 pb-16 px-6 max-w-5xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-4">
+            BEYOND THE PRESCRIPTION
+          </p>
           
-          <section className="space-y-6 text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80">
-            <p>
-              GLP-1 medications have changed what is possible for people struggling with weight management.
-            </p>
-            <p>
-              But losing weight is only part of the journey.
-            </p>
-            <p>
-              When bodyweight changes, your strength, muscle mass, fitness, nutrition and daily habits matter too. That is where WRK comes in.
-            </p>
-            <p>
-              I founded WRK Personal Training to help people using GLP-1 medications navigate the fitness side of weight loss - with intelligent training, practical nutrition support and coaching built around where you are now.
-            </p>
-            <div className="pt-2 pb-2 space-y-1 font-medium text-[#2C3539]">
-              <p>Not punishment.</p>
-              <p>Not extreme diets.</p>
-              <p>Not hours in the gym.</p>
-            </div>
-            <p className="font-serif text-[22px] md:text-[24px] text-[#2C3539] mt-8">
-              Just a smarter way to build a stronger, fitter body while you lose weight.
-            </p>
-          </section>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-6 leading-tight">
+            Medicine opens the door. <span className="block sm:inline italic text-spruce-800">WRK maps the way forward.</span>
+          </h1>
+          
+          <p className="text-charcoal/80 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
+            GLP-1 medications have changed what is possible in weight management. We provide the intelligent movement, muscle preservation, and habit frameworks to support your physical body alongside it.
+          </p>
 
-          {/* Divider */}
-          <div className="w-full h-px bg-neutral-200" />
+          {/* Anti-Burnout Pledge Pills */}
+          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 text-xs text-charcoal/70">
+            <span className="flex items-center text-charcoal/80">✕ No punishment workouts</span>
+            <span className="hidden sm:inline text-charcoal/30">•</span>
+            <span className="flex items-center text-charcoal/80">✕ No extreme starvation diets</span>
+            <span className="hidden sm:inline text-charcoal/30">•</span>
+            <span className="flex items-center text-spruce-800 font-semibold">✓ Intelligent strength & real-world capability</span>
+          </div>
+        </section>
 
-          <section className="flex flex-col md:flex-row gap-10 md:gap-16 items-center md:items-start">
-            <div className="w-full max-w-[320px] md:max-w-md md:w-5/12 flex-shrink-0 mx-auto md:mx-0">
-              <div className="aspect-[4/5] rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-neutral-100 wrk-photo-container">
-                <div className="wrk-photo-overlay"></div>
-                <img 
-                  src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
-                  alt="Hayden, Expert Personal Trainer in Christchurch and Founder of WRK Personal Training"
-                  className="w-full h-full wrk-photo"
-                />
-              </div>
-            </div>
-
-            <div className="w-full md:w-7/12 space-y-6">
-              <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-[#2C3539] text-center md:text-left mb-2 md:mb-8">
-                Meet Your Coach
-              </h3>
-              <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
-                <p>
-                  I'm Hayden.
-                </p>
-                <p>
-                  I've spent 20 years coaching people who want to lose weight, get stronger and improve their health - without turning fitness into another full-time job.
-                </p>
-                <p>
-                  As GLP-1 medications became increasingly common, I saw a gap in the conversation.
-                </p>
-                <p>
-                  People were getting medical support for weight loss, but often had little guidance around what to do alongside it.
-                </p>
-                <ul className="list-disc pl-5 space-y-2 text-[#2C3539]/90">
-                  <li>How should you train?</li>
-                  <li>How do you prioritise muscle?</li>
-                  <li>What happens when your appetite changes?</li>
-                  <li>How do you adapt when energy and recovery fluctuate?</li>
-                </ul>
-                <div className="pt-2 space-y-2">
-                  <p>
-                    And perhaps most importantly:
-                  </p>
-                  <p className="font-medium text-[#2C3539]">
-                    How do you build the habits and physical capacity to support your results long term?
-                  </p>
-                </div>
-                <p>
-                  That's the problem WRK is built to solve.
-                </p>
-                <p>
-                  You don't need another generic fat-loss programme.
-                </p>
-                <p className="font-serif text-[22px] md:text-[24px] text-[#2C3539] mt-8 text-center md:text-left">
-                  You need coaching that understands the unique challenges of training while using a GLP-1.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-24 px-4 md:px-8 bg-[#2C3539] overflow-hidden my-16">
-            <div className="absolute inset-0 z-0">
+        {/* 2. Founder & Coach Story (2-Column Editorial Split) */}
+        <section className="py-16 px-6 max-w-5xl mx-auto items-center grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-charcoal/5">
+          {/* Left Column: Portrait */}
+          <div className="relative">
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden object-cover border border-charcoal/5 shadow-sm relative bg-sand-100">
               <img 
-                src="https://i.postimg.cc/br2bFDYH/pexels-rachel-claire-7276646.jpg" 
-                alt="Expert personal trainer in Christchurch guiding a GLP-1 fitness coaching philosophy"
-                className="w-full h-full object-cover object-center opacity-60"
+                src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
+                alt="Hayden Richards, Founder & Head Coach at WRK Personal Training in Christchurch"
+                className="w-full h-full object-cover object-top"
+                onError={(e) => {
+                  // Fallback to high quality coach editorial if third party hosting throttles
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop";
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-sand-50 text-xs">
+                <span className="font-semibold block text-sm">Hayden Richards</span>
+                <span className="text-sand-200/80 text-[11px]">Founder & Head Coach · REPs Registered</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Narrative */}
+          <div className="space-y-5 text-left">
+            <span className="text-xs uppercase tracking-widest text-spruce-800 font-semibold block">
+              MEET YOUR COACH
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-charcoal tracking-tight">
+              I’m Hayden.
+            </h2>
+            
+            <p className="text-charcoal/80 text-base leading-relaxed">
+              I’ve spent 20 years coaching people who want to get stronger, drop weight, and protect their health without turning fitness into another exhausting full-time job.
+            </p>
+            
+            <p className="text-charcoal/80 text-base leading-relaxed">
+              As GLP-1 medications emerged, I saw a glaring gap in the conversation. People were receiving medical support to reduce appetite, but had little guidance on what to do for their physical body: How do you protect muscle when eating less? How do you train when energy fluctuates? And how do you build habits that outlast the medication?
+            </p>
+
+            <div className="p-4 rounded-xl bg-sand-100/70 border border-charcoal/5 font-serif text-base italic text-spruce-900 leading-snug">
+              “WRK is built to answer those questions with calm, evidence-based strength coaching.”
+            </div>
+          </div>
+        </section>
+
+        {/* 3. The WRK Philosophy */}
+        <section className="bg-sand-100/60 py-20 px-6 border-y border-charcoal/5">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+                COACHING PRINCIPLES
+              </span>
+              <h2 className="font-serif text-3xl text-charcoal tracking-tight">
+                The Three Core Principles
+              </h2>
+              <p className="text-sm text-charcoal/70 mt-2">
+                Every session, app track, and habit cue is built on these foundations.
+              </p>
             </div>
 
-            <div className="relative z-10 max-w-4xl mx-auto">
-              <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-white mb-8">
-                The WRK Philosophy
-              </h3>
-              <p className="text-[16px] md:text-[18px] leading-relaxed text-white/80 mb-10">
-                Every program, app interaction, and personal training session I design is anchored in three core principles:
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
-                  <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
-                    <Shield size={24} />
-                  </div>
-                  <h4 className="font-serif text-[20px] text-white mb-4">Muscular Defence First</h4>
-                  <p className="text-[15px] leading-relaxed text-white/70">
-                    Rapid weight loss without targeted resistance training can compromise your strength and long-term metabolic health. We focus heavily on protective, efficient movement patterns to ensure that the weight you lose is fat, while the muscle that keeps you strong and vibrant is preserved.
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Card 1 */}
+              <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                    01 · PROTECTION
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                    Muscular Defence First
+                  </h3>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    Rapid weight loss without targeted resistance training can sacrifice lean muscle and resting metabolism. We prioritize joint-friendly lifting patterns so the weight lost is fat, while your physical strength stays protected.
                   </p>
                 </div>
+                <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                  Focus: Lean mass preservation
+                </div>
+              </div>
 
-                <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
-                  <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
-                    <Activity size={24} />
-                  </div>
-                  <h4 className="font-serif text-[20px] text-white mb-4">Compassionate Calibration</h4>
-                  <p className="text-[15px] leading-relaxed text-white/70">
-                    Your body is changing rapidly, and your energy levels or nutritional needs might vary from week to week. My coaching adapts to where you are today, shifting away from rigid perfectionism toward intuitive, specialised guidance.
+              {/* Card 2 */}
+              <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                    02 · ADAPTATION
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                    Compassionate Calibration
+                  </h3>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    Your body is changing rapidly. Dose adjustments, low appetite, and fluctuating recovery mean training must adapt to where you are each week—swapping rigid perfectionism for smart, sustainable progress.
                   </p>
                 </div>
+                <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                  Focus: Titration & energy syncing
+                </div>
+              </div>
 
-                <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl flex flex-col transition-transform hover:-translate-y-1">
-                  <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6 shrink-0 border border-white/10">
-                    <Droplets size={24} />
-                  </div>
-                  <h4 className="font-serif text-[20px] text-white mb-4">Real-World Integration</h4>
-                  <p className="text-[15px] leading-relaxed text-white/70">
-                    The goal isn’t to make fitness your entire life; it’s to make your fitness support the life you want to live. We work together on foundational habits - like protein tracking, hydration protocols, and simple 30-minute routines - that stick with you long after your initial 12-week track.
+              {/* Card 3 */}
+              <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                    03 · SUSTAINABILITY
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                    Real-World Integration
+                  </h3>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    Fitness should support your life, not consume it. We focus on foundational routines—digestible protein anchoring, hydration, and 30-minute sessions—that stick with you for decades to come.
                   </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+                  Focus: Autonomy & long-term habits
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Divider */}
-          <div className="w-full h-px bg-neutral-200" />
-
-          <section className="space-y-8">
-            <h3 className="font-serif text-[32px] md:text-[40px] leading-tight text-[#2C3539]">
-              You Don't Have to Do This Alone
-            </h3>
-            <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
-              <p>
-                You don't need to figure out training, nutrition and lifestyle changes on your own.
-              </p>
-              <p>
-                Whether we work together in person or through the WRK Training App, you'll have a coach helping you make sense of the fitness side of your GLP-1 journey.
-              </p>
-              <p>
-                The goal isn't simply to weigh less.
-              </p>
-              <p>
-                It's to become stronger, fitter and more capable - and build habits that support the life you want to live.
-              </p>
-              <p className="font-serif text-[22px] md:text-[24px] text-[#2C3539] mt-8">
-                Your medication is one part of the journey. What you do alongside it matters too.
+        {/* 4. Trust & Credentials Band */}
+        <section className="py-16 px-6 max-w-4xl mx-auto text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <div className="border-t md:border-t-0 md:border-l first:border-l-0 border-charcoal/10 p-4">
+              <div className="font-serif text-2xl font-bold text-spruce-800 mb-1">
+                20+ Years Coaching
+              </div>
+              <p className="text-xs text-charcoal/70 leading-relaxed">
+                Two decades of hands-on client results across strength and body recomposition.
               </p>
             </div>
+
+            <div className="border-t md:border-t-0 md:border-l border-charcoal/10 p-4">
+              <div className="font-serif text-2xl font-bold text-spruce-800 mb-1">
+                REPs Registered
+              </div>
+              <p className="text-xs text-charcoal/70 leading-relaxed">
+                Committed to the highest standards of evidence-based, professional exercise delivery.
+              </p>
+            </div>
+
+            <div className="border-t md:border-t-0 md:border-l border-charcoal/10 p-4">
+              <div className="font-serif text-2xl font-bold text-spruce-800 mb-1">
+                Private Studio
+              </div>
+              <p className="text-xs text-charcoal/70 leading-relaxed">
+                A dedicated, semi-private Christchurch space built for focused, crowd-free training.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Bottom Dual-Path CTA Banner */}
+        <section className="bg-spruce-800 text-sand-50 py-16 px-6 text-center">
+          <div className="max-w-2xl mx-auto">
+            <span className="text-xs uppercase tracking-widest text-sand-200 mb-3 block font-semibold">
+              YOU DON’T HAVE TO NAVIGATE THIS ALONE
+            </span>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <Link 
-                to="/personal-training#book"
-                className="flex items-center justify-center bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] text-center"
+            <h2 className="font-serif text-3xl text-sand-50 mb-4 tracking-tight">
+              Ready to Build Strength Alongside Your Medication?
+            </h2>
+            
+            <p className="text-sand-100/80 max-w-xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
+              Whether you train with us in person in Christchurch or through the WRK App anywhere in the world, we're here to guide the physical side of your journey.
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+              <Link
+                to="/contact"
+                className="bg-sand-100 text-spruce-900 hover:bg-white px-6 py-3.5 rounded-md font-semibold text-xs uppercase tracking-wider text-center transition-colors shadow-sm"
               >
-                Book Studio Consultation (Christchurch)
+                Book Studio Consult (Christchurch)
               </Link>
-              <Link 
+              <Link
                 to="/online-coaching"
-                className="flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-8 py-4 rounded-xl font-medium transition-colors text-[16px] text-center"
+                className="border border-sand-200/30 text-sand-50 hover:bg-spruce-900 px-6 py-3.5 rounded-md font-semibold text-xs uppercase tracking-wider text-center transition-colors"
               >
                 Explore Online Coaching (Worldwide)
               </Link>
             </div>
-          </section>
+          </div>
+        </section>
 
-        </div>
       </div>
-    </div>
+    </>
   );
 };

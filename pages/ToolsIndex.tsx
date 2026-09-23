@@ -1,237 +1,241 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { Dna, Calculator, Droplet, ArrowRight, LayoutGrid } from 'lucide-react';
+import { Dna, Droplet, Calculator, ArrowRight, Sparkles } from 'lucide-react';
 
 export const ToolsIndex: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const comingSoonTools = [
+    "Strength Benchmarks",
+    "Injection-Day Fatigue Pacing",
+    "Satiety Index Frameworks",
+    "Lean Mass Retention Scoring",
+    "Weaning Habit Blueprints"
+  ];
+
   return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
+    <>
       <SeoHead
-        title="GLP-1 Tools & Calculators | WRK Personal Training"
-        description="Access our free GLP-1 Tools & Calculators, including hydration, protein, and macro estimators designed specifically for patients on weight loss medication."
+        title="GLP-1 Tools & Calculators | Protein, Hydration & TDEE | WRK"
+        description="Free, evidence-based GLP-1 Tools & Calculators: calculate your daily protein targets, estimate hydration and electrolyte needs, and determine your baseline TDEE."
       />
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         
-        {/* Page Header */}
-        <header className="text-center mb-20 max-w-4xl mx-auto">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 <span className="wrk-highlight">Tools</span> & Calculators
-          </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
-            Simple tools to help you make better decisions around your GLP-1 journey.
-          </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
-            <p>
-              When your appetite, activity and routine change, knowing where to start can be difficult.
-            </p>
-            <p>
-              WRK's free GLP-1 tools are designed to give you useful starting points for some of the practical questions that come with weight loss — from protein and hydration to energy needs.
-            </p>
-            <p className="font-medium text-[#2C3539]">
-              Use them as a guide, not a prescription.
-            </p>
-          </div>
-        </header>
-
-        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
-          <div className="wrk-photo-overlay"></div>
-          <img 
-            src="https://i.postimg.cc/J4Wmf5y2/pexels-truckrun-19373190.jpg" 
-            alt="Tracking progress with the GLP-1 Macro Calculator and GLP-1 Protein Calculator" 
-            className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
-          />
-        </div>
-
-                        {/* Tools Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
+        {/* 1. Hero Header */}
+        <section className="bg-canvas pt-14 pb-16 px-6 max-w-5xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-4">
+            PRACTICAL RESOURCES · EVIDENCE-BASED UTILITY
+          </p>
           
-          {/* Tool 1: Protein Targeter */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
-              <Dna size={28} />
-            </div>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-6 leading-tight">
+            GLP-1 Tools & <span className="italic text-spruce-800">Calculators.</span>
+          </h1>
+          
+          <p className="text-charcoal/80 max-w-2xl mx-auto text-base sm:text-lg mb-6 leading-relaxed">
+            Simple, objective starting points to help you navigate protein targets, hydration needs, and daily energy while your appetite and routine change.
+          </p>
+
+          <div className="inline-block bg-sand-100/80 border border-charcoal/10 rounded-full px-4 py-1.5 text-xs text-charcoal/70 font-medium">
+            Note: These tools provide evidence-based starting estimates, not medical prescriptions.
+          </div>
+        </section>
+
+        {/* 2. The 3 Core Calculators */}
+        <section className="py-16 px-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div className="mb-8 flex-grow">
-              <h3 className="font-serif text-[26px] md:text-[30px] text-[#2C3539] leading-tight mb-2">
-                Protein Target Calculator
-              </h3>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">How much protein do you need?</p>
-              
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 mb-6">
-                Protein becomes an important consideration when you're eating less and working to maintain strength during weight loss.
-              </p>
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80">
-                Use the calculator to estimate a daily protein target based on your individual details and goals.
-              </p>
-            </div>
-            
-            <div className="mt-auto">
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-6">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Useful for:</p>
-                <div className="flex flex-wrap gap-2 text-[14px] text-[#2C3539]/80">
-                  <span>Protein intake</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Strength training</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Muscle preservation</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Weight loss</span>
+            {/* Card 1: Protein Target Calculator */}
+            <div className="bg-white rounded-2xl p-8 border border-charcoal/5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] uppercase tracking-wider text-spruce-800 font-semibold bg-sand-100 px-2.5 py-1 rounded">
+                    NUTRITION & MUSCLE
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-sand-100 text-spruce-800 flex items-center justify-center">
+                    <Dna size={16} />
+                  </div>
+                </div>
+
+                <h3 className="font-serif text-2xl text-charcoal mb-1">
+                  Protein Target Calculator
+                </h3>
+                <span className="text-xs text-charcoal/60 italic mb-4 block">
+                  How much protein do you actually need?
+                </span>
+
+                <p className="text-sm text-charcoal/70 leading-relaxed mb-6">
+                  Calculate your daily baseline to safeguard lean tissue and metabolic health while eating in an energy deficit.
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {["Protein Intake", "Muscle Retention", "Low-Appetite Targets"].map((tag, i) => (
+                    <span
+                      key={i}
+                      className="bg-sand-50 text-charcoal/70 border border-charcoal/5 px-2.5 py-1 rounded-full text-[11px] font-medium inline-block"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <Link 
+
+              <Link
                 to="/tools/protein-calculator"
-                className="flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-14 rounded-xl font-medium transition-colors text-[16px]"
+                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-center block transition-colors shadow-sm"
               >
-                Calculate Your Protein Target <ArrowRight size={18} className="ml-2" />
+                Calculate Your Protein →
               </Link>
             </div>
-          </div>
 
-          {/* Tool 2: Hydration Calculator */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
-              <Droplet size={28} />
-            </div>
-            
-            <div className="mb-8 flex-grow">
-              <h3 className="font-serif text-[26px] md:text-[30px] text-[#2C3539] leading-tight mb-2">
-                Hydration & Electrolyte Guide
-              </h3>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">Are you drinking enough?</p>
-              
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 mb-6">
-                Hydration is easy to overlook when your appetite and daily routine change.
-              </p>
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80">
-                Use our hydration tool to estimate your daily fluid needs and explore when electrolytes may be relevant based on your activity and circumstances.
-              </p>
-            </div>
-            
-            <div className="mt-auto">
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-6">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Useful for:</p>
-                <div className="flex flex-wrap gap-2 text-[14px] text-[#2C3539]/80">
-                  <span>Daily hydration</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Exercise</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Training</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Recovery</span>
+            {/* Card 2: Hydration & Electrolytes */}
+            <div className="bg-white rounded-2xl p-8 border border-charcoal/5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] uppercase tracking-wider text-spruce-800 font-semibold bg-sand-100 px-2.5 py-1 rounded">
+                    DIGESTION & FLUIDS
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-sand-100 text-spruce-800 flex items-center justify-center">
+                    <Droplet size={16} />
+                  </div>
+                </div>
+
+                <h3 className="font-serif text-2xl text-charcoal mb-1">
+                  Hydration & Electrolyte Guide
+                </h3>
+                <span className="text-xs text-charcoal/60 italic mb-4 block">
+                  Are you drinking enough for delayed digestion?
+                </span>
+
+                <p className="text-sm text-charcoal/70 leading-relaxed mb-6">
+                  Estimate fluid benchmarks and explore when sodium/electrolyte support is beneficial based on activity and medication.
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {["Daily Fluid Needs", "Electrolyte Timing", "GI Support"].map((tag, i) => (
+                    <span
+                      key={i}
+                      className="bg-sand-50 text-charcoal/70 border border-charcoal/5 px-2.5 py-1 rounded-full text-[11px] font-medium inline-block"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <Link 
+
+              <Link
                 to="/tools/hydration-calculator"
-                className="flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-14 rounded-xl font-medium transition-colors text-[16px]"
+                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-center block transition-colors shadow-sm"
               >
-                Check Your Hydration Needs <ArrowRight size={18} className="ml-2" />
+                Check Hydration Needs →
               </Link>
             </div>
-          </div>
 
-          {/* Tool 3: GLP-1 Calorie & Macro Calculator */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
-              <Calculator size={28} />
-            </div>
-            
-            <div className="mb-8 flex-grow">
-              <h3 className="font-serif text-[26px] md:text-[30px] text-[#2C3539] leading-tight mb-2">
-                GLP-1 Calorie & Macro Calculator
-              </h3>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">What are your estimated daily energy needs?</p>
-              
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 mb-6">
-                Your total daily energy expenditure (TDEE) is an estimate of how much energy your body uses each day based on factors such as your body size, activity and lifestyle.
-              </p>
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80">
-                Use the calculator to establish a starting estimate and better understand the numbers behind your nutrition and weight-loss goals.
-              </p>
-            </div>
-            
-            <div className="mt-auto">
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-6">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-2">Useful for:</p>
-                <div className="flex flex-wrap gap-2 text-[14px] text-[#2C3539]/80">
-                  <span>Energy needs</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Weight management</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Nutrition planning</span>
-                  <span className="text-neutral-300">•</span>
-                  <span>Activity</span>
+            {/* Card 3: Energy & TDEE */}
+            <div className="bg-white rounded-2xl p-8 border border-charcoal/5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] uppercase tracking-wider text-spruce-800 font-semibold bg-sand-100 px-2.5 py-1 rounded">
+                    METABOLIC BASELINE
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-sand-100 text-spruce-800 flex items-center justify-center">
+                    <Calculator size={16} />
+                  </div>
+                </div>
+
+                <h3 className="font-serif text-2xl text-charcoal mb-1">
+                  GLP-1 Calorie & Macro Calculator
+                </h3>
+                <span className="text-xs text-charcoal/60 italic mb-4 block">
+                  What are your estimated daily energy needs?
+                </span>
+
+                <p className="text-sm text-charcoal/70 leading-relaxed mb-6">
+                  Determine your Total Daily Energy Expenditure (TDEE) and establish sustainable nutrition parameters as your weight drops.
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {["TDEE Estimation", "Macro Ratios", "Energy Deficit"].map((tag, i) => (
+                    <span
+                      key={i}
+                      className="bg-sand-50 text-charcoal/70 border border-charcoal/5 px-2.5 py-1 rounded-full text-[11px] font-medium inline-block"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <Link 
+
+              <Link
                 to="/tools/tdee-calculator"
-                className="flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white h-14 rounded-xl font-medium transition-colors text-[16px]"
+                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-center block transition-colors shadow-sm"
               >
-                Calculate Your TDEE <ArrowRight size={18} className="ml-2" />
+                Calculate Your TDEE →
               </Link>
             </div>
-          </div>
-        </div>
 
-        {/* Coming Soon Section */}
-        <div className="bg-white border border-neutral-200 p-10 md:p-14 rounded-3xl shadow-sm mb-24 flex flex-col md:flex-row items-center gap-10">
-          <div className="w-16 h-16 bg-[#FAFAF9] text-[#2C3539]/40 border border-neutral-200 rounded-full flex items-center justify-center shrink-0">
-            <LayoutGrid size={32} />
           </div>
-          <div className="flex-1">
-            <h2 className="text-2xl md:text-3xl font-serif text-[#2C3539] mb-4 leading-tight">
-              More Tools Coming Soon
-            </h2>
-            <p className="text-[#2C3539]/80 text-[16px] md:text-[18px] leading-relaxed mb-6">
-              We're building a growing library of practical tools and resources to help you navigate the fitness side of your GLP-1 journey.
+        </section>
+
+        {/* 3. Library Growth Band / Coming Soon */}
+        <section className="bg-sand-100/60 py-12 px-6 border-y border-charcoal/5 text-center">
+          <div className="max-w-3xl mx-auto">
+            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+              CONTINUOUS DEVELOPMENT
+            </span>
+            <h3 className="font-serif text-2xl text-charcoal mb-3">
+              More Tools & Protocols Coming Soon
+            </h3>
+            <p className="text-xs text-charcoal/70 mb-5">
+              We are regularly expanding our interactive resource suite across:
             </p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-medium text-[#2C3539]">
-              <span>Training</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Nutrition</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Recovery</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Progress Tracking</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Strength</span>
-              <span className="text-[#8A9A86]">•</span>
-              <span>Lifestyle</span>
+
+            <div className="flex flex-wrap justify-center gap-2 max-w-xl mx-auto">
+              {comingSoonTools.map((tool, idx) => (
+                <span
+                  key={idx}
+                  className="bg-white border border-charcoal/10 px-3.5 py-1.5 rounded-full text-xs text-charcoal font-medium shadow-xs"
+                >
+                  {tool}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Bottom Call-to-Action */}
-        <div className="bg-[#1A1C1D] text-center rounded-3xl shadow-sm p-10 md:p-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">
-            Tools Are a Starting Point.<br className="hidden md:block"/> Coaching Makes Them Personal.
+        {/* 4. The Bridge Band: Tools vs. Coaching */}
+        <section className="bg-canvas py-20 px-6 max-w-4xl mx-auto text-center">
+          <span className="text-xs uppercase tracking-widest text-spruce-800 font-semibold mb-3 block">
+            FROM NUMBERS TO REAL LIFE
+          </span>
+          
+          <h2 className="font-serif text-3xl sm:text-4xl text-charcoal mb-4 tracking-tight">
+            Tools Are a Starting Point. Coaching Makes Them Personal.
           </h2>
-          <div className="text-neutral-400 mb-10 max-w-2xl mx-auto text-[16px] md:text-[18px] leading-relaxed space-y-4">
-            <p>A calculator can give you a number.</p>
-            <p>It can't tell you how that number fits into your life.</p>
-            <p>
-              WRK coaching combines personalised training, practical nutrition support and ongoing accountability to help you turn information into action.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/services">
-              <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Explore the 12-Week Programmes
-              </button>
+          
+          <p className="text-charcoal/80 max-w-2xl mx-auto text-base mb-8 leading-relaxed">
+            A calculator gives you a number. It cannot show you how that number integrates into your family dinners, your busy schedule, or your low-energy injection days. WRK combines personalized programming, nutrition strategy, and ongoing accountability to turn data into long-term habits.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+            <Link
+              to="/programs"
+              className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 px-6 py-3.5 rounded-md font-semibold text-xs uppercase tracking-wider text-center transition-colors shadow-sm"
+            >
+              Explore the 12-Week Programmes
             </Link>
-            <Link to="/assessment">
-              <button className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
-                Take the Free GLP-1 Assessment
-              </button>
+            <Link
+              to="/assessment"
+              className="border border-charcoal/20 text-charcoal hover:bg-sand-100 px-6 py-3.5 rounded-md font-semibold text-xs uppercase tracking-wider text-center transition-colors"
+            >
+              Take the Free GLP-1 Assessment
             </Link>
           </div>
-        </div>
+        </section>
 
       </div>
-    </div>
+    </>
   );
 };

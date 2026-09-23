@@ -57,6 +57,9 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/for-referrers" element={<ForReferrers />} />
+            <Route path="/clinicians" element={<Navigate to="/for-referrers" replace />} />
+            <Route path="/healthcare" element={<Navigate to="/for-referrers" replace />} />
+            <Route path="/glp1" element={<Navigate to="/programs" replace />} />
             <Route path="/assessment" element={<Assessment />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/resources" element={<Resources />} />
