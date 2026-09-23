@@ -25,14 +25,14 @@ export const About: React.FC = () => {
         "addressCountry": "NZ"
       }
     },
-    "description": "Hayden Richards is a REPs-registered personal trainer with over 20 years experience specializing in GLP-1 fitness coaching and muscle preservation in Christchurch, NZ."
+    "description": "Hayden Richards is a professional personal trainer with over 20 years experience specializing in GLP-1 fitness coaching and muscle preservation in Christchurch, NZ."
   };
 
   return (
     <>
       <SeoHead
         title="About Hayden Richards | GLP-1 Fitness Coach Christchurch | WRK"
-        description="Meet Hayden Richards, REPs-registered GLP-1 fitness coach with 20+ years experience in Christchurch. Learn how WRK combines intelligent strength and muscle preservation."
+        description="Meet Hayden Richards, dedicated GLP-1 fitness coach with 20+ years experience in Christchurch. Learn how WRK combines intelligent strength and muscle preservation."
         schema={schema}
       />
       <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
@@ -78,7 +78,7 @@ export const About: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-sand-50 text-xs">
                 <span className="font-semibold block text-sm">Hayden Richards</span>
-                <span className="text-sand-200/80 text-[11px]">Founder & Head Coach · REPs Registered</span>
+                <span className="text-sand-200/80 text-[11px]">Founder & Head Coach</span>
               </div>
             </div>
           </div>
@@ -193,19 +193,19 @@ export const About: React.FC = () => {
 
             <div className="border-t md:border-t-0 md:border-l border-charcoal/10 p-4">
               <div className="font-serif text-2xl font-bold text-spruce-800 mb-1">
-                REPs Registered
+                Clinical Scope Adherence
               </div>
               <p className="text-xs text-charcoal/70 leading-relaxed">
-                Committed to the highest standards of evidence-based, professional exercise delivery.
+                Strict adherence to non-diagnostic lifestyle coaching, PAR-Q+ screening, and seamless GP collaboration.
               </p>
             </div>
 
             <div className="border-t md:border-t-0 md:border-l border-charcoal/10 p-4">
               <div className="font-serif text-2xl font-bold text-spruce-800 mb-1">
-                Private Studio
+                Boutique Facility
               </div>
               <p className="text-xs text-charcoal/70 leading-relaxed">
-                A dedicated, semi-private Christchurch space built for focused, crowd-free training.
+                Coaching in-person from 12 Show Place, Addington — a quiet, uncrowded space with dedicated parking and zero gym posturing.
               </p>
             </div>
           </div>
@@ -231,7 +231,7 @@ export const About: React.FC = () => {
                 to="/contact"
                 className="bg-sand-100 text-spruce-900 hover:bg-white px-6 py-3.5 rounded-md font-semibold text-xs uppercase tracking-wider text-center transition-colors shadow-sm"
               >
-                Book Studio Consult (Christchurch)
+                Book In-Person Consult (Christchurch)
               </Link>
               <Link
                 to="/online-coaching"

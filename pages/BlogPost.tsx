@@ -178,7 +178,7 @@ export const BlogPost: React.FC = () => {
                   {post.author?.name || 'Hayden Richards'}
                 </h3>
                 <span className="text-xs text-charcoal/60 mb-3 block font-medium">
-                  {post.author?.role || 'Founder & Head Coach · REPs Registered'}
+                  {post.author?.role || 'Founder & Head Coach · Strength & Sarcopenia Specialist'}
                 </span>
                 <p className="text-charcoal/80 text-sm leading-relaxed mb-4">
                   {post.author?.bio || 'Hayden has spent 20 years helping adults build sustainable physical strength and resilience. At WRK, he provides evidence-informed coaching specifically tailored to the physiological realities of GLP-1 weight loss.'}

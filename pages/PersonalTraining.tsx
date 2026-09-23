@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { MapPin, Shield, Dumbbell, Activity, Check, ChevronDown, ArrowRight, Car, Compass, Clock } from 'lucide-react';
+import { Testimonials } from '../components/Testimonials';
 
 export const PersonalTraining: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -14,12 +15,12 @@ export const PersonalTraining: React.FC = () => {
 
   const faqs = [
     {
-      q: "Where in Addington is the studio located?",
-      a: "We train out of 12 Show Place in Addington, Christchurch. It is a quiet business park location with easy parking right outside, just minutes from Moorhouse Ave, Riccarton, and the Southern Motorway."
+      q: "Where in Addington is the facility located?",
+      a: "We train out of our boutique facility at 12 Show Place in Addington, Christchurch. It is a quiet business park location with easy parking right outside, just minutes from Moorhouse Ave, Riccarton, and the Southern Motorway."
     },
     {
       q: "I'm completely new to lifting weights. Is this suitable for beginners?",
-      a: "Absolutely. Most of our clients are not gym veterans. Because the studio is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
+      a: "Absolutely. Most of our clients are not gym veterans. Because our facility is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
     },
     {
       q: "How does in-person coaching work alongside GLP-1 medication?",
@@ -27,7 +28,7 @@ export const PersonalTraining: React.FC = () => {
     },
     {
       q: "What happens during the initial consultation?",
-      a: "We meet at the Addington studio for a relaxed, 20-minute chat. We discuss your background, health goals, take a quick look at movement mechanics, and decide together if the studio setup is the right fit for you."
+      a: "We meet at the Addington facility for a relaxed, 20-minute chat. We discuss your background, health goals, take a quick look at movement mechanics, and decide together if the setup is the right fit for you."
     }
   ];
 
@@ -107,7 +108,7 @@ export const PersonalTraining: React.FC = () => {
           </h1>
           
           <p className="text-charcoal/80 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Skip the chaotic commercial gyms. Train in a focused, semi-private Addington studio with evidence-based coaching built around strength, muscle preservation, and long-term health.
+            Skip the chaotic commercial gyms. Train in a focused, semi-private Addington boutique facility with evidence-based coaching built around strength, muscle preservation, and long-term health.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -121,13 +122,13 @@ export const PersonalTraining: React.FC = () => {
               href="#location"
               className="border border-charcoal/20 text-charcoal hover:bg-sand-100 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors"
             >
-              View Studio & Location
+              View Facility & Location
             </a>
           </div>
           
           {/* Trust Pills */}
           <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 mt-8 text-xs text-charcoal/70">
-            <span className="flex items-center">✓ Semi-private studio (no crowds)</span>
+            <span className="flex items-center">✓ Semi-private boutique facility (no crowds)</span>
             <span className="hidden sm:inline text-charcoal/30">•</span>
             <span className="flex items-center">✓ Evidence-based muscle defense</span>
             <span className="hidden sm:inline text-charcoal/30">•</span>
@@ -140,7 +141,7 @@ export const PersonalTraining: React.FC = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
-                THE STUDIO EXPERIENCE
+                THE BOUTIQUE EXPERIENCE
               </span>
               <h2 className="font-serif text-3xl text-charcoal">
                 Expert Hands-On Coaching. Zero Intimidation.
@@ -204,6 +205,9 @@ export const PersonalTraining: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Testimonials */}
+        <Testimonials />
 
         {/* 3. Core Focus Areas */}
         <section className="py-20 px-6 max-w-5xl mx-auto">
@@ -279,7 +283,7 @@ export const PersonalTraining: React.FC = () => {
             TRANSPARENT IN-PERSON COACHING
           </span>
           <h2 className="font-serif text-3xl text-charcoal mb-8 tracking-tight">
-            Complete Studio Experience
+            Complete Coaching Experience
           </h2>
 
           <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
@@ -287,7 +291,7 @@ export const PersonalTraining: React.FC = () => {
               📍 12 Show Place, Addington, Christchurch
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-4">
-              Weekly 1-on-1 Studio Coaching
+              Weekly 1-on-1 In-Person Coaching
             </h3>
 
             <div className="flex flex-wrap items-baseline gap-2 mb-2">
@@ -295,13 +299,13 @@ export const PersonalTraining: React.FC = () => {
               <span className="text-sand-200/80 text-sm">/ week</span>
             </div>
             <p className="text-xs text-sand-200/70 border-b border-sand-200/10 pb-6 mb-6">
-              Includes full weekly studio access, custom home programming, and nutrition support.
+              Includes weekly facility coaching, custom home programming, and nutrition support.
             </p>
 
             <ul className="space-y-3.5 my-8 text-sand-100 text-sm">
               <li className="flex items-center gap-3">
                 <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Weekly 1-on-1 private studio training session</span>
+                <span>Weekly 1-on-1 boutique in-person coaching session</span>
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-4 h-4 text-sand-200 shrink-0" />
@@ -321,7 +325,7 @@ export const PersonalTraining: React.FC = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Full access to the private Addington facility during sessions</span>
+                <span>Full access to our boutique Addington facility during sessions</span>
               </li>
             </ul>
 
@@ -330,7 +334,7 @@ export const PersonalTraining: React.FC = () => {
                 to="/contact"
                 className="bg-sand-100 text-spruce-900 hover:bg-white w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors shadow-sm"
               >
-                Book Your Consultation & Studio Walkthrough
+                Book Your Consultation & Facility Walkthrough
               </Link>
             </div>
           </div>
@@ -342,9 +346,12 @@ export const PersonalTraining: React.FC = () => {
             <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
               LOCATION
             </span>
-            <h2 className="font-serif text-3xl text-charcoal mb-8 tracking-tight">
+            <h2 className="font-serif text-3xl text-charcoal mb-4 tracking-tight">
               Train in the Heart of Addington
             </h2>
+            <p className="text-charcoal/80 max-w-2xl mx-auto text-base mb-8 leading-relaxed">
+              Sessions are delivered in a calm, boutique setting at 12 Show Place, Addington (located inside Get Me Fitter) — an uncrowded space with dedicated on-site parking and zero commercial gym posturing.
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-8">
               <div className="bg-white rounded-xl p-6 border border-charcoal/5 shadow-sm">
@@ -376,7 +383,7 @@ export const PersonalTraining: React.FC = () => {
                   <span className="text-xs font-bold uppercase tracking-wider">Parking</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed">
-                  Easy on-site parking directly outside the studio doors.
+                  Easy on-site parking directly outside the facility doors.
                 </p>
               </div>
             </div>
@@ -390,7 +397,7 @@ export const PersonalTraining: React.FC = () => {
                 allowFullScreen={true} 
                 loading="lazy" 
                 referrerPolicy="strict-origin-when-cross-origin"
-                title="Studio Location Map"
+                title="Facility Location Map"
               ></iframe>
             </div>
           </div>
@@ -409,8 +416,8 @@ export const PersonalTraining: React.FC = () => {
             {[
               "I am taking GLP-1 medication and want to protect muscle & build strength",
               "I am preparing to transition/wean off weight loss medication",
-              "I am looking for private 1-on-1 strength training (General Fitness)",
-              "I have a specific question about the Addington studio"
+              "I am looking for boutique 1-on-1 strength training (General Fitness)",
+              "I have a specific question about the Addington facility"
             ].map((option, idx) => {
               const isSelected = phaseSelection === option;
               return (

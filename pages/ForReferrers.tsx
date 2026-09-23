@@ -61,22 +61,40 @@ export const ForReferrers: React.FC = () => {
 
       <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50 pb-24">
         
-        {/* MASTHEAD HEADER */}
-        <section className="pt-16 pb-12 px-6 max-w-4xl mx-auto text-center">
-          <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block mb-4">
-            CLINICAL LIFESTYLE COLLABORATION
-          </span>
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal tracking-tight font-bold mb-4 leading-tight">
-            WRK Personal Training — Clinician Resource & Healthcare Provider Overview
-          </h1>
-          <p className="font-serif text-lg sm:text-xl text-spruce-900 max-w-3xl mx-auto font-medium leading-relaxed mb-6">
-            Supervised Sarcopenia Prevention, Progressive Strength & Metabolic Support for Patients on GLP-1 Therapy
-          </p>
-          <div className="w-16 h-[2px] bg-spruce-800/40 mx-auto"></div>
+        {/* Full-Bleed Hero Masthead */}
+        <section className="relative min-h-[520px] md:min-h-[580px] flex items-center justify-center -mt-16 md:-mt-20 pt-28 pb-16 px-6 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2000&auto=format&fit=crop"
+            alt="Clinical Lifestyle Collaboration and Healthcare Provider Overview"
+            className="absolute inset-0 w-full h-full object-cover object-center z-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/60 to-charcoal/40 mix-blend-multiply z-0" />
+
+          {/* Hero Content Layer */}
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
+            <span className="text-xs uppercase tracking-[0.25em] font-sans text-sand-200 font-semibold mb-4 block">
+              CLINICAL LIFESTYLE COLLABORATION
+            </span>
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight leading-tight mb-6">
+              WRK Personal Training — Clinician Resource & Healthcare Provider Overview
+            </h1>
+            <p className="text-sand-100/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+              Supervised Sarcopenia Prevention, Progressive Strength & Metabolic Support for Patients on GLP-1 Therapy
+            </p>
+
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-3xl mx-auto text-sand-50 text-sm sm:text-base leading-relaxed shadow-lg">
+              <span className="text-xs uppercase tracking-widest text-sand-200 block mb-2 font-semibold">
+                OUR SCOPE & COLLABORATION MODEL
+              </span>
+              <p className="font-serif italic text-sand-50 text-sm sm:text-base leading-relaxed m-0">
+                “You maintain pharmacotherapy, dose titration, and medical oversight. WRK delivers supervised, joint-friendly progressive resistance training, sarcopenia defense, and practical protein habit coaching.”
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* MAIN BODY SECTIONS */}
-        <div className="px-6 max-w-4xl mx-auto space-y-16">
+        <div className="px-6 max-w-4xl mx-auto space-y-16 pt-12 md:pt-16">
           
           {/* 1. Overview for General Practitioners & Specialists */}
           <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
@@ -287,7 +305,7 @@ export const ForReferrers: React.FC = () => {
               Your patients are supported by experienced, accredited coaching—not an unvetted commercial gym floor trainer.
             </p>
             <p className="text-charcoal/80 text-base leading-relaxed">
-              Led by <strong>Hayden Richards (REPs Registered)</strong>, bringing over 20 years of one-on-one coaching experience alongside medical and clinical guidance:
+              Led by <strong>Hayden Richards</strong>, bringing over 20 years of one-on-one coaching experience alongside medical and clinical guidance:
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -313,10 +331,10 @@ export const ForReferrers: React.FC = () => {
             <div className="mt-6 pt-6 border-t border-charcoal/10">
               <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-3 rounded-xl bg-sand-100/70 border border-charcoal/10 text-charcoal text-xs sm:text-sm font-medium">
                 <ShieldCheck size={18} className="text-spruce-800 shrink-0" />
-                <span className="font-bold text-spruce-900">REPs Registered Exercise Professional</span>
-                <span className="text-charcoal/30 hidden sm:inline">|</span>
+                <span className="font-bold text-spruce-900">20+ Years Dedicated Coaching Experience</span>
+                <span className="text-charcoal/30 hidden sm:inline">·</span>
                 <span>Clean Scope of Practice Adherence</span>
-                <span className="text-charcoal/30 hidden sm:inline">|</span>
+                <span className="text-charcoal/30 hidden sm:inline">·</span>
                 <span>PAR-Q+ Medical Clearance Screening</span>
               </div>
             </div>
@@ -335,10 +353,10 @@ export const ForReferrers: React.FC = () => {
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-3">
                 <div className="flex items-center gap-2 text-spruce-900 font-serif text-lg font-bold">
                   <Building size={20} className="text-spruce-800" />
-                  <span>Semi-Private Studio (12 Show Place, Addington)</span>
+                  <span>Boutique Facility (12 Show Place, Addington)</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed">
-                  A quiet, private facility shared with only a limited number of members at any time—ideal for patients unaccustomed or averse to commercial gym settings. Dedicated on-site parking.
+                  A calm, low-density space shared with only a handful of members at any time—ideal for patients who feel uncomfortable or overwhelmed in standard commercial gym settings.
                 </p>
               </div>
 

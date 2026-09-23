@@ -146,7 +146,7 @@ export const Contact: React.FC = () => {
                   Local & Global Coaching
                 </span>
                 <p className="leading-relaxed">
-                  In-person private studio sessions available at 12 Show Place in Addington, Christchurch. Comprehensive online coaching delivered worldwide.
+                  In-person sessions delivered at 12 Show Place, Addington. Dedicated on-site parking available. Comprehensive online coaching delivered worldwide.
                 </p>
               </div>
             </div>
@@ -156,11 +156,21 @@ export const Contact: React.FC = () => {
               <span>100% Confidential · Handled with clinical privacy.</span>
             </div>
 
-            {/* Studio location card */}
+            {/* Facility location card */}
             <div className="bg-white/80 p-5 rounded-2xl border border-charcoal/5 text-xs text-charcoal/80 space-y-1">
-              <span className="font-semibold text-charcoal block">Christchurch Studio Location:</span>
-              <p>12 Show Place, Addington, Christchurch 8024</p>
-              <p className="text-charcoal/60">Dedicated private facility · Free on-site parking</p>
+              <span className="font-semibold text-charcoal block">Christchurch In-Person Location:</span>
+              <p>12 Show Place, Addington, Christchurch 8024. Dedicated on-site parking available.</p>
+            </div>
+
+            <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden border border-charcoal/10 shadow-sm mt-6">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185185.91070085767!2d172.59900144999997!3d-43.51214245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26634d156304cd93%3A0x9e3eee8e863806bb!2sWRK%20Personal%20Training!5e0!3m2!1sen!2snz!4v1790190757608!5m2!1sen!2snz"
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="WRK Personal Training Studio Location"
+              />
             </div>
           </div>
 

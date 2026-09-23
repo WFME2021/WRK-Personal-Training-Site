@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
+import { Testimonials } from '../components/Testimonials';
 
 interface AccordionItemProps {
   question: string;
@@ -252,7 +253,7 @@ export const Home: React.FC = () => {
             <div className="w-full max-w-[340px] aspect-[4/5] rounded-2xl overflow-hidden border border-charcoal/10 shadow-sm relative">
               <img 
                 src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
-                alt="Hayden Richards, REPs-registered Personal Trainer in Christchurch specializing in GLP-1 fitness coaching"
+                alt="Hayden Richards, Personal Trainer in Christchurch specializing in GLP-1 fitness coaching"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -298,6 +299,9 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* 7. Final Banner */}
       <section className="bg-spruce-800 text-sand-50 py-16 px-4 md:px-8 text-center">

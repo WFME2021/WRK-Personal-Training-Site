@@ -117,19 +117,19 @@ export const Programs: React.FC = () => {
                 </span>
                 <span className="flex items-center text-xs text-charcoal/60 font-medium">
                   <MapPin size={14} className="mr-1 text-spruce-800" />
-                  Addington, Christchurch
+                  Semi-private coaching sessions at 12 Show Place, Addington
                 </span>
               </div>
               <h3 className="font-serif text-2xl text-charcoal mb-2">
-                Private Studio Coaching
+                In-Person Personal Training
               </h3>
               <p className="text-sm text-charcoal/70 leading-relaxed mb-6">
-                Hands-on lifting technique, private facility access, and in-person body composition accountability tailored to your weekly energy.
+                Hands-on lifting technique, boutique facility access, and in-person body composition accountability tailored to your weekly energy.
               </p>
               <ul className="space-y-2.5 text-xs text-charcoal/80 mb-8 border-t border-charcoal/5 pt-4">
                 <li className="flex items-center gap-2">
                   <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
-                  <span>1-on-1 private training studio (no crowds or waiting)</span>
+                  <span>1-on-1 boutique facility coaching (no crowds or waiting)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
@@ -146,7 +146,7 @@ export const Programs: React.FC = () => {
                 to="/contact"
                 className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 px-6 py-3 rounded-md text-xs uppercase tracking-wider font-semibold text-center block w-full transition-colors shadow-sm"
               >
-                Book Studio Consult
+                Book In-Person Consult
               </Link>
             </div>
           </div>
