@@ -13,11 +13,11 @@ export const OnlineCoaching: React.FC = () => {
   const faqs = [
     {
       q: "Do I need a commercial gym membership?",
-      a: "No. Your program is built around your real life. Whether you train in a fully equipped gym, a garage gym, or your living room with a pair of dumbbells and bands, we customize every exercise to match your equipment."
+      a: "No. Your programme is built around your real life. Whether you train in a fully equipped gym, a garage gym, or your living room with a pair of dumbbells and bands, we customise every exercise to match your equipment."
     },
     {
       q: "What if I feel exhausted or nauseous on injection days?",
-      a: "That is completely expected. We structure your weekly training schedule around your titration cycle, scheduling active recovery or rest on lower-energy days and prioritizing strength sessions when you feel your best."
+      a: "That is completely expected. We structure your weekly training schedule around your titration cycle, scheduling active recovery or rest on lower-energy days and prioritising strength sessions when you feel your best."
     },
     {
       q: "How does online coaching work internationally?",
@@ -60,7 +60,7 @@ export const OnlineCoaching: React.FC = () => {
           </h1>
           
           <p className="text-charcoal/80 max-w-xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Personalized online fitness and nutrition coaching built specifically for individuals taking GLP-1 medications.
+            Personalised online fitness and nutrition coaching built specifically for individuals taking GLP-1 medications.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -84,7 +84,7 @@ export const OnlineCoaching: React.FC = () => {
             <span className="hidden sm:inline text-charcoal/30">•</span>
             <span className="flex items-center">✓ No burnout workouts</span>
             <span className="hidden sm:inline text-charcoal/30">•</span>
-            <span className="flex items-center">✓ Evidence-based muscle defense</span>
+            <span className="flex items-center">✓ Evidence-based muscle defence</span>
           </div>
         </section>
 
@@ -142,7 +142,7 @@ export const OnlineCoaching: React.FC = () => {
                   Muscle-Preserving Strength
                 </h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
-                  Targeted 2–3 day programs signaling your body to hold onto lean muscle while bodyweight drops. Tailored for gym or home.
+                  Targeted 2–3 day programmes signalling your body to hold onto lean muscle while bodyweight drops. Tailored for gym or home.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
@@ -157,7 +157,7 @@ export const OnlineCoaching: React.FC = () => {
                   02 · NUTRITION STRATEGY
                 </span>
                 <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
-                  Low-Friction Fueling
+                  Low-Friction Fuelling
                 </h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
                   Digestible protein anchoring and hydration protocols designed to meet your targets without triggering nausea.
@@ -212,7 +212,7 @@ export const OnlineCoaching: React.FC = () => {
                 <div>
                   <h4 className="font-serif text-lg font-semibold text-charcoal mb-1">WRK Training App</h4>
                   <p className="text-sm text-charcoal/70 leading-relaxed">
-                    Personalized workouts, exercise video demos, and automated progress logging on your phone.
+                    Personalised workouts, exercise video demos, and automated progress logging on your phone.
                   </p>
                 </div>
               </div>
@@ -270,7 +270,7 @@ export const OnlineCoaching: React.FC = () => {
 
           <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
             <div className="text-xs uppercase tracking-widest text-sand-200 mb-2 font-semibold">
-              12-WEEK GUIDED PROGRAM
+              12-WEEK GUIDED PROGRAMME
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-4">
               Full 1-on-1 Online Coaching
@@ -287,7 +287,7 @@ export const OnlineCoaching: React.FC = () => {
             <ul className="space-y-3.5 my-8 text-sand-100 text-sm">
               <li className="flex items-center gap-3">
                 <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Bespoke home or gym resistance program</span>
+                <span>Bespoke home or gym resistance programme</span>
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-4 h-4 text-sand-200 shrink-0" />

@@ -206,7 +206,7 @@ export const TdeeCalculator: React.FC = () => {
       <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12" ref={topRef}>
         <SeoHead 
           title="GLP-1 Calorie & Macro Calculator | WRK Personal Training"
-          description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalize your protein, carbohydrate, and fat targets during weight loss."
+          description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalise your protein, carbohydrate, and fat targets during weight loss."
         />
         <div className="max-w-3xl mx-auto px-4 md:px-8">
           
@@ -372,7 +372,7 @@ export const TdeeCalculator: React.FC = () => {
               Calories drop fast on medication. Your muscle doesn't have to.
             </h3>
             <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
-              When appetite vanishes, meeting your baseline energy needs without losing lean mass requires structured lifting and high-density fueling routines.
+              When appetite vanishes, meeting your baseline energy needs without losing lean mass requires structured lifting and high-density fuelling routines.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <Link 
@@ -410,7 +410,7 @@ export const TdeeCalculator: React.FC = () => {
     <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12" ref={topRef}>
       <SeoHead 
         title="GLP-1 Calorie & Macro Calculator | WRK Personal Training"
-        description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalize your protein, carbohydrate, and fat targets during weight loss."
+        description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalise your protein, carbohydrate, and fat targets during weight loss."
       />
 
       <div className="max-w-3xl mx-auto px-4 md:px-8">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SeoHead } from '../components/SeoHead';
-import { Smartphone, Video, Utensils, Activity, Check, ChevronDown, Lock, CheckCircle2, XCircle, ArrowRight, ShieldCheck, Dumbbell, Sparkles } from 'lucide-react';
+import { Smartphone, Check, ChevronDown, CheckCircle2, XCircle, ShieldCheck, Quote } from 'lucide-react';
 
 export const Toolkit: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -26,7 +26,7 @@ export const Toolkit: React.FC = () => {
     },
     {
       q: "Can I upgrade to 1-on-1 coaching later?",
-      a: "Yes. If you decide you'd like custom workout programming, weekly form checks, and direct 1-on-1 coach messaging, you can easily upgrade to our Online Coaching service right from the app."
+      a: "Yes. Every Toolkit member receives a 100% credit: apply your full $29 purchase toward your first month of WRK 1-on-1 coaching at any time right from the app or by contacting Hayden."
     }
   ];
 
@@ -58,11 +58,30 @@ export const Toolkit: React.FC = () => {
     }
   ];
 
+  const valueStackItems = [
+    {
+      name: "The 30-Minute Sarcopenia Shield (Home & Gym tracks with HD video demos)",
+      value: "$97"
+    },
+    {
+      name: "The Zero-Hunger 100g Protein Protocol & Grocery System",
+      value: "$47"
+    },
+    {
+      name: "The Dose-Day Adjustment Matrix & GI Hydration Blueprint",
+      value: "$37"
+    },
+    {
+      name: "Ongoing WRK Interactive Mobile App Access (iOS & Android)",
+      value: "$120/year"
+    }
+  ];
+
   return (
     <>
       <SeoHead 
-        title="GLP-1 Workout & Nutrition App Toolkit | WRK Personal Training"
-        description="Get instant access to the WRK Training App: interactive GLP-1 workouts with video demos, automated coach check-in prompts, and high-protein nutrition guides for $29 NZD."
+        title="GLP-1 Muscle Defence Tool Kit ($29) | WRK Personal Training"
+        description="Stop muscle loss while the weight drops. Get instant access to the Sarcopenia Shield routines and the Zero-Hunger 100g Protein Protocol in the WRK Training App."
       />
       <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         
@@ -87,10 +106,10 @@ export const Toolkit: React.FC = () => {
                   {/* Active Routine Card */}
                   <div className="bg-sand-50 rounded-xl p-3 border border-charcoal/5 mb-3">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-spruce-800 block mb-0.5">
-                      Today's Program
+                      Today's Programme
                     </span>
                     <p className="font-serif text-sm font-semibold text-charcoal">
-                      GLP-1 Muscle Defense · Day 1
+                      The Sarcopenia Shield · Day 1
                     </p>
                     <div className="flex items-center gap-3 mt-2 text-[10px] text-charcoal/60">
                       <span>⏱ 30 mins</span>
@@ -125,7 +144,7 @@ export const Toolkit: React.FC = () => {
                   {/* Nutrition Target Widget */}
                   <div className="mt-3 p-2.5 rounded-xl bg-sand-100 border border-charcoal/5">
                     <div className="flex justify-between text-[10px] font-semibold text-charcoal mb-1">
-                      <span>Protein Anchor</span>
+                      <span>Zero-Hunger Protein Target</span>
                       <span className="text-spruce-800 font-bold">105g / 110g</span>
                     </div>
                     <div className="w-full h-1.5 bg-sand-200 rounded-full overflow-hidden">
@@ -148,14 +167,14 @@ export const Toolkit: React.FC = () => {
               </p>
               
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal tracking-tight leading-tight mb-4">
-                The Complete GLP-1 Workout & Nutrition Toolkit.
+                Stop Muscle Loss While the Weight Drops.
               </h1>
               
               <p className="text-charcoal/80 text-sm sm:text-base mb-6 leading-relaxed">
-                Interactive strength training and nutrition frameworks designed specifically for weight loss medication. Log lifts, watch video demos, and track habits right on your phone.
+                The step-by-step workout routines and low-appetite meal templates built specifically for GLP-1 therapy. Delivered inside the WRK Training App so you know exactly what to lift, how to fuel, and how to protect your metabolism.
               </p>
 
-              <div className="flex items-baseline gap-2 mb-2">
+              <div className="flex items-baseline gap-2 mb-1">
                 <span className="font-serif text-3xl font-bold text-spruce-800">$29 NZD</span>
                 <span className="text-xs text-charcoal/60">(One-Time Access · Approx. $18 USD / £14 GBP)</span>
               </div>
@@ -164,12 +183,16 @@ export const Toolkit: React.FC = () => {
                 href={checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors my-6 shadow-sm"
+                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors mt-5 mb-3 shadow-sm"
               >
                 Get Instant App Access — $29 NZD
               </a>
 
-              <div className="space-y-2 text-xs text-charcoal/70">
+              <p className="text-xs text-charcoal/60 mb-6 text-center sm:text-left">
+                One-off payment · Instant iOS & Android login · No subscriptions
+              </p>
+
+              <div className="space-y-2 text-xs text-charcoal/70 pt-2 border-t border-charcoal/5">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
                   <span>Full access in the WRK App (iOS & Android)</span>
@@ -188,28 +211,28 @@ export const Toolkit: React.FC = () => {
           </div>
         </section>
 
-        {/* 2. Philosophy Callout Band */}
+        {/* 2. Physical Problem Callout & Agitation */}
         <section className="bg-sand-100/70 py-16 px-6 border-y border-charcoal/5">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
-              BUILT FOR INDEPENDENCE
+              THE MEDICAL WEIGHT LOSS BLINDSPOT
             </span>
-            <h2 className="font-serif text-3xl text-charcoal mb-4 tracking-tight">
-              Structure Without the Cost of 1-on-1 Coaching
+            <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-4 tracking-tight">
+              Losing Weight is Easy. Keeping Muscle is the Real Battle.
             </h2>
             <p className="text-charcoal/80 text-base leading-relaxed">
-              If you are self-motivated, you don't need expensive weekly calls or confusing static PDFs. You need an intuitive app that tells you exactly which weights to lift, provides clear exercise form videos, and tracks your protein without burnout.
+              Clinical trials show that without progressive strength training, up to 40% of the weight you lose on a GLP-1 can come directly from lean skeletal muscle and bone density. Exhausting 60-minute gym sessions and complex calorie tracking lead straight to burnout, nausea, and fatigue. You don't need endless exercise; you need the minimum effective dose.
             </p>
           </div>
         </section>
 
-        {/* 3. The 3 Core App Pillars */}
+        {/* 3. The 3 Core App Pillars (Proprietary Asset Naming) */}
         <section className="py-20 px-6 max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
               APP CAPABILITIES
             </span>
-            <h2 className="font-serif text-3xl text-charcoal tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl text-charcoal tracking-tight">
               Everything Inside the App
             </h2>
             <p className="text-sm text-charcoal/70 mt-2">
@@ -222,17 +245,17 @@ export const Toolkit: React.FC = () => {
             <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
-                  01 · WORKOUT TRACKS
+                  01 · RESISTANCE PROTOCOL
                 </span>
                 <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
-                  Interactive Gym & Home Programs
+                  The 30-Minute Sarcopenia Shield Routine
                 </h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
-                  3-day and 4-day resistance routines built for lean muscle retention during calorie deficits. Clean 30-minute templates with on-demand video demos.
+                  Targeted 3-day and 4-day strength tracks designed to signal muscle preservation without draining your central nervous system. Clean, joint-safe compound templates with on-demand HD video form guides.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
-                Home (dumbbells) & commercial gym modes
+                Includes Home (dumbbells) & Commercial Gym tracks
               </div>
             </div>
 
@@ -240,17 +263,17 @@ export const Toolkit: React.FC = () => {
             <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
-                  02 · NUTRITION BLUEPRINTS
+                  02 · APPETITE PACING
                 </span>
                 <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
-                  Low-Appetite Fueling Strategies
+                  The Zero-Hunger 100g Protein Protocol
                 </h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
-                  Practical protocols to hit 100g+ daily protein without forcing down giant meals. Includes grocery lists, hydration guides, and nausea mitigation.
+                  Practical strategies to hit 100g+ daily protein using nutrient-dense, low-volume foods you can actually stomach when your appetite is completely flat.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
-                Zero food logging fatigue or macro burnout
+                Includes printable GI-comfort grocery lists & meal anchors
               </div>
             </div>
 
@@ -258,23 +281,23 @@ export const Toolkit: React.FC = () => {
             <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
-                  03 · ACCOUNTABILITY
+                  03 · BIOFEEDBACK ARCHITECTURE
                 </span>
                 <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
-                  Automated Habit Architecture
+                  The Dose-Day Adjustment Matrix & Hydration Blueprint
                 </h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
-                  Scheduled check-in reminders and momentum prompts sent through the app to keep you consistent through titration and low-energy days.
+                  Fluid, electrolyte, and training volume adjustments calibrated around injection-day fatigue, nausea patterns, and delayed stomach digestion.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
-                Structured habit prompts & recovery reminders
+                Automated habit prompts & recovery tracking inside the app
               </div>
             </div>
           </div>
         </section>
 
-        {/* 4. Redesigned Comparison Feature Table */}
+        {/* 4. Comparison Feature Table */}
         <section className="bg-sand-50 py-16 px-6 border-y border-charcoal/5">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
@@ -310,47 +333,96 @@ export const Toolkit: React.FC = () => {
           </div>
         </section>
 
-        {/* 5. Checkout & Investment Summary Card */}
-        <section id="checkout" className="py-16 px-6 max-w-2xl mx-auto text-center">
-          <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
-            <span className="text-xs uppercase tracking-widest text-sand-200 mb-2 block font-semibold">
-              ONE-TIME PURCHASE · NO RECURRING FEES
-            </span>
-            <h3 className="font-serif text-3xl text-sand-50 mb-2">
-              The WRK GLP-1 App Toolkit
-            </h3>
-
-            <div className="flex items-baseline gap-2 mb-4">
-              <span className="font-serif text-4xl font-bold text-sand-50">$29 NZD</span>
-              <span className="text-xs text-sand-200/80">(One-off payment · No subscriptions)</span>
+        {/* 5. Social Proof Trust Section */}
+        <section className="py-20 px-6 max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl p-8 sm:p-10 border border-charcoal/10 shadow-sm relative">
+            <div className="text-center max-w-2xl mx-auto mb-8">
+              <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-spruce-800 block mb-2">
+                PROVEN METHODOLOGY
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl text-charcoal tracking-tight font-bold">
+                Backed by 20+ Years of Hands-On Coaching
+              </h2>
             </div>
 
-            <ul className="space-y-3.5 my-8 text-sand-100 text-sm border-t border-sand-200/10 pt-6">
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Instant account activation in the WRK Training App</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>3-day and 4-day resistance tracks (Home & Gym)</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>HD video library with exercise demonstrations</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Interactive weight, rep, and habit tracking</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>High-protein nutrition guide, grocery list & hydration protocol</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Automated check-in reminders and habit prompts</span>
-              </li>
-            </ul>
+            <div className="max-w-2xl mx-auto text-center">
+              <Quote size={28} className="text-spruce-800/20 mx-auto mb-4" />
+              <blockquote className="text-charcoal/85 text-base sm:text-lg leading-relaxed italic mb-4">
+                "Hayden has adapted and changed the way I train to meet the changes in my body and health. His personal care, commitment, and expertise is equal to any health professional and has been an invaluable investment in my wellbeing."
+              </blockquote>
+              <p className="font-serif font-bold text-charcoal text-sm">
+                — Jeff Kerkhofs, Long-Term Client (20+ Year Partnership)
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-8 mt-8 border-t border-charcoal/5 text-center">
+              <div className="bg-sand-50/80 rounded-xl py-3 px-4 border border-charcoal/5 text-xs font-semibold text-spruce-900">
+                ✓ Condition-Aware Programming
+              </div>
+              <div className="bg-sand-50/80 rounded-xl py-3 px-4 border border-charcoal/5 text-xs font-semibold text-spruce-900">
+                ✓ Semi-Private Studio Tested
+              </div>
+              <div className="bg-sand-50/80 rounded-xl py-3 px-4 border border-charcoal/5 text-xs font-semibold text-spruce-900">
+                ✓ Zero Commercial Gym Hype
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Checkout, Value Stack & Upgrade Bridge Card */}
+        <section id="checkout" className="pb-20 px-6 max-w-2xl mx-auto text-center">
+          <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
+            <span className="text-xs uppercase tracking-widest text-sand-200 mb-2 block font-semibold">
+              COMPLETE DIGITAL ACCESS · ONE-TIME PAYMENT
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-sand-50 mb-2">
+              The GLP-1 Muscle Defence Tool Kit
+            </h3>
+            <p className="text-xs sm:text-sm text-sand-100/80 mb-6">
+              Instant mobile app activation for iOS & Android with lifetime digital access.
+            </p>
+
+            {/* Value Stack Breakdown */}
+            <div className="bg-spruce-900/60 rounded-xl p-5 border border-white/10 space-y-3 mb-6">
+              <span className="text-[11px] uppercase tracking-wider text-sand-200/90 font-bold block mb-1">
+                Everything Included In Your Access:
+              </span>
+              {valueStackItems.map((item, idx) => (
+                <div key={idx} className="flex items-start justify-between gap-3 text-xs sm:text-sm text-sand-100">
+                  <div className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
+                    <span>{item.name}</span>
+                  </div>
+                  <span className="text-sand-200 font-semibold shrink-0 text-xs">{item.value}</span>
+                </div>
+              ))}
+              <div className="border-t border-white/10 pt-3 mt-3 flex items-center justify-between text-xs text-sand-200">
+                <span className="font-semibold uppercase tracking-wider">Total Value:</span>
+                <span className="font-bold line-through text-sand-300">$301 NZD</span>
+              </div>
+            </div>
+
+            {/* Price Display */}
+            <div className="bg-white/10 rounded-xl p-4 border border-white/15 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div>
+                <span className="text-xs text-sand-200 uppercase tracking-wider font-semibold block">Today's Investment:</span>
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-sand-50">$29 NZD</span>
+              </div>
+              <span className="text-xs text-sand-200/90 bg-spruce-950/40 py-1.5 px-3 rounded-lg border border-white/10 self-start sm:self-center">
+                One-off payment · No ongoing fees
+              </span>
+            </div>
+
+            {/* Upgrade Bridge */}
+            <div className="bg-sand-50/10 border border-sand-200/20 rounded-xl p-4 mb-6 text-xs text-sand-100 leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-sand-200 mb-1">
+                <ShieldCheck size={15} />
+                <span>1-on-1 Coaching Upgrade Credit:</span>
+              </div>
+              <p>
+                Need hands-on eyes on your form later? Every Toolkit member receives a 100% credit: apply your full $29 purchase toward your first month of WRK 1-on-1 coaching at any time.
+              </p>
+            </div>
 
             <div className="pt-2">
               <a
@@ -368,7 +440,7 @@ export const Toolkit: React.FC = () => {
           </div>
         </section>
 
-        {/* 6. FAQ Accordion */}
+        {/* 7. FAQ Accordion */}
         <section className="py-20 px-6 max-w-3xl mx-auto border-t border-charcoal/5">
           <div className="text-center mb-12">
             <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">

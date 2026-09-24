@@ -213,7 +213,7 @@ export const Programs: React.FC = () => {
             </div>
             <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Progressive Overload</h3>
             <p className="text-sm text-charcoal/70 leading-relaxed">
-              Program updates week-over-week ensuring consistent mechanical tension for muscle preservation.
+              Programme updates week-over-week ensuring consistent mechanical tension for muscle preservation.
             </p>
           </div>
 
@@ -221,7 +221,7 @@ export const Programs: React.FC = () => {
             <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center mb-3">
               <Utensils size={18} />
             </div>
-            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Low-Appetite Fueling</h3>
+            <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Low-Appetite Fuelling</h3>
             <p className="text-sm text-charcoal/70 leading-relaxed">
               Practical protein targets and meal anchors designed to be easily digested without nausea.
             </p>

@@ -130,7 +130,7 @@ export const PersonalTraining: React.FC = () => {
           <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 mt-8 text-xs text-charcoal/70">
             <span className="flex items-center">✓ Semi-private boutique facility (no crowds)</span>
             <span className="hidden sm:inline text-charcoal/30">•</span>
-            <span className="flex items-center">✓ Evidence-based muscle defense</span>
+            <span className="flex items-center">✓ Evidence-based muscle defence</span>
             <span className="hidden sm:inline text-charcoal/30">•</span>
             <span className="flex items-center">✓ Dedicated on-site parking</span>
           </div>
@@ -230,7 +230,7 @@ export const PersonalTraining: React.FC = () => {
                   PILLAR 01
                 </span>
                 <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
-                  GLP-1 Muscle Defense
+                  GLP-1 Muscle Defence
                 </h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
                   Target resistance sessions specifically structured to preserve metabolic rate and lean mass during rapid weight loss.
@@ -291,7 +291,7 @@ export const PersonalTraining: React.FC = () => {
               📍 12 Show Place, Addington, Christchurch
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-4">
-              Weekly 1-on-1 In-Person Coaching & Muscle Defense System
+              Weekly 1-on-1 In-Person Coaching & Muscle Defence System
             </h3>
 
             <div className="flex flex-wrap items-baseline gap-2 mb-2">
@@ -313,7 +313,7 @@ export const PersonalTraining: React.FC = () => {
               </li>
               <li className="flex items-start gap-3">
                 <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
-                <span><strong>Digestible Protein & GI Fueling Protocol:</strong> Practical daily targets built around nausea, early fullness, and appetite drops.</span>
+                <span><strong>Digestible Protein & GI Fuelling Protocol:</strong> Practical daily targets built around nausea, early fullness, and appetite drops.</span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
@@ -441,7 +441,7 @@ export const PersonalTraining: React.FC = () => {
                 type="submit"
                 className="inline-flex items-center justify-center bg-spruce-800 text-sand-50 hover:bg-spruce-900 rounded-md px-8 py-3.5 text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm"
               >
-                Match My Program & Book Consult → <ArrowRight size={15} className="ml-2" />
+                Match My Programme & Book Consult → <ArrowRight size={15} className="ml-2" />
               </button>
             </div>
           </form>

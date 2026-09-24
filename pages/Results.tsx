@@ -42,7 +42,7 @@ export const Results: React.FC = () => {
               Diagnostic Complete
             </h1>
             <p className="font-sans text-[18px] text-off-white/90">
-              Thank you, {name}. Here is your customized Muscular Preservation Risk Score and protocol.
+              Thank you, {name}. Here is your customised Muscular Preservation Risk Score and protocol.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export const Results: React.FC = () => {
             <h2 className="font-display text-[28px] uppercase mb-6">3-Step Actionable Movement Guide</h2>
             <div className="space-y-6 font-sans text-[16px] text-off-white/90 leading-[1.6]">
               <div>
-                <h3 className="font-bold text-white text-[18px]">1. Prioritize Compound Movements</h3>
+                <h3 className="font-bold text-white text-[18px]">1. Prioritise Compound Movements</h3>
                 <p>Consider shifting focus toward structurally loading exercises like goblet squats, assisted pull-ups, and hinges, which are indicated to stimulate muscle retention more effectively than excessive cardio.</p>
               </div>
               <div>
@@ -81,7 +81,7 @@ export const Results: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-bold text-white text-[18px]">3. Implement Progressive Overload Safely</h3>
-                <p>Gradually aim to increase the weight or reps each week. Since your center of gravity may be changing rapidly, prioritizing form perfection before adding load is critical to help protect your joints.</p>
+                <p>Gradually aim to increase the weight or reps each week. Since your centre of gravity may be changing rapidly, prioritising form perfection before adding load is critical to help protect your joints.</p>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export const Results: React.FC = () => {
           <div className="text-center bg-navy-light/20 rounded-[24px] p-10 border border-orange-burnt/30 shadow-[0_0_50px_rgba(217,92,20,0.1)]">
             <h2 className="font-display text-[32px] md:text-[40px] uppercase mb-4 text-white">Continue With Support</h2>
             <p className="font-sans text-[16px] text-off-white/80 mb-8 max-w-[600px] mx-auto">
-              If you want a structured, evidence-based program that handles the programming, progressive overload, and side-effect management for you—let's work together.
+              If you want a structured, evidence-based programme that handles the programming, progressive overload, and side-effect management for you—let's work together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/services">

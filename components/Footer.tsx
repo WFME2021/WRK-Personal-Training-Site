@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
           &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
         </p>
         <div className="flex items-center space-x-6">
-           <span>GLP-1 Specialized</span>
+           <span>GLP-1 Specialised</span>
            <span>•</span>
            <span>Evidence-Based</span>
         </div>

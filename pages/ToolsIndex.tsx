@@ -216,7 +216,7 @@ export const ToolsIndex: React.FC = () => {
           </h2>
           
           <p className="text-charcoal/80 max-w-2xl mx-auto text-base mb-8 leading-relaxed">
-            A calculator gives you a number. It cannot show you how that number integrates into your family dinners, your busy schedule, or your low-energy injection days. WRK combines personalized programming, nutrition strategy, and ongoing accountability to safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management.
+            A calculator gives you a number. It cannot show you how that number integrates into your family dinners, your busy schedule, or your low-energy injection days. WRK combines personalised programming, nutrition strategy, and ongoing accountability to safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">

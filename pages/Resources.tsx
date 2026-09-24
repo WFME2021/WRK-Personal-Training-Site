@@ -37,7 +37,7 @@ export const Resources: React.FC = () => {
               At WRK Personal Training, our frameworks are entirely built on peer-reviewed sports science, clinical nutrition guidelines, and medical weight loss research.
             </p>
             <p className="font-sans text-[16px] md:text-[18px] leading-[1.6] text-off-white/80">
-              When navigating rapid weight reduction via GLP-1 receptor agonists (such as semaglutide, tirzepatide, or retatrutide) or GLP-1 therapy, body composition tracking shifts fundamentally. The resources below outline the foundational evidence supporting our specialized 12-week resistance and nutritional strategies.
+              When navigating rapid weight reduction via GLP-1 receptor agonists (such as semaglutide, tirzepatide, or retatrutide) or GLP-1 therapy, body composition tracking shifts fundamentally. The resources below outline the foundational evidence supporting our specialised 12-week resistance and nutritional strategies.
             </p>
           </header>
 
@@ -58,10 +58,10 @@ export const Resources: React.FC = () => {
                 <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>Incretin-Based Weight Loss Pharmacotherapy: Can Resistance Exercise Interventions Counteract Lean Mass Loss?</em> (2024). Published in <strong>PubMed / Sports Medicine</strong>. This landmark review examines how GLP-1 treatments elicit significant lean mass drops (averaging up to 6kg) and outlines why a structured resistance training program is a mandatory adjunct to optimize body composition.
+                    <em>Incretin-Based Weight Loss Pharmacotherapy: Can Resistance Exercise Interventions Counteract Lean Mass Loss?</em> (2024). Published in <strong>PubMed / Sports Medicine</strong>. This landmark review examines how GLP-1 treatments elicit significant lean mass drops (averaging up to 6kg) and outlines why a structured resistance training programme is a mandatory adjunct to optimise body composition.
                   </li>
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>Strategies for Minimizing Muscle Loss During Use of Incretin-Mimetic Drugs for the Treatment of Obesity</em> (2024). Published in <strong>PMC / Obesity Journals</strong>. This clinical paper highlights the essential role of progressive resistance workloads combined with clinical lifestyle interventions to avoid rapid metabolic drop-offs.
+                    <em>Strategies for Minimising Muscle Loss During Use of Incretin-Mimetic Drugs for the Treatment of Obesity</em> (2024). Published in <strong>PMC / Obesity Journals</strong>. This clinical paper highlights the essential role of progressive resistance workloads combined with clinical lifestyle interventions to avoid rapid metabolic drop-offs.
                   </li>
                 </ul>
               </div>
@@ -131,10 +131,10 @@ export const Resources: React.FC = () => {
                 <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>Resistance Training Plus Protein Improves Body Composition After GLP-1 therapy</em> (2021). Published via <strong>Examine / Randomized Controlled Trials</strong>. This 12-week trial evaluated GLP-1 patients divided into exercise and nutrition groups. The data concluded that combining structured resistance loops with optimal protein intake generated the most profound defense against losing your metabolic engine.
+                    <em>Resistance Training Plus Protein Improves Body Composition After GLP-1 therapy</em> (2021). Published via <strong>Examine / Randomised Controlled Trials</strong>. This 12-week trial evaluated GLP-1 patients divided into exercise and nutrition groups. The data concluded that combining structured resistance loops with optimal protein intake generated the most profound defence against losing your metabolic engine.
                   </li>
                   <li className="pl-4 border-l-2 border-orange-burnt">
-                    <em>Nutritional and Exercise Interventions in Individuals with Metabolic Decline</em> (2023). Published in <strong>National Institutes of Health (NIH) PMC</strong>. A comprehensive systematic review confirming that a dedicated resistance training program led to significant reductions in body fat percentage, a 2.72% average increase in muscle mass, and marked improvements in relative functional strength.
+                    <em>Nutritional and Exercise Interventions in Individuals with Metabolic Decline</em> (2023). Published in <strong>National Institutes of Health (NIH) PMC</strong>. A comprehensive systematic review confirming that a dedicated resistance training programme led to significant reductions in body fat percentage, a 2.72% average increase in muscle mass, and marked improvements in relative functional strength.
                   </li>
                 </ul>
               </div>
@@ -150,7 +150,7 @@ export const Resources: React.FC = () => {
             
             <div className="space-y-4 font-sans text-[16px] text-off-white/90 leading-[1.6]">
               <p>
-                <strong>The Science:</strong> Rapid physical mass drops radically shift a patient's center of gravity and alter joint load dynamics. Mechanical skeletal loading via strength work is critical to protect bone mineral density from deteriorating alongside fat mass.
+                <strong>The Science:</strong> Rapid physical mass drops radically shift a patient's centre of gravity and alter joint load dynamics. Mechanical skeletal loading via strength work is critical to protect bone mineral density from deteriorating alongside fat mass.
               </p>
               
               <div className="space-y-3 bg-navy-mid p-6 rounded-[16px] border border-navy-light">

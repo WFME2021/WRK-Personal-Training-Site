@@ -17,13 +17,13 @@ const testimonials: TestimonialItem[] = [
   },
   {
     category: "10+ Years Coaching · Injury & Health Recovery",
-    quote: "I've trained with Hayden for over 10 years. He’s incredibly knowledgeable about the human body and takes the time to understand your personal concerns. He’s helped me recover from multiple injuries and health issues along the way, always adjusting my program to keep me safe and moving forward. Highly recommend Hayden to anyone looking for a trainer who genuinely cares about your long-term health.",
+    quote: "I've trained with Hayden for over 10 years. He’s incredibly knowledgeable about the human body and takes the time to understand your personal concerns. He’s helped me recover from multiple injuries and health issues along the way, always adjusting my programme to keep me safe and moving forward. Highly recommend Hayden to anyone looking for a trainer who genuinely cares about your long-term health.",
     author: "Melanie Grace",
     subtitle: "Verified Client · 10+ Year Partnership"
   },
   {
     category: "Low-Intimidation Environment",
-    quote: "What a gem of a training space and personal trainer. The atmosphere is 100% supportive with zero judgment. Trainers, equipment, and the people coming here are pure gold.",
+    quote: "What a gem of a training space and personal trainer. The atmosphere is 100% supportive with zero judgement. Trainers, equipment, and the people coming here are pure gold.",
     author: "Katie Roggisch",
     subtitle: "Boutique In-Person Client"
   },

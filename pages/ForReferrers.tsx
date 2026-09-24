@@ -87,7 +87,7 @@ export const ForReferrers: React.FC = () => {
                 OUR SCOPE & COLLABORATION MODEL
               </span>
               <p className="font-serif italic text-sand-50 text-sm sm:text-base leading-relaxed m-0">
-                “You maintain pharmacotherapy, dose titration, and medical oversight. WRK delivers supervised, joint-friendly progressive resistance training, sarcopenia defense, and practical protein habit coaching.”
+                “You maintain pharmacotherapy, dose titration, and medical oversight. WRK delivers supervised, joint-friendly progressive resistance training, sarcopenia defence, and practical protein habit coaching.”
               </p>
             </div>
           </div>
@@ -119,7 +119,7 @@ export const ForReferrers: React.FC = () => {
                 OUR SCOPE & COLLABORATION MODEL
               </span>
               <blockquote className="font-serif text-lg sm:text-xl text-sand-50 italic leading-snug m-0">
-                “You maintain pharmacotherapy, dose titration, and medical oversight. WRK delivers supervised, joint-friendly progressive resistance training, sarcopenia defense, and practical protein habit coaching.”
+                “You maintain pharmacotherapy, dose titration, and medical oversight. WRK delivers supervised, joint-friendly progressive resistance training, sarcopenia defence, and practical protein habit coaching.”
               </blockquote>
             </div>
           </section>
@@ -254,7 +254,7 @@ export const ForReferrers: React.FC = () => {
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
                 <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
-                  <span>Sarcopenia Mitigation & Bone Mineral Defense</span>
+                  <span>Sarcopenia Mitigation & Bone Mineral Defence</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
                   Minimum effective dose progressive loading (2–3x/week) targeting multi-joint functional patterns to stimulate myofibrillar protein synthesis and preserve functional independence.
@@ -311,7 +311,7 @@ export const ForReferrers: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
                 <span className="font-bold text-charcoal block mb-1">Parkinson’s Disease:</span>
-                Motor recruitment, balance, and gait stabilization.
+                Motor recruitment, balance, and gait stabilisation.
               </div>
               <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
                 <span className="font-bold text-charcoal block mb-1">Post-Cancer Oncology Recovery:</span>

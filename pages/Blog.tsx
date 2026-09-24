@@ -53,7 +53,7 @@ export const Blog: React.FC = () => {
     "@type": "Blog",
     "name": "WRK GLP-1 Fitness Library",
     "url": "https://www.wrkpersonaltraining.co.nz/blog",
-    "description": "Evidence-informed guides and essays on strength training, lean muscle preservation, protein fueling, and sustainable habits alongside medical weight loss.",
+    "description": "Evidence-informed guides and essays on strength training, lean muscle preservation, protein fuelling, and sustainable habits alongside medical weight loss.",
     "publisher": {
       "@type": "HealthAndFitnessBusiness",
       "name": "WRK Personal Training"
@@ -80,7 +80,7 @@ export const Blog: React.FC = () => {
           </h1>
           
           <p className="text-charcoal/80 max-w-xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Practical guidance for training, low-appetite fueling, and long-term capability alongside medical weight loss.
+            Practical guidance for training, low-appetite fuelling, and long-term capability alongside medical weight loss.
           </p>
         </section>
 

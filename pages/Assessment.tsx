@@ -125,7 +125,7 @@ export const Assessment: React.FC = () => {
       <div className="bg-canvas min-h-[90vh] py-14 px-4 sm:px-6 flex flex-col justify-center items-center font-sans selection:bg-spruce-800 selection:text-sand-50">
         <SeoHead 
           title="GLP-1 Fitness Assessment | WRK Personal Training"
-          description="Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customized 12-week training recommendation."
+          description="Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customised 12-week training recommendation."
         />
         <div className="w-full max-w-2xl bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm relative text-center">
           <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-spruce-800 block mb-4">
@@ -143,7 +143,7 @@ export const Assessment: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-charcoal/60 mb-8 font-medium">
             <span className="flex items-center gap-1.5">⏱ Takes ~2 minutes</span>
             <span>•</span>
-            <span className="flex items-center gap-1.5">🎯 100% Free & Personalized</span>
+            <span className="flex items-center gap-1.5">🎯 100% Free & Personalised</span>
             <span>•</span>
             <span className="flex items-center gap-1.5">🔒 No spam guarantee</span>
           </div>
@@ -176,7 +176,7 @@ export const Assessment: React.FC = () => {
             Calibrating your baseline...
           </h2>
           <p className="text-xs text-charcoal/70 leading-relaxed">
-            Evaluating training consistency, low-appetite fueling, and protein preservation markers.
+            Evaluating training consistency, low-appetite fuelling, and protein preservation markers.
           </p>
         </div>
       </div>
@@ -194,7 +194,7 @@ export const Assessment: React.FC = () => {
               DIAGNOSTIC CALCULATION COMPLETE
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-charcoal mb-2 font-bold tracking-tight">
-              Your GLP-1 Muscle Defense Profile is Ready.
+              Your GLP-1 Muscle Defence Profile is Ready.
             </h2>
             <p className="text-sm text-charcoal/70 max-w-md mx-auto leading-relaxed">
               We have mapped your responses across strength stimulus, protein pacing, and recovery capacity.
@@ -206,7 +206,7 @@ export const Assessment: React.FC = () => {
               Unlock Your Custom Action Plan
             </h3>
             <p className="text-xs text-charcoal/70">
-              Where should we send your score, pillar breakdown, and personalized 7-day strategy?
+              Where should we send your score, pillar breakdown, and personalised 7-day strategy?
             </p>
           </div>
 
@@ -261,7 +261,7 @@ export const Assessment: React.FC = () => {
               disabled={isSubmitting}
               className="w-full bg-spruce-800 hover:bg-spruce-900 disabled:opacity-50 text-sand-50 py-4 rounded-md text-xs uppercase tracking-widest font-semibold transition-colors flex items-center justify-center shadow-sm mt-4"
             >
-              Reveal My Muscle Defense Score & Action Plan →
+              Reveal My Muscle Defence Score & Action Plan →
             </button>
 
             <p className="text-[11px] text-charcoal/50 text-center leading-relaxed pt-2">
@@ -282,7 +282,7 @@ export const Assessment: React.FC = () => {
       <div className="bg-canvas min-h-screen py-14 px-4 sm:px-6 font-sans selection:bg-spruce-800 selection:text-sand-50">
         <SeoHead 
           title="Your GLP-1 Fitness Action Plan | WRK Personal Training"
-          description="Your personalized GLP-1 Fitness Assessment results: review your score, pillar breakdowns, and next-step coaching pathway."
+          description="Your personalised GLP-1 Fitness Assessment results: review your score, pillar breakdowns, and next-step coaching pathway."
         />
 
         <div className="max-w-3xl mx-auto space-y-12">
@@ -293,7 +293,7 @@ export const Assessment: React.FC = () => {
               YOUR GLP-1 ASSESSMENT SUMMARY
             </span>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal mb-4 font-bold tracking-tight">
-              Your Personalized Action Plan.
+              Your Personalised Action Plan.
             </h1>
             <p className="text-charcoal/80 text-base max-w-xl mx-auto leading-relaxed">
               Based on your responses, here is an objective appraisal of your current routine and actionable steps to safeguard your strength.
@@ -315,7 +315,7 @@ export const Assessment: React.FC = () => {
               {result.overallScore >= 80 
                 ? "You've built a solid foundation. The focus now is progressive resistance, recovery pacing, and making your approach sustainable long after medication."
                 : result.overallScore >= 60
-                ? "You're already doing several key things well. Your biggest leverage points are optimizing protein distribution and stabilizing training frequency through energy dips."
+                ? "You're already doing several key things well. Your biggest leverage points are optimising protein distribution and stabilising training frequency through energy dips."
                 : "You have several high-value areas where targeted adjustments in protein intake and joint-friendly resistance training will protect your metabolic health."}
             </p>
           </div>
@@ -501,7 +501,7 @@ export const Assessment: React.FC = () => {
               Can't commit to weekly 1-on-1 coaching right now?
             </h3>
             <p className="text-xs sm:text-sm text-charcoal/80 leading-relaxed max-w-md mx-auto mb-6">
-              If our in-person roster is full or you prefer training on your own, grab the <strong>$29 GLP-1 Muscle Defense Tool Kit</strong>: 12-week lifting templates, low-appetite meal builders, and injection-day pacing guides.
+              If our in-person roster is full or you prefer training on your own, grab the <strong>$29 GLP-1 Muscle Defence Tool Kit</strong>: 12-week lifting templates, low-appetite meal builders, and injection-day pacing guides.
             </p>
             <Link
               to="/toolkit"

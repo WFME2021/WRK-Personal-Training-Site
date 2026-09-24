@@ -14,7 +14,7 @@ export const GOAL_PROTOCOLS: Record<GoalType, { title: string; description: stri
   [GoalType.FAT_LOSS]: {
     title: "Caloric Deficit & Protein Leverage",
     description: "You cannot out-train a bad diet. We use training to preserve muscle while the diet handles the fat loss.",
-    bullet: "The 30/30 Rule: Eat 30g of protein within 30 minutes of waking to stabilize blood sugar for the day."
+    bullet: "The 30/30 Rule: Eat 30g of protein within 30 minutes of waking to stabilise blood sugar for the day."
   },
   [GoalType.PAIN_FREE]: {
     title: "Structural Balance & Tempo",

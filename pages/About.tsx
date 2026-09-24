@@ -25,7 +25,7 @@ export const About: React.FC = () => {
         "addressCountry": "NZ"
       }
     },
-    "description": "Hayden Richards is a professional personal trainer with over 20 years experience specializing in GLP-1 fitness coaching and muscle preservation in Christchurch, NZ."
+    "description": "Hayden Richards is a professional personal trainer with over 20 years experience specialising in GLP-1 fitness coaching and muscle preservation in Christchurch, NZ."
   };
 
   return (
@@ -132,7 +132,7 @@ export const About: React.FC = () => {
                     Muscular Defence First
                   </h3>
                   <p className="text-sm text-charcoal/70 leading-relaxed">
-                    Rapid weight loss without targeted resistance training can sacrifice lean muscle and resting metabolism. We prioritize joint-friendly lifting patterns so the weight lost is fat, while your physical strength stays protected.
+                    Rapid weight loss without targeted resistance training can sacrifice lean muscle and resting metabolism. We prioritise joint-friendly lifting patterns so the weight lost is fat, while your physical strength stays protected.
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">

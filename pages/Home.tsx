@@ -119,7 +119,7 @@ export const Home: React.FC = () => {
               to="/programs"
               className="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-3.5 text-xs font-semibold uppercase tracking-widest rounded-md text-center transition-colors backdrop-blur-sm"
             >
-              View Coaching & Programs
+              View Coaching & Programmes
             </Link>
           </div>
           <p className="text-xs text-sand-200/70 mt-4">In-person training in Christchurch · Online coaching worldwide.</p>
@@ -205,7 +205,7 @@ export const Home: React.FC = () => {
             <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center font-serif font-bold text-sm mb-4">01</div>
-                <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Muscle Defense</h3>
+                <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Muscle Defence</h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
                   Targeted lifting protocols designed to stop lean tissue loss in its tracks.
                 </p>
@@ -215,7 +215,7 @@ export const Home: React.FC = () => {
             <div className="bg-white rounded-xl border border-charcoal/5 p-6 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center font-serif font-bold text-sm mb-4">02</div>
-                <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Low-Appetite Fueling</h3>
+                <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Low-Appetite Fuelling</h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
                   Practical protein and meal strategies you can hit even when hunger is zero.
                 </p>
@@ -253,7 +253,7 @@ export const Home: React.FC = () => {
             <div className="w-full max-w-[340px] aspect-[4/5] rounded-2xl overflow-hidden border border-charcoal/10 shadow-sm relative">
               <img 
                 src="https://i.postimg.cc/ZYHDT3kr/Screen-Shot-2026-06-23-at-2-27-18-PM.png"
-                alt="Hayden Richards, Personal Trainer in Christchurch specializing in GLP-1 fitness coaching"
+                alt="Hayden Richards, Personal Trainer in Christchurch specialising in GLP-1 fitness coaching"
                 className="w-full h-full object-cover"
               />
             </div>

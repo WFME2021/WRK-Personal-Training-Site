@@ -286,7 +286,7 @@ export const ProteinTargeter: React.FC = () => {
               Hitting your protein target when appetite is zero feels impossible.
             </h3>
             <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
-              In our coaching programs, we use small, dense protein anchors that digest easily without leaving you feeling uncomfortably full or sick.
+              In our coaching programmes, we use small, dense protein anchors that digest easily without leaving you feeling uncomfortably full or sick.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <Link 

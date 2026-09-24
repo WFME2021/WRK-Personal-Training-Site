@@ -73,7 +73,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </div>
               </div>
             </div>
-            <Link to="/programs" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Programs</Link>
+            <Link to="/programs" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Programmes</Link>
             <Link to="/tools" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Tools</Link>
             <Link to="/blog" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Blog</Link>
             <Link to="/contact" className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 border border-sand-200/20 rounded-md px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-colors">Contact</Link>
@@ -139,7 +139,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
              )}
            </div>
            <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[56px] flex items-center px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors">
-             Programs
+             Programmes
            </Link>
            <Link onClick={() => setIsMenuOpen(false)} to="/tools" className="h-[56px] flex items-center px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors">
              Tools
