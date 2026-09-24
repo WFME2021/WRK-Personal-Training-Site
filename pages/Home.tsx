@@ -105,7 +105,7 @@ export const Home: React.FC = () => {
           </h1>
 
           <p className="text-sand-50/90 text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
-            Specialist coaching to safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management.
+            Specialist strength coaching to keep your muscle, protect your metabolism, and stay strong while on weight loss medication.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4">
@@ -113,7 +113,7 @@ export const Home: React.FC = () => {
               to="/assessment"
               className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 border border-sand-200/20 px-6 py-3.5 text-xs font-semibold uppercase tracking-widest rounded-md text-center transition-colors shadow-lg"
             >
-              Take the Free GLP-1 Fitness Assessment
+              Get Your Free GLP-1 Muscle & Protein Score (3-Min Assessment) →
             </Link>
             <Link
               to="/programs"
@@ -175,7 +175,7 @@ export const Home: React.FC = () => {
                   02 · REAL-WORLD CAPABILITY
                 </span>
                 <p className="text-sm md:text-base text-charcoal/80 leading-relaxed">
-                  The goal isn't simply to weigh less. It’s to ensure that when the weight comes off, you maintain your resting metabolic rate, preserve joint stability, and carry everyday physical energy into your life and work.
+                  The goal isn’t just a smaller number on the scale. It’s making sure you don't lose your strength, wreck your metabolism, or feel completely drained doing normal daily tasks.
                 </p>
               </div>
 
@@ -227,7 +227,7 @@ export const Home: React.FC = () => {
                 <div className="w-8 h-8 rounded-md bg-sand-100 text-spruce-800 flex items-center justify-center font-serif font-bold text-sm mb-4">03</div>
                 <h3 className="font-serif text-lg font-semibold text-charcoal mb-2">Hydration & GI Support</h3>
                 <p className="text-sm text-charcoal/70 leading-relaxed">
-                  Fluid and electrolyte routines built for delayed gastric digestion.
+                  Hydration and mineral routines designed for slower stomach digestion and nausea.
                 </p>
               </div>
             </div>
@@ -301,7 +301,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Testimonials */}
-      <Testimonials />
+      <Testimonials contextBridge="Before medical weight loss protocols emerged, Hayden spent 20 years managing complex rehabilitation, metabolic shifts, and joint health. Here is what long-term care looks like in practice:" />
 
       {/* 7. Final Banner */}
       <section className="bg-spruce-800 text-sand-50 py-16 px-4 md:px-8 text-center">

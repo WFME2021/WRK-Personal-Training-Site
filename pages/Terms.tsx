@@ -29,8 +29,7 @@ export const Terms: React.FC = () => {
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li>1:1 in-person coaching (Christchurch)</li>
                 <li>Online coaching (12-week minimum)</li>
-                <li>Corporate wellness (annual programme)</li>
-                <li>42-Day Reset (self-guided programme, one-time payment)</li>
+                <li>$29 Self-Directed GLP-1 Tool Kit (digital guide, one-time payment)</li>
               </ul>
             </div>
 
@@ -52,7 +51,6 @@ export const Terms: React.FC = () => {
               <h2 className="text-2xl font-bold text-text-primary mb-4">5) Minimum terms</h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Online coaching: 12-week minimum commitment.</li>
-                <li>Corporate programme: annual (12-month) package unless agreed otherwise in writing.</li>
               </ul>
             </div>
 
@@ -81,7 +79,7 @@ export const Terms: React.FC = () => {
 
             <div>
               <h2 className="text-2xl font-bold text-text-primary mb-4">9) Digital services and third-party platforms</h2>
-              <p>Some services may be delivered through third-party platforms (e.g., training app providers, payment processors). Your use of those platforms may be subject to their own terms. For example, the 42-Day Reset purchase and access may involve the WRK Training App and/or Stripe.</p>
+              <p>Some services may be delivered through third-party platforms (e.g., training app providers, payment processors). Your use of those platforms may be subject to their own terms. For example, the $29 Self-Directed GLP-1 Tool Kit purchase and digital downloads are delivered securely online and processed via Stripe.</p>
             </div>
 
             <div>

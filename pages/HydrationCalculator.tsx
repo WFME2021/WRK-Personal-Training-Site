@@ -533,17 +533,17 @@ export const HydrationCalculator: React.FC = () => {
 
           <div className="bg-white p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm mb-12 text-left">
             <h3 className="font-serif text-[24px] md:text-[28px] text-[#2C3539] mb-4">
-              Knowing your targets is step one. Hitting them consistently is step two.
+              Struggling with injection-day nausea or low energy?
             </h3>
             <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
-              Reduced appetite, nausea, and low energy can make meeting your daily targets challenging. Our 1-on-1 coaching builds progressive strength training and realistic nutrition habits tailored around your medication schedule.
+              Slower stomach emptying completely changes fluid balance. Let's calibrate your hydration and minerals around your workout schedule.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <Link 
-                to="/online-coaching" 
+                to="/contact" 
                 className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
               >
-                Explore 1-on-1 Coaching
+                Book a 20-Minute Strategy Chat →
               </Link>
               <Link 
                 to="/assessment" 

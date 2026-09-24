@@ -31,27 +31,15 @@ export const Refunds: React.FC = () => {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-text-primary mb-4">3) Corporate wellness (annual programme)</h2>
-              <p>Corporate programmes are typically sold as an annual (12-month) package.</p>
-              <p className="mt-4">Invoicing and renewal terms will be confirmed in writing with the business.</p>
-              <p className="mt-4">If a company needs to end early, we’ll handle it case-by-case, aligned with the written agreement.</p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-text-primary mb-4">4) 42-Day Reset (one-time payment — NZD $47)</h2>
+              <h2 className="text-2xl font-bold text-text-primary mb-4">3) $29 Self-Directed GLP-1 Tool Kit (one-time payment — NZD $29)</h2>
               <p className="font-bold text-text-primary mb-2">7-day conditional refund policy:</p>
-              <p>You may request a refund within 7 days of purchase if:</p>
-              <ul className="list-disc pl-6 mt-4 space-y-2">
-                <li>you have not accessed or started the programme content inside the platform, and</li>
-                <li>you have not downloaded/used any gated programme materials (where applicable).</li>
-              </ul>
-              <p className="mt-4">If you’ve accessed/started the programme, refunds are generally not offered (digital delivery).</p>
-              <p className="mt-4 text-sm italic">Note: Payment processing and access may involve third-party platforms (e.g., WRK Training App/Stripe).</p>
+              <p>You may request a refund within 7 days of purchase if you have not downloaded the digital toolkit materials or accessed the resource files. Due to the immediate delivery of digital goods, downloaded assets are non-refundable.</p>
+              <p className="mt-4 text-sm italic">Note: Payment processing and secure download links are handled via Stripe.</p>
               <p className="mt-4">To request a refund, contact us via the Contact page with your purchase email and the date of purchase.</p>
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-text-primary mb-4">5) Consumer rights (NZ)</h2>
+              <h2 className="text-2xl font-bold text-text-primary mb-4">4) Consumer rights (NZ)</h2>
               <p>Nothing in this policy limits your rights under New Zealand consumer law where those rights apply.</p>
             </div>
           </div>

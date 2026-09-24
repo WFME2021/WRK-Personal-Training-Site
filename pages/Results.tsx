@@ -19,10 +19,10 @@ export const Results: React.FC = () => {
   const { name, answers, riskProfile = 'Medium' } = state;
 
   let riskLevel = riskProfile;
-  let riskDescription = 'Your variables suggest a moderate pattern. While your general activity pathway may be positive, clinical trends indicate that inconsistent load progression can create vulnerabilities where the body may draw on muscle tissue for adaptive fuel.';
+  let riskDescription = 'Your routine has good elements, but without steadily challenging your muscles, your body starts breaking down muscle tissue instead of fat.';
   
   if (riskProfile === 'High') {
-    riskDescription = 'Your tracking inputs indicate a behavioral pattern that frequently correlates with potential accelerated lean mass and skeletal density reduction during periods of rapid weight loss. Targeted structural resistance training is highly recommended to support metabolism.';
+    riskDescription = 'Warning: Your answers show a high risk of losing muscle and bone strength. When weight drops fast without the right lifting routine, your body burns through muscle tissue for fuel.';
   } else if (riskProfile === 'Low') {
     riskDescription = 'Your current tracking trends match well with recommended sports science frameworks designed to help keep lean skeletal framework structures protected during metabolic updates. Consistency is key to long-term preservation.';
   }

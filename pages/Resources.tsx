@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 
 export const Resources: React.FC = () => {
@@ -180,6 +180,30 @@ export const Resources: React.FC = () => {
                   WRK Personal Training does not provide medical advice, diagnosis, or clinical prescriptions. Always coordinate your physical training and nutrition habits directly with your general practitioner or specialist medical team.
                 </p>
               </div>
+            </div>
+          </section>
+
+          {/* Closing Dual-Track CTA Banner */}
+          <section className="bg-navy-mid border border-navy-light rounded-[20px] p-8 md:p-10 text-center space-y-6 mt-12">
+            <h2 className="font-display text-[26px] md:text-[34px] uppercase text-white tracking-tight">
+              Put the Clinical Research Into Practice.
+            </h2>
+            <p className="font-sans text-[15px] md:text-[16px] text-off-white/85 max-w-2xl mx-auto leading-relaxed">
+              Whether managing patients on GLP-1 therapy or navigating medical weight loss yourself, we turn these clinical trials into safe, minimum-effective-dose strength training.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Link
+                to="/for-referrers"
+                className="bg-sand-50 hover:bg-white text-navy-dark font-sans font-bold text-xs uppercase tracking-widest px-6 py-4 rounded-md transition-all shadow-sm w-full sm:w-auto text-center"
+              >
+                Refer a Patient (Healthcare Providers) →
+              </Link>
+              <Link
+                to="/assessment"
+                className="bg-orange-burnt hover:bg-orange-burnt/90 text-white font-sans font-bold text-xs uppercase tracking-widest px-6 py-4 rounded-md transition-all shadow-sm w-full sm:w-auto text-center"
+              >
+                Take the 2-Minute Fitness Assessment →
+              </Link>
             </div>
           </section>
 

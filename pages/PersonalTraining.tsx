@@ -291,7 +291,7 @@ export const PersonalTraining: React.FC = () => {
               📍 12 Show Place, Addington, Christchurch
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-4">
-              Weekly 1-on-1 In-Person Coaching
+              Weekly 1-on-1 In-Person Coaching & Muscle Defense System
             </h3>
 
             <div className="flex flex-wrap items-baseline gap-2 mb-2">
@@ -303,29 +303,21 @@ export const PersonalTraining: React.FC = () => {
             </p>
 
             <ul className="space-y-3.5 my-8 text-sand-100 text-sm">
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Weekly 1-on-1 boutique in-person coaching session</span>
+              <li className="flex items-start gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
+                <span><strong>Weekly 1-on-1 In-Person Coaching Session:</strong> Hands-on joint alignment, loading mechanics, and real-time intensity calibration at our quiet Addington studio.</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Real-time technique correction and intensity management</span>
+              <li className="flex items-start gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
+                <span><strong>Full Independent WRK App Programming:</strong> Exactly what to do on your non-coaching days so you never guess sets, reps, or weights.</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Full independent workout programming via the WRK App</span>
+              <li className="flex items-start gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
+                <span><strong>Digestible Protein & GI Fueling Protocol:</strong> Practical daily targets built around nausea, early fullness, and appetite drops.</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Tailored nutrition guidance and protein targets</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Dedicated GLP-1 muscle preservation protocols</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-sand-200 shrink-0" />
-                <span>Full access to our boutique Addington facility during sessions</span>
+              <li className="flex items-start gap-3">
+                <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
+                <span><strong>Boutique Studio Access:</strong> Calm, uncrowded space—no waiting for gear, free parking right outside the door.</span>
               </li>
             </ul>
 
@@ -334,7 +326,7 @@ export const PersonalTraining: React.FC = () => {
                 to="/contact"
                 className="bg-sand-100 text-spruce-900 hover:bg-white w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors shadow-sm"
               >
-                Book Your Consultation & Facility Walkthrough
+                Check Studio Availability & Book a 20-Min Consult →
               </Link>
             </div>
           </div>
@@ -449,7 +441,7 @@ export const PersonalTraining: React.FC = () => {
                 type="submit"
                 className="inline-flex items-center justify-center bg-spruce-800 text-sand-50 hover:bg-spruce-900 rounded-md px-8 py-3.5 text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm"
               >
-                Continue to Contact Form <ArrowRight size={15} className="ml-2" />
+                Match My Program & Book Consult → <ArrowRight size={15} className="ml-2" />
               </button>
             </div>
           </form>

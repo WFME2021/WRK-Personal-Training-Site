@@ -137,7 +137,7 @@ export const Assessment: React.FC = () => {
           </h1>
           
           <p className="text-charcoal/80 text-base sm:text-lg leading-relaxed max-w-lg mx-auto mb-8">
-            Are you getting the most from your medication? Evaluate your training frequency, protein baseline, and recovery capacity to identify your highest-leverage opportunities.
+            Check your lifting habits, daily protein, and recovery to see exactly what you need to change to protect your muscle.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-charcoal/60 mb-8 font-medium">
@@ -241,7 +241,7 @@ export const Assessment: React.FC = () => {
 
             <div>
               <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal/70 mb-1.5">
-                Mobile / WhatsApp Number (For SMS Link)
+                Mobile / WhatsApp Number
               </label>
               <input
                 type="tel"
@@ -251,6 +251,9 @@ export const Assessment: React.FC = () => {
                 required
                 className="w-full px-4 py-3.5 rounded-xl border border-charcoal/15 bg-white focus:outline-none focus:ring-1 focus:ring-spruce-800 text-sm text-charcoal"
               />
+              <p className="text-[11px] text-charcoal/60 mt-1.5 leading-relaxed text-left">
+                (Used only to text your private score link so you don't lose it. Zero marketing phone calls. Ever.)
+              </p>
             </div>
 
             <button
@@ -490,6 +493,22 @@ export const Assessment: React.FC = () => {
                 </p>
               </div>
             )}
+          </div>
+
+          {/* Elevated $29 Downsell Card */}
+          <div className="bg-white rounded-2xl border border-charcoal/10 p-6 sm:p-8 text-center max-w-2xl mx-auto shadow-sm mt-8">
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-charcoal mb-2">
+              Can't commit to weekly 1-on-1 coaching right now?
+            </h3>
+            <p className="text-xs sm:text-sm text-charcoal/80 leading-relaxed max-w-md mx-auto mb-6">
+              If our in-person roster is full or you prefer training on your own, grab the <strong>$29 GLP-1 Muscle Defense Tool Kit</strong>: 12-week lifting templates, low-appetite meal builders, and injection-day pacing guides.
+            </p>
+            <Link
+              to="/toolkit"
+              className="inline-flex items-center justify-center bg-spruce-800 hover:bg-spruce-900 text-sand-50 font-semibold text-xs uppercase tracking-widest px-6 py-3.5 rounded-md transition-colors shadow-sm"
+            >
+              Get the $29 Self-Directed Tool Kit →
+            </Link>
           </div>
 
         </div>

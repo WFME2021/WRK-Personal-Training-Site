@@ -240,10 +240,10 @@ export const Blog: React.FC = () => {
               THE WRK DISPATCH
             </span>
             <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-3 tracking-tight">
-              Intelligent Guidance Delivered Weekly
+              Get the GLP-1 Muscle Dispatch
             </h2>
             <p className="text-charcoal/70 text-sm max-w-md mx-auto mb-6 leading-relaxed">
-              Join adults receiving evidence-based protocols on GLP-1 fitness, protein anchoring, and habit preservation.
+              Short, practical emails on strength training, protein pacing, and managing fatigue while on GLP-1 medications. No spam. Unsubscribe whenever you want.
             </p>
 
             {newsletterSubmitted ? (

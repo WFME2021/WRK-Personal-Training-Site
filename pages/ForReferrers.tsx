@@ -106,7 +106,7 @@ export const ForReferrers: React.FC = () => {
             </h2>
             <div className="space-y-4 text-charcoal/80 text-base leading-relaxed">
               <p>
-                Clinical trial DXA substudies demonstrate that without progressive resistance stimulus and adequate protein, lean tissue loss (skeletal muscle and bone mineral density) can account for <strong>25% to 40% of total mass reduced</strong>.
+                Clinical trial DXA substudies demonstrate that without progressive resistance stimulus and adequate protein, lean tissue loss (skeletal muscle and bone mineral density) can account for <strong>25% to 40% of total mass reduced</strong> <em>(e.g., Wilding et al., STEP 1 trial DXA sub-analysis)</em>.
               </p>
               <p>
                 In a standard 15-minute consultation, guiding a patient through multi-joint resistance loading, protein pacing, and hydration mechanics is impractical. WRK Personal Training serves as your reliable lifestyle extension in Christchurch and nationwide online.
@@ -395,14 +395,14 @@ export const ForReferrers: React.FC = () => {
                 </h4>
               </div>
               <p className="text-sm text-charcoal/80 leading-relaxed">
-                With documented patient consent, we provide a concise 2-sentence consult summary to your practice inbox detailing:
+                With written patient consent, we deliver a concise 2-sentence confirmation via secure PDF/Healthlink-friendly email to your practice inbox:
               </p>
-              <ol className="list-decimal pl-6 text-sm text-charcoal/80 space-y-1 font-medium">
-                <li>Baseline functional capacity and resistance schedule initiated.</li>
-                <li>Daily protein baseline and hydration strategy established.</li>
-              </ol>
+              <ul className="list-disc pl-6 text-sm text-charcoal/80 space-y-1 font-medium">
+                <li>Baseline functional screen completed; 2x/wk supervised loading protocol initiated.</li>
+                <li>Digestible protein target (1.2–1.4 g/kg) and hydration plan established.</li>
+              </ul>
               <p className="text-xs text-charcoal/70 pt-1">
-                This confirms active lifestyle intervention for your records with zero administrative burden on your clinic.
+                Any adverse symptoms, sustained nausea, or clinical red flags are immediately routed back to your clinic.
               </p>
             </div>
           </section>

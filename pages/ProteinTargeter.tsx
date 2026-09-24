@@ -199,12 +199,12 @@ export const ProteinTargeter: React.FC = () => {
                 <p className="mb-4">Two of the most useful tools in your toolkit are:</p>
                 <div className="space-y-4">
                   <div className="bg-[#FAFAF9] p-5 rounded-xl border border-neutral-200">
-                    <h4 className="font-serif text-[18px] text-[#2C3539] mb-2">Resistance training</h4>
-                    <p className="text-[15px]">Progressive strength training provides your muscles with a reason to adapt and maintain their capacity.</p>
+                    <h4 className="font-serif text-[18px] text-[#2C3539] mb-2">Lifting weights</h4>
+                    <p className="text-[15px]">Gives your body a reason to hold onto muscle.</p>
                   </div>
                   <div className="bg-[#FAFAF9] p-5 rounded-xl border border-neutral-200">
                     <h4 className="font-serif text-[18px] text-[#2C3539] mb-2">Adequate protein</h4>
-                    <p className="text-[15px]">Protein provides the amino acids your body needs to support muscle protein synthesis and repair.</p>
+                    <p className="text-[15px]">Gives your body the building blocks to repair and keep that muscle.</p>
                   </div>
                 </div>
               </div>
@@ -283,17 +283,17 @@ export const ProteinTargeter: React.FC = () => {
         <div className="mb-24 max-w-3xl mx-auto">
           <div className="bg-white p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm mb-12 text-left">
             <h3 className="font-serif text-[24px] md:text-[28px] text-[#2C3539] mb-4">
-              Knowing your targets is step one. Hitting them consistently is step two.
+              Hitting your protein target when appetite is zero feels impossible.
             </h3>
             <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
-              Reduced appetite, nausea, and low energy can make meeting your daily targets challenging. Our 1-on-1 coaching builds progressive strength training and realistic nutrition habits tailored around your medication schedule.
+              In our coaching programs, we use small, dense protein anchors that digest easily without leaving you feeling uncomfortably full or sick.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <Link 
-                to="/online-coaching" 
+                to="/contact" 
                 className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
               >
-                Explore 1-on-1 Coaching
+                Apply for 1-on-1 Nutrition Pacing Support →
               </Link>
               <Link 
                 to="/assessment" 

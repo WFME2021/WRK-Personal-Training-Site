@@ -22,7 +22,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
   authorName
 }) => {
   const location = useLocation();
-  const canonicalUrl = `https://www.wrkpersonaltraining.co.nz${location.pathname}`;
+  const canonicalUrl = `https://wrkpt.co.nz${location.pathname}`;
 
   useEffect(() => {
     // 1. Update Title

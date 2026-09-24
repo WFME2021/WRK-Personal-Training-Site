@@ -35,7 +35,10 @@ const testimonials: TestimonialItem[] = [
   }
 ];
 
-export const Testimonials: React.FC<{ className?: string }> = ({ className = '' }) => {
+export const Testimonials: React.FC<{ className?: string; contextBridge?: string }> = ({ 
+  className = '',
+  contextBridge
+}) => {
   return (
     <section className={`py-20 px-4 md:px-8 bg-canvas border-t border-charcoal/5 ${className}`}>
       <div className="max-w-6xl mx-auto">
@@ -50,6 +53,11 @@ export const Testimonials: React.FC<{ className?: string }> = ({ className = '' 
           <p className="text-charcoal/75 max-w-2xl text-base leading-relaxed">
             Whether navigating clinical recovery, adapting around injuries, or establishing sustainable strength habits for life—real experiences from long-term clients working with Hayden.
           </p>
+          {contextBridge && (
+            <div className="mt-5 p-4 rounded-xl bg-sand-100 border-l-4 border-spruce-800 text-charcoal/90 text-sm md:text-base leading-relaxed italic">
+              "{contextBridge}"
+            </div>
+          )}
         </div>
 
         {/* Testimonials Grid */}
