@@ -71,10 +71,10 @@ ${formData.message || '(No additional message provided)'}`
           DIRECT PROVIDER CHANNEL
         </span>
         <h3 className="font-serif text-2xl sm:text-3xl text-charcoal leading-tight mb-3 font-bold">
-          Clinician & Practice Inquiries
+          Healthcare Provider Enquiries & Material Requests
         </h3>
         <p className="text-sm text-charcoal/70 leading-relaxed">
-          Have questions about patient presentation suitability, scope of practice, or want physical clinic info cards for your consulting rooms? Send a message directly to Hayden.
+          Have questions about patient suitability, scope of practice, or want printed patient tear-sheets for your consulting rooms? Send a message directly to Hayden.
         </p>
       </div>
 
@@ -83,9 +83,9 @@ ${formData.message || '(No additional message provided)'}`
           <div className="w-14 h-14 bg-spruce-800/10 text-spruce-800 rounded-full flex items-center justify-center mb-6">
             <CheckCircle2 size={30} />
           </div>
-          <h4 className="font-serif text-2xl text-charcoal mb-2 font-bold">Practice Inquiry Received</h4>
+          <h4 className="font-serif text-2xl text-charcoal mb-2 font-bold">Practice Enquiry Received</h4>
           <p className="text-sm text-charcoal/80 leading-relaxed max-w-xl mb-6">
-            Thank you for reaching out. Hayden will review your inquiry and follow up directly with your practice within one business day.
+            Thank you for reaching out. Hayden will review your enquiry and follow up directly with your practice within one business day.
           </p>
           <button
             type="button"
@@ -103,7 +103,7 @@ ${formData.message || '(No additional message provided)'}`
             }}
             className="text-xs uppercase tracking-wider font-semibold text-spruce-800 hover:text-spruce-900 transition-colors underline underline-offset-4"
           >
-            Send another practice inquiry
+            Send another practice enquiry
           </button>
         </div>
       ) : (

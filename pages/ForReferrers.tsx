@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { SeoHead } from '../components/SeoHead';
-import { Copy, Check, Download, ShieldCheck, CheckCircle2, Phone, Mail, Clock, MapPin, Building, ArrowRight } from 'lucide-react';
+import { Copy, Check, Download, ShieldCheck, CheckCircle2, Phone, Mail, Clock, MapPin, Building } from 'lucide-react';
 import { ClinicianInquiryForm } from '../components/ClinicianInquiryForm';
 
 export const ForReferrers: React.FC = () => {
   const [copiedOption, setCopiedOption] = useState<'A' | 'B' | null>(null);
 
-  const snippetOptionA = `Hi [Name], to protect your muscle mass and metabolic rate while on your medication, I recommend pairing treatment with supervised resistance training. You can review the clinical lifestyle support from Hayden at WRK and arrange a consult here: wrkpersonaltraining.co.nz/glp1`;
+  const snippetOptionA = `Hi [Name], to protect your muscle mass and metabolic rate while on your medication, I recommend pairing treatment with supervised resistance training. You can review the lifestyle and strength coaching from Hayden at WRK and arrange a consult here: wrkpersonaltraining.co.nz/glp1`;
 
   const snippetOptionB = `Hi [Name], following up on our consultation regarding muscle preservation and nutrition habits alongside your GLP-1 therapy. Here is the patient guidance resource from WRK: wrkpersonaltraining.co.nz/glp1`;
 
@@ -35,9 +35,9 @@ export const ForReferrers: React.FC = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "name": "WRK Personal Training — Clinician Resource & Healthcare Provider Overview",
+    "name": "WRK Personal Training — Exercise Referral & Healthcare Provider Overview",
     "url": "https://wrkpersonaltraining.co.nz/for-referrers",
-    "description": "Supervised Sarcopenia Prevention, Progressive Strength & Metabolic Support for Patients on GLP-1 Therapy. Overview for general practitioners, practice nurses, and specialists.",
+    "description": "Safe, joint-friendly resistance coaching and high-protein habit support in Christchurch and nationwide online. A practical exercise partner for your medical weight loss patients.",
     "publisher": {
       "@type": "HealthAndFitnessBusiness",
       "name": "WRK Personal Training",
@@ -54,8 +54,8 @@ export const ForReferrers: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Clinician Resource & Healthcare Provider Overview | WRK Personal Training"
-        description="Supervised Sarcopenia Prevention, Progressive Strength & Metabolic Support for Patients on GLP-1 Therapy. Clinical lifestyle collaboration in Christchurch and New Zealand."
+        title="Exercise Referral & Healthcare Provider Overview | WRK Personal Training"
+        description="Safe, joint-friendly resistance coaching and high-protein habit support in Christchurch and nationwide online. A practical exercise partner for your medical weight loss patients."
         schema={schema}
       />
 
@@ -65,7 +65,7 @@ export const ForReferrers: React.FC = () => {
         <section className="relative min-h-[520px] md:min-h-[580px] flex items-center justify-center -mt-16 md:-mt-20 pt-28 pb-16 px-6 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2000&auto=format&fit=crop"
-            alt="Clinical Lifestyle Collaboration and Healthcare Provider Overview"
+            alt="Exercise Referral and Healthcare Provider Overview"
             className="absolute inset-0 w-full h-full object-cover object-center z-0"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/60 to-charcoal/40 mix-blend-multiply z-0" />
@@ -73,13 +73,13 @@ export const ForReferrers: React.FC = () => {
           {/* Hero Content Layer */}
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <span className="text-xs uppercase tracking-[0.25em] font-sans text-sand-200 font-semibold mb-4 block">
-              CLINICAL LIFESTYLE COLLABORATION
+              EXERCISE REFERRAL & LIFESTYLE PARTNERSHIP
             </span>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight leading-tight mb-6">
-              WRK Personal Training — Clinician Resource & Healthcare Provider Overview
+              Supervised Strength & Muscle Preservation for Patients on GLP-1 Therapy
             </h1>
             <p className="text-sand-100/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-              Supervised Sarcopenia Prevention, Progressive Strength & Metabolic Support for Patients on GLP-1 Therapy
+              Safe, joint-friendly resistance coaching and high-protein habit support in Christchurch and nationwide online. A practical exercise partner for your medical weight loss patients.
             </p>
 
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-3xl mx-auto text-sand-50 text-sm sm:text-base leading-relaxed shadow-lg">
@@ -87,7 +87,7 @@ export const ForReferrers: React.FC = () => {
                 OUR SCOPE & COLLABORATION MODEL
               </span>
               <p className="font-serif italic text-sand-50 text-sm sm:text-base leading-relaxed m-0">
-                “You maintain pharmacotherapy, dose titration, and medical oversight. WRK delivers supervised, joint-friendly progressive resistance training, sarcopenia defence, and practical protein habit coaching.”
+                “You manage pharmacotherapy, dose titration, and medical oversight. WRK provides the coaching, lifting mechanics, and uncrowded environment to ensure patients preserve lean muscle and physical capability while the weight comes off.”
               </p>
             </div>
           </div>
@@ -109,7 +109,7 @@ export const ForReferrers: React.FC = () => {
                 Clinical trial DXA substudies demonstrate that without progressive resistance stimulus and adequate protein, lean tissue loss (skeletal muscle and bone mineral density) can account for <strong>25% to 40% of total mass reduced</strong> <em>(e.g., Wilding et al., STEP 1 trial DXA sub-analysis)</em>.
               </p>
               <p>
-                In a standard 15-minute consultation, guiding a patient through multi-joint resistance loading, protein pacing, and hydration mechanics is impractical. WRK Personal Training serves as your reliable lifestyle extension in Christchurch and nationwide online.
+                In a standard 15-minute consultation, guiding a patient through safe resistance training, protein pacing, and hydration habits is impractical. Most patients are intimidated by commercial gyms and unsure how to lift safely. WRK serves as your reliable exercise coaching partner in Addington and nationwide online.
               </p>
             </div>
 
@@ -119,7 +119,7 @@ export const ForReferrers: React.FC = () => {
                 OUR SCOPE & COLLABORATION MODEL
               </span>
               <blockquote className="font-serif text-lg sm:text-xl text-sand-50 italic leading-snug m-0">
-                “You maintain pharmacotherapy, dose titration, and medical oversight. WRK delivers supervised, joint-friendly progressive resistance training, sarcopenia defence, and practical protein habit coaching.”
+                “You manage pharmacotherapy, dose titration, and medical oversight. WRK provides the coaching, lifting mechanics, and uncrowded environment to ensure patients preserve lean muscle and physical capability while the weight comes off.”
               </blockquote>
             </div>
           </section>
@@ -215,7 +215,7 @@ export const ForReferrers: React.FC = () => {
                   1-Page Practice Summary & Patient Tear-Sheet
                 </h4>
                 <p className="text-xs text-charcoal/70">
-                  Concise clinical summary and patient handout ready for practice desks.
+                  Concise practice summary and patient handout ready for consulting desks.
                 </p>
               </div>
               <a
@@ -225,7 +225,7 @@ export const ForReferrers: React.FC = () => {
                 className="inline-flex items-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-6 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors whitespace-nowrap shrink-0 shadow-xs"
               >
                 <Download size={15} />
-                <span>Download 1-Page Practice Summary & Patient Tear-Sheet (PDF)</span>
+                <span>Download Tear-Sheet (PDF)</span>
               </a>
             </div>
 
@@ -241,89 +241,91 @@ export const ForReferrers: React.FC = () => {
             </div>
           </section>
 
-          {/* 3. Clinical Focus Areas: What We Coach */}
+          {/* 3. What We Coach: Practical Exercise & Habit Foundations */}
           <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
             <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
-              3. CLINICAL FOCUS AREAS
+              3. WHAT WE COACH
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
-              Clinical Focus Areas: What We Coach
+              What We Coach: Practical Exercise & Habit Foundations
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
                 <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
-                  <span>Sarcopenia Mitigation & Bone Mineral Defence</span>
+                  <span>Skeletal Muscle & Bone Density Protection</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
-                  Minimum effective dose progressive loading (2–3x/week) targeting multi-joint functional patterns to stimulate myofibrillar protein synthesis and preserve functional independence.
+                  Minimum effective dose resistance training (2–3x/week) focused on multi-joint functional movements to stimulate muscle retention, protect bone density, and preserve daily physical independence.
                 </p>
               </div>
 
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
                 <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
-                  <span>Appetite-Calibrated Protein Pacing</span>
+                  <span>Practical Protein Habits for Low-Appetite Days</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
-                  Evidence-informed intake (1.2–1.6 g/kg/day) using nutrient-dense, low-volume whole foods structured to avoid nausea and respect early satiety.
+                  Evidence-informed daily targets (1.2–1.6 g/kg) using small, nutrient-dense whole foods and protein anchors designed to be manageable without causing nausea or overwhelming early fullness.
                 </p>
               </div>
 
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
                 <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
-                  <span>Hydration & Delayed Gastric Emptying</span>
+                  <span>Hydration & Fluid Balance Routines</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
-                  Fluid and electrolyte protocols designed to counter blunted thirst cues, maintain renal clearance, and prevent obstipation.
+                  Structured fluid and mineral routines designed around slower gastric digestion, blunted thirst cues, and constipation prevention.
                 </p>
               </div>
 
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
                 <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
-                  <span>Joint-Safe & Pain-Aware Regressions</span>
+                  <span>Joint-Friendly Adjustments for Deconditioned Adults</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
-                  Biomechanically sound loading adapted for deconditioned patients, osteoarthritis, and pre-existing musculoskeletal constraints.
+                  Biomechanically sound, low-impact exercise progressions adapted for beginners, osteoarthritis, and pre-existing musculoskeletal constraints.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* 4. 20+ Years of Condition-Aware Coaching Experience */}
+          {/* 4. Coach Experience & Qualifications */}
           <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
             <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
-              4. CLINICAL PRACTITIONER PEDIGREE
+              4. COACH EXPERIENCE & QUALIFICATIONS
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
               20+ Years of Condition-Aware Coaching Experience
             </h2>
             <p className="text-charcoal/80 text-base leading-relaxed">
-              Your patients are supported by experienced, accredited coaching—not an unvetted commercial gym floor trainer.
-            </p>
-            <p className="text-charcoal/80 text-base leading-relaxed">
-              Led by <strong>Hayden Richards</strong>, bringing over 20 years of one-on-one coaching experience alongside medical and clinical guidance:
+              Your patients are supported by an experienced, certified coach with over 20 years on the gym floor—not an unvetted commercial gym trainer. Led by <strong>Hayden Richards</strong>, operating strictly within the fitness coaching scope, using PAR-Q+ pre-screening, joint-friendly progressions, and open communication with your practice.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                <span className="font-bold text-charcoal block mb-1">Parkinson’s Disease:</span>
-                Motor recruitment, balance, and gait stabilisation.
-              </div>
-              <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                <span className="font-bold text-charcoal block mb-1">Post-Cancer Oncology Recovery:</span>
-                Energy pacing, fatigue titration, and lean mass rebuilding.
-              </div>
-              <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                <span className="font-bold text-charcoal block mb-1">Pre- & Post-Operative Arthroplasty (Knee/Hip):</span>
-                Joint alignment, mobility, and closed-chain strength restoration.
-              </div>
-              <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                <span className="font-bold text-charcoal block mb-1">Post-Cardiac Rehabilitation:</span>
-                Monitored exertion, hemodynamic awareness, and graded progression.
+            <div className="pt-2">
+              <h3 className="font-serif text-lg font-bold text-charcoal mb-4">
+                Experience adapting exercise around:
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
+                  <span className="font-bold text-charcoal block mb-1">Parkinson’s Disease:</span>
+                  Motor recruitment, balance, and gait stability.
+                </div>
+                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
+                  <span className="font-bold text-charcoal block mb-1">Post-Cancer Recovery:</span>
+                  Energy pacing, fatigue management, and gradual strength restoration.
+                </div>
+                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
+                  <span className="font-bold text-charcoal block mb-1">Joint Replacements (Knee/Hip):</span>
+                  Joint alignment, range of motion, and closed-chain strength rebuilding.
+                </div>
+                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
+                  <span className="font-bold text-charcoal block mb-1">Post-Cardiac Rehabilitation:</span>
+                  Monitored exertion, steady pacing, and graded movement progressions.
+                </div>
               </div>
             </div>
 
@@ -333,9 +335,9 @@ export const ForReferrers: React.FC = () => {
                 <ShieldCheck size={18} className="text-spruce-800 shrink-0" />
                 <span className="font-bold text-spruce-900">20+ Years Dedicated Coaching Experience</span>
                 <span className="text-charcoal/30 hidden sm:inline">·</span>
-                <span>Clean Scope of Practice Adherence</span>
+                <span>Clear Fitness Scope of Practice</span>
                 <span className="text-charcoal/30 hidden sm:inline">·</span>
-                <span>PAR-Q+ Medical Clearance Screening</span>
+                <span>PAR-Q+ Screening</span>
               </div>
             </div>
           </section>
@@ -353,67 +355,67 @@ export const ForReferrers: React.FC = () => {
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-3">
                 <div className="flex items-center gap-2 text-spruce-900 font-serif text-lg font-bold">
                   <Building size={20} className="text-spruce-800" />
-                  <span>Boutique Facility (12 Show Place, Addington)</span>
+                  <span>Boutique Private Studio (12 Show Place, Addington)</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed">
-                  A calm, low-density space shared with only a handful of members at any time—ideal for patients who feel uncomfortable or overwhelmed in standard commercial gym settings.
+                  A calm, uncrowded training space shared with only a few members at any time—ideal for patients who feel intimidated or overwhelmed in standard commercial gyms.
                 </p>
               </div>
 
               <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-3">
                 <div className="flex items-center gap-2 text-spruce-900 font-serif text-lg font-bold">
                   <MapPin size={20} className="text-spruce-800" />
-                  <span>Coach-Led Remote Training (New Zealand Nationwide)</span>
+                  <span>Remote Coaching (New Zealand Nationwide)</span>
                 </div>
                 <p className="text-sm text-charcoal/80 leading-relaxed">
-                  Delivered via the WRK App with video form review, habit tracking, and direct coach communication for regional patients.
+                  Delivered via the WRK Training App with video form review, habit tracking, and direct coach communication for patients outside Christchurch.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* 6. Scope of Practice & Closed-Loop Feedback */}
+          {/* 6. Clear Scope of Practice & Practice Updates */}
           <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
             <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
-              6. SCOPE OF PRACTICE & CLINICAL DOCUMENTATION
+              6. SCOPE OF PRACTICE & PRACTICE UPDATES
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
-              Scope of Practice & Closed-Loop Feedback
+              Clear Scope of Practice & Practice Updates
             </h2>
 
             <div className="bg-charcoal text-sand-50 p-6 sm:p-8 rounded-2xl">
               <p className="italic font-serif text-base sm:text-lg text-sand-100 leading-relaxed m-0">
-                “We operate strictly within the fitness and lifestyle scope. We never diagnose, manage clinical pathology, or adjust pharmacotherapy. Any medication side effects or medical questions are immediately redirected back to your practice.”
+                “We operate strictly within the fitness coaching scope. We never diagnose conditions, prescribe diets, or alter pharmacotherapy. Any medication side effects or clinical red flags are immediately redirected back to your practice.”
               </p>
             </div>
 
-            <div className="bg-sand-50/80 border border-spruce-800/30 p-6 sm:p-8 rounded-2xl space-y-3">
+            <div className="bg-sand-50/80 border border-spruce-800/30 p-6 sm:p-8 rounded-2xl space-y-4">
               <div className="flex items-center gap-3">
                 <CheckCircle2 size={24} className="text-spruce-800 shrink-0" />
                 <h4 className="font-serif text-xl font-bold text-charcoal">
-                  Closed-Loop Clinical Documentation
+                  Simple Updates for Your Records
                 </h4>
               </div>
               <p className="text-sm text-charcoal/80 leading-relaxed">
-                With written patient consent, we deliver a concise 2-sentence confirmation via secure PDF/Healthlink-friendly email to your practice inbox:
+                With documented patient consent, we can provide a brief 2-sentence confirmation to your practice inbox:
               </p>
-              <ul className="list-disc pl-6 text-sm text-charcoal/80 space-y-1 font-medium">
-                <li>Baseline functional screen completed; 2x/wk supervised loading protocol initiated.</li>
-                <li>Digestible protein target (1.2–1.4 g/kg) and hydration plan established.</li>
-              </ul>
-              <p className="text-xs text-charcoal/70 pt-1">
-                Any adverse symptoms, sustained nausea, or clinical red flags are immediately routed back to your clinic.
+              <ol className="list-decimal pl-6 text-sm text-charcoal/80 space-y-2 font-medium">
+                <li>Baseline movement screen completed and 2x/week strength routine initiated.</li>
+                <li>Daily protein baseline and hydration habits established.</li>
+              </ol>
+              <p className="text-xs text-charcoal/70 pt-2 border-t border-charcoal/10">
+                This gives your clinic confirmation of active lifestyle support with zero administrative burden.
               </p>
             </div>
           </section>
 
-          {/* 7. Practice Information & Provider Channel */}
+          {/* 7. Studio Details & Healthcare Provider Channel */}
           <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
             <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
-              7. PRACTICE INFORMATION & PROVIDER CHANNEL
+              7. STUDIO DETAILS & HEALTHCARE PROVIDER CHANNEL
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug mb-4">
-              Practice Information & Provider Channel
+              Studio Details & Healthcare Provider Channel
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-charcoal/80">
@@ -422,6 +424,7 @@ export const ForReferrers: React.FC = () => {
                   <MapPin size={16} className="text-spruce-800" />
                   <span>Facility Location</span>
                 </div>
+                <p className="font-semibold text-charcoal">Studio Location:</p>
                 <p>WRK Personal Training</p>
                 <p>12 Show Place, Addington</p>
                 <p>Christchurch 8024</p>
@@ -430,24 +433,25 @@ export const ForReferrers: React.FC = () => {
               <div className="p-4 bg-sand-50/70 rounded-xl border border-charcoal/5">
                 <div className="flex items-center gap-2 font-bold text-charcoal mb-1">
                   <Phone size={16} className="text-spruce-800" />
-                  <span>Direct Clinician Line</span>
+                  <span>Direct Coach Line</span>
                 </div>
-                <p className="font-semibold text-spruce-900">021 393 160</p>
-                <p className="text-xs text-charcoal/60 mt-1">info@wrkpersonaltraining.co.nz</p>
+                <p className="font-semibold text-spruce-900 text-base">021 393 160</p>
+                <p className="text-xs text-charcoal/70 mt-1">info@wrkpersonaltraining.co.nz</p>
               </div>
 
               <div className="p-4 bg-sand-50/70 rounded-xl border border-charcoal/5">
                 <div className="flex items-center gap-2 font-bold text-charcoal mb-1">
                   <Clock size={16} className="text-spruce-800" />
-                  <span>Practice Hours</span>
+                  <span>Coaching Hours</span>
                 </div>
+                <p className="font-semibold text-charcoal">Studio Coaching Hours:</p>
                 <p>Monday – Friday</p>
                 <p className="font-semibold text-spruce-900">6:00 AM – 2:00 PM</p>
               </div>
             </div>
           </section>
 
-          {/* Clinician & Practice Inquiries Form Component */}
+          {/* Healthcare Provider Enquiries Form Component */}
           <div>
             <ClinicianInquiryForm />
           </div>
