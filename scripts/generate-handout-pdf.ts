@@ -1,5 +1,6 @@
 import { PDFDocument, rgb, StandardFonts, PDFPage, RGB } from 'pdf-lib';
 import QRCode from 'qrcode';
+import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 
@@ -540,7 +541,7 @@ async function generateHandout() {
   cursorY = coachY - 14;
 
   // --- BOTTOM CTA BANNER: FREE 3-MINUTE ONLINE CHECK ---
-  const ctaH = 94;
+  const ctaH = 96;
   const ctaY = cursorY - ctaH;
 
   page.drawRectangle({
@@ -553,8 +554,81 @@ async function generateHandout() {
     borderWidth: 1.25,
   });
 
+  // Generate the exact styled QR Badge image matching user's reference
+  const qrSvg = await QRCode.toString('https://wrkpt.co.nz/assessment?src=handout', {
+    type: 'svg',
+    margin: 0,
+    color: {
+      dark: '#111827',
+      light: '#ffffff00',
+    },
+  });
+
+  const qrBase64 = Buffer.from(qrSvg).toString('base64');
+
+  const badgeSvgW = 380;
+  const badgeSvgH = 475;
+  const cx = 190;
+  const cy = 175;
+  const outerR = 135;
+  const textR = 117;
+  const qrSize = 142;
+
+  const circlePath = `M ${cx} ${cy - textR} A ${textR} ${textR} 0 1 1 ${cx - 0.1} ${cy - textR}`;
+
+  const badgeSvg = `<?xml version="1.0" encoding="UTF-8"?>
+  <svg width="${badgeSvgW}" height="${badgeSvgH}" viewBox="0 0 ${badgeSvgW} ${badgeSvgH}" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background container with green border matching reference -->
+    <rect x="5" y="5" width="${badgeSvgW - 10}" height="${badgeSvgH - 10}" rx="24" fill="#ffffff" stroke="#10b981" stroke-width="3.5" />
+
+    <!-- Outer dashed grey ring -->
+    <circle cx="${cx}" cy="${cy}" r="${outerR}" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5,4" />
+
+    <defs>
+      <path id="textCircle" d="${circlePath}" />
+    </defs>
+
+    <!-- Circular text: • SCAN HERE • SCAN HERE • SCAN HERE • SCAN HERE • -->
+    <text font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#1f2937" letter-spacing="3.2">
+      <textPath href="#textCircle" startOffset="0%">
+        • SCAN HERE • SCAN HERE • SCAN HERE • SCAN HERE •
+      </textPath>
+    </text>
+
+    <!-- Inner circle backing for QR code -->
+    <circle cx="${cx}" cy="${cy}" r="86" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2" />
+
+    <!-- Center QR code -->
+    <image href="data:image/svg+xml;base64,${qrBase64}" x="${cx - qrSize / 2}" y="${cy - qrSize / 2}" width="${qrSize}" height="${qrSize}" />
+
+    <!-- Bottom text -->
+    <text x="${cx}" y="380" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#111827" text-anchor="middle">
+      Scan for Free Assessment
+    </text>
+    <text x="${cx}" y="415" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#10b981" text-anchor="middle">
+      wrkpersonaltraining.co...
+    </text>
+  </svg>
+  `;
+
+  const badgePngBuffer = await sharp(Buffer.from(badgeSvg)).png().toBuffer();
+  const badgeImage = await pdfDoc.embedPng(badgePngBuffer);
+
+  // Embed badge into PDF
+  const pdfBadgeW = 73;
+  const pdfBadgeH = (pdfBadgeW / badgeSvgW) * badgeSvgH; // ~91.2
+  const pdfBadgeX = width - marginX - pdfBadgeW - 6;
+  const pdfBadgeY = ctaY + (ctaH - pdfBadgeH) / 2;
+
+  page.drawImage(badgeImage, {
+    x: pdfBadgeX,
+    y: pdfBadgeY,
+    width: pdfBadgeW,
+    height: pdfBadgeH,
+  });
+
   // Left CTA Content
-  const ctaContentW = contentWidth - 110;
+  const ctaContentW = contentWidth - pdfBadgeW - 24;
 
   drawClock(page, marginX + 22, ctaY + ctaH - 14, 5, emeraldDark);
   page.drawText('FREE 3-MINUTE ONLINE CHECK', {
@@ -576,7 +650,7 @@ async function generateHandout() {
 
   // CTA Description
   const ctaDesc = 'Answer a few quick questions to assess your current training, protein intake, and recovery habits. You can also arrange a complimentary 20-minute discovery chat with our team at the Addington studio.';
-  const descLines = wrapText(ctaDesc, ctaContentW - 20, fontRegular, 8);
+  const descLines = wrapText(ctaDesc, ctaContentW - 16, fontRegular, 8);
   descLines.forEach((dline, didx) => {
     page.drawText(dline, {
       x: marginX + 16,
@@ -613,51 +687,6 @@ async function generateHandout() {
     color: bodyText,
   });
 
-  // Right QR Code
-  const qrX = width - marginX - 86;
-  const qrY = ctaY + 18;
-  const qrSize = 68;
-
-  // White box container for QR code
-  page.drawRectangle({
-    x: qrX - 4,
-    y: ctaY + 8,
-    width: qrSize + 8,
-    height: ctaH - 16,
-    color: white,
-    borderColor: emeraldBorder,
-    borderWidth: 0.75,
-  });
-
-  // Generate QR code data buffer
-  const qrDataUrl = await QRCode.toDataURL('https://wrkpt.co.nz/assessment?src=patient-handout', {
-    margin: 1,
-    width: 256,
-    color: {
-      dark: '#111827',
-      light: '#ffffff',
-    },
-  });
-  const base64Data = qrDataUrl.replace(/^data:image\/png;base64,/, '');
-  const qrImageBuffer = Buffer.from(base64Data, 'base64');
-  const qrImage = await pdfDoc.embedPng(qrImageBuffer);
-
-  page.drawImage(qrImage, {
-    x: qrX,
-    y: qrY,
-    width: qrSize,
-    height: qrSize,
-  });
-
-  // QR subtext
-  page.drawText('Scan for Free Assessment', {
-    x: qrX - 2,
-    y: ctaY + 10,
-    font: fontBold,
-    size: 5.5,
-    color: emeraldDark,
-  });
-
   // Save PDF to /public/docs/WRK-GLP1-Patient-Handout.pdf and /public/docs/WRK-Clinician-Summary.pdf
   const pdfBytes = await pdfDoc.save();
 
@@ -672,7 +701,7 @@ async function generateHandout() {
   fs.writeFileSync(targetPath1, pdfBytes);
   fs.writeFileSync(targetPath2, pdfBytes);
 
-  console.log(`Generated patient handout PDF successfully at: ${targetPath1} and ${targetPath2}`);
+  console.log(`Generated patient handout PDF with styled QR badge at: ${targetPath1} and ${targetPath2}`);
 }
 
 generateHandout().catch((err) => {
