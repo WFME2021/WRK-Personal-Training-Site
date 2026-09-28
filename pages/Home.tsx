@@ -87,11 +87,11 @@ export const Home: React.FC = () => {
       {/* 1. Full-Bleed Hero Section */}
       <section className="relative min-h-[85vh] md:min-h-[92vh] flex items-center overflow-hidden -mt-16 md:-mt-20 pt-16 md:pt-20">
         <img 
-          src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=2000&auto=format&fit=crop" 
+          src="https://i.postimg.cc/XvwrPd0X/Google-Cover-Photo-(1).png" 
           alt="GLP-1 Fitness Coaching and Personal Training in Christchurch studio"
           className="absolute inset-0 w-full h-full object-cover object-center z-0"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/85 via-charcoal/50 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/80 to-charcoal/40 z-10" />
 
         <div className="relative z-20 max-w-2xl px-6 md:px-12 py-24 text-left">
           <div className="mb-4">
@@ -145,7 +145,7 @@ export const Home: React.FC = () => {
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="rounded-2xl overflow-hidden border border-charcoal/10 shadow-sm aspect-[4/5] relative">
               <img 
-                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2000&auto=format&fit=crop" 
+                src="https://i.postimg.cc/kMshn8rN/Screen-Shot-2026-06-23-at-2-10-37-PM.png" 
                 alt="Personal trainer coaching client with progressive resistance training for muscle preservation in Christchurch"
                 className="w-full h-full object-cover"
               />

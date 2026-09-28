@@ -136,6 +136,26 @@ export const PersonalTraining: React.FC = () => {
           </div>
         </section>
 
+        {/* Feature Lifestyle Banner */}
+        <div className="mb-14 max-w-5xl mx-auto px-6">
+          <div className="rounded-3xl overflow-hidden shadow-sm border border-charcoal/10 aspect-[16/9] md:aspect-[21/9] relative">
+            <img 
+              src="https://i.postimg.cc/kMshn8rN/Screen-Shot-2026-06-23-at-2-10-37-PM.png" 
+              alt="Personal training client coaching in quiet Addington studio" 
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 text-sand-50">
+              <span className="text-xs uppercase tracking-widest font-semibold text-sand-200 block mb-1">
+                ADDINGTON FACILITY · CHRISTCHURCH
+              </span>
+              <p className="font-serif text-lg sm:text-xl text-white max-w-xl">
+                A calm, private environment designed for focused movement and sustainable progress.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* 2. The Environment Split Band */}
         <section className="bg-sand-100/70 py-16 px-6 border-y border-charcoal/5">
           <div className="max-w-5xl mx-auto">

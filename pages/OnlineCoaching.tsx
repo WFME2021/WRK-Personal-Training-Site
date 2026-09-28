@@ -88,6 +88,26 @@ export const OnlineCoaching: React.FC = () => {
           </div>
         </section>
 
+        {/* Feature Lifestyle Banner */}
+        <div className="mb-14 max-w-5xl mx-auto px-6">
+          <div className="rounded-3xl overflow-hidden shadow-sm border border-charcoal/10 aspect-[16/9] md:aspect-[21/9] relative">
+            <img 
+              src="https://i.postimg.cc/tCHyKN1c/pexels-zeynep-38928850.jpg" 
+              alt="Online coaching client building strength and vitality at home or private gym" 
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 text-sand-50">
+              <span className="text-xs uppercase tracking-widest font-semibold text-sand-200 block mb-1">
+                COACHING ANYWHERE
+              </span>
+              <p className="font-serif text-lg sm:text-xl text-white max-w-xl">
+                Expert programming, form feedback, and accountability delivered to your pocket.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* 2. The Reality Callout Band */}
         <section className="bg-sand-100/70 py-16 px-6 border-y border-charcoal/5">
           <div className="max-w-5xl mx-auto items-center grid grid-cols-1 md:grid-cols-2 gap-10">

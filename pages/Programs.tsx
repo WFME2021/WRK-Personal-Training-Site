@@ -16,7 +16,7 @@ export const Programs: React.FC = () => {
       />
 
       {/* 1. Hero Header */}
-      <section className="bg-canvas pt-12 pb-14 text-center px-4 max-w-5xl mx-auto">
+      <section className="bg-canvas pt-12 pb-10 text-center px-4 max-w-5xl mx-auto">
         <p className="text-xs tracking-[0.2em] font-sans uppercase text-spruce-800 font-semibold mb-3">
           COACHING & PATHWAYS
         </p>
@@ -27,6 +27,26 @@ export const Programs: React.FC = () => {
           The goal isn't simply to weigh less. It’s to ensure that when the weight comes off, you maintain your resting metabolic rate, preserve joint stability, and carry everyday physical energy into your life and work.
         </p>
       </section>
+
+      {/* Hero Lifestyle Feature Banner */}
+      <div className="mb-14 max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="rounded-3xl overflow-hidden shadow-sm border border-charcoal/10 aspect-[16/9] md:aspect-[21/9] relative">
+          <img 
+            src="https://i.postimg.cc/J4Wmf5y2/pexels-truckrun-19373190.jpg" 
+            alt="Active lifestyle and vitality on GLP-1 therapy" 
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 text-sand-50">
+            <span className="text-xs uppercase tracking-widest font-semibold text-sand-200 block mb-1">
+              THE WRK PHILOSOPHY
+            </span>
+            <p className="font-serif text-lg sm:text-xl text-white max-w-xl">
+              Protect your muscle, maintain your energy, and enjoy everyday capability.
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* 2. The 3 Phases / Triage Band */}
       <section className="bg-sand-100/60 py-12 px-6 border-y border-charcoal/5">

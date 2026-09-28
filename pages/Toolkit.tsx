@@ -1,15 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import { SeoHead } from '../components/SeoHead';
-import { Smartphone, Check, ChevronDown, CheckCircle2, XCircle, ShieldCheck, Quote } from 'lucide-react';
+import { Smartphone, Check, ChevronDown, CheckCircle2, XCircle, ShieldCheck, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const Toolkit: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeSlide, setActiveSlide] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const checkoutUrl = "https://wrkpersonaltraining.mypthub.net/p/236048";
+
+  const appScreenshots = [
+    { url: "/images/IMG-2937.png", alt: "WRK App - Sarcopenia Shield Workout" },
+    { url: "/images/IMG-2938.png", alt: "WRK App - Exercise Video & Tempo Guide" },
+    { url: "/images/IMG-2939.png", alt: "WRK App - Set & Rep Tracking" },
+    { url: "/images/IMG-2940.png", alt: "WRK App - Workout Completion Stats" },
+    { url: "/images/IMG-2941.png", alt: "WRK App - Nutrition & Protein Pacing" },
+    { url: "/images/IMG-2942.png", alt: "WRK App - Meal Logger" },
+    { url: "/images/IMG-2943.png", alt: "WRK App - Macro Target Progress" },
+    { url: "/images/IMG-2944.png", alt: "WRK App - Daily Habit Checklist" },
+    { url: "/images/IMG-2945.png", alt: "WRK App - Body Metrics & Measurements" },
+    { url: "/images/IMG-2946.png", alt: "WRK App - Progress Photos & Comparison" },
+    { url: "/images/IMG-2947.png", alt: "WRK App - Coach Messaging & Support" }
+  ];
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchEndX(null);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    const isLeftSwipe = distance > 40;
+    const isRightSwipe = distance < -40;
+
+    if (isLeftSwipe) {
+      setActiveSlide((prev) => (prev + 1) % appScreenshots.length);
+    } else if (isRightSwipe) {
+      setActiveSlide((prev) => (prev - 1 + appScreenshots.length) % appScreenshots.length);
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
+  const nextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % appScreenshots.length);
+  };
+
+  const prevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + appScreenshots.length) % appScreenshots.length);
+  };
 
   const faqs = [
     {
@@ -89,75 +138,99 @@ export const Toolkit: React.FC = () => {
         <section className="bg-canvas pt-14 pb-16 px-6 max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             
-            {/* Left Column: Visual App Mockup */}
-            <div className="bg-sand-100 rounded-2xl p-6 sm:p-8 border border-charcoal/5 shadow-sm flex items-center justify-center aspect-[4/3] md:aspect-[4/5] relative overflow-hidden">
-              <div className="w-full max-w-[280px] bg-white rounded-3xl border-4 border-charcoal/10 shadow-2xl p-4 flex flex-col justify-between h-[92%]">
-                <div>
-                  <div className="flex items-center justify-between border-b border-charcoal/5 pb-3 mb-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-md bg-spruce-800 text-sand-50 flex items-center justify-center text-[10px] font-bold">
-                        W
-                      </div>
-                      <span className="font-serif text-xs font-bold tracking-tight text-charcoal">WRK Training App</span>
-                    </div>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  </div>
-
-                  {/* Active Routine Card */}
-                  <div className="bg-sand-50 rounded-xl p-3 border border-charcoal/5 mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-spruce-800 block mb-0.5">
-                      Today's Programme
-                    </span>
-                    <p className="font-serif text-sm font-semibold text-charcoal">
-                      The Sarcopenia Shield · Day 1
-                    </p>
-                    <div className="flex items-center gap-3 mt-2 text-[10px] text-charcoal/60">
-                      <span>⏱ 30 mins</span>
-                      <span>•</span>
-                      <span>3 Sets Compound</span>
-                    </div>
-                  </div>
-
-                  {/* Exercises with Video Demo Pill */}
-                  <div className="space-y-2">
-                    <div className="p-2 rounded-lg bg-sand-100/50 border border-charcoal/5 flex items-center justify-between">
-                      <div>
-                        <p className="text-xs font-medium text-charcoal">Goblet Squat</p>
-                        <p className="text-[10px] text-charcoal/60">3 x 8-10 reps · Tempo 3-0-1-0</p>
-                      </div>
-                      <span className="text-[9px] bg-spruce-800 text-sand-50 px-2 py-0.5 rounded font-semibold">
-                        ▶ Video
-                      </span>
-                    </div>
-
-                    <div className="p-2 rounded-lg bg-sand-100/50 border border-charcoal/5 flex items-center justify-between">
-                      <div>
-                        <p className="text-xs font-medium text-charcoal">Dumbbell Romanian Deadlift</p>
-                        <p className="text-[10px] text-charcoal/60">3 x 10-12 reps</p>
-                      </div>
-                      <span className="text-[9px] bg-spruce-800 text-sand-50 px-2 py-0.5 rounded font-semibold">
-                        ▶ Video
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Nutrition Target Widget */}
-                  <div className="mt-3 p-2.5 rounded-xl bg-sand-100 border border-charcoal/5">
-                    <div className="flex justify-between text-[10px] font-semibold text-charcoal mb-1">
-                      <span>Zero-Hunger Protein Target</span>
-                      <span className="text-spruce-800 font-bold">105g / 110g</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-sand-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-spruce-800 rounded-full w-[95%]"></div>
-                    </div>
-                  </div>
+            {/* Left Column: Interactive App Screenshot Carousel */}
+            <div className="bg-sand-100 rounded-2xl p-4 sm:p-8 border border-charcoal/5 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
+              
+              {/* Smartphone Frame */}
+              <div 
+                className="w-full max-w-[280px] sm:max-w-[305px] aspect-[9/18.5] rounded-[2.5rem] border-4 border-slate-900 bg-slate-950 shadow-2xl overflow-hidden relative select-none cursor-grab active:cursor-grabbing group"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                {/* Modern Smartphone Speaker Notch / Dynamic Island */}
+                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-900/90 backdrop-blur-xs rounded-full z-30 flex items-center justify-center pointer-events-none border border-white/5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-950 mr-2 border border-slate-800" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-slate-700" />
                 </div>
 
-                <div className="pt-2 border-t border-charcoal/5 flex items-center justify-center gap-2 text-[10px] text-charcoal/70 font-medium">
-                  <Smartphone size={12} className="text-spruce-800" />
-                  <span>iOS & Android App</span>
+                {/* Screenshots Carousel Track */}
+                <div 
+                  className="flex w-full h-full transition-transform duration-300 ease-out"
+                  style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+                >
+                  {appScreenshots.map((slide, idx) => (
+                    <div key={idx} className="w-full h-full shrink-0 relative bg-slate-950">
+                      <img
+                        src={slide.url}
+                        alt={slide.alt}
+                        className="w-full h-full object-cover object-top pointer-events-none select-none"
+                        loading={idx === 0 ? "eager" : "lazy"}
+                        draggable={false}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Subtle Left Arrow Navigation Button */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevSlide();
+                  }}
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-slate-950/65 hover:bg-slate-900/90 text-white backdrop-blur-sm flex items-center justify-center border border-white/15 shadow-md transition-all active:scale-95"
+                  aria-label="Previous app screenshot"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+
+                {/* Subtle Right Arrow Navigation Button */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                  }}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-slate-950/65 hover:bg-slate-900/90 text-white backdrop-blur-sm flex items-center justify-center border border-white/15 shadow-md transition-all active:scale-95"
+                  aria-label="Next app screenshot"
+                >
+                  <ChevronRight size={16} />
+                </button>
+
+                {/* Floating Caption Pill Badge */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none w-[90%] flex justify-center">
+                  <div className="px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/15 text-[11px] font-medium text-slate-100 shadow-lg tracking-wide truncate max-w-full text-center">
+                    {activeSlide + 1}/{appScreenshots.length} · {appScreenshots[activeSlide].alt}
+                  </div>
                 </div>
               </div>
+
+              {/* Indicator Dots */}
+              <div className="mt-4 flex flex-col items-center gap-2.5 z-10 w-full">
+                {/* Dots */}
+                <div className="flex items-center gap-1.5 flex-wrap justify-center px-2" role="tablist" aria-label="Screenshots">
+                  {appScreenshots.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setActiveSlide(idx)}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        activeSlide === idx 
+                          ? 'w-5 bg-[#15803d]' 
+                          : 'w-2 bg-charcoal/20 hover:bg-charcoal/40'
+                      }`}
+                      aria-label={`Go to screenshot ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-center gap-1.5 text-[10px] text-charcoal/60 font-medium pt-1">
+                  <Smartphone size={12} className="text-spruce-800" />
+                  <span>Swipe or click arrows to explore app interface</span>
+                </div>
+              </div>
+
             </div>
 
             {/* Right Column: Offer & CTA */}

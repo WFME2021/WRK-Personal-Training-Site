@@ -221,11 +221,11 @@ export const Services: React.FC = () => {
           {/* Background Image & Overlay */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.postimg.cc/256x75Wd/pexels-khezez-34080009.jpg" 
+              src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg" 
               alt="Outdoor activity representing the outcomes of Personal Training Services in Christchurch"
-              className="w-full h-full object-cover object-center opacity-60"
+              className="w-full h-full object-cover object-center opacity-50"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/90 via-[#2C3539]/60 to-[#2C3539]/90"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/95 via-[#2C3539]/75 to-[#2C3539]/95"></div>
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">

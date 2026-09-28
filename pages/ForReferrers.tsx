@@ -64,11 +64,11 @@ export const ForReferrers: React.FC = () => {
         {/* Full-Bleed Hero Masthead */}
         <section className="relative min-h-[520px] md:min-h-[580px] flex items-center justify-center -mt-16 md:-mt-20 pt-28 pb-16 px-6 overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2000&auto=format&fit=crop"
+            src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg"
             alt="Exercise Referral and Healthcare Provider Overview"
             className="absolute inset-0 w-full h-full object-cover object-center z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/60 to-charcoal/40 mix-blend-multiply z-0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/75 to-slate-950/80 z-0" />
 
           {/* Hero Content Layer */}
           <div className="relative z-10 max-w-4xl mx-auto text-center">
