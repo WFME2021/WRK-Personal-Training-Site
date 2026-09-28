@@ -219,7 +219,8 @@ export const ForReferrers: React.FC = () => {
                 </p>
               </div>
               <a
-                href="/docs/WRK-GLP1-Patient-Handout.pdf"
+                href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide.pdf"
+                download="Protecting Muscle on GLP-1 - Patient Guide.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-6 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors whitespace-nowrap shrink-0 shadow-xs"
