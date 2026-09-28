@@ -208,24 +208,24 @@ export const ForReferrers: React.FC = () => {
 
             </div>
 
-            {/* Download 1-Page Practice Summary & Patient Tear-Sheet (PDF) */}
+            {/* Printable Patient Handout (A4 PDF) */}
             <div className="bg-sand-100/70 border border-charcoal/10 p-6 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <h4 className="font-serif text-lg font-bold text-charcoal mb-1">
-                  1-Page Practice Summary & Patient Tear-Sheet
+                  Printable Patient Handout (A4 PDF)
                 </h4>
                 <p className="text-xs text-charcoal/70">
-                  Concise practice summary and patient handout ready for consulting desks.
+                  A simple, 1-page guide explaining muscle preservation, protein habits, and quiet studio support. Ready to print or email to patients starting or on GLP-1 therapy.
                 </p>
               </div>
               <a
-                href="/docs/WRK-Clinician-Summary.pdf"
+                href="/docs/WRK-GLP1-Patient-Handout.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-6 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors whitespace-nowrap shrink-0 shadow-xs"
               >
                 <Download size={15} />
-                <span>Download Tear-Sheet (PDF)</span>
+                <span>DOWNLOAD PATIENT HANDOUT (PDF)</span>
               </a>
             </div>
 
