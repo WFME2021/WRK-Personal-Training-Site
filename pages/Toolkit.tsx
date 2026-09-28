@@ -136,9 +136,57 @@ export const Toolkit: React.FC = () => {
         
         {/* 1. Product Hero Header */}
         <section className="bg-canvas pt-14 pb-16 px-6 max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
-            {/* Left Column: Interactive App Screenshot Carousel */}
+            {/* Left Column (Desktop) / Top (Mobile): Offer & CTA */}
+            <div className="text-left">
+              <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-3">
+                DELIVERED VIA THE WRK TRAINING APP · COMPLETE ACCESS
+              </p>
+              
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal tracking-tight leading-tight mb-4">
+                Stop Muscle Loss While the Weight Drops.
+              </h1>
+              
+              <p className="text-charcoal/80 text-sm sm:text-base mb-6 leading-relaxed">
+                The step-by-step workout routines and low-appetite meal templates built specifically for GLP-1 therapy. Delivered inside the WRK Training App so you know exactly what to lift, how to fuel, and how to protect your metabolism.
+              </p>
+
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="font-serif text-3xl font-bold text-spruce-800">$29 NZD</span>
+                <span className="text-xs text-charcoal/60">(One-Time Access · Approx. $18 USD / £14 GBP)</span>
+              </div>
+
+              <a
+                href={checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors mt-5 mb-3 shadow-sm"
+              >
+                Get Instant App Access — $29 NZD
+              </a>
+
+              <p className="text-xs text-charcoal/60 mb-6 text-center sm:text-left">
+                One-off payment · Instant iOS & Android login · No subscriptions
+              </p>
+
+              <div className="space-y-2 text-xs text-charcoal/70 pt-2 border-t border-charcoal/5">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
+                  <span>Full access in the WRK App (iOS & Android)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
+                  <span>Interactive workout logging & HD video demos</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
+                  <span>Zero monthly subscriptions or hidden fees</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column (Desktop) / Bottom (Mobile): Interactive App Screenshot Carousel */}
             <div className="bg-sand-100 rounded-2xl p-4 sm:p-8 border border-charcoal/5 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
               
               {/* Smartphone Frame */}
@@ -231,54 +279,6 @@ export const Toolkit: React.FC = () => {
                 </div>
               </div>
 
-            </div>
-
-            {/* Right Column: Offer & CTA */}
-            <div className="text-left">
-              <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-3">
-                DELIVERED VIA THE WRK TRAINING APP · COMPLETE ACCESS
-              </p>
-              
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal tracking-tight leading-tight mb-4">
-                Stop Muscle Loss While the Weight Drops.
-              </h1>
-              
-              <p className="text-charcoal/80 text-sm sm:text-base mb-6 leading-relaxed">
-                The step-by-step workout routines and low-appetite meal templates built specifically for GLP-1 therapy. Delivered inside the WRK Training App so you know exactly what to lift, how to fuel, and how to protect your metabolism.
-              </p>
-
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="font-serif text-3xl font-bold text-spruce-800">$29 NZD</span>
-                <span className="text-xs text-charcoal/60">(One-Time Access · Approx. $18 USD / £14 GBP)</span>
-              </div>
-
-              <a
-                href={checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors mt-5 mb-3 shadow-sm"
-              >
-                Get Instant App Access — $29 NZD
-              </a>
-
-              <p className="text-xs text-charcoal/60 mb-6 text-center sm:text-left">
-                One-off payment · Instant iOS & Android login · No subscriptions
-              </p>
-
-              <div className="space-y-2 text-xs text-charcoal/70 pt-2 border-t border-charcoal/5">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
-                  <span>Full access in the WRK App (iOS & Android)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
-                  <span>Interactive workout logging & HD video demos</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
-                  <span>Zero monthly subscriptions or hidden fees</span>
-                </div>
-              </div>
             </div>
 
           </div>
