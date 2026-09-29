@@ -697,33 +697,12 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
           `
         };
 
-        if (fs.existsSync(pdfFilePath)) {
-          userMail.attachments = [
-            {
-              filename: '14-Day-Fat-Loss-Foundations-Nutrition-Basics.pdf',
-              path: pdfFilePath
-            }
-          ];
-        }
-
         const sendMailRobust = async (opts: any) => {
           try {
             await transporter.sendMail(opts);
           } catch (err: any) {
-            // If attachment makes it exceed SMTP size limits (common with 24MB files), retry without attachment
-            if (opts.attachments && opts.attachments.length > 0) {
-              console.warn("Attachment send failed (possibly size limit). Retrying email with direct download link...");
-              const { attachments, ...noAttachmentOpts } = opts;
-              try {
-                await transporter.sendMail(noAttachmentOpts);
-                return;
-              } catch (subErr) {
-                // fall through to sender fallback
-              }
-            }
             if (err.responseCode === 554 || err.responseCode === 550 || (err.message && err.message.includes('rejected'))) {
               const fallback = { ...opts, from: process.env.SMTP_USER, replyTo: opts.from };
-              delete fallback.attachments; // Safe fallback without attachment
               await transporter.sendMail(fallback);
               return;
             }
@@ -804,6 +783,7 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
   };
 
   app.post("/api/fat-loss-guide", handleFatLossGuideSubmission);
+  app.post("/api/send-guide", handleFatLossGuideSubmission);
   app.post("/api/recipe-guide", handleFatLossGuideSubmission);
 
   // Sitemap XML route

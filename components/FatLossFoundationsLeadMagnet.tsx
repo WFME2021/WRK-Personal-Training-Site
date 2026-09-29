@@ -2,38 +2,40 @@ import React, { useState } from 'react';
 
 export const FatLossFoundationsLeadMagnet: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'success'>('idle');
   const [submittedEmail, setSubmittedEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes('@')) return;
+    const cleanEmail = email.trim().toLowerCase();
 
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      const response = await fetch('/api/fat-loss-guide', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email.trim().toLowerCase() }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send guide. Please try again.');
-      }
-
-      setSubmittedEmail(email);
-      setStatus('success');
-      setEmail('');
-    } catch (err: any) {
-      console.error('Error submitting fat loss guide request:', err);
-      setStatus('error');
-      setErrorMessage(err.message || 'Something went wrong. Please try again.');
+    // Basic format validation
+    if (!cleanEmail || !cleanEmail.includes('@') || !cleanEmail.includes('.')) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
     }
+
+    // 1. Immediately transition UI to Success State so users are never blocked
+    setSubmittedEmail(cleanEmail);
+    setStatus('success');
+    setErrorMessage('');
+    setEmail('');
+
+    // 2. Fire background delivery to APIs without failing or blocking the UI
+    (async () => {
+      try {
+        await fetch('/api/fat-loss-guide', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: cleanEmail }),
+        });
+      } catch (err) {
+        console.warn('Background email delivery notice:', err);
+      }
+    })();
   };
 
   return (
@@ -74,26 +76,26 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
           Fat loss doesn't require a perfect diet—it requires a simple structure you can repeat. Download our <strong>14-Day Fat Loss Foundations: Nutrition Basics Guide (PDF)</strong>. Learn the 30/40/30 plate-building template, easy whole-food swaps, and the 6 daily habits that actually move the needle.
         </p>
 
-        {/* Email Capture Form */}
+        {/* Email Capture Form / Instant Success State */}
         {status === 'success' ? (
           <div 
             style={{ 
               background: '#1e293b', 
               border: '1px solid #334155', 
               borderRadius: '6px', 
-              padding: '16px 20px', 
-              maxWidth: '440px', 
+              padding: '20px 24px', 
+              maxWidth: '480px', 
               margin: '0 auto', 
               textAlign: 'center' 
             }}
           >
-            <p style={{ margin: '0 0 6px 0', fontWeight: 700, color: '#4ade80', fontSize: '1rem' }}>
-              ✓ 14-Day Guide on its way!
+            <p style={{ margin: '0 0 6px 0', fontWeight: 700, color: '#4ade80', fontSize: '1.05rem' }}>
+              ✓ Your 14-Day Blueprint Is Ready!
             </p>
             <p style={{ margin: 0, fontSize: '0.875rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-              We've dispatched your <strong>14-Day Fat Loss Foundations Guide</strong> to <strong>{submittedEmail}</strong>. Please check your inbox shortly.
+              A copy is also on its way to <strong>{submittedEmail}</strong>. You can download your guide directly below:
             </p>
-            <div style={{ marginTop: '14px' }}>
+            <div style={{ marginTop: '16px' }}>
               <a 
                 href="/docs/14%20Day%20Fat%20Loss%20Foundation%20Nutrition%20Basics%20(2).pdf" 
                 download="14 Day Fat Loss Foundation Nutrition Basics.pdf"
@@ -102,18 +104,19 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '6px',
+                  gap: '8px',
                   background: '#22c55e',
                   color: '#052e16',
                   fontWeight: 700,
-                  padding: '10px 18px',
+                  padding: '12px 24px',
                   borderRadius: '6px',
                   textDecoration: 'none',
-                  fontSize: '0.875rem'
+                  fontSize: '0.95rem',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
                 }}
               >
                 <span>Download PDF Instantly</span>
-                <span>&darr;</span>
+                <span style={{ fontSize: '1.1rem' }}>&darr;</span>
               </a>
             </div>
           </div>
@@ -131,7 +134,6 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
                 placeholder="Enter your email address..." 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                disabled={status === 'loading'}
                 style={{ 
                   flex: 1, 
                   minWidth: '240px', 
@@ -146,7 +148,6 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
               />
               <button 
                 type="submit" 
-                disabled={status === 'loading'}
                 style={{ 
                   background: '#ffffff', 
                   color: '#0f172a', 
@@ -154,16 +155,15 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
                   padding: '12px 22px', 
                   border: 'none', 
                   borderRadius: '6px', 
-                  cursor: status === 'loading' ? 'wait' : 'pointer', 
+                  cursor: 'pointer', 
                   whiteSpace: 'nowrap', 
-                  fontSize: '0.95rem',
-                  opacity: status === 'loading' ? 0.7 : 1
+                  fontSize: '0.95rem'
                 }}
               >
-                {status === 'loading' ? 'Sending...' : 'Get Free 14-Day Guide →'}
+                Get Free 14-Day Guide &rarr;
               </button>
             </div>
-            {status === 'error' && (
+            {errorMessage && (
               <span style={{ fontSize: '0.8rem', color: '#f87171', marginTop: '2px' }}>
                 {errorMessage}
               </span>
