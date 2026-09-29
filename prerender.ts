@@ -132,7 +132,7 @@ const run = async () => {
     );
     
     // Open graph tags
-    const ogTags = `
+    let ogTags = `
       <link rel="canonical" href="https://www.wrkpersonaltraining.co.nz${url === '/' ? '' : url}" />
       <meta property="og:title" content="${title}" />
       <meta property="og:description" content="${desc}" />
@@ -142,6 +142,39 @@ const run = async () => {
       <meta name="twitter:title" content="${title}" />
       <meta name="twitter:description" content="${desc}" />
     `;
+    if (url === '/personal-training') {
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Where is WRK Personal Training located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our private personal training studio is located in Addington, Christchurch. We offer one-on-one and semi-private coaching away from crowded commercial gyms."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer nutrition coaching alongside training?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every personal training membership includes comprehensive nutrition guidance, macronutrient targets, and habit tracking tailored to your specific body composition goals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you support clients on GLP-1 medications or navigating menopause?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We specialize in evidence-based resistance training and high-protein nutrition strategies designed to preserve lean muscle tissue, enhance metabolic rate, and improve strength for clients on GLP-1s or managing midlife hormonal shifts."
+            }
+          }
+        ]
+      };
+      ogTags += `\n    <script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`;
+    }
     html = html.replace('</title>', `</title>\n${ogTags}`);
     
     try {

@@ -15,16 +15,20 @@ export const PersonalTraining: React.FC = () => {
 
   const faqs = [
     {
-      q: "Where in Addington is the facility located?",
-      a: "We train out of our boutique facility at 12 Show Place in Addington, Christchurch. It is a quiet business park location with easy parking right outside, just minutes from Moorhouse Ave, Riccarton, and the Southern Motorway."
+      q: "Where is WRK Personal Training located?",
+      a: "Our private personal training studio is located in Addington, Christchurch. We offer one-on-one and semi-private coaching away from crowded commercial gyms."
+    },
+    {
+      q: "Do you offer nutrition coaching alongside training?",
+      a: "Yes. Every personal training membership includes comprehensive nutrition guidance, macronutrient targets, and habit tracking tailored to your specific body composition goals."
+    },
+    {
+      q: "Do you support clients on GLP-1 medications or navigating menopause?",
+      a: "Yes. We specialize in evidence-based resistance training and high-protein nutrition strategies designed to preserve lean muscle tissue, enhance metabolic rate, and improve strength for clients on GLP-1s or managing midlife hormonal shifts."
     },
     {
       q: "I'm completely new to lifting weights. Is this suitable for beginners?",
       a: "Absolutely. Most of our clients are not gym veterans. Because our facility is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
-    },
-    {
-      q: "How does in-person coaching work alongside GLP-1 medication?",
-      a: "We monitor your weekly energy, nausea patterns, and appetite changes closely. On days you feel lower energy, we modify training volume to focus on movement quality; on high-energy days, we progressively challenge your strength."
     },
     {
       q: "What happens during the initial consultation?",
@@ -76,6 +80,36 @@ export const PersonalTraining: React.FC = () => {
         "name": "Christchurch"
       },
       "description": "Semi-Private 1-on-1 personal training in Addington, Christchurch. Evidence-based coaching, zero gym crowds, and specialist GLP-1 muscle preservation."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is WRK Personal Training located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our private personal training studio is located in Addington, Christchurch. We offer one-on-one and semi-private coaching away from crowded commercial gyms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer nutrition coaching alongside training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every personal training membership includes comprehensive nutrition guidance, macronutrient targets, and habit tracking tailored to your specific body composition goals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you support clients on GLP-1 medications or navigating menopause?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We specialize in evidence-based resistance training and high-protein nutrition strategies designed to preserve lean muscle tissue, enhance metabolic rate, and improve strength for clients on GLP-1s or managing midlife hormonal shifts."
+          }
+        }
+      ]
     }
   ];
 
