@@ -586,6 +586,182 @@ ${JSON.stringify(answers, null, 2)}
     })();
   });
 
+  // 7-Day High-Protein Recipe Guide Lead Magnet Submission
+  app.post("/api/recipe-guide", async (req, res) => {
+    const { email } = req.body;
+
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({ error: "A valid email address is required" });
+    }
+
+    // Immediate response to client
+    res.status(200).json({ success: true, message: "Recipe guide requested successfully" });
+
+    // Background processing of integrations
+    (async () => {
+      // 1. Email owner & deliver guide to user
+      try {
+        const nodemailer = await import("nodemailer");
+        const port = Number(process.env.SMTP_PORT) || 587;
+        const isSecure = port === 465;
+
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST,
+          port: port,
+          secure: isSecure,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS?.replace(/^"|"$/g, '').trim(),
+          },
+          connectionTimeout: 10000,
+          greetingTimeout: 5000,
+          socketTimeout: 10000
+        });
+
+        // Admin notification
+        const adminMail = {
+          from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
+          to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
+          replyTo: email,
+          subject: `🥗 New Lead: 7-Day High-Protein Recipe Guide - ${email}`,
+          text: `A new user requested the 7-Day High-Protein Whole-Food Recipe Guide:
+
+Email: ${email}
+Timestamp: ${new Date().toISOString()}
+Resource: 7-Day High-Protein Whole-Food Recipe Guide (PDF Lead Magnet)`,
+          html: `
+            <h3>🥗 New Recipe Guide Lead Magnet Download</h3>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Resource:</strong> 7-Day High-Protein Whole-Food Recipe Guide</p>
+            <p><strong>Timestamp:</strong> ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' })}</p>
+          `
+        };
+
+        // User guide email
+        const userMail = {
+          from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
+          to: email,
+          subject: `Your 7-Day High-Protein Whole-Food Guide | WRK Personal Training`,
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; color: #2C3539; line-height: 1.6; padding: 20px;">
+              <h2 style="color: #2C3539; margin-bottom: 16px;">Your 7-Day High-Protein Whole-Food Guide</h2>
+              <p>Hi there,</p>
+              <p>Thank you for requesting the <strong>7-Day High-Protein Whole-Food Guide</strong> from WRK Personal Training.</p>
+              <p>Hitting 30g+ of protein per meal doesn’t require dry chicken breast, chalky shakes, or complicated food prep. Here is our coach-tested framework for building satisfying, nutrient-dense meals using everyday New Zealand supermarket ingredients.</p>
+              
+              <div style="background-color: #F6F5F2; padding: 24px; border-radius: 12px; margin: 24px 0; border-left: 4px solid #8A9A86;">
+                <h3 style="margin-top: 0; font-size: 18px; color: #2C3539;">The 30g+ Anchor Framework</h3>
+                <p style="margin-bottom: 12px; font-size: 15px;">Anchor each meal with one primary whole-food protein source before adding seasonal produce and complex carbs:</p>
+                <ul style="margin: 0; padding-left: 20px; font-size: 15px; space-y: 8px;">
+                  <li><strong>Breakfast Option:</strong> 2 whole eggs + 150g Anchor Protein+ cottage cheese or Greek yoghurt with berries (32g protein)</li>
+                  <li><strong>Lunch Option:</strong> 1 large can tuna or 130g hot roast chicken breast over greens with edamame & quinoa (35g protein)</li>
+                  <li><strong>Dinner Option:</strong> 160g pan-seared salmon fillet or lean Canterbury beef/lamb mince with roasted vegetables (34g protein)</li>
+                  <li><strong>Quick Recovery Anchor:</strong> 250ml trim milk + 1 scoop whey or 2 boiled eggs + edamame snack (20–25g protein)</li>
+                </ul>
+              </div>
+
+              <h4 style="color: #2C3539; margin-top: 24px; margin-bottom: 8px;">Why 30g+ Per Meal Matters</h4>
+              <p style="font-size: 15px;">Spacing your protein across 3 to 4 eating occasions ensures continuous muscle protein synthesis (MPS). During medical weight loss or active calorie deficits, this distribution is your first line of defense against lean muscle loss.</p>
+
+              <div style="background: #0f172a; color: #ffffff; padding: 20px; border-radius: 10px; margin: 28px 0; text-align: center;">
+                <p style="margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">Want coach-led support and a joint-safe lifting routine?</p>
+                <a href="https://wrkpersonaltraining.co.nz/personal-training" style="display: inline-block; background: #ffffff; color: #0f172a; padding: 10px 20px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 14px;">Explore Coaching in Addington &rarr;</a>
+              </div>
+
+              <p style="margin-top: 24px; font-size: 14px; color: #64748b;">
+                The Coaching Team at WRK Personal Training<br/>
+                12 Show Place, Addington, Christchurch<br/>
+                <a href="https://wrkpersonaltraining.co.nz" style="color: #2C3539;">wrkpersonaltraining.co.nz</a>
+              </p>
+            </div>
+          `
+        };
+
+        const sendMailRobust = async (opts: any) => {
+          try {
+            await transporter.sendMail(opts);
+          } catch (err: any) {
+            if (err.responseCode === 554 || err.responseCode === 550 || (err.message && err.message.includes('rejected'))) {
+              const fallback = { ...opts, from: process.env.SMTP_USER, replyTo: opts.from };
+              await transporter.sendMail(fallback);
+              return;
+            }
+            throw err;
+          }
+        };
+
+        await sendMailRobust(adminMail);
+        await sendMailRobust(userMail);
+        console.log("Recipe guide emails sent successfully");
+      } catch (emailErr: any) {
+        console.error("Failed to send recipe guide email:", emailErr.message);
+      }
+
+      // 2. MailerLite Integration
+      const rawKey = process.env.MAILERLITE_API_KEY || "";
+      const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
+      const MAILERLITE_PROSPECT_GROUP = "195641787200570883";
+
+      if (MAILERLITE_API_KEY) {
+        try {
+          const subscriberPayloadV3 = {
+            email: email,
+            fields: {
+              interest: "7-Day Recipe Guide Lead Magnet"
+            },
+            groups: [MAILERLITE_PROSPECT_GROUP]
+          };
+
+          let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(subscriberPayloadV3)
+          });
+
+          if (!mlResponse.ok && mlResponse.status !== 401) {
+            const fallbackPayload = { email: email, groups: [MAILERLITE_PROSPECT_GROUP] };
+            mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${MAILERLITE_API_KEY}`, 'Accept': 'application/json' },
+              body: JSON.stringify(fallbackPayload)
+            });
+          }
+
+          if (mlResponse.ok) {
+            console.log("Successfully subscribed recipe guide lead to MailerLite");
+          } else {
+            console.error("MailerLite response error for recipe guide lead:", mlResponse.status, await mlResponse.text());
+          }
+        } catch (mlErr: any) {
+          console.error("MailerLite integration error for recipe guide:", mlErr.message);
+        }
+      }
+
+      // 3. Google Sheets Webhook Integration
+      const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+      if (sheetsWebhookUrl) {
+        try {
+          await fetch(sheetsWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'recipe_guide_lead_magnet',
+              date: new Date().toISOString(),
+              email: email
+            })
+          });
+          console.log("Successfully logged recipe guide lead to Google Sheets");
+        } catch (sheetsErr: any) {
+          console.error("Google Sheets integration error for recipe guide:", sheetsErr.message);
+        }
+      }
+    })();
+  });
+
   // Sitemap XML route
   
   app.get('/robots.txt', (req, res) => {
