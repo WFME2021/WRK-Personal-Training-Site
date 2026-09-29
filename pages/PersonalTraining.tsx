@@ -39,15 +39,17 @@ export const PersonalTraining: React.FC = () => {
   const schema = [
     {
       "@context": "https://schema.org",
-      "@type": "HealthAndFitnessBusiness",
+      "@type": "ExerciseGym",
       "name": "WRK Personal Training",
       "image": "https://www.wrkpersonaltraining.co.nz/logo.png",
       "url": "https://www.wrkpersonaltraining.co.nz/personal-training",
-      "telephone": "",
+      "telephone": "+64-21-393-160",
+      "email": "info@wrkpersonaltraining.co.nz",
+      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "12 Show Place",
-        "addressLocality": "Addington",
+        "streetAddress": "1/12 Show Place, Addington (located inside Get Me Fitter)",
+        "addressLocality": "Christchurch",
         "addressRegion": "Canterbury",
         "postalCode": "8024",
         "addressCountry": "NZ"
@@ -57,22 +59,53 @@ export const PersonalTraining: React.FC = () => {
         "latitude": -43.5434,
         "longitude": 172.6053
       },
-      "areaServed": [
-        "Christchurch",
-        "Addington",
-        "Riccarton",
-        "Spreydon",
-        "Halswell",
-        "Cashmere"
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "06:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "07:00",
+          "closes": "13:00"
+        }
       ],
-      "priceRange": "$$"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Christchurch"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Addington"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Riccarton"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Spreydon"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Halswell"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Cashmere"
+        }
+      ]
     },
     {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "In-Person Personal Training",
       "provider": {
-        "@type": "HealthAndFitnessBusiness",
+        "@type": "ExerciseGym",
         "name": "WRK Personal Training"
       },
       "areaServed": {
@@ -108,6 +141,22 @@ export const PersonalTraining: React.FC = () => {
             "@type": "Answer",
             "text": "Yes. We specialize in evidence-based resistance training and high-protein nutrition strategies designed to preserve lean muscle tissue, enhance metabolic rate, and improve strength for clients on GLP-1s or managing midlife hormonal shifts."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "I'm completely new to lifting weights. Is this suitable for beginners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Most of our clients are not gym veterans. Because our facility is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens during the initial consultation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We meet at the Addington facility for a relaxed, 20-minute chat. We discuss your background, health goals, take a quick look at movement mechanics, and decide together if the setup is the right fit for you."
+          }
         }
       ]
     }
@@ -125,8 +174,8 @@ export const PersonalTraining: React.FC = () => {
   return (
     <>
       <SeoHead 
-        title="Personal Trainer Christchurch | Semi-Private Coaching Addington | WRK"
-        description="Semi-Private 1-on-1 personal training in Addington, Christchurch. Evidence-based coaching, zero gym crowds, and specialist GLP-1 muscle preservation. Book a consultation."
+        title="Personal Trainer Christchurch | Semi-Private Coaching | WRK"
+        description="Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult."
         schema={schema}
       />
       <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
@@ -134,15 +183,15 @@ export const PersonalTraining: React.FC = () => {
         {/* 1. Hero Section */}
         <section className="bg-canvas pt-14 pb-16 px-6 max-w-5xl mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-4">
-            12 SHOW PLACE · ADDINGTON, CHRISTCHURCH
+            1/12 SHOW PLACE · ADDINGTON, CHRISTCHURCH
           </p>
           
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-6">
-            1-on-1 Personal Training <span className="block sm:inline italic text-spruce-800">in Christchurch.</span>
+            Personal Trainer Christchurch <span className="block sm:inline italic text-spruce-800">· Semi-Private Coaching</span>
           </h1>
           
           <p className="text-charcoal/80 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Skip the chaotic commercial gyms. Train in a focused, semi-private Addington boutique facility with evidence-based coaching built around strength, muscle preservation, and long-term health.
+            Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -342,7 +391,7 @@ export const PersonalTraining: React.FC = () => {
 
           <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
             <span className="text-xs uppercase tracking-wider text-sand-200/90 mb-4 block font-medium">
-              📍 12 Show Place, Addington, Christchurch
+              📍 1/12 Show Place, Addington, Christchurch (inside Get Me Fitter)
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl text-sand-50 mb-4">
               Weekly 1-on-1 In-Person Coaching & Muscle Defence System
@@ -406,10 +455,10 @@ export const PersonalTraining: React.FC = () => {
                   <span className="text-xs font-bold uppercase tracking-wider">Address</span>
                 </div>
                 <p className="text-sm font-semibold text-charcoal">
-                  12 Show Place, Addington
+                  1/12 Show Place, Addington
                 </p>
                 <p className="text-xs text-charcoal/70 mt-1">
-                  Christchurch 8024
+                  (Inside Get Me Fitter) · Christchurch 8024
                 </p>
               </div>
 

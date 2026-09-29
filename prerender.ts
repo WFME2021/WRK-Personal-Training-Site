@@ -78,8 +78,8 @@ const run = async () => {
       title = "Online GLP-1 Fitness Coach | Muscle Preservation & Strength | WRK";
       desc = "Specialized online coaching for GLP-1 patients worldwide. Preserve muscle, overcome fatigue, and build lasting strength. Apply for remote coaching.";
     } else if (url === '/personal-training') {
-      title = "Personal Trainer Christchurch | 1-on-1 Fitness Coaching | WRK";
-      desc = "Private 1-on-1 personal training in Addington, Christchurch. Evidence-based coaching tailored for strength, weight loss, and GLP-1 support. Book a session.";
+      title = "Personal Trainer Christchurch | Semi-Private Coaching | WRK";
+      desc = "Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult.";
     } else if (url === '/assessment') {
       title = "GLP-1 Fitness Assessment | WRK Personal Training";
       desc = "Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customized 12-week training recommendation.";
@@ -143,6 +143,69 @@ const run = async () => {
       <meta name="twitter:description" content="${desc}" />
     `;
     if (url === '/personal-training') {
+      const localGymSchema = {
+        "@context": "https://schema.org",
+        "@type": "ExerciseGym",
+        "name": "WRK Personal Training",
+        "image": "https://wrkpersonaltraining.co.nz/logo.png",
+        "url": "https://wrkpersonaltraining.co.nz/personal-training",
+        "telephone": "+64-21-393-160",
+        "email": "info@wrkpersonaltraining.co.nz",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1/12 Show Place, Addington (located inside Get Me Fitter)",
+          "addressLocality": "Christchurch",
+          "addressRegion": "Canterbury",
+          "postalCode": "8024",
+          "addressCountry": "NZ"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -43.5434,
+          "longitude": 172.6053
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "06:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday"],
+            "opens": "07:00",
+            "closes": "13:00"
+          }
+        ],
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Christchurch"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Addington"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Riccarton"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Spreydon"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Halswell"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Cashmere"
+          }
+        ]
+      };
       const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -170,9 +233,26 @@ const run = async () => {
               "@type": "Answer",
               "text": "Yes. We specialize in evidence-based resistance training and high-protein nutrition strategies designed to preserve lean muscle tissue, enhance metabolic rate, and improve strength for clients on GLP-1s or managing midlife hormonal shifts."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "I'm completely new to lifting weights. Is this suitable for beginners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Most of our clients are not gym veterans. Because our facility is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens during the initial consultation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We meet at the Addington facility for a relaxed, 20-minute chat. We discuss your background, health goals, take a quick look at movement mechanics, and decide together if the setup is the right fit for you."
+            }
           }
         ]
       };
+      ogTags += `\n    <script type="application/ld+json">${JSON.stringify(localGymSchema)}</script>`;
       ogTags += `\n    <script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`;
     }
     html = html.replace('</title>', `</title>\n${ogTags}`);

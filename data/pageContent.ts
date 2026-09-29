@@ -111,8 +111,8 @@ export const PAGE_CONTENT: Record<string, PageContentConfig> = {
   },
   personalTraining: {
     seo: {
-      title: "Personal Trainer Christchurch | 1-on-1 Coaching | WRK PT",
-      description: "Expert 1-on-1 personal training in Christchurch (Addington). Fix your movement, build real strength, and get accountable with WRK PT."
+      title: "Personal Trainer Christchurch | Semi-Private Coaching | WRK",
+      description: "Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult."
     },
     hero: {
       h1: "1:1 Personal Training <span class='text-accent'>in Christchurch</span>",
