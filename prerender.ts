@@ -110,7 +110,10 @@ const run = async () => {
     } else if (url.match(/\/blog\/([^\/]+)/)) {
       const slug = url.match(/\/blog\/([^\/]+)/)[1];
       const post = initialBlogs.find(p => p.slug === slug);
-      if (post) {
+      if (slug === 'glp-1-strength-training') {
+        title = "GLP-1 Strength Training: Stop Sarcopenia & Fatigue | WRK";
+        desc = "Up to 40% of GLP-1 weight loss comes from muscle. Protect your metabolic rate with our 30-minute compound lifting protocol. Start lifting smarter today.";
+      } else if (post) {
         title = post.seoTitle || post.title || (slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + " | WRK");
         desc = post.seoDescription || post.excerpt || ("Read our latest insights on " + title + " from WRK Personal Training.");
       } else {
