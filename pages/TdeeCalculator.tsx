@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { RecipeGuideLeadMagnet } from '../components/RecipeGuideLeadMagnet';
+import { FatLossFoundationsLeadMagnet } from '../components/FatLossFoundationsLeadMagnet';
 import { Calculator, ArrowRight, ArrowLeft, RotateCcw, AlertCircle } from 'lucide-react';
 
 const ACTIVITY_MULTIPLIERS = {
@@ -367,8 +367,8 @@ export const TdeeCalculator: React.FC = () => {
             </div>
           )}
 
-          {/* 7-Day High-Protein Recipe Guide Lead Magnet */}
-          <RecipeGuideLeadMagnet />
+          {/* 14-Day Fat Loss Foundations Lead Magnet */}
+          <FatLossFoundationsLeadMagnet />
 
           {/* Final CTA */}
           <div className="bg-white p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm mb-12 text-left">

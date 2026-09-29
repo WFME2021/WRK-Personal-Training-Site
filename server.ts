@@ -586,8 +586,8 @@ ${JSON.stringify(answers, null, 2)}
     })();
   });
 
-  // 7-Day High-Protein Recipe Guide Lead Magnet Submission
-  app.post("/api/recipe-guide", async (req, res) => {
+  // 14-Day Fat Loss Foundations Lead Magnet Submission
+  const handleFatLossGuideSubmission = async (req: express.Request, res: express.Response) => {
     const { email } = req.body;
 
     if (!email || !email.includes('@')) {
@@ -595,7 +595,7 @@ ${JSON.stringify(answers, null, 2)}
     }
 
     // Immediate response to client
-    res.status(200).json({ success: true, message: "Recipe guide requested successfully" });
+    res.status(200).json({ success: true, message: "14-Day Fat Loss Foundations Guide requested successfully" });
 
     // Background processing of integrations
     (async () => {
@@ -623,49 +623,69 @@ ${JSON.stringify(answers, null, 2)}
           from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
           to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
           replyTo: email,
-          subject: `🥗 New Lead: 7-Day High-Protein Recipe Guide - ${email}`,
-          text: `A new user requested the 7-Day High-Protein Whole-Food Recipe Guide:
+          subject: `📘 New Lead: 14-Day Fat Loss Foundations Guide - ${email}`,
+          text: `A new user requested the 14-Day Fat Loss Foundations: Nutrition Basics Guide (PDF):
 
 Email: ${email}
 Timestamp: ${new Date().toISOString()}
-Resource: 7-Day High-Protein Whole-Food Recipe Guide (PDF Lead Magnet)`,
+Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
           html: `
-            <h3>🥗 New Recipe Guide Lead Magnet Download</h3>
+            <h3>📘 New Lead: 14-Day Fat Loss Foundations Guide</h3>
             <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Resource:</strong> 7-Day High-Protein Whole-Food Recipe Guide</p>
+            <p><strong>Resource:</strong> 14-Day Fat Loss Foundations: Nutrition Basics Guide (PDF)</p>
             <p><strong>Timestamp:</strong> ${new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' })}</p>
           `
         };
 
         // User guide email
-        const userMail = {
+        const pdfFilename = '14 Day Fat Loss Foundation Nutrition Basics (2).pdf';
+        const pdfFilePath = path.resolve('public/docs', pdfFilename);
+        const pdfDownloadUrl = `https://wrkpersonaltraining.co.nz/docs/14%20Day%20Fat%20Loss%20Foundation%20Nutrition%20Basics%20(2).pdf`;
+
+        const userMail: any = {
           from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
           to: email,
-          subject: `Your 7-Day High-Protein Whole-Food Guide | WRK Personal Training`,
+          subject: `Your 14-Day Fat Loss Foundations Guide | WRK Personal Training`,
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; color: #2C3539; line-height: 1.6; padding: 20px;">
-              <h2 style="color: #2C3539; margin-bottom: 16px;">Your 7-Day High-Protein Whole-Food Guide</h2>
+              <h2 style="color: #2C3539; margin-bottom: 16px;">14-Day Fat Loss Foundations: Nutrition Basics</h2>
               <p>Hi there,</p>
-              <p>Thank you for requesting the <strong>7-Day High-Protein Whole-Food Guide</strong> from WRK Personal Training.</p>
-              <p>Hitting 30g+ of protein per meal doesn’t require dry chicken breast, chalky shakes, or complicated food prep. Here is our coach-tested framework for building satisfying, nutrient-dense meals using everyday New Zealand supermarket ingredients.</p>
+              <p>Thank you for downloading our <strong>14-Day Fat Loss Foundations: Nutrition Basics Guide</strong> from WRK Personal Training.</p>
+              <p>Sustainable fat loss doesn't require extreme restriction or an immaculate diet. It requires a repeatable, calm structure that protects your metabolic rate and lean muscle tissue.</p>
               
-              <div style="background-color: #F6F5F2; padding: 24px; border-radius: 12px; margin: 24px 0; border-left: 4px solid #8A9A86;">
-                <h3 style="margin-top: 0; font-size: 18px; color: #2C3539;">The 30g+ Anchor Framework</h3>
-                <p style="margin-bottom: 12px; font-size: 15px;">Anchor each meal with one primary whole-food protein source before adding seasonal produce and complex carbs:</p>
-                <ul style="margin: 0; padding-left: 20px; font-size: 15px; space-y: 8px;">
-                  <li><strong>Breakfast Option:</strong> 2 whole eggs + 150g Anchor Protein+ cottage cheese or Greek yoghurt with berries (32g protein)</li>
-                  <li><strong>Lunch Option:</strong> 1 large can tuna or 130g hot roast chicken breast over greens with edamame & quinoa (35g protein)</li>
-                  <li><strong>Dinner Option:</strong> 160g pan-seared salmon fillet or lean Canterbury beef/lamb mince with roasted vegetables (34g protein)</li>
-                  <li><strong>Quick Recovery Anchor:</strong> 250ml trim milk + 1 scoop whey or 2 boiled eggs + edamame snack (20–25g protein)</li>
-                </ul>
+              <!-- Direct PDF Download Banner -->
+              <div style="background-color: #ffffff; border: 2px solid #8A9A86; border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center;">
+                <h3 style="margin-top: 0; font-size: 20px; color: #2C3539;">📥 Download Your Official Guide</h3>
+                <p style="margin-bottom: 16px; font-size: 15px; color: #64748b;">Click below to access your complete copy of the 14-Day Fat Loss Foundations (PDF):</p>
+                <a href="${pdfDownloadUrl}" style="display: inline-block; background: #8A9A86; color: #ffffff; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 16px;">
+                  Download 14-Day Guide (PDF) &darr;
+                </a>
               </div>
 
-              <h4 style="color: #2C3539; margin-top: 24px; margin-bottom: 8px;">Why 30g+ Per Meal Matters</h4>
-              <p style="font-size: 15px;">Spacing your protein across 3 to 4 eating occasions ensures continuous muscle protein synthesis (MPS). During medical weight loss or active calorie deficits, this distribution is your first line of defense against lean muscle loss.</p>
+              <div style="background-color: #F6F5F2; padding: 24px; border-radius: 12px; margin: 24px 0; border-left: 4px solid #8A9A86;">
+                <h3 style="margin-top: 0; font-size: 18px; color: #2C3539;">The 6 Non-Negotiable Nutrition Fundamentals</h3>
+                <ol style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.8;">
+                  <li><strong>3 Solid Meals Per Day:</strong> Build regular eating intervals that eliminate perpetual snacking and provide stable blood glucose.</li>
+                  <li><strong>Protein at Every Meal (30/40/30 Balance):</strong> Aim for a balanced plate of roughly 30% high-quality protein, 40% unrefined carbohydrates, and 30% healthy fats to maintain muscle protein synthesis.</li>
+                  <li><strong>High-Fibre Fruits & Vegetables:</strong> Prioritise whole vegetables and fruits to optimize gut motility, micronutrient intake, and fullness.</li>
+                  <li><strong>Planned Snacks Over Grazing:</strong> If snacking, choose intentional protein anchors (cottage cheese, Greek yoghurt, boiled eggs) rather than impulsive grazing.</li>
+                  <li><strong>Eliminating Liquid Calories:</strong> Replace sweetened drinks, commercial fruit juices, and syrup-laden coffees with water, black coffee, or unsweetened tea.</li>
+                  <li><strong>Whole-Food Swaps Over Ultra-Processed Foods:</strong> Prioritise single-ingredient, minimally processed pantry and fridge staples over hyper-palatable packaged items.</li>
+                </ol>
+              </div>
+
+              <h4 style="color: #2C3539; margin-top: 24px; margin-bottom: 8px;">The 30/40/30 Plate-Building Template</h4>
+              <p style="font-size: 15px;">When plating lunch or dinner, use this quick visual reference:</p>
+              <ul style="font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                <li><strong>Palm of Protein (30%):</strong> Lean Canterbury beef, chicken breast, salmon, eggs, or tofu.</li>
+                <li><strong>Fist of Complex Carbs (40%):</strong> Kumara, potatoes, brown rice, quinoa, or whole oats.</li>
+                <li><strong>Thumb of Healthy Fats (30%):</strong> Extra virgin olive oil, avocado, or raw nuts.</li>
+                <li><strong>2 Cupped Hands of Greens:</strong> Leafy spinach, broccoli, beans, or seasonal salad.</li>
+              </ul>
 
               <div style="background: #0f172a; color: #ffffff; padding: 20px; border-radius: 10px; margin: 28px 0; text-align: center;">
-                <p style="margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">Want coach-led support and a joint-safe lifting routine?</p>
-                <a href="https://wrkpersonaltraining.co.nz/personal-training" style="display: inline-block; background: #ffffff; color: #0f172a; padding: 10px 20px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 14px;">Explore Coaching in Addington &rarr;</a>
+                <p style="margin: 0 0 12px 0; font-size: 16px; font-weight: 600;">Need coach-led support and a progressive strength routine?</p>
+                <a href="https://wrkpersonaltraining.co.nz/personal-training" style="display: inline-block; background: #ffffff; color: #0f172a; padding: 10px 20px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 14px;">Explore In-Person Coaching in Addington &rarr;</a>
               </div>
 
               <p style="margin-top: 24px; font-size: 14px; color: #64748b;">
@@ -677,12 +697,33 @@ Resource: 7-Day High-Protein Whole-Food Recipe Guide (PDF Lead Magnet)`,
           `
         };
 
+        if (fs.existsSync(pdfFilePath)) {
+          userMail.attachments = [
+            {
+              filename: '14-Day-Fat-Loss-Foundations-Nutrition-Basics.pdf',
+              path: pdfFilePath
+            }
+          ];
+        }
+
         const sendMailRobust = async (opts: any) => {
           try {
             await transporter.sendMail(opts);
           } catch (err: any) {
+            // If attachment makes it exceed SMTP size limits (common with 24MB files), retry without attachment
+            if (opts.attachments && opts.attachments.length > 0) {
+              console.warn("Attachment send failed (possibly size limit). Retrying email with direct download link...");
+              const { attachments, ...noAttachmentOpts } = opts;
+              try {
+                await transporter.sendMail(noAttachmentOpts);
+                return;
+              } catch (subErr) {
+                // fall through to sender fallback
+              }
+            }
             if (err.responseCode === 554 || err.responseCode === 550 || (err.message && err.message.includes('rejected'))) {
               const fallback = { ...opts, from: process.env.SMTP_USER, replyTo: opts.from };
+              delete fallback.attachments; // Safe fallback without attachment
               await transporter.sendMail(fallback);
               return;
             }
@@ -692,9 +733,9 @@ Resource: 7-Day High-Protein Whole-Food Recipe Guide (PDF Lead Magnet)`,
 
         await sendMailRobust(adminMail);
         await sendMailRobust(userMail);
-        console.log("Recipe guide emails sent successfully");
+        console.log("14-Day Fat Loss Foundations emails sent successfully");
       } catch (emailErr: any) {
-        console.error("Failed to send recipe guide email:", emailErr.message);
+        console.error("Failed to send 14-Day Fat Loss Foundations email:", emailErr.message);
       }
 
       // 2. MailerLite Integration
@@ -707,7 +748,7 @@ Resource: 7-Day High-Protein Whole-Food Recipe Guide (PDF Lead Magnet)`,
           const subscriberPayloadV3 = {
             email: email,
             fields: {
-              interest: "7-Day Recipe Guide Lead Magnet"
+              interest: "14-Day Fat Loss Foundations PDF"
             },
             groups: [MAILERLITE_PROSPECT_GROUP]
           };
@@ -732,12 +773,12 @@ Resource: 7-Day High-Protein Whole-Food Recipe Guide (PDF Lead Magnet)`,
           }
 
           if (mlResponse.ok) {
-            console.log("Successfully subscribed recipe guide lead to MailerLite");
+            console.log("Successfully subscribed fat loss foundations lead to MailerLite");
           } else {
-            console.error("MailerLite response error for recipe guide lead:", mlResponse.status, await mlResponse.text());
+            console.error("MailerLite response error for fat loss foundations lead:", mlResponse.status, await mlResponse.text());
           }
         } catch (mlErr: any) {
-          console.error("MailerLite integration error for recipe guide:", mlErr.message);
+          console.error("MailerLite integration error for fat loss foundations lead:", mlErr.message);
         }
       }
 
@@ -749,18 +790,21 @@ Resource: 7-Day High-Protein Whole-Food Recipe Guide (PDF Lead Magnet)`,
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              type: 'recipe_guide_lead_magnet',
+              type: 'fat_loss_foundations_lead_magnet',
               date: new Date().toISOString(),
               email: email
             })
           });
-          console.log("Successfully logged recipe guide lead to Google Sheets");
+          console.log("Successfully logged fat loss foundations lead to Google Sheets");
         } catch (sheetsErr: any) {
-          console.error("Google Sheets integration error for recipe guide:", sheetsErr.message);
+          console.error("Google Sheets integration error for fat loss foundations lead:", sheetsErr.message);
         }
       }
     })();
-  });
+  };
+
+  app.post("/api/fat-loss-guide", handleFatLossGuideSubmission);
+  app.post("/api/recipe-guide", handleFatLossGuideSubmission);
 
   // Sitemap XML route
   
