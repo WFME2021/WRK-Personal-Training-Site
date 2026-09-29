@@ -97,8 +97,8 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
             </p>
             <div style={{ marginTop: '16px' }}>
               <a 
-                href="/docs/14%20Day%20Fat%20Loss%20Foundation%20Nutrition%20Basics%20(2).pdf" 
-                download="14 Day Fat Loss Foundation Nutrition Basics.pdf"
+                href="/docs/14-day-fat-loss-foundations.pdf" 
+                download="14-Day-Fat-Loss-Foundations.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

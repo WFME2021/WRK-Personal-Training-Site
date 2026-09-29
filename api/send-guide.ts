@@ -1,1 +1,2 @@
-export { default } from './fat-loss-guide';
+import handler from './fat-loss-guide';
+export default handler;

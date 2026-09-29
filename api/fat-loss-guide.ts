@@ -27,30 +27,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const cleanEmail = email.trim().toLowerCase();
-  const pdfDownloadUrl = 'https://wrkpersonaltraining.co.nz/docs/14%20Day%20Fat%20Loss%20Foundation%20Nutrition%20Basics%20(2).pdf';
+  const pdfDownloadUrl = 'https://wrkpersonaltraining.co.nz/docs/14-day-fat-loss-foundations.pdf';
 
-  // Always respond with success so user client is never blocked
   try {
-    // 1. Send Email Notification & Delivery (HTML only, no heavy raw binary attachments)
+    // 1. Send Email Delivery mirroring the working Assessment transport
     if (process.env.SMTP_USER && process.env.SMTP_PASS) {
       try {
         const port = Number(process.env.SMTP_PORT) || 587;
         const isSecure = port === 465;
 
         const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST || 'smtp.gmail.com',
+          host: process.env.SMTP_HOST,
           port: port,
           secure: isSecure,
           auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS?.replace(/^"|"$/g, '').trim(),
           },
-          connectionTimeout: 8000,
+          connectionTimeout: 10000,
           greetingTimeout: 5000,
-          socketTimeout: 8000
+          socketTimeout: 10000
         });
 
-        // Admin Notification
+        const fromAddress = process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>';
+
         const adminMail = {
           from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
           to: `${process.env.CONTACT_EMAIL || 'wfme2021@gmail.com'}, info@wrkpersonaltraining.co.nz`,
@@ -65,25 +65,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           `
         };
 
-        // User Delivery Email (Lightweight HTML with direct PDF link)
         const userMail = {
-          from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
+          from: fromAddress,
           to: cleanEmail,
-          subject: `Your 14-Day Fat Loss Foundations Guide | WRK Personal Training`,
+          subject: `Your 14-Day Fat Loss Foundations Guide [PDF Download]`,
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; color: #2C3539; line-height: 1.6; padding: 20px;">
               <h2 style="color: #2C3539; margin-bottom: 16px;">14-Day Fat Loss Foundations: Nutrition Basics</h2>
               <p>Hi there,</p>
-              <p>Thank you for downloading our <strong>14-Day Fat Loss Foundations: Nutrition Basics Guide</strong> from WRK Personal Training.</p>
-              <p>Sustainable fat loss doesn't require extreme restriction or an immaculate diet. It requires a repeatable, calm structure that protects your metabolic rate and lean muscle tissue.</p>
+              <p>Thank you for requesting the <strong>14-Day Fat Loss Foundations: Nutrition Basics Guide</strong> from WRK Personal Training.</p>
+              <p>Sustainable fat loss doesn't require extreme restriction or complicated fads. It requires a repeatable, calm structure that protects your metabolic rate and lean muscle tissue.</p>
               
-              <!-- Direct PDF Download Banner -->
+              <!-- Direct PDF Download Card -->
               <div style="background-color: #ffffff; border: 2px solid #8A9A86; border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center;">
                 <h3 style="margin-top: 0; font-size: 20px; color: #2C3539;">📥 Download Your Official Guide</h3>
-                <p style="margin-bottom: 16px; font-size: 15px; color: #64748b;">Click below to access your complete copy of the 14-Day Fat Loss Foundations (PDF):</p>
+                <p style="margin-bottom: 16px; font-size: 15px; color: #64748b;">Click below to access and save your complete copy of the 14-Day Fat Loss Foundations (PDF):</p>
                 <a href="${pdfDownloadUrl}" style="display: inline-block; background: #8A9A86; color: #ffffff; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 16px;">
                   Download 14-Day Guide (PDF) &darr;
                 </a>
+                <p style="margin-top: 12px; margin-bottom: 0; font-size: 13px; color: #94a3b8;">
+                  Direct link: <a href="${pdfDownloadUrl}" style="color: #8A9A86; text-decoration: underline;">${pdfDownloadUrl}</a>
+                </p>
               </div>
 
               <div style="background-color: #F6F5F2; padding: 24px; border-radius: 12px; margin: 24px 0; border-left: 4px solid #8A9A86;">
@@ -121,14 +123,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           `
         };
 
-        await Promise.allSettled([
-          transporter.sendMail(adminMail),
-          transporter.sendMail(userMail)
-        ]);
-        console.log("14-Day Fat Loss Foundations emails dispatched successfully");
-      } catch (mailErr: any) {
-        console.error("Nodemailer error in fat-loss-guide API:", mailErr?.message || mailErr);
+        const sendMailRobust = async (opts: any) => {
+          try {
+            await transporter.sendMail(opts);
+          } catch (err: any) {
+            if (err.responseCode === 554 || err.responseCode === 550 || err.responseCode === 553 || (err.message && err.message.includes('rejected'))) {
+              const fallback = { ...opts, from: process.env.SMTP_USER, replyTo: opts.from };
+              await transporter.sendMail(fallback);
+              return;
+            }
+            throw err;
+          }
+        };
+
+        await sendMailRobust(adminMail);
+        await sendMailRobust(userMail);
+        console.log("14-Day Fat Loss Foundations emails dispatched successfully to", cleanEmail);
+      } catch (error: any) {
+        console.error('Lead magnet email dispatch failed:', error);
       }
+    } else {
+      console.warn("Skipping lead magnet email: SMTP_USER or SMTP_PASS not set");
     }
 
     // 2. MailerLite Sync

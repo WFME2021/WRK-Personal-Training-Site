@@ -638,14 +638,14 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
         };
 
         // User guide email
-        const pdfFilename = '14 Day Fat Loss Foundation Nutrition Basics (2).pdf';
+        const pdfFilename = '14-day-fat-loss-foundations.pdf';
         const pdfFilePath = path.resolve('public/docs', pdfFilename);
-        const pdfDownloadUrl = `https://wrkpersonaltraining.co.nz/docs/14%20Day%20Fat%20Loss%20Foundation%20Nutrition%20Basics%20(2).pdf`;
+        const pdfDownloadUrl = `https://wrkpersonaltraining.co.nz/docs/14-day-fat-loss-foundations.pdf`;
 
         const userMail: any = {
           from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Personal Training" <info@wrkpersonaltraining.co.nz>',
           to: email,
-          subject: `Your 14-Day Fat Loss Foundations Guide | WRK Personal Training`,
+          subject: `Your 14-Day Fat Loss Foundations Guide [PDF Download]`,
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; color: #2C3539; line-height: 1.6; padding: 20px;">
               <h2 style="color: #2C3539; margin-bottom: 16px;">14-Day Fat Loss Foundations: Nutrition Basics</h2>
@@ -701,7 +701,7 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
           try {
             await transporter.sendMail(opts);
           } catch (err: any) {
-            if (err.responseCode === 554 || err.responseCode === 550 || (err.message && err.message.includes('rejected'))) {
+            if (err.responseCode === 554 || err.responseCode === 550 || err.responseCode === 553 || (err.message && err.message.includes('rejected'))) {
               const fallback = { ...opts, from: process.env.SMTP_USER, replyTo: opts.from };
               await transporter.sendMail(fallback);
               return;
@@ -714,7 +714,7 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
         await sendMailRobust(userMail);
         console.log("14-Day Fat Loss Foundations emails sent successfully");
       } catch (emailErr: any) {
-        console.error("Failed to send 14-Day Fat Loss Foundations email:", emailErr.message);
+        console.error('Lead magnet email dispatch failed:', emailErr);
       }
 
       // 2. MailerLite Integration
