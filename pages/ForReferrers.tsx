@@ -11,9 +11,9 @@ export const ForReferrers: React.FC = () => {
   const snippetOptionB = `Hi [Name], following up on our consultation regarding muscle preservation and nutrition habits alongside your GLP-1 therapy. Here is the patient guidance resource from WRK: wrkpersonaltraining.co.nz/glp1`;
 
   const handleCopy = (text: string, option: 'A' | 'B') => {
-    if (navigator.clipboard && window.isSecureContext) {
+    if (typeof window !== 'undefined' && navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(text);
-    } else {
+    } else if (typeof document !== 'undefined') {
       const textArea = document.createElement("textarea");
       textArea.value = text;
       document.body.appendChild(textArea);
@@ -82,14 +82,36 @@ export const ForReferrers: React.FC = () => {
               Safe, joint-friendly resistance coaching and high-protein habit support in Christchurch and nationwide online. A practical exercise partner for your medical weight loss patients.
             </p>
 
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-3xl mx-auto text-sand-50 text-sm sm:text-base leading-relaxed shadow-lg">
-              <span className="text-xs uppercase tracking-widest text-sand-200 block mb-2 font-semibold">
-                OUR SCOPE & COLLABORATION MODEL
-              </span>
-              <p className="font-serif italic text-sand-50 text-sm sm:text-base leading-relaxed m-0">
-                “You manage pharmacotherapy, dose titration, and medical oversight. WRK provides the coaching, lifting mechanics, and uncrowded environment to ensure patients preserve lean muscle and physical capability while the weight comes off.”
-              </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide.pdf"
+                download="Protecting Muscle on GLP-1 - Patient Guide.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-sand-100 hover:bg-white text-spruce-900 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors shadow-sm w-full sm:w-auto justify-center"
+              >
+                <Download size={14} />
+                <span>Download Patient Handout (A4 PDF)</span>
+              </a>
+              <a
+                href="#clinician-inquiry"
+                className="border border-white/30 text-sand-50 hover:bg-white/10 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors w-full sm:w-auto justify-center"
+              >
+                <span>Request DLE Cards for Clinic</span>
+              </a>
             </div>
+          </div>
+        </section>
+
+        {/* Executive Scope & Collaboration Model Banner */}
+        <section className="px-6 max-w-4xl mx-auto -mt-8 md:-mt-10 relative z-20">
+          <div className="bg-spruce-800 text-sand-50 rounded-2xl p-6 sm:p-8 shadow-xl border border-white/10">
+            <span className="text-xs uppercase tracking-widest text-sand-200 block mb-2 font-semibold">
+              OUR SCOPE & COLLABORATION MODEL
+            </span>
+            <blockquote className="font-serif text-lg sm:text-xl text-sand-50 italic leading-relaxed m-0">
+              “You manage pharmacotherapy, dose titration, and medical oversight. WRK provides the coaching, lifting mechanics, and uncrowded environment to ensure patients preserve lean muscle and physical capability while the weight comes off.”
+            </blockquote>
           </div>
         </section>
 
@@ -111,16 +133,6 @@ export const ForReferrers: React.FC = () => {
               <p>
                 In a standard 15-minute consultation, guiding a patient through safe resistance training, protein pacing, and hydration habits is impractical. Most patients are intimidated by commercial gyms and unsure how to lift safely. WRK serves as your reliable exercise coaching partner in Addington and nationwide online.
               </p>
-            </div>
-
-            {/* Scope & Collaboration Model Box */}
-            <div className="bg-spruce-800 text-sand-50 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <span className="text-xs uppercase tracking-widest text-sand-200 block mb-2 font-semibold">
-                OUR SCOPE & COLLABORATION MODEL
-              </span>
-              <blockquote className="font-serif text-lg sm:text-xl text-sand-50 italic leading-snug m-0">
-                “You manage pharmacotherapy, dose titration, and medical oversight. WRK provides the coaching, lifting mechanics, and uncrowded environment to ensure patients preserve lean muscle and physical capability while the weight comes off.”
-              </blockquote>
             </div>
           </section>
 
@@ -149,16 +161,16 @@ export const ForReferrers: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleCopy(snippetOptionA, 'A')}
-                    className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md font-semibold text-xs uppercase tracking-wider transition-all w-full sm:w-auto shadow-xs ${
+                    className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md font-semibold text-xs uppercase tracking-wider transition-all w-full sm:w-auto shadow-xs cursor-pointer ${
                       copiedOption === 'A'
-                        ? 'bg-spruce-800 text-sand-50'
+                        ? 'bg-emerald-700 text-sand-50 border border-emerald-700'
                         : 'bg-white hover:bg-spruce-800 hover:text-sand-50 text-charcoal border border-charcoal/15'
                     }`}
                   >
                     {copiedOption === 'A' ? (
                       <>
                         <Check size={14} />
-                        <span>Copied to Clipboard!</span>
+                        <span>✓ Copied to Clipboard!</span>
                       </>
                     ) : (
                       <>
@@ -182,16 +194,16 @@ export const ForReferrers: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleCopy(snippetOptionB, 'B')}
-                    className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md font-semibold text-xs uppercase tracking-wider transition-all w-full sm:w-auto shadow-xs ${
+                    className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md font-semibold text-xs uppercase tracking-wider transition-all w-full sm:w-auto shadow-xs cursor-pointer ${
                       copiedOption === 'B'
-                        ? 'bg-spruce-800 text-sand-50'
+                        ? 'bg-emerald-700 text-sand-50 border border-emerald-700'
                         : 'bg-white hover:bg-spruce-800 hover:text-sand-50 text-charcoal border border-charcoal/15'
                     }`}
                   >
                     {copiedOption === 'B' ? (
                       <>
                         <Check size={14} />
-                        <span>Copied to Clipboard!</span>
+                        <span>✓ Copied to Clipboard!</span>
                       </>
                     ) : (
                       <>
@@ -208,26 +220,56 @@ export const ForReferrers: React.FC = () => {
 
             </div>
 
-            {/* Printable Patient Handout (A4 PDF) */}
-            <div className="bg-sand-100/70 border border-charcoal/10 p-6 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div>
-                <h4 className="font-serif text-lg font-bold text-charcoal mb-1">
-                  Printable Patient Handout (A4 PDF)
-                </h4>
-                <p className="text-xs text-charcoal/70">
-                  A simple, 1-page guide explaining muscle preservation, protein habits, and quiet studio support. Ready to print or email to patients starting or on GLP-1 therapy.
-                </p>
+            {/* Dual-Delivery Patient Resources Model */}
+            <div className="pt-2 border-t border-charcoal/10">
+              <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 block mb-4">
+                Dual-Delivery Patient Resources
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                {/* Delivery Option 1: Instant A4 PDF */}
+                <div className="bg-sand-50/80 border border-charcoal/10 p-6 rounded-2xl flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm mb-2">
+                      <Download size={18} />
+                      <span>Instant 1-Page A4 PDF Handout</span>
+                    </div>
+                    <p className="text-xs text-charcoal/70 leading-relaxed mb-5">
+                      Print on practice demand or attach to patient portal messages. Explains muscle preservation, digestible protein habits, and quiet studio support.
+                    </p>
+                  </div>
+                  <a
+                    href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide.pdf"
+                    download="Protecting Muscle on GLP-1 - Patient Guide.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-5 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors shadow-xs"
+                  >
+                    <Download size={15} />
+                    <span>Download A4 PDF</span>
+                  </a>
+                </div>
+
+                {/* Delivery Option 2: Physical DLE Cards */}
+                <div className="bg-sand-50/80 border border-charcoal/10 p-6 rounded-2xl flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm mb-2">
+                      <Building size={18} />
+                      <span>Patient Information Cards (DLE)</span>
+                    </div>
+                    <p className="text-xs text-charcoal/70 leading-relaxed mb-5">
+                      Professional, high-quality printed DLE rack cards (free pack of 25) dispatched directly to your medical centre for consulting rooms and reception.
+                    </p>
+                  </div>
+                  <a
+                    href="#clinician-inquiry"
+                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-spruce-800 hover:text-sand-50 text-charcoal border border-charcoal/20 px-5 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors shadow-xs"
+                  >
+                    <span>Request Free 25-Pack (DLE) →</span>
+                  </a>
+                </div>
+
               </div>
-              <a
-                href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide.pdf"
-                download="Protecting Muscle on GLP-1 - Patient Guide.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-6 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors whitespace-nowrap shrink-0 shadow-xs"
-              >
-                <Download size={15} />
-                <span>DOWNLOAD PATIENT HANDOUT (PDF)</span>
-              </a>
             </div>
 
             {/* Direct Enquiries Line */}

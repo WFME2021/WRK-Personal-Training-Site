@@ -1,32 +1,49 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Send, AlertCircle } from 'lucide-react';
+import { CheckCircle2, Send, AlertCircle, Loader2 } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 interface ClinicianFormData {
-  name: string;
-  role: string;
-  practiceName: string;
+  clinicianName: string;
+  medicalCentre: string;
   clinicEmail: string;
-  phone: string;
-  inquiryType: string;
-  message: string;
+  requestType: string;
+  clinicalNote: string;
 }
 
 export const ClinicianInquiryForm: React.FC = () => {
   const [formData, setFormData] = useState<ClinicianFormData>({
-    name: '',
-    role: 'GP',
-    practiceName: '',
+    clinicianName: '',
+    medicalCentre: '',
     clinicEmail: '',
-    phone: '',
-    inquiryType: 'Request physical patient info cards for rooms',
-    message: ''
+    requestType: 'Post 25 Free Patient Info Cards (DLE)',
+    clinicalNote: '',
   });
 
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [submittedClinician, setSubmittedClinician] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.clinicianName.trim()) {
+      setStatus('error');
+      setErrorMessage('Please enter clinician name.');
+      return;
+    }
+
+    if (!formData.medicalCentre.trim()) {
+      setStatus('error');
+      setErrorMessage('Please enter medical centre and suburb.');
+      return;
+    }
+
+    if (!formData.clinicEmail.trim() || !formData.clinicEmail.includes('@')) {
+      setStatus('error');
+      setErrorMessage('Please enter a valid clinic email address.');
+      return;
+    }
+
     setStatus('submitting');
     setErrorMessage('');
 
@@ -35,32 +52,42 @@ export const ClinicianInquiryForm: React.FC = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.clinicEmail,
-          phone: formData.phone,
-          interest: `Clinician Inquiry: ${formData.inquiryType}`,
-          referralSource: `${formData.role} at ${formData.practiceName}`,
-          message: `Clinician Role: ${formData.role}
-Practice / Clinic & Suburb: ${formData.practiceName}
-Inquiry Type: ${formData.inquiryType}
-Direct Clinic Phone: ${formData.phone || 'Not provided'}
+          name: formData.clinicianName.trim(),
+          email: formData.clinicEmail.trim(),
+          phone: '',
+          interest: `Healthcare Provider: ${formData.requestType}`,
+          referralSource: `Medical Centre: ${formData.medicalCentre.trim()}`,
+          message: `Clinician Name: ${formData.clinicianName.trim()}
+Medical Centre & Suburb: ${formData.medicalCentre.trim()}
+Clinic Email: ${formData.clinicEmail.trim()}
+Request Type: ${formData.requestType}
 
-Message:
-${formData.message || '(No additional message provided)'}`
+Delivery Address / Clinical Note:
+${formData.clinicalNote.trim() || '(No additional note provided)'}`,
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Unable to send inquiry. Please try again or email us directly.');
+        throw new Error('Unable to send enquiry. Please try again or email info@wrkpersonaltraining.co.nz directly.');
       }
 
+      // Trigger GA4 conversion event
+      trackEvent('referrer_inquiry', {
+        event_category: 'b2b_referral',
+        request_type: formData.requestType,
+      });
+
+      setSubmittedClinician(formData.clinicianName.trim());
       setStatus('success');
     } catch (err: any) {
       console.error('Clinician inquiry submission error:', err);
       setStatus('error');
-      setErrorMessage(err.message || 'Something went wrong. Please reach out via info@wrkpersonaltraining.co.nz or 021 393 160.');
+      setErrorMessage(
+        err.message || 'Something went wrong. Please reach out via info@wrkpersonaltraining.co.nz or 021 393 160.'
+      );
     }
   };
 
@@ -74,105 +101,84 @@ ${formData.message || '(No additional message provided)'}`
           Healthcare Provider Enquiries & Material Requests
         </h3>
         <p className="text-sm text-charcoal/70 leading-relaxed">
-          Have questions about patient suitability, scope of practice, or want printed patient tear-sheets for your consulting rooms? Send a message directly to Hayden.
+          Request a complimentary pack of 25 Patient Information Cards (DLE) for your consulting rooms, discuss patient presentation suitability, or establish shared-care communication.
         </p>
       </div>
 
       {status === 'success' ? (
-        <div className="bg-sand-50/70 border border-charcoal/10 rounded-2xl p-8 sm:p-10 flex flex-col items-start animate-in fade-in duration-300">
+        <div className="bg-sand-50/80 border border-spruce-800/20 rounded-2xl p-8 sm:p-10 flex flex-col items-start animate-fade-in">
           <div className="w-14 h-14 bg-spruce-800/10 text-spruce-800 rounded-full flex items-center justify-center mb-6">
             <CheckCircle2 size={30} />
           </div>
-          <h4 className="font-serif text-2xl text-charcoal mb-2 font-bold">Practice Enquiry Received</h4>
+          <h4 className="font-serif text-2xl text-charcoal mb-2 font-bold">Practice Request Received</h4>
           <p className="text-sm text-charcoal/80 leading-relaxed max-w-xl mb-6">
-            Thank you for reaching out. Hayden will review your enquiry and follow up directly with your practice within one business day.
+            Thank you, <strong className="font-semibold text-charcoal">{submittedClinician}</strong>. Hayden will review your request and dispatch materials or respond directly to your practice within one business day.
           </p>
           <button
             type="button"
             onClick={() => {
               setStatus('idle');
               setFormData({
-                name: '',
-                role: 'GP',
-                practiceName: '',
+                clinicianName: '',
+                medicalCentre: '',
                 clinicEmail: '',
-                phone: '',
-                inquiryType: 'Request physical patient info cards for rooms',
-                message: ''
+                requestType: 'Post 25 Free Patient Info Cards (DLE)',
+                clinicalNote: '',
               });
             }}
-            className="text-xs uppercase tracking-wider font-semibold text-spruce-800 hover:text-spruce-900 transition-colors underline underline-offset-4"
+            className="text-xs uppercase tracking-wider font-semibold text-spruce-800 hover:text-spruce-900 transition-colors underline underline-offset-4 cursor-pointer"
           >
-            Send another practice enquiry
+            Submit another practice request
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+          {errorMessage && (
+            <div className="flex items-center gap-2.5 text-red-800 bg-red-50 p-4 rounded-xl text-xs font-medium border border-red-200">
+              <AlertCircle size={16} className="shrink-0 text-red-600" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Clinician Name */}
             <div>
               <label htmlFor="clinician-name" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
-                Name *
+                Clinician Name <span className="text-red-600">*</span>
               </label>
               <input
                 id="clinician-name"
                 type="text"
                 required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                value={formData.clinicianName}
+                onChange={(e) => setFormData({ ...formData, clinicianName: e.target.value })}
                 placeholder="e.g. Dr. Sarah Jenkins"
                 className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40"
               />
             </div>
 
-            {/* Role / Professional Title */}
+            {/* Medical Centre & Suburb */}
             <div>
-              <label htmlFor="clinician-role" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
-                Role / Professional Title *
-              </label>
-              <div className="relative">
-                <select
-                  id="clinician-role"
-                  required
-                  value={formData.role}
-                  onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                  className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl appearance-none focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm cursor-pointer"
-                >
-                  <option value="GP">GP</option>
-                  <option value="Practice Nurse">Practice Nurse</option>
-                  <option value="Specialist">Specialist</option>
-                  <option value="Dietitian">Dietitian</option>
-                  <option value="Allied Health">Allied Health</option>
-                  <option value="Other">Other</option>
-                </select>
-                <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-charcoal/40">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Practice / Medical Centre Name & Suburb */}
-            <div>
-              <label htmlFor="practice-name" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
-                Practice / Medical Centre & Suburb *
+              <label htmlFor="medical-centre" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+                Medical Centre & Suburb <span className="text-red-600">*</span>
               </label>
               <input
-                id="practice-name"
+                id="medical-centre"
                 type="text"
                 required
-                value={formData.practiceName}
-                onChange={(e) => setFormData({ ...formData, practiceName: e.target.value })}
+                value={formData.medicalCentre}
+                onChange={(e) => setFormData({ ...formData, medicalCentre: e.target.value })}
                 placeholder="e.g. Moorhouse Medical Centre, Christchurch"
                 className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40"
               />
             </div>
+          </div>
 
-            {/* Direct Clinic Email */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Clinic Email */}
             <div>
               <label htmlFor="clinic-email" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
-                Direct Clinic Email *
+                Clinic Email <span className="text-red-600">*</span>
               </label>
               <input
                 id="clinic-email"
@@ -184,44 +190,28 @@ ${formData.message || '(No additional message provided)'}`
                 className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40"
               />
             </div>
-          </div>
 
-          {/* Phone & Inquiry Type */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Request Type */}
             <div>
-              <label htmlFor="clinic-phone" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
-                Clinic Phone (Optional)
-              </label>
-              <input
-                id="clinic-phone"
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="e.g. 03 3xx xxxx"
-                className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="inquiry-type" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
-                Inquiry Type *
+              <label htmlFor="request-type" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+                Request Type <span className="text-red-600">*</span>
               </label>
               <div className="relative">
                 <select
-                  id="inquiry-type"
+                  id="request-type"
                   required
-                  value={formData.inquiryType}
-                  onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                  value={formData.requestType}
+                  onChange={(e) => setFormData({ ...formData, requestType: e.target.value })}
                   className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl appearance-none focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm cursor-pointer"
                 >
-                  <option value="Request physical patient info cards for rooms">
-                    Request physical patient info cards for rooms
+                  <option value="Post 25 Free Patient Info Cards (DLE)">
+                    Post 25 Free Patient Info Cards (DLE)
                   </option>
-                  <option value="Inquire about patient presentation suitability">
-                    Inquire about patient presentation suitability
+                  <option value="Discuss Patient Presentation Suitability">
+                    Discuss Patient Presentation Suitability
                   </option>
-                  <option value="General collaboration">
-                    General collaboration
+                  <option value="General Collaboration">
+                    General Collaboration
                   </option>
                 </select>
                 <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-charcoal/40">
@@ -231,39 +221,41 @@ ${formData.message || '(No additional message provided)'}`
             </div>
           </div>
 
-          {/* Message Area */}
+          {/* Delivery Address / Clinical Note */}
           <div>
-            <label htmlFor="clinician-message" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
-              Message (Optional)
+            <label htmlFor="clinical-note" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+              Delivery Address / Clinical Note
             </label>
             <textarea
-              id="clinician-message"
+              id="clinical-note"
               rows={4}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Share any questions regarding patient presentation suitability, practice cards, or collaboration..."
+              value={formData.clinicalNote}
+              onChange={(e) => setFormData({ ...formData, clinicalNote: e.target.value })}
+              placeholder="If requesting DLE card packs, please enter clinic postal address. If discussing patient suitability, feel free to outline their presentation or goals..."
               className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40 resize-none"
             />
           </div>
 
-          {errorMessage && (
-            <div className="flex items-center gap-2 text-terracotta bg-sand-100 p-4 rounded-xl text-xs font-medium border border-terracotta/20">
-              <AlertCircle size={16} className="shrink-0" />
-              <span>{errorMessage}</span>
-            </div>
-          )}
-
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-charcoal/60">
-              Direct clinician inquiries are handled confidentially and replied to promptly.
+              Direct clinician inquiries are treated confidentially and replied to promptly.
             </p>
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-8 py-3.5 rounded-md font-semibold uppercase tracking-widest text-xs transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-8 py-3.5 rounded-md font-semibold uppercase tracking-widest text-xs transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-xs cursor-pointer"
             >
-              <Send size={14} />
-              {status === 'submitting' ? 'Submitting...' : 'Submit Practice Inquiry'}
+              {status === 'submitting' ? (
+                <>
+                  <Loader2 size={14} className="animate-spin" />
+                  <span>Submitting...</span>
+                </>
+              ) : (
+                <>
+                  <Send size={14} />
+                  <span>Submit Practice Request</span>
+                </>
+              )}
             </button>
           </div>
         </form>
