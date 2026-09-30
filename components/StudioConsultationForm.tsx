@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 interface StudioConsultationFormProps {
   initialFocus?: string;
@@ -68,6 +69,12 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
       if (!response.ok) {
         throw new Error(result.error || 'Failed to submit consultation request. Please try again.');
       }
+
+      trackEvent('consultation_inquiry', {
+        event_category: 'conversion',
+        coaching_type: 'in_person_addington',
+        offer_price: 89,
+      });
 
       setSubmittedName(formData.name.trim());
       setStatus('success');

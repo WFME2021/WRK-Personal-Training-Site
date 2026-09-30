@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { trackEvent } from '../utils/analytics';
 
 export const FatLossFoundationsLeadMagnet: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -25,13 +26,21 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
     // 2. Fire background delivery to APIs without failing or blocking the UI
     (async () => {
       try {
-        await fetch('/api/fat-loss-guide', {
+        const response = await fetch('/api/fat-loss-guide', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ email: cleanEmail }),
         });
+
+        if (response.ok) {
+          trackEvent('generate_lead', {
+            event_category: 'lead_magnet',
+            lead_asset: '14_day_fat_loss_foundations_pdf',
+            source_tool: 'tdee_calculator',
+          });
+        }
       } catch (err) {
         console.warn('Background email delivery notice:', err);
       }

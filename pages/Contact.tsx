@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SeoHead } from '../components/SeoHead';
 import { CheckCircle2, ChevronDown, ChevronUp, Lock, MapPin, ArrowRight } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
+import { trackEvent } from '../utils/analytics';
 
 export const Contact: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -47,6 +48,10 @@ export const Contact: React.FC = () => {
       if (!response.ok) {
         throw new Error('Failed to submit form');
       }
+
+      trackEvent('contact_inquiry', {
+        event_category: 'inquiry',
+      });
 
       setSubmitted(true);
       setStatus('success');

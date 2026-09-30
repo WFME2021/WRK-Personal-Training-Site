@@ -5,6 +5,7 @@ import { SeoHead } from '../components/SeoHead';
 import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
 import { calculateAssessmentResult } from '../assessment/scoring';
 import { AssessmentResult } from '../assessment/types';
+import { trackEvent } from '../utils/analytics';
 
 export const Assessment: React.FC = () => {
   const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = email & phone gate, N+2 = results
@@ -75,7 +76,11 @@ export const Assessment: React.FC = () => {
         }),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        trackEvent('assessment_completed', {
+          event_category: 'engagement_lead',
+        });
+      } else {
         console.warn('Backend API indicated an error, but proceeding to show results anyway.');
       }
     } catch (err) {
