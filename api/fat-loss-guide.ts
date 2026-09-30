@@ -149,16 +149,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 2. MailerLite Sync
     const rawKey = process.env.MAILERLITE_API_KEY || "";
     const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
-    const MAILERLITE_PROSPECT_GROUP = "195641787200570883";
+    const MAILERLITE_TDEE_LEAD_MAGNET_GROUP = process.env.MAILERLITE_GROUP_TDEE_LEAD_MAGNET?.replace(/^"|"$/g, '').trim() || "199990436523148879";
 
     if (MAILERLITE_API_KEY) {
       try {
         const payload = {
           email: cleanEmail,
           fields: {
-            interest: "14-Day Fat Loss Foundations PDF"
+            interest: "14-Day Fat Loss Foundations PDF",
+            lead_source: "tdee_calculator_lead_magnet"
           },
-          groups: [MAILERLITE_PROSPECT_GROUP]
+          groups: [MAILERLITE_TDEE_LEAD_MAGNET_GROUP]
         };
 
         const mlRes = await fetch('https://connect.mailerlite.com/api/subscribers', {
@@ -179,7 +180,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
               'Accept': 'application/json'
             },
-            body: JSON.stringify({ email: cleanEmail, groups: [MAILERLITE_PROSPECT_GROUP] })
+            body: JSON.stringify({ email: cleanEmail, groups: [MAILERLITE_TDEE_LEAD_MAGNET_GROUP] })
           });
         }
         console.log("MailerLite lead sync completed for:", cleanEmail);

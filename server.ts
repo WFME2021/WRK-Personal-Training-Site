@@ -720,16 +720,17 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
       // 2. MailerLite Integration
       const rawKey = process.env.MAILERLITE_API_KEY || "";
       const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
-      const MAILERLITE_PROSPECT_GROUP = "195641787200570883";
+      const MAILERLITE_TDEE_LEAD_MAGNET_GROUP = process.env.MAILERLITE_GROUP_TDEE_LEAD_MAGNET?.replace(/^"|"$/g, '').trim() || "199990436523148879";
 
       if (MAILERLITE_API_KEY) {
         try {
           const subscriberPayloadV3 = {
             email: email,
             fields: {
-              interest: "14-Day Fat Loss Foundations PDF"
+              interest: "14-Day Fat Loss Foundations PDF",
+              lead_source: "tdee_calculator_lead_magnet"
             },
-            groups: [MAILERLITE_PROSPECT_GROUP]
+            groups: [MAILERLITE_TDEE_LEAD_MAGNET_GROUP]
           };
 
           let mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
@@ -743,7 +744,7 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
           });
 
           if (!mlResponse.ok && mlResponse.status !== 401) {
-            const fallbackPayload = { email: email, groups: [MAILERLITE_PROSPECT_GROUP] };
+            const fallbackPayload = { email: email, groups: [MAILERLITE_TDEE_LEAD_MAGNET_GROUP] };
             mlResponse = await fetch('https://connect.mailerlite.com/api/subscribers', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${MAILERLITE_API_KEY}`, 'Accept': 'application/json' },
@@ -752,7 +753,7 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
           }
 
           if (mlResponse.ok) {
-            console.log("Successfully subscribed fat loss foundations lead to MailerLite");
+            console.log("Successfully subscribed fat loss foundations lead to MailerLite (TDEE group)");
           } else {
             console.error("MailerLite response error for fat loss foundations lead:", mlResponse.status, await mlResponse.text());
           }
