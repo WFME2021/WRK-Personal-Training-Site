@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { MapPin, Shield, Dumbbell, Activity, Check, ChevronDown, ArrowRight, Car, Compass, Clock } from 'lucide-react';
 import { Testimonials } from '../components/Testimonials';
+import { StudioConsultationForm } from '../components/StudioConsultationForm';
 
 export const PersonalTraining: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -164,7 +165,10 @@ export const PersonalTraining: React.FC = () => {
 
   const handleTriageSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (phaseSelection) {
+    const consultSection = document.getElementById('book-consult');
+    if (consultSection) {
+      consultSection.scrollIntoView({ behavior: 'smooth' });
+    } else if (phaseSelection) {
       navigate(`/contact?phase=${encodeURIComponent(phaseSelection)}`);
     } else {
       navigate('/contact');
@@ -195,12 +199,12 @@ export const PersonalTraining: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/contact"
+            <a
+              href="#book-consult"
               className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors shadow-sm"
             >
               Book a Free Consultation
-            </Link>
+            </a>
             <a
               href="#location"
               className="border border-charcoal/20 text-charcoal hover:bg-sand-100 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors"
@@ -425,15 +429,18 @@ export const PersonalTraining: React.FC = () => {
             </ul>
 
             <div className="pt-2">
-              <Link
-                to="/contact"
+              <a
+                href="#book-consult"
                 className="bg-sand-100 text-spruce-900 hover:bg-white w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors shadow-sm"
               >
                 Check Studio Availability & Book a 20-Min Consult →
-              </Link>
+              </a>
             </div>
           </div>
         </section>
+
+        {/* Studio Consultation Booking Form */}
+        <StudioConsultationForm />
 
         {/* 5. Location & Accessibility Band */}
         <section id="location" className="bg-sand-50 py-16 px-6 border-y border-charcoal/5">
