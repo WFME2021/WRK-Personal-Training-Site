@@ -84,8 +84,8 @@ export const ForReferrers: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide.pdf"
-                download="Protecting Muscle on GLP-1 - Patient Guide.pdf"
+                href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide%20_%20WRK%20Personal%20Training.pdf"
+                download="Protecting Muscle on GLP-1 - Patient Guide _ WRK Personal Training.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-sand-100 hover:bg-white text-spruce-900 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors shadow-sm w-full sm:w-auto justify-center"
@@ -239,8 +239,8 @@ export const ForReferrers: React.FC = () => {
                     </p>
                   </div>
                   <a
-                    href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide.pdf"
-                    download="Protecting Muscle on GLP-1 - Patient Guide.pdf"
+                    href="/docs/Protecting%20Muscle%20on%20GLP-1%20-%20Patient%20Guide%20_%20WRK%20Personal%20Training.pdf"
+                    download="Protecting Muscle on GLP-1 - Patient Guide _ WRK Personal Training.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-5 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors shadow-xs"
