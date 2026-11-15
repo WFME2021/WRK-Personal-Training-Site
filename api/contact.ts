@@ -58,6 +58,7 @@ ${message}
       console.log("Contact email sent successfully");
     } catch (emailError) {
       console.error("Failed to send contact email:", emailError);
+      return res.status(502).json({ success: false, error: "Your enquiry could not be emailed. Please email info@wrkpersonaltraining.co.nz directly." });
     }
 
     // --- MailerLite Integration ---
