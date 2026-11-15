@@ -46,7 +46,7 @@ export const Contact: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form');
+        throw new Error('Your enquiry could not be emailed. Please email info@wrkpersonaltraining.co.nz directly.');
       }
 
       trackEvent('contact_inquiry', {
