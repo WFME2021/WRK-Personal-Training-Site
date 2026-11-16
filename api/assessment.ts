@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
-import { calculateAssessmentResult } from '../assessment/scoring';
-import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
+import { calculateAssessmentResult } from '../assessment/scoring.js';
+import { ASSESSMENT_QUESTIONS } from '../assessment/questions.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ success: false, error: 'Method Not Allowed' });
