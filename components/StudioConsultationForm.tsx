@@ -66,7 +66,7 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
 
       const result = await response.json().catch(() => ({}));
 
-      if (!response.ok) {
+      if (!response.ok || result.success !== true) {
         throw new Error(result.error || 'Failed to submit consultation request. Please try again.');
       }
 
