@@ -11,6 +11,8 @@ import fs from "fs";
 import { assessmentData } from "./data/assessmentData.ts";
 import { calculateArchetype, calculateRecommendation } from "./services/assessmentLogic.ts";
 
+import { subscribeToNewsletter } from './services/newsletter.ts';
+
 async function startServer() {
   const app = express();
   const PORT = 3000;
@@ -34,6 +36,13 @@ async function startServer() {
   // API Routes
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok" });
+  });
+
+  // Newsletter signup uses only the verified WRK newsletter group.
+  app.post('/api/newsletter', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    const result = await subscribeToNewsletter(req.body?.email, process.env.MAILERLITE_API_KEY);
+    return res.status(result.status).json(result.body);
   });
 
   // Contact Form Submission

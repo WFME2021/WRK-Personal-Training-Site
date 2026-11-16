@@ -20,7 +20,8 @@ export const Blog: React.FC = () => {
   
   const [activeCategory, setActiveCategory] = useState('All');
   const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [newsletterUnavailable, setNewsletterUnavailable] = useState(false);
+  const [newsletterState, setNewsletterState] = useState<'idle' | 'pending' | 'active' | 'unconfirmed'>('idle');
+  const [newsletterError, setNewsletterError] = useState('');
 
   const filteredPosts = publishedPosts
     .filter(post => activeCategory === 'All' || post.category === activeCategory)
@@ -37,10 +38,27 @@ export const Blog: React.FC = () => {
     return `${mins} min read`;
   };
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (newsletterEmail) {
-      setNewsletterUnavailable(true);
+    if (newsletterState === 'pending') return;
+    setNewsletterState('pending');
+    setNewsletterError('');
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletterEmail.trim() }),
+        signal: AbortSignal.timeout(25000)
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== true || !['active', 'unconfirmed'].includes(result.state)) {
+        throw new Error('Newsletter signup could not be confirmed. Please try again later.');
+      }
+      setNewsletterState(result.state);
+      setNewsletterEmail('');
+    } catch {
+      setNewsletterState('idle');
+      setNewsletterError('Newsletter signup could not be confirmed. Please try again later.');
     }
   };
 
@@ -245,26 +263,32 @@ export const Blog: React.FC = () => {
               Short, practical emails on strength training, protein pacing, and managing fatigue while on GLP-1 medications. No spam. Unsubscribe whenever you want.
             </p>
 
-            {newsletterUnavailable ? (
-              <div role="alert" className="inline-flex items-center gap-2 bg-red-50 text-red-800 border border-red-200 px-6 py-3 rounded-lg text-sm font-medium">
-                <span>Newsletter signup is currently unavailable. Please try again later.</span>
+            {newsletterState === 'active' || newsletterState === 'unconfirmed' ? (
+              <div role="status" className="inline-flex items-center gap-2 bg-white text-spruce-800 border border-spruce-200 px-6 py-3 rounded-lg text-sm font-medium">
+                <span>{newsletterState === 'unconfirmed' ? 'Please check your inbox to confirm your newsletter subscription.' : 'You are subscribed to the WRK newsletter.'}</span>
               </div>
             ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3 max-w-md mx-auto">
+                <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
                   required
                   placeholder="Enter your email address"
+                  aria-label="Newsletter email address"
+                  disabled={newsletterState === 'pending'}
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   className="flex-1 bg-white border border-charcoal/15 rounded-md px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/40 focus:outline-none focus:ring-1 focus:ring-spruce-800"
                 />
                 <button
                   type="submit"
+                  disabled={newsletterState === 'pending'}
                   className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 px-6 py-3 rounded-md text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm whitespace-nowrap"
                 >
-                  Subscribe
+                  {newsletterState === 'pending' ? 'Subscribing...' : 'Subscribe'}
                 </button>
+                </div>
+                {newsletterError && <p role="alert" className="text-sm text-red-800">{newsletterError}</p>}
               </form>
             )}
           </div>
