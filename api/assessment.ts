@@ -1,52 +1,64 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
+import { calculateAssessmentResult } from '../assessment/scoring';
+import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+  if (req.method !== 'POST') return res.status(405).json({ success: false, error: 'Method Not Allowed' });
+  const { name, email, phone, answers, preferred_format } = req.body || {};
+  const triage = req.query.triage === '1';
+  if (typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+      typeof name !== 'string' || !name.trim() || typeof phone !== 'string' || !phone.trim() ||
+      !answers || ASSESSMENT_QUESTIONS.some(q => {
+        const selected = answers[q.id];
+        return q.type === 'multiple'
+          ? !Array.isArray(selected) || !selected.length || selected.some(id => !q.options.some(o => o.id === id))
+          : typeof selected !== 'string' || !q.options.some(o => o.id === selected);
+      }) || (triage && !['online', 'in_person'].includes(preferred_format))) {
+    return res.status(400).json({ success: false, error: 'Please complete the assessment and contact details.' });
   }
-
-  const { name: rawName, email, answers, intervention, challenge, riskProfile, tag } = req.body;
-
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' });
-  }
-
-  const name = rawName || "Assessment Prospect";
-
+  const result = calculateAssessmentResult(answers);
+  const answerText = ASSESSMENT_QUESTIONS.map(q => {
+    const selected = Array.isArray(answers[q.id]) ? answers[q.id] : [answers[q.id]];
+    return `${q.question}\n${selected.map(id => q.options.find(o => o.id === id)?.label).join(', ')}`;
+  }).join('\n\n');
   try {
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) throw new Error('Email transport not configured');
+    const port = Number(process.env.SMTP_PORT) || 587;
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+      host: process.env.SMTP_HOST,
+      port,
+      secure: port === 465,
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS.replace(/^"|"$/g, '').trim() },
+      connectionTimeout: 10000, greetingTimeout: 5000, socketTimeout: 10000
     });
-
-    const mailOptions = {
-      from: process.env.SMTP_FROM || process.env.SMTP_USER || '"WRK Website" <info@wrkpersonaltraining.co.nz>',
-      to: process.env.CONTACT_EMAIL || "info@wrkpersonaltraining.co.nz",
-      subject: `New Medical Weight Loss Assessment — ${name}`,
-      text: `=== New Assessment Unlocked ===
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      to: process.env.CONTACT_EMAIL || 'info@wrkpersonaltraining.co.nz',
+      replyTo: email.trim(),
+      subject: `${triage ? 'PRIORITY REVIEW' : 'New GLP-1 Fitness Assessment'} - ${name.replace(/[\r\n]/g, ' ')} (${result.overallScore}/100)`,
+      text: `${triage ? 'PRIORITY COACHING REVIEW REQUEST' : 'NEW ASSESSMENT'}
 Name: ${name}
 Email: ${email}
-Intervention Path: ${intervention || (answers && answers.path) || 'Unknown'}
-Risk Profile: ${riskProfile || 'Unknown'}
-Tag: ${tag || 'Unknown'}
-      `,
-    };
+Phone: ${phone}
+${triage ? `Preferred Format: ${preferred_format === 'online' ? 'Remote / Online Coaching' : 'In-Person (Addington Studio)'}` : ''}
+Overall Score: ${result.overallScore}/100 (${result.overallLabel})
+Priorities: ${result.primaryFocus}, ${result.secondaryFocus}, ${result.thirdFocus}
+Version: ${result.assessmentVersion}
 
-    try {
-      if (process.env.SMTP_USER) {
-        await transporter.sendMail(mailOptions);
-        console.log("Assessment email sent successfully");
-      }
-    } catch (emailError) {
-      console.error("Failed to send assessment email:", emailError);
-    }
+PILLAR SCORES
+${result.domainScores.map(d => `${d.domain}: ${d.score}/100 (${d.label})`).join('\n')}
 
+ALL ASSESSMENT ANSWERS
+${answerText}
+
+ACTION PLAN
+${result.recommendations.map(r => `${r.domain}: ${r.headline}\n${r.explanation}\nFirst step: ${r.firstStep}`).join('\n\n')}
+
+NEXT 7 DAYS
+${result.sevenDayPlan.map(d => `${d.label}: ${d.action}`).join('\n')}`
+    });
+    if (triage) return res.status(200).json({ success: true });
     // --- MailerLite Integration ---
     const rawKey = process.env.MAILERLITE_API_KEY || "";
     const MAILERLITE_API_KEY = rawKey.replace(/^"|"$/g, '').trim();
@@ -118,9 +130,13 @@ Tag: ${tag || 'Unknown'}
           type: "Assessment",
           name: name,
           email: email,
-          intervention: intervention || (answers && answers.path),
-          riskProfile: riskProfile,
-          tag: tag
+          phone,
+          score: result.overallScore,
+          answers,
+          result,
+          intervention: result.primaryFocus,
+          riskProfile: result.overallLabel,
+          tag: result.assessmentVersion
         };
 
         const sheetResponse = await fetch(sheetsWebhookUrl, {
