@@ -327,8 +327,10 @@ Submitted from /personal-training via WRK Consultation Engine
         `.trim(),
       };
 
+      let emailSent = false;
       try {
         await transporter.sendMail(mailOptions);
+        emailSent = true;
         console.log('Studio consultation notification email dispatched successfully');
       } catch (emailError: any) {
         console.error('Failed to send consultation email on primary envelope:', emailError?.message);
@@ -338,11 +340,16 @@ Submitted from /personal-training via WRK Consultation Engine
               ...mailOptions,
               from: process.env.SMTP_USER,
             });
+            emailSent = true;
             console.log('Studio consultation notification sent via fallback SMTP_USER envelope');
           } catch (fallbackError: any) {
             console.error('Fallback consultation email dispatch also failed:', fallbackError?.message);
           }
         }
+      }
+
+      if (!emailSent) {
+        return res.status(502).json({ success: false, error: 'Your enquiry could not be emailed. Please email info@wrkpersonaltraining.co.nz directly.' });
       }
 
       // MailerLite Sync
@@ -513,8 +520,10 @@ Submitted from /online-coaching via WRK Coaching Engine
         `.trim(),
       };
 
+      let emailSent = false;
       try {
         await transporter.sendMail(mailOptions);
+        emailSent = true;
         console.log('Online coaching application email dispatched successfully');
       } catch (emailError: any) {
         console.error('Failed to send application email on primary envelope:', emailError?.message);
@@ -524,11 +533,16 @@ Submitted from /online-coaching via WRK Coaching Engine
               ...mailOptions,
               from: process.env.SMTP_USER,
             });
+            emailSent = true;
             console.log('Online coaching application sent via fallback SMTP_USER envelope');
           } catch (fallbackError: any) {
             console.error('Fallback email dispatch also failed:', fallbackError?.message);
           }
         }
+      }
+
+      if (!emailSent) {
+        return res.status(502).json({ success: false, error: 'Your enquiry could not be emailed. Please email info@wrkpersonaltraining.co.nz directly.' });
       }
 
       // --- MailerLite Integration ---
