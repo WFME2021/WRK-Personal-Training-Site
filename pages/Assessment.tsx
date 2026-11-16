@@ -76,51 +76,35 @@ export const Assessment: React.FC = () => {
         }),
       });
 
-      if (response.ok) {
-        trackEvent('assessment_completed', {
-          event_category: 'engagement_lead',
-        });
-      } else {
-        console.warn('Backend API indicated an error, but proceeding to show results anyway.');
-      }
-    } catch (err) {
-      console.error('Failed to submit assessment to backend, proceeding anyway:', err);
+      const data = await response.json();
+      if (!response.ok || data.success !== true) throw new Error('Delivery failed');
+      trackEvent('assessment_completed', { event_category: 'engagement_lead' });
+    } catch {
+      setSubmitError('Your results are shown below, but could not be sent to Hayden. Please try the priority review button or email info@wrkpersonaltraining.co.nz.');
     } finally {
-      // Artificial grace delay for editorial loading transition
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setResult(calculatedResult);
-        setStep(ASSESSMENT_QUESTIONS.length + 2);
-      }, 700);
+      setIsSubmitting(false);
+      setResult(calculatedResult);
+      setStep(ASSESSMENT_QUESTIONS.length + 2);
     }
   };
 
+  const [triageError, setTriageError] = useState('');
   const handleTriageApplication = async () => {
+    if (isApplyingTriage) return;
     setIsApplyingTriage(true);
+    setTriageError('');
     try {
-      await fetch('/api/assessment/triage', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          preferred_format: preferredFormat,
-          requested_consultation: true,
-          score: result?.overallScore,
-          answers,
-          result
-        }),
+      const response = await fetch('/api/assessment?triage=1', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, preferred_format: preferredFormat, answers })
       });
-    } catch (err) {
-      console.error('Triage dispatch error, proceeding gracefully:', err);
+      const data = await response.json();
+      if (!response.ok || data.success !== true) throw new Error('Delivery failed');
+      setTriageSubmitted(true);
+    } catch {
+      setTriageError('Your review request could not be sent. Please try again or email info@wrkpersonaltraining.co.nz.');
     } finally {
-      setTimeout(() => {
-        setIsApplyingTriage(false);
-        setTriageSubmitted(true);
-      }, 600);
+      setIsApplyingTriage(false);
     }
   };
 
@@ -257,7 +241,7 @@ export const Assessment: React.FC = () => {
                 className="w-full px-4 py-3.5 rounded-xl border border-charcoal/15 bg-white focus:outline-none focus:ring-1 focus:ring-spruce-800 text-sm text-charcoal"
               />
               <p className="text-[11px] text-charcoal/60 mt-1.5 leading-relaxed text-left">
-                (Used only to text your private score link so you don't lose it. Zero marketing phone calls. Ever.)
+                Used to contact you if you request a coaching review.
               </p>
             </div>
 
@@ -291,6 +275,7 @@ export const Assessment: React.FC = () => {
         />
 
         <div className="max-w-3xl mx-auto space-y-12">
+          {submitError && <p role="alert" className="bg-white border border-terracotta p-4 rounded-lg text-sm">{submitError}</p>}
           
           {/* Editorial Report Header */}
           <div className="text-center">
@@ -476,6 +461,8 @@ export const Assessment: React.FC = () => {
                     ✓ Zero obligation · No high-pressure sales calls · Your 11 diagnostic answers will be attached directly to your file.
                   </p>
                 </div>
+
+                {triageError && <p role="alert" className="text-sm text-white bg-white/10 rounded-lg p-4">{triageError}</p>}
 
                 {/* Secondary Self-Directed Link */}
                 <div className="pt-4 border-t border-white/10 max-w-lg mx-auto">

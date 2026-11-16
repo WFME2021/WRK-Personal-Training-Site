@@ -1,5 +1,5 @@
-import { ASSESSMENT_QUESTIONS } from "./questions";
-import { getDynamicRecommendations, getDynamicActionPlan } from "./recommendations";
+import { ASSESSMENT_QUESTIONS } from "./questions.js";
+import { getDynamicRecommendations, getDynamicActionPlan } from "./recommendations.js";
 import { AssessmentResult, Domain, DomainScore, Recommendation, ActionItem } from "./types";
 
 const ASSESSMENT_VERSION = "2.0";

@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/14-day-fat-loss-foundations.pdf",
+      "destination": "/docs/14%20Day%20Fat%20Loss%20Foundation%20Nutrition%20Basics%20%282%29.pdf",
+      "permanent": true
+    },
+    {
       "source": "/personal-trainer-christchurch",
       "destination": "/personal-training",
       "permanent": true
