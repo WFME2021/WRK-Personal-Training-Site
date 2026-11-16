@@ -574,11 +574,11 @@ export const HydrationCalculator: React.FC = () => {
                 <span className="block font-bold text-[14px] text-[#2C3539] mb-1">GLP-1 Protein Calculator</span>
                 <span className="text-[13px] text-[#2C3539]/60">Understand your estimated daily protein target.</span>
               </Link>
-              <Link to="/blog/strength-training" className="block p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#8A9A86] transition-colors">
+              <Link to="/blog/glp-1-strength-training" className="block p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#8A9A86] transition-colors">
                 <span className="block font-bold text-[14px] text-[#2C3539] mb-1">GLP-1 Strength Training</span>
                 <span className="text-[13px] text-[#2C3539]/60">Learn why resistance training matters during weight loss.</span>
               </Link>
-              <Link to="/blog/low-appetite-nutrition" className="block p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#8A9A86] transition-colors">
+              <Link to="/blog/glp1-protein-intake-guide" className="block p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#8A9A86] transition-colors">
                 <span className="block font-bold text-[14px] text-[#2C3539] mb-1">GLP-1 Nutrition Guide</span>
                 <span className="text-[13px] text-[#2C3539]/60">Practical strategies for eating well when appetite changes.</span>
               </Link>
