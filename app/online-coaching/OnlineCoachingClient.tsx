@@ -45,7 +45,8 @@ export default function OnlineCoachingClient() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error('Submission failed');
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || result.success !== true) throw new Error('Submission failed');
 
       trackEvent('online_coaching_application', {
         event_category: 'conversion',
