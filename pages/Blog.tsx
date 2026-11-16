@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
 import { useContent } from '../context/ContentContext';
-import { ArrowRight, BookOpen, Clock, Calendar, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, Calendar } from 'lucide-react';
 
 const CATEGORIES = [
   'All',
@@ -20,7 +20,7 @@ export const Blog: React.FC = () => {
   
   const [activeCategory, setActiveCategory] = useState('All');
   const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [newsletterUnavailable, setNewsletterUnavailable] = useState(false);
 
   const filteredPosts = publishedPosts
     .filter(post => activeCategory === 'All' || post.category === activeCategory)
@@ -40,8 +40,7 @@ export const Blog: React.FC = () => {
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (newsletterEmail) {
-      setNewsletterSubmitted(true);
-      setNewsletterEmail('');
+      setNewsletterUnavailable(true);
     }
   };
 
@@ -246,10 +245,9 @@ export const Blog: React.FC = () => {
               Short, practical emails on strength training, protein pacing, and managing fatigue while on GLP-1 medications. No spam. Unsubscribe whenever you want.
             </p>
 
-            {newsletterSubmitted ? (
-              <div className="inline-flex items-center gap-2 bg-spruce-800 text-sand-50 px-6 py-3 rounded-lg text-xs font-medium">
-                <CheckCircle2 size={16} />
-                <span>Thank you. You’re on the list for next week's edition.</span>
+            {newsletterUnavailable ? (
+              <div role="alert" className="inline-flex items-center gap-2 bg-red-50 text-red-800 border border-red-200 px-6 py-3 rounded-lg text-sm font-medium">
+                <span>Newsletter signup is currently unavailable. Please try again later.</span>
               </div>
             ) : (
               <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
