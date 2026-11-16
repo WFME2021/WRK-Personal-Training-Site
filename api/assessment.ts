@@ -130,10 +130,6 @@ ${result.sevenDayPlan.map(d => `${d.label}: ${d.action}`).join('\n')}`
           type: "Assessment",
           name: name,
           email: email,
-          phone,
-          score: result.overallScore,
-          answers,
-          result,
           intervention: result.primaryFocus,
           riskProfile: result.overallLabel,
           tag: result.assessmentVersion
