@@ -9,7 +9,7 @@ export const Services: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-citron selection:text-forest pt-24 pb-12">
       <SeoHead
         title="GLP-1 Fitness Coaching Programs | WRK Personal Training"
         description="Compare our GLP-1 Fitness Coaching Programs. Choose between our in-person training in Christchurch or our comprehensive 12-week online coaching pathways."
@@ -19,13 +19,13 @@ export const Services: React.FC = () => {
         
         {/* Page Header */}
         <header className="text-center mb-20 max-w-4xl mx-auto">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-6">
             GLP-1 Fitness <span className="wrk-highlight">Coaching</span> Programs
           </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
+          <h2 className="font-serif text-[24px] md:text-[28px] text-forest/80 mb-6">
             Choose the level of support that fits your life.
           </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-6">
+          <div className="text-[16px] md:text-[18px] leading-relaxed text-forest/80 space-y-6">
             <p>
               You don't need more information. You need the right level of support.
             </p>
@@ -33,12 +33,12 @@ export const Services: React.FC = () => {
               Whether you want personalised coaching and accountability, face-to-face guidance, or a simple programme you can follow independently, WRK has an option to suit how you want to train.
             </p>
             <p>
-              All WRK programmes are designed specifically for people using GLP-1 medications, with a focus on <strong className="text-[#2C3539]">strength, muscle preservation, fitness and sustainable habits.</strong>
+              All WRK programmes are designed specifically for people using GLP-1 medications, with a focus on <strong className="text-forest">strength, muscle preservation, fitness and sustainable habits.</strong>
             </p>
           </div>
         </header>
 
-        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-neutral-200 wrk-photo-container">
+        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-forest/15 wrk-photo-container">
           <div className="wrk-photo-overlay"></div>
           <img 
             src="https://i.postimg.cc/tCHyKN1c/pexels-zeynep-38928850.jpg" 
@@ -51,23 +51,23 @@ export const Services: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           
           {/* Card 1: Online Guided Coaching */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 relative">
-            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
+          <div className="bg-quiet border border-forest/15 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 relative">
+            <div className="w-14 h-14 bg-cream border border-forest/10 text-forest rounded-full flex items-center justify-center mb-8 shrink-0">
               <Smartphone size={28} />
             </div>
             
             <div className="mb-8 flex-grow">
-              <h3 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] leading-tight mb-2">
+              <h3 className="font-serif text-[28px] md:text-[32px] text-forest leading-tight mb-2">
                 Online Guided Coaching
               </h3>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">Personalised coaching. Wherever you train.</p>
+              <p className="font-serif text-[18px] text-forest/80 mb-6">Personalised coaching. Wherever you train.</p>
               
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 mb-8">
+              <p className="text-[15px] md:text-[16px] leading-relaxed text-forest/80 mb-8">
                 Our online coaching option gives you the structure and accountability of a personal trainer without needing to train together in person. You'll receive a personalised training programme through the WRK Training App, ongoing coaching support and regular check-ins so your programme can adapt as your needs change.
               </p>
               
               <div className="space-y-3 mb-8">
-                <p className="font-medium text-[#2C3539] mb-4">What's included</p>
+                <p className="font-medium text-forest mb-4">What's included</p>
                 <ul className="space-y-3">
                   {[
                     'Personalised 12-week training programme',
@@ -78,8 +78,8 @@ export const Services: React.FC = () => {
                     'Training, nutrition and lifestyle guidance',
                     'Programme adjustments as required'
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start text-[15px] text-[#2C3539]/80">
-                      <CheckCircle className="text-[#8A9A86] shrink-0 mr-3 mt-0.5" size={18} />
+                    <li key={i} className="flex items-start text-[15px] text-forest/80">
+                      <CheckCircle className="text-forest shrink-0 mr-3 mt-0.5" size={18} />
                       <span className="leading-snug">{item}</span>
                     </li>
                   ))}
@@ -88,16 +88,16 @@ export const Services: React.FC = () => {
             </div>
             
             <div className="mt-auto">
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-6">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-1">Investment</p>
-                <p className="text-[24px] font-serif text-[#2C3539] mb-3">$49 NZD / week</p>
-                <p className="text-[14px] text-[#2C3539]/70 leading-relaxed">
-                  <strong className="text-[#2C3539] font-medium">Best for:</strong> People who want personalised coaching and accountability while training independently.
+              <div className="bg-cream rounded-2xl p-6 border border-forest/15 mb-6">
+                <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Investment</p>
+                <p className="text-[24px] font-serif text-forest mb-3">$49 NZD / week</p>
+                <p className="text-[14px] text-forest/75 leading-relaxed">
+                  <strong className="text-forest font-medium">Best for:</strong> People who want personalised coaching and accountability while training independently.
                 </p>
               </div>
               <Link 
                 to="/contact?interest=online"
-                className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
+                className="inline-flex items-center justify-center w-full bg-forest hover:bg-forest-deep text-cream px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
               >
                 Enquire About Online Coaching
               </Link>
@@ -105,23 +105,23 @@ export const Services: React.FC = () => {
           </div>
 
           {/* Card 2: In-Person Guided Coaching */}
-          <div className="bg-white border border-neutral-200 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 relative">
-            <div className="w-14 h-14 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mb-8 shrink-0">
+          <div className="bg-quiet border border-forest/15 p-8 md:p-12 rounded-3xl flex flex-col shadow-sm hover:shadow-md transition-shadow duration-300 relative">
+            <div className="w-14 h-14 bg-cream border border-forest/10 text-forest rounded-full flex items-center justify-center mb-8 shrink-0">
               <User size={28} />
             </div>
             
             <div className="mb-8 flex-grow">
-              <h3 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] leading-tight mb-2">
+              <h3 className="font-serif text-[28px] md:text-[32px] text-forest leading-tight mb-2">
                 In-Person Guided Coaching
               </h3>
-              <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">Personal coaching, face to face.</p>
+              <p className="font-serif text-[18px] text-forest/80 mb-6">Personal coaching, face to face.</p>
               
-              <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 mb-8">
+              <p className="text-[15px] md:text-[16px] leading-relaxed text-forest/80 mb-8">
                 Prefer having a coach beside you? Our in-person option combines personalised programming and app-based support with face-to-face coaching sessions. You'll learn how to train confidently, build strength safely and understand how to get more from your workouts - while still having the flexibility and support of your online programme.
               </p>
               
               <div className="space-y-3 mb-8">
-                <p className="font-medium text-[#2C3539] mb-4">What's included</p>
+                <p className="font-medium text-forest mb-4">What's included</p>
                 <ul className="space-y-3">
                   {[
                     'Everything included in Online Guided Coaching',
@@ -132,8 +132,8 @@ export const Services: React.FC = () => {
                     'WRK Training App access',
                     'Ongoing coaching and accountability'
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start text-[15px] text-[#2C3539]/80">
-                      <CheckCircle className="text-[#8A9A86] shrink-0 mr-3 mt-0.5" size={18} />
+                    <li key={i} className="flex items-start text-[15px] text-forest/80">
+                      <CheckCircle className="text-forest shrink-0 mr-3 mt-0.5" size={18} />
                       <span className="leading-snug">{item}</span>
                     </li>
                   ))}
@@ -142,16 +142,16 @@ export const Services: React.FC = () => {
             </div>
             
             <div className="mt-auto">
-              <div className="bg-[#FAFAF9] rounded-2xl p-6 border border-neutral-200 mb-6">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-1">Investment</p>
-                <p className="text-[24px] font-serif text-[#2C3539] mb-3">$89 NZD / week</p>
-                <p className="text-[14px] text-[#2C3539]/70 leading-relaxed">
-                  <strong className="text-[#2C3539] font-medium">Best for:</strong> People who want the accountability and confidence that comes from having a coach beside them.
+              <div className="bg-cream rounded-2xl p-6 border border-forest/15 mb-6">
+                <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Investment</p>
+                <p className="text-[24px] font-serif text-forest mb-3">$89 NZD / week</p>
+                <p className="text-[14px] text-forest/75 leading-relaxed">
+                  <strong className="text-forest font-medium">Best for:</strong> People who want the accountability and confidence that comes from having a coach beside them.
                 </p>
               </div>
               <Link 
                 to="/contact?interest=in-person"
-                className="inline-flex items-center justify-center w-full bg-[#8A9A86] hover:bg-[#768672] text-white px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
+                className="inline-flex items-center justify-center w-full bg-forest hover:bg-forest-deep text-cream px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
               >
                 Enquire About In-Person Coaching
               </Link>
@@ -160,26 +160,26 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Card 3: GLP-1 Workout & Nutrition Toolkit (Full width) */}
-        <div className="bg-white border border-neutral-200 p-8 md:p-12 rounded-3xl flex flex-col lg:flex-row shadow-sm hover:shadow-md transition-shadow duration-300 mb-20 gap-10">
+        <div className="bg-quiet border border-forest/15 p-8 md:p-12 rounded-3xl flex flex-col lg:flex-row shadow-sm hover:shadow-md transition-shadow duration-300 mb-20 gap-10">
           <div className="flex-1">
-            <div className="w-14 h-14 bg-[#FAFAF9] text-[#2C3539]/50 rounded-full flex items-center justify-center mb-8 shrink-0 border border-neutral-200">
+            <div className="w-14 h-14 bg-cream text-forest rounded-full flex items-center justify-center mb-8 shrink-0 border border-forest/15">
               <BookOpen size={28} />
             </div>
             
-            <h3 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] leading-tight mb-2">
+            <h3 className="font-serif text-[28px] md:text-[32px] text-forest leading-tight mb-2">
               GLP-1 Workout & Nutrition Toolkit
             </h3>
-            <p className="font-serif text-[18px] text-[#2C3539]/80 mb-6">Want to get started on your own?</p>
+            <p className="font-serif text-[18px] text-forest/80 mb-6">Want to get started on your own?</p>
             
-            <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 mb-6">
+            <p className="text-[15px] md:text-[16px] leading-relaxed text-forest/80 mb-6">
               Not everyone needs ongoing coaching. If you're ready to take responsibility for your training but want a reliable structure to follow, the WRK GLP-1 Workout & Nutrition Toolkit gives you the foundations to get started.
             </p>
-            <p className="text-[15px] md:text-[16px] leading-relaxed text-[#2C3539]/80 mb-8">
+            <p className="text-[15px] md:text-[16px] leading-relaxed text-forest/80 mb-8">
               You'll get simple 30-minute strength sessions for home or the gym, practical nutrition guidance and resources covering key areas such as protein, hydration and recovery.
             </p>
 
             <div className="space-y-3">
-              <p className="font-medium text-[#2C3539] mb-4">What's included</p>
+              <p className="font-medium text-forest mb-4">What's included</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
                   'Structured GLP-1-friendly strength workouts',
@@ -190,8 +190,8 @@ export const Services: React.FC = () => {
                   'Hydration and recovery guidance',
                   'Practical training education'
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start text-[15px] text-[#2C3539]/80">
-                    <CheckCircle className="text-[#8A9A86] shrink-0 mr-3 mt-0.5" size={18} />
+                  <div key={i} className="flex items-start text-[15px] text-forest/80">
+                    <CheckCircle className="text-forest shrink-0 mr-3 mt-0.5" size={18} />
                     <span className="leading-snug">{item}</span>
                   </div>
                 ))}
@@ -200,16 +200,16 @@ export const Services: React.FC = () => {
           </div>
           
           <div className="lg:w-[380px] flex flex-col justify-center shrink-0">
-            <div className="bg-[#FAFAF9] rounded-2xl p-8 border border-neutral-200 mb-6">
-              <p className="text-[13px] font-bold uppercase tracking-widest text-[#8A9A86] mb-1">Investment</p>
-              <p className="text-[24px] font-serif text-[#2C3539] mb-3">$29 NZD <span className="text-[16px] text-[#2C3539]/60 font-sans font-normal ml-1">one-off</span></p>
-              <p className="text-[14px] text-[#2C3539]/70 leading-relaxed">
-                <strong className="text-[#2C3539] font-medium">Best for:</strong> Self-starters who want structure without ongoing coaching.
+            <div className="bg-cream rounded-2xl p-8 border border-forest/15 mb-6">
+              <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Investment</p>
+              <p className="text-[24px] font-serif text-forest mb-3">$29 NZD <span className="text-[16px] text-forest/65 font-sans font-normal ml-1">one-off</span></p>
+              <p className="text-[14px] text-forest/75 leading-relaxed">
+                <strong className="text-forest font-medium">Best for:</strong> Self-starters who want structure without ongoing coaching.
               </p>
             </div>
             <Link 
               to="/contact?interest=toolkit"
-              className="inline-flex items-center justify-center w-full bg-white hover:bg-[#FAFAF9] text-[#2C3539] border border-neutral-200 hover:border-[#8A9A86] px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
+              className="inline-flex items-center justify-center w-full bg-cream hover:bg-forest hover:text-cream text-forest border border-forest/25 px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
             >
               Get the GLP-1 Toolkit
             </Link>
@@ -217,56 +217,56 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Which Option Is Right For You? (GLASSMORPHISM) */}
-        <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-24 px-4 md:px-8 bg-[#2C3539] overflow-hidden my-16">
+        <section className="w-screen relative left-1/2 right-1/2 -mx-[50vw] py-24 px-4 md:px-8 bg-forest overflow-hidden my-16">
           {/* Background Image & Overlay */}
           <div className="absolute inset-0 z-0">
             <img 
               src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg" 
               alt="Outdoor activity representing the outcomes of Personal Training Services in Christchurch"
-              className="w-full h-full object-cover object-center opacity-50"
+              className="w-full h-full object-cover object-center opacity-45"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#2C3539]/95 via-[#2C3539]/75 to-[#2C3539]/95"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-forest-deep/95 via-forest/80 to-forest-deep/95"></div>
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif text-white">
+              <h2 className="text-3xl md:text-4xl font-serif text-cream">
                 Which Option Is Right For You?
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <p className="text-white/60 font-medium tracking-wide text-[13px] uppercase mb-3">I want someone to guide me</p>
-                <h3 className="font-serif text-[22px] text-white mb-4">Online Guided Coaching</h3>
-                <p className="text-[15px] text-white/70 mb-6">
+              <div className="backdrop-blur-md bg-forest-deep/65 border border-cream/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <p className="text-citron font-medium tracking-wide text-[13px] uppercase mb-3">I want someone to guide me</p>
+                <h3 className="font-serif text-[22px] text-cream mb-4">Online Guided Coaching</h3>
+                <p className="text-[15px] text-cream/80 mb-6">
                   Personalised programming, accountability and ongoing support - without needing to train face to face.
                 </p>
-                <p className="text-[14px] text-white/90 font-medium flex items-start">
-                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-white/60" />
+                <p className="text-[14px] text-cream font-medium flex items-start">
+                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-citron" />
                   <span>Best for: Independent training with professional guidance.</span>
                 </p>
               </div>
               
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <p className="text-white/60 font-medium tracking-wide text-[13px] uppercase mb-3">I want a coach beside me</p>
-                <h3 className="font-serif text-[22px] text-white mb-4">In-Person Guided Coaching</h3>
-                <p className="text-[15px] text-white/70 mb-6">
+              <div className="backdrop-blur-md bg-forest-deep/65 border border-cream/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <p className="text-citron font-medium tracking-wide text-[13px] uppercase mb-3">I want a coach beside me</p>
+                <h3 className="font-serif text-[22px] text-cream mb-4">In-Person Guided Coaching</h3>
+                <p className="text-[15px] text-cream/80 mb-6">
                   Face-to-face personal training combined with your personalised online programme and ongoing support.
                 </p>
-                <p className="text-[14px] text-white/90 font-medium flex items-start">
-                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-white/60" />
+                <p className="text-[14px] text-cream font-medium flex items-start">
+                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-citron" />
                   <span>Best for: People who value hands-on coaching and accountability.</span>
                 </p>
               </div>
               
-              <div className="backdrop-blur-md bg-white/5 border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
-                <p className="text-white/60 font-medium tracking-wide text-[13px] uppercase mb-3">I want to do it myself</p>
-                <h3 className="font-serif text-[22px] text-white mb-4">GLP-1 Workout & Nutrition Toolkit</h3>
-                <p className="text-[15px] text-white/70 mb-6">
+              <div className="backdrop-blur-md bg-forest-deep/65 border border-cream/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] p-8 rounded-3xl transition-transform hover:-translate-y-1">
+                <p className="text-citron font-medium tracking-wide text-[13px] uppercase mb-3">I want to do it myself</p>
+                <h3 className="font-serif text-[22px] text-cream mb-4">GLP-1 Workout & Nutrition Toolkit</h3>
+                <p className="text-[15px] text-cream/80 mb-6">
                   A simple, affordable starting point with structured training and practical education.
                 </p>
-                <p className="text-[14px] text-white/90 font-medium flex items-start">
-                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-white/60" />
+                <p className="text-[14px] text-cream font-medium flex items-start">
+                  <ArrowRight size={16} className="mr-2 mt-0.5 shrink-0 text-citron" />
                   <span>Best for: Self-starters who want a plan to follow.</span>
                 </p>
               </div>
@@ -275,19 +275,19 @@ export const Services: React.FC = () => {
         </section>
 
         {/* Built Around Your GLP-1 Journey */}
-        <div className="bg-[#2C3539] p-10 md:p-16 rounded-3xl shadow-sm mb-24 flex flex-col md:flex-row items-center gap-10 lg:gap-16">
-          <div className="flex-1 text-white">
-            <h2 className="text-3xl md:text-4xl font-serif mb-6 leading-tight">
+        <div className="bg-forest p-10 md:p-16 rounded-3xl shadow-sm mb-24 flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+          <div className="flex-1 text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-cream mb-6 leading-tight">
               Built Around Your GLP-1 Journey
             </h2>
-            <div className="text-white/80 text-[16px] md:text-[18px] leading-relaxed space-y-4">
+            <div className="text-cream/85 text-[16px] md:text-[18px] leading-relaxed space-y-4">
               <p>GLP-1 weight loss isn't a one-size-fits-all experience.</p>
               <p>Your appetite, energy, training history, goals and lifestyle all influence what the right approach looks like for you.</p>
               <p>That's why WRK doesn't rely on one generic programme. Our coaching focuses on the things that matter throughout your journey:</p>
             </div>
           </div>
           <div className="w-full md:w-auto shrink-0">
-            <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 font-serif text-[22px] md:text-[28px] text-white">
+            <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 font-serif text-[22px] md:text-[28px] text-cream">
               <p>Strength.</p>
               <p>Muscle.</p>
               <p>Fitness.</p>
@@ -299,18 +299,18 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Bottom Call-to-Action Layout */}
-        <div className="bg-white border border-neutral-200 p-10 md:p-16 text-center rounded-3xl shadow-sm max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-[#2C3539] mb-6">
+        <div className="bg-quiet border border-forest/15 p-10 md:p-16 text-center rounded-3xl shadow-sm max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif text-forest mb-6">
             Not Sure Which Option Is Right For You?
           </h2>
-          <div className="text-[#2C3539]/80 mb-10 max-w-2xl mx-auto text-[16px] md:text-[18px] leading-relaxed space-y-4">
+          <div className="text-forest/80 mb-10 max-w-2xl mx-auto text-[16px] md:text-[18px] leading-relaxed space-y-4">
             <p>You don't need to figure it out alone.</p>
             <p>Tell us a little about where you're at, what you're trying to achieve and how you'd like to train. We'll help you identify the option that makes the most sense for you.</p>
-            <p className="text-[14px] italic text-[#2C3539]/60 pt-4">No pressure. No hard sell. Just a conversation about where you're at and what support might help.</p>
+            <p className="text-[14px] italic text-forest/65 pt-4">No pressure. No hard sell. Just a conversation about where you're at and what support might help.</p>
           </div>
           <div className="flex justify-center">
             <Link to="/contact">
-              <button className="bg-[#8A9A86] hover:bg-[#768672] text-white px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
+              <button className="bg-forest hover:bg-forest-deep text-cream px-8 py-4 rounded-xl font-medium transition-colors text-[16px] w-full sm:w-auto">
                 Start a Conversation
               </button>
             </Link>

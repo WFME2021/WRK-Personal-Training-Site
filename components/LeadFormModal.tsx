@@ -67,24 +67,25 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-forest-deep/70 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="bg-primary border border-border rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 relative max-h-[90vh] flex flex-col"
+        className="bg-cream border border-forest/15 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 relative max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-secondary px-6 py-5 md:px-8 md:py-6 border-b border-border flex justify-between items-center shrink-0">
+        <div className="bg-quiet px-6 py-5 md:px-8 md:py-6 border-b border-forest/15 flex justify-between items-center shrink-0">
           <div>
-            <h3 className="font-display text-xl md:text-2xl uppercase text-text-primary">
+            <h3 className="font-display text-xl md:text-2xl uppercase text-forest">
               {service === 'Corporate Wellness' ? 'Request Proposal' : 'Book Consult'}
             </h3>
-            <p className="text-xs text-text-secondary uppercase tracking-widest mt-1">
+            <p className="text-xs text-forest/75 uppercase tracking-widest mt-1">
               {service}
             </p>
           </div>
           <button 
             onClick={onClose}
-            className="text-text-secondary hover:text-text-primary transition-colors p-2 hover:bg-primary rounded-full touch-manipulation"
+            className="text-forest/75 hover:text-forest transition-colors p-2 hover:bg-cream rounded-full touch-manipulation"
+            aria-label="Close modal"
           >
             <X size={24} />
           </button>
@@ -94,11 +95,11 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
         <div className="p-6 md:p-8 overflow-y-auto">
           {status === 'success' ? (
             <div className="text-center py-8 md:py-12">
-              <div className="w-16 h-16 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle size={32} />
               </div>
-              <h4 className="text-2xl font-bold text-text-primary mb-2">Request Received</h4>
-              <p className="text-text-secondary">
+              <h4 className="text-2xl font-bold text-forest mb-2">Request Received</h4>
+              <p className="text-forest/80">
                 Thanks {formData.name.split(' ')[0]}. We'll be in touch shortly to confirm your {service === 'Corporate Wellness' ? 'proposal' : 'consult'}.
               </p>
               <Button 
@@ -115,7 +116,7 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
               <div>
-                <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-text-secondary mb-2">Full Name</label>
+                <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-forest/80 mb-2">Full Name</label>
                 <input
                   type="text"
                   id="name"
@@ -123,14 +124,14 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-secondary border border-border rounded-xl px-4 py-3 text-base text-text-primary focus:outline-none focus:border-accent transition-colors"
+                  className="w-full bg-quiet border border-forest/20 rounded-xl px-4 py-3 text-base text-forest placeholder:text-forest/45 focus:outline-none focus:border-forest transition-colors"
                   placeholder="John Doe"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-text-secondary mb-2">Email Address</label>
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-forest/80 mb-2">Email Address</label>
                   <input
                     type="email"
                     id="email"
@@ -138,12 +139,12 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-secondary border border-border rounded-xl px-4 py-3 text-base text-text-primary focus:outline-none focus:border-accent transition-colors"
+                    className="w-full bg-quiet border border-forest/20 rounded-xl px-4 py-3 text-base text-forest placeholder:text-forest/45 focus:outline-none focus:border-forest transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-widest text-text-secondary mb-2">Phone Number</label>
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-widest text-forest/80 mb-2">Phone Number</label>
                   <input
                     type="tel"
                     id="phone"
@@ -151,15 +152,15 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-secondary border border-border rounded-xl px-4 py-3 text-base text-text-primary focus:outline-none focus:border-accent transition-colors"
+                    className="w-full bg-quiet border border-forest/20 rounded-xl px-4 py-3 text-base text-forest placeholder:text-forest/45 focus:outline-none focus:border-forest transition-colors"
                     placeholder="021 123 4567"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-text-secondary mb-2">
-                  Anything specific we should know? <span className="text-text-secondary/50 normal-case tracking-normal">(Optional)</span>
+                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-forest/80 mb-2">
+                  Anything specific we should know? <span className="text-forest/55 normal-case tracking-normal">(Optional)</span>
                 </label>
                 <textarea
                   id="message"
@@ -167,13 +168,13 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
                   rows={3}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-secondary border border-border rounded-xl px-4 py-3 text-base text-text-primary focus:outline-none focus:border-accent transition-colors resize-none"
+                  className="w-full bg-quiet border border-forest/20 rounded-xl px-4 py-3 text-base text-forest placeholder:text-forest/45 focus:outline-none focus:border-forest transition-colors resize-none"
                   placeholder="Goals, injuries, or preferred times..."
                 />
               </div>
 
               {status === 'error' && (
-                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 text-sm">
+                <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm">
                   {errorMessage}
                 </div>
               )}
@@ -194,7 +195,7 @@ export const LeadFormModal: React.FC<LeadFormModalProps> = ({ isOpen, onClose, s
                 )}
               </Button>
               
-              <p className="text-center text-xs text-text-secondary">
+              <p className="text-center text-xs text-forest/70">
                 Your details are safe. No spam, ever.
               </p>
             </form>

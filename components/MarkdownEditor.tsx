@@ -188,14 +188,14 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
           <button
             type="button"
             onClick={() => setIsPreview(false)}
-            className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors ${!isPreview ? 'bg-accent text-white' : 'text-text-secondary hover:bg-secondary'}`}
+            className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors ${!isPreview ? 'bg-forest text-cream' : 'text-forest/75 hover:bg-quiet'}`}
           >
             <Edit2 size={14} /> Edit Markdown
           </button>
           <button
             type="button"
             onClick={() => setIsPreview(true)}
-            className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors ${isPreview ? 'bg-accent text-white' : 'text-text-secondary hover:bg-secondary'}`}
+            className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors ${isPreview ? 'bg-forest text-cream' : 'text-forest/75 hover:bg-quiet'}`}
           >
             <Eye size={14} /> Live Preview
           </button>
@@ -212,7 +212,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
           <button
             type="button"
             onClick={insertLink}
-            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-text-secondary hover:bg-secondary hover:text-accent"
+            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-forest/75 hover:bg-quiet hover:text-forest"
             title="Insert Link"
           >
             <LinkIcon size={14} /> Link
@@ -221,7 +221,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-text-secondary hover:bg-secondary hover:text-accent"
+            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-forest/75 hover:bg-quiet hover:text-forest"
             title="Upload Image"
           >
             <ImageIcon size={14} /> Upload
@@ -229,20 +229,20 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
           <button
             type="button"
             onClick={() => setShowUrlInput(!showUrlInput)}
-            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-text-secondary hover:bg-secondary hover:text-accent"
+            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors text-forest/75 hover:bg-quiet hover:text-forest"
             title="Insert Image from URL"
           >
             <LinkIcon size={14} /> Insert URL
           </button>
           
           {showUrlInput && (
-            <div className="absolute top-full right-0 mt-2 z-10 bg-primary border border-border p-3 rounded-lg shadow-xl flex flex-col gap-2 min-w-[300px]">
+            <div className="absolute top-full right-0 mt-2 z-10 bg-cream border border-forest/15 p-3 rounded-lg shadow-xl flex flex-col gap-2 min-w-[300px]">
               <input
                 type="text"
                 placeholder="Paste image URL here..."
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
-                className="w-full px-3 py-1.5 bg-secondary border border-border rounded text-sm text-text-primary outline-none focus:border-accent"
+                className="w-full px-3 py-1.5 bg-quiet border border-forest/20 rounded text-sm text-forest outline-none focus:border-forest"
                 autoFocus
               />
               <input
@@ -250,7 +250,7 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
                 placeholder="Alt Text (SEO description)..."
                 value={imageAlt}
                 onChange={(e) => setImageAlt(e.target.value)}
-                className="w-full px-3 py-1.5 bg-secondary border border-border rounded text-sm text-text-primary outline-none focus:border-accent"
+                className="w-full px-3 py-1.5 bg-quiet border border-forest/20 rounded text-sm text-forest outline-none focus:border-forest"
                 onKeyDown={(e) => e.key === 'Enter' && handleInsertUrl()}
               />
               <div className="flex justify-end gap-2 mt-1">
@@ -261,14 +261,14 @@ export const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
                     setImageUrl('');
                     setImageAlt('');
                   }}
-                  className="px-3 py-1.5 text-text-secondary hover:text-text-primary text-xs font-bold rounded transition-colors"
+                  className="px-3 py-1.5 text-forest/70 hover:text-forest text-xs font-bold rounded transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handleInsertUrl}
-                  className="px-3 py-1.5 bg-accent text-white text-xs font-bold rounded hover:bg-accent/90 transition-colors"
+                  className="px-3 py-1.5 bg-forest text-cream text-xs font-bold rounded hover:bg-forest-deep transition-colors"
                 >
                   Insert
                 </button>

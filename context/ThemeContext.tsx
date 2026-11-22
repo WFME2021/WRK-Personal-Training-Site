@@ -11,7 +11,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>('dark'); // Default to dark as requested
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
     // 1. Check LocalStorage
@@ -20,8 +20,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     if (savedTheme) {
       setTheme(savedTheme);
     } else {
-      // 2. Default to Dark Mode if no preference
-      setTheme('dark');
+      // 2. Default to Light Mode
+      setTheme('light');
     }
   }, []);
 

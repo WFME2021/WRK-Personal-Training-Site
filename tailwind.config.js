@@ -13,36 +13,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: '#FAF8F5',
+        cream: '#F5F0E7',
+        quiet: '#E5E6DA',
+        forest: {
+          DEFAULT: '#1F3325',
+          deep: '#16281C',
+        },
+        citron: '#D6ED45',
+        canvas: '#F5F0E7',
         sand: {
-          50: '#FDFBF7',
-          100: '#F4ECE1',
-          200: '#EADBC8',
+          50: '#F5F0E7',
+          100: '#E5E6DA',
+          200: '#F5F0E7',
         },
         spruce: {
           800: '#1F3325',
           900: '#16281C',
         },
         charcoal: {
-          DEFAULT: '#2D2A26',
-          muted: '#68645E',
+          DEFAULT: '#1F3325',
+          muted: 'rgba(31, 51, 37, 0.72)',
         },
-        terracotta: '#C19388',
         navy: {
-          DEFAULT: '#171717',
-          mid: '#0a0a0a',
-          light: '#262626',
+          DEFAULT: '#F5F0E7',
+          mid: '#E5E6DA',
+          light: 'rgba(31, 51, 37, 0.14)',
         },
-        orange: {
-          burnt: '#2dd4bf',
-          hover: '#0d9488',
-        },
-        white: '#f5f5f5',
-        'off-white': '#d4d4d8',
-        'grey-mid': '#9ca3af',
-        gold: {
-          rule: '#34d399',
-        },
+        white: '#F5F0E7',
+        'off-white': '#F5F0E7',
+        'grey-mid': 'rgba(31, 51, 37, 0.65)',
         primary: 'var(--bg-primary)',
         secondary: 'var(--bg-secondary)',
         'text-primary': 'var(--text-primary)',

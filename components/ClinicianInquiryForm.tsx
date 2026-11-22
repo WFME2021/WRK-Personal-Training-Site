@@ -92,27 +92,27 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
   };
 
   return (
-    <div id="clinician-inquiry" className="bg-white border border-charcoal/10 rounded-3xl p-8 sm:p-12 shadow-sm scroll-mt-24">
+    <div id="clinician-inquiry" className="bg-quiet border border-forest/15 rounded-3xl p-8 sm:p-12 shadow-sm scroll-mt-24">
       <div className="max-w-2xl mb-8">
-        <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block mb-2">
+        <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block mb-2">
           DIRECT PROVIDER CHANNEL
         </span>
-        <h3 className="font-serif text-2xl sm:text-3xl text-charcoal leading-tight mb-3 font-bold">
+        <h3 className="font-serif text-2xl sm:text-3xl text-forest leading-tight mb-3 font-bold">
           Healthcare Provider Enquiries & Material Requests
         </h3>
-        <p className="text-sm text-charcoal/70 leading-relaxed">
+        <p className="text-sm text-forest/75 leading-relaxed">
           Request a complimentary pack of 25 Patient Information Cards (DLE) for your consulting rooms, discuss patient presentation suitability, or establish shared-care communication.
         </p>
       </div>
 
       {status === 'success' ? (
-        <div className="bg-sand-50/80 border border-spruce-800/20 rounded-2xl p-8 sm:p-10 flex flex-col items-start animate-fade-in">
-          <div className="w-14 h-14 bg-spruce-800/10 text-spruce-800 rounded-full flex items-center justify-center mb-6">
+        <div className="bg-cream border border-forest/20 rounded-2xl p-8 sm:p-10 flex flex-col items-start animate-fade-in">
+          <div className="w-14 h-14 bg-forest/10 text-forest rounded-full flex items-center justify-center mb-6">
             <CheckCircle2 size={30} />
           </div>
-          <h4 className="font-serif text-2xl text-charcoal mb-2 font-bold">Practice Request Received</h4>
-          <p className="text-sm text-charcoal/80 leading-relaxed max-w-xl mb-6">
-            Thank you, <strong className="font-semibold text-charcoal">{submittedClinician}</strong>. Hayden will review your request and dispatch materials or respond directly to your practice within one business day.
+          <h4 className="font-serif text-2xl text-forest mb-2 font-bold">Practice Request Received</h4>
+          <p className="text-sm text-forest/85 leading-relaxed max-w-xl mb-6">
+            Thank you, <strong className="font-semibold text-forest">{submittedClinician}</strong>. Hayden will review your request and dispatch materials or respond directly to your practice within one business day.
           </p>
           <button
             type="button"
@@ -126,7 +126,7 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
                 clinicalNote: '',
               });
             }}
-            className="text-xs uppercase tracking-wider font-semibold text-spruce-800 hover:text-spruce-900 transition-colors underline underline-offset-4 cursor-pointer"
+            className="text-xs uppercase tracking-wider font-semibold text-forest hover:opacity-75 transition-opacity underline underline-offset-4 cursor-pointer"
           >
             Submit another practice request
           </button>
@@ -143,7 +143,7 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Clinician Name */}
             <div>
-              <label htmlFor="clinician-name" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+              <label htmlFor="clinician-name" className="block text-xs uppercase tracking-wider font-semibold text-forest/85 mb-2">
                 Clinician Name <span className="text-red-600">*</span>
               </label>
               <input
@@ -153,13 +153,13 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
                 value={formData.clinicianName}
                 onChange={(e) => setFormData({ ...formData, clinicianName: e.target.value })}
                 placeholder="e.g. Dr. Sarah Jenkins"
-                className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40"
+                className="w-full bg-cream border border-forest/20 text-forest px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all text-sm placeholder:text-forest/45"
               />
             </div>
 
             {/* Medical Centre & Suburb */}
             <div>
-              <label htmlFor="medical-centre" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+              <label htmlFor="medical-centre" className="block text-xs uppercase tracking-wider font-semibold text-forest/85 mb-2">
                 Medical Centre & Suburb <span className="text-red-600">*</span>
               </label>
               <input
@@ -169,7 +169,7 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
                 value={formData.medicalCentre}
                 onChange={(e) => setFormData({ ...formData, medicalCentre: e.target.value })}
                 placeholder="e.g. Moorhouse Medical Centre, Christchurch"
-                className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40"
+                className="w-full bg-cream border border-forest/20 text-forest px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all text-sm placeholder:text-forest/45"
               />
             </div>
           </div>
@@ -177,7 +177,7 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Clinic Email */}
             <div>
-              <label htmlFor="clinic-email" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+              <label htmlFor="clinic-email" className="block text-xs uppercase tracking-wider font-semibold text-forest/85 mb-2">
                 Clinic Email <span className="text-red-600">*</span>
               </label>
               <input
@@ -187,13 +187,13 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
                 value={formData.clinicEmail}
                 onChange={(e) => setFormData({ ...formData, clinicEmail: e.target.value })}
                 placeholder="name@practice.co.nz"
-                className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40"
+                className="w-full bg-cream border border-forest/20 text-forest px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all text-sm placeholder:text-forest/45"
               />
             </div>
 
             {/* Request Type */}
             <div>
-              <label htmlFor="request-type" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+              <label htmlFor="request-type" className="block text-xs uppercase tracking-wider font-semibold text-forest/85 mb-2">
                 Request Type <span className="text-red-600">*</span>
               </label>
               <div className="relative">
@@ -202,7 +202,7 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
                   required
                   value={formData.requestType}
                   onChange={(e) => setFormData({ ...formData, requestType: e.target.value })}
-                  className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl appearance-none focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm cursor-pointer"
+                  className="w-full bg-cream border border-forest/20 text-forest px-4 py-3.5 rounded-xl appearance-none focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all text-sm cursor-pointer"
                 >
                   <option value="Post 25 Free Patient Info Cards (DLE)">
                     Post 25 Free Patient Info Cards (DLE)
@@ -214,7 +214,7 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
                     General Collaboration
                   </option>
                 </select>
-                <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-charcoal/40">
+                <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-forest/50">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
                 </div>
               </div>
@@ -223,7 +223,7 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
 
           {/* Delivery Address / Clinical Note */}
           <div>
-            <label htmlFor="clinical-note" className="block text-xs uppercase tracking-wider font-semibold text-charcoal/80 mb-2">
+            <label htmlFor="clinical-note" className="block text-xs uppercase tracking-wider font-semibold text-forest/85 mb-2">
               Delivery Address / Clinical Note
             </label>
             <textarea
@@ -232,18 +232,18 @@ ${formData.clinicalNote.trim() || '(No additional note provided)'}`,
               value={formData.clinicalNote}
               onChange={(e) => setFormData({ ...formData, clinicalNote: e.target.value })}
               placeholder="If requesting DLE card packs, please enter clinic postal address. If discussing patient suitability, feel free to outline their presentation or goals..."
-              className="w-full bg-sand-50/50 border border-charcoal/15 text-charcoal px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-spruce-800 focus:border-spruce-800 transition-all text-sm placeholder:text-charcoal/40 resize-none"
+              className="w-full bg-cream border border-forest/20 text-forest px-4 py-3.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all text-sm placeholder:text-forest/45 resize-none"
             />
           </div>
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-charcoal/60">
+            <p className="text-xs text-forest/65">
               Direct clinician inquiries are treated confidentially and replied to promptly.
             </p>
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-8 py-3.5 rounded-md font-semibold uppercase tracking-widest text-xs transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-xs cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-citron hover:brightness-95 text-forest border border-forest/15 px-8 py-3.5 rounded-md font-semibold uppercase tracking-widest text-xs transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-xs cursor-pointer"
             >
               {status === 'submitting' ? (
                 <>

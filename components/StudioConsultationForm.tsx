@@ -89,34 +89,34 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
 
   return (
     <section id="book-consult" className="py-16 px-6 max-w-2xl mx-auto scroll-mt-12">
-      <div className="bg-white rounded-2xl p-8 sm:p-10 border border-charcoal/10 shadow-sm">
+      <div className="bg-quiet rounded-2xl p-8 sm:p-10 border border-forest/15 shadow-sm">
         {/* Container Header */}
         <div className="text-center mb-8">
-          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-spruce-800 bg-sand-100 px-3 py-1 rounded-full inline-block mb-3">
+          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-forest bg-cream border border-forest/15 px-3 py-1 rounded-full inline-block mb-3">
             ZERO PRESSURE · 20-MINUTE STUDIO WALKTHROUGH
           </span>
-          <h3 className="font-serif text-2xl sm:text-3xl text-charcoal mb-3 tracking-tight font-bold">
+          <h3 className="font-serif text-2xl sm:text-3xl text-forest mb-3 tracking-tight font-bold">
             Book Your Free Studio Consultation
           </h3>
-          <p className="text-charcoal/70 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+          <p className="text-forest/75 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
             Come visit the studio at 12 Show Place, Addington. We'll discuss your goals, review your training history, and determine if our coaching setup suits you.
           </p>
         </div>
 
         {status === 'success' ? (
-          <div className="bg-sand-50 border border-spruce-800/20 rounded-xl p-8 text-center animate-fade-in">
-            <div className="w-12 h-12 bg-spruce-800/10 text-spruce-800 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-cream border border-forest/20 rounded-xl p-8 text-center animate-fade-in">
+            <div className="w-12 h-12 bg-forest/10 text-forest rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle2 className="w-7 h-7" />
             </div>
-            <h4 className="font-serif text-xl sm:text-2xl font-bold text-charcoal mb-2">
+            <h4 className="font-serif text-xl sm:text-2xl font-bold text-forest mb-2">
               Request Received
             </h4>
-            <p className="text-charcoal/80 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
-              Thanks <strong className="text-charcoal font-semibold">{submittedName}</strong>! We've received your consultation request. Hayden will be in touch via phone or email shortly to confirm your studio walkthrough at 12 Show Place.
+            <p className="text-forest/85 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+              Thanks <strong className="text-forest font-semibold">{submittedName}</strong>! We've received your consultation request. Hayden will be in touch via phone or email shortly to confirm your studio walkthrough at 12 Show Place.
             </p>
-            <div className="mt-6 pt-6 border-t border-charcoal/10 text-xs text-charcoal/60">
+            <div className="mt-6 pt-6 border-t border-forest/10 text-xs text-forest/65">
               Need immediate assistance? You can also email us directly at{' '}
-              <a href="mailto:info@wrkpersonaltraining.co.nz" className="underline text-spruce-800 font-medium">
+              <a href="mailto:info@wrkpersonaltraining.co.nz" className="underline text-forest font-medium">
                 info@wrkpersonaltraining.co.nz
               </a>
             </div>
@@ -131,7 +131,7 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
             )}
 
             <div>
-              <label htmlFor="consult-name" className="block text-xs font-bold uppercase tracking-wider text-charcoal mb-1.5">
+              <label htmlFor="consult-name" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
                 Full Name <span className="text-red-600">*</span>
               </label>
               <input
@@ -142,13 +142,13 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your full name"
-                className="w-full px-4 py-3 rounded-lg border border-charcoal/20 bg-canvas text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-spruce-800/20 focus:border-spruce-800 transition-colors placeholder:text-charcoal/40"
+                className="w-full px-4 py-3 rounded-lg border border-forest/20 bg-cream text-forest text-sm focus:outline-none focus:ring-2 focus:ring-forest/25 focus:border-forest transition-colors placeholder:text-forest/45"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="consult-email" className="block text-xs font-bold uppercase tracking-wider text-charcoal mb-1.5">
+                <label htmlFor="consult-email" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
                   Email Address <span className="text-red-600">*</span>
                 </label>
                 <input
@@ -159,12 +159,12 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Your email address"
-                  className="w-full px-4 py-3 rounded-lg border border-charcoal/20 bg-canvas text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-spruce-800/20 focus:border-spruce-800 transition-colors placeholder:text-charcoal/40"
+                  className="w-full px-4 py-3 rounded-lg border border-forest/20 bg-cream text-forest text-sm focus:outline-none focus:ring-2 focus:ring-forest/25 focus:border-forest transition-colors placeholder:text-forest/45"
                 />
               </div>
 
               <div>
-                <label htmlFor="consult-phone" className="block text-xs font-bold uppercase tracking-wider text-charcoal mb-1.5">
+                <label htmlFor="consult-phone" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
                   Mobile Number <span className="text-red-600">*</span>
                 </label>
                 <input
@@ -175,13 +175,13 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Mobile number to call / text"
-                  className="w-full px-4 py-3 rounded-lg border border-charcoal/20 bg-canvas text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-spruce-800/20 focus:border-spruce-800 transition-colors placeholder:text-charcoal/40"
+                  className="w-full px-4 py-3 rounded-lg border border-forest/20 bg-cream text-forest text-sm focus:outline-none focus:ring-2 focus:ring-forest/25 focus:border-forest transition-colors placeholder:text-forest/45"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="consult-interest" className="block text-xs font-bold uppercase tracking-wider text-charcoal mb-1.5">
+              <label htmlFor="consult-interest" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
                 Coaching Focus Area
               </label>
               <select
@@ -189,7 +189,7 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
                 name="coachingInterest"
                 value={formData.coachingInterest}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-charcoal/20 bg-canvas text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-spruce-800/20 focus:border-spruce-800 transition-colors"
+                className="w-full px-4 py-3 rounded-lg border border-forest/20 bg-cream text-forest text-sm focus:outline-none focus:ring-2 focus:ring-forest/25 focus:border-forest transition-colors"
               >
                 <option value="Semi-Private Coaching">Semi-Private Coaching</option>
                 <option value="1-on-1 Personal Training">1-on-1 Personal Training</option>
@@ -200,7 +200,7 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
             </div>
 
             <div>
-              <label htmlFor="consult-notes" className="block text-xs font-bold uppercase tracking-wider text-charcoal mb-1.5">
+              <label htmlFor="consult-notes" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
                 Notes & Goals (Optional)
               </label>
               <textarea
@@ -210,14 +210,14 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
                 value={formData.notes}
                 onChange={handleChange}
                 placeholder="Any specific goals, injuries, or preferred training times?"
-                className="w-full px-4 py-3 rounded-lg border border-charcoal/20 bg-canvas text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-spruce-800/20 focus:border-spruce-800 transition-colors placeholder:text-charcoal/40 resize-none"
+                className="w-full px-4 py-3 rounded-lg border border-forest/20 bg-cream text-forest text-sm focus:outline-none focus:ring-2 focus:ring-forest/25 focus:border-forest transition-colors placeholder:text-forest/45 resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full bg-spruce-800 hover:bg-spruce-900 text-sand-50 py-4 px-6 rounded-lg font-semibold text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+              className="w-full bg-citron hover:brightness-95 text-forest border border-forest/15 py-4 px-6 rounded-lg font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-sm disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
             >
               {status === 'submitting' ? (
                 <>
@@ -231,7 +231,7 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
               )}
             </button>
 
-            <p className="text-center text-[11px] text-charcoal/50 mt-3">
+            <p className="text-center text-[11px] text-forest/65 mt-3">
               No pressure or hard sales. We'll simply show you around and answer your questions.
             </p>
           </form>

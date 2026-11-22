@@ -40,21 +40,21 @@ export const Testimonials: React.FC<{ className?: string; contextBridge?: string
   contextBridge
 }) => {
   return (
-    <section className={`py-20 px-4 md:px-8 bg-canvas border-t border-charcoal/5 ${className}`}>
+    <section className={`py-20 px-4 md:px-8 bg-cream border-t border-forest/10 ${className}`}>
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-3 block">
+          <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold mb-3 block">
             PROVEN COACHING FOUNDATIONS
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-charcoal font-bold tracking-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl text-forest font-bold tracking-tight mb-4">
             Trusted for Over Two Decades.
           </h2>
-          <p className="text-charcoal/75 max-w-2xl text-base leading-relaxed">
+          <p className="text-forest/80 max-w-2xl text-base leading-relaxed">
             Whether navigating clinical recovery, adapting around injuries, or establishing sustainable strength habits for life—real experiences from long-term clients working with Hayden.
           </p>
           {contextBridge && (
-            <div className="mt-5 p-4 rounded-xl bg-sand-100 border-l-4 border-spruce-800 text-charcoal/90 text-sm md:text-base leading-relaxed italic">
+            <div className="mt-5 p-4 rounded-xl bg-quiet border-l-4 border-forest text-forest text-sm md:text-base leading-relaxed italic">
               "{contextBridge}"
             </div>
           )}
@@ -65,24 +65,24 @@ export const Testimonials: React.FC<{ className?: string; contextBridge?: string
           {testimonials.map((item, idx) => (
             <div
               key={idx}
-              className="bg-sand-50/70 border border-charcoal/10 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative"
+              className="bg-quiet border border-forest/15 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="bg-spruce-800/10 text-spruce-800 text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full w-fit">
+                  <span className="bg-forest/10 text-forest text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full w-fit">
                     {item.category}
                   </span>
-                  <Quote size={20} className="text-charcoal/20 shrink-0" aria-hidden="true" />
+                  <Quote size={20} className="text-forest/25 shrink-0" aria-hidden="true" />
                 </div>
-                <blockquote className="text-charcoal/85 text-sm sm:text-base leading-relaxed m-0 font-normal italic">
+                <blockquote className="text-forest/90 text-sm sm:text-base leading-relaxed m-0 font-normal italic">
                   "{item.quote}"
                 </blockquote>
               </div>
-              <div className="pt-6 border-t border-charcoal/5 mt-6">
-                <div className="font-serif font-bold text-charcoal text-base">
+              <div className="pt-6 border-t border-forest/10 mt-6">
+                <div className="font-serif font-bold text-forest text-base">
                   {item.author}
                 </div>
-                <div className="text-xs text-charcoal/60 mt-0.5 font-medium">
+                <div className="text-xs text-forest/65 mt-0.5 font-medium">
                   {item.subtitle}
                 </div>
               </div>

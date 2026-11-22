@@ -53,18 +53,19 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
       style={{ 
         margin: '32px 0 24px 0', 
         padding: '28px', 
-        background: '#0f172a', 
-        color: '#ffffff', 
-        borderRadius: '8px', 
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' 
+        background: '#1F3325', 
+        color: '#F5F0E7', 
+        border: '1px solid rgba(245, 240, 231, 0.14)',
+        borderRadius: '12px', 
+        boxShadow: '0 4px 10px -2px rgba(22, 40, 28, 0.25)' 
       }}
     >
       <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
         <span 
           style={{ 
             display: 'inline-block', 
-            background: '#22c55e', 
-            color: '#052e16', 
+            background: '#D6ED45', 
+            color: '#1F3325', 
             fontSize: '0.75rem', 
             fontWeight: 700, 
             textTransform: 'uppercase', 
@@ -77,11 +78,11 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
           Free 14-Day Blueprint
         </span>
         
-        <h3 style={{ margin: '0 0 10px 0', fontSize: '1.4rem', fontWeight: 700, color: '#ffffff' }}>
+        <h3 style={{ margin: '0 0 10px 0', fontSize: '1.4rem', fontWeight: 700, color: '#F5F0E7' }}>
           Now that you have your numbers, build the foundation.
         </h3>
         
-        <p style={{ margin: '0 0 20px 0', fontSize: '0.95rem', color: '#cbd5e1', lineHeight: 1.6 }}>
+        <p style={{ margin: '0 0 20px 0', fontSize: '0.95rem', color: 'rgba(245, 240, 231, 0.85)', lineHeight: 1.6 }}>
           Fat loss doesn't require a perfect diet—it requires a simple structure you can repeat. Download our <strong>14-Day Fat Loss Foundations: Nutrition Basics Guide (PDF)</strong>. Learn the 30/40/30 plate-building template, easy whole-food swaps, and the 6 daily habits that actually move the needle.
         </p>
 
@@ -89,19 +90,19 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
         {status === 'success' ? (
           <div 
             style={{ 
-              background: '#1e293b', 
-              border: '1px solid #334155', 
-              borderRadius: '6px', 
+              background: '#16281C', 
+              border: '1px solid rgba(245, 240, 231, 0.2)', 
+              borderRadius: '8px', 
               padding: '20px 24px', 
               maxWidth: '480px', 
               margin: '0 auto', 
               textAlign: 'center' 
             }}
           >
-            <p style={{ margin: '0 0 6px 0', fontWeight: 700, color: '#4ade80', fontSize: '1.05rem' }}>
+            <p style={{ margin: '0 0 6px 0', fontWeight: 700, color: '#D6ED45', fontSize: '1.05rem' }}>
               ✓ Your 14-Day Blueprint Is Ready!
             </p>
-            <p style={{ margin: 0, fontSize: '0.875rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+            <p style={{ margin: 0, fontSize: '0.875rem', color: 'rgba(245, 240, 231, 0.85)', lineHeight: 1.5 }}>
               A copy is also on its way to <strong>{submittedEmail}</strong>. You can download your guide directly below:
             </p>
             <div style={{ marginTop: '16px' }}>
@@ -114,11 +115,11 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  background: '#22c55e',
-                  color: '#052e16',
+                  background: '#D6ED45',
+                  color: '#1F3325',
                   fontWeight: 700,
                   padding: '12px 24px',
-                  borderRadius: '6px',
+                  borderRadius: '8px',
                   textDecoration: 'none',
                   fontSize: '0.95rem',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
@@ -147,10 +148,10 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
                   flex: 1, 
                   minWidth: '240px', 
                   padding: '12px 16px', 
-                  border: '1px solid #334155', 
-                  background: '#1e293b', 
-                  color: '#ffffff', 
-                  borderRadius: '6px', 
+                  border: '1px solid rgba(245, 240, 231, 0.28)', 
+                  background: '#16281C', 
+                  color: '#F5F0E7', 
+                  borderRadius: '8px', 
                   fontSize: '0.95rem', 
                   outline: 'none' 
                 }} 
@@ -158,12 +159,12 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
               <button 
                 type="submit" 
                 style={{ 
-                  background: '#ffffff', 
-                  color: '#0f172a', 
+                  background: '#D6ED45', 
+                  color: '#1F3325', 
                   fontWeight: 700, 
                   padding: '12px 22px', 
-                  border: 'none', 
-                  borderRadius: '6px', 
+                  border: '1px solid rgba(31, 51, 37, 0.2)', 
+                  borderRadius: '8px', 
                   cursor: 'pointer', 
                   whiteSpace: 'nowrap', 
                   fontSize: '0.95rem'
@@ -173,21 +174,21 @@ export const FatLossFoundationsLeadMagnet: React.FC = () => {
               </button>
             </div>
             {errorMessage && (
-              <span style={{ fontSize: '0.8rem', color: '#f87171', marginTop: '2px' }}>
+              <span style={{ fontSize: '0.8rem', color: '#fca5a5', marginTop: '2px' }}>
                 {errorMessage}
               </span>
             )}
-            <span style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '4px' }}>
+            <span style={{ fontSize: '0.75rem', color: 'rgba(245, 240, 231, 0.65)', marginTop: '4px' }}>
               Instant PDF delivery to your inbox. No spam, ever.
             </span>
           </form>
         )}
 
         {/* Highlights */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px', fontSize: '0.85rem', color: '#94a3b8', flexWrap: 'wrap' }}>
-          <span>✓ 30/40/30 Macro Plate Template</span>
-          <span>✓ Ultra-Processed Food Swaps</span>
-          <span>✓ 6 Simple Daily Non-Negotiables</span>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px', fontSize: '0.85rem', color: 'rgba(245, 240, 231, 0.78)', flexWrap: 'wrap' }}>
+          <span><span style={{ color: '#D6ED45', fontWeight: 700 }}>✓</span> 30/40/30 Macro Plate Template</span>
+          <span><span style={{ color: '#D6ED45', fontWeight: 700 }}>✓</span> Ultra-Processed Food Swaps</span>
+          <span><span style={{ color: '#D6ED45', fontWeight: 700 }}>✓</span> 6 Simple Daily Non-Negotiables</span>
         </div>
       </div>
     </div>

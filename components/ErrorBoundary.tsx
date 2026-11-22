@@ -38,13 +38,13 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-primary p-4">
-          <div className="max-w-md w-full bg-secondary rounded-2xl p-8 border border-border shadow-lg text-center">
-            <h1 className="text-2xl font-bold text-red-500 mb-4">Something went wrong</h1>
-            <p className="text-text-secondary mb-6">{errorMessage}</p>
+        <div className="min-h-screen flex items-center justify-center bg-cream text-forest p-4">
+          <div className="max-w-md w-full bg-quiet rounded-2xl p-8 border border-forest/15 shadow-lg text-center">
+            <h1 className="text-2xl font-bold text-red-700 mb-4">Something went wrong</h1>
+            <p className="text-forest/80 mb-6">{errorMessage}</p>
             <button
               onClick={() => window.location.reload()}
-              className="bg-accent text-white px-6 py-2 rounded-full font-medium hover:bg-accent/90 transition-colors"
+              className="bg-forest text-cream px-6 py-2 rounded-full font-medium hover:bg-forest-deep transition-colors"
             >
               Refresh Page
             </button>

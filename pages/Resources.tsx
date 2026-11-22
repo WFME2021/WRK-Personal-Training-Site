@@ -26,41 +26,41 @@ export const Resources: React.FC = () => {
         description="Review the Clinical Evidence & Resources backing our GLP-1 training methodologies. Explore medical studies on muscle preservation and metabolic support."
       />
       
-      <div className="flex flex-col w-full min-h-screen bg-navy text-white pt-32 pb-24 px-5 md:px-12 items-center">
+      <div className="flex flex-col w-full min-h-screen bg-cream text-forest pt-32 pb-24 px-5 md:px-12 items-center selection:bg-citron selection:text-forest">
         <div className="max-w-[800px] w-full mx-auto space-y-16">
           
           <header className="space-y-6">
-            <h1 className="font-display text-[40px] md:text-[56px] uppercase leading-[1.1] text-white">
+            <h1 className="font-display text-[40px] md:text-[56px] uppercase leading-[1.1] text-forest">
               Clinical Evidence & Scientific Resources
             </h1>
-            <p className="font-sans text-[18px] md:text-[20px] leading-[1.6] text-off-white/90">
+            <p className="font-sans text-[18px] md:text-[20px] leading-[1.6] text-forest/85">
               At WRK Personal Training, our frameworks are entirely built on peer-reviewed sports science, clinical nutrition guidelines, and medical weight loss research.
             </p>
-            <p className="font-sans text-[16px] md:text-[18px] leading-[1.6] text-off-white/80">
+            <p className="font-sans text-[16px] md:text-[18px] leading-[1.6] text-forest/80">
               When navigating rapid weight reduction via GLP-1 receptor agonists (such as semaglutide, tirzepatide, or retatrutide) or GLP-1 therapy, body composition tracking shifts fundamentally. The resources below outline the foundational evidence supporting our specialised 12-week resistance and nutritional strategies.
             </p>
           </header>
 
-          <hr className="border-navy-light" />
+          <hr className="border-forest/15" />
 
           {/* Sarcopenia */}
           <section id="sarcopenia" className="space-y-6 scroll-mt-24">
             <div className="space-y-2">
-              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-white">🧬 Muscle Mass & Sarcopenia Vulnerability</h2>
+              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-forest">🧬 Muscle Mass & Sarcopenia Vulnerability</h2>
             </div>
             
-            <div className="space-y-4 font-sans text-[16px] text-off-white/90 leading-[1.6]">
+            <div className="space-y-4 font-sans text-[16px] text-forest/85 leading-[1.6]">
               <p>
                 <strong>The Science:</strong> Rapid weight loss without an explicit resistance training stimulus frequently leads to a substantial loss of lean mass. Studies indicate that up to 40% of the total mass lost can come directly from skeletal muscle and structural bone matrices if left unmanaged.
               </p>
               
-              <div className="space-y-3 bg-navy-mid p-6 rounded-[16px] border border-navy-light">
-                <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
+              <div className="space-y-3 bg-quiet p-6 rounded-[16px] border border-forest/15">
+                <h3 className="font-bold text-forest text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>Incretin-Based Weight Loss Pharmacotherapy: Can Resistance Exercise Interventions Counteract Lean Mass Loss?</em> (2024). Published in <strong>PubMed / Sports Medicine</strong>. This landmark review examines how GLP-1 treatments elicit significant lean mass drops (averaging up to 6kg) and outlines why a structured resistance training programme is a mandatory adjunct to optimise body composition.
                   </li>
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>Strategies for Minimising Muscle Loss During Use of Incretin-Mimetic Drugs for the Treatment of Obesity</em> (2024). Published in <strong>PMC / Obesity Journals</strong>. This clinical paper highlights the essential role of progressive resistance workloads combined with clinical lifestyle interventions to avoid rapid metabolic drop-offs.
                   </li>
                 </ul>
@@ -71,18 +71,18 @@ export const Resources: React.FC = () => {
           {/* Calorie Deficits */}
           <section id="deficit" className="space-y-6 scroll-mt-24">
             <div className="space-y-2">
-              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-white">🧪 Severe Calorie Deficits & Energy Homeostasis</h2>
+              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-forest">🧪 Severe Calorie Deficits & Energy Homeostasis</h2>
             </div>
             
-            <div className="space-y-4 font-sans text-[16px] text-off-white/90 leading-[1.6]">
+            <div className="space-y-4 font-sans text-[16px] text-forest/85 leading-[1.6]">
               <p>
                 <strong>The Science:</strong> Deep calorie deficits induced by profound medical appetite suppression alter total energy expenditure (TEE). Basal metabolic rate drops cleanly alongside a reduction in skeletal muscle tissue mass, which can stall long-term weight maintenance.
               </p>
               
-              <div className="space-y-3 bg-navy-mid p-6 rounded-[16px] border border-navy-light">
-                <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
+              <div className="space-y-3 bg-quiet p-6 rounded-[16px] border border-forest/15">
+                <h3 className="font-bold text-forest text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>Can Muscle Avert GLP-1 Receptor Weight Plateau and Regain?</em> (2025). Published in <strong>PMC Metabolism Reviews</strong>. This trial demonstrates that reductions in lean mass explain approximately 60% of the severe decline in daily energy expenditure, validating the need to aggressively preserve skeletal muscle tissue to prevent premature plateaus.
                   </li>
                 </ul>
@@ -93,21 +93,21 @@ export const Resources: React.FC = () => {
           {/* Protein */}
           <section id="protein" className="space-y-6 scroll-mt-24">
             <div className="space-y-2">
-              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-white">🍳 Target Protein Thresholds Under Clinical Suppression</h2>
+              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-forest">🍳 Target Protein Thresholds Under Clinical Suppression</h2>
             </div>
             
-            <div className="space-y-4 font-sans text-[16px] text-off-white/90 leading-[1.6]">
+            <div className="space-y-4 font-sans text-[16px] text-forest/85 leading-[1.6]">
               <p>
                 <strong>The Science:</strong> Inadequate dietary protein intake after GLP-1 therapy or during high-dose GLP-1 treatment puts individuals at higher risk for unfavorable lean mass reduction, low immune function, and severe systemic fatigue. High-quality, fast-absorbing protein supplements (like whey isolates) assist in hitting baseline amino acid synthesis.
               </p>
               
-              <div className="space-y-3 bg-navy-mid p-6 rounded-[16px] border border-navy-light">
-                <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
+              <div className="space-y-3 bg-quiet p-6 rounded-[16px] border border-forest/15">
+                <h3 className="font-bold text-forest text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>The Role of Whey Protein in Maintaining Fat-Free Mass and Improving Body Composition After GLP-1 therapy</em> (2025). Published in <strong>MDPI / Interventional Studies</strong>. A double-blind, placebo-controlled clinical trial illustrating that targeted whey protein supplementation directly mitigates lean mass wasting during rapid physical transformations.
                   </li>
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>Inadequate Protein Intake after GLP-1 therapy: Effects on Body Composition</em> (2018). Published in <strong>Clinical Nutrition</strong>. This nursing review establishes that prescription GLP-1 volumes struggle to exceed 60g of protein from food alone, cementing the requirement for clinical tracking models.
                   </li>
                 </ul>
@@ -119,21 +119,21 @@ export const Resources: React.FC = () => {
           <section id="resistance" className="space-y-6 scroll-mt-24 relative">
             <div id="progression" className="absolute -top-24 left-0"></div>
             <div className="space-y-2">
-              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-white">🏋️ Progressive Resistance Training vs. Cardio</h2>
+              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-forest">🏋️ Progressive Resistance Training vs. Cardio</h2>
             </div>
             
-            <div className="space-y-4 font-sans text-[16px] text-off-white/90 leading-[1.6]">
+            <div className="space-y-4 font-sans text-[16px] text-forest/85 leading-[1.6]">
               <p>
                 <strong>The Science:</strong> While long-duration cardio supports aerobic pathways, it fails to trigger the neurological and physical signals required to preserve muscle tissue during a clinical calorie deficit. Short, high-intensity, low-fatigue strength work safely counteracts lean tissue drop.
               </p>
               
-              <div className="space-y-3 bg-navy-mid p-6 rounded-[16px] border border-navy-light">
-                <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
+              <div className="space-y-3 bg-quiet p-6 rounded-[16px] border border-forest/15">
+                <h3 className="font-bold text-forest text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>Resistance Training Plus Protein Improves Body Composition After GLP-1 therapy</em> (2021). Published via <strong>Examine / Randomised Controlled Trials</strong>. This 12-week trial evaluated GLP-1 patients divided into exercise and nutrition groups. The data concluded that combining structured resistance loops with optimal protein intake generated the most profound defence against losing your metabolic engine.
                   </li>
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>Nutritional and Exercise Interventions in Individuals with Metabolic Decline</em> (2023). Published in <strong>National Institutes of Health (NIH) PMC</strong>. A comprehensive systematic review confirming that a dedicated resistance training programme led to significant reductions in body fat percentage, a 2.72% average increase in muscle mass, and marked improvements in relative functional strength.
                   </li>
                 </ul>
@@ -145,18 +145,18 @@ export const Resources: React.FC = () => {
           <section id="preservation" className="space-y-6 scroll-mt-24 relative">
             <div id="bone" className="absolute -top-24 left-0"></div>
             <div className="space-y-2">
-              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-white">🦴 Skeletal Protection & Bone Mineral Density</h2>
+              <h2 className="font-display text-[28px] md:text-[32px] uppercase text-forest">🦴 Skeletal Protection & Bone Mineral Density</h2>
             </div>
             
-            <div className="space-y-4 font-sans text-[16px] text-off-white/90 leading-[1.6]">
+            <div className="space-y-4 font-sans text-[16px] text-forest/85 leading-[1.6]">
               <p>
                 <strong>The Science:</strong> Rapid physical mass drops radically shift a patient's centre of gravity and alter joint load dynamics. Mechanical skeletal loading via strength work is critical to protect bone mineral density from deteriorating alongside fat mass.
               </p>
               
-              <div className="space-y-3 bg-navy-mid p-6 rounded-[16px] border border-navy-light">
-                <h3 className="font-bold text-white text-[18px]">Supporting Literature:</h3>
+              <div className="space-y-3 bg-quiet p-6 rounded-[16px] border border-forest/15">
+                <h3 className="font-bold text-forest text-[18px]">Supporting Literature:</h3>
                 <ul className="space-y-4">
-                  <li className="pl-4 border-l-2 border-orange-burnt">
+                  <li className="pl-4 border-l-2 border-forest">
                     <em>The Impact of Exercise on Prevention of Sarcopenia After GLP-1 therapy</em> (2022). Published in <strong>PMC Clinical Practice</strong>. This study highlights the need for patients undergoing rapid weight adjustments to execute multi-joint compound resistance movements at least two days a week to safeguard total skeletal structural integrity.
                   </li>
                 </ul>
@@ -164,15 +164,15 @@ export const Resources: React.FC = () => {
             </div>
           </section>
 
-          <hr className="border-navy-light" />
+          <hr className="border-forest/15" />
 
           {/* Medical Disclaimer */}
-          <section className="bg-navy-mid border-2 border-red-900/50 p-6 md:p-8 rounded-[16px] mt-12 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-2 h-full bg-red-600/50"></div>
-            <div className="flex items-start gap-4">
+          <section className="bg-red-50 border-2 border-red-200 p-6 md:p-8 rounded-[16px] mt-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-2 h-full bg-red-700"></div>
+            <div className="flex items-start gap-4 pl-2">
               <div className="hidden sm:block text-3xl">⚠️</div>
-              <div className="space-y-2 font-sans text-[14px] md:text-[15px] text-off-white/80 leading-[1.6]">
-                <h3 className="font-bold text-white text-[18px] mb-3">Medical Disclaimer</h3>
+              <div className="space-y-2 font-sans text-[14px] md:text-[15px] text-forest/85 leading-[1.6]">
+                <h3 className="font-bold text-forest text-[18px] mb-3">Medical Disclaimer</h3>
                 <p>
                   The summaries and external references provided on this page are for educational, positioning, and informational purposes only.
                 </p>
@@ -184,23 +184,23 @@ export const Resources: React.FC = () => {
           </section>
 
           {/* Closing Dual-Track CTA Banner */}
-          <section className="bg-navy-mid border border-navy-light rounded-[20px] p-8 md:p-10 text-center space-y-6 mt-12">
-            <h2 className="font-display text-[26px] md:text-[34px] uppercase text-white tracking-tight">
+          <section className="bg-forest border border-forest-deep text-cream rounded-[20px] p-8 md:p-10 text-center space-y-6 mt-12">
+            <h2 className="font-display text-[26px] md:text-[34px] uppercase text-cream tracking-tight">
               Put the Clinical Research Into Practice.
             </h2>
-            <p className="font-sans text-[15px] md:text-[16px] text-off-white/85 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-sans text-[15px] md:text-[16px] text-cream/85 max-w-2xl mx-auto leading-relaxed">
               Whether managing patients on GLP-1 therapy or navigating medical weight loss yourself, we turn these clinical trials into safe, minimum-effective-dose strength training.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Link
                 to="/for-referrers"
-                className="bg-sand-50 hover:bg-white text-navy-dark font-sans font-bold text-xs uppercase tracking-widest px-6 py-4 rounded-md transition-all shadow-sm w-full sm:w-auto text-center"
+                className="bg-cream hover:bg-quiet text-forest font-sans font-bold text-xs uppercase tracking-widest px-6 py-4 rounded-md transition-all shadow-sm w-full sm:w-auto text-center"
               >
                 Refer a Patient (Healthcare Providers) →
               </Link>
               <Link
                 to="/assessment"
-                className="bg-orange-burnt hover:bg-orange-burnt/90 text-white font-sans font-bold text-xs uppercase tracking-widest px-6 py-4 rounded-md transition-all shadow-sm w-full sm:w-auto text-center"
+                className="bg-citron hover:brightness-95 text-forest border border-forest/20 font-sans font-bold text-xs uppercase tracking-widest px-6 py-4 rounded-md transition-all shadow-sm w-full sm:w-auto text-center"
               >
                 Take the 2-Minute Fitness Assessment →
               </Link>

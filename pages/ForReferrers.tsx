@@ -59,26 +59,26 @@ export const ForReferrers: React.FC = () => {
         schema={schema}
       />
 
-      <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50 pb-24">
+      <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pb-24">
         
         {/* Full-Bleed Hero Masthead */}
-        <section className="relative min-h-[520px] md:min-h-[580px] flex items-center justify-center -mt-16 md:-mt-20 pt-28 pb-16 px-6 overflow-hidden">
+        <section className="relative bg-forest min-h-[520px] md:min-h-[580px] flex items-center justify-center -mt-16 md:-mt-20 pt-28 pb-16 px-6 overflow-hidden">
           <img 
             src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg"
             alt="Exercise Referral and Healthcare Provider Overview"
             className="absolute inset-0 w-full h-full object-cover object-center z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/75 to-slate-950/80 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/95 via-forest/80 to-forest-deep/80 z-0" />
 
           {/* Hero Content Layer */}
           <div className="relative z-10 max-w-4xl mx-auto text-center">
-            <span className="text-xs uppercase tracking-[0.25em] font-sans text-sand-200 font-semibold mb-4 block">
+            <span className="text-xs uppercase tracking-[0.25em] font-sans text-citron font-semibold mb-4 block">
               EXERCISE REFERRAL & LIFESTYLE PARTNERSHIP
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight leading-tight mb-6">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-cream font-bold tracking-tight leading-tight mb-6">
               Supervised Strength & Muscle Preservation for Patients on GLP-1 Therapy
             </h1>
-            <p className="text-sand-100/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+            <p className="text-cream/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
               Safe, joint-friendly resistance coaching and high-protein habit support in Christchurch and nationwide online. A practical exercise partner for your medical weight loss patients.
             </p>
 
@@ -88,14 +88,14 @@ export const ForReferrers: React.FC = () => {
                 download="Protecting Muscle on GLP-1 - Patient Guide _ WRK Personal Training.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-sand-100 hover:bg-white text-spruce-900 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors shadow-sm w-full sm:w-auto justify-center"
+                className="bg-cream hover:bg-quiet text-forest px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors shadow-sm w-full sm:w-auto justify-center"
               >
                 <Download size={14} />
                 <span>Download Patient Handout (A4 PDF)</span>
               </a>
               <a
                 href="#clinician-inquiry"
-                className="border border-white/30 text-sand-50 hover:bg-white/10 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors w-full sm:w-auto justify-center"
+                className="border border-cream/35 text-cream hover:bg-forest-deep/60 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-2 transition-colors w-full sm:w-auto justify-center"
               >
                 <span>Request DLE Cards for Clinic</span>
               </a>
@@ -105,11 +105,11 @@ export const ForReferrers: React.FC = () => {
 
         {/* Executive Scope & Collaboration Model Banner */}
         <section className="px-6 max-w-4xl mx-auto -mt-8 md:-mt-10 relative z-20">
-          <div className="bg-spruce-800 text-sand-50 rounded-2xl p-6 sm:p-8 shadow-xl border border-white/10">
-            <span className="text-xs uppercase tracking-widest text-sand-200 block mb-2 font-semibold">
+          <div className="bg-forest text-cream rounded-2xl p-6 sm:p-8 shadow-xl border border-forest-deep">
+            <span className="text-xs uppercase tracking-widest text-citron block mb-2 font-semibold">
               OUR SCOPE & COLLABORATION MODEL
             </span>
-            <blockquote className="font-serif text-lg sm:text-xl text-sand-50 italic leading-relaxed m-0">
+            <blockquote className="font-serif text-lg sm:text-xl text-cream italic leading-relaxed m-0">
               “You manage pharmacotherapy, dose titration, and medical oversight. WRK provides the coaching, lifting mechanics, and uncrowded environment to ensure patients preserve lean muscle and physical capability while the weight comes off.”
             </blockquote>
           </div>
@@ -119,14 +119,14 @@ export const ForReferrers: React.FC = () => {
         <div className="px-6 max-w-4xl mx-auto space-y-16 pt-12 md:pt-16">
           
           {/* 1. Overview for General Practitioners & Specialists */}
-          <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
+          <section className="bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block">
               1. OVERVIEW FOR GENERAL PRACTITIONERS & SPECIALISTS
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
+            <h2 className="font-serif text-2xl sm:text-3xl text-forest font-bold tracking-tight leading-snug">
               Bridging the Gap Between Medical Weight Management and Functional Musculoskeletal Health.
             </h2>
-            <div className="space-y-4 text-charcoal/80 text-base leading-relaxed">
+            <div className="space-y-4 text-forest/80 text-base leading-relaxed">
               <p>
                 Clinical trial DXA substudies demonstrate that without progressive resistance stimulus and adequate protein, lean tissue loss (skeletal muscle and bone mineral density) can account for <strong>25% to 40% of total mass reduced</strong> <em>(e.g., Wilding et al., STEP 1 trial DXA sub-analysis)</em>.
               </p>
@@ -137,15 +137,15 @@ export const ForReferrers: React.FC = () => {
           </section>
 
           {/* 2. Share WRK With a Patient in Under 5 Seconds */}
-          <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-8">
+          <section className="bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm space-y-8">
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block mb-2">
+              <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block mb-2">
                 2. FAST PATIENT REFERRAL
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug mb-3">
+              <h2 className="font-serif text-2xl sm:text-3xl text-forest font-bold tracking-tight leading-snug mb-3">
                 Share WRK With a Patient in Under 5 Seconds
               </h2>
-              <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed">
+              <p className="text-sm sm:text-base text-forest/75 leading-relaxed">
                 No referral forms, clinician portals, or administrative overhead. Copy either template into Medtech, MyPractice, or Indici outbound messaging:
               </p>
             </div>
@@ -153,9 +153,9 @@ export const ForReferrers: React.FC = () => {
             <div className="space-y-6">
               
               {/* Option A */}
-              <div className="bg-sand-50/70 border border-charcoal/10 p-6 rounded-2xl">
+              <div className="bg-cream border border-forest/15 p-6 rounded-2xl">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800">
+                  <span className="text-xs font-bold uppercase tracking-wider text-forest">
                     Option A: Clinician Recommendation (SMS / Patient Portal)
                   </span>
                   <button
@@ -163,8 +163,8 @@ export const ForReferrers: React.FC = () => {
                     onClick={() => handleCopy(snippetOptionA, 'A')}
                     className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md font-semibold text-xs uppercase tracking-wider transition-all w-full sm:w-auto shadow-xs cursor-pointer ${
                       copiedOption === 'A'
-                        ? 'bg-emerald-700 text-sand-50 border border-emerald-700'
-                        : 'bg-white hover:bg-spruce-800 hover:text-sand-50 text-charcoal border border-charcoal/15'
+                        ? 'bg-emerald-700 text-cream border border-emerald-700'
+                        : 'bg-quiet hover:bg-forest hover:text-cream text-forest border border-forest/20'
                     }`}
                   >
                     {copiedOption === 'A' ? (
@@ -180,15 +180,15 @@ export const ForReferrers: React.FC = () => {
                     )}
                   </button>
                 </div>
-                <div className="bg-white p-4 rounded-xl border border-charcoal/10 text-sm sm:text-base text-charcoal leading-relaxed font-mono">
+                <div className="bg-quiet p-4 rounded-xl border border-forest/15 text-sm sm:text-base text-forest leading-relaxed font-mono">
                   "{snippetOptionA}"
                 </div>
               </div>
 
               {/* Option B */}
-              <div className="bg-sand-50/70 border border-charcoal/10 p-6 rounded-2xl">
+              <div className="bg-cream border border-forest/15 p-6 rounded-2xl">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-spruce-800">
+                  <span className="text-xs font-bold uppercase tracking-wider text-forest">
                     Option B: Practice Resource Follow-up
                   </span>
                   <button
@@ -196,8 +196,8 @@ export const ForReferrers: React.FC = () => {
                     onClick={() => handleCopy(snippetOptionB, 'B')}
                     className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md font-semibold text-xs uppercase tracking-wider transition-all w-full sm:w-auto shadow-xs cursor-pointer ${
                       copiedOption === 'B'
-                        ? 'bg-emerald-700 text-sand-50 border border-emerald-700'
-                        : 'bg-white hover:bg-spruce-800 hover:text-sand-50 text-charcoal border border-charcoal/15'
+                        ? 'bg-emerald-700 text-cream border border-emerald-700'
+                        : 'bg-quiet hover:bg-forest hover:text-cream text-forest border border-forest/20'
                     }`}
                   >
                     {copiedOption === 'B' ? (
@@ -213,7 +213,7 @@ export const ForReferrers: React.FC = () => {
                     )}
                   </button>
                 </div>
-                <div className="bg-white p-4 rounded-xl border border-charcoal/10 text-sm sm:text-base text-charcoal leading-relaxed font-mono">
+                <div className="bg-quiet p-4 rounded-xl border border-forest/15 text-sm sm:text-base text-forest leading-relaxed font-mono">
                   "{snippetOptionB}"
                 </div>
               </div>
@@ -221,20 +221,20 @@ export const ForReferrers: React.FC = () => {
             </div>
 
             {/* Dual-Delivery Patient Resources Model */}
-            <div className="pt-2 border-t border-charcoal/10">
-              <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 block mb-4">
+            <div className="pt-2 border-t border-forest/15">
+              <span className="text-xs font-bold uppercase tracking-wider text-forest block mb-4">
                 Dual-Delivery Patient Resources
               </span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 {/* Delivery Option 1: Instant A4 PDF */}
-                <div className="bg-sand-50/80 border border-charcoal/10 p-6 rounded-2xl flex flex-col justify-between">
+                <div className="bg-cream border border-forest/15 p-6 rounded-2xl flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm mb-2">
+                    <div className="flex items-center gap-2 text-forest font-bold text-sm mb-2">
                       <Download size={18} />
                       <span>Instant 1-Page A4 PDF Handout</span>
                     </div>
-                    <p className="text-xs text-charcoal/70 leading-relaxed mb-5">
+                    <p className="text-xs text-forest/75 leading-relaxed mb-5">
                       Print on practice demand or attach to patient portal messages. Explains muscle preservation, digestible protein habits, and quiet studio support.
                     </p>
                   </div>
@@ -243,7 +243,7 @@ export const ForReferrers: React.FC = () => {
                     download="Protecting Muscle on GLP-1 - Patient Guide _ WRK Personal Training.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 bg-spruce-800 hover:bg-spruce-900 text-sand-50 px-5 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors shadow-xs"
+                    className="inline-flex items-center justify-center gap-2 bg-forest hover:bg-forest-deep text-cream px-5 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors shadow-xs"
                   >
                     <Download size={15} />
                     <span>Download A4 PDF</span>
@@ -251,19 +251,19 @@ export const ForReferrers: React.FC = () => {
                 </div>
 
                 {/* Delivery Option 2: Physical DLE Cards */}
-                <div className="bg-sand-50/80 border border-charcoal/10 p-6 rounded-2xl flex flex-col justify-between">
+                <div className="bg-cream border border-forest/15 p-6 rounded-2xl flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm mb-2">
+                    <div className="flex items-center gap-2 text-forest font-bold text-sm mb-2">
                       <Building size={18} />
                       <span>Patient Information Cards (DLE)</span>
                     </div>
-                    <p className="text-xs text-charcoal/70 leading-relaxed mb-5">
+                    <p className="text-xs text-forest/75 leading-relaxed mb-5">
                       Professional, high-quality printed DLE rack cards (free pack of 25) dispatched directly to your medical centre for consulting rooms and reception.
                     </p>
                   </div>
                   <a
                     href="#clinician-inquiry"
-                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-spruce-800 hover:text-sand-50 text-charcoal border border-charcoal/20 px-5 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors shadow-xs"
+                    className="inline-flex items-center justify-center gap-2 bg-quiet hover:bg-forest hover:text-cream text-forest border border-forest/20 px-5 py-3.5 rounded-md font-semibold uppercase tracking-wider text-xs transition-colors shadow-xs"
                   >
                     <span>Request Free 25-Pack (DLE) →</span>
                   </a>
@@ -273,63 +273,63 @@ export const ForReferrers: React.FC = () => {
             </div>
 
             {/* Direct Enquiries Line */}
-            <div className="pt-4 border-t border-charcoal/10 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-charcoal/80">
-              <span className="font-semibold text-charcoal">Direct Practice Enquiries:</span>
-              <a href="mailto:info@wrkpersonaltraining.co.nz" className="inline-flex items-center gap-1.5 text-spruce-800 hover:underline">
+            <div className="pt-4 border-t border-forest/15 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-forest/80">
+              <span className="font-semibold text-forest">Direct Practice Enquiries:</span>
+              <a href="mailto:info@wrkpersonaltraining.co.nz" className="inline-flex items-center gap-1.5 text-forest hover:underline">
                 <Mail size={14} /> info@wrkpersonaltraining.co.nz
               </a>
-              <a href="tel:021393160" className="inline-flex items-center gap-1.5 text-spruce-800 hover:underline">
+              <a href="tel:021393160" className="inline-flex items-center gap-1.5 text-forest hover:underline">
                 <Phone size={14} /> 021 393 160
               </a>
             </div>
           </section>
 
           {/* 3. What We Coach: Practical Exercise & Habit Foundations */}
-          <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
+          <section className="bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block">
               3. WHAT WE COACH
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
+            <h2 className="font-serif text-2xl sm:text-3xl text-forest font-bold tracking-tight leading-snug">
               What We Coach: Practical Exercise & Habit Foundations
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-              <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
-                <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
+              <div className="bg-cream p-6 rounded-2xl border border-forest/15 space-y-2">
+                <div className="flex items-center gap-2 text-forest font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
                   <span>Skeletal Muscle & Bone Density Protection</span>
                 </div>
-                <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
+                <p className="text-sm text-forest/80 leading-relaxed pl-6">
                   Minimum effective dose resistance training (2–3x/week) focused on multi-joint functional movements to stimulate muscle retention, protect bone density, and preserve daily physical independence.
                 </p>
               </div>
 
-              <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
-                <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
+              <div className="bg-cream p-6 rounded-2xl border border-forest/15 space-y-2">
+                <div className="flex items-center gap-2 text-forest font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
                   <span>Practical Protein Habits for Low-Appetite Days</span>
                 </div>
-                <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
+                <p className="text-sm text-forest/80 leading-relaxed pl-6">
                   Evidence-informed daily targets (1.2–1.6 g/kg) using small, nutrient-dense whole foods and protein anchors designed to be manageable without causing nausea or overwhelming early fullness.
                 </p>
               </div>
 
-              <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
-                <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
+              <div className="bg-cream p-6 rounded-2xl border border-forest/15 space-y-2">
+                <div className="flex items-center gap-2 text-forest font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
                   <span>Hydration & Fluid Balance Routines</span>
                 </div>
-                <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
+                <p className="text-sm text-forest/80 leading-relaxed pl-6">
                   Structured fluid and mineral routines designed around slower gastric digestion, blunted thirst cues, and constipation prevention.
                 </p>
               </div>
 
-              <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-2">
-                <div className="flex items-center gap-2 text-spruce-800 font-bold text-sm">
+              <div className="bg-cream p-6 rounded-2xl border border-forest/15 space-y-2">
+                <div className="flex items-center gap-2 text-forest font-bold text-sm">
                   <CheckCircle2 size={18} className="shrink-0" />
                   <span>Joint-Friendly Adjustments for Deconditioned Adults</span>
                 </div>
-                <p className="text-sm text-charcoal/80 leading-relaxed pl-6">
+                <p className="text-sm text-forest/80 leading-relaxed pl-6">
                   Biomechanically sound, low-impact exercise progressions adapted for beginners, osteoarthritis, and pre-existing musculoskeletal constraints.
                 </p>
               </div>
@@ -337,80 +337,80 @@ export const ForReferrers: React.FC = () => {
           </section>
 
           {/* 4. Coach Experience & Qualifications */}
-          <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
+          <section className="bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block">
               4. COACH EXPERIENCE & QUALIFICATIONS
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
+            <h2 className="font-serif text-2xl sm:text-3xl text-forest font-bold tracking-tight leading-snug">
               20+ Years of Condition-Aware Coaching Experience
             </h2>
-            <p className="text-charcoal/80 text-base leading-relaxed">
+            <p className="text-forest/80 text-base leading-relaxed">
               Your patients are supported by an experienced, certified coach with over 20 years on the gym floor—not an unvetted commercial gym trainer. Led by <strong>Hayden Richards</strong>, operating strictly within the fitness coaching scope, using PAR-Q+ pre-screening, joint-friendly progressions, and open communication with your practice.
             </p>
 
             <div className="pt-2">
-              <h3 className="font-serif text-lg font-bold text-charcoal mb-4">
+              <h3 className="font-serif text-lg font-bold text-forest mb-4">
                 Experience adapting exercise around:
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                  <span className="font-bold text-charcoal block mb-1">Parkinson’s Disease:</span>
+                <div className="p-4 bg-cream rounded-xl border border-forest/15 text-sm text-forest/80">
+                  <span className="font-bold text-forest block mb-1">Parkinson’s Disease:</span>
                   Motor recruitment, balance, and gait stability.
                 </div>
-                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                  <span className="font-bold text-charcoal block mb-1">Post-Cancer Recovery:</span>
+                <div className="p-4 bg-cream rounded-xl border border-forest/15 text-sm text-forest/80">
+                  <span className="font-bold text-forest block mb-1">Post-Cancer Recovery:</span>
                   Energy pacing, fatigue management, and gradual strength restoration.
                 </div>
-                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                  <span className="font-bold text-charcoal block mb-1">Joint Replacements (Knee/Hip):</span>
+                <div className="p-4 bg-cream rounded-xl border border-forest/15 text-sm text-forest/80">
+                  <span className="font-bold text-forest block mb-1">Joint Replacements (Knee/Hip):</span>
                   Joint alignment, range of motion, and closed-chain strength rebuilding.
                 </div>
-                <div className="p-4 bg-sand-50/60 rounded-xl border border-charcoal/5 text-sm text-charcoal/80">
-                  <span className="font-bold text-charcoal block mb-1">Post-Cardiac Rehabilitation:</span>
+                <div className="p-4 bg-cream rounded-xl border border-forest/15 text-sm text-forest/80">
+                  <span className="font-bold text-forest block mb-1">Post-Cardiac Rehabilitation:</span>
                   Monitored exertion, steady pacing, and graded movement progressions.
                 </div>
               </div>
             </div>
 
             {/* Standards Ribbon */}
-            <div className="mt-6 pt-6 border-t border-charcoal/10">
-              <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-3 rounded-xl bg-sand-100/70 border border-charcoal/10 text-charcoal text-xs sm:text-sm font-medium">
-                <ShieldCheck size={18} className="text-spruce-800 shrink-0" />
-                <span className="font-bold text-spruce-900">20+ Years Dedicated Coaching Experience</span>
-                <span className="text-charcoal/30 hidden sm:inline">·</span>
+            <div className="mt-6 pt-6 border-t border-forest/15">
+              <div className="inline-flex flex-wrap items-center gap-2.5 px-4 py-3 rounded-xl bg-cream border border-forest/15 text-forest text-xs sm:text-sm font-medium">
+                <ShieldCheck size={18} className="text-forest shrink-0" />
+                <span className="font-bold text-forest">20+ Years Dedicated Coaching Experience</span>
+                <span className="text-forest/30 hidden sm:inline">·</span>
                 <span>Clear Fitness Scope of Practice</span>
-                <span className="text-charcoal/30 hidden sm:inline">·</span>
+                <span className="text-forest/30 hidden sm:inline">·</span>
                 <span>PAR-Q+ Screening</span>
               </div>
             </div>
           </section>
 
           {/* 5. Low-Intimidation Training Environments */}
-          <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
+          <section className="bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block">
               5. TRAINING ENVIRONMENTS
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
+            <h2 className="font-serif text-2xl sm:text-3xl text-forest font-bold tracking-tight leading-snug">
               Low-Intimidation Training Environments
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-3">
-                <div className="flex items-center gap-2 text-spruce-900 font-serif text-lg font-bold">
-                  <Building size={20} className="text-spruce-800" />
+              <div className="bg-cream p-6 rounded-2xl border border-forest/15 space-y-3">
+                <div className="flex items-center gap-2 text-forest font-serif text-lg font-bold">
+                  <Building size={20} className="text-forest" />
                   <span>Boutique Private Studio (12 Show Place, Addington)</span>
                 </div>
-                <p className="text-sm text-charcoal/80 leading-relaxed">
+                <p className="text-sm text-forest/80 leading-relaxed">
                   A calm, uncrowded training space shared with only a few members at any time—ideal for patients who feel intimidated or overwhelmed in standard commercial gyms.
                 </p>
               </div>
 
-              <div className="bg-sand-50/70 p-6 rounded-2xl border border-charcoal/5 space-y-3">
-                <div className="flex items-center gap-2 text-spruce-900 font-serif text-lg font-bold">
-                  <MapPin size={20} className="text-spruce-800" />
+              <div className="bg-cream p-6 rounded-2xl border border-forest/15 space-y-3">
+                <div className="flex items-center gap-2 text-forest font-serif text-lg font-bold">
+                  <MapPin size={20} className="text-forest" />
                   <span>Remote Coaching (New Zealand Nationwide)</span>
                 </div>
-                <p className="text-sm text-charcoal/80 leading-relaxed">
+                <p className="text-sm text-forest/80 leading-relaxed">
                   Delivered via the WRK Training App with video form review, habit tracking, and direct coach communication for patients outside Christchurch.
                 </p>
               </div>
@@ -418,78 +418,78 @@ export const ForReferrers: React.FC = () => {
           </section>
 
           {/* 6. Clear Scope of Practice & Practice Updates */}
-          <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
+          <section className="bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block">
               6. SCOPE OF PRACTICE & PRACTICE UPDATES
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug">
+            <h2 className="font-serif text-2xl sm:text-3xl text-forest font-bold tracking-tight leading-snug">
               Clear Scope of Practice & Practice Updates
             </h2>
 
-            <div className="bg-charcoal text-sand-50 p-6 sm:p-8 rounded-2xl">
-              <p className="italic font-serif text-base sm:text-lg text-sand-100 leading-relaxed m-0">
+            <div className="bg-forest text-cream p-6 sm:p-8 rounded-2xl">
+              <p className="italic font-serif text-base sm:text-lg text-cream/95 leading-relaxed m-0">
                 “We operate strictly within the fitness coaching scope. We never diagnose conditions, prescribe diets, or alter pharmacotherapy. Any medication side effects or clinical red flags are immediately redirected back to your practice.”
               </p>
             </div>
 
-            <div className="bg-sand-50/80 border border-spruce-800/30 p-6 sm:p-8 rounded-2xl space-y-4">
+            <div className="bg-cream border border-forest/20 p-6 sm:p-8 rounded-2xl space-y-4">
               <div className="flex items-center gap-3">
-                <CheckCircle2 size={24} className="text-spruce-800 shrink-0" />
-                <h4 className="font-serif text-xl font-bold text-charcoal">
+                <CheckCircle2 size={24} className="text-forest shrink-0" />
+                <h4 className="font-serif text-xl font-bold text-forest">
                   Simple Updates for Your Records
                 </h4>
               </div>
-              <p className="text-sm text-charcoal/80 leading-relaxed">
+              <p className="text-sm text-forest/80 leading-relaxed">
                 With documented patient consent, we can provide a brief 2-sentence confirmation to your practice inbox:
               </p>
-              <ol className="list-decimal pl-6 text-sm text-charcoal/80 space-y-2 font-medium">
+              <ol className="list-decimal pl-6 text-sm text-forest/80 space-y-2 font-medium">
                 <li>Baseline movement screen completed and 2x/week strength routine initiated.</li>
                 <li>Daily protein baseline and hydration habits established.</li>
               </ol>
-              <p className="text-xs text-charcoal/70 pt-2 border-t border-charcoal/10">
+              <p className="text-xs text-forest/70 pt-2 border-t border-forest/10">
                 This gives your clinic confirmation of active lifestyle support with zero administrative burden.
               </p>
             </div>
           </section>
 
           {/* 7. Studio Details & Healthcare Provider Channel */}
-          <section className="bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm space-y-6">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold block">
+          <section className="bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold block">
               7. STUDIO DETAILS & HEALTHCARE PROVIDER CHANNEL
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-charcoal font-bold tracking-tight leading-snug mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl text-forest font-bold tracking-tight leading-snug mb-4">
               Studio Details & Healthcare Provider Channel
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-charcoal/80">
-              <div className="p-4 bg-sand-50/70 rounded-xl border border-charcoal/5">
-                <div className="flex items-center gap-2 font-bold text-charcoal mb-1">
-                  <MapPin size={16} className="text-spruce-800" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-forest/80">
+              <div className="p-4 bg-cream rounded-xl border border-forest/15">
+                <div className="flex items-center gap-2 font-bold text-forest mb-1">
+                  <MapPin size={16} className="text-forest" />
                   <span>Facility Location</span>
                 </div>
-                <p className="font-semibold text-charcoal">Studio Location:</p>
+                <p className="font-semibold text-forest">Studio Location:</p>
                 <p>WRK Personal Training</p>
                 <p>12 Show Place, Addington</p>
                 <p>Christchurch 8024</p>
               </div>
 
-              <div className="p-4 bg-sand-50/70 rounded-xl border border-charcoal/5">
-                <div className="flex items-center gap-2 font-bold text-charcoal mb-1">
-                  <Phone size={16} className="text-spruce-800" />
+              <div className="p-4 bg-cream rounded-xl border border-forest/15">
+                <div className="flex items-center gap-2 font-bold text-forest mb-1">
+                  <Phone size={16} className="text-forest" />
                   <span>Direct Coach Line</span>
                 </div>
-                <p className="font-semibold text-spruce-900 text-base">021 393 160</p>
-                <p className="text-xs text-charcoal/70 mt-1">info@wrkpersonaltraining.co.nz</p>
+                <p className="font-semibold text-forest text-base">021 393 160</p>
+                <p className="text-xs text-forest/75 mt-1">info@wrkpersonaltraining.co.nz</p>
               </div>
 
-              <div className="p-4 bg-sand-50/70 rounded-xl border border-charcoal/5">
-                <div className="flex items-center gap-2 font-bold text-charcoal mb-1">
-                  <Clock size={16} className="text-spruce-800" />
+              <div className="p-4 bg-cream rounded-xl border border-forest/15">
+                <div className="flex items-center gap-2 font-bold text-forest mb-1">
+                  <Clock size={16} className="text-forest" />
                   <span>Coaching Hours</span>
                 </div>
-                <p className="font-semibold text-charcoal">Studio Coaching Hours:</p>
+                <p className="font-semibold text-forest">Studio Coaching Hours:</p>
                 <p>Monday – Friday</p>
-                <p className="font-semibold text-spruce-900">6:00 AM – 2:00 PM</p>
+                <p className="font-semibold text-forest">6:00 AM – 2:00 PM</p>
               </div>
             </div>
           </section>

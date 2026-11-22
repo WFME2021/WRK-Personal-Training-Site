@@ -204,7 +204,7 @@ export const TdeeCalculator: React.FC = () => {
 
   if (showResults && results) {
     return (
-      <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12" ref={topRef}>
+      <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pt-24 pb-12" ref={topRef}>
         <SeoHead 
           title="GLP-1 Calorie & Macro Calculator | WRK Personal Training"
           description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalise your protein, carbohydrate, and fat targets during weight loss."
@@ -212,63 +212,63 @@ export const TdeeCalculator: React.FC = () => {
         <div className="max-w-3xl mx-auto px-4 md:px-8">
           
           <div className="text-center mb-16">
-            <h2 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-4 uppercase tracking-wide">
+            <h2 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-4 uppercase tracking-wide">
               YOUR RESULTS
             </h2>
           </div>
 
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-neutral-200 mb-12 text-center">
-            <h2 className="text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-4">ESTIMATED MAINTENANCE</h2>
-            <div className="font-serif text-[48px] md:text-[64px] leading-none text-[#2C3539] mb-4">
-              {results.tdee.toLocaleString()} <span className="text-[24px] text-[#2C3539]/60 font-sans">kcal/day</span>
+          <div className="bg-quiet rounded-3xl p-8 md:p-12 shadow-sm border border-forest/15 mb-12 text-center">
+            <h2 className="text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-4">ESTIMATED MAINTENANCE</h2>
+            <div className="font-serif text-[48px] md:text-[64px] leading-none text-forest mb-4">
+              {results.tdee.toLocaleString()} <span className="text-[24px] text-forest/65 font-sans">kcal/day</span>
             </div>
-            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed max-w-xl mx-auto">
+            <p className="text-[16px] text-forest/80 leading-relaxed max-w-xl mx-auto">
               This is your estimated daily energy requirement based on your current body size, age and activity level.
             </p>
           </div>
 
-          <div className="bg-[#1A1C1D] text-white rounded-3xl p-8 md:p-12 shadow-sm mb-12 text-center border border-neutral-800">
-            <h2 className="text-[14px] font-bold uppercase tracking-wider text-neutral-400 mb-4">YOUR SUGGESTED STARTING INTAKE</h2>
-            <div className="font-serif text-[48px] md:text-[64px] leading-none text-[#8A9A86] mb-4">
-              {results.targetCalories.toLocaleString()} <span className="text-[24px] text-neutral-400 font-sans">kcal/day</span>
+          <div className="bg-forest text-cream rounded-3xl p-8 md:p-12 shadow-sm mb-12 text-center border border-forest-deep">
+            <h2 className="text-[14px] font-bold uppercase tracking-wider text-citron mb-4">YOUR SUGGESTED STARTING INTAKE</h2>
+            <div className="font-serif text-[48px] md:text-[64px] leading-none text-citron mb-4">
+              {results.targetCalories.toLocaleString()} <span className="text-[24px] text-cream/75 font-sans">kcal/day</span>
             </div>
-            <p className="text-[16px] text-neutral-300 leading-relaxed max-w-xl mx-auto mb-10">
+            <p className="text-[16px] text-cream/85 leading-relaxed max-w-xl mx-auto mb-10">
               {goal === 'maintain' && "Based on a maintenance approach, this matches your estimated energy requirement."}
               {goal === 'gentleFatLoss' && "Based on a gentle fat-loss approach, this is approximately 10% below your estimated maintenance."}
               {goal === 'moderateFatLoss' && "Based on a moderate fat-loss approach, this is approximately 15% below your estimated maintenance."}
             </p>
 
-            <h3 className="text-[14px] font-bold uppercase tracking-wider text-neutral-400 mb-6">YOUR DAILY TARGETS</h3>
+            <h3 className="text-[14px] font-bold uppercase tracking-wider text-cream/75 mb-6">YOUR DAILY TARGETS</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <div className="text-[12px] uppercase tracking-wider text-neutral-400 mb-2 font-bold">Calories</div>
-                <div className="text-[24px] font-serif">{results.targetCalories}</div>
+              <div className="bg-forest-deep/75 border border-cream/15 rounded-2xl p-4">
+                <div className="text-[12px] uppercase tracking-wider text-cream/75 mb-2 font-bold">Calories</div>
+                <div className="text-[24px] font-serif text-cream">{results.targetCalories}</div>
               </div>
-              <div className="bg-[#8A9A86]/20 border border-[#8A9A86]/30 rounded-2xl p-4 text-[#8A9A86]">
-                <div className="text-[12px] uppercase tracking-wider text-[#8A9A86]/80 mb-2 font-bold">Protein</div>
+              <div className="bg-citron/15 border border-citron/35 rounded-2xl p-4 text-citron">
+                <div className="text-[12px] uppercase tracking-wider text-citron/90 mb-2 font-bold">Protein</div>
                 <div className="text-[24px] font-serif">{results.protein} g</div>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <div className="text-[12px] uppercase tracking-wider text-neutral-400 mb-2 font-bold">Carbs</div>
-                <div className="text-[24px] font-serif">{results.carbs} g</div>
+              <div className="bg-forest-deep/75 border border-cream/15 rounded-2xl p-4">
+                <div className="text-[12px] uppercase tracking-wider text-cream/75 mb-2 font-bold">Carbs</div>
+                <div className="text-[24px] font-serif text-cream">{results.carbs} g</div>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <div className="text-[12px] uppercase tracking-wider text-neutral-400 mb-2 font-bold">Fat</div>
-                <div className="text-[24px] font-serif">{results.fat} g</div>
+              <div className="bg-forest-deep/75 border border-cream/15 rounded-2xl p-4">
+                <div className="text-[12px] uppercase tracking-wider text-cream/75 mb-2 font-bold">Fat</div>
+                <div className="text-[24px] font-serif text-cream">{results.fat} g</div>
               </div>
             </div>
           </div>
 
           {/* GLP-1 Important Message */}
-          <div className="bg-[#FAFAF9] border border-neutral-200 p-8 md:p-10 rounded-3xl mb-12">
-            <h2 className="font-serif text-[26px] md:text-[30px] text-[#2C3539] mb-4">
+          <div className="bg-quiet border border-forest/15 p-8 md:p-10 rounded-3xl mb-12">
+            <h2 className="font-serif text-[26px] md:text-[30px] text-forest mb-4">
               Your numbers are a starting point — not a prescription.
             </h2>
-            <div className="text-[15px] md:text-[16px] text-[#2C3539]/80 leading-relaxed space-y-4">
+            <div className="text-[15px] md:text-[16px] text-forest/80 leading-relaxed space-y-4">
               <p>GLP-1 medications can change appetite, food intake and tolerance for different foods.</p>
               <p>Your calculated calorie requirement does not mean you need to force yourself to eat a particular number every day.</p>
               <p>Pay attention to your:</p>
-              <ul className="list-disc pl-5 space-y-2 marker:text-[#8A9A86]">
+              <ul className="list-disc pl-5 space-y-2 marker:text-forest">
                 <li>energy</li>
                 <li>training performance</li>
                 <li>recovery</li>
@@ -277,30 +277,30 @@ export const TdeeCalculator: React.FC = () => {
                 <li>bodyweight trend</li>
                 <li>rate of weight change</li>
               </ul>
-              <p className="pt-2 font-medium">If you're struggling to eat enough, experiencing significant gastrointestinal symptoms or losing weight very rapidly, speak with your healthcare professional.</p>
+              <p className="pt-2 font-medium text-forest">If you're struggling to eat enough, experiencing significant gastrointestinal symptoms or losing weight very rapidly, speak with your healthcare professional.</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Protein Priority */}
-            <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl shadow-sm">
-              <h3 className="text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Your protein priority</h3>
-              <div className="font-serif text-[36px] text-[#2C3539] mb-4">{results.protein} g/day</div>
-              <p className="text-[15px] text-[#2C3539]/80 leading-relaxed mb-6">
+            <div className="bg-quiet border border-forest/15 p-8 md:p-10 rounded-3xl shadow-sm">
+              <h3 className="text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Your protein priority</h3>
+              <div className="font-serif text-[36px] text-forest mb-4">{results.protein} g/day</div>
+              <p className="text-[15px] text-forest/80 leading-relaxed mb-6">
                 Your daily protein target is prioritised to support muscle retention during weight loss. We've also set a practical minimum of 25 g protein per eating occasion so your protein is distributed meaningfully across the day. The remaining calories are allocated between fat and carbohydrates.
               </p>
-              <div className="bg-[#FAFAF9] rounded-2xl p-5 border border-neutral-200">
-                <p className="text-[13px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">PER-MEAL PROTEIN GUIDE:</p>
-                <div className="text-[24px] font-serif text-[#2C3539] mb-1">
+              <div className="bg-cream rounded-2xl p-5 border border-forest/15">
+                <p className="text-[13px] font-bold uppercase tracking-wider text-forest/75 mb-3">PER-MEAL PROTEIN GUIDE:</p>
+                <div className="text-[24px] font-serif text-forest mb-1">
                   {Math.round(results.protein / results.meals)} g target
                 </div>
                 {Math.round(results.protein / results.meals) > 25 ? (
-                  <p className="text-[14px] text-[#2C3539]/70 mb-4">per eating occasion (25 g minimum floor)</p>
+                  <p className="text-[14px] text-forest/75 mb-4">per eating occasion (25 g minimum floor)</p>
                 ) : (
-                  <p className="text-[14px] text-[#2C3539]/70 mb-4">per eating occasion (minimum floor)</p>
+                  <p className="text-[14px] text-forest/75 mb-4">per eating occasion (minimum floor)</p>
                 )}
                 
-                <ul className="space-y-2 text-[14px] text-[#2C3539] pt-4 border-t border-neutral-200">
+                <ul className="space-y-2 text-[14px] text-forest pt-4 border-t border-forest/15">
                   {Array.from({ length: results.meals }).map((_, idx) => {
                     const isLast = idx === results.meals - 1;
                     const baseAmount = Math.floor(results.protein / results.meals);
@@ -317,22 +317,22 @@ export const TdeeCalculator: React.FC = () => {
             </div>
 
             {/* Nutrition Approach */}
-            <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col">
-              <h3 className="text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Your nutrition approach</h3>
+            <div className="bg-quiet border border-forest/15 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col">
+              <h3 className="text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Your nutrition approach</h3>
               
-              <div className="text-[16px] text-[#2C3539]/80 leading-relaxed space-y-4 flex-grow mt-2">
+              <div className="text-[16px] text-forest/80 leading-relaxed space-y-4 flex-grow mt-2">
                 {preference === 'balanced' && (
-                  <p>You've selected <strong className="font-medium text-[#2C3539]">Balanced</strong>. Your protein target has been prioritised, with carbohydrate and fat distributed around your calorie target.</p>
+                  <p>You've selected <strong className="font-medium text-forest">Balanced</strong>. Your protein target has been prioritised, with carbohydrate and fat distributed around your calorie target.</p>
                 )}
                 {preference === 'higherProtein' && (
-                  <p>You've selected <strong className="font-medium text-[#2C3539]">Higher Protein</strong>. Your protein target has been prioritised towards the higher end of the WRK educational range, with carbohydrate and fat adjusted around your calorie target.</p>
+                  <p>You've selected <strong className="font-medium text-forest">Higher Protein</strong>. Your protein target has been prioritised towards the higher end of the WRK educational range, with carbohydrate and fat adjusted around your calorie target.</p>
                 )}
                 {preference === 'lowerCarb' && (
-                  <p>You've selected <strong className="font-medium text-[#2C3539]">Lower Carb</strong>. Your protein target remains prioritised while carbohydrate is moderately reduced and the remaining calories are allocated primarily to fat.</p>
+                  <p>You've selected <strong className="font-medium text-forest">Lower Carb</strong>. Your protein target remains prioritised while carbohydrate is moderately reduced and the remaining calories are allocated primarily to fat.</p>
                 )}
-                <div className="bg-[#FAFAF9] rounded-2xl p-5 border border-neutral-200 mt-6">
-                  <p className="text-[13px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-2">WRK Protein Range:</p>
-                  <p className="text-[14px] text-[#2C3539]">Your target sits within the suggested educational range of <strong className="font-medium">{results.minProtein}g – {results.maxProtein}g</strong> for your target bodyweight.</p>
+                <div className="bg-cream rounded-2xl p-5 border border-forest/15 mt-6">
+                  <p className="text-[13px] font-bold uppercase tracking-wider text-forest/75 mb-2">WRK Protein Range:</p>
+                  <p className="text-[14px] text-forest">Your target sits within the suggested educational range of <strong className="font-medium">{results.minProtein}g – {results.maxProtein}g</strong> for your target bodyweight.</p>
                 </div>
               </div>
             </div>
@@ -340,11 +340,11 @@ export const TdeeCalculator: React.FC = () => {
 
           {/* Warnings */}
           {results.targetCalories < LOW_CALORIE_THRESHOLD && (
-            <div className="bg-red-50/50 border border-red-100 p-8 md:p-10 rounded-3xl mb-12 flex items-start gap-4">
-              <AlertCircle className="text-red-400 shrink-0 mt-1" size={24} />
+            <div className="bg-red-50 border border-red-200 p-8 md:p-10 rounded-3xl mb-12 flex items-start gap-4">
+              <AlertCircle className="text-red-700 shrink-0 mt-1" size={24} />
               <div>
-                <h3 className="font-serif text-[22px] text-[#2C3539] mb-2">Your calculated intake is quite low.</h3>
-                <div className="text-[15px] text-[#2C3539]/80 leading-relaxed space-y-3">
+                <h3 className="font-serif text-[22px] text-forest mb-2">Your calculated intake is quite low.</h3>
+                <div className="text-[15px] text-forest/85 leading-relaxed space-y-3">
                   <p>Because GLP-1 medications can substantially reduce appetite and food intake, eating less isn't necessarily better.</p>
                   <p>Adequate protein, fibre, micronutrients and overall nutrition remain important during weight loss.</p>
                   <p>If you're struggling to eat enough, experiencing significant gastrointestinal symptoms or losing weight very rapidly, speak with your healthcare professional.</p>
@@ -354,15 +354,15 @@ export const TdeeCalculator: React.FC = () => {
           )}
 
           {currentIntakeChoice === 'yes' && currentIntake && Number(currentIntake) < (results.tdee * CURRENT_INTAKE_WARNING_THRESHOLD) && (
-            <div className="bg-blue-50/50 border border-blue-100 p-8 md:p-10 rounded-3xl mb-12">
-              <h3 className="font-serif text-[22px] text-[#2C3539] mb-4">Your current intake is already considerably below your estimated maintenance.</h3>
-              <div className="text-[15px] text-[#2C3539]/80 leading-relaxed space-y-3">
+            <div className="bg-blue-50 border border-blue-200 p-8 md:p-10 rounded-3xl mb-12">
+              <h3 className="font-serif text-[22px] text-forest mb-4">Your current intake is already considerably below your estimated maintenance.</h3>
+              <div className="text-[15px] text-forest/85 leading-relaxed space-y-3">
                 <p>Because GLP-1 medications can substantially reduce appetite and food intake, creating an even larger calorie deficit may not be the priority.</p>
-                <p className="font-medium text-[#2C3539]">Focus first on adequate protein, nutrient-dense foods, hydration, recovery and maintaining your strength training.</p>
+                <p className="font-medium text-forest">Focus first on adequate protein, nutrient-dense foods, hydration, recovery and maintaining your strength training.</p>
               </div>
               <div className="mt-6 flex flex-wrap gap-4 text-[14px]">
-                <div className="bg-white px-4 py-2 border border-blue-200 rounded-lg">Estimated maintenance: <strong className="ml-1">{results.tdee} kcal</strong></div>
-                <div className="bg-white px-4 py-2 border border-blue-200 rounded-lg">Current intake: <strong className="ml-1">{currentIntake} kcal</strong></div>
+                <div className="bg-cream px-4 py-2 border border-blue-200 rounded-lg text-forest">Estimated maintenance: <strong className="ml-1">{results.tdee} kcal</strong></div>
+                <div className="bg-cream px-4 py-2 border border-blue-200 rounded-lg text-forest">Current intake: <strong className="ml-1">{currentIntake} kcal</strong></div>
               </div>
             </div>
           )}
@@ -371,34 +371,34 @@ export const TdeeCalculator: React.FC = () => {
           <FatLossFoundationsLeadMagnet />
 
           {/* Final CTA */}
-          <div className="bg-white p-8 md:p-10 rounded-3xl border border-neutral-200 shadow-sm mb-12 text-left">
-            <h3 className="font-serif text-[24px] md:text-[28px] text-[#2C3539] mb-4">
+          <div className="bg-quiet p-8 md:p-10 rounded-3xl border border-forest/15 shadow-sm mb-12 text-left">
+            <h3 className="font-serif text-[24px] md:text-[28px] text-forest mb-4">
               Calories drop fast on medication. Your muscle doesn't have to.
             </h3>
-            <p className="text-[16px] text-[#2C3539]/80 leading-relaxed mb-8">
+            <p className="text-[16px] text-forest/80 leading-relaxed mb-8">
               When appetite vanishes, meeting your baseline energy needs without losing lean mass requires structured lifting and high-density fuelling routines.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <Link 
-                to="/online-coaching" 
-                className="inline-flex items-center justify-center bg-[#2C3539] hover:bg-black text-white px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
-              >
-                Explore 1-on-1 Coaching →
-              </Link>
-              <Link 
                 to="/assessment" 
-                className="inline-flex items-center justify-center bg-white border border-neutral-200 hover:border-[#8A9A86] text-[#2C3539] px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+                className="inline-flex items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3 rounded-xl font-semibold text-[14px] transition-all w-full sm:w-auto"
               >
                 Take the Free GLP-1 Assessment
               </Link>
-              <button onClick={resetCalculator} className="inline-flex items-center justify-center text-[#2C3539]/60 hover:text-[#8A9A86] font-medium text-[14px] transition-colors w-full sm:w-auto sm:ml-auto pt-4 sm:pt-0">
+              <Link 
+                to="/online-coaching" 
+                className="inline-flex items-center justify-center bg-forest hover:bg-forest-deep text-cream px-6 py-3 rounded-xl font-medium text-[14px] transition-colors w-full sm:w-auto"
+              >
+                Explore 1-on-1 Coaching →
+              </Link>
+              <button onClick={resetCalculator} className="inline-flex items-center justify-center text-forest/70 hover:text-forest font-medium text-[14px] transition-colors w-full sm:w-auto sm:ml-auto pt-4 sm:pt-0">
                 <RotateCcw size={16} className="mr-2"/> Recalculate
               </button>
             </div>
           </div>
 
-          <div className="text-center text-[12px] md:text-[13px] text-neutral-400 leading-relaxed mb-12 max-w-4xl mx-auto border-t border-neutral-200 pt-10">
-            <h4 className="font-bold uppercase tracking-wider mb-2">Disclaimer</h4>
+          <div className="text-center text-[12px] md:text-[13px] text-forest/65 leading-relaxed mb-12 max-w-4xl mx-auto border-t border-forest/15 pt-10">
+            <h4 className="font-bold uppercase tracking-wider mb-2 text-forest/80">Disclaimer</h4>
             <p className="mb-2">This calculator provides general educational estimates only. It is not medical or nutritional advice and does not replace advice from your healthcare professional or a qualified nutrition professional.</p>
             <p className="mb-2">Energy requirements vary between individuals and the calculator provides an estimate rather than an exact requirement.</p>
             <p className="mb-2">If you have a medical condition, are pregnant or breastfeeding, have a history of an eating disorder, have kidney disease or have been advised to follow an individualised diet, seek appropriate professional advice before using these targets.</p>
@@ -411,7 +411,7 @@ export const TdeeCalculator: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12" ref={topRef}>
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pt-24 pb-12" ref={topRef}>
       <SeoHead 
         title="GLP-1 Calorie & Macro Calculator | WRK Personal Training"
         description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalise your protein, carbohydrate, and fat targets during weight loss."
@@ -420,44 +420,44 @@ export const TdeeCalculator: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 md:px-8">
         
         {/* Breadcrumbs */}
-        <nav className="flex items-center text-[13px] font-medium text-[#2C3539]/60 mb-8 max-w-3xl mx-auto">
-          <Link to="/" className="hover:text-[#8A9A86] transition-colors">Home</Link>
+        <nav className="flex items-center text-[13px] font-medium text-forest/65 mb-8 max-w-3xl mx-auto">
+          <Link to="/" className="hover:text-forest transition-colors">Home</Link>
           <span className="mx-2">/</span>
-          <Link to="/tools" className="hover:text-[#8A9A86] transition-colors">Tools</Link>
+          <Link to="/tools" className="hover:text-forest transition-colors">Tools</Link>
           <span className="mx-2">/</span>
-          <span className="text-[#2C3539]">Macro Calculator</span>
+          <span className="text-forest">Macro Calculator</span>
         </nav>
 
         {step === 1 && (
           <header className="text-center mb-16">
-            <div className="w-16 h-16 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-quiet text-forest border border-forest/15 rounded-full flex items-center justify-center mx-auto mb-6">
               <Calculator size={32} />
             </div>
-            <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
+            <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-6">
               GLP-1 <span className="wrk-highlight">Calorie</span> & Macro Calculator
             </h1>
-            <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6 max-w-2xl mx-auto">
+            <h2 className="font-serif text-[24px] md:text-[28px] text-forest/80 mb-6 max-w-2xl mx-auto">
               Estimate your energy needs, set a sensible calorie target and build your macros around protein, strength and sustainable fat loss.
             </h2>
-            <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-4 max-w-2xl mx-auto">
+            <div className="text-[16px] md:text-[18px] leading-relaxed text-forest/80 space-y-4 max-w-2xl mx-auto">
               <p>Your calorie needs don't suddenly become irrelevant when you start a GLP-1. But appetite, food intake and your ability to maintain adequate nutrition can change significantly.</p>
             </div>
           </header>
         )}
 
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-neutral-200 mb-24 relative overflow-hidden">
+        <div className="bg-quiet rounded-3xl p-8 md:p-12 shadow-sm border border-forest/15 mb-24 relative overflow-hidden">
           
-          <div className="flex items-center justify-between mb-10 pb-6 border-b border-neutral-100">
-            <span className="text-[13px] font-bold uppercase tracking-wider text-[#8A9A86]">Step {step} of 7</span>
+          <div className="flex items-center justify-between mb-10 pb-6 border-b border-forest/10">
+            <span className="text-[13px] font-bold uppercase tracking-wider text-forest">Step {step} of 7</span>
             <div className="flex gap-1.5">
               {[1, 2, 3, 4, 5, 6, 7].map(i => (
-                <div key={i} className={`h-2 rounded-full transition-all duration-300 ${step >= i ? 'w-8 bg-[#8A9A86]' : 'w-4 bg-neutral-100'}`} />
+                <div key={i} className={`h-2 rounded-full transition-all duration-300 ${step >= i ? 'w-8 bg-forest' : 'w-4 bg-forest/15'}`} />
               ))}
             </div>
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-100 text-red-600 px-4 py-3 rounded-xl mb-6 text-[14px] flex items-center">
+            <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl mb-6 text-[14px] flex items-center">
               <AlertCircle size={16} className="mr-2 shrink-0"/> {error}
             </div>
           )}
@@ -465,18 +465,18 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 1 */}
           {step === 1 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-2">About You</h2>
-              <p className="text-[15px] text-[#2C3539]/70 mb-8">Used to calculate your basal metabolic rate.</p>
+              <h2 className="font-serif text-[28px] md:text-[32px] text-forest mb-2">About You</h2>
+              <p className="text-[15px] text-forest/75 mb-8">Used to calculate your basal metabolic rate.</p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="md:col-span-2">
-                  <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Sex</label>
+                  <label className="block text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Sex</label>
                   <div className="grid grid-cols-2 gap-4">
                     {['male', 'female'].map((opt) => (
                       <button
                         key={opt}
                         onClick={() => setSex(opt as Sex)}
-                        className={`h-14 border rounded-xl font-medium transition-all capitalize text-[15px] ${sex === opt ? 'border-[#8A9A86] bg-[#8A9A86]/5 text-[#2C3539]' : 'border-neutral-200 text-[#2C3539]/70 hover:border-neutral-300'}`}
+                        className={`h-14 border rounded-xl font-medium transition-all capitalize text-[15px] ${sex === opt ? 'border-forest bg-cream ring-1 ring-forest text-forest' : 'bg-cream border-forest/15 text-forest/75 hover:border-forest/40'}`}
                       >
                         {opt}
                       </button>
@@ -485,20 +485,20 @@ export const TdeeCalculator: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Age (years)</label>
-                  <input type="number" value={age} onChange={e => setAge(e.target.value)} placeholder="e.g. 40" className="w-full h-14 px-5 bg-[#FAFAF9] border border-neutral-200 rounded-xl focus:ring-2 focus:ring-[#8A9A86] outline-none text-[16px] font-medium text-[#2C3539] transition-all" />
+                  <label className="block text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Age (years)</label>
+                  <input type="number" value={age} onChange={e => setAge(e.target.value)} placeholder="e.g. 40" className="w-full h-14 px-5 bg-cream border border-forest/15 rounded-xl focus:ring-2 focus:ring-forest outline-none text-[16px] font-medium text-forest transition-all" />
                 </div>
                 <div>
-                  <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Height (cm)</label>
-                  <input type="number" value={height} onChange={e => setHeight(e.target.value)} placeholder="e.g. 175" className="w-full h-14 px-5 bg-[#FAFAF9] border border-neutral-200 rounded-xl focus:ring-2 focus:ring-[#8A9A86] outline-none text-[16px] font-medium text-[#2C3539] transition-all" />
+                  <label className="block text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Height (cm)</label>
+                  <input type="number" value={height} onChange={e => setHeight(e.target.value)} placeholder="e.g. 175" className="w-full h-14 px-5 bg-cream border border-forest/15 rounded-xl focus:ring-2 focus:ring-forest outline-none text-[16px] font-medium text-forest transition-all" />
                 </div>
                 <div>
-                  <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Current Bodyweight (kg)</label>
-                  <input type="number" value={weight} onChange={e => setWeight(e.target.value)} placeholder="e.g. 90" className="w-full h-14 px-5 bg-[#FAFAF9] border border-neutral-200 rounded-xl focus:ring-2 focus:ring-[#8A9A86] outline-none text-[16px] font-medium text-[#2C3539] transition-all" />
+                  <label className="block text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Current Bodyweight (kg)</label>
+                  <input type="number" value={weight} onChange={e => setWeight(e.target.value)} placeholder="e.g. 90" className="w-full h-14 px-5 bg-cream border border-forest/15 rounded-xl focus:ring-2 focus:ring-forest outline-none text-[16px] font-medium text-forest transition-all" />
                 </div>
                 <div>
-                  <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Target Bodyweight (kg)</label>
-                  <input type="number" value={targetWeight} onChange={e => setTargetWeight(e.target.value)} placeholder="e.g. 75" className="w-full h-14 px-5 bg-[#FAFAF9] border border-neutral-200 rounded-xl focus:ring-2 focus:ring-[#8A9A86] outline-none text-[16px] font-medium text-[#2C3539] transition-all" />
+                  <label className="block text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Target Bodyweight (kg)</label>
+                  <input type="number" value={targetWeight} onChange={e => setTargetWeight(e.target.value)} placeholder="e.g. 75" className="w-full h-14 px-5 bg-cream border border-forest/15 rounded-xl focus:ring-2 focus:ring-forest outline-none text-[16px] font-medium text-forest transition-all" />
                 </div>
               </div>
             </div>
@@ -507,7 +507,7 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 2 */}
           {step === 2 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-8">How active are you on an average week?</h2>
+              <h2 className="font-serif text-[28px] md:text-[32px] text-forest mb-8">How active are you on an average week?</h2>
               
               <div className="space-y-4">
                 {[
@@ -520,15 +520,15 @@ export const TdeeCalculator: React.FC = () => {
                   <button 
                     key={opt.id} 
                     onClick={() => setActivity(opt.id as Activity)}
-                    className={`w-full text-left p-6 border rounded-2xl transition-all ${activity === opt.id ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300 bg-[#FAFAF9]'}`}
+                    className={`w-full text-left p-6 border rounded-2xl transition-all bg-cream ${activity === opt.id ? 'border-forest ring-1 ring-forest' : 'border-forest/15 hover:border-forest/40'}`}
                   >
                     <div className="flex items-start">
-                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${activity === opt.id ? 'border-[#8A9A86]' : 'border-neutral-300'}`}>
-                        {activity === opt.id && <div className="w-2.5 h-2.5 bg-[#8A9A86] rounded-full" />}
+                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${activity === opt.id ? 'border-forest' : 'border-forest/30'}`}>
+                        {activity === opt.id && <div className="w-2.5 h-2.5 bg-forest rounded-full" />}
                       </div>
                       <div>
-                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${activity === opt.id ? 'text-[#8A9A86]' : 'text-[#2C3539]/70'}`}>{opt.title}</div>
-                        <div className="text-[15px] text-[#2C3539]">{opt.desc}</div>
+                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${activity === opt.id ? 'text-forest' : 'text-forest/75'}`}>{opt.title}</div>
+                        <div className="text-[15px] text-forest">{opt.desc}</div>
                       </div>
                     </div>
                   </button>
@@ -540,8 +540,8 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 3 */}
           {step === 3 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-2">How often are you currently doing resistance training?</h2>
-              <p className="text-[15px] text-[#2C3539]/70 mb-8">This helps calculate an appropriate protein target for your goals.</p>
+              <h2 className="font-serif text-[28px] md:text-[32px] text-forest mb-2">How often are you currently doing resistance training?</h2>
+              <p className="text-[15px] text-forest/75 mb-8">This helps calculate an appropriate protein target for your goals.</p>
               
               <div className="space-y-4">
                 {[
@@ -552,15 +552,15 @@ export const TdeeCalculator: React.FC = () => {
                   <button 
                     key={opt.id} 
                     onClick={() => setResistance(opt.id as Resistance)}
-                    className={`w-full text-left p-6 border rounded-2xl transition-all ${resistance === opt.id ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300 bg-[#FAFAF9]'}`}
+                    className={`w-full text-left p-6 border rounded-2xl transition-all bg-cream ${resistance === opt.id ? 'border-forest ring-1 ring-forest' : 'border-forest/15 hover:border-forest/40'}`}
                   >
                     <div className="flex items-start">
-                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${resistance === opt.id ? 'border-[#8A9A86]' : 'border-neutral-300'}`}>
-                        {resistance === opt.id && <div className="w-2.5 h-2.5 bg-[#8A9A86] rounded-full" />}
+                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${resistance === opt.id ? 'border-forest' : 'border-forest/30'}`}>
+                        {resistance === opt.id && <div className="w-2.5 h-2.5 bg-forest rounded-full" />}
                       </div>
                       <div>
-                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${resistance === opt.id ? 'text-[#8A9A86]' : 'text-[#2C3539]/70'}`}>{opt.title}</div>
-                        <div className="text-[15px] text-[#2C3539]">{opt.desc}</div>
+                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${resistance === opt.id ? 'text-forest' : 'text-forest/75'}`}>{opt.title}</div>
+                        <div className="text-[15px] text-forest">{opt.desc}</div>
                       </div>
                     </div>
                   </button>
@@ -572,7 +572,7 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 4 */}
           {step === 4 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-8">What is your current goal?</h2>
+              <h2 className="font-serif text-[28px] md:text-[32px] text-forest mb-8">What is your current goal?</h2>
               
               {Number(targetWeight) > Number(weight) && (
                 <div className="bg-amber-50 border border-amber-200 p-5 rounded-2xl mb-6 text-[14px] text-amber-800">
@@ -590,15 +590,15 @@ export const TdeeCalculator: React.FC = () => {
                     key={opt.id} 
                     onClick={() => !opt.disabled && setGoal(opt.id as Goal)}
                     disabled={opt.disabled}
-                    className={`w-full text-left p-6 border rounded-2xl transition-all ${opt.disabled ? 'opacity-50 cursor-not-allowed bg-neutral-50 border-neutral-100' : goal === opt.id ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300 bg-[#FAFAF9]'}`}
+                    className={`w-full text-left p-6 border rounded-2xl transition-all bg-cream ${opt.disabled ? 'opacity-50 cursor-not-allowed border-forest/10' : goal === opt.id ? 'border-forest ring-1 ring-forest' : 'border-forest/15 hover:border-forest/40'}`}
                   >
                     <div className="flex items-start">
-                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${goal === opt.id ? 'border-[#8A9A86]' : 'border-neutral-300'}`}>
-                        {goal === opt.id && <div className="w-2.5 h-2.5 bg-[#8A9A86] rounded-full" />}
+                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${goal === opt.id ? 'border-forest' : 'border-forest/30'}`}>
+                        {goal === opt.id && <div className="w-2.5 h-2.5 bg-forest rounded-full" />}
                       </div>
                       <div>
-                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${goal === opt.id ? 'text-[#8A9A86]' : 'text-[#2C3539]/70'}`}>{opt.title}</div>
-                        <div className="text-[15px] text-[#2C3539]">{opt.desc}</div>
+                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${goal === opt.id ? 'text-forest' : 'text-forest/75'}`}>{opt.title}</div>
+                        <div className="text-[15px] text-forest">{opt.desc}</div>
                       </div>
                     </div>
                   </button>
@@ -610,7 +610,7 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 5 */}
           {step === 5 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-8">How would you prefer to structure your macros?</h2>
+              <h2 className="font-serif text-[28px] md:text-[32px] text-forest mb-8">How would you prefer to structure your macros?</h2>
               
               <div className="space-y-4">
                 {[
@@ -621,15 +621,15 @@ export const TdeeCalculator: React.FC = () => {
                   <button 
                     key={opt.id} 
                     onClick={() => setPreference(opt.id as Preference)}
-                    className={`w-full text-left p-6 border rounded-2xl transition-all ${preference === opt.id ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300 bg-[#FAFAF9]'}`}
+                    className={`w-full text-left p-6 border rounded-2xl transition-all bg-cream ${preference === opt.id ? 'border-forest ring-1 ring-forest' : 'border-forest/15 hover:border-forest/40'}`}
                   >
                     <div className="flex items-start">
-                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${preference === opt.id ? 'border-[#8A9A86]' : 'border-neutral-300'}`}>
-                        {preference === opt.id && <div className="w-2.5 h-2.5 bg-[#8A9A86] rounded-full" />}
+                      <div className={`w-5 h-5 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center shrink-0 ${preference === opt.id ? 'border-forest' : 'border-forest/30'}`}>
+                        {preference === opt.id && <div className="w-2.5 h-2.5 bg-forest rounded-full" />}
                       </div>
                       <div>
-                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${preference === opt.id ? 'text-[#8A9A86]' : 'text-[#2C3539]/70'}`}>{opt.title}</div>
-                        <div className="text-[15px] text-[#2C3539]">{opt.desc}</div>
+                        <div className={`font-bold uppercase tracking-wider text-[13px] mb-1 ${preference === opt.id ? 'text-forest' : 'text-forest/75'}`}>{opt.title}</div>
+                        <div className="text-[15px] text-forest">{opt.desc}</div>
                       </div>
                     </div>
                   </button>
@@ -641,12 +641,12 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 6 */}
           {step === 6 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-8">How many eating occasions (meals or snacks) do you typically have per day?</h2>
+              <h2 className="font-serif text-[28px] md:text-[32px] text-forest mb-8">How many eating occasions (meals or snacks) do you typically have per day?</h2>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Number of meals/snacks</label>
-                  <input type="number" value={meals} onChange={e => setMeals(e.target.value)} placeholder="e.g. 3" className="w-full h-14 px-5 bg-[#FAFAF9] border border-neutral-200 rounded-xl focus:ring-2 focus:ring-[#8A9A86] outline-none text-[16px] font-medium text-[#2C3539] transition-all" />
+                  <label className="block text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Number of meals/snacks</label>
+                  <input type="number" value={meals} onChange={e => setMeals(e.target.value)} placeholder="e.g. 3" className="w-full h-14 px-5 bg-cream border border-forest/15 rounded-xl focus:ring-2 focus:ring-forest outline-none text-[16px] font-medium text-forest transition-all" />
                 </div>
               </div>
             </div>
@@ -655,25 +655,25 @@ export const TdeeCalculator: React.FC = () => {
           {/* STEP 7 */}
           {step === 7 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="font-serif text-[28px] md:text-[32px] text-[#2C3539] mb-8">Do you know roughly how many calories you're currently eating each day?</h2>
+              <h2 className="font-serif text-[28px] md:text-[32px] text-forest mb-8">Do you know roughly how many calories you're currently eating each day?</h2>
               
               <div className="space-y-4">
                 <button 
                   onClick={() => setCurrentIntakeChoice('yes')}
-                  className={`w-full text-left p-6 border rounded-2xl transition-all ${currentIntakeChoice === 'yes' ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300 bg-[#FAFAF9]'}`}
+                  className={`w-full text-left p-6 border rounded-2xl transition-all bg-cream ${currentIntakeChoice === 'yes' ? 'border-forest ring-1 ring-forest' : 'border-forest/15 hover:border-forest/40'}`}
                 >
                   <div className="flex items-center">
-                    <div className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center shrink-0 ${currentIntakeChoice === 'yes' ? 'border-[#8A9A86]' : 'border-neutral-300'}`}>
-                      {currentIntakeChoice === 'yes' && <div className="w-2.5 h-2.5 bg-[#8A9A86] rounded-full" />}
+                    <div className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center shrink-0 ${currentIntakeChoice === 'yes' ? 'border-forest' : 'border-forest/30'}`}>
+                      {currentIntakeChoice === 'yes' && <div className="w-2.5 h-2.5 bg-forest rounded-full" />}
                     </div>
-                    <div className="font-bold uppercase tracking-wider text-[13px] text-[#2C3539]">Yes — I know my average intake</div>
+                    <div className="font-bold uppercase tracking-wider text-[13px] text-forest">Yes — I know my average intake</div>
                   </div>
                 </button>
                 
                 {currentIntakeChoice === 'yes' && (
                   <div className="pl-14 pr-6 pb-6 animate-in fade-in duration-300">
-                    <label className="block text-[14px] font-bold uppercase tracking-wider text-[#2C3539]/70 mb-3">Average calories per day</label>
-                    <input type="number" value={currentIntake} onChange={e => setCurrentIntake(e.target.value)} placeholder="e.g. 1800" className="w-full h-14 px-5 bg-white border border-neutral-300 rounded-xl focus:ring-2 focus:ring-[#8A9A86] outline-none text-[16px] font-medium text-[#2C3539] transition-all" />
+                    <label className="block text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-3">Average calories per day</label>
+                    <input type="number" value={currentIntake} onChange={e => setCurrentIntake(e.target.value)} placeholder="e.g. 1800" className="w-full h-14 px-5 bg-cream border border-forest/20 rounded-xl focus:ring-2 focus:ring-forest outline-none text-[16px] font-medium text-forest transition-all" />
                   </div>
                 )}
 
@@ -682,24 +682,24 @@ export const TdeeCalculator: React.FC = () => {
                     setCurrentIntakeChoice('no');
                     setCurrentIntake('');
                   }}
-                  className={`w-full text-left p-6 border rounded-2xl transition-all ${currentIntakeChoice === 'no' ? 'border-[#8A9A86] bg-[#8A9A86]/5' : 'border-neutral-200 hover:border-neutral-300 bg-[#FAFAF9]'}`}
+                  className={`w-full text-left p-6 border rounded-2xl transition-all bg-cream ${currentIntakeChoice === 'no' ? 'border-forest ring-1 ring-forest' : 'border-forest/15 hover:border-forest/40'}`}
                 >
                   <div className="flex items-center">
-                    <div className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center shrink-0 ${currentIntakeChoice === 'no' ? 'border-[#8A9A86]' : 'border-neutral-300'}`}>
-                      {currentIntakeChoice === 'no' && <div className="w-2.5 h-2.5 bg-[#8A9A86] rounded-full" />}
+                    <div className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center shrink-0 ${currentIntakeChoice === 'no' ? 'border-forest' : 'border-forest/30'}`}>
+                      {currentIntakeChoice === 'no' && <div className="w-2.5 h-2.5 bg-forest rounded-full" />}
                     </div>
-                    <div className="font-bold uppercase tracking-wider text-[13px] text-[#2C3539]">No — skip this step</div>
+                    <div className="font-bold uppercase tracking-wider text-[13px] text-forest">No — skip this step</div>
                   </div>
                 </button>
               </div>
             </div>
           )}
 
-          <div className="mt-10 pt-8 border-t border-neutral-100 flex items-center justify-between">
+          <div className="mt-10 pt-8 border-t border-forest/10 flex items-center justify-between">
             {step > 1 ? (
               <button 
                 onClick={() => setStep(s => s - 1)}
-                className="h-12 px-6 rounded-xl border border-neutral-200 text-[#2C3539] font-medium transition-colors hover:bg-neutral-50 flex items-center"
+                className="h-12 px-6 rounded-xl border border-forest/25 bg-cream text-forest font-medium transition-colors hover:bg-forest hover:text-cream flex items-center"
               >
                 <ArrowLeft size={18} className="mr-2" /> Back
               </button>
@@ -707,7 +707,7 @@ export const TdeeCalculator: React.FC = () => {
             
             <button 
               onClick={handleNext}
-              className="h-12 px-8 rounded-xl bg-[#8A9A86] text-white font-medium transition-colors hover:bg-[#768672] flex items-center"
+              className="h-12 px-8 rounded-xl bg-citron text-forest border border-forest/20 font-semibold transition-all hover:brightness-95 flex items-center"
             >
               {step === 7 ? 'Calculate Results' : 'Continue'} <ArrowRight size={18} className="ml-2" />
             </button>

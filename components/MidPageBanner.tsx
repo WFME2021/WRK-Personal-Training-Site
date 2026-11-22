@@ -26,18 +26,18 @@ export const MidPageBanner: React.FC<MidPageBannerProps> = ({
             className={`w-full h-full object-cover object-center ${disableGrayscale ? '' : 'grayscale contrast-125'}`}
             
           />
-          {/* Dark Overlay */}
-          <div className={`absolute inset-0 ${disableGrayscale ? 'bg-black/60' : 'bg-black/50'}`}></div>
+          {/* Dark Forest Overlay */}
+          <div className={`absolute inset-0 ${disableGrayscale ? 'bg-forest-deep/75' : 'bg-forest-deep/65'}`}></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-16 text-center flex flex-col items-center justify-center h-full">
-          <h2 className="font-display text-[8vw] md:text-[5vw] leading-[1.25] uppercase text-white mb-8">
+          <h2 className="font-display text-[8vw] md:text-[5vw] leading-[1.25] uppercase text-cream mb-8">
             {tagline}
           </h2>
           
           {support && (
-            <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-2xl text-cream/90 font-medium leading-relaxed max-w-3xl mx-auto">
               {support}
             </p>
           )}

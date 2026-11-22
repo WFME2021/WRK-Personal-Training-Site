@@ -132,62 +132,62 @@ export const Toolkit: React.FC = () => {
         title="GLP-1 Muscle Defence Tool Kit ($29) | WRK Personal Training"
         description="Stop muscle loss while the weight drops. Get instant access to the Sarcopenia Shield routines and the Zero-Hunger 100g Protein Protocol in the WRK Training App."
       />
-      <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
+      <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
         
         {/* 1. Product Hero Header */}
-        <section className="bg-canvas pt-14 pb-16 px-6 max-w-5xl mx-auto">
+        <section className="bg-cream pt-14 pb-16 px-6 max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             {/* Left Column (Desktop) / Top (Mobile): Offer & CTA */}
             <div className="text-left">
-              <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-3">
+              <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold mb-3">
                 DELIVERED VIA THE WRK TRAINING APP · COMPLETE ACCESS
               </p>
               
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal tracking-tight leading-tight mb-4">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-forest tracking-tight leading-tight mb-4">
                 Stop Muscle Loss While the Weight Drops.
               </h1>
               
-              <p className="text-charcoal/80 text-sm sm:text-base mb-6 leading-relaxed">
+              <p className="text-forest/80 text-sm sm:text-base mb-6 leading-relaxed">
                 The step-by-step workout routines and low-appetite meal templates built specifically for GLP-1 therapy. Delivered inside the WRK Training App so you know exactly what to lift, how to fuel, and how to protect your metabolism.
               </p>
 
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="font-serif text-3xl font-bold text-spruce-800">$29 NZD</span>
-                <span className="text-xs text-charcoal/60">(One-Time Access · Approx. $18 USD / £14 GBP)</span>
+                <span className="font-serif text-3xl font-bold text-forest">$29 NZD</span>
+                <span className="text-xs text-forest/70">(One-Time Access · Approx. $18 USD / £14 GBP)</span>
               </div>
 
               <a
                 href={checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors mt-5 mb-3 shadow-sm"
+                className="bg-forest text-cream hover:bg-forest-deep w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors mt-5 mb-3 shadow-sm"
               >
                 Get Instant App Access — $29 NZD
               </a>
 
-              <p className="text-xs text-charcoal/60 mb-6 text-center sm:text-left">
+              <p className="text-xs text-forest/70 mb-6 text-center sm:text-left">
                 One-off payment · Instant iOS & Android login · No subscriptions
               </p>
 
-              <div className="space-y-2 text-xs text-charcoal/70 pt-2 border-t border-charcoal/5">
+              <div className="space-y-2 text-xs text-forest/80 pt-2 border-t border-forest/10">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
+                  <CheckCircle2 size={14} className="text-forest shrink-0" />
                   <span>Full access in the WRK App (iOS & Android)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
+                  <CheckCircle2 size={14} className="text-forest shrink-0" />
                   <span>Interactive workout logging & HD video demos</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-spruce-800 shrink-0" />
+                  <CheckCircle2 size={14} className="text-forest shrink-0" />
                   <span>Zero monthly subscriptions or hidden fees</span>
                 </div>
               </div>
             </div>
 
             {/* Right Column (Desktop) / Bottom (Mobile): Interactive App Screenshot Carousel */}
-            <div className="bg-sand-100 rounded-2xl p-4 sm:p-8 border border-charcoal/5 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
+            <div className="bg-quiet rounded-2xl p-4 sm:p-8 border border-forest/15 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
               
               {/* Smartphone Frame */}
               <div 
@@ -197,7 +197,7 @@ export const Toolkit: React.FC = () => {
                 onTouchEnd={handleTouchEnd}
               >
                 {/* Modern Smartphone Speaker Notch / Dynamic Island */}
-                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-900/90 backdrop-blur-xs rounded-full z-30 flex items-center justify-center pointer-events-none border border-white/5">
+                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-900/90 backdrop-blur-xs rounded-full z-30 flex items-center justify-center pointer-events-none border border-cream/10">
                   <div className="w-2.5 h-2.5 rounded-full bg-slate-950 mr-2 border border-slate-800" />
                   <div className="w-1.5 h-1.5 rounded-full bg-slate-700" />
                 </div>
@@ -227,7 +227,7 @@ export const Toolkit: React.FC = () => {
                     e.stopPropagation();
                     prevSlide();
                   }}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-slate-950/65 hover:bg-slate-900/90 text-white backdrop-blur-sm flex items-center justify-center border border-white/15 shadow-md transition-all active:scale-95"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-forest-deep/75 hover:bg-forest-deep text-cream backdrop-blur-sm flex items-center justify-center border border-cream/20 shadow-md transition-all active:scale-95"
                   aria-label="Previous app screenshot"
                 >
                   <ChevronLeft size={16} />
@@ -240,7 +240,7 @@ export const Toolkit: React.FC = () => {
                     e.stopPropagation();
                     nextSlide();
                   }}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-slate-950/65 hover:bg-slate-900/90 text-white backdrop-blur-sm flex items-center justify-center border border-white/15 shadow-md transition-all active:scale-95"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-forest-deep/75 hover:bg-forest-deep text-cream backdrop-blur-sm flex items-center justify-center border border-cream/20 shadow-md transition-all active:scale-95"
                   aria-label="Next app screenshot"
                 >
                   <ChevronRight size={16} />
@@ -248,7 +248,7 @@ export const Toolkit: React.FC = () => {
 
                 {/* Floating Caption Pill Badge */}
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none w-[90%] flex justify-center">
-                  <div className="px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/15 text-[11px] font-medium text-slate-100 shadow-lg tracking-wide truncate max-w-full text-center">
+                  <div className="px-3 py-1 rounded-full bg-forest-deep/90 backdrop-blur-md border border-cream/20 text-[11px] font-medium text-cream shadow-lg tracking-wide truncate max-w-full text-center">
                     {activeSlide + 1}/{appScreenshots.length} · {appScreenshots[activeSlide].alt}
                   </div>
                 </div>
@@ -265,16 +265,16 @@ export const Toolkit: React.FC = () => {
                       onClick={() => setActiveSlide(idx)}
                       className={`h-2 rounded-full transition-all duration-300 ${
                         activeSlide === idx 
-                          ? 'w-5 bg-[#15803d]' 
-                          : 'w-2 bg-charcoal/20 hover:bg-charcoal/40'
+                          ? 'w-5 bg-forest' 
+                          : 'w-2 bg-forest/25 hover:bg-forest/45'
                       }`}
                       aria-label={`Go to screenshot ${idx + 1}`}
                     />
                   ))}
                 </div>
 
-                <div className="flex items-center justify-center gap-1.5 text-[10px] text-charcoal/60 font-medium pt-1">
-                  <Smartphone size={12} className="text-spruce-800" />
+                <div className="flex items-center justify-center gap-1.5 text-[10px] text-forest/70 font-medium pt-1">
+                  <Smartphone size={12} className="text-forest" />
                   <span>Swipe or click arrows to explore app interface</span>
                 </div>
               </div>
@@ -285,15 +285,15 @@ export const Toolkit: React.FC = () => {
         </section>
 
         {/* 2. Physical Problem Callout & Agitation */}
-        <section className="bg-sand-100/70 py-16 px-6 border-y border-charcoal/5">
+        <section className="bg-quiet py-16 px-6 border-y border-forest/10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-forest block mb-2">
               THE MEDICAL WEIGHT LOSS BLINDSPOT
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-4 tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl text-forest mb-4 tracking-tight">
               Losing Weight is Easy. Keeping Muscle is the Real Battle.
             </h2>
-            <p className="text-charcoal/80 text-base leading-relaxed">
+            <p className="text-forest/80 text-base leading-relaxed">
               Clinical trials show that without progressive strength training, up to 40% of the weight you lose on a GLP-1 can come directly from lean skeletal muscle and bone density. Exhausting 60-minute gym sessions and complex calorie tracking lead straight to burnout, nausea, and fatigue. You don't need endless exercise; you need the minimum effective dose.
             </p>
           </div>
@@ -302,68 +302,68 @@ export const Toolkit: React.FC = () => {
         {/* 3. The 3 Core App Pillars (Proprietary Asset Naming) */}
         <section className="py-20 px-6 max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-forest block mb-2">
               APP CAPABILITIES
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl text-charcoal tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl text-forest tracking-tight">
               Everything Inside the App
             </h2>
-            <p className="text-sm text-charcoal/70 mt-2">
+            <p className="text-sm text-forest/75 mt-2">
               Complete guidance calibrated for low appetite and medication schedules.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-forest bg-cream px-2 py-0.5 rounded border border-forest/10 inline-block mb-3">
                   01 · RESISTANCE PROTOCOL
                 </span>
-                <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                <h3 className="font-serif text-xl font-bold text-forest mb-3">
                   The 30-Minute Sarcopenia Shield Routine
                 </h3>
-                <p className="text-sm text-charcoal/70 leading-relaxed">
+                <p className="text-sm text-forest/75 leading-relaxed">
                   Targeted 3-day and 4-day strength tracks designed to signal muscle preservation without draining your central nervous system. Clean, joint-safe compound templates with on-demand HD video form guides.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+              <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
                 Includes Home (dumbbells) & Commercial Gym tracks
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-forest bg-cream px-2 py-0.5 rounded border border-forest/10 inline-block mb-3">
                   02 · APPETITE PACING
                 </span>
-                <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                <h3 className="font-serif text-xl font-bold text-forest mb-3">
                   The Zero-Hunger 100g Protein Protocol
                 </h3>
-                <p className="text-sm text-charcoal/70 leading-relaxed">
+                <p className="text-sm text-forest/75 leading-relaxed">
                   Practical strategies to hit 100g+ daily protein using nutrient-dense, low-volume foods you can actually stomach when your appetite is completely flat.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+              <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
                 Includes printable GI-comfort grocery lists & meal anchors
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-xl p-8 border border-charcoal/5 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-spruce-800 bg-sand-100 px-2 py-0.5 rounded inline-block mb-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-forest bg-cream px-2 py-0.5 rounded border border-forest/10 inline-block mb-3">
                   03 · BIOFEEDBACK ARCHITECTURE
                 </span>
-                <h3 className="font-serif text-xl font-bold text-charcoal mb-3">
+                <h3 className="font-serif text-xl font-bold text-forest mb-3">
                   The Dose-Day Adjustment Matrix & Hydration Blueprint
                 </h3>
-                <p className="text-sm text-charcoal/70 leading-relaxed">
+                <p className="text-sm text-forest/75 leading-relaxed">
                   Fluid, electrolyte, and training volume adjustments calibrated around injection-day fatigue, nausea patterns, and delayed stomach digestion.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-charcoal/5 text-xs text-charcoal/60">
+              <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
                 Automated habit prompts & recovery tracking inside the app
               </div>
             </div>
@@ -371,33 +371,33 @@ export const Toolkit: React.FC = () => {
         </section>
 
         {/* 4. Comparison Feature Table */}
-        <section className="bg-sand-50 py-16 px-6 border-y border-charcoal/5">
+        <section className="bg-quiet py-16 px-6 border-y border-forest/10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+              <span className="text-xs uppercase tracking-widest font-semibold text-forest block mb-2">
                 THE DIFFERENCE
               </span>
-              <h2 className="font-serif text-3xl text-charcoal tracking-tight">
+              <h2 className="font-serif text-3xl text-forest tracking-tight">
                 Why the App Beats Static PDFs
               </h2>
             </div>
 
             <div className="grid grid-cols-1 gap-4">
               {comparisonItems.map((item, idx) => (
-                <div key={idx} className="bg-white rounded-xl p-5 border border-charcoal/5 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                <div key={idx} className="bg-cream rounded-xl p-5 border border-forest/15 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                   <div className="md:col-span-3">
-                    <span className="text-xs font-bold uppercase tracking-wider text-spruce-800">
+                    <span className="text-xs font-bold uppercase tracking-wider text-forest">
                       {item.feature}
                     </span>
                   </div>
 
-                  <div className="md:col-span-4 flex items-center gap-2 text-xs text-charcoal/60">
-                    <XCircle size={15} className="text-charcoal/40 shrink-0" />
+                  <div className="md:col-span-4 flex items-center gap-2 text-xs text-forest/65">
+                    <XCircle size={15} className="text-forest/45 shrink-0" />
                     <span>{item.pdf}</span>
                   </div>
 
-                  <div className="md:col-span-5 flex items-center gap-2 text-xs font-medium text-spruce-900 bg-sand-100/70 p-2.5 rounded-lg border border-charcoal/5">
-                    <CheckCircle2 size={15} className="text-spruce-800 shrink-0" />
+                  <div className="md:col-span-5 flex items-center gap-2 text-xs font-medium text-forest bg-quiet p-2.5 rounded-lg border border-forest/15">
+                    <CheckCircle2 size={15} className="text-forest shrink-0" />
                     <span>{item.app}</span>
                   </div>
                 </div>
@@ -408,34 +408,34 @@ export const Toolkit: React.FC = () => {
 
         {/* 5. Social Proof Trust Section */}
         <section className="py-20 px-6 max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl p-8 sm:p-10 border border-charcoal/10 shadow-sm relative">
+          <div className="bg-quiet rounded-2xl p-8 sm:p-10 border border-forest/15 shadow-sm relative">
             <div className="text-center max-w-2xl mx-auto mb-8">
-              <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-spruce-800 block mb-2">
+              <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-forest block mb-2">
                 PROVEN METHODOLOGY
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-charcoal tracking-tight font-bold">
+              <h2 className="font-serif text-2xl sm:text-3xl text-forest tracking-tight font-bold">
                 Backed by 20+ Years of Hands-On Coaching
               </h2>
             </div>
 
             <div className="max-w-2xl mx-auto text-center">
-              <Quote size={28} className="text-spruce-800/20 mx-auto mb-4" />
-              <blockquote className="text-charcoal/85 text-base sm:text-lg leading-relaxed italic mb-4">
+              <Quote size={28} className="text-forest/25 mx-auto mb-4" />
+              <blockquote className="text-forest/85 text-base sm:text-lg leading-relaxed italic mb-4">
                 "Hayden has adapted and changed the way I train to meet the changes in my body and health. His personal care, commitment, and expertise is equal to any health professional and has been an invaluable investment in my wellbeing."
               </blockquote>
-              <p className="font-serif font-bold text-charcoal text-sm">
+              <p className="font-serif font-bold text-forest text-sm">
                 — Jeff Kerkhofs, Long-Term Client (20+ Year Partnership)
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-8 mt-8 border-t border-charcoal/5 text-center">
-              <div className="bg-sand-50/80 rounded-xl py-3 px-4 border border-charcoal/5 text-xs font-semibold text-spruce-900">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-8 mt-8 border-t border-forest/10 text-center">
+              <div className="bg-cream rounded-xl py-3 px-4 border border-forest/15 text-xs font-semibold text-forest">
                 ✓ Condition-Aware Programming
               </div>
-              <div className="bg-sand-50/80 rounded-xl py-3 px-4 border border-charcoal/5 text-xs font-semibold text-spruce-900">
+              <div className="bg-cream rounded-xl py-3 px-4 border border-forest/15 text-xs font-semibold text-forest">
                 ✓ Semi-Private Studio Tested
               </div>
-              <div className="bg-sand-50/80 rounded-xl py-3 px-4 border border-charcoal/5 text-xs font-semibold text-spruce-900">
+              <div className="bg-cream rounded-xl py-3 px-4 border border-forest/15 text-xs font-semibold text-forest">
                 ✓ Zero Commercial Gym Hype
               </div>
             </div>
@@ -444,51 +444,51 @@ export const Toolkit: React.FC = () => {
 
         {/* 6. Checkout, Value Stack & Upgrade Bridge Card */}
         <section id="checkout" className="pb-20 px-6 max-w-2xl mx-auto text-center">
-          <div className="bg-spruce-800 text-sand-50 rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
-            <span className="text-xs uppercase tracking-widest text-sand-200 mb-2 block font-semibold">
+          <div className="bg-forest text-cream rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden">
+            <span className="text-xs uppercase tracking-widest text-citron mb-2 block font-semibold">
               COMPLETE DIGITAL ACCESS · ONE-TIME PAYMENT
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-sand-50 mb-2">
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-cream mb-2">
               The GLP-1 Muscle Defence Tool Kit
             </h3>
-            <p className="text-xs sm:text-sm text-sand-100/80 mb-6">
+            <p className="text-xs sm:text-sm text-cream/80 mb-6">
               Instant mobile app activation for iOS & Android with lifetime digital access.
             </p>
 
             {/* Value Stack Breakdown */}
-            <div className="bg-spruce-900/60 rounded-xl p-5 border border-white/10 space-y-3 mb-6">
-              <span className="text-[11px] uppercase tracking-wider text-sand-200/90 font-bold block mb-1">
+            <div className="bg-forest-deep/80 rounded-xl p-5 border border-cream/15 space-y-3 mb-6">
+              <span className="text-[11px] uppercase tracking-wider text-citron font-bold block mb-1">
                 Everything Included In Your Access:
               </span>
               {valueStackItems.map((item, idx) => (
-                <div key={idx} className="flex items-start justify-between gap-3 text-xs sm:text-sm text-sand-100">
+                <div key={idx} className="flex items-start justify-between gap-3 text-xs sm:text-sm text-cream/90">
                   <div className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-sand-200 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-citron shrink-0 mt-0.5" />
                     <span>{item.name}</span>
                   </div>
-                  <span className="text-sand-200 font-semibold shrink-0 text-xs">{item.value}</span>
+                  <span className="text-cream/85 font-semibold shrink-0 text-xs">{item.value}</span>
                 </div>
               ))}
-              <div className="border-t border-white/10 pt-3 mt-3 flex items-center justify-between text-xs text-sand-200">
+              <div className="border-t border-cream/15 pt-3 mt-3 flex items-center justify-between text-xs text-cream/80">
                 <span className="font-semibold uppercase tracking-wider">Total Value:</span>
-                <span className="font-bold line-through text-sand-300">$301 NZD</span>
+                <span className="font-bold line-through text-cream/65">$301 NZD</span>
               </div>
             </div>
 
             {/* Price Display */}
-            <div className="bg-white/10 rounded-xl p-4 border border-white/15 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="bg-forest-deep/60 rounded-xl p-4 border border-cream/15 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div>
-                <span className="text-xs text-sand-200 uppercase tracking-wider font-semibold block">Today's Investment:</span>
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-sand-50">$29 NZD</span>
+                <span className="text-xs text-cream/80 uppercase tracking-wider font-semibold block">Today's Investment:</span>
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-cream">$29 NZD</span>
               </div>
-              <span className="text-xs text-sand-200/90 bg-spruce-950/40 py-1.5 px-3 rounded-lg border border-white/10 self-start sm:self-center">
+              <span className="text-xs text-cream/90 bg-forest/70 py-1.5 px-3 rounded-lg border border-cream/15 self-start sm:self-center">
                 One-off payment · No ongoing fees
               </span>
             </div>
 
             {/* Upgrade Bridge */}
-            <div className="bg-sand-50/10 border border-sand-200/20 rounded-xl p-4 mb-6 text-xs text-sand-100 leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-sand-200 mb-1">
+            <div className="bg-cream/10 border border-cream/20 rounded-xl p-4 mb-6 text-xs text-cream/90 leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-citron mb-1">
                 <ShieldCheck size={15} />
                 <span>1-on-1 Coaching Upgrade Credit:</span>
               </div>
@@ -502,11 +502,11 @@ export const Toolkit: React.FC = () => {
                 href={checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-sand-100 text-spruce-900 hover:bg-white w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors shadow-sm"
+                className="bg-cream text-forest hover:bg-quiet w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors shadow-sm"
               >
                 Get Instant App Access — $29 NZD
               </a>
-              <span className="text-xs text-sand-200/70 text-center mt-4 block">
+              <span className="text-xs text-cream/75 text-center mt-4 block">
                 🔒 Secure SSL Checkout · Instant app login instructions delivered via email.
               </span>
             </div>
@@ -514,39 +514,39 @@ export const Toolkit: React.FC = () => {
         </section>
 
         {/* 7. FAQ Accordion */}
-        <section className="py-20 px-6 max-w-3xl mx-auto border-t border-charcoal/5">
+        <section className="py-20 px-6 max-w-3xl mx-auto border-t border-forest/10">
           <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-widest font-semibold text-terracotta block mb-2">
+            <span className="text-xs uppercase tracking-widest font-semibold text-forest block mb-2">
               FREQUENTLY ASKED QUESTIONS
             </span>
-            <h2 className="font-serif text-3xl text-charcoal tracking-tight">
+            <h2 className="font-serif text-3xl text-forest tracking-tight">
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div className="bg-white rounded-xl border border-charcoal/5 p-6 md:p-8 shadow-sm">
+          <div className="bg-quiet rounded-xl border border-forest/15 p-6 md:p-8 shadow-sm">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div key={idx} className="border-b border-charcoal/10 last:border-0">
+                <div key={idx} className="border-b border-forest/15 last:border-0">
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
                     className="w-full py-5 flex items-center justify-between text-left focus:outline-none group"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-serif text-lg text-charcoal group-hover:text-spruce-800 transition-colors pr-6">
+                    <span className="font-serif text-lg text-forest group-hover:text-forest/80 transition-colors pr-6">
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`shrink-0 text-spruce-800 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                      className={`shrink-0 text-forest transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
                       size={20}
                     />
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-5' : 'max-h-0 opacity-0'}`}
                   >
-                    <p className="text-charcoal/80 text-sm md:text-base leading-relaxed">
+                    <p className="text-forest/80 text-sm md:text-base leading-relaxed">
                       {faq.a}
                     </p>
                   </div>

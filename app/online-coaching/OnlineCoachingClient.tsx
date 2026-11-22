@@ -61,39 +61,39 @@ export default function OnlineCoachingClient() {
   };
 
   return (
-    <div className="relative min-h-screen bg-neutral-950 text-neutral-100 antialiased selection:bg-amber-400 selection:text-neutral-950 pb-24 md:pb-12">
+    <div className="relative min-h-screen bg-cream text-forest antialiased selection:bg-forest selection:text-cream pb-24 md:pb-12">
       {/* 1. HERO SECTION */}
       <section className="relative px-5 pt-12 pb-16 mx-auto max-w-4xl text-center md:pt-20">
-        <span className="inline-block px-3.5 py-1 text-xs font-semibold tracking-wider uppercase bg-amber-400/10 text-amber-400 rounded-full border border-amber-400/20 mb-4">
+        <span className="inline-block px-3.5 py-1 text-xs font-semibold tracking-wider uppercase bg-quiet text-forest rounded-full border border-forest/15 mb-4">
           Online Coaching · New Zealand & Worldwide
         </span>
-        <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white leading-tight">
+        <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-forest leading-tight">
           The Weight Is Dropping. <br />
-          <span className="text-amber-400">Let’s Protect Your Strength.</span>
+          <span className="text-forest/85">Let’s Protect Your Strength.</span>
         </h1>
-        <p className="mt-5 text-base sm:text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-5 text-base sm:text-lg text-forest/80 max-w-2xl mx-auto leading-relaxed">
           Personalised online fitness, joint-safe mechanical loading, and low-friction nutrition coaching. Built specifically for individuals taking GLP-1 medications and high-demand professionals seeking sustainable body recomposition.
         </p>
 
         {/* Proof / Trust Strip */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-neutral-400 font-medium">
-          <span className="flex items-center gap-1.5"><strong className="text-amber-400 font-bold">✓</strong> Tailored to your equipment</span>
-          <span className="text-neutral-700 hidden sm:inline">•</span>
-          <span className="flex items-center gap-1.5"><strong className="text-amber-400 font-bold">✓</strong> No burnout workouts</span>
-          <span className="text-neutral-700 hidden sm:inline">•</span>
-          <span className="flex items-center gap-1.5"><strong className="text-amber-400 font-bold">✓</strong> Evidence-based muscle defence</span>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-forest/75 font-medium">
+          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Tailored to your equipment</span>
+          <span className="text-forest/30 hidden sm:inline">•</span>
+          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> No burnout workouts</span>
+          <span className="text-forest/30 hidden sm:inline">•</span>
+          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Evidence-based muscle defence</span>
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
             href="#apply-now"
-            className="w-full sm:w-auto px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold rounded-lg transition-colors text-center shadow-lg shadow-amber-400/10"
+            className="w-full sm:w-auto px-8 py-3.5 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg transition-all text-center shadow-sm"
           >
             Apply for Coaching
           </a>
           <a
             href="#pricing"
-            className="w-full sm:w-auto px-6 py-3.5 bg-neutral-900 hover:bg-neutral-800 text-neutral-300 font-semibold rounded-lg border border-neutral-800 transition-colors text-center"
+            className="w-full sm:w-auto px-6 py-3.5 bg-quiet hover:bg-forest/10 text-forest font-semibold rounded-lg border border-forest/20 transition-colors text-center"
           >
             View Pricing ($49 NZD/wk)
           </a>
@@ -102,66 +102,66 @@ export default function OnlineCoachingClient() {
 
       {/* 2. CLINICAL PERSPECTIVE / METRIC CALLOUT */}
       <section className="px-5 py-12 mx-auto max-w-4xl">
-        <div className="p-8 bg-neutral-900/60 rounded-2xl border border-neutral-800 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+        <div className="p-8 bg-quiet rounded-2xl border border-forest/15 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
           <div className="shrink-0">
-            <span className="text-5xl font-black text-amber-400 tracking-tight">Up to 40%</span>
-            <span className="block text-xs uppercase tracking-wider text-neutral-400 mt-1">Lean mass loss risk</span>
+            <span className="text-5xl font-black text-forest tracking-tight">Up to 40%</span>
+            <span className="block text-xs uppercase tracking-wider text-forest/70 mt-1">Lean mass loss risk</span>
           </div>
-          <div className="border-t md:border-t-0 md:border-l border-neutral-800 pt-4 md:pt-0 md:pl-6 text-sm text-neutral-300 leading-relaxed">
-            <strong className="text-white block mb-1">A Different Approach to Training</strong>
+          <div className="border-t md:border-t-0 md:border-l border-forest/15 pt-4 md:pt-0 md:pl-6 text-sm text-forest/85 leading-relaxed">
+            <strong className="text-forest block mb-1">A Different Approach to Training</strong>
             Up to 40% of rapid weight loss can come from active skeletal muscle tissue. Traditional fitness assumes high energy and endless gym hours. We design around your reality: lower appetite, fluctuating injection days, and the absolute priority of defending metabolic rate while the scale drops.
           </div>
         </div>
       </section>
 
       {/* 3. METHODOLOGY (THE 3 PROTOCOLS) */}
-      <section className="px-5 py-12 mx-auto max-w-5xl border-t border-neutral-900">
+      <section className="px-5 py-12 mx-auto max-w-5xl border-t border-forest/10">
         <div className="text-center mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">Our Methodology</span>
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl mt-1">
+          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Our Methodology</span>
+          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl mt-1">
             How We Protect Your Body
           </h2>
-          <p className="text-sm text-neutral-400 mt-2">
+          <p className="text-sm text-forest/75 mt-2">
             A structured protocol calibrated to your weekly routine and medication cycle.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 bg-neutral-900/50 rounded-xl border border-neutral-850 flex flex-col justify-between">
+          <div className="p-6 bg-quiet rounded-xl border border-forest/15 flex flex-col justify-between">
             <div>
-              <div className="text-xs font-mono text-neutral-500 mb-1">01 · RESISTANCE TRAINING</div>
-              <h3 className="text-lg font-bold text-white mb-2">Muscle-Preserving Strength</h3>
-              <p className="text-sm text-neutral-300 leading-relaxed">
+              <div className="text-xs font-mono text-forest/65 mb-1">01 · RESISTANCE TRAINING</div>
+              <h3 className="text-lg font-bold text-forest mb-2">Muscle-Preserving Strength</h3>
+              <p className="text-sm text-forest/80 leading-relaxed">
                 Targeted 2–3 day programmes signalling your body to hold onto lean muscle while bodyweight drops. Tailored specifically for gym or home setup.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-neutral-800/80 text-xs font-medium text-amber-400">
+            <div className="mt-4 pt-3 border-t border-forest/10 text-xs font-medium text-forest">
               Focus: Progressive overload & mechanical tension
             </div>
           </div>
 
-          <div className="p-6 bg-neutral-900/50 rounded-xl border border-neutral-850 flex flex-col justify-between">
+          <div className="p-6 bg-quiet rounded-xl border border-forest/15 flex flex-col justify-between">
             <div>
-              <div className="text-xs font-mono text-neutral-500 mb-1">02 · NUTRITION STRATEGY</div>
-              <h3 className="text-lg font-bold text-white mb-2">Low-Friction Fuelling</h3>
-              <p className="text-sm text-neutral-300 leading-relaxed">
+              <div className="text-xs font-mono text-forest/65 mb-1">02 · NUTRITION STRATEGY</div>
+              <h3 className="text-lg font-bold text-forest mb-2">Low-Friction Fuelling</h3>
+              <p className="text-sm text-forest/80 leading-relaxed">
                 Digestible protein anchoring and hydration protocols designed to meet your targets without triggering nausea or gastrointestinal stress.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-neutral-800/80 text-xs font-medium text-amber-400">
+            <div className="mt-4 pt-3 border-t border-forest/10 text-xs font-medium text-forest">
               Focus: Simple protein anchors & GI tolerance
             </div>
           </div>
 
-          <div className="p-6 bg-neutral-900/50 rounded-xl border border-neutral-850 flex flex-col justify-between">
+          <div className="p-6 bg-quiet rounded-xl border border-forest/15 flex flex-col justify-between">
             <div>
-              <div className="text-xs font-mono text-neutral-500 mb-1">03 · ADAPTIVE PACING</div>
-              <h3 className="text-lg font-bold text-white mb-2">Biofeedback & Dose Syncing</h3>
-              <p className="text-sm text-neutral-300 leading-relaxed">
+              <div className="text-xs font-mono text-forest/65 mb-1">03 · ADAPTIVE PACING</div>
+              <h3 className="text-lg font-bold text-forest mb-2">Biofeedback & Dose Syncing</h3>
+              <p className="text-sm text-forest/80 leading-relaxed">
                 Weekly adjustments based on your dose titration, fatigue, and recovery so consistency never leads to exhaustion or plateaus.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-neutral-800/80 text-xs font-medium text-amber-400">
+            <div className="mt-4 pt-3 border-t border-forest/10 text-xs font-medium text-forest">
               Focus: Dose-matched volume & recovery
             </div>
           </div>
@@ -169,79 +169,79 @@ export default function OnlineCoachingClient() {
       </section>
 
       {/* 4. COACHING DELIVERABLES */}
-      <section className="px-5 py-12 mx-auto max-w-4xl border-t border-neutral-900">
+      <section className="px-5 py-12 mx-auto max-w-4xl border-t border-forest/10">
         <div className="text-center mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">Coaching Deliverables</span>
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl mt-1">
+          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Coaching Deliverables</span>
+          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl mt-1">
             High-Touch Guidance, Anywhere
           </h2>
-          <p className="text-sm text-neutral-400 mt-2">All the accountability of in-person training with mobile flexibility.</p>
+          <p className="text-sm text-forest/75 mt-2">All the accountability of in-person training with mobile flexibility.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-5 bg-neutral-900/40 rounded-xl border border-neutral-850">
-            <h4 className="font-bold text-white mb-1">WRK Training App</h4>
-            <p className="text-sm text-neutral-400">Personalised workouts, exercise video demos, and automated progress logging direct on your phone.</p>
+          <div className="p-5 bg-quiet rounded-xl border border-forest/15">
+            <h4 className="font-bold text-forest mb-1">WRK Training App</h4>
+            <p className="text-sm text-forest/80">Personalised workouts, exercise video demos, and automated progress logging direct on your phone.</p>
           </div>
-          <div className="p-5 bg-neutral-900/40 rounded-xl border border-neutral-850">
-            <h4 className="font-bold text-white mb-1">Video Form Feedback</h4>
-            <p className="text-sm text-neutral-400">Upload lifting clips directly in-app for ongoing coaching on joint alignment, posture, and mechanics.</p>
+          <div className="p-5 bg-quiet rounded-xl border border-forest/15">
+            <h4 className="font-bold text-forest mb-1">Video Form Feedback</h4>
+            <p className="text-sm text-forest/80">Upload lifting clips directly in-app for ongoing coaching on joint alignment, posture, and mechanics.</p>
           </div>
-          <div className="p-5 bg-neutral-900/40 rounded-xl border border-neutral-850">
-            <h4 className="font-bold text-white mb-1">Weekly Analysis</h4>
-            <p className="text-sm text-neutral-400">Comprehensive check-ins to review biofeedback, habit compliance, and adjust your routine.</p>
+          <div className="p-5 bg-quiet rounded-xl border border-forest/15">
+            <h4 className="font-bold text-forest mb-1">Weekly Analysis</h4>
+            <p className="text-sm text-forest/80">Comprehensive check-ins to review biofeedback, habit compliance, and adjust your routine.</p>
           </div>
-          <div className="p-5 bg-neutral-900/40 rounded-xl border border-neutral-850">
-            <h4 className="font-bold text-white mb-1">Direct Coach Access</h4>
-            <p className="text-sm text-neutral-400">In-app messaging for grocery questions, low-energy days, and dose-day modifications.</p>
+          <div className="p-5 bg-quiet rounded-xl border border-forest/15">
+            <h4 className="font-bold text-forest mb-1">Direct Coach Access</h4>
+            <p className="text-sm text-forest/80">In-app messaging for grocery questions, low-energy days, and dose-day modifications.</p>
           </div>
         </div>
       </section>
 
       {/* 5. PRICING ANCHOR */}
-      <section id="pricing" className="px-5 py-16 mx-auto max-w-3xl border-t border-neutral-900">
+      <section id="pricing" className="px-5 py-16 mx-auto max-w-3xl border-t border-forest/10">
         <div className="text-center mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">Investment</span>
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl mt-1">
+          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Investment</span>
+          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl mt-1">
             Transparent Coaching Investment
           </h2>
         </div>
 
-        <div className="bg-neutral-900 border-2 border-amber-400 rounded-2xl p-8 relative shadow-2xl">
-          <div className="absolute -top-3.5 right-6 bg-amber-400 text-neutral-950 text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">
+        <div className="bg-forest text-cream border border-forest-deep rounded-2xl p-8 relative shadow-xl">
+          <div className="absolute -top-3.5 right-6 bg-citron text-forest border border-forest/20 text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">
             12-Week Guided Programme
           </div>
-          <h3 className="text-xl font-bold text-white">Full 1-on-1 Online Coaching</h3>
-          <p className="text-sm text-neutral-400 mt-1">Comprehensive resistance training, nutrition, and weekly audits.</p>
+          <h3 className="text-xl font-bold text-cream">Full 1-on-1 Online Coaching</h3>
+          <p className="text-sm text-cream/80 mt-1">Comprehensive resistance training, nutrition, and weekly audits.</p>
 
           <div className="my-6">
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-black text-white">$49</span>
-              <span className="text-neutral-300 text-base font-medium">NZD / week</span>
+              <span className="text-5xl font-black text-cream">$49</span>
+              <span className="text-cream/85 text-base font-medium">NZD / week</span>
             </div>
-            <p className="text-xs text-neutral-400 mt-1">
+            <p className="text-xs text-cream/75 mt-1">
               Billed weekly · Approx. $29 USD / £24 GBP / $45 AUD
             </p>
           </div>
 
-          <ul className="space-y-3 text-sm text-neutral-300 mb-8 border-t border-neutral-800 pt-6">
+          <ul className="space-y-3 text-sm text-cream/90 mb-8 border-t border-cream/15 pt-6">
             <li className="flex items-center gap-2.5">
-              <span className="text-amber-400 font-bold">✓</span> Bespoke home or gym resistance programme
+              <span className="text-citron font-bold">✓</span> Bespoke home or gym resistance programme
             </li>
             <li className="flex items-center gap-2.5">
-              <span className="text-amber-400 font-bold">✓</span> Low-appetite protein and nutrition strategies
+              <span className="text-citron font-bold">✓</span> Low-appetite protein and nutrition strategies
             </li>
             <li className="flex items-center gap-2.5">
-              <span className="text-amber-400 font-bold">✓</span> Weekly video analysis & check-in adjustments
+              <span className="text-citron font-bold">✓</span> Weekly video analysis & check-in adjustments
             </li>
             <li className="flex items-center gap-2.5">
-              <span className="text-amber-400 font-bold">✓</span> Direct in-app messaging and technique analysis
+              <span className="text-citron font-bold">✓</span> Direct in-app messaging and technique analysis
             </li>
           </ul>
 
           <a
             href="#apply-now"
-            className="block w-full py-4 bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold rounded-lg text-center transition-colors shadow-lg shadow-amber-400/10"
+            className="block w-full py-4 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg text-center transition-all shadow-sm"
           >
             Apply for Online Coaching
           </a>
@@ -249,25 +249,25 @@ export default function OnlineCoachingClient() {
       </section>
 
       {/* 6. CONVERSION CAPTURE FORM */}
-      <section id="apply-now" className="px-5 py-16 mx-auto max-w-2xl border-t border-neutral-900">
+      <section id="apply-now" className="px-5 py-16 mx-auto max-w-2xl border-t border-forest/10">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Apply for Coaching</h2>
-          <p className="text-sm text-neutral-400 mt-2">
+          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl">Apply for Coaching</h2>
+          <p className="text-sm text-forest/75 mt-2">
             Fill out your details below to schedule your onboarding call and reserve your roster spot.
           </p>
         </div>
 
         {status === 'success' ? (
-          <div className="p-6 bg-amber-400/10 border border-amber-400/30 rounded-xl text-center">
-            <h3 className="text-lg font-bold text-amber-400">Application Received</h3>
-            <p className="text-sm text-neutral-300 mt-2">
+          <div className="p-6 bg-quiet border border-forest/25 rounded-xl text-center">
+            <h3 className="text-lg font-bold text-forest">Application Received</h3>
+            <p className="text-sm text-forest/85 mt-2">
               Thanks for submitting. We will review your goals and reach out within 24 hours to organise your intro review.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4 bg-neutral-900/50 p-6 sm:p-8 rounded-2xl border border-neutral-850">
+          <form onSubmit={handleSubmit} className="space-y-4 bg-quiet p-6 sm:p-8 rounded-2xl border border-forest/15">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
                 Full Name
               </label>
               <input
@@ -275,14 +275,14 @@ export default function OnlineCoachingClient() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-lg text-white text-sm focus:outline-none focus:border-amber-400"
+                className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm placeholder:text-forest/45 focus:outline-none focus:border-forest"
                 placeholder="e.g. Sarah Jenkins"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
                   Email Address
                 </label>
                 <input
@@ -290,12 +290,12 @@ export default function OnlineCoachingClient() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-lg text-white text-sm focus:outline-none focus:border-amber-400"
+                  className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm placeholder:text-forest/45 focus:outline-none focus:border-forest"
                   placeholder="sarah@example.com"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
                   Phone / Mobile
                 </label>
                 <input
@@ -303,7 +303,7 @@ export default function OnlineCoachingClient() {
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-lg text-white text-sm focus:outline-none focus:border-amber-400"
+                  className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm placeholder:text-forest/45 focus:outline-none focus:border-forest"
                   placeholder="+64 21 000 0000"
                 />
               </div>
@@ -311,13 +311,13 @@ export default function OnlineCoachingClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
                   Primary Focus
                 </label>
                 <select
                   value={formData.coachingFocus}
                   onChange={(e) => setFormData({ ...formData, coachingFocus: e.target.value })}
-                  className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-lg text-white text-sm focus:outline-none focus:border-amber-400"
+                  className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm focus:outline-none focus:border-forest"
                 >
                   <option value="glp1">GLP-1 Medication Muscle Defense</option>
                   <option value="fat-loss">Fat Loss & Joint-Safe Strength</option>
@@ -326,13 +326,13 @@ export default function OnlineCoachingClient() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
                   Training Setup
                 </label>
                 <select
                   value={formData.trainingLocation}
                   onChange={(e) => setFormData({ ...formData, trainingLocation: e.target.value })}
-                  className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-lg text-white text-sm focus:outline-none focus:border-amber-400"
+                  className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm focus:outline-none focus:border-forest"
                 >
                   <option value="gym">Commercial Gym Membership</option>
                   <option value="home-dumbbells">Home (Dumbbells / Bands)</option>
@@ -343,14 +343,14 @@ export default function OnlineCoachingClient() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
                 Tell us about your current situation & goals
               </label>
               <textarea
                 rows={3}
                 value={formData.notes}
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-lg text-white text-sm focus:outline-none focus:border-amber-400"
+                className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm placeholder:text-forest/45 focus:outline-none focus:border-forest"
                 placeholder="Current dosage/medication (if applicable), injury history, or specific challenges..."
               />
             </div>
@@ -358,12 +358,12 @@ export default function OnlineCoachingClient() {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full py-4 bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold rounded-lg transition-colors mt-2"
+              className="w-full py-4 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg transition-all mt-2"
             >
               {status === 'loading' ? 'Submitting Application...' : 'Apply for Coaching'}
             </button>
             {status === 'error' && (
-              <p className="text-red-400 text-xs text-center mt-2">
+              <p className="text-red-700 bg-red-50 border border-red-200 rounded-lg p-3 text-xs text-center mt-2">
                 There was an issue sending your details. Please email info@wrkpersonaltraining.co.nz directly.
               </p>
             )}
@@ -372,30 +372,30 @@ export default function OnlineCoachingClient() {
       </section>
 
       {/* 7. INTERACTIVE ACCORDION FAQ */}
-      <section className="px-5 py-12 mx-auto max-w-3xl border-t border-neutral-900">
+      <section className="px-5 py-12 mx-auto max-w-3xl border-t border-forest/10">
         <div className="text-center mb-8">
-          <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">Frequently Asked Questions</span>
-          <h2 className="text-2xl font-bold text-white mt-1">Common Questions</h2>
+          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Frequently Asked Questions</span>
+          <h2 className="text-2xl font-bold text-forest mt-1">Common Questions</h2>
         </div>
 
         <div className="space-y-3">
           {FAQS.map((faq, idx) => (
             <div
               key={idx}
-              className="border border-neutral-850 bg-neutral-900/40 rounded-xl overflow-hidden transition-colors"
+              className="border border-forest/15 bg-quiet rounded-xl overflow-hidden transition-colors"
             >
               <button
                 type="button"
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                className="w-full px-5 py-4 text-left font-semibold text-white flex justify-between items-center gap-4 hover:text-amber-400 transition-colors"
+                className="w-full px-5 py-4 text-left font-semibold text-forest flex justify-between items-center gap-4 hover:opacity-80 transition-opacity"
               >
                 <span>{faq.q}</span>
-                <span className="text-neutral-500 font-bold text-lg">
+                <span className="text-forest/70 font-bold text-lg">
                   {openFaq === idx ? '−' : '+'}
                 </span>
               </button>
               {openFaq === idx && (
-                <div className="px-5 pb-4 text-sm text-neutral-400 leading-relaxed border-t border-neutral-850/60 pt-3">
+                <div className="px-5 pb-4 text-sm text-forest/80 leading-relaxed border-t border-forest/10 pt-3">
                   {faq.a}
                 </div>
               )}
@@ -405,17 +405,17 @@ export default function OnlineCoachingClient() {
       </section>
 
       {/* 8. MOBILE STICKY CONVERSION BAR (Mobile viewports only) */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 p-3.5 bg-neutral-950/95 backdrop-blur-md border-t border-neutral-800 md:hidden flex items-center justify-between gap-3 shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 z-50 p-3.5 bg-forest/95 backdrop-blur-md border-t border-cream/15 md:hidden flex items-center justify-between gap-3 shadow-2xl">
         <div>
-          <span className="block text-[11px] font-medium text-neutral-400">12-Wk Remote Coaching</span>
+          <span className="block text-[11px] font-medium text-cream/75">12-Wk Remote Coaching</span>
           <div className="flex items-baseline gap-1">
-            <span className="text-lg font-extrabold text-amber-400">$49</span>
-            <span className="text-xs text-neutral-400">NZD/wk</span>
+            <span className="text-lg font-extrabold text-citron">$49</span>
+            <span className="text-xs text-cream/80">NZD/wk</span>
           </div>
         </div>
         <a
           href="#apply-now"
-          className="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold rounded-lg text-sm transition-colors shadow-md"
+          className="px-5 py-2.5 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg text-sm transition-all shadow-md"
         >
           Apply Now
         </a>

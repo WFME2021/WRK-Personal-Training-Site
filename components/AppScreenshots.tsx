@@ -24,8 +24,8 @@ export const AppScreenshots: React.FC<{ limit?: number, className?: string }> = 
             className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
             
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-            <span className="text-white text-xs font-bold uppercase tracking-wider">{shot.alt}</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+            <span className="text-cream text-xs font-bold uppercase tracking-wider">{shot.alt}</span>
           </div>
         </div>
       ))}

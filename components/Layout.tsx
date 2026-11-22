@@ -26,24 +26,28 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   }, []);
 
   const headerBgClass = isTransparentHero && !isScrolled
-    ? 'bg-transparent border-b border-white/10 text-white'
-    : 'bg-canvas/90 backdrop-blur-md border-b border-charcoal/5 text-charcoal';
+    ? 'bg-transparent border-b border-cream/15 text-cream'
+    : 'bg-cream/95 backdrop-blur-md border-b border-forest/10 text-forest';
 
   const wordmarkClass = isTransparentHero && !isScrolled
-    ? 'text-white'
-    : 'text-charcoal';
+    ? 'text-cream'
+    : 'text-forest';
 
   const navLinkClass = isTransparentHero && !isScrolled
-    ? 'text-sand-100 hover:text-white'
-    : 'text-charcoal/80 hover:text-spruce-800';
+    ? 'text-cream/90 hover:text-cream'
+    : 'text-forest/80 hover:text-forest';
+
+  const contactBtnClass = isTransparentHero && !isScrolled
+    ? 'bg-forest/85 text-cream hover:bg-forest border border-cream/30'
+    : 'bg-forest text-cream hover:bg-forest-deep border border-forest/20';
 
   return (
-    <div className="min-h-screen flex flex-col bg-canvas text-charcoal transition-colors duration-300 overflow-x-hidden selection:bg-spruce-800 selection:text-sand-50">
+    <div className="min-h-screen flex flex-col bg-cream text-forest transition-colors duration-300 overflow-x-hidden selection:bg-forest selection:text-cream">
       
       {/* Utility Bar */}
-      <div className={`${isTransparentHero && !isScrolled ? 'bg-charcoal/80 backdrop-blur-sm' : 'bg-spruce-900'} text-sand-200/80 py-1.5 px-4 md:px-8 text-center md:text-right text-[12px] font-medium tracking-wide z-[60] relative transition-colors duration-300`}>
+      <div className={`${isTransparentHero && !isScrolled ? 'bg-forest-deep/90 backdrop-blur-sm' : 'bg-forest-deep'} text-cream/85 py-1.5 px-4 md:px-8 text-center md:text-right text-[12px] font-medium tracking-wide z-[60] relative transition-colors duration-300 border-b border-cream/10`}>
         <div className="max-w-7xl mx-auto flex justify-center md:justify-end">
-          <Link to="/for-referrers" className="hover:text-sand-50 transition-colors flex items-center">
+          <Link to="/for-referrers" className="hover:text-citron transition-colors flex items-center">
             Healthcare Providers & Referrals <span className="ml-1">→</span>
           </Link>
         </div>
@@ -66,17 +70,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 Services <ChevronDown className="w-4 h-4 ml-1 opacity-70 group-hover:rotate-180 transition-transform" />
               </button>
               <div className="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="bg-canvas text-charcoal border border-charcoal/10 rounded-xl shadow-lg p-2 flex flex-col gap-1">
-                  <Link to="/online-coaching" className="text-sm font-medium text-charcoal/80 hover:text-spruce-800 hover:bg-sand-100/50 rounded-lg px-3 py-2 transition-colors">Online Coaching</Link>
-                  <Link to="/personal-training" className="text-sm font-medium text-charcoal/80 hover:text-spruce-800 hover:bg-sand-100/50 rounded-lg px-3 py-2 transition-colors">In-Person PT</Link>
-                  <Link to="/toolkit" className="text-sm font-medium text-spruce-800 hover:text-spruce-900 hover:bg-sand-100/50 rounded-lg px-3 py-2 transition-colors">GLP-1 Toolkit</Link>
+                <div className="bg-cream text-forest border border-forest/15 rounded-xl shadow-lg p-2 flex flex-col gap-1">
+                  <Link to="/online-coaching" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">Online Coaching</Link>
+                  <Link to="/personal-training" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">In-Person PT</Link>
+                  <Link to="/toolkit" className="text-sm font-medium text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">GLP-1 Toolkit</Link>
                 </div>
               </div>
             </div>
             <Link to="/programs" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Programmes</Link>
             <Link to="/tools" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Tools</Link>
             <Link to="/blog" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Blog</Link>
-            <Link to="/contact" className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 border border-sand-200/20 rounded-md px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-colors">Contact</Link>
+            <Link to="/contact" className={`${contactBtnClass} rounded-md px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-colors`}>Contact</Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -95,67 +99,68 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       {/* Mobile Nav Drawer */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 bg-charcoal/40 z-40 md:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-forest-deep/50 z-40 md:hidden backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         />
       )}
       <div 
-        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[360px] bg-canvas z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-[104px] border-l border-charcoal/10 shadow-2xl ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[360px] bg-cream z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-[104px] border-l border-forest/15 shadow-2xl ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
          <button 
-           className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-charcoal"
+           className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-forest"
            onClick={() => setIsMenuOpen(false)}
+           aria-label="Close Navigation"
          >
            <X size={24} />
          </button>
          
           <div className="flex flex-col py-6 overflow-y-auto flex-grow">
-           <Link onClick={() => setIsMenuOpen(false)} to="/" className="h-[56px] flex items-center px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Home
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/about" className="h-[56px] flex items-center px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/about" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              About
            </Link>
            <div className="flex flex-col">
              <button 
                onClick={() => setIsServicesOpen(!isServicesOpen)}
-               className="h-[56px] w-full flex items-center justify-between px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors"
+               className="h-[56px] w-full flex items-center justify-between px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors"
              >
                Services
                <ChevronDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
              </button>
              {isServicesOpen && (
-               <div className="flex flex-col bg-sand-50/50 pb-2">
-                 <Link onClick={() => setIsMenuOpen(false)} to="/online-coaching" className="h-[48px] flex items-center pl-10 pr-6 text-base text-charcoal/80 hover:bg-sand-100/60 transition-colors">
+               <div className="flex flex-col bg-quiet/60 pb-2">
+                 <Link onClick={() => setIsMenuOpen(false)} to="/online-coaching" className="h-[48px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
                    Online Coaching
                  </Link>
-                 <Link onClick={() => setIsMenuOpen(false)} to="/personal-training" className="h-[48px] flex items-center pl-10 pr-6 text-base text-charcoal/80 hover:bg-sand-100/60 transition-colors">
+                 <Link onClick={() => setIsMenuOpen(false)} to="/personal-training" className="h-[48px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
                    In-Person PT
                  </Link>
-                 <Link onClick={() => setIsMenuOpen(false)} to="/toolkit" className="h-[48px] flex items-center pl-10 pr-6 text-base text-spruce-800 font-medium hover:bg-sand-100/60 transition-colors">
+                 <Link onClick={() => setIsMenuOpen(false)} to="/toolkit" className="h-[48px] flex items-center pl-10 pr-6 text-base text-forest font-medium hover:bg-quiet transition-colors">
                    GLP-1 Toolkit
                  </Link>
                </div>
              )}
            </div>
-           <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[56px] flex items-center px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Programmes
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/tools" className="h-[56px] flex items-center px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/tools" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Tools
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/blog" className="h-[56px] flex items-center px-6 text-lg font-serif text-charcoal hover:bg-sand-100/50 transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/blog" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Blog
            </Link>
            <div className="px-6 pt-4">
-             <Link onClick={() => setIsMenuOpen(false)} to="/contact" className="block text-center bg-spruce-800 text-sand-50 hover:bg-spruce-900 rounded-md px-4 py-3 text-xs uppercase tracking-wider font-semibold transition-colors">
+             <Link onClick={() => setIsMenuOpen(false)} to="/contact" className="block text-center bg-forest text-cream hover:bg-forest-deep rounded-md px-4 py-3 text-xs uppercase tracking-wider font-semibold transition-colors">
                Contact
              </Link>
            </div>
          </div>
       </div>
 
-      <main className={`flex-grow ${isTransparentHero ? 'pt-16 md:pt-20' : 'pt-[104px]'} bg-canvas`}>
+      <main className={`flex-grow ${isTransparentHero ? 'pt-16 md:pt-20' : 'pt-[104px]'} bg-cream`}>
         {children}
       </main>
 

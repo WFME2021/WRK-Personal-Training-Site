@@ -36,26 +36,26 @@ export const FAQ: React.FC<FAQProps> = ({ items, title = "Frequently Asked Quest
   };
 
   return (
-    <section className="py-20 px-6 bg-primary border-t border-border transition-colors duration-300">
+    <section className="py-20 px-6 bg-cream border-t border-forest/15 transition-colors duration-300">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       
       <div className="max-w-3xl mx-auto">
         {eyebrow && (
-          <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-accent mb-4 text-center">
+          <span className="block font-sans font-bold text-[12px] uppercase tracking-widest text-forest mb-4 text-center">
             {eyebrow}
           </span>
         )}
-        <h2 className="font-display text-3xl md:text-4xl mb-12 text-text-primary text-center">{title}</h2>
+        <h2 className="font-display text-3xl md:text-4xl mb-12 text-forest text-center">{title}</h2>
         
         <div className="space-y-4">
           {items.map((item, index) => (
-            <div key={index} className="border border-border rounded-2xl overflow-hidden bg-secondary transition-all duration-300 hover:border-accent/50">
+            <div key={index} className="border border-forest/15 rounded-2xl overflow-hidden bg-quiet transition-all duration-300 hover:border-forest/35">
               <button 
                 onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-primary"
+                className="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-quiet/80"
               >
-                <span className="font-bold text-lg text-text-primary pr-8">{item.question}</span>
-                <span className={`p-2 rounded-full transition-colors ${openIndex === index ? 'bg-accent text-white' : 'bg-primary text-text-secondary'}`}>
+                <span className="font-bold text-lg text-forest pr-8">{item.question}</span>
+                <span className={`p-2 rounded-full transition-colors ${openIndex === index ? 'bg-citron text-forest border border-forest/20' : 'bg-cream text-forest border border-forest/15'}`}>
                   {openIndex === index ? <Minus size={16} /> : <Plus size={16} />}
                 </span>
               </button>
@@ -65,7 +65,7 @@ export const FAQ: React.FC<FAQProps> = ({ items, title = "Frequently Asked Quest
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="p-6 pt-0 text-text-secondary leading-relaxed border-t border-border/50 mt-2">
+                <div className="p-6 pt-0 text-forest/80 leading-relaxed border-t border-forest/10 mt-2">
                   {item.answer}
                 </div>
               </div>
