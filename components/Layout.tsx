@@ -136,15 +136,15 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <button className={`flex items-center text-sm font-medium transition-colors py-2 ${navLinkClass}`}>
                 Services <ChevronDown className="w-4 h-4 ml-1 opacity-70 group-hover:rotate-180 transition-transform" />
               </button>
-              <div className="absolute top-full left-0 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="absolute top-full left-0 w-56 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="bg-cream text-forest border border-forest/15 rounded-xl shadow-lg p-2 flex flex-col gap-1">
-                  <Link to="/online-coaching" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">Online Coaching</Link>
-                  <Link to="/personal-training" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">In-Person PT</Link>
+                  <Link to="/studio" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">1:1 Studio Coaching</Link>
+                  <Link to="/online" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">1:1 Online Coaching</Link>
                   <Link to="/toolkit" className="text-sm font-medium text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">GLP-1 Toolkit</Link>
                 </div>
               </div>
             </div>
-            <Link to="/programs" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Programmes</Link>
+            <Link to="/programs" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Coaching &amp; Plans</Link>
             {ENABLE_SELF_GUIDED_PLANS && (
               <Link to="/plans" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Self-Guided Plans</Link>
             )}
@@ -201,11 +201,11 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
              </button>
              {isServicesOpen && (
                <div className="flex flex-col bg-quiet/60 pb-2">
-                 <Link onClick={() => setIsMenuOpen(false)} to="/online-coaching" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
-                   Online Coaching
+                 <Link onClick={() => setIsMenuOpen(false)} to="/studio" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
+                   1:1 Studio Coaching
                  </Link>
-                 <Link onClick={() => setIsMenuOpen(false)} to="/personal-training" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
-                   In-Person PT
+                 <Link onClick={() => setIsMenuOpen(false)} to="/online" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
+                   1:1 Online Coaching
                  </Link>
                  <Link onClick={() => setIsMenuOpen(false)} to="/toolkit" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest font-medium hover:bg-quiet transition-colors">
                    GLP-1 Toolkit
@@ -214,7 +214,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
              )}
            </div>
            <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
-             Programmes
+             Coaching &amp; Plans
            </Link>
            {ENABLE_SELF_GUIDED_PLANS && (
              <Link onClick={() => setIsMenuOpen(false)} to="/plans" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">

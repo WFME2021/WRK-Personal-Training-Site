@@ -32,6 +32,8 @@ const generateSitemap = async () => {
       '',
       '/about',
       '/for-referrers',
+      '/studio',
+      '/online',
       '/online-coaching',
       '/personal-training',
       '/toolkit',

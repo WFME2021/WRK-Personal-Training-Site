@@ -1217,15 +1217,15 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
       const pathOnly = url.split('?')[0];
 
       if (pathOnly === '/programs') {
-        title = "GLP-1 Fitness Programs | WRK Personal Training";
-        desc = "Explore our 12-week GLP-1 Fitness Programs. Structured training pathways built around your active weight loss, maintenance, or long-term habit building phases.";
+        title = "How We Work Together | Coaching & Self-Guided Plans | WRK Personal Training";
+        desc = "Three practical ways to train with WRK Personal Training: 1:1 Studio Coaching in Addington, Christchurch, 1:1 Online Coaching, or structured 6–12 week Self-Guided Training Plans.";
       } else if (pathOnly === '/services') {
         title = "GLP-1 Fitness Coaching Programs | WRK Personal Training";
         desc = "Compare our GLP-1 Fitness Coaching Programs. Choose between our in-person training in Christchurch or our comprehensive 12-week online coaching pathways.";
-      } else if (pathOnly === '/online-coaching') {
+      } else if (pathOnly === '/online-coaching' || pathOnly === '/online') {
         title = "Online Fitness Coaching & Support | Personal Trainers for GLP-1 Patients";
         desc = "Expert Online Fitness Coaching tailored for GLP-1 patients. Work with specialist personal trainers to protect your muscle mass from anywhere in New Zealand.";
-      } else if (pathOnly === '/personal-training') {
+      } else if (pathOnly === '/personal-training' || pathOnly === '/studio') {
         title = "Personal Trainer Christchurch | Semi-Private Coaching | WRK";
         desc = "Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult.";
       } else if (pathOnly === '/assessment') {
@@ -1306,7 +1306,7 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
         <meta name="twitter:title" content="${title}" />
         <meta name="twitter:description" content="${desc}" />
       `;
-      if (pathOnly === '/personal-training') {
+      if (pathOnly === '/personal-training' || pathOnly === '/studio') {
         const localGymSchema = {
           "@context": "https://schema.org",
           "@type": "ExerciseGym",

@@ -95,6 +95,8 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
               element={ENABLE_SELF_GUIDED_PLANS ? <PlanDetail /> : <Navigate to="/" replace />}
             />
             
+            <Route path="/studio" element={<PersonalTraining />} />
+            <Route path="/online" element={<OnlineCoaching />} />
             <Route path="/personal-training" element={<PersonalTraining />} />
             <Route path="/online-coaching" element={<OnlineCoaching />} />
             

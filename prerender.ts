@@ -46,6 +46,8 @@ const run = async () => {
     '/',
     '/for-referrers',
     '/programs',
+    '/studio',
+    '/online',
     '/personal-training',
     '/online-coaching',
     '/toolkit',
@@ -73,15 +75,15 @@ const run = async () => {
     let desc = "Hire a dedicated GLP-1 Fitness Coach in Christchurch. We provide specialist strength & fitness coaching to preserve muscle and build sustainable habits during medical weight loss.";
     
         if (url === '/programs') {
-      title = "GLP-1 Fitness Programs | WRK Personal Training";
-      desc = "Explore our 12-week GLP-1 Fitness Programs. Structured training pathways built around your active weight loss, maintenance, or long-term habit building phases.";
+      title = "How We Work Together | Coaching & Self-Guided Plans | WRK Personal Training";
+      desc = "Three practical ways to train with WRK Personal Training: 1:1 Studio Coaching in Addington, Christchurch, 1:1 Online Coaching, or structured 6–12 week Self-Guided Training Plans.";
     } else if (url === '/toolkit') {
       title = "GLP-1 Workout & Nutrition Toolkit | WRK Personal Training";
       desc = "Download the comprehensive GLP-1 toolkit: gym and home workout templates, high-protein meal guides, and medication side-effect navigation for $29.";
-    } else if (url === '/online-coaching') {
+    } else if (url === '/online-coaching' || url === '/online') {
       title = "Online GLP-1 Fitness Coach | Muscle Preservation & Strength | WRK";
       desc = "Specialized online coaching for GLP-1 patients worldwide. Preserve muscle, overcome fatigue, and build lasting strength. Apply for remote coaching.";
-    } else if (url === '/personal-training') {
+    } else if (url === '/personal-training' || url === '/studio') {
       title = "Personal Trainer Christchurch | Semi-Private Coaching | WRK";
       desc = "Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult.";
     } else if (url === '/assessment') {
@@ -162,7 +164,7 @@ const run = async () => {
       <meta name="twitter:title" content="${title}" />
       <meta name="twitter:description" content="${desc}" />
     `;
-    if (url === '/personal-training') {
+    if (url === '/personal-training' || url === '/studio') {
       const localGymSchema = {
         "@context": "https://schema.org",
         "@type": "ExerciseGym",
