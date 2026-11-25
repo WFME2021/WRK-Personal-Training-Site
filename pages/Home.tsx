@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { Testimonials } from '../components/Testimonials';
+import { ENABLE_SUMMER_MOMENTUM } from '../constants';
 
 interface AccordionItemProps {
   question: string;
@@ -85,7 +86,7 @@ export const Home: React.FC = () => {
       />
 
       {/* 1. Full-Bleed Hero Section */}
-      <section className="relative bg-forest min-h-[85vh] md:min-h-[92vh] flex items-center overflow-hidden -mt-16 md:-mt-20 pt-16 md:pt-20">
+      <section className="relative bg-forest min-h-[78vh] md:min-h-[92vh] flex items-center overflow-hidden -mt-14 md:-mt-20 pt-14 md:pt-20">
         <img 
           src="https://i.postimg.cc/XvwrPd0X/Google-Cover-Photo-(1).png" 
           alt="GLP-1 Fitness Coaching and Personal Training in Christchurch studio"
@@ -93,38 +94,76 @@ export const Home: React.FC = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/95 via-forest/80 to-forest/45 z-10" />
 
-        <div className="relative z-20 max-w-2xl px-6 md:px-12 py-24 text-left">
-          <div className="mb-4">
-            <span className="inline-block bg-forest-deep/75 backdrop-blur-sm text-cream border border-cream/25 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase">
-              GLP-1 FITNESS COACHING · CHRISTCHURCH & ONLINE
+        <div className="relative z-20 max-w-2xl px-4 sm:px-6 md:px-12 py-10 md:py-24 text-left">
+          <div className="mb-3">
+            <span className="inline-block bg-forest-deep/75 backdrop-blur-sm text-cream border border-cream/25 px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider sm:tracking-widest uppercase leading-snug">
+              GLP-1 FITNESS COACHING · CHRISTCHURCH &amp; ONLINE
             </span>
           </div>
 
-          <h1 className="text-cream font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase mb-6 leading-tight">
+          <h1 className="text-cream font-serif text-3xl sm:text-5xl md:text-6xl tracking-tight uppercase mb-3 md:mb-6 leading-tight">
             Lose the weight. <span className="text-cream/95 block sm:inline">Keep your strength.</span>
           </h1>
 
-          <p className="text-cream/90 text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
+          <p className="text-cream/90 text-base sm:text-lg mt-2 mb-5 md:mb-8 max-w-xl leading-relaxed">
             Specialist strength coaching to keep your muscle, protect your metabolism, and stay strong while on weight loss medication.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-3">
             <Link
               to="/assessment"
-              className="bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3.5 text-xs font-semibold uppercase tracking-widest rounded-md text-center transition-all shadow-lg"
+              className="w-full sm:w-auto bg-citron text-forest hover:brightness-95 border border-forest/20 px-5 py-3.5 text-sm sm:text-xs font-semibold sm:uppercase sm:tracking-widest rounded-md text-center transition-all shadow-lg"
             >
-              Get Your Free GLP-1 Muscle & Protein Score (3-Min Assessment) →
+              Get Your Free GLP-1 Muscle &amp; Protein Score (3-Min Assessment) →
             </Link>
             <Link
               to="/programs"
-              className="bg-forest-deep/55 hover:bg-forest-deep/80 text-cream border border-cream/35 px-6 py-3.5 text-xs font-semibold uppercase tracking-widest rounded-md text-center transition-colors backdrop-blur-sm"
+              className="w-full sm:w-auto bg-forest-deep/55 hover:bg-forest-deep/80 text-cream border border-cream/35 px-6 py-3.5 text-xs font-semibold uppercase tracking-widest rounded-md text-center transition-colors backdrop-blur-sm"
             >
-              View Coaching & Programmes
+              View Coaching &amp; Programmes
             </Link>
           </div>
-          <p className="text-xs text-cream/80 mt-4">In-person training in Christchurch · Online coaching worldwide.</p>
+          <p className="text-xs text-cream/80 mt-3">In-person training in Christchurch · Online coaching worldwide.</p>
         </div>
       </section>
+
+      {/* Current Summer Intake Callout Card (Controlled via ENABLE_SUMMER_MOMENTUM) */}
+      {ENABLE_SUMMER_MOMENTUM && (
+        <section aria-label="Current Summer Intake" className="bg-cream py-12 px-4 md:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-quiet border border-forest/15 rounded-2xl p-7 sm:p-9 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="max-w-2xl space-y-2.5">
+                <span className="text-xs uppercase tracking-[0.2em] font-semibold text-forest block">
+                  STARTS MONDAY 30 NOVEMBER · 6-WEEK INTAKE
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl text-forest tracking-tight">
+                  Summer Momentum (30 Nov – 8 Jan)
+                </h2>
+                <p className="text-sm sm:text-base text-forest/85 leading-relaxed">
+                  Anxious about Christmas lunches, summer BBQs, and six weeks off routine while on a GLP-1? This isn't about chasing gains—it's a sustainable movement plan and practical coping guide so you enjoy the holidays without feeling like you're going backwards.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end justify-between gap-4 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-forest/10">
+                <div className="lg:text-right">
+                  <span className="text-xs uppercase tracking-widest font-semibold text-forest/70 block">
+                    6-WEEK COHORT
+                  </span>
+                  <span className="font-serif text-2xl font-bold text-forest">
+                    $149 NZD (One-Off)
+                  </span>
+                </div>
+                <Link
+                  to="/summer-momentum"
+                  className="inline-flex items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3.5 text-xs font-semibold uppercase tracking-widest rounded-md transition-all shadow-sm whitespace-nowrap"
+                >
+                  Explore Summer Momentum →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 2. Philosophy Pull-Quote Band */}
       <section className="bg-quiet py-14 px-6 text-center border-y border-forest/10">

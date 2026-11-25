@@ -19,4 +19,11 @@ export const TOOLS_LINKS = [
   { label: "Hydration & Electrolytes", path: "/tools/hydration-calculator" }
 ];
 
+// Re-export centralised campaign & self-guided plan flags
+export {
+  ENABLE_SUMMER_MOMENTUM,
+  STRIPE_SUMMER_MOMENTUM_URL,
+  ENABLE_SELF_GUIDED_PLANS,
+  isCheckoutUrlConfigured,
+} from "./src/config/campaigns";
 

@@ -25,6 +25,10 @@ import { Refunds } from './pages/Refunds';
 import { NotFound } from './pages/NotFound';
 import { About } from './pages/About';
 import { ForReferrers } from './pages/ForReferrers';
+import { SummerMomentum } from './pages/SummerMomentum';
+import { Plans } from './pages/Plans';
+import { PlanDetail } from './pages/PlanDetail';
+import { ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from './constants';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
@@ -77,6 +81,19 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/hydration-calculator" element={<Navigate to="/tools/hydration-calculator" replace />} />
             
             <Route path="/contact" element={<Contact />} />
+            <Route path="/book" element={<Navigate to="/contact" replace />} />
+            <Route
+              path="/summer-momentum"
+              element={ENABLE_SUMMER_MOMENTUM ? <SummerMomentum /> : <Navigate to="/" replace />}
+            />
+            <Route
+              path="/plans"
+              element={ENABLE_SELF_GUIDED_PLANS ? <Plans /> : <Navigate to="/" replace />}
+            />
+            <Route
+              path="/plans/:slug"
+              element={ENABLE_SELF_GUIDED_PLANS ? <PlanDetail /> : <Navigate to="/" replace />}
+            />
             
             <Route path="/personal-training" element={<PersonalTraining />} />
             <Route path="/online-coaching" element={<OnlineCoaching />} />
@@ -86,6 +103,7 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/personal-training-christchurch-philosophy" element={<Navigate to="/about" replace />} />
             <Route path="/services" element={<Services />} />
             <Route path="/toolkit" element={<Toolkit />} />
+            <Route path="/glp1-toolkit" element={<Navigate to="/toolkit" replace />} />
             
             
             <Route path="/blog" element={<Blog />} />

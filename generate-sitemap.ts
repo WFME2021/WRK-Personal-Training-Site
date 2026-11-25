@@ -3,6 +3,8 @@ import path from 'path';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import firebaseConfig from './firebase-applet-config.json' assert { type: 'json' };
+import { ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from './constants.ts';
+import { SELF_GUIDED_PLANS } from './src/data/selfGuidedPlans.ts';
 
 const generateSitemap = async () => {
   try {
@@ -40,7 +42,9 @@ const generateSitemap = async () => {
       '/tools/protein-calculator',
       '/tools/hydration-calculator',
       '/contact',
-      '/blog'
+      '/blog',
+      ...(ENABLE_SUMMER_MOMENTUM ? ['/summer-momentum'] : []),
+      ...(ENABLE_SELF_GUIDED_PLANS ? ['/plans', ...SELF_GUIDED_PLANS.map(p => `/plans/${p.slug}`)] : [])
     ];
 
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;

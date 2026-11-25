@@ -9,6 +9,8 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import React from 'react';
 import App from './App.tsx';
+import { ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from './constants.ts';
+import { SELF_GUIDED_PLANS } from './src/data/selfGuidedPlans.ts';
 
 // Copy the cached blog fetching logic
 const getCachedBlogs = async () => {
@@ -56,7 +58,9 @@ const run = async () => {
     '/tools/tdee-calculator',
     '/tools/protein-calculator',
     '/tools/hydration-calculator',
-    '/blog'
+    '/blog',
+    ...(ENABLE_SUMMER_MOMENTUM ? ['/summer-momentum'] : []),
+    ...(ENABLE_SELF_GUIDED_PLANS ? ['/plans', ...SELF_GUIDED_PLANS.map(p => `/plans/${p.slug}`)] : [])
   ];
   
   // Add blog routes
@@ -123,6 +127,19 @@ const run = async () => {
     } else if (url === '/blog') {
       title = "GLP-1 Fitness Blog | Training, Nutrition & Weight Loss | WRK";
       desc = "Read the WRK GLP-1 Fitness Blog for evidence-informed guidance on strength training, muscle preservation, nutrition, and sustainable habits after weight loss.";
+    } else if (url === '/summer-momentum') {
+      title = "Summer Momentum | Sustainable Movement & Festive Coping Plan | WRK";
+      desc = "Heading into the holidays on a GLP-1? Summer Momentum (30 Nov – 8 Jan) is a calm 6-week sustainable movement and festive coping plan for $149 NZD.";
+    } else if (url === '/plans') {
+      title = "Self-Guided Training Plans | 6–12 Week Programmes | WRK Personal Training";
+      desc = "Structured 6- to 12-week self-guided strength, home, gym, and running programmes delivered in the WRK app. Every plan is capped at 3 to 4 sessions per week.";
+    } else if (url.startsWith('/plans/')) {
+      const planSlug = url.replace('/plans/', '');
+      const planMatch = SELF_GUIDED_PLANS.find(p => p.slug === planSlug);
+      if (planMatch) {
+        title = `${planMatch.title} | Self-Guided Training Plan | WRK Personal Training`;
+        desc = `${planMatch.summary} ${planMatch.durationBadge} delivered in the WRK app.`;
+      }
     }
     
     let html = templateHtml.replace(

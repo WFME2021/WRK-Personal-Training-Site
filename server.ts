@@ -12,6 +12,8 @@ import { assessmentData } from "./data/assessmentData.ts";
 import { calculateArchetype, calculateRecommendation } from "./services/assessmentLogic.ts";
 
 import { subscribeToNewsletter } from './services/newsletter.ts';
+import { ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from './constants.ts';
+import { SELF_GUIDED_PLANS } from './src/data/selfGuidedPlans.ts';
 
 async function startServer() {
   const app = express();
@@ -1269,6 +1271,19 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
       } else if (pathOnly === '/blog') {
         title = "GLP-1 Fitness Blog | Training, Nutrition & Weight Loss | WRK";
         desc = "Read the WRK GLP-1 Fitness Blog for evidence-informed guidance on strength training, muscle preservation, nutrition, and sustainable habits after weight loss.";
+      } else if (ENABLE_SUMMER_MOMENTUM && pathOnly === '/summer-momentum') {
+        title = "Summer Momentum | Sustainable Movement & Festive Coping Plan | WRK";
+        desc = "Heading into the holidays on a GLP-1? Summer Momentum (30 Nov – 8 Jan) is a calm 6-week sustainable movement and festive coping plan for $149 NZD.";
+      } else if (ENABLE_SELF_GUIDED_PLANS && pathOnly === '/plans') {
+        title = "Self-Guided Training Plans | 6–12 Week Programmes | WRK Personal Training";
+        desc = "Structured 6- to 12-week self-guided strength, home, gym, and running programmes delivered in the WRK app. Every plan is capped at 3 to 4 sessions per week.";
+      } else if (ENABLE_SELF_GUIDED_PLANS && pathOnly.startsWith('/plans/')) {
+        const planSlug = pathOnly.replace('/plans/', '');
+        const planMatch = SELF_GUIDED_PLANS.find(p => p.slug === planSlug);
+        if (planMatch) {
+          title = `${planMatch.title} | Self-Guided Training Plan | WRK Personal Training`;
+          desc = `${planMatch.summary} ${planMatch.durationBadge} delivered in the WRK app.`;
+        }
       }
       
       templateHtml = templateHtml.replace(

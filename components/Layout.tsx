@@ -1,15 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { BRAND_NAME } from '../constants';
+import { BRAND_NAME, ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from '../constants';
 import { Footer } from './Footer';
+
+const SUMMER_BANNER_DISMISSED_KEY = 'wrk_summer_momentum_banner_dismissed';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isBannerDismissed, setIsBannerDismissed] = useState(false);
   const location = useLocation();
   const isTransparentHero = location.pathname === '/' || location.pathname === '/for-referrers' || location.pathname === '/clinicians';
+
+  // Restore banner dismissal state on client only (safe for SSR/prerender)
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && window.sessionStorage.getItem(SUMMER_BANNER_DISMISSED_KEY) === 'true') {
+        setIsBannerDismissed(true);
+      }
+    } catch {
+      // Ignore storage access errors
+    }
+  }, []);
+
+  const handleDismissBanner = () => {
+    setIsBannerDismissed(true);
+    try {
+      if (typeof window !== 'undefined') {
+        window.sessionStorage.setItem(SUMMER_BANNER_DISMISSED_KEY, 'true');
+      }
+    } catch {
+      // Ignore storage access errors
+    }
+  };
   
   // Close menu on route change
   useEffect(() => {
@@ -41,20 +66,62 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     ? 'bg-forest/85 text-cream hover:bg-forest border border-cream/30'
     : 'bg-forest text-cream hover:bg-forest-deep border border-forest/20';
 
+  const showSummerBanner = ENABLE_SUMMER_MOMENTUM && !isBannerDismissed;
+
   return (
-    <div className="min-h-screen flex flex-col bg-cream text-forest transition-colors duration-300 overflow-x-hidden selection:bg-forest selection:text-cream">
+    <div className="min-h-screen flex flex-col bg-cream text-forest transition-colors duration-300 overflow-x-clip selection:bg-forest selection:text-cream">
       
-      {/* Utility Bar */}
-      <div className={`${isTransparentHero && !isScrolled ? 'bg-forest-deep/90 backdrop-blur-sm' : 'bg-forest-deep'} text-cream/85 py-1.5 px-4 md:px-8 text-center md:text-right text-[12px] font-medium tracking-wide z-[60] relative transition-colors duration-300 border-b border-cream/10`}>
-        <div className="max-w-7xl mx-auto flex justify-center md:justify-end">
+      {/* Summer Momentum Announcement Bar */}
+      {showSummerBanner && (
+        <div
+          role="region"
+          aria-label="Summer Momentum 6-week intake announcement"
+          className="bg-[#1B3B2B] text-[#FAF7F2] py-2 px-3 md:px-8 text-xs font-medium tracking-wide z-[60] relative border-b border-cream/15"
+        >
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+            <p className="flex-1 text-left sm:text-center leading-snug">
+              <span className="sm:hidden">
+                SUMMER MOMENTUM: 30 Nov – 8 Jan · A sustainable plan for GLP-1 users.{' '}
+                <Link
+                  to="/summer-momentum"
+                  className="font-semibold text-citron underline underline-offset-4 whitespace-nowrap ml-1"
+                >
+                  Learn more →
+                </Link>
+              </span>
+              <span className="hidden sm:inline">
+                Summer Momentum (30 Nov – 8 Jan): A sustainable movement &amp; festive coping plan for GLP-1 users — $149 NZD.{' '}
+                <Link
+                  to="/summer-momentum"
+                  className="inline-flex items-center font-semibold text-citron underline underline-offset-4 whitespace-nowrap ml-1"
+                >
+                  Learn more →
+                </Link>
+              </span>
+            </p>
+            <button
+              type="button"
+              onClick={handleDismissBanner}
+              aria-label="Dismiss Summer Momentum announcement"
+              className="shrink-0 p-1 -mr-1 text-[#FAF7F2]/80 hover:text-[#FAF7F2] transition-colors rounded-md"
+            >
+              <X size={15} />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Utility Bar (Desktop only — mobile accesses via drawer & footer) */}
+      <div className={`hidden md:block ${isTransparentHero && !isScrolled ? 'bg-forest-deep/90 backdrop-blur-sm' : 'bg-forest-deep'} text-cream/85 py-1.5 px-4 md:px-8 text-right text-[12px] font-medium tracking-wide z-[60] relative transition-colors duration-300 border-b border-cream/10`}>
+        <div className="max-w-7xl mx-auto flex justify-end">
           <Link to="/for-referrers" className="hover:text-citron transition-colors flex items-center">
-            Healthcare Providers & Referrals <span className="ml-1">→</span>
+            Healthcare Providers &amp; Referrals <span className="ml-1">→</span>
           </Link>
         </div>
       </div>
 
       {/* Header */}
-      <header className={`fixed w-full top-[32px] md:top-[32px] z-50 transition-all duration-300 h-[72px] ${headerBgClass}`}>
+      <header className={`sticky top-0 w-full z-50 transition-all duration-300 py-3 md:py-0 md:h-[72px] ${isTransparentHero ? '-mb-14 md:-mb-[72px]' : ''} ${headerBgClass}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-full flex items-center justify-between">
           
           {/* Logo / Wordmark */}
@@ -77,20 +144,23 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </div>
               </div>
             </div>
-            <Link to="/programs" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Programmes</Link>
-            <Link to="/tools" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Tools</Link>
+            <Link to="/programs" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Programmes</Link>
+            {ENABLE_SELF_GUIDED_PLANS && (
+              <Link to="/plans" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Self-Guided Plans</Link>
+            )}
+            <Link to="/tools" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Tools</Link>
             <Link to="/blog" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Blog</Link>
             <Link to="/contact" className={`${contactBtnClass} rounded-md px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-colors`}>Contact</Link>
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center h-full ml-4">
+          <div className="md:hidden flex items-center ml-4">
             <button 
-              className={`flex items-center justify-center min-w-[44px] min-h-[44px] transition-colors ${wordmarkClass}`}
+              className={`flex items-center justify-center min-w-[44px] min-h-[44px] -my-2 -mr-2 transition-colors ${wordmarkClass}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle Navigation"
             >
-              <Menu size={24} />
+              <Menu size={22} />
             </button>
           </div>
         </div>
@@ -99,58 +169,66 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       {/* Mobile Nav Drawer */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 bg-forest-deep/50 z-40 md:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-forest-deep/50 z-[65] md:hidden backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         />
       )}
       <div 
-        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[360px] bg-cream z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-[104px] border-l border-forest/15 shadow-2xl ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[360px] bg-cream z-[70] transform transition-transform duration-300 ease-in-out md:hidden flex flex-col pt-16 border-l border-forest/15 shadow-2xl ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
          <button 
-           className="absolute top-4 right-4 flex items-center justify-center min-w-[44px] min-h-[44px] text-forest"
+           className="absolute top-3 right-3 flex items-center justify-center min-w-[44px] min-h-[44px] text-forest"
            onClick={() => setIsMenuOpen(false)}
            aria-label="Close Navigation"
          >
            <X size={24} />
          </button>
          
-          <div className="flex flex-col py-6 overflow-y-auto flex-grow">
-           <Link onClick={() => setIsMenuOpen(false)} to="/" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+          <div className="flex flex-col py-4 overflow-y-auto flex-grow">
+           <Link onClick={() => setIsMenuOpen(false)} to="/" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Home
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/about" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/about" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              About
            </Link>
            <div className="flex flex-col">
              <button 
                onClick={() => setIsServicesOpen(!isServicesOpen)}
-               className="h-[56px] w-full flex items-center justify-between px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors"
+               className="h-[52px] w-full flex items-center justify-between px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors"
              >
                Services
                <ChevronDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
              </button>
              {isServicesOpen && (
                <div className="flex flex-col bg-quiet/60 pb-2">
-                 <Link onClick={() => setIsMenuOpen(false)} to="/online-coaching" className="h-[48px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
+                 <Link onClick={() => setIsMenuOpen(false)} to="/online-coaching" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
                    Online Coaching
                  </Link>
-                 <Link onClick={() => setIsMenuOpen(false)} to="/personal-training" className="h-[48px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
+                 <Link onClick={() => setIsMenuOpen(false)} to="/personal-training" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
                    In-Person PT
                  </Link>
-                 <Link onClick={() => setIsMenuOpen(false)} to="/toolkit" className="h-[48px] flex items-center pl-10 pr-6 text-base text-forest font-medium hover:bg-quiet transition-colors">
+                 <Link onClick={() => setIsMenuOpen(false)} to="/toolkit" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest font-medium hover:bg-quiet transition-colors">
                    GLP-1 Toolkit
                  </Link>
                </div>
              )}
            </div>
-           <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Programmes
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/tools" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+           {ENABLE_SELF_GUIDED_PLANS && (
+             <Link onClick={() => setIsMenuOpen(false)} to="/plans" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+               Self-Guided Plans
+             </Link>
+           )}
+           <Link onClick={() => setIsMenuOpen(false)} to="/tools" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Tools
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/blog" className="h-[56px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+           <Link onClick={() => setIsMenuOpen(false)} to="/blog" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Blog
+           </Link>
+           <Link onClick={() => setIsMenuOpen(false)} to="/for-referrers" className="h-[52px] flex items-center px-6 text-base font-medium text-forest/85 hover:bg-quiet transition-colors border-t border-forest/10 mt-2">
+             Healthcare Providers &amp; Referrals
            </Link>
            <div className="px-6 pt-4">
              <Link onClick={() => setIsMenuOpen(false)} to="/contact" className="block text-center bg-forest text-cream hover:bg-forest-deep rounded-md px-4 py-3 text-xs uppercase tracking-wider font-semibold transition-colors">
@@ -160,7 +238,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
          </div>
       </div>
 
-      <main className={`flex-grow ${isTransparentHero ? 'pt-16 md:pt-20' : 'pt-[104px]'} bg-cream`}>
+      <main className={`flex-grow overflow-x-hidden ${isTransparentHero ? 'pt-14 md:pt-20' : 'pt-2 md:pt-8'} bg-cream`}>
         {children}
       </main>
 

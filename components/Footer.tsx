@@ -4,7 +4,7 @@ import { BRAND_NAME } from '../constants';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-forest text-cream relative overflow-hidden pt-20 pb-12 border-t border-forest-deep">
+    <footer className="bg-forest text-cream relative overflow-hidden pt-16 md:pt-20 pb-24 md:pb-12 border-t border-forest-deep">
       {/* Massive Background Text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[28vw] font-serif font-bold text-cream/[0.03] pointer-events-none select-none leading-none tracking-tighter">
         WRK

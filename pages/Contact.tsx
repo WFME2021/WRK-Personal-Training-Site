@@ -7,13 +7,16 @@ import { trackEvent } from '../utils/analytics';
 export const Contact: React.FC = () => {
   const [searchParams] = useSearchParams();
   const initialPhase = searchParams.get('phase') || '';
+  const initialPlan = searchParams.get('plan') || '';
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phase: initialPhase,
-    goal: '',
-    message: ''
+    phase: initialPhase || (initialPlan ? 'General personal training enquiry' : ''),
+    goal: initialPlan ? 'Building a sustainable, long-term exercise routine' : '',
+    message: initialPlan
+      ? `Hi Hayden, I'd like to be notified when ${initialPlan} completes final QA.`
+      : ''
   });
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
