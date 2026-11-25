@@ -24,6 +24,8 @@ export {
   ENABLE_SUMMER_MOMENTUM,
   STRIPE_SUMMER_MOMENTUM_URL,
   ENABLE_SELF_GUIDED_PLANS,
+  MAILERLITE_STARTER_FORM_URL,
+  MYPTHUB_FREE_STARTER_URL,
   isCheckoutUrlConfigured,
 } from "./src/config/campaigns";
 

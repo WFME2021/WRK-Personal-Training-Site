@@ -6,6 +6,7 @@ import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
 import { calculateAssessmentResult } from '../assessment/scoring';
 import { AssessmentResult } from '../assessment/types';
 import { trackEvent } from '../utils/analytics';
+import { ENABLE_SUMMER_MOMENTUM } from '../constants';
 
 export const Assessment: React.FC = () => {
   const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = email & phone gate, N+2 = results
@@ -486,6 +487,24 @@ export const Assessment: React.FC = () => {
               </div>
             )}
           </div>
+
+          {/* Summer Momentum Seasonal Bridge Banner */}
+          {ENABLE_SUMMER_MOMENTUM && (
+            <div className="bg-quiet rounded-2xl border border-forest/15 p-6 sm:p-8 max-w-2xl mx-auto shadow-sm mt-8 text-left">
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-widest text-forest bg-cream border border-forest/15 px-3 py-1 rounded-full mb-3">
+                STARTS MONDAY 30 NOVEMBER · 6-WEEK INTAKE
+              </span>
+              <p className="text-sm sm:text-base text-forest/90 leading-relaxed mb-5">
+                Want structured movement and festive food coping strategies from 30 Nov to 8 Jan? Join our 6-week Summer Momentum intake for GLP-1 users ($149 NZD).
+              </p>
+              <Link
+                to="/summer-momentum"
+                className="inline-flex items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/20 font-semibold text-xs uppercase tracking-widest px-6 py-3.5 rounded-md transition-all shadow-sm"
+              >
+                View Summer Momentum →
+              </Link>
+            </div>
+          )}
 
           {/* Elevated $29 Downsell Card */}
           <div className="bg-white rounded-2xl border border-charcoal/10 p-6 sm:p-8 text-center max-w-2xl mx-auto shadow-sm mt-8">

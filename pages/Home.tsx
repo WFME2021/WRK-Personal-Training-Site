@@ -4,6 +4,7 @@ import { ChevronDown, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { Testimonials } from '../components/Testimonials';
 import { ENABLE_SUMMER_MOMENTUM } from '../constants';
+import { FindYourFit } from '../src/components/FindYourFit';
 
 interface AccordionItemProps {
   question: string;
@@ -164,6 +165,22 @@ export const Home: React.FC = () => {
           </div>
         </section>
       )}
+
+      {/* Find Your Fit Interactive Qualifier (Below Hero & Summer Momentum Card) */}
+      <section aria-label="Find Your Fit Interactive Qualifier" className="bg-cream pt-4 pb-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto mb-6 text-center">
+          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-forest/75 block mb-2">
+            NOT SURE WHICH PATHWAY FITS?
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl text-forest tracking-tight text-balance">
+            Find Your WRK Starting Point in 30 Seconds
+          </h2>
+          <p className="text-sm sm:text-base text-forest/80 mt-2 max-w-2xl mx-auto">
+            Whether you are on a GLP-1 medication, rebuilding after 40, or getting back into training—answer four quick questions for an immediate blueprint.
+          </p>
+        </div>
+        <FindYourFit context="home" />
+      </section>
 
       {/* 2. Philosophy Pull-Quote Band */}
       <section className="bg-quiet py-14 px-6 text-center border-y border-forest/10">

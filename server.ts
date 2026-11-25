@@ -47,6 +47,108 @@ async function startServer() {
     return res.status(result.status).json(result.body);
   });
 
+  // Free 7-Day WRK App Starter Pass submission (Find Your Fit)
+  app.post('/api/starter-pass', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    const { firstName, email, priority, location, consistency, support } = req.body || {};
+
+    const cleanName = typeof firstName === 'string' ? firstName.trim().slice(0, 80) : '';
+    const cleanEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
+
+    if (!cleanName || cleanEmail.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+      return res.status(400).json({ success: false, error: 'Please enter your first name and a valid email address.' });
+    }
+
+    const rawKey = process.env.MAILERLITE_API_KEY || '';
+    const mailerliteKey = rawKey.replace(/^"|"$/g, '').trim();
+    const starterGroupId = (process.env.MAILERLITE_STARTER_GROUP_ID || '').replace(/^"|"$/g, '').trim();
+
+    if (mailerliteKey) {
+      try {
+        const fields: Record<string, string> = {
+          name: cleanName,
+          lead_source: 'find_your_fit_7day_starter',
+        };
+        if (typeof priority === 'string' && priority.trim()) {
+          fields.primary_goal = priority.trim().slice(0, 80);
+        }
+
+        const payload: { email: string; fields: Record<string, string>; groups?: string[] } = {
+          email: cleanEmail,
+          fields,
+        };
+        if (starterGroupId) {
+          payload.groups = [starterGroupId];
+        }
+
+        let mlRes = await fetch('https://connect.mailerlite.com/api/subscribers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${mailerliteKey}`,
+            Accept: 'application/json',
+          },
+          signal: AbortSignal.timeout(8000),
+          body: JSON.stringify(payload),
+        });
+
+        if (!mlRes.ok && mlRes.status !== 401) {
+          const fallbackPayload: { email: string; fields: Record<string, string>; groups?: string[] } = {
+            email: cleanEmail,
+            fields: { name: cleanName },
+          };
+          if (starterGroupId) {
+            fallbackPayload.groups = [starterGroupId];
+          }
+          mlRes = await fetch('https://connect.mailerlite.com/api/subscribers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${mailerliteKey}`,
+              Accept: 'application/json',
+            },
+            signal: AbortSignal.timeout(8000),
+            body: JSON.stringify(fallbackPayload),
+          });
+        }
+
+        if (!mlRes.ok) {
+          console.error('MailerLite starter pass error:', mlRes.status);
+        }
+      } catch {
+        console.error('MailerLite starter pass sync failed');
+      }
+    }
+
+    const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+    if (sheetsWebhookUrl) {
+      try {
+        await fetch(sheetsWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          signal: AbortSignal.timeout(8000),
+          body: JSON.stringify({
+            type: '7_day_starter_pass',
+            date: new Date().toISOString(),
+            firstName: cleanName,
+            email: cleanEmail,
+            priority: typeof priority === 'string' ? priority.slice(0, 80) : '',
+            location: typeof location === 'string' ? location.slice(0, 80) : '',
+            consistency: typeof consistency === 'string' ? consistency.slice(0, 80) : '',
+            support: typeof support === 'string' ? support.slice(0, 80) : '',
+          }),
+        });
+      } catch {
+        console.error('Google Sheets starter pass sync failed');
+      }
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: '7-day starter pass request confirmed.',
+    });
+  });
+
   // Contact Form Submission
   app.post("/api/contact", async (req, res) => {
     const { name, email, phone, message, interest, referralSource, phase, goal } = req.body;

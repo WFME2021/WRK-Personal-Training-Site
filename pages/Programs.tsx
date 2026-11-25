@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Smartphone, Globe, Calendar } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
-import { ENABLE_SUMMER_MOMENTUM } from '../constants';
+import { ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from '../constants';
+import { FindYourFit } from '../src/components/FindYourFit';
 
 interface TriagePathway {
   id: string;
@@ -114,12 +115,21 @@ export const Programs: React.FC = () => {
                   <p className="text-xs sm:text-sm text-forest/80 leading-relaxed pt-4 border-t border-forest/15 mb-5">
                     {pathway.bestFor}
                   </p>
-                  <Link
-                    to={pathway.to}
-                    className="w-full inline-flex items-center justify-center bg-forest text-cream hover:bg-forest-deep rounded-xl px-5 py-3 text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-sm"
-                  >
-                    {pathway.ctaLabel}
-                  </Link>
+                  {pathway.id === 'plans' && !ENABLE_SELF_GUIDED_PLANS ? (
+                    <a
+                      href="#find-your-fit"
+                      className="w-full inline-flex items-center justify-center bg-forest text-cream hover:bg-forest-deep rounded-xl px-5 py-3 text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-sm"
+                    >
+                      Try a Free 7-Day App Pass ↓
+                    </a>
+                  ) : (
+                    <Link
+                      to={pathway.to}
+                      className="w-full inline-flex items-center justify-center bg-forest text-cream hover:bg-forest-deep rounded-xl px-5 py-3 text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-sm"
+                    >
+                      {pathway.ctaLabel}
+                    </Link>
+                  )}
                 </div>
               </div>
             );
@@ -147,6 +157,10 @@ export const Programs: React.FC = () => {
             </Link>
           </div>
         )}
+        {/* Find Your Fit Interactive Qualifier (Below 3 Cards, Above Decision Strip) */}
+        <div className="mt-10 md:mt-14">
+          <FindYourFit context="programs" />
+        </div>
       </section>
 
       {/* Section D: "Not Sure Which Option Fits?" Decision Strip */}

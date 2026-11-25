@@ -44,7 +44,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   // Track scroll position for transparent navbar over hero
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 8);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -238,7 +238,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
          </div>
       </div>
 
-      <main className={`flex-grow overflow-x-hidden ${isTransparentHero ? 'pt-14 md:pt-20' : 'pt-2 md:pt-8'} bg-cream`}>
+      <main className={`flex-grow overflow-x-clip ${isTransparentHero ? 'pt-14 md:pt-20' : 'pt-2 md:pt-8'} bg-cream`}>
         {children}
       </main>
 

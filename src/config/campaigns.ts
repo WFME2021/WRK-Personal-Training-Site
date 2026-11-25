@@ -4,7 +4,10 @@
 export const ENABLE_SUMMER_MOMENTUM = true;
 export const STRIPE_SUMMER_MOMENTUM_URL = "#stripe-summer-momentum-placeholder";
 
-export const ENABLE_SELF_GUIDED_PLANS = true;
+export const ENABLE_SELF_GUIDED_PLANS = false;
+
+export const MAILERLITE_STARTER_FORM_URL = "#mailerlite-starter-form-placeholder";
+export const MYPTHUB_FREE_STARTER_URL = "#mypthub-free-starter-placeholder";
 
 export const isCheckoutUrlConfigured = (url?: string): boolean => {
   if (!url) return false;
