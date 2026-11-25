@@ -34,6 +34,7 @@ async function startServer() {
   app.get("/couch-to-5km", (req, res) => res.redirect(301, "/programs"));
   app.get("/calorie-calculator", (req, res) => res.redirect(301, "/tools/tdee-calculator"));
   app.get("/tools/1rm-estimator", (req, res) => res.redirect(301, "/tools"));
+  app.get("/book", (req, res) => res.redirect(301, "/contact"));
 
   // API Routes
   app.get("/api/health", (req, res) => {
@@ -1313,32 +1314,32 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
       
       // Inject SEO tags based on route
       const initialBlogs = await getCachedBlogs();
-      let title = "GLP-1 Fitness Coach | Strength & Fitness Coaching | WRK Personal Training";
-      let desc = "Hire a dedicated GLP-1 Fitness Coach in Christchurch. We provide specialist strength & fitness coaching to preserve muscle and build sustainable habits during medical weight loss.";
+      let title = "WRK Personal Training | Strength & Fitness Coaching Christchurch";
+      let desc = "Calm, steady 1:1 personal training in Addington, Christchurch and online across New Zealand—built around real life, 40s/50s+ returners, and GLP-1 muscle protection.";
       
       const pathOnly = url.split('?')[0];
 
       if (pathOnly === '/programs') {
-        title = "How We Work Together | Coaching & Self-Guided Plans | WRK Personal Training";
-        desc = "Three practical ways to train with WRK Personal Training: 1:1 Studio Coaching in Addington, Christchurch, 1:1 Online Coaching, or structured 6–12 week Self-Guided Training Plans.";
+        title = "How We Work Together | Coaching & Plans | WRK Personal Training";
+        desc = "Three straightforward ways to train with Hayden Richards at WRK Personal Training: 1:1 Studio Coaching in Addington, 1:1 Online Coaching, or structured self-guided plans.";
       } else if (pathOnly === '/services') {
-        title = "GLP-1 Fitness Coaching Programs | WRK Personal Training";
-        desc = "Compare our GLP-1 Fitness Coaching Programs. Choose between our in-person training in Christchurch or our comprehensive 12-week online coaching pathways.";
+        title = "Coaching & Programmes | WRK Personal Training";
+        desc = "Compare how we work together at WRK Personal Training—in-person coaching in Addington, Christchurch or 1:1 online coaching wherever you train.";
       } else if (pathOnly === '/online-coaching' || pathOnly === '/online') {
-        title = "Online Fitness Coaching & Support | Personal Trainers for GLP-1 Patients";
-        desc = "Expert Online Fitness Coaching tailored for GLP-1 patients. Work with specialist personal trainers to protect your muscle mass from anywhere in New Zealand.";
+        title = "1:1 Online Coaching | WRK Personal Training NZ";
+        desc = "Personalised 1:1 online strength and habit coaching built around your real week, equipment, and energy—whether you are getting back into routine or protecting muscle on a GLP-1.";
       } else if (pathOnly === '/personal-training' || pathOnly === '/studio') {
-        title = "Personal Trainer Christchurch | Semi-Private Coaching | WRK";
-        desc = "Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult.";
+        title = "Addington Studio 1:1 Personal Training | WRK Christchurch";
+        desc = "Skip crowded Christchurch gyms. Train 1:1 with Hayden in a quiet Addington space Mon–Fri 6 AM – 2 PM with free parking outside the door.";
       } else if (pathOnly === '/assessment') {
         title = "GLP-1 Fitness Assessment | WRK Personal Training";
-        desc = "Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customized 12-week training recommendation.";
-      } else if (pathOnly === '/contact') {
-        title = "Contact GLP-1 Fitness Coach | WRK Personal Training";
-        desc = "Contact a GLP-1 Fitness Coach today to discuss your medical weight loss journey, ask questions about our 12-week pathways, or book an initial consultation.";
+        desc = "Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a personalised 12-week training recommendation.";
+      } else if (pathOnly === '/contact' || pathOnly === '/book') {
+        title = "Book a Relaxed 15-Minute Chat | WRK Personal Training Christchurch";
+        desc = "Have a quick, zero-pressure 15-minute chat with Hayden about 1:1 studio coaching in Addington, online coaching, or where to start.";
       } else if (pathOnly === '/about') {
-        title = "About WRK | Medical Weight Loss & Muscle Preservation Fitness Coaching";
-        desc = "Discover our approach to Medical Weight Loss & Muscle Preservation Fitness Coaching. Learn how WRK bridges the gap between clinical treatments and real-world strength.";
+        title = "About Hayden Richards | WRK Personal Training Christchurch";
+        desc = "Meet Hayden Richards—20+ years coaching real people in Christchurch. Calm, plain-English strength and fitness coaching in Addington and online.";
       } else if (pathOnly === '/resources') {
         title = "Clinical Evidence & Resources | WRK Personal Training";
         desc = "Review the Clinical Evidence & Resources backing our GLP-1 training methodologies. Explore medical studies on muscle preservation and metabolic support.";

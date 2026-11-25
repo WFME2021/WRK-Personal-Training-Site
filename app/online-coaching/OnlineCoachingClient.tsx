@@ -6,19 +6,19 @@ import { trackEvent } from '../../utils/analytics';
 const FAQS = [
   {
     q: 'Do I need a commercial gym membership?',
-    a: 'No. Every programme is built entirely around your available equipment. Whether you train in a fully equipped commercial gym, a basic garage setup, or at home with a pair of adjustable dumbbells and resistance bands, we select mechanical loading patterns that fit your environment.',
+    a: 'Not at all. Your programme is built around whatever equipment you actually have. Whether that is a local gym, a couple of dumbbells in the garage, or just bodyweight at home in the lounge, we make it work cleanly.',
   },
   {
-    q: 'What if I feel exhausted or nauseous on injection days?',
-    a: 'We design your training schedule directly around your pharmacokinetics. Our adaptive pacing protocol accounts for peak medication levels, programming lighter active recovery or deload sessions on post-injection days so you maintain consistency without burning out.',
+    q: 'What if I am having a flat week or feeling wiped out on a GLP-1?',
+    a: 'You just let me know. We build your week with plenty of breathing room—if work goes sideways, sleep is rough, or a medication dose leaves you feeling flat, we dial the session back so you keep your momentum without burning out.',
   },
   {
-    q: 'How does online coaching work internationally?',
-    a: 'All workouts, exercise video demos, progress tracking, and communication live inside the WRK training app. Weekly check-ins and form reviews are conducted asynchronously, meaning time-zone differences between New Zealand, Australia, the US, or the UK never delay your feedback.',
+    q: 'How does online coaching actually work day to day?',
+    a: 'Everything lives inside the WRK training app: your workouts, clear exercise demo videos, progress tracking, and our direct message thread. Every week you check in, we review any lifting clips you want looked at, and I adjust the next week around your life.',
   },
   {
-    q: 'Is there a long-term contract?',
-    a: 'We operate in structured 12-week training blocks billed weekly at $49 NZD. We believe coaching should prove its value while giving your neuromuscular system enough structured time to see tangible body composition and strength adaptations. No ongoing lock-in beyond your cycle.',
+    q: 'Is there a long-term lock-in contract?',
+    a: 'No endless lock-ins. We work in straightforward 12-week blocks so your body has enough steady time to build real strength and feel the difference. On our quick intro chat, I will talk you through the simple weekly coaching options before you decide anything.',
   },
 ];
 
@@ -51,7 +51,6 @@ export default function OnlineCoachingClient() {
       trackEvent('online_coaching_application', {
         event_category: 'conversion',
         coaching_type: 'remote_online',
-        offer_price: 49,
       });
 
       setStatus('success');
@@ -64,24 +63,24 @@ export default function OnlineCoachingClient() {
     <div className="relative min-h-screen bg-cream text-forest antialiased selection:bg-forest selection:text-cream pb-24 md:pb-12">
       {/* 1. HERO SECTION */}
       <section className="relative px-5 pt-12 pb-16 mx-auto max-w-4xl text-center md:pt-20">
-        <span className="inline-block px-3.5 py-1 text-xs font-semibold tracking-wider uppercase bg-quiet text-forest rounded-full border border-forest/15 mb-4">
-          Online Coaching · New Zealand & Worldwide
+        <span className="inline-block text-xs font-semibold tracking-widest uppercase text-forest/75 mb-4">
+          1:1 Online Coaching · New Zealand &amp; Worldwide
         </span>
-        <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-forest leading-tight">
-          The Weight Is Dropping. <br />
-          <span className="text-forest/85">Let’s Protect Your Strength.</span>
+        <h1 className="font-serif text-3xl font-normal tracking-tight sm:text-5xl md:text-6xl text-forest leading-tight">
+          Real coaching in your pocket, <br className="hidden sm:inline" />
+          <span className="text-forest/85">built around your actual week.</span>
         </h1>
         <p className="mt-5 text-base sm:text-lg text-forest/80 max-w-2xl mx-auto leading-relaxed">
-          Personalised online fitness, joint-safe mechanical loading, and low-friction nutrition coaching. Built specifically for individuals taking GLP-1 medications and high-demand professionals seeking sustainable body recomposition.
+          Whether you train at a local gym, in the garage, or in your lounge, we build a straightforward strength and habit programme that fits your energy and schedule—whether you are getting back into routine or protecting muscle on a GLP-1.
         </p>
 
         {/* Proof / Trust Strip */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-forest/75 font-medium">
-          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Tailored to your equipment</span>
+          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Tailored to your gear</span>
           <span className="text-forest/30 hidden sm:inline">•</span>
           <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> No burnout workouts</span>
           <span className="text-forest/30 hidden sm:inline">•</span>
-          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Evidence-based muscle defence</span>
+          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Weekly check-ins with Hayden</span>
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -89,80 +88,84 @@ export default function OnlineCoachingClient() {
             href="#apply-now"
             className="w-full sm:w-auto px-8 py-3.5 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg transition-all text-center shadow-sm"
           >
-            Apply for Coaching
+            Chat With Hayden
           </a>
           <a
-            href="#pricing"
+            href="#how-it-works"
             className="w-full sm:w-auto px-6 py-3.5 bg-quiet hover:bg-forest/10 text-forest font-semibold rounded-lg border border-forest/20 transition-colors text-center"
           >
-            View Pricing ($49 NZD/wk)
+            See How Online Coaching Works
           </a>
         </div>
       </section>
 
-      {/* 2. CLINICAL PERSPECTIVE / METRIC CALLOUT */}
+      {/* 2. PLAIN-ENGLISH PERSPECTIVE CALLOUT */}
       <section className="px-5 py-12 mx-auto max-w-4xl">
         <div className="p-8 bg-quiet rounded-2xl border border-forest/15 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-          <div className="shrink-0">
-            <span className="text-5xl font-black text-forest tracking-tight">Up to 40%</span>
-            <span className="block text-xs uppercase tracking-wider text-forest/70 mt-1">Lean mass loss risk</span>
+          <div className="shrink-0 md:w-56">
+            <span className="text-xs uppercase tracking-widest font-semibold text-forest/70 block mb-1">
+              Plain-English Rule
+            </span>
+            <span className="font-serif text-3xl text-forest tracking-tight block">
+              Strength comes first.
+            </span>
           </div>
           <div className="border-t md:border-t-0 md:border-l border-forest/15 pt-4 md:pt-0 md:pl-6 text-sm text-forest/85 leading-relaxed">
-            <strong className="text-forest block mb-1">A Different Approach to Training</strong>
-            Up to 40% of rapid weight loss can come from active skeletal muscle tissue. Traditional fitness assumes high energy and endless gym hours. We design around your reality: lower appetite, fluctuating injection days, and the absolute priority of defending metabolic rate while the scale drops.
+            <strong className="text-forest block mb-1">Built for Real Energy Levels</strong>
+            Most online programmes hand you a generic template written for someone with two hours a day and zero responsibilities. Real life does not look like that. Whether you are balancing work and family—or eating less while on a GLP-1—your body needs a clear, steady reason to keep strong muscle and usable energy, not gruelling sessions that wipe you out for three days.
           </div>
         </div>
       </section>
 
-      {/* 3. METHODOLOGY (THE 3 PROTOCOLS) */}
-      <section className="px-5 py-12 mx-auto max-w-5xl border-t border-forest/10">
+      {/* 3. HOW WE TRAIN (3 PILLARS) */}
+      <section id="how-it-works" className="px-5 py-12 mx-auto max-w-5xl border-t border-forest/10">
         <div className="text-center mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Our Methodology</span>
-          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl mt-1">
-            How We Protect Your Body
+          <span className="text-xs font-semibold uppercase tracking-widest text-forest">How We Train</span>
+          <h2 className="font-serif text-2xl tracking-tight text-forest sm:text-3xl mt-1">
+            Simple, Steady Coaching—Translated to Real Life
           </h2>
-          <p className="text-sm text-forest/75 mt-2">
-            A structured protocol calibrated to your weekly routine and medication cycle.
+          <p className="text-sm text-forest/75 mt-2 max-w-xl mx-auto">
+            No fitness-textbook jargon or rigid spreadsheets. Just three practical pillars shaped around your week.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 bg-quiet rounded-xl border border-forest/15 flex flex-col justify-between">
             <div>
-              <div className="text-xs font-mono text-forest/65 mb-1">01 · RESISTANCE TRAINING</div>
-              <h3 className="text-lg font-bold text-forest mb-2">Muscle-Preserving Strength</h3>
+              <div className="text-xs font-mono text-forest/65 mb-1">01 · STRENGTH THAT FITS</div>
+              <h3 className="text-lg font-bold text-forest mb-2">Keep Your Body Capable</h3>
               <p className="text-sm text-forest/80 leading-relaxed">
-                Targeted 2–3 day programmes signalling your body to hold onto lean muscle while bodyweight drops. Tailored specifically for gym or home setup.
+                Two or three sensible strength sessions a week using whatever gear you have. We build you up gradually so everyday things—carrying groceries, climbing stairs, walking the hills—feel noticeably easier.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-forest/10 text-xs font-medium text-forest">
-              Focus: Progressive overload & mechanical tension
+              Focus: Gradual strength around your joints
             </div>
           </div>
 
           <div className="p-6 bg-quiet rounded-xl border border-forest/15 flex flex-col justify-between">
             <div>
-              <div className="text-xs font-mono text-forest/65 mb-1">02 · NUTRITION STRATEGY</div>
-              <h3 className="text-lg font-bold text-forest mb-2">Low-Friction Fuelling</h3>
+              <div className="text-xs font-mono text-forest/65 mb-1">02 · EVERYDAY FOOD</div>
+              <h3 className="text-lg font-bold text-forest mb-2">Simple Protein &amp; Daily Habits</h3>
               <p className="text-sm text-forest/80 leading-relaxed">
-                Digestible protein anchoring and hydration protocols designed to meet your targets without triggering nausea or gastrointestinal stress.
+                Plain-English guidance on hitting enough protein and fibre without cooking separate meals for the household—or forcing down heavy portions if your appetite is lower on a GLP-1.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-forest/10 text-xs font-medium text-forest">
-              Focus: Simple protein anchors & GI tolerance
+              Focus: Practical meals, zero food guilt
             </div>
           </div>
 
           <div className="p-6 bg-quiet rounded-xl border border-forest/15 flex flex-col justify-between">
             <div>
-              <div className="text-xs font-mono text-forest/65 mb-1">03 · ADAPTIVE PACING</div>
-              <h3 className="text-lg font-bold text-forest mb-2">Biofeedback & Dose Syncing</h3>
+              <div className="text-xs font-mono text-forest/65 mb-1">03 · REAL-LIFE PACING</div>
+              <h3 className="text-lg font-bold text-forest mb-2">Adjusted When Life Gets Busy</h3>
               <p className="text-sm text-forest/80 leading-relaxed">
-                Weekly adjustments based on your dose titration, fatigue, and recovery so consistency never leads to exhaustion or plateaus.
+                Tired after a big week at work, travelling, or having a flat day after an injection? Message me and we dial the session back so you stay consistent without feeling wrung out.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-forest/10 text-xs font-medium text-forest">
-              Focus: Dose-matched volume & recovery
+              Focus: Consistency over perfection
             </div>
           </div>
         </div>
@@ -171,71 +174,69 @@ export default function OnlineCoachingClient() {
       {/* 4. COACHING DELIVERABLES */}
       <section className="px-5 py-12 mx-auto max-w-4xl border-t border-forest/10">
         <div className="text-center mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Coaching Deliverables</span>
-          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl mt-1">
-            High-Touch Guidance, Anywhere
+          <span className="text-xs font-semibold uppercase tracking-widest text-forest">What&apos;s Included</span>
+          <h2 className="font-serif text-2xl tracking-tight text-forest sm:text-3xl mt-1">
+            Proper Support, Wherever You Live
           </h2>
-          <p className="text-sm text-forest/75 mt-2">All the accountability of in-person training with mobile flexibility.</p>
+          <p className="text-sm text-forest/75 mt-2">
+            All the calm structure of working together in Addington, delivered cleanly through the WRK app.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-5 bg-quiet rounded-xl border border-forest/15">
-            <h4 className="font-bold text-forest mb-1">WRK Training App</h4>
-            <p className="text-sm text-forest/80">Personalised workouts, exercise video demos, and automated progress logging direct on your phone.</p>
+            <h4 className="font-bold text-forest mb-1">The WRK Training App</h4>
+            <p className="text-sm text-forest/80">Your personalised sessions, clear video demos, and easy weight tracking all sitting in one tidy place on your phone.</p>
           </div>
           <div className="p-5 bg-quiet rounded-xl border border-forest/15">
-            <h4 className="font-bold text-forest mb-1">Video Form Feedback</h4>
-            <p className="text-sm text-forest/80">Upload lifting clips directly in-app for ongoing coaching on joint alignment, posture, and mechanics.</p>
+            <h4 className="font-bold text-forest mb-1">Video Technique Checks</h4>
+            <p className="text-sm text-forest/80">Flick a quick lifting clip into the app anytime and I will send back straightforward pointers so your joints stay happy.</p>
           </div>
           <div className="p-5 bg-quiet rounded-xl border border-forest/15">
-            <h4 className="font-bold text-forest mb-1">Weekly Analysis</h4>
-            <p className="text-sm text-forest/80">Comprehensive check-ins to review biofeedback, habit compliance, and adjust your routine.</p>
+            <h4 className="font-bold text-forest mb-1">Weekly Check-Ins</h4>
+            <p className="text-sm text-forest/80">A calm weekly look at how your energy, sleep, and sessions actually felt—so we tweak the plan around real life.</p>
           </div>
           <div className="p-5 bg-quiet rounded-xl border border-forest/15">
-            <h4 className="font-bold text-forest mb-1">Direct Coach Access</h4>
-            <p className="text-sm text-forest/80">In-app messaging for grocery questions, low-energy days, and dose-day modifications.</p>
+            <h4 className="font-bold text-forest mb-1">Direct Message Access</h4>
+            <p className="text-sm text-forest/80">Got a quick question at the supermarket or need to swap a workout on a busy day? Drop me a note directly in-app.</p>
           </div>
         </div>
       </section>
 
-      {/* 5. PRICING ANCHOR */}
-      <section id="pricing" className="px-5 py-16 mx-auto max-w-3xl border-t border-forest/10">
+      {/* 5. HOW COACHING IS SET UP (NO PUBLIC PRICING) */}
+      <section id="setup" className="px-5 py-16 mx-auto max-w-3xl border-t border-forest/10">
         <div className="text-center mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Investment</span>
-          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl mt-1">
-            Transparent Coaching Investment
+          <span className="text-xs font-semibold uppercase tracking-widest text-forest">How We Work Together</span>
+          <h2 className="font-serif text-2xl tracking-tight text-forest sm:text-3xl mt-1">
+            Built Around 12-Week Blocks
           </h2>
         </div>
 
         <div className="bg-forest text-cream border border-forest-deep rounded-2xl p-8 relative shadow-xl">
-          <div className="absolute -top-3.5 right-6 bg-citron text-forest border border-forest/20 text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">
-            12-Week Guided Programme
+          <div className="text-xs font-semibold uppercase tracking-widest text-citron mb-2">
+            12-Week Guided Coaching
           </div>
-          <h3 className="text-xl font-bold text-cream">Full 1-on-1 Online Coaching</h3>
-          <p className="text-sm text-cream/80 mt-1">Comprehensive resistance training, nutrition, and weekly audits.</p>
+          <h3 className="font-serif text-2xl text-cream">1:1 Online Coaching with Hayden</h3>
+          <p className="text-sm text-cream/80 mt-2 max-w-xl leading-relaxed">
+            Enough steady runway to build lasting strength habits—without locking you into an endless gym contract.
+          </p>
 
-          <div className="my-6">
-            <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-black text-cream">$49</span>
-              <span className="text-cream/85 text-base font-medium">NZD / week</span>
-            </div>
-            <p className="text-xs text-cream/75 mt-1">
-              Billed weekly · Approx. $29 USD / £24 GBP / $45 AUD
-            </p>
-          </div>
-
-          <ul className="space-y-3 text-sm text-cream/90 mb-8 border-t border-cream/15 pt-6">
-            <li className="flex items-center gap-2.5">
-              <span className="text-citron font-bold">✓</span> Bespoke home or gym resistance programme
+          <ul className="space-y-3 text-sm text-cream/90 my-8 border-t border-cream/15 pt-6">
+            <li className="flex items-start gap-2.5">
+              <span className="text-citron font-bold">✓</span>
+              <span>Personalised home or gym strength programme tailored to your gear and joints</span>
             </li>
-            <li className="flex items-center gap-2.5">
-              <span className="text-citron font-bold">✓</span> Low-appetite protein and nutrition strategies
+            <li className="flex items-start gap-2.5">
+              <span className="text-citron font-bold">✓</span>
+              <span>Practical protein, fibre, and hydration habits that fit real meals</span>
             </li>
-            <li className="flex items-center gap-2.5">
-              <span className="text-citron font-bold">✓</span> Weekly video analysis & check-in adjustments
+            <li className="flex items-start gap-2.5">
+              <span className="text-citron font-bold">✓</span>
+              <span>Weekly check-ins, video form feedback, and pacing adjustments</span>
             </li>
-            <li className="flex items-center gap-2.5">
-              <span className="text-citron font-bold">✓</span> Direct in-app messaging and technique analysis
+            <li className="flex items-start gap-2.5">
+              <span className="text-citron font-bold">✓</span>
+              <span>Simple weekly options talked through openly on your intro chat—no hard sell</span>
             </li>
           </ul>
 
@@ -243,7 +244,7 @@ export default function OnlineCoachingClient() {
             href="#apply-now"
             className="block w-full py-4 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg text-center transition-all shadow-sm"
           >
-            Apply for Online Coaching
+            Line Up a Quick Chat with Hayden
           </a>
         </div>
       </section>
@@ -251,17 +252,19 @@ export default function OnlineCoachingClient() {
       {/* 6. CONVERSION CAPTURE FORM */}
       <section id="apply-now" className="px-5 py-16 mx-auto max-w-2xl border-t border-forest/10">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold tracking-tight text-forest sm:text-3xl">Apply for Coaching</h2>
+          <h2 className="font-serif text-2xl tracking-tight text-forest sm:text-3xl">
+            Let&apos;s See If Online Coaching Fits
+          </h2>
           <p className="text-sm text-forest/75 mt-2">
-            Fill out your details below to schedule your onboarding call and reserve your roster spot.
+            Leave a few details below and I will reply personally within one working day to line up a relaxed chat.
           </p>
         </div>
 
         {status === 'success' ? (
           <div className="p-6 bg-quiet border border-forest/25 rounded-xl text-center">
-            <h3 className="text-lg font-bold text-forest">Application Received</h3>
+            <h3 className="text-lg font-bold text-forest">Got It — Thanks!</h3>
             <p className="text-sm text-forest/85 mt-2">
-              Thanks for submitting. We will review your goals and reach out within 24 hours to organise your intro review.
+              Thanks for getting in touch. I will read through your notes and email you back within one working day to sort out a quick chat.
             </p>
           </div>
         ) : (
@@ -276,7 +279,7 @@ export default function OnlineCoachingClient() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm placeholder:text-forest/45 focus:outline-none focus:border-forest"
-                placeholder="e.g. Sarah Jenkins"
+                placeholder="Your full name"
               />
             </div>
 
@@ -291,7 +294,7 @@ export default function OnlineCoachingClient() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm placeholder:text-forest/45 focus:outline-none focus:border-forest"
-                  placeholder="sarah@example.com"
+                  placeholder="you@example.com"
                 />
               </div>
               <div>
@@ -312,46 +315,46 @@ export default function OnlineCoachingClient() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
-                  Primary Focus
+                  What Matters Most Right Now?
                 </label>
                 <select
                   value={formData.coachingFocus}
                   onChange={(e) => setFormData({ ...formData, coachingFocus: e.target.value })}
                   className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm focus:outline-none focus:border-forest"
                 >
-                  <option value="glp1">GLP-1 Medication Muscle Defense</option>
-                  <option value="fat-loss">Fat Loss & Joint-Safe Strength</option>
-                  <option value="menopause">Midlife & Menopause Resistance</option>
-                  <option value="hypertrophy">Muscle Hypertrophy / Recomposition</option>
+                  <option value="glp1">GLP-1 Muscle &amp; Strength Support</option>
+                  <option value="fat-loss">Getting Stronger &amp; Joint-Friendly Fitness</option>
+                  <option value="menopause">Midlife Strength, Energy &amp; Confidence</option>
+                  <option value="hypertrophy">Coming Back After a Break or Old Injury</option>
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
-                  Training Setup
+                  Where Will You Train?
                 </label>
                 <select
                   value={formData.trainingLocation}
                   onChange={(e) => setFormData({ ...formData, trainingLocation: e.target.value })}
                   className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm focus:outline-none focus:border-forest"
                 >
-                  <option value="gym">Commercial Gym Membership</option>
-                  <option value="home-dumbbells">Home (Dumbbells / Bands)</option>
-                  <option value="home-barbell">Home (Full Rack / Barbell)</option>
-                  <option value="bodyweight">Bodyweight Only / Starting Out</option>
+                  <option value="gym">Local Gym Membership</option>
+                  <option value="home-dumbbells">At Home (Dumbbells / Bands)</option>
+                  <option value="home-barbell">At Home (Rack / Barbell Setup)</option>
+                  <option value="bodyweight">Bodyweight Only / Starting Fresh</option>
                 </select>
               </div>
             </div>
 
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-forest/80 mb-1">
-                Tell us about your current situation & goals
+                Tell me a bit about where you are at
               </label>
               <textarea
                 rows={3}
                 value={formData.notes}
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                 className="w-full px-4 py-3 bg-cream border border-forest/20 rounded-lg text-forest text-sm placeholder:text-forest/45 focus:outline-none focus:border-forest"
-                placeholder="Current dosage/medication (if applicable), injury history, or specific challenges..."
+                placeholder="Any old niggles, how many days a week feel realistic, or if you are currently on a GLP-1..."
               />
             </div>
 
@@ -360,11 +363,11 @@ export default function OnlineCoachingClient() {
               disabled={status === 'loading'}
               className="w-full py-4 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg transition-all mt-2"
             >
-              {status === 'loading' ? 'Submitting Application...' : 'Apply for Coaching'}
+              {status === 'loading' ? 'Sending to Hayden...' : 'Send & Line Up a Chat'}
             </button>
             {status === 'error' && (
               <p className="text-red-700 bg-red-50 border border-red-200 rounded-lg p-3 text-xs text-center mt-2">
-                There was an issue sending your details. Please email info@wrkpersonaltraining.co.nz directly.
+                Something did not go through there. Feel free to email info@wrkpersonaltraining.co.nz directly.
               </p>
             )}
           </form>
@@ -374,8 +377,8 @@ export default function OnlineCoachingClient() {
       {/* 7. INTERACTIVE ACCORDION FAQ */}
       <section className="px-5 py-12 mx-auto max-w-3xl border-t border-forest/10">
         <div className="text-center mb-8">
-          <span className="text-xs font-semibold uppercase tracking-wider text-forest">Frequently Asked Questions</span>
-          <h2 className="text-2xl font-bold text-forest mt-1">Common Questions</h2>
+          <span className="text-xs font-semibold uppercase tracking-widest text-forest">Frequently Asked Questions</span>
+          <h2 className="font-serif text-2xl text-forest mt-1">Common Questions</h2>
         </div>
 
         <div className="space-y-3">
@@ -407,17 +410,14 @@ export default function OnlineCoachingClient() {
       {/* 8. MOBILE STICKY CONVERSION BAR (Mobile viewports only) */}
       <div className="fixed bottom-0 left-0 right-0 z-50 p-3.5 bg-forest/95 backdrop-blur-md border-t border-cream/15 md:hidden flex items-center justify-between gap-3 shadow-2xl">
         <div>
-          <span className="block text-[11px] font-medium text-cream/75">12-Wk Remote Coaching</span>
-          <div className="flex items-baseline gap-1">
-            <span className="text-lg font-extrabold text-citron">$49</span>
-            <span className="text-xs text-cream/80">NZD/wk</span>
-          </div>
+          <span className="block text-[11px] font-semibold uppercase tracking-wider text-citron">1:1 Online Coaching</span>
+          <span className="text-xs text-cream/85">With Hayden · WRK App</span>
         </div>
         <a
           href="#apply-now"
           className="px-5 py-2.5 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg text-sm transition-all shadow-md"
         >
-          Apply Now
+          Chat With Hayden
         </a>
       </div>
     </div>

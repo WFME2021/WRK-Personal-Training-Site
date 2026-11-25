@@ -73,7 +73,6 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
       trackEvent('consultation_inquiry', {
         event_category: 'conversion',
         coaching_type: 'in_person_addington',
-        offer_price: 89,
       });
 
       setSubmittedName(formData.name.trim());
@@ -92,14 +91,14 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
       <div className="bg-quiet rounded-2xl p-8 sm:p-10 border border-forest/15 shadow-sm">
         {/* Container Header */}
         <div className="text-center mb-8">
-          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-forest bg-cream border border-forest/15 px-3 py-1 rounded-full inline-block mb-3">
-            ZERO PRESSURE · 20-MINUTE STUDIO WALKTHROUGH
+          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-forest/75 block mb-2">
+            ZERO PRESSURE · 15-MINUTE STUDIO CHAT
           </span>
           <h3 className="font-serif text-2xl sm:text-3xl text-forest mb-3 tracking-tight font-bold">
-            Book Your Free Studio Consultation
+            Come Have a Look Around Addington
           </h3>
-          <p className="text-forest/75 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            Come visit the studio at 12 Show Place, Addington. We'll discuss your goals, review your training history, and determine if our coaching setup suits you.
+          <p className="text-forest/80 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+            Pop in for a relaxed 15-minute chat at 1/12 Show Place, Addington (Mon–Fri, 6:00 AM – 2:00 PM). We'll talk through what you're working around and see if training together feels like a good fit.
           </p>
         </div>
 
@@ -109,13 +108,13 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
               <CheckCircle2 className="w-7 h-7" />
             </div>
             <h4 className="font-serif text-xl sm:text-2xl font-bold text-forest mb-2">
-              Request Received
+              Got Your Message!
             </h4>
             <p className="text-forest/85 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
-              Thanks <strong className="text-forest font-semibold">{submittedName}</strong>! We've received your consultation request. Hayden will be in touch via phone or email shortly to confirm your studio walkthrough at 12 Show Place.
+              Thanks <strong className="text-forest font-semibold">{submittedName}</strong>! I've got your note and will give you a quick call or email after sessions to line up your visit at 12 Show Place.
             </p>
             <div className="mt-6 pt-6 border-t border-forest/10 text-xs text-forest/65">
-              Need immediate assistance? You can also email us directly at{' '}
+              Need to reach me sooner? Flick an email directly to{' '}
               <a href="mailto:info@wrkpersonaltraining.co.nz" className="underline text-forest font-medium">
                 info@wrkpersonaltraining.co.nz
               </a>
@@ -182,7 +181,7 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
 
             <div>
               <label htmlFor="consult-interest" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
-                Coaching Focus Area
+                What Are You Most Interested In?
               </label>
               <select
                 id="consult-interest"
@@ -191,17 +190,17 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border border-forest/20 bg-cream text-forest text-sm focus:outline-none focus:ring-2 focus:ring-forest/25 focus:border-forest transition-colors"
               >
-                <option value="Semi-Private Coaching">Semi-Private Coaching</option>
-                <option value="1-on-1 Personal Training">1-on-1 Personal Training</option>
-                <option value="GLP-1 Muscle Preservation">GLP-1 Muscle Preservation</option>
-                <option value="Menopause / Midlife Strength">Menopause / Midlife Strength</option>
-                <option value="General Inquiry">General Inquiry</option>
+                <option value="1:1 Studio Coaching">1:1 Studio Coaching (Addington)</option>
+                <option value="Strength & Joint Confidence (40+)">Strength &amp; Joint Confidence (40+)</option>
+                <option value="Starting Fresh After a Break">Starting Fresh After a Break</option>
+                <option value="Protecting Muscle on a GLP-1">Protecting Muscle on a GLP-1</option>
+                <option value="General Inquiry">Just Having a Chat / Looking Around</option>
               </select>
             </div>
 
             <div>
               <label htmlFor="consult-notes" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
-                Notes & Goals (Optional)
+                Anything Helpful to Know (Optional)
               </label>
               <textarea
                 id="consult-notes"
@@ -209,7 +208,7 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
                 rows={3}
                 value={formData.notes}
                 onChange={handleChange}
-                placeholder="Any specific goals, injuries, or preferred training times?"
+                placeholder="Old injuries, preferred times between 6:00 AM – 2:00 PM, or anything you want to ask..."
                 className="w-full px-4 py-3 rounded-lg border border-forest/20 bg-cream text-forest text-sm focus:outline-none focus:ring-2 focus:ring-forest/25 focus:border-forest transition-colors placeholder:text-forest/45 resize-none"
               />
             </div>
@@ -222,17 +221,17 @@ export const StudioConsultationForm: React.FC<StudioConsultationFormProps> = ({ 
               {status === 'submitting' ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Submitting...</span>
+                  <span>Sending...</span>
                 </>
               ) : (
                 <>
-                  <span>Request Free Studio Consultation →</span>
+                  <span>Line Up a Studio Chat →</span>
                 </>
               )}
             </button>
 
             <p className="text-center text-[11px] text-forest/65 mt-3">
-              No pressure or hard sales. We'll simply show you around and answer your questions.
+              No pressure or hard sell—we'll just show you around and answer your questions.
             </p>
           </form>
         )}

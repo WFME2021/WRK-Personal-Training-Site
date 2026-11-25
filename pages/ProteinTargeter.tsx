@@ -111,7 +111,7 @@ export const ProteinTargeter: React.FC = () => {
                     className="w-full h-14 pl-5 pr-12 bg-cream border border-forest/15 rounded-xl focus:ring-2 focus:ring-forest focus:border-transparent outline-none transition-all text-forest text-[16px] appearance-none"
                   >
                     <option value="minimal">Minimal resistance training</option>
-                    <option value="moderate">2 × 30-minute resistance sessions per week</option>
+                    <option value="moderate">1–2 steady resistance sessions per week</option>
                     <option value="high">3+ progressive strength sessions per week</option>
                   </select>
                   <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-forest/55">

@@ -109,7 +109,7 @@ export const Toolkit: React.FC = () => {
 
   const valueStackItems = [
     {
-      name: "The 30-Minute Sarcopenia Shield (Home & Gym tracks with HD video demos)",
+      name: "The Joint-Friendly Strength Shield (Home & Gym tracks with HD video demos)",
       value: "$97"
     },
     {
@@ -321,7 +321,7 @@ export const Toolkit: React.FC = () => {
                   01 · RESISTANCE PROTOCOL
                 </span>
                 <h3 className="font-serif text-xl font-bold text-forest mb-3">
-                  The 30-Minute Sarcopenia Shield Routine
+                  The Joint-Friendly Strength Shield Routine
                 </h3>
                 <p className="text-sm text-forest/75 leading-relaxed">
                   Targeted 3-day and 4-day strength tracks designed to signal muscle preservation without draining your central nervous system. Clean, joint-safe compound templates with on-demand HD video form guides.
@@ -421,10 +421,10 @@ export const Toolkit: React.FC = () => {
             <div className="max-w-2xl mx-auto text-center">
               <Quote size={28} className="text-forest/25 mx-auto mb-4" />
               <blockquote className="text-forest/85 text-base sm:text-lg leading-relaxed italic mb-4">
-                "Hayden has adapted and changed the way I train to meet the changes in my body and health. His personal care, commitment, and expertise is equal to any health professional and has been an invaluable investment in my wellbeing."
+                "I've been training with Hayden as my personal trainer for over 20 years now. Over the past two decades, Hayden has adapted and changed the way I train to meet the changes in my body and goals. His personal care, commitment, and expertise in the industry is equal to any health professional and has been an invaluable investment in my long-term wellbeing."
               </blockquote>
               <p className="font-serif font-bold text-forest text-sm">
-                — Jeff Kerkhofs, Long-Term Client (20+ Year Partnership)
+                — Jeff Kerkhofs, Verified Client · 20+ Year Partnership
               </p>
             </div>
 

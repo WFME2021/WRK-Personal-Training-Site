@@ -11,8 +11,8 @@ export const Services: React.FC = () => {
   return (
     <div className="bg-cream text-forest min-h-screen font-sans selection:bg-citron selection:text-forest pt-24 pb-12">
       <SeoHead
-        title="GLP-1 Fitness Coaching Programs | WRK Personal Training"
-        description="Compare our GLP-1 Fitness Coaching Programs. Choose between our in-person training in Christchurch or our comprehensive 12-week online coaching pathways."
+        title="Coaching & Programmes | WRK Personal Training"
+        description="Compare how we work together at WRK Personal Training—in-person coaching in Addington, Christchurch or 1:1 online coaching wherever you train."
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -20,20 +20,20 @@ export const Services: React.FC = () => {
         {/* Page Header */}
         <header className="text-center mb-20 max-w-4xl mx-auto">
           <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-6">
-            GLP-1 Fitness <span className="wrk-highlight">Coaching</span> Programs
+            Coaching &amp; <span className="wrk-highlight">Programmes</span>
           </h1>
           <h2 className="font-serif text-[24px] md:text-[28px] text-forest/80 mb-6">
-            Choose the level of support that fits your life.
+            Choose the level of support that fits your real week.
           </h2>
           <div className="text-[16px] md:text-[18px] leading-relaxed text-forest/80 space-y-6">
             <p>
-              You don't need more information. You need the right level of support.
+              You do not need more fitness noise. You need steady support that fits around work, family, and how your body actually feels.
             </p>
             <p>
-              Whether you want personalised coaching and accountability, face-to-face guidance, or a simple programme you can follow independently, WRK has an option to suit how you want to train.
+              Whether you want to train face-to-face in Addington, work together online from home, or follow a straightforward plan on your own, there is a sensible starting point here.
             </p>
             <p>
-              All WRK programmes are designed specifically for people using GLP-1 medications, with a focus on <strong className="text-forest">strength, muscle preservation, fitness and sustainable habits.</strong>
+              Every WRK programme is built around <strong className="text-forest">lasting strength, everyday energy, joint-friendly movement, and habits you can keep up</strong>—including dedicated support if you are on a GLP-1 medication.
             </p>
           </div>
         </header>
@@ -89,17 +89,17 @@ export const Services: React.FC = () => {
             
             <div className="mt-auto">
               <div className="bg-cream rounded-2xl p-6 border border-forest/15 mb-6">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Investment</p>
-                <p className="text-[24px] font-serif text-forest mb-3">$49 NZD / week</p>
+                <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Format</p>
+                <p className="text-[22px] font-serif text-forest mb-3">12-Week Guided Blocks</p>
                 <p className="text-[14px] text-forest/75 leading-relaxed">
-                  <strong className="text-forest font-medium">Best for:</strong> People who want personalised coaching and accountability while training independently.
+                  <strong className="text-forest font-medium">Best for:</strong> Adults who want personalised coaching and steady check-ins while training at home or a local gym. Weekly coaching options are talked through openly on your intro chat.
                 </p>
               </div>
               <Link 
-                to="/contact?interest=online"
+                to="/online"
                 className="inline-flex items-center justify-center w-full bg-forest hover:bg-forest-deep text-cream px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
               >
-                Enquire About Online Coaching
+                Explore 1:1 Online Coaching
               </Link>
             </div>
           </div>
@@ -143,17 +143,17 @@ export const Services: React.FC = () => {
             
             <div className="mt-auto">
               <div className="bg-cream rounded-2xl p-6 border border-forest/15 mb-6">
-                <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Investment</p>
-                <p className="text-[24px] font-serif text-forest mb-3">$89 NZD / week</p>
+                <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Format &amp; Hours</p>
+                <p className="text-[22px] font-serif text-forest mb-3">Addington Studio · Mon–Fri 6 AM – 2 PM</p>
                 <p className="text-[14px] text-forest/75 leading-relaxed">
-                  <strong className="text-forest font-medium">Best for:</strong> People who want the accountability and confidence that comes from having a coach beside them.
+                  <strong className="text-forest font-medium">Best for:</strong> Christchurch locals who want calm, hands-on coaching beside them without commercial gym crowds. Weekly options are discussed openly during our chat.
                 </p>
               </div>
               <Link 
-                to="/contact?interest=in-person"
+                to="/studio"
                 className="inline-flex items-center justify-center w-full bg-forest hover:bg-forest-deep text-cream px-6 py-4 rounded-xl font-medium transition-colors text-[16px]"
               >
-                Enquire About In-Person Coaching
+                Explore Addington Studio Coaching
               </Link>
             </div>
           </div>
@@ -175,7 +175,7 @@ export const Services: React.FC = () => {
               Not everyone needs ongoing coaching. If you're ready to take responsibility for your training but want a reliable structure to follow, the WRK GLP-1 Workout & Nutrition Toolkit gives you the foundations to get started.
             </p>
             <p className="text-[15px] md:text-[16px] leading-relaxed text-forest/80 mb-8">
-              You'll get simple 30-minute strength sessions for home or the gym, practical nutrition guidance and resources covering key areas such as protein, hydration and recovery.
+              You'll get straightforward, manageable strength sessions for home or the gym, practical nutrition guidance and resources covering key areas such as protein, hydration and recovery.
             </p>
 
             <div className="space-y-3">
@@ -184,7 +184,7 @@ export const Services: React.FC = () => {
                 {[
                   'Structured GLP-1-friendly strength workouts',
                   'Home and gym training options',
-                  'Simple 30-minute sessions',
+                  'Manageable strength sessions',
                   'Protein guidance',
                   'Nutrition resources',
                   'Hydration and recovery guidance',

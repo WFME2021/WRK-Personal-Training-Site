@@ -33,69 +33,69 @@ const DELIVERABLES = [
     icon: Dumbbell,
     title: '6 Weeks in the WRK App',
     description:
-      '3–4 sensible movement & maintenance sessions/week with video demos.',
+      '3–4 sensible movement & maintenance sessions a week with clear video demos so you never have to guess.',
   },
   {
     number: '02',
     icon: Route,
     title: 'Fill-In Holiday & Travel Sessions',
     description:
-      "Simple, low-equipment workouts for when you're away or gyms are closed.",
+      "Simple, low-equipment workouts you can knock out at a bach or hotel room when gyms are closed.",
   },
   {
     number: '03',
     icon: Utensils,
     title: 'Festive Food & BBQ Coping Guide',
     description:
-      'Guilt-free strategies for work dos, Christmas lunch, and summer BBQs.',
+      'Relaxed, guilt-free strategies for work dos, Christmas lunch, and Kiwi summer BBQs.',
   },
   {
     number: '04',
     icon: MessageSquareText,
-    title: 'Scheduled Weekly Guidance',
+    title: 'Weekly Check-In Notes From Hayden',
     description:
-      'Calm weekly focus notes from Hayden inside the app (distinct from 1:1 coaching).',
+      'Calm weekly focus notes from me inside the app to keep your head steady (separate from 1:1 coaching).',
   },
 ];
 
 const GREAT_FIT_ITEMS = [
-  'You are on a GLP-1 medication (or managing weight and energy) and want a calm, realistic plan to stay steady from 30 November to 8 January.',
-  'You want workouts built around movement and maintenance rather than high-pressure training.',
+  'You are on a GLP-1 medication (or keeping weight and energy steady) and want a calm, realistic plan from 30 November to 8 January.',
+  'You want workouts built around keeping your body moving and feeling good rather than high-pressure training.',
   'You want practical coping tools for Christmas gatherings and summer travel without strict food rules.',
-  'You are happy following a guided cohort plan inside the WRK app with gym or basic home gear.',
+  'You are happy following a guided cohort plan inside the WRK app using gym or basic home gear.',
 ];
 
 const LOOK_ELSEWHERE_ITEMS = [
   'You are looking for an intense pre-summer "shred" or aggressive strength-gain block.',
-  'You need individualised injury rehabilitation, ACC recovery, or bespoke 1:1 coaching.',
-  'You are looking for medical dosing advice or an individual clinical dietetic prescription.',
+  'You need hands-on injury rehabilitation, ACC recovery, or tailored 1:1 coaching.',
+  'You are looking for medical dosing advice or an individual dietetic prescription.',
 ];
 
 const FAQS: FaqItem[] = [
   {
     question: 'What are the workouts like? Do I need to lift heavy?',
     answer:
-      "No. The focus is on sustainable movement, joint-friendly resistance, and maintaining the muscle and energy you've built—capped at 3 to 4 manageable sessions per week, with options for both the gym and at home.",
+      "Not at all. The goal here is keeping your joints happy, hanging onto the muscle and energy you've built, and staying in a steady rhythm—3 to 4 manageable sessions a week, with both gym and at-home options.",
   },
   {
     question: 'How does the Festive Food & BBQ Coping Guide work?',
     answer:
-      'Instead of a rigid diet, you get practical coping strategies for real Kiwi summer events—how to pace meals when appetite is low, prioritise protein comfortably at BBQs and Christmas lunch, and let go of the "all-or-nothing" mindset. (General everyday nutrition guidance only—not an individual clinical prescription.)',
+      'Instead of handing you a strict meal plan nobody wants to follow in December, you get practical ways to handle real Kiwi summer events—how to pace smaller meals when appetite is low, comfortably get enough protein at a BBQ or Christmas lunch, and ditch the "all-or-nothing" mindset. (General everyday guidance only—never medical or dietetic advice.)',
   },
   {
     question: "What if I'm away over Christmas and New Year?",
     answer:
-      'We include fill-in holiday break workouts that need minimal or no equipment, so you can keep your movement habit ticking over wherever you are.',
+      'We have simple fill-in travel sessions tucked right inside the app that need minimal or zero gear, so you can keep ticking over wherever summer takes you.',
   },
   {
-    question: 'Is this personalised 1:1 coaching or medical advice?',
+    question: 'Is this 1:1 personal coaching or medical advice?',
     answer:
-      "No—Summer Momentum is a guided 6-week cohort with scheduled weekly notes from Hayden. Always follow your prescribing clinician's advice regarding your GLP-1 medication.",
+      "No—Summer Momentum is a guided 6-week group intake with weekly group focus notes from me inside the app. Any medical questions or medication changes always stay with your prescribing doctor.",
   },
   {
     question: 'What happens after 8 January?',
     answer:
-      "When the 6 weeks wrap up, you'll have the option to step smoothly into one of WRK's self-guided training plans or 1:1 coaching if you want to build further in the new year.",
+      "Once the 6 weeks wrap up, you'll be rolling smoothly into January without the usual New Year panic—and you can choose to continue with a self-guided plan or chat with me about 1:1 coaching if you'd like more hands-on support.",
   },
 ];
 
@@ -159,12 +159,12 @@ export const SummerMomentum: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="font-serif text-[28px] sm:text-4xl lg:text-5xl text-forest tracking-tight leading-[1.12] text-balance mb-1.5 sm:mb-3">
-              Heading into the holidays on a GLP-1?
+            <h1 className="font-serif text-[28px] sm:text-4xl lg:text-5xl text-forest tracking-tight leading-[1.12] text-balance mb-2 sm:mb-3">
+              Heading into Christmas on a GLP-1? Let's take the stress out of December.
             </h1>
 
-            <p className="text-forest/85 text-sm sm:text-lg leading-snug sm:leading-relaxed max-w-xl">
-              Stay steady, enjoy the season, and stop worrying about going backwards.
+            <p className="text-forest/85 text-sm sm:text-base lg:text-lg leading-snug sm:leading-relaxed max-w-xl">
+              Six weeks of manageable movement, maintaining what you've built, and practical ways to enjoy Christmas lunch and summer BBQs without worrying about going backwards.
             </p>
           </div>
 
@@ -248,7 +248,7 @@ export const SummerMomentum: React.FC = () => {
             December isn't the time for willpower battles or chasing PBs.
           </h2>
           <p className="text-forest/85 text-base md:text-lg leading-relaxed">
-            When you're using a GLP-1 medication alongside your doctor, six weeks of work dos, Christmas lunches, and summer travel can make staying on track feel overwhelming. Summer Momentum removes the pressure of "going backwards"—giving you simple, repeatable movement and calm festive strategies so you arrive in mid-January feeling steady and in control.
+            Between work dos, family lunches, fluctuating appetite, and six weeks of disrupted routines, it's completely normal to feel a bit anxious about losing your footing. Summer Momentum is your calm middle ground: 3–4 realistic sessions a week, simple travel workouts for when you're away, and our Festive Food &amp; BBQ Coping Guide so you enjoy summer and roll into mid-January feeling steady.
           </p>
         </div>
       </section>
@@ -454,10 +454,10 @@ export const SummerMomentum: React.FC = () => {
             6 WEEKS (30 NOV – 8 JAN) · $149 NZD ONE-OFF
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-cream tracking-tight text-balance">
-            Take the guesswork—and the anxiety—out of the next six weeks.
+            Enjoy December without the usual holiday guilt.
           </h2>
           <p className="text-cream/85 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            Sustainable 3–4 session/week movement in the WRK app plus our Festive Food &amp; BBQ Coping Guide. Enrolments close Sunday 29 November at 8:00 PM.
+            3–4 realistic sessions a week in the WRK app plus our Festive Food &amp; BBQ Coping Guide. Enrolments close Sunday 29 November at 8:00 PM.
           </p>
 
           <div className="pt-2 flex flex-col items-center gap-4">
@@ -487,7 +487,7 @@ export const SummerMomentum: React.FC = () => {
               to="/book"
               className="inline-flex items-center text-sm font-medium text-cream/90 hover:text-citron transition-colors pt-1"
             >
-              Have a quick question first? Send Hayden a message →
+              Got a quick question before joining? Send me a message →
             </Link>
           </div>
         </div>

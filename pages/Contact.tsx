@@ -68,15 +68,15 @@ export const Contact: React.FC = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact a GLP-1 Fitness Coach | WRK Personal Training",
+    "name": "Book a Relaxed 15-Minute Chat | WRK Personal Training",
     "url": "https://wrkpersonaltraining.co.nz/contact",
-    "description": "Secure communication hub for medical weight loss fitness coaching enquiries, GLP-1 patient exercise support, and clinical patient referrals in Christchurch, New Zealand and worldwide.",
+    "description": "Have a relaxed 15-minute chat with Hayden Richards at WRK Personal Training in Addington, Christchurch or online across New Zealand.",
     "mainEntity": {
-      "@type": "ExerciseAndDietAndNutritionService",
+      "@type": "HealthAndFitnessBusiness",
       "name": "WRK Personal Training",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "12 Show Place, Addington",
+        "streetAddress": "1/12 Show Place, Addington",
         "addressLocality": "Christchurch",
         "addressRegion": "Canterbury",
         "postalCode": "8024",
@@ -95,79 +95,79 @@ export const Contact: React.FC = () => {
   return (
     <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
       <SeoHead 
-        title="Contact a GLP-1 Fitness Coach | Christchurch, New Zealand | WRK"
-        description="Contact a GLP-1 Fitness Coach today to discuss your medical weight loss journey, ask questions about our 12-week muscle preservation pathways, or book a consultation in Christchurch."
+        title="Book a Relaxed 15-Minute Chat | WRK Personal Training Christchurch"
+        description="Have a quick, zero-pressure 15-minute chat with Hayden about 1:1 studio coaching in Addington, online coaching, or where to start."
         schema={schema}
       />
       
       {/* 1. Masthead Header */}
-      <section className="bg-cream pt-14 pb-12 px-6 max-w-4xl mx-auto text-center">
-        <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold mb-4">
-          TAKE THE NEXT STEP WHENEVER YOU ARE READY
+      <section className="bg-cream pt-10 md:pt-14 pb-10 px-6 max-w-4xl mx-auto text-center">
+        <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest/75 font-semibold mb-4">
+          ADDINGTON STUDIO &amp; ONLINE · ZERO SALES PITCH
         </p>
         
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6 leading-tight">
-          Contact a GLP-1 Fitness <span className="italic text-forest">Coach.</span>
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6 leading-tight text-balance">
+          Let's have a relaxed 15-minute chat.
         </h1>
         
-        <p className="text-forest/80 max-w-2xl mx-auto text-base sm:text-lg mb-4 leading-relaxed">
-          You don't have to navigate this chapter of your health journey alone. Whether you have a quick question about our tools or want to explore 1-on-1 coaching, we're here to listen.
+        <p className="text-forest/85 max-w-2xl mx-auto text-base sm:text-lg mb-4 leading-relaxed">
+          Think of this like grabbing a quick coffee—no sales pitch, no pressure, and no awkwardness. Tell me what you're working around, what you've tried before, and what you'd love to feel capable of doing, and I'll give you an honest steer on the smartest place to start.
         </p>
       </section>
 
       {/* 2. 2-Column Consultation Split */}
-      <section className="py-12 px-6 max-w-6xl mx-auto">
+      <section className="py-10 px-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: High-Trust Context & Reassurance (5 cols) */}
+          {/* Left Column: Warm Context & Reassurance (5 cols) */}
           <div className="lg:col-span-5 bg-quiet rounded-3xl p-8 sm:p-10 border border-forest/15 shadow-sm space-y-8">
             <div>
-              <span className="text-xs uppercase tracking-widest text-forest font-semibold block mb-2">
-                PERSONAL GUIDANCE
+              <span className="text-xs uppercase tracking-widest text-forest/75 font-semibold block mb-2">
+                WHAT TO EXPECT
               </span>
               <h2 className="font-serif text-2xl text-forest leading-snug">
-                A Confidential, Low-Stress Conversation
+                Just a normal conversation, straight to Hayden.
               </h2>
             </div>
 
-            <div className="space-y-6 text-sm text-forest/80">
+            <div className="space-y-6 text-sm text-forest/85">
               <div>
                 <span className="font-semibold text-forest block mb-1">
-                  Prompt Response Within 24–48 Hours
+                  Replies Within 24–48 Hours
                 </span>
                 <p className="leading-relaxed">
-                  We read every inquiry carefully and will reach out via email for an unhurried, supportive conversation to discuss your routine, assess your timeline, and explore whether our coaching is the right fit.
+                  I coach on the gym floor Monday to Friday from 6:00 AM to 2:00 PM (so I'm wrapped up in time for the 3:00 PM school pickup), and I read every message personally after sessions.
                 </p>
               </div>
 
               <div>
                 <span className="font-semibold text-forest block mb-1">
-                  No Fitness Prerequisites
+                  You Don't Need to “Get Fit First”
                 </span>
                 <p className="leading-relaxed">
-                  You do not need to be in shape to start. Our practice is built around gentle, low-stress movement calibrated to where you are today.
+                  Whether you haven't stepped into a gym in ten years, are looking after sore knees, or are using a GLP-1 medication and want to hang onto your muscle—we start right where you are today.
                 </p>
               </div>
 
               <div>
                 <span className="font-semibold text-forest block mb-1">
-                  Local & Global Coaching
+                  Quiet Addington Space &amp; Online Across NZ
                 </span>
                 <p className="leading-relaxed">
-                  In-person sessions delivered at 12 Show Place, Addington. Dedicated on-site parking available. Comprehensive online coaching delivered worldwide.
+                  In-person sessions happen inside Get Me Fitter (1/12 Show Place, Addington) with free parking right outside. Online coaching runs wherever you train via the WRK app.
                 </p>
               </div>
             </div>
 
             <div className="border-t border-forest/15 pt-6 flex items-center gap-3 text-xs text-forest/75">
               <Lock size={15} className="text-forest shrink-0" />
-              <span>100% Confidential · Handled with clinical privacy.</span>
+              <span>Private &amp; personal—your details go straight to Hayden and nowhere else.</span>
             </div>
 
             {/* Facility location card */}
-            <div className="bg-cream p-5 rounded-2xl border border-forest/15 text-xs text-forest/80 space-y-1">
-              <span className="font-semibold text-forest block">Christchurch In-Person Location:</span>
-              <p>12 Show Place, Addington, Christchurch 8024. Dedicated on-site parking available.</p>
+            <div className="bg-cream p-5 rounded-2xl border border-forest/15 text-xs text-forest/85 space-y-1">
+              <span className="font-semibold text-forest block">Addington Studio Location:</span>
+              <p>1/12 Show Place, Addington (inside Get Me Fitter), Christchurch 8024. Easy on-site parking outside the door.</p>
             </div>
 
             <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden border border-forest/15 shadow-sm mt-6">
@@ -182,14 +182,14 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: The Elevated Consultation Form (7 cols) */}
+          {/* Right Column: The Consultation Form (7 cols) */}
           <div className="lg:col-span-7 bg-quiet rounded-3xl p-8 sm:p-12 border border-forest/15 shadow-sm">
             <div className="mb-8">
               <h3 className="font-serif text-2xl text-forest mb-2 font-bold tracking-tight">
-                Let’s Connect & Map Your Routine
+                Tell Me Briefly Where You're At
               </h3>
-              <p className="text-xs text-forest/70">
-                Fill out the brief fields below to give us context on your current routine.
+              <p className="text-xs sm:text-sm text-forest/75">
+                Drop your details below and I'll email you back to line up a quick, no-pressure 15-minute chat.
               </p>
             </div>
 
@@ -199,10 +199,10 @@ export const Contact: React.FC = () => {
                   <CheckCircle2 size={32} />
                 </div>
                 <h3 className="font-serif text-2xl text-forest font-bold">
-                  Inquiry Received
+                  Message Sent — Thanks!
                 </h3>
-                <p className="text-sm text-forest/75 max-w-md mx-auto leading-relaxed">
-                  Thank you for reaching out. Hayden will review your notes and reply personally to your email within 24–48 hours.
+                <p className="text-sm text-forest/80 max-w-md mx-auto leading-relaxed">
+                  Got it, thank you. I'll look over your notes after my sessions and reply to your email within 24–48 hours so we can find a time for a quick chat.
                 </p>
               </div>
             ) : (
@@ -211,7 +211,7 @@ export const Contact: React.FC = () => {
                 {/* Full Name */}
                 <div>
                   <label htmlFor="name" className="text-xs uppercase tracking-wider font-semibold text-forest/80 mb-2 block">
-                    Full Name *
+                    First &amp; Last Name *
                   </label>
                   <input
                     type="text"
@@ -219,7 +219,7 @@ export const Contact: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Enter your full name"
+                    placeholder="Enter your name"
                     className="w-full bg-cream border border-forest/15 rounded-xl px-4 py-3.5 text-sm text-forest placeholder:text-forest/45 focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all mb-6"
                   />
                 </div>
@@ -235,15 +235,15 @@ export const Contact: React.FC = () => {
                     required
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="you@example.com"
+                    placeholder="you@example.co.nz"
                     className="w-full bg-cream border border-forest/15 rounded-xl px-4 py-3.5 text-sm text-forest placeholder:text-forest/45 focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all mb-6"
                   />
                 </div>
 
-                {/* Current Phase */}
+                {/* What Best Describes You */}
                 <div>
                   <label htmlFor="phase" className="text-xs uppercase tracking-wider font-semibold text-forest/80 mb-2 block">
-                    Current Phase *
+                    What Best Describes Right Now? *
                   </label>
                   <div className="relative mb-6">
                     <select
@@ -253,11 +253,13 @@ export const Contact: React.FC = () => {
                       onChange={e => setFormData({ ...formData, phase: e.target.value })}
                       className="w-full bg-cream border border-forest/15 rounded-xl px-4 py-3.5 text-sm text-forest appearance-none focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all cursor-pointer"
                     >
-                      <option value="" disabled>Select your current phase...</option>
-                      <option value="I am currently in the active weight loss phase">I am currently in the active weight loss phase</option>
-                      <option value="I am preparing to transition/wean off medication">I am preparing to transition/wean off medication</option>
-                      <option value="I am post-medication and looking to maintain my habits">I am post-medication and looking to maintain my habits</option>
-                      <option value="General personal training enquiry">General personal training enquiry</option>
+                      <option value="" disabled>Pick the closest option...</option>
+                      <option value="Looking to build strength & confidence in my 40s/50s+">Looking to build strength &amp; confidence in my 40s/50s+</option>
+                      <option value="Getting started again after a break or injury">Getting started again after a break or injury</option>
+                      <option value="Currently on a GLP-1 medication and wanting to protect muscle">Currently on a GLP-1 medication and wanting to protect muscle</option>
+                      <option value="Stepping off GLP-1 medication and wanting steady habits">Stepping off GLP-1 medication and wanting steady habits</option>
+                      <option value="Interested in 1:1 Studio Coaching (Addington) or Online Coaching">Interested in 1:1 Studio Coaching (Addington) or Online Coaching</option>
+                      <option value="General personal training enquiry">Just a quick question about coaching or plans</option>
                     </select>
                     <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-forest/50">
                       <ChevronDown size={16} />
@@ -268,7 +270,7 @@ export const Contact: React.FC = () => {
                 {/* Primary Goal */}
                 <div>
                   <label htmlFor="goal" className="text-xs uppercase tracking-wider font-semibold text-forest/80 mb-2 block">
-                    Primary Goal *
+                    What Would You Most Like Help With? *
                   </label>
                   <div className="relative mb-6">
                     <select
@@ -278,10 +280,11 @@ export const Contact: React.FC = () => {
                       onChange={e => setFormData({ ...formData, goal: e.target.value })}
                       className="w-full bg-cream border border-forest/15 rounded-xl px-4 py-3.5 text-sm text-forest appearance-none focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all cursor-pointer"
                     >
-                      <option value="" disabled>Select your primary goal...</option>
-                      <option value="Protecting my lean muscle and physical strength">Protecting my lean muscle and physical strength</option>
-                      <option value="Managing my daily gym energy and hydration habits">Managing my daily gym energy and hydration habits</option>
-                      <option value="Building a sustainable, long-term exercise routine">Building a sustainable, long-term exercise routine</option>
+                      <option value="" disabled>Pick your main focus...</option>
+                      <option value="Building a sustainable, long-term exercise routine">Building a steady 3–4 day/week routine I can actually stick with</option>
+                      <option value="Joint-friendly strength & feeling better in everyday life">Joint-friendly strength &amp; feeling better in everyday life</option>
+                      <option value="Protecting my lean muscle and physical strength">Protecting my muscle, strength, and steady energy</option>
+                      <option value="Simple everyday protein and hydration habits">Simple everyday protein and eating habits (without strict diets)</option>
                     </select>
                     <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-forest/50">
                       <ChevronDown size={16} />
@@ -289,16 +292,16 @@ export const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Journey Message */}
+                {/* Message */}
                 <div>
                   <label htmlFor="message" className="text-xs uppercase tracking-wider font-semibold text-forest/80 mb-2 block">
-                    Tell us a little bit about your journey so far (Optional)
+                    Anything You'd Like Me to Know Before We Chat (Optional)
                   </label>
                   <textarea
                     id="message"
                     value={formData.message}
                     onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Share any thoughts, current medications, past exercise experience, or specific questions..."
+                    placeholder="Old injuries you're working around, times of day that suit you, what you've tried before, or any questions..."
                     className="w-full bg-cream border border-forest/15 rounded-xl px-4 py-3.5 text-sm text-forest placeholder:text-forest/45 focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all mb-6 h-32 resize-none"
                   ></textarea>
                 </div>
@@ -313,11 +316,11 @@ export const Contact: React.FC = () => {
                   disabled={status === 'submitting'}
                   className="bg-citron text-forest hover:brightness-95 border border-forest/20 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-all shadow-xs disabled:opacity-50"
                 >
-                  {status === 'submitting' ? 'Sending Message...' : 'Send Consultation Inquiry →'}
+                  {status === 'submitting' ? 'Sending to Hayden...' : 'Send Message & Line Up a Chat →'}
                 </button>
 
-                <p className="text-[11px] text-forest/60 text-center mt-4 block">
-                  Your health privacy is paramount. Information is never shared.
+                <p className="text-[11px] text-forest/65 text-center mt-4 block">
+                  No mailing list spam and zero obligation—just a direct reply from Hayden.
                 </p>
 
               </form>
@@ -330,7 +333,7 @@ export const Contact: React.FC = () => {
       {/* 3. Quick Questions Accordion */}
       <section className="max-w-3xl mx-auto px-6 py-16 border-t border-forest/10 mt-12">
         <h2 className="font-serif text-2xl text-center text-forest mb-8 tracking-tight font-bold">
-          Frequently Asked Questions
+          Quick Questions Before Messaging
         </h2>
 
         <div className="space-y-4">
@@ -342,12 +345,12 @@ export const Contact: React.FC = () => {
               onClick={() => toggleFaq(0)}
               className="w-full text-left p-5 sm:p-6 flex items-center justify-between font-serif text-lg text-forest hover:text-forest/80 transition-colors"
             >
-              <span className="font-medium pr-4">When will I hear back?</span>
+              <span className="font-medium pr-4">What happens during the 15-minute chat?</span>
               {openFaq === 0 ? <ChevronUp size={18} className="text-forest shrink-0" /> : <ChevronDown size={18} className="text-forest/50 shrink-0" />}
             </button>
             {openFaq === 0 && (
               <div className="px-5 sm:px-6 pb-6 pt-3 text-sm text-forest/80 leading-relaxed border-t border-forest/10">
-                We read every inquiry carefully and will reach out via email for an unhurried, supportive conversation to discuss your routine, assess your timeline, and explore whether our coaching is the right fit.
+                Honestly, it's just like having a quick coffee. You tell me what you're working around and what you'd like to feel capable of doing, I answer any questions about how studio coaching, online coaching, or app plans work, and you decide in your own time whether it feels right.
               </div>
             )}
           </div>
@@ -359,12 +362,12 @@ export const Contact: React.FC = () => {
               onClick={() => toggleFaq(1)}
               className="w-full text-left p-5 sm:p-6 flex items-center justify-between font-serif text-lg text-forest hover:text-forest/80 transition-colors"
             >
-              <span className="font-medium pr-4">Do I need to be in great shape to start?</span>
+              <span className="font-medium pr-4">Do I need to be in good shape before getting in touch?</span>
               {openFaq === 1 ? <ChevronUp size={18} className="text-forest shrink-0" /> : <ChevronDown size={18} className="text-forest/50 shrink-0" />}
             </button>
             {openFaq === 1 && (
               <div className="px-5 sm:px-6 pb-6 pt-3 text-sm text-forest/80 leading-relaxed border-t border-forest/10">
-                Not at all. Our entire practice is built around gentle, low-stress movement patterns that meet your body exactly where it is today.
+                Not at all. Most people who reach out haven't trained consistently in years or are feeling stiff and worn down. Everything we do is scaled calmly to where your body is today.
               </div>
             )}
           </div>

@@ -10,20 +10,20 @@ export const OnlineCoaching: React.FC = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType: 'Online GLP-1 Fitness Coaching',
+    serviceType: '1:1 Online Strength & Habit Coaching',
     provider: {
       '@type': 'HealthAndFitnessBusiness',
       name: 'WRK Personal Training',
     },
     description:
-      'Specialist online fitness and nutrition coaching for GLP-1 patients in New Zealand and worldwide. Preserve lean muscle, simplify protein intake, and build lasting strength habits.',
+      'Personalised 1:1 online strength, movement, and everyday nutrition coaching with Hayden Richards in Christchurch, New Zealand. Built for busy adults, returners, and anyone protecting strength on a GLP-1.',
   };
 
   return (
     <>
       <SeoHead
-        title="Online GLP-1 Fitness Coach | Protect Muscle & Build Strength | WRK"
-        description="Specialist online fitness and nutrition coaching for GLP-1 patients in New Zealand and worldwide. Preserve lean muscle, simplify protein intake, and build lasting strength habits."
+        title="1:1 Online Coaching | WRK Personal Training NZ"
+        description="Personalised 1:1 online strength and habit coaching built around your real week, equipment, and energy—whether you are getting back into routine or protecting muscle on a GLP-1."
         schema={schema}
       />
       <OnlineCoachingClient />

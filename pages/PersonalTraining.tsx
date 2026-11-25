@@ -16,24 +16,28 @@ export const PersonalTraining: React.FC = () => {
 
   const faqs = [
     {
-      q: "Where is WRK Personal Training located?",
-      a: "Our private personal training studio is located in Addington, Christchurch. We offer one-on-one and semi-private coaching away from crowded commercial gyms."
+      q: "Where in Christchurch do you coach?",
+      a: "Our quiet space is at 1/12 Show Place in Addington (inside Get Me Fitter), with free on-site parking right outside the door. It's calm, friendly, and completely free of crowded commercial-gym energy."
     },
     {
-      q: "Do you offer nutrition coaching alongside training?",
-      a: "Yes. Every personal training membership includes comprehensive nutrition guidance, macronutrient targets, and habit tracking tailored to your specific body composition goals."
+      q: "What hours are you open for 1:1 sessions?",
+      a: "I coach Monday to Friday from 6:00 AM to 2:00 PM so I'm wrapped up in time for the 3:00 PM school pickup. That works great for early risers, shift workers, parents after drop-off, and people popping in around work."
     },
     {
-      q: "Do you support clients on GLP-1 medications or navigating menopause?",
-      a: "Yes. We specialize in evidence-based resistance training and high-protein nutrition strategies designed to preserve lean muscle tissue, enhance metabolic rate, and improve strength for clients on GLP-1s or managing midlife hormonal shifts."
+      q: "Do you help with food and everyday habits too?",
+      a: "Yes. We keep food practical—helping you hit simple protein, fibre, and hydration targets that suit your appetite and busy weekdays without rigid meal plans or calorie obsession."
     },
     {
-      q: "I'm completely new to lifting weights. Is this suitable for beginners?",
-      a: "Absolutely. Most of our clients are not gym veterans. Because our facility is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
+      q: "Do you coach clients on GLP-1 medications or in their 40s and 50s?",
+      a: "Yes—both make up a big part of who I work with. We focus on joint-friendly resistance training so you keep hold of strength, muscle, and steady energy while staying within a safe personal training lane alongside your doctor."
     },
     {
-      q: "What happens during the initial consultation?",
-      a: "We meet at the Addington facility for a relaxed, 20-minute chat. We discuss your background, health goals, take a quick look at movement mechanics, and decide together if the setup is the right fit for you."
+      q: "I haven't lifted weights in years. Will I feel out of place?",
+      a: "Not for a second. Almost nobody I coach is a gym veteran. Because the space is quiet and private, we learn movements at your pace with zero judgement."
+    },
+    {
+      q: "What happens if I come in for a quick studio chat first?",
+      a: "Think of it like grabbing a quick coffee at 12 Show Place. You have a look around, tell me what you're working around, we check how a couple of basic movements feel, and you go away with zero pressure to sign anything on the spot."
     }
   ];
 
@@ -43,13 +47,12 @@ export const PersonalTraining: React.FC = () => {
       "@type": "ExerciseGym",
       "name": "WRK Personal Training",
       "image": "https://www.wrkpersonaltraining.co.nz/logo.png",
-      "url": "https://www.wrkpersonaltraining.co.nz/personal-training",
+      "url": "https://www.wrkpersonaltraining.co.nz/studio",
       "telephone": "+64-21-393-160",
       "email": "info@wrkpersonaltraining.co.nz",
-      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "1/12 Show Place, Addington (located inside Get Me Fitter)",
+        "streetAddress": "1/12 Show Place, Addington (inside Get Me Fitter)",
         "addressLocality": "Christchurch",
         "addressRegion": "Canterbury",
         "postalCode": "8024",
@@ -65,13 +68,7 @@ export const PersonalTraining: React.FC = () => {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "06:00",
-          "closes": "20:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday"],
-          "opens": "07:00",
-          "closes": "13:00"
+          "closes": "14:00"
         }
       ],
       "areaServed": [
@@ -113,53 +110,19 @@ export const PersonalTraining: React.FC = () => {
         "@type": "City",
         "name": "Christchurch"
       },
-      "description": "Semi-Private 1-on-1 personal training in Addington, Christchurch. Evidence-based coaching, zero gym crowds, and specialist GLP-1 muscle preservation."
+      "description": "1:1 Personal Training in a quiet Addington, Christchurch studio. Calm, joint-friendly strength coaching with zero gym crowds."
     },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Where is WRK Personal Training located?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our private personal training studio is located in Addington, Christchurch. We offer one-on-one and semi-private coaching away from crowded commercial gyms."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer nutrition coaching alongside training?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Every personal training membership includes comprehensive nutrition guidance, macronutrient targets, and habit tracking tailored to your specific body composition goals."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you support clients on GLP-1 medications or navigating menopause?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We specialize in evidence-based resistance training and high-protein nutrition strategies designed to preserve lean muscle tissue, enhance metabolic rate, and improve strength for clients on GLP-1s or managing midlife hormonal shifts."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "I'm completely new to lifting weights. Is this suitable for beginners?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolutely. Most of our clients are not gym veterans. Because our facility is semi-private, you learn the foundations of movement and lifting mechanics in a calm, zero-judgment space at your own pace."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens during the initial consultation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We meet at the Addington facility for a relaxed, 20-minute chat. We discuss your background, health goals, take a quick look at movement mechanics, and decide together if the setup is the right fit for you."
-          }
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
         }
-      ]
+      }))
     }
   ];
 
@@ -185,17 +148,17 @@ export const PersonalTraining: React.FC = () => {
       <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
         
         {/* 1. Hero Section */}
-        <section className="bg-cream pt-14 pb-16 px-6 max-w-5xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold mb-4">
+        <section className="bg-cream pt-10 md:pt-14 pb-12 px-6 max-w-5xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest/75 font-semibold mb-4">
             1/12 SHOW PLACE · ADDINGTON, CHRISTCHURCH
           </p>
           
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6">
-            Personal Trainer Christchurch <span className="block sm:inline italic text-forest/90">· Semi-Private Coaching</span>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6 text-balance">
+            1:1 Studio Coaching <span className="block sm:inline italic text-forest/90">in Addington.</span>
           </h1>
           
-          <p className="text-forest/80 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Skip crowded Christchurch gyms. Train in our quiet Addington studio with joint-safe, coach-led strength training. Free on-site parking. Book a consult.
+          <p className="text-forest/85 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
+            Skip the noisy commercial gyms. Train face-to-face with Hayden in a quiet Addington space—Mon–Fri, 6:00 AM to 2:00 PM—with free parking right outside the door.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -203,23 +166,23 @@ export const PersonalTraining: React.FC = () => {
               href="#book-consult"
               className="bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-all shadow-sm"
             >
-              Book a Free Consultation
+              Come Have a Look Around →
             </a>
             <a
               href="#location"
               className="bg-cream border border-forest/25 text-forest hover:bg-quiet px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors"
             >
-              View Facility & Location
+              See Addington Location
             </a>
           </div>
           
-          {/* Trust Pills */}
-          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 mt-8 text-xs text-forest/75">
-            <span className="flex items-center">✓ Semi-private boutique facility (no crowds)</span>
-            <span className="hidden sm:inline text-forest/30">•</span>
-            <span className="flex items-center">✓ Evidence-based muscle defence</span>
-            <span className="hidden sm:inline text-forest/30">•</span>
-            <span className="flex items-center">✓ Dedicated on-site parking</span>
+          {/* Clean Trust Strip */}
+          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 mt-8 text-xs text-forest/80">
+            <span>✓ Quiet space (no crowds or mirrors)</span>
+            <span className="hidden sm:inline text-forest/30">·</span>
+            <span>✓ Joint-friendly coaching with Hayden</span>
+            <span className="hidden sm:inline text-forest/30">·</span>
+            <span>✓ Easy parking outside the door</span>
           </div>
         </section>
 
@@ -229,15 +192,16 @@ export const PersonalTraining: React.FC = () => {
             <img 
               src="https://i.postimg.cc/kMshn8rN/Screen-Shot-2026-06-23-at-2-10-37-PM.png" 
               alt="Personal training client coaching in quiet Addington studio" 
+              referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/85 via-forest/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-cream">
               <span className="text-xs uppercase tracking-widest font-semibold text-citron block mb-1">
-                ADDINGTON FACILITY · CHRISTCHURCH
+                ADDINGTON STUDIO · CHRISTCHURCH
               </span>
               <p className="font-serif text-lg sm:text-xl text-cream max-w-xl">
-                A calm, private environment designed for focused movement and sustainable progress.
+                A calm, friendly room where nobody is staring at you and you never wait for equipment.
               </p>
             </div>
           </div>
@@ -247,66 +211,66 @@ export const PersonalTraining: React.FC = () => {
         <section className="bg-quiet py-16 px-6 border-y border-forest/10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <span className="text-xs uppercase tracking-widest font-semibold text-forest block mb-2">
-                THE BOUTIQUE EXPERIENCE
+              <span className="text-xs uppercase tracking-widest font-semibold text-forest/75 block mb-2">
+                WHAT IT FEELS LIKE HERE
               </span>
               <h2 className="font-serif text-3xl text-forest">
-                Expert Hands-On Coaching. Zero Intimidation.
+                Hands-On Coaching. Zero Intimidation.
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
-              <div className="bg-cream rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="bg-cream rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-quiet border border-forest/10 text-forest flex items-center justify-center mb-4">
                     <Shield size={20} />
                   </div>
                   <h3 className="font-serif text-xl font-bold text-forest mb-3">
-                    A Low-Key, Welcoming Space
+                    A Low-Key, Friendly Room
                   </h3>
-                  <p className="text-sm text-forest/80 leading-relaxed">
-                    You will share the floor with only a handful of adults focused on their own routines—no crowds, no posturing, and no waiting for equipment while we focus entirely on your session.
+                  <p className="text-sm text-forest/85 leading-relaxed">
+                    Just normal adults getting on with their week—no blaring music, no gym posturing, and no waiting around for gear while we focus on your session.
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
-                  Semi-private facility · Addington
+                  Inside Get Me Fitter · Addington
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="bg-cream rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="bg-cream rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-quiet border border-forest/10 text-forest flex items-center justify-center mb-4">
                     <Dumbbell size={20} />
                   </div>
                   <h3 className="font-serif text-xl font-bold text-forest mb-3">
-                    Precision Real-Time Feedback
+                    Tweaks Right When You Need Them
                   </h3>
-                  <p className="text-sm text-forest/80 leading-relaxed">
-                    Every rep, tempo, and movement is calibrated face-to-face to safeguard joint longevity and ensure proper execution.
+                  <p className="text-sm text-forest/85 leading-relaxed">
+                    A shoulder feels pinch-y? A knee is stiff from gardening? We adjust grip, stance, or weight on the spot so exercises actually feel good on your joints.
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
-                  Technique mastery & safety
+                  Technique tailored to your body
                 </div>
               </div>
 
               {/* Card 3 */}
-              <div className="bg-cream rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="bg-cream rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-quiet border border-forest/10 text-forest flex items-center justify-center mb-4">
                     <Activity size={20} />
                   </div>
                   <h3 className="font-serif text-xl font-bold text-forest mb-3">
-                    Calibrated to Your Recovery
+                    Paced to How You're Feeling
                   </h3>
-                  <p className="text-sm text-forest/80 leading-relaxed">
-                    Whether managing joint stiffness or GLP-1 fatigue, your training volume matches your exact daily energy levels.
+                  <p className="text-sm text-forest/85 leading-relaxed">
+                    Whether you're managing low appetite on a GLP-1 or coming off a tiring work week, we scale the session so you walk out feeling energised—not flattened.
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
-                  Adaptive energy & biofeedback
+                  No burnout workouts
                 </div>
               </div>
             </div>
@@ -319,121 +283,117 @@ export const PersonalTraining: React.FC = () => {
         {/* 3. Core Focus Areas */}
         <section className="py-20 px-6 max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-widest font-semibold text-forest block mb-2">
-              OUR SPECIALTY
+            <span className="text-xs uppercase tracking-widest font-semibold text-forest/75 block mb-2">
+              WHAT WE WORK ON TOGETHER
             </span>
             <h2 className="font-serif text-3xl text-center text-forest tracking-tight">
-              Targeted In-Person Coaching
+              Three Things Every Studio Client Gets
             </h2>
-            <p className="text-sm text-forest/75 mt-2">
-              Three pillars designed to preserve strength and establish lifelong physical autonomy.
+            <p className="text-sm text-forest/80 mt-2">
+              Plain-English training that fits around your week outside the studio.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-forest bg-cream border border-forest/15 px-2.5 py-0.5 rounded inline-block mb-3">
-                  PILLAR 01
+                <span className="text-xs font-bold uppercase tracking-wider text-forest/70 block mb-3">
+                  01 · STRENGTH &amp; LONGEVITY
                 </span>
                 <h3 className="font-serif text-xl font-bold text-forest mb-3">
-                  GLP-1 Muscle Defence
+                  Everyday Capability
                 </h3>
-                <p className="text-sm text-forest/80 leading-relaxed">
-                  Target resistance sessions specifically structured to preserve metabolic rate and lean mass during rapid weight loss.
+                <p className="text-sm text-forest/85 leading-relaxed">
+                  Building solid leg, back, and core strength so carrying bags, climbing stairs, and staying active past 40 feel effortless rather than fragile.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
-                Safeguarding metabolic capacity
+                Practical compound patterns
               </div>
             </div>
 
-            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-forest bg-cream border border-forest/15 px-2.5 py-0.5 rounded inline-block mb-3">
-                  PILLAR 02
+                <span className="text-xs font-bold uppercase tracking-wider text-forest/70 block mb-3">
+                  02 · MUSCLE PROTECTION
                 </span>
                 <h3 className="font-serif text-xl font-bold text-forest mb-3">
-                  Foundational Strength
+                  Support Alongside GLP-1s
                 </h3>
-                <p className="text-sm text-forest/80 leading-relaxed">
-                  Build bone density and master compound mechanics (squats, hinges, presses) for everyday capability and joint health.
+                <p className="text-sm text-forest/85 leading-relaxed">
+                  When weight drops quickly, deliberate lifting gives your body a clear reason to keep hold of lean muscle while your doctor handles your care.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
-                Compound movement patterns
+                Keep the strength as the scale moves
               </div>
             </div>
 
-            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-quiet rounded-xl p-8 border border-forest/15 shadow-sm flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-forest bg-cream border border-forest/15 px-2.5 py-0.5 rounded inline-block mb-3">
-                  PILLAR 03
+                <span className="text-xs font-bold uppercase tracking-wider text-forest/70 block mb-3">
+                  03 · REAL-LIFE HABITS
                 </span>
                 <h3 className="font-serif text-xl font-bold text-forest mb-3">
-                  Real-Life Nutrition & Habits
+                  Simple Food &amp; App Support
                 </h3>
-                <p className="text-sm text-forest/80 leading-relaxed">
-                  Simple protein targets and daily habit systems that integrate seamlessly into busy Christchurch workdays.
+                <p className="text-sm text-forest/85 leading-relaxed">
+                  Easy protein and water anchors for busy Christchurch weekdays, plus clear solo workouts inside the WRK app for your other days.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-forest/10 text-xs text-forest/65">
-                Digestible protein & daily structure
+                Simple habits that stick
               </div>
             </div>
           </div>
         </section>
 
-        {/* 4. Studio Investment Card */}
+        {/* 4. Studio Experience Overview (No Public Per-Session Pricing) */}
         <section className="py-16 px-6 max-w-2xl mx-auto text-center">
-          <span className="text-xs uppercase tracking-widest text-forest font-semibold mb-2 block">
-            TRANSPARENT IN-PERSON COACHING
+          <span className="text-xs uppercase tracking-widest text-forest/75 font-semibold mb-2 block">
+            WHAT WEEKLY COACHING COVERS
           </span>
           <h2 className="font-serif text-3xl text-forest mb-8 tracking-tight">
-            Complete Coaching Experience
+            Inside Your Addington Coaching Setup
           </h2>
 
           <div className="bg-forest text-cream rounded-2xl p-8 sm:p-10 shadow-lg text-left relative overflow-hidden border border-forest-deep">
-            <span className="text-xs uppercase tracking-wider text-cream/90 mb-4 block font-medium">
-              📍 1/12 Show Place, Addington, Christchurch (inside Get Me Fitter)
+            <span className="text-xs uppercase tracking-wider text-cream/85 mb-3 block font-medium">
+              📍 1/12 Show Place, Addington (inside Get Me Fitter) · Mon–Fri, 6:00 AM – 2:00 PM
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl text-cream mb-4">
-              Weekly 1-on-1 In-Person Coaching & Muscle Defence System
+              1:1 Studio Coaching &amp; WRK App Plan
             </h3>
 
-            <div className="flex flex-wrap items-baseline gap-2 mb-2">
-              <span className="font-serif text-4xl sm:text-5xl font-bold text-cream">$89 NZD</span>
-              <span className="text-cream/80 text-sm">/ week</span>
-            </div>
-            <p className="text-xs text-cream/75 border-b border-cream/15 pb-6 mb-6">
-              Includes weekly facility coaching, custom home programming, and nutrition support.
+            <p className="text-sm text-cream/85 border-b border-cream/15 pb-6 mb-6 leading-relaxed">
+              Every setup starts with a relaxed 15-minute studio chat so we can figure out how many face-to-face sessions a week make sense for your schedule and budget.
             </p>
 
-            <ul className="space-y-3.5 my-8 text-cream/90 text-sm">
+            <ul className="space-y-3.5 my-6 text-cream/90 text-sm">
               <li className="flex items-start gap-3">
                 <Check className="w-4 h-4 text-citron shrink-0 mt-0.5" />
-                <span><strong>Weekly 1-on-1 In-Person Coaching Session:</strong> Hands-on joint alignment, loading mechanics, and real-time intensity calibration at our quiet Addington studio.</span>
+                <span><strong>Hands-On 1:1 Studio Coaching:</strong> Calm, joint-friendly technique coaching right beside you in Addington.</span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="w-4 h-4 text-citron shrink-0 mt-0.5" />
-                <span><strong>Full Independent WRK App Programming:</strong> Exactly what to do on your non-coaching days so you never guess sets, reps, or weights.</span>
+                <span><strong>WRK App Workouts for Your Other Days:</strong> Clear plans for home or your own gym so you know exactly what to do between studio sessions.</span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="w-4 h-4 text-citron shrink-0 mt-0.5" />
-                <span><strong>Digestible Protein & GI Fuelling Protocol:</strong> Practical daily targets built around nausea, early fullness, and appetite drops.</span>
+                <span><strong>Practical Everyday Food Anchors:</strong> Realistic protein, fibre, and hydration habits built around your appetite and family meals.</span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="w-4 h-4 text-citron shrink-0 mt-0.5" />
-                <span><strong>Boutique Studio Access:</strong> Calm, uncrowded space—no waiting for gear, free parking right outside the door.</span>
+                <span><strong>Easy Access &amp; Free Parking:</strong> Dedicated spaces right outside the door—zero CBD parking hassle.</span>
               </li>
             </ul>
 
-            <div className="pt-2">
+            <div className="pt-4">
               <a
                 href="#book-consult"
                 className="bg-citron text-forest hover:brightness-95 border border-forest/20 w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-all shadow-sm"
               >
-                Check Studio Availability & Book a 20-Min Consult →
+                Check Studio Availability &amp; Line Up a Chat →
               </a>
             </div>
           </div>
@@ -449,10 +409,10 @@ export const PersonalTraining: React.FC = () => {
               LOCATION
             </span>
             <h2 className="font-serif text-3xl text-forest mb-4 tracking-tight">
-              Train in the Heart of Addington
+              Easy to Get to in Addington
             </h2>
             <p className="text-forest/80 max-w-2xl mx-auto text-base mb-8 leading-relaxed">
-              Sessions are delivered in a calm, boutique setting at 12 Show Place, Addington (located inside Get Me Fitter) — an uncrowded space with dedicated on-site parking and zero commercial gym posturing.
+              We train out of a calm, quiet space at 1/12 Show Place in Addington (inside Get Me Fitter). There is parking right outside the door, no loud gym music blaring, and nobody hovering over the equipment.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-8">
@@ -472,10 +432,10 @@ export const PersonalTraining: React.FC = () => {
               <div className="bg-cream rounded-xl p-6 border border-forest/15 shadow-sm">
                 <div className="flex items-center gap-2 mb-2 text-forest">
                   <Compass size={18} />
-                  <span className="text-xs font-bold uppercase tracking-wider">Accessibility</span>
+                  <span className="text-xs font-bold uppercase tracking-wider">Getting Here</span>
                 </div>
                 <p className="text-sm text-forest/80 leading-relaxed">
-                  Minutes from Riccarton, Spreydon, Cashmere, Halswell, and Christchurch Central City.
+                  Minutes from Riccarton, Spreydon, Cashmere, Halswell, and central Christchurch—handy for a morning or early afternoon session.
                 </p>
               </div>
 
@@ -485,7 +445,7 @@ export const PersonalTraining: React.FC = () => {
                   <span className="text-xs font-bold uppercase tracking-wider">Parking</span>
                 </div>
                 <p className="text-sm text-forest/80 leading-relaxed">
-                  Easy on-site parking directly outside the facility doors.
+                  Free on-site parking directly outside the front door, so you are not circling the block before your session.
                 </p>
               </div>
             </div>
@@ -508,18 +468,18 @@ export const PersonalTraining: React.FC = () => {
         {/* 6. Starting Triage / Questionnaire Pre-Select */}
         <section className="py-16 px-6 max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-2xl md:text-3xl text-forest mb-4 tracking-tight">
-            Have a Question or Not Sure Where to Begin?
+            Not Quite Sure Where to Start?
           </h2>
           <p className="text-forest/80 text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
-            Select your situation and we will tailor our initial consult chat around your goals.
+            Pick whichever sounds closest to where you are at right now, and we will use that as the starting point for our chat.
           </p>
 
           <form onSubmit={handleTriageSubmit} className="space-y-3 text-left mb-8">
             {[
-              "I am taking GLP-1 medication and want to protect muscle & build strength",
-              "I am preparing to transition/wean off weight loss medication",
-              "I am looking for boutique 1-on-1 strength training (General Fitness)",
-              "I have a specific question about the Addington facility"
+              "I am on a GLP-1 medication and want to protect my strength and muscle",
+              "I am coming off weight loss medication and want steady habits to keep my strength",
+              "I just want calm, steady 1:1 strength coaching (general fitness or getting back into it)",
+              "I have a quick question about the Addington studio or session times"
             ].map((option, idx) => {
               const isSelected = phaseSelection === option;
               return (
@@ -551,7 +511,7 @@ export const PersonalTraining: React.FC = () => {
                 type="submit"
                 className="inline-flex items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/20 rounded-md px-8 py-3.5 text-xs uppercase tracking-wider font-semibold transition-all shadow-sm"
               >
-                Match My Programme & Book Consult → <ArrowRight size={15} className="ml-2" />
+                Line Up a Chat with Hayden <ArrowRight size={15} className="ml-2" />
               </button>
             </div>
           </form>

@@ -228,7 +228,7 @@ export const BlogPost: React.FC = () => {
                   to="/programs"
                   className="text-xs font-semibold text-forest hover:text-forest/75 uppercase tracking-wider inline-flex items-center gap-1 group"
                 >
-                  Explore Coaching Programs <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  See How We Work Together <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
