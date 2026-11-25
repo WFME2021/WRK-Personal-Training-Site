@@ -63,7 +63,7 @@ export const Home: React.FC = () => {
   const faqData = [
     {
       question: "Do I need to get fit first before starting?",
-      answer: "No—that is literally what coaching is for. Most people who walk into our Addington space haven't touched a dumbbell in years, or are coming back after an injury or busy season of life. We start right where you are today and build steadily from there."
+      answer: "No—that is literally what coaching is for. Most people who walk into our Addington space haven't touched a dumbbell in years, or are coming back after an injury or busy season of life. We start right where you are today and build consistently from there."
     },
     {
       question: "How many sessions a week do I actually need?",
@@ -241,7 +241,7 @@ export const Home: React.FC = () => {
               </div>
               <div className="pt-5 mt-6 border-t border-forest/10">
                 <Link
-                  to="/programs"
+                  to="/coaching"
                   className="inline-flex items-center text-xs sm:text-sm font-semibold text-forest hover:opacity-75 transition-opacity"
                 >
                   See how coaching works <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -398,7 +398,7 @@ export const Home: React.FC = () => {
               Hi, I'm Hayden. Let's keep this simple.
             </h2>
             <p className="text-forest/85 text-base md:text-lg leading-relaxed">
-              I've spent more than 20 years on the gym floor, and if there's one thing I've learned, it's that people don't fail because they're lazy—they quit because someone handed them an extreme plan built for a 22-year-old athlete with zero responsibilities. Between coaching in Addington (6 AM to 2 PM so I make the 3 PM school pickup) and weekends out in the hills or kicking a ball in the park with my kids, I know what real schedules look like. My job is to take the science of getting stronger and translate it into something you actually enjoy doing three or four times a week.
+              I've spent more than 20 years on the gym floor, and if there's one thing I've learned, it's that people rarely struggle because they lack effort—they struggle when someone hands them a generic plan designed for a full-time competitive athlete rather than a real person juggling work, family, and recovery. Between coaching in Addington (6 AM to 2 PM so I make the 3 PM school pickup) and weekends out in the Christchurch hills or kicking a ball in the park with my kids, I know what real schedules look like. My job is to take the science of getting stronger and translate it into something practical you can actually stick with three or four times a week.
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-6">
               <Link
@@ -408,10 +408,10 @@ export const Home: React.FC = () => {
                 More about Hayden &amp; WRK <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/programs"
+                to="/coaching"
                 className="inline-flex items-center text-sm font-semibold text-forest/80 hover:text-forest transition-colors"
               >
-                See how we work together →
+                Explore 1:1 Coaching →
               </Link>
             </div>
           </div>

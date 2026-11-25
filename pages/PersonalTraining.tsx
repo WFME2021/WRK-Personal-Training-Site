@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { MapPin, Shield, Dumbbell, Activity, Check, ChevronDown, ArrowRight, Car, Compass, Clock } from 'lucide-react';
 import { Testimonials } from '../components/Testimonials';
 import { StudioConsultationForm } from '../components/StudioConsultationForm';
@@ -29,7 +30,7 @@ export const PersonalTraining: React.FC = () => {
     },
     {
       q: "Do you coach clients on GLP-1 medications or in their 40s and 50s?",
-      a: "Yes—both make up a big part of who I work with. We focus on joint-friendly resistance training so you keep hold of strength, muscle, and steady energy while staying within a safe personal training lane alongside your doctor."
+      a: "Yes—both make up a big part of who I work with. We focus on joint-friendly resistance training so you keep hold of strength, muscle, and consistent energy while staying within a safe personal training lane alongside your doctor."
     },
     {
       q: "I haven't lifted weights in years. Will I feel out of place?",
@@ -148,46 +149,46 @@ export const PersonalTraining: React.FC = () => {
       <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
         
         {/* 1. Hero Section */}
-        <section className="bg-cream pt-10 md:pt-14 pb-12 px-6 max-w-5xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest/75 font-semibold mb-4">
-            1/12 SHOW PLACE · ADDINGTON, CHRISTCHURCH
-          </p>
-          
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6 text-balance">
-            1:1 Studio Coaching <span className="block sm:inline italic text-forest/90">in Addington.</span>
-          </h1>
-          
-          <p className="text-forest/85 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Skip the noisy commercial gyms. Train face-to-face with Hayden in a quiet Addington space—Mon–Fri, 6:00 AM to 2:00 PM—with free parking right outside the door.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <PageHeroBanner
+          imageSrc="/images/wrk-strength-studio.jpg"
+          fallbackImageSrc="/images/banner-coaching.jpg"
+          imageAlt="WRK Personal Training quiet strength coaching studio in Addington, Christchurch"
+          align="center"
+          eyebrow="1/12 SHOW PLACE · ADDINGTON, CHRISTCHURCH"
+          title={
+            <>
+              1:1 Studio Coaching <span className="block sm:inline italic text-cream/95">in Addington.</span>
+            </>
+          }
+          subtitle="Skip the noisy commercial gyms. Train face-to-face with Hayden in a quiet Addington space—Mon–Fri, 6:00 AM to 2:00 PM—with free parking right outside the door."
+        >
+          <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#book-consult"
-              className="bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-all shadow-sm"
+              className="w-full sm:w-auto bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-all shadow-lg"
             >
               Come Have a Look Around →
             </a>
             <a
               href="#location"
-              className="bg-cream border border-forest/25 text-forest hover:bg-quiet px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors"
+              className="w-full sm:w-auto bg-forest-deep/65 hover:bg-forest-deep/85 text-cream border border-cream/35 px-6 py-3.5 rounded-md text-xs uppercase tracking-widest font-semibold inline-block transition-colors backdrop-blur-sm"
             >
               See Addington Location
             </a>
           </div>
-          
+
           {/* Clean Trust Strip */}
-          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 mt-8 text-xs text-forest/80">
+          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 mt-7 text-xs text-cream/85">
             <span>✓ Quiet space (no crowds or mirrors)</span>
-            <span className="hidden sm:inline text-forest/30">·</span>
+            <span className="hidden sm:inline text-cream/35">·</span>
             <span>✓ Joint-friendly coaching with Hayden</span>
-            <span className="hidden sm:inline text-forest/30">·</span>
+            <span className="hidden sm:inline text-cream/35">·</span>
             <span>✓ Easy parking outside the door</span>
           </div>
-        </section>
+        </PageHeroBanner>
 
         {/* Feature Lifestyle Banner */}
-        <div className="mb-14 max-w-5xl mx-auto px-6">
+        <div className="pt-12 mb-14 max-w-5xl mx-auto px-6">
           <div className="rounded-3xl overflow-hidden shadow-sm border border-forest/15 aspect-[16/9] md:aspect-[21/9] relative bg-forest">
             <img 
               src="https://i.postimg.cc/kMshn8rN/Screen-Shot-2026-06-23-at-2-10-37-PM.png" 
@@ -477,8 +478,8 @@ export const PersonalTraining: React.FC = () => {
           <form onSubmit={handleTriageSubmit} className="space-y-3 text-left mb-8">
             {[
               "I am on a GLP-1 medication and want to protect my strength and muscle",
-              "I am coming off weight loss medication and want steady habits to keep my strength",
-              "I just want calm, steady 1:1 strength coaching (general fitness or getting back into it)",
+              "I am coming off weight loss medication and want consistent habits to keep my strength",
+              "I just want calm, consistent 1:1 strength coaching (general fitness or getting back into it)",
               "I have a quick question about the Addington studio or session times"
             ].map((option, idx) => {
               const isSelected = phaseSelection === option;

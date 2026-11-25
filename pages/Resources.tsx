@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 
 export const Resources: React.FC = () => {
   const location = useLocation();
@@ -26,20 +27,20 @@ export const Resources: React.FC = () => {
         description="Review the Clinical Evidence & Resources backing our GLP-1 training methodologies. Explore medical studies on muscle preservation and metabolic support."
       />
       
-      <div className="flex flex-col w-full min-h-screen bg-cream text-forest pt-32 pb-24 px-5 md:px-12 items-center selection:bg-citron selection:text-forest">
-        <div className="max-w-[800px] w-full mx-auto space-y-16">
-          
-          <header className="space-y-6">
-            <h1 className="font-display text-[40px] md:text-[56px] uppercase leading-[1.1] text-forest">
-              Clinical Evidence & Scientific Resources
-            </h1>
-            <p className="font-sans text-[18px] md:text-[20px] leading-[1.6] text-forest/85">
-              At WRK Personal Training, our frameworks are entirely built on peer-reviewed sports science, clinical nutrition guidelines, and medical weight loss research.
-            </p>
-            <p className="font-sans text-[16px] md:text-[18px] leading-[1.6] text-forest/80">
-              When navigating rapid weight reduction via GLP-1 receptor agonists (such as semaglutide, tirzepatide, or retatrutide) or GLP-1 therapy, body composition tracking shifts fundamentally. The resources below outline the foundational evidence supporting our specialised 12-week resistance and nutritional strategies.
-            </p>
-          </header>
+      <div className="flex flex-col w-full min-h-screen bg-cream text-forest pb-24 selection:bg-citron selection:text-forest">
+        <PageHeroBanner
+          imageSrc="/images/banner-articles.jpg"
+          imageAlt="Calm study desk with notebook, coffee, and natural light"
+          eyebrow="PEER-REVIEWED SPORTS SCIENCE"
+          title="Clinical Evidence & Scientific Resources"
+          subtitle="At WRK Personal Training, our frameworks are entirely built on peer-reviewed sports science, clinical nutrition guidelines, and medical weight loss research."
+          maxWidthClass="max-w-4xl"
+        />
+
+        <div className="max-w-[800px] w-full mx-auto px-5 md:px-12 pt-12 space-y-16">
+          <p className="font-sans text-[16px] md:text-[18px] leading-[1.6] text-forest/80">
+            When navigating rapid weight reduction via GLP-1 receptor agonists (such as semaglutide, tirzepatide, or retatrutide) or GLP-1 therapy, body composition tracking shifts fundamentally. The resources below outline the foundational evidence supporting our specialised 12-week resistance and nutritional strategies.
+          </p>
 
           <hr className="border-forest/15" />
 

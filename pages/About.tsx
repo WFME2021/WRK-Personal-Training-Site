@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Activity, Droplets, CheckCircle2, Award, Clock, MapPin, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 
 export const About: React.FC = () => {
   useEffect(() => {
@@ -38,28 +39,27 @@ export const About: React.FC = () => {
       <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
         
         {/* 1. Hero Header */}
-        <section className="bg-cream pt-10 md:pt-14 pb-12 px-6 max-w-5xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest/75 font-semibold mb-4">
-            THE RIGHT WORK, DONE WELL
-          </p>
-          
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6 leading-tight text-balance">
-            Coaching built for real people, <span className="block sm:inline italic text-forest">not 22-year-old athletes.</span>
-          </h1>
-          
-          <p className="text-forest/85 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Whether you are building strength in your 40s or 50s, getting back into a rhythm after a long break, or protecting your muscle while using a GLP-1 medication—my job is to make getting stronger feel calm, understandable, and genuinely doable.
-          </p>
-
+        <PageHeroBanner
+          imageSrc="/images/banner-coffee-chat.jpg"
+          imageAlt="Warm timber coffee table with natural light and greenery"
+          align="center"
+          eyebrow="THE RIGHT WORK, DONE WELL"
+          title={
+            <>
+              Coaching built for real schedules, <span className="block sm:inline italic text-cream/95">not full-time athletes.</span>
+            </>
+          }
+          subtitle="Whether you are building strength in your 40s or 50s, getting back into a rhythm after a long break, or protecting your muscle while using a GLP-1 medication—my job is to make getting stronger feel calm, understandable, and genuinely doable."
+        >
           {/* Clean Unboxed Trust Line */}
-          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 text-xs text-forest/80">
+          <div className="flex flex-row justify-center flex-wrap gap-4 sm:gap-6 text-xs text-cream/85 mt-7">
             <span>✓ Joint-friendly strength training</span>
-            <span className="hidden sm:inline text-forest/30">·</span>
+            <span className="hidden sm:inline text-cream/35">·</span>
             <span>✓ Plain-English food habits</span>
-            <span className="hidden sm:inline text-forest/30">·</span>
-            <span className="font-semibold text-forest">✓ 20+ years on the gym floor</span>
+            <span className="hidden sm:inline text-cream/35">·</span>
+            <span className="font-semibold text-citron">✓ 20+ years on the gym floor</span>
           </div>
-        </section>
+        </PageHeroBanner>
 
         {/* 2. Founder & Coach Story (2-Column Editorial Split) */}
         <section className="py-14 md:py-16 px-6 max-w-5xl mx-auto items-center grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-forest/10">
@@ -184,7 +184,7 @@ export const About: React.FC = () => {
                 20+ Years Coaching
               </div>
               <p className="text-xs sm:text-sm text-forest/80 leading-relaxed">
-                Two decades helping Christchurch adults feel stronger, steadier, and more confident.
+                Two decades helping Christchurch adults feel stronger, more capable, and more confident.
               </p>
             </div>
 
@@ -231,10 +231,10 @@ export const About: React.FC = () => {
                 Grab a Free 15-Min Chat →
               </Link>
               <Link
-                to="/programs"
+                to="/coaching"
                 className="border border-cream/35 text-cream hover:bg-forest-deep px-6 py-3.5 rounded-md font-semibold text-xs uppercase tracking-wider text-center transition-colors"
               >
-                How We Work Together
+                Explore 1:1 Coaching
               </Link>
             </div>
           </div>

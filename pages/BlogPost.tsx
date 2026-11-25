@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, ArrowRight, BookOpen, Share2 } from 'lucide-react';
 import { marked } from 'marked';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { useContent } from '../context/ContentContext';
 import type { BlogPost as BlogPostData } from '../data/blogs';
 
@@ -114,58 +115,48 @@ export const BlogPost: React.FC = () => {
 
       <article className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
         
-        {/* 1. Article Header & Masthead */}
-        <header className="bg-cream pt-12 pb-8 px-6 max-w-3xl mx-auto text-center">
-          <div className="flex items-center justify-between mb-8">
-            <Link
-              to="/blog"
-              className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-forest/65 hover:text-forest transition-colors group"
-            >
-              <ArrowLeft size={14} className="mr-1.5 transition-transform group-hover:-translate-x-1" />
-              Back to Library
-            </Link>
-
-            {post.category && (
-              <span className="bg-quiet text-forest border border-forest/15 text-[11px] font-semibold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full inline-block">
-                {post.category}
-              </span>
-            )}
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-forest tracking-tight leading-[1.18] mb-6 font-bold">
-            {post.title}
-          </h1>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-forest/65 uppercase tracking-wider font-medium">
+        {/* 1. Article Hero Banner */}
+        <PageHeroBanner
+          imageSrc={post.image?.url || '/images/banner-articles.jpg'}
+          fallbackImageSrc="/images/banner-articles.jpg"
+          imageAlt={post.image?.alt || post.title}
+          align="center"
+          compact
+          maxWidthClass="max-w-4xl"
+          eyebrow={
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                to="/articles"
+                className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-cream/85 hover:text-citron transition-colors group"
+              >
+                <ArrowLeft size={14} className="mr-1.5 transition-transform group-hover:-translate-x-1" />
+                Back to Library
+              </Link>
+              {post.category && (
+                <span className="bg-forest-deep/75 text-citron border border-cream/25 text-[11px] font-semibold uppercase tracking-[0.18em] px-3 py-1 rounded-full inline-block">
+                  {post.category}
+                </span>
+              )}
+            </div>
+          }
+          title={post.title}
+          subtitle={
+            post.excerpt ? (
+              <span className="italic font-serif text-cream/90">"{post.excerpt}"</span>
+            ) : undefined
+          }
+        >
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3 text-xs text-cream/80 uppercase tracking-wider font-medium">
             <span>By {post.author?.name || 'Hayden Richards'}</span>
             <span>·</span>
             <span>{post.date || 'Guide'}</span>
             <span>·</span>
             <span>{readTime} min read</span>
           </div>
+        </PageHeroBanner>
 
-          {post.excerpt && (
-            <p className="text-forest/75 text-base sm:text-lg leading-relaxed mt-6 max-w-2xl mx-auto italic font-serif">
-              "{post.excerpt}"
-            </p>
-          )}
-        </header>
-
-        {/* 2. Featured Lead Image */}
-        {post.image?.url && (
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
-            <div className="aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border border-forest/15 shadow-sm relative bg-quiet">
-              <img
-                src={post.image.url}
-                alt={post.image.alt || post.title}
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 3. Editorial Reading Body */}
-        <main className="max-w-3xl mx-auto px-6">
+        {/* 2. Editorial Reading Body */}
+        <main className="max-w-3xl mx-auto px-6 pt-10 md:pt-12">
           <div 
             className="prose prose-lg max-w-none text-forest/90 prose-p:font-sans prose-p:text-base sm:prose-p:text-lg prose-p:leading-relaxed sm:prose-p:leading-[1.8] prose-p:mb-6 prose-headings:font-serif prose-headings:text-forest prose-headings:tracking-tight prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:text-forest prose-h2:border-b prose-h2:border-forest/15 prose-h2:pb-2 prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:text-forest prose-h3:mt-8 prose-h3:mb-3 prose-blockquote:bg-quiet prose-blockquote:border-l-4 prose-blockquote:border-forest prose-blockquote:rounded-r-xl prose-blockquote:p-6 prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:font-serif prose-blockquote:text-lg prose-blockquote:text-forest prose-blockquote:leading-snug prose-blockquote:not-italic prose-ul:my-6 prose-li:my-2 prose-li:text-forest/90 prose-a:text-forest prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-forest/75 prose-strong:text-forest prose-strong:font-bold"
             dangerouslySetInnerHTML={{ __html: parseMarkdownNoH1(post.content || '') }}

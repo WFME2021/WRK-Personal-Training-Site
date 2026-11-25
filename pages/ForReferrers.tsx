@@ -367,7 +367,7 @@ export const ForReferrers: React.FC = () => {
                 </div>
                 <div className="p-4 bg-cream rounded-xl border border-forest/15 text-sm text-forest/80">
                   <span className="font-bold text-forest block mb-1">Post-Cardiac Rehabilitation:</span>
-                  Monitored exertion, steady pacing, and graded movement progressions.
+                  Monitored exertion, measured pacing, and graded movement progressions.
                 </div>
               </div>
             </div>

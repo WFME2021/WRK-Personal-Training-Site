@@ -52,7 +52,7 @@ export const Testimonials: React.FC<{ className?: string; contextBridge?: string
             CLIENT FEEDBACK
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-forest font-bold tracking-tight mb-4 text-balance">
-            What Steady Support Feels Like in Real Life.
+            What Real Coaching Support Feels Like.
           </h2>
           <p className="text-forest/80 max-w-2xl text-base leading-relaxed">
             In their own words—from Christchurch clients who have trained with Hayden for years in a calm, supportive space.

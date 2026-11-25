@@ -34,7 +34,6 @@ async function startServer() {
   app.get("/couch-to-5km", (req, res) => res.redirect(301, "/programs"));
   app.get("/calorie-calculator", (req, res) => res.redirect(301, "/tools/tdee-calculator"));
   app.get("/tools/1rm-estimator", (req, res) => res.redirect(301, "/tools"));
-  app.get("/book", (req, res) => res.redirect(301, "/contact"));
 
   // API Routes
   app.get("/api/health", (req, res) => {
@@ -1315,13 +1314,13 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
       // Inject SEO tags based on route
       const initialBlogs = await getCachedBlogs();
       let title = "WRK Personal Training | Strength & Fitness Coaching Christchurch";
-      let desc = "Calm, steady 1:1 personal training in Addington, Christchurch and online across New Zealand—built around real life, 40s/50s+ returners, and GLP-1 muscle protection.";
+      let desc = "Calm, consistent 1:1 personal training in Addington, Christchurch and online across New Zealand—built around real life, 40s/50s+ returners, and GLP-1 muscle protection.";
       
       const pathOnly = url.split('?')[0];
 
-      if (pathOnly === '/programs') {
-        title = "How We Work Together | Coaching & Plans | WRK Personal Training";
-        desc = "Three straightforward ways to train with Hayden Richards at WRK Personal Training: 1:1 Studio Coaching in Addington, 1:1 Online Coaching, or structured self-guided plans.";
+      if (pathOnly === '/coaching' || pathOnly === '/programs') {
+        title = "1:1 Coaching | Studio & Online | WRK Personal Training";
+        desc = "Hands-on 1:1 coaching in Addington, Christchurch or online through the WRK app—built around your body, your schedule, and real life.";
       } else if (pathOnly === '/services') {
         title = "Coaching & Programmes | WRK Personal Training";
         desc = "Compare how we work together at WRK Personal Training—in-person coaching in Addington, Christchurch or 1:1 online coaching wherever you train.";
@@ -1331,6 +1330,12 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
       } else if (pathOnly === '/personal-training' || pathOnly === '/studio') {
         title = "Addington Studio 1:1 Personal Training | WRK Christchurch";
         desc = "Skip crowded Christchurch gyms. Train 1:1 with Hayden in a quiet Addington space Mon–Fri 6 AM – 2 PM with free parking outside the door.";
+      } else if (pathOnly === '/glp-1' || pathOnly === '/glp1') {
+        title = "GLP-1 Strength & Lifestyle Support | Christchurch & Online | WRK Personal Training";
+        desc = "Practical strength training, simple protein habits, and joint-friendly coaching for adults on GLP-1 medications in Christchurch and online across New Zealand.";
+      } else if (pathOnly === '/glp1-toolkit' || pathOnly === '/toolkit') {
+        title = "The WRK GLP-1 App Toolkit ($29 NZD) | WRK Personal Training";
+        desc = "A practical starter toolkit inside the WRK app with structured strength sessions, video demos, and everyday food guidance—one-off $29 NZD access.";
       } else if (pathOnly === '/assessment') {
         title = "GLP-1 Fitness Assessment | WRK Personal Training";
         desc = "Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a personalised 12-week training recommendation.";
@@ -1358,12 +1363,12 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
       } else if (pathOnly.includes('/results') || pathOnly.includes('/assessment/result')) {
         title = "Your Muscular Preservation Report | WRK";
         desc = "Review your GLP-1 Fitness Assessment results. Access your personalized 12-week strength training recommendation to protect muscle during medical weight loss.";
-      } else if (pathOnly.match(/\/blog\/([^\/]+)/)) {
-        const slug = pathOnly.match(/\/blog\/([^\/]+)/)[1];
+      } else if (pathOnly.match(/\/(blog|articles)\/([^\/]+)/)) {
+        const slug = pathOnly.match(/\/(blog|articles)\/([^\/]+)/)![2];
         const post = initialBlogs.find(p => p.slug === slug);
         if (slug === 'glp-1-strength-training') {
           title = "GLP-1 Strength Training: Stop Sarcopenia & Fatigue | WRK";
-          desc = "Up to 40% of GLP-1 weight loss comes from muscle. Protect your metabolic rate with our 30-minute compound lifting protocol. Start lifting smarter today.";
+          desc = "Up to 40% of GLP-1 weight loss comes from muscle. Protect your metabolic rate with sensible compound lifting. Start lifting smarter today.";
         } else if (post) {
           title = post.seoTitle || post.title || (slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + " | WRK");
           desc = post.seoDescription || post.excerpt || ("Read our latest insights on " + title + " from WRK Personal Training.");
@@ -1371,9 +1376,9 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
           title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + " | WRK";
           desc = "Read our latest insights on " + title + " from WRK Personal Training.";
         }
-      } else if (pathOnly === '/blog') {
-        title = "GLP-1 Fitness Blog | Training, Nutrition & Weight Loss | WRK";
-        desc = "Read the WRK GLP-1 Fitness Blog for evidence-informed guidance on strength training, muscle preservation, nutrition, and sustainable habits after weight loss.";
+      } else if (pathOnly === '/blog' || pathOnly === '/articles') {
+        title = "Articles & Guides | Training, Nutrition & Strength | WRK";
+        desc = "Read WRK Personal Training articles for plain-English guidance on strength training, muscle preservation, nutrition, and sustainable habits.";
       } else if (ENABLE_SUMMER_MOMENTUM && pathOnly === '/summer-momentum') {
         title = "Summer Momentum | Sustainable Movement & Festive Coping Plan | WRK";
         desc = "Heading into the holidays on a GLP-1? Summer Momentum (30 Nov – 8 Jan) is a calm 6-week sustainable movement and festive coping plan for $149 NZD.";
@@ -1382,7 +1387,12 @@ Resource: 14-Day Fat Loss Foundations Guide (PDF Lead Magnet)`,
         desc = "Structured 6- to 12-week self-guided strength, home, gym, and running programmes delivered in the WRK app. Every plan is capped at 3 to 4 sessions per week.";
       } else if (ENABLE_SELF_GUIDED_PLANS && pathOnly.startsWith('/plans/')) {
         const planSlug = pathOnly.replace('/plans/', '');
-        const planMatch = SELF_GUIDED_PLANS.find(p => p.slug === planSlug);
+        const planAliasMap: Record<string, string> = {
+          'upper-lower-split': 'upper-lower',
+          '5k-to-half-marathon': '5k-to-half',
+        };
+        const resolvedSlug = planAliasMap[planSlug] || planSlug;
+        const planMatch = SELF_GUIDED_PLANS.find(p => p.slug === resolvedSlug);
         if (planMatch) {
           title = `${planMatch.title} | Self-Guided Training Plan | WRK Personal Training`;
           desc = `${planMatch.summary} ${planMatch.durationBadge} delivered in the WRK app.`;

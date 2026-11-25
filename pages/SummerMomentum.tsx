@@ -11,6 +11,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import {
   STRIPE_SUMMER_MOMENTUM_URL,
   isCheckoutUrlConfigured,
@@ -54,12 +55,12 @@ const DELIVERABLES = [
     icon: MessageSquareText,
     title: 'Weekly Check-In Notes From Hayden',
     description:
-      'Calm weekly focus notes from me inside the app to keep your head steady (separate from 1:1 coaching).',
+      'Calm weekly focus notes from me inside the app to keep your head clear and on track (separate from 1:1 coaching).',
   },
 ];
 
 const GREAT_FIT_ITEMS = [
-  'You are on a GLP-1 medication (or keeping weight and energy steady) and want a calm, realistic plan from 30 November to 8 January.',
+  'You are on a GLP-1 medication (or keeping your momentum going) and want a calm, realistic plan from 30 November to 8 January.',
   'You want workouts built around keeping your body moving and feeling good rather than high-pressure training.',
   'You want practical coping tools for Christmas gatherings and summer travel without strict food rules.',
   'You are happy following a guided cohort plan inside the WRK app using gym or basic home gear.',
@@ -75,7 +76,7 @@ const FAQS: FaqItem[] = [
   {
     question: 'What are the workouts like? Do I need to lift heavy?',
     answer:
-      "Not at all. The goal here is keeping your joints happy, hanging onto the muscle and energy you've built, and staying in a steady rhythm—3 to 4 manageable sessions a week, with both gym and at-home options.",
+      "Not at all. The goal here is keeping your joints happy, hanging onto the muscle and energy you've built, and staying in a consistent rhythm—3 to 4 manageable sessions a week, with both gym and at-home options.",
   },
   {
     question: 'How does the Festive Food & BBQ Coping Guide work?',
@@ -145,98 +146,80 @@ export const SummerMomentum: React.FC = () => {
         description="Heading into the holidays on a GLP-1? Summer Momentum (30 Nov – 8 Jan) is a calm 6-week sustainable movement and festive coping plan for $149 NZD."
       />
 
-      {/* Section A: Visual-First Editorial Hero */}
-      <section className="pt-3 pb-7 md:pt-12 md:pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[auto_1fr] gap-y-3 lg:gap-y-5 lg:gap-x-12 items-start">
-          {/* Intro: Pills + Punchy H1 + Crisp Subheadline */}
-          <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1 text-left">
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
-              <span className="text-[10px] sm:text-[11px] font-medium px-2.5 py-0.5 sm:py-1 rounded-full bg-quiet border border-forest/15 text-forest tracking-wide whitespace-nowrap">
-                SUMMER MOMENTUM
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-medium px-2.5 py-0.5 sm:py-1 rounded-full bg-quiet border border-forest/15 text-forest tracking-wide whitespace-nowrap">
-                6-WEEK INTAKE FOR GLP-1 USERS
+      {/* Section A: Full-Bleed Kiwi Summer Editorial Hero */}
+      <PageHeroBanner
+        imageSrc="/images/nz-christmas-bbq.jpg"
+        fallbackImageSrc="/images/banner-plans.jpg"
+        imageAlt="Relaxed New Zealand summer outdoor meal overlooking the coast under pohutukawa trees"
+        eyebrow="SUMMER MOMENTUM · 6-WEEK INTAKE FOR GLP-1 USERS"
+        title="Heading into Christmas on a GLP-1? Let's take the stress out of December."
+        subtitle="Six weeks of manageable movement, maintaining what you've built, and practical ways to enjoy Christmas lunch and summer BBQs without worrying about going backwards."
+        rightSlot={
+          <div className="relative rounded-2xl overflow-hidden aspect-[16/10] lg:aspect-[4/3] border border-cream/25 shadow-xl bg-forest-deep">
+            <img
+              src="/images/wrk-strength-studio.jpg"
+              alt="Calm coach-led movement in WRK Personal Training Christchurch studio"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-x-3 bottom-3 flex justify-start pointer-events-none">
+              <span className="inline-flex items-center bg-cream/95 backdrop-blur-sm text-forest text-[11px] sm:text-xs font-medium px-3 py-1.5 rounded-full border border-forest/10 shadow-sm">
+                3–4 manageable sessions/week · At-home &amp; gym options
               </span>
             </div>
-
-            <h1 className="font-serif text-[28px] sm:text-4xl lg:text-5xl text-forest tracking-tight leading-[1.12] text-balance mb-2 sm:mb-3">
-              Heading into Christmas on a GLP-1? Let's take the stress out of December.
-            </h1>
-
-            <p className="text-forest/85 text-sm sm:text-base lg:text-lg leading-snug sm:leading-relaxed max-w-xl">
-              Six weeks of manageable movement, maintaining what you've built, and practical ways to enjoy Christmas lunch and summer BBQs without worrying about going backwards.
-            </p>
           </div>
-
-          {/* Lifestyle Image Card: Sits right below subheadline on mobile, right column on desktop */}
-          <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 lg:self-center">
-            <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-[16/10] lg:aspect-[4/3] border border-forest/15 shadow-sm lg:shadow-md bg-quiet">
-              <img
-                src="/images/wrk-strength-studio.jpg"
-                alt="Calm coach-led movement in WRK Personal Training Christchurch studio"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-x-2.5 bottom-2.5 sm:inset-x-4 sm:bottom-4 flex justify-start pointer-events-none">
-                <span className="inline-flex items-center bg-cream/95 backdrop-blur-sm text-forest text-[11px] sm:text-xs font-medium px-3 py-1.5 rounded-full border border-forest/10 shadow-sm">
-                  3–4 manageable sessions/week · At-home &amp; gym options
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bullets + Primary CTA */}
-          <div className="lg:col-span-7 lg:col-start-1 lg:row-start-2 space-y-3.5 sm:space-y-5">
-            <ul className="space-y-1.5 sm:space-y-2.5">
-              {HERO_HIGHLIGHTS.map((bullet, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-center gap-2.5 text-sm sm:text-base text-forest font-medium leading-snug"
-                >
-                  <span className="w-5 h-5 rounded-full bg-quiet border border-forest/15 flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-forest" />
-                  </span>
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div ref={heroCtaRef} className="pt-0.5">
-              <a
-                href={checkoutReady ? STRIPE_SUMMER_MOMENTUM_URL : '#enrol-notice'}
-                target={checkoutReady ? '_blank' : undefined}
-                rel={checkoutReady ? 'noopener noreferrer' : undefined}
-                onClick={handleCheckoutClick}
-                className="w-full sm:w-auto inline-flex flex-col items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/25 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl transition-all shadow-sm text-center"
+        }
+      >
+        <div className="mt-5 space-y-5">
+          <ul className="space-y-2">
+            {HERO_HIGHLIGHTS.map((bullet, idx) => (
+              <li
+                key={idx}
+                className="flex items-center gap-2.5 text-sm sm:text-base text-cream font-medium leading-snug"
               >
-                <span className="inline-flex items-center justify-center text-sm sm:text-base font-semibold tracking-tight">
-                  Join Summer Momentum — $149 NZD
-                  <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
+                <span className="w-5 h-5 rounded-full bg-citron text-forest flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5" />
                 </span>
-                <span className="text-xs font-normal text-forest/85 mt-0.5">
-                  Starts Monday 30 November · Closes 29 Nov
-                </span>
-              </a>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
 
-              {showCheckoutNotice && (
-                <div
-                  id="enrol-notice"
-                  role="status"
-                  className="mt-3 bg-quiet border border-forest/20 rounded-xl p-4 text-sm text-forest"
-                >
-                  <p className="font-medium mb-1">Online checkout link is being finalised.</p>
-                  <p className="text-forest/80">
-                    Send Hayden a quick message via{' '}
-                    <Link to="/book" className="underline font-semibold text-forest hover:opacity-75">
-                      our enquiry page
-                    </Link>{' '}
-                    and we will hold your spot for Monday 30 November.
-                  </p>
-                </div>
-              )}
-            </div>
+          <div ref={heroCtaRef} className="pt-0.5">
+            <a
+              href={checkoutReady ? STRIPE_SUMMER_MOMENTUM_URL : '#enrol-notice'}
+              target={checkoutReady ? '_blank' : undefined}
+              rel={checkoutReady ? 'noopener noreferrer' : undefined}
+              onClick={handleCheckoutClick}
+              className="w-full sm:w-auto inline-flex flex-col items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/25 px-6 sm:px-8 py-3.5 rounded-xl transition-all shadow-lg text-center"
+            >
+              <span className="inline-flex items-center justify-center text-sm sm:text-base font-semibold tracking-tight">
+                Join Summer Momentum — $149 NZD
+                <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
+              </span>
+              <span className="text-xs font-normal text-forest/85 mt-0.5">
+                Starts Monday 30 November · Closes 29 Nov
+              </span>
+            </a>
+
+            {showCheckoutNotice && (
+              <div
+                id="enrol-notice"
+                role="status"
+                className="mt-3 bg-cream border border-forest/20 rounded-xl p-4 text-sm text-forest"
+              >
+                <p className="font-medium mb-1">Online checkout link is being finalised.</p>
+                <p className="text-forest/80">
+                  Send Hayden a quick message via{' '}
+                  <Link to="/book" className="underline font-semibold text-forest hover:opacity-75">
+                    our enquiry page
+                  </Link>{' '}
+                  and we will hold your spot for Monday 30 November.
+                </p>
+              </div>
+            )}
           </div>
         </div>
-      </section>
+      </PageHeroBanner>
 
       {/* Section B: "Why Now" Empathy Strip (Soft Sand Surface) */}
       <section className="bg-quiet py-10 md:py-16 px-4 sm:px-6 lg:px-8 border-y border-forest/10">
@@ -248,7 +231,7 @@ export const SummerMomentum: React.FC = () => {
             December isn't the time for willpower battles or chasing PBs.
           </h2>
           <p className="text-forest/85 text-base md:text-lg leading-relaxed">
-            Between work dos, family lunches, fluctuating appetite, and six weeks of disrupted routines, it's completely normal to feel a bit anxious about losing your footing. Summer Momentum is your calm middle ground: 3–4 realistic sessions a week, simple travel workouts for when you're away, and our Festive Food &amp; BBQ Coping Guide so you enjoy summer and roll into mid-January feeling steady.
+            Between work dos, family lunches, fluctuating appetite, and six weeks of disrupted routines, it's completely normal to feel a bit anxious about losing your footing. Summer Momentum is your calm middle ground: 3–4 realistic sessions a week, simple travel workouts for when you're away, and our Festive Food &amp; BBQ Coping Guide so you enjoy summer and roll into mid-January feeling confident and in control.
           </p>
         </div>
       </section>
@@ -309,7 +292,7 @@ export const SummerMomentum: React.FC = () => {
                 IN YOUR POCKET · WRK APP
               </span>
               <h3 className="font-serif text-xl text-forest font-semibold mb-1">
-                Steady Weekly Sessions &amp; Video Demos
+                Consistent Weekly Sessions &amp; Video Demos
               </h3>
               <p className="text-sm text-forest/80 leading-relaxed">
                 Open your workout, follow clear video cues, and swap smoothly to fill-in travel sessions whenever holiday plans shift.

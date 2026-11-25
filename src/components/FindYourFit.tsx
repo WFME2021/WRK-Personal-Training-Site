@@ -51,7 +51,7 @@ const STEPS: [
     key: 'priority',
     prompt: 'What is your main priority right now?',
     options: [
-      { id: 'glp1', label: 'Protecting muscle & staying steady on a GLP-1 medication' },
+      { id: 'glp1', label: 'Protecting muscle & staying on track on a GLP-1 medication' },
       { id: 'strength40', label: 'Building strength, energy & joint confidence (40+)' },
       { id: 'restarting', label: 'Getting started safely after a break from exercise' },
       { id: 'running', label: 'Improving running fitness or balancing weights + running' },
@@ -113,7 +113,7 @@ function buildBlueprint(answers: QualifierAnswers): BlueprintResult {
   } else if (priority === 'glp1') {
     weeklyRhythm =
       consistency === 'consistent'
-        ? `3–4 sensible strength sessions/week ${venuePhrase} focused on compound movements and steady daily steps.`
+        ? `3–4 sensible strength sessions/week ${venuePhrase} focused on compound movements and consistent daily steps.`
         : `3 sensible sessions/week ${venuePhrase} focused on joint-friendly resistance training and manageable daily movement.`;
   } else if (priority === 'restarting') {
     weeklyRhythm = `3 manageable sessions/week ${venuePhrase} built around foundational strength patterns, mobility, and zero burnout.`;
@@ -127,10 +127,10 @@ function buildBlueprint(answers: QualifierAnswers): BlueprintResult {
   let nutritionAnchor = '';
   if (priority === 'glp1') {
     nutritionAnchor =
-      'Prioritise easily digestible protein anchors at each meal alongside steady hydration, especially on lower-appetite days.';
+      'Prioritise easily digestible protein anchors at each meal alongside consistent hydration, especially on lower-appetite days.';
   } else if (priority === 'running') {
     nutritionAnchor =
-      'Build meals around a palm-sized protein source, slow-release carbohydrates around run days, and steady hydration with electrolytes.';
+      'Build meals around a palm-sized protein source, slow-release carbohydrates around run days, and consistent hydration with electrolytes.';
   } else {
     nutritionAnchor =
       'Build meals around a palm-sized protein source, plenty of fibre, and colourful whole foods you actually enjoy eating.';
@@ -142,7 +142,7 @@ function buildBlueprint(answers: QualifierAnswers): BlueprintResult {
       'Starting back with 5-day gym splits almost always stalls by week three. Keeping your weekly target calm and repeatable lets your joints adapt while momentum compounds naturally.';
   } else if (priority === 'glp1') {
     whyThisFits =
-      'While medication handles appetite, deliberate resistance work tells your body to preserve lean muscle and energy. A steady 3-day rhythm keeps fatigue low even during busier weeks.';
+      'While medication handles appetite, deliberate resistance work tells your body to preserve lean muscle and energy. A consistent 3-day rhythm keeps fatigue low even during busier weeks.';
   } else if (priority === 'running') {
     whyThisFits =
       'Pairing smart strength work with controlled running volume builds durable knees, hips, and calves without leaving you wrecked for work or family life. Consistency beats heroic sessions every time.';
@@ -434,7 +434,7 @@ export const FindYourFit: React.FC<FindYourFitProps> = ({ context = 'home' }) =>
                   Explore 1:1 Coaching &amp; Book a Free 15-Min Chat →
                 </Link>
                 <Link
-                  to={context === 'programs' ? '/studio' : '/programs'}
+                  to={context === 'programs' ? '/studio' : '/coaching'}
                   className="w-full sm:w-auto inline-flex items-center justify-center bg-cream hover:bg-forest hover:text-cream text-forest border border-forest/25 px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors"
                 >
                   {context === 'programs'

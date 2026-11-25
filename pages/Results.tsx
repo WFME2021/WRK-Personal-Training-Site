@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 
 export const Results: React.FC = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ export const Results: React.FC = () => {
   const { name, answers, riskProfile = 'Medium' } = state;
 
   let riskLevel = riskProfile;
-  let riskDescription = 'Your routine has good elements, but without steadily challenging your muscles, your body starts breaking down muscle tissue instead of fat.';
+  let riskDescription = 'Your routine has good elements, but without consistently challenging your muscles, your body starts breaking down muscle tissue instead of fat.';
   
   if (riskProfile === 'High') {
     riskDescription = 'Warning: Your answers show a high risk of losing muscle and bone strength. When weight drops fast without the right lifting routine, your body burns through muscle tissue for fuel.';
@@ -34,17 +35,18 @@ export const Results: React.FC = () => {
         description="Your diagnostic screening results and actionable movement guide for medical weight loss."
       />
       
-      <div className="flex flex-col w-full min-h-screen bg-cream text-forest pt-24 pb-12 px-5 md:px-12 items-center relative">
-        <div className="max-w-[800px] w-full mx-auto space-y-12">
-          
-          <div className="text-center space-y-4">
-            <h1 className="font-display text-[40px] md:text-[56px] uppercase leading-[1.1] text-forest">
-              Diagnostic Complete
-            </h1>
-            <p className="font-sans text-[18px] text-forest/80">
-              Thank you, {name}. Here is your customised Muscular Preservation Risk Score and protocol.
-            </p>
-          </div>
+      <div className="flex flex-col w-full min-h-screen bg-cream text-forest pb-12 relative">
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells and training journal in a sunlit studio"
+          align="center"
+          compact
+          eyebrow="MUSCULAR PRESERVATION REPORT"
+          title="Diagnostic Complete"
+          subtitle={`Thank you, ${name}. Here is your customised Muscular Preservation Risk Score and protocol.`}
+        />
+
+        <div className="max-w-[800px] w-full mx-auto px-5 md:px-12 pt-12 space-y-12">
 
           {/* Risk Score */}
           <div className="bg-quiet border border-forest/15 rounded-[24px] p-8 shadow-sm">

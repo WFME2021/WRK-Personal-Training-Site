@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { Droplet, Calculator } from 'lucide-react';
 
 export const HydrationCalculator: React.FC = () => {
@@ -88,44 +89,40 @@ export const HydrationCalculator: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pt-24 pb-12">
+    <div className="bg-[#FAFAF9] text-[#2C3539] min-h-screen font-sans selection:bg-[#8A9A86] selection:text-white pb-12">
       <SeoHead 
         title="GLP-1 Hydration Calculator: Estimate Your Daily Fluid Needs | WRK"
         description="Use the WRK GLP-1 Hydration Calculator to estimate your daily fluid needs and enhance your medical weight loss results with proper water intake."
       />
       
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
-        {/* Breadcrumbs */}
-        <nav className="flex items-center text-[13px] font-medium text-[#2C3539]/60 mb-8 max-w-4xl mx-auto">
-          <Link to="/" className="hover:text-[#8A9A86] transition-colors">Home</Link>
-          <span className="mx-2">/</span>
-          <Link to="/tools" className="hover:text-[#8A9A86] transition-colors">Tools</Link>
-          <span className="mx-2">/</span>
-          <span className="text-[#2C3539]">Hydration Calculator</span>
-        </nav>
+      <PageHeroBanner
+        imageSrc="/images/banner-tools.jpg"
+        imageAlt="Water carafe and kettlebells in a calm sunlit studio"
+        align="center"
+        compact
+        eyebrow={
+          <nav className="inline-flex items-center justify-center text-[12px] font-medium text-cream/85">
+            <Link to="/" className="hover:text-citron transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link to="/tools" className="hover:text-citron transition-colors">Tools</Link>
+            <span className="mx-2">/</span>
+            <span className="text-citron">Hydration Calculator</span>
+          </nav>
+        }
+        title={
+          <>
+            GLP-1 <span className="wrk-highlight-dark">Hydration</span> Calculator
+          </>
+        }
+        subtitle="Estimate your daily fluid needs and understand when you may need to pay more attention to hydration."
+      />
 
-        {/* Hero */}
-        <header className="text-center mb-16 max-w-4xl mx-auto">
-          <div className="w-16 h-16 bg-[#8A9A86]/10 text-[#8A9A86] rounded-full flex items-center justify-center mx-auto mb-6">
-            <Droplet size={32} />
-          </div>
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-[#2C3539] mb-6">
-            GLP-1 <span className="wrk-highlight">Hydration</span> Calculator
-          </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-[#2C3539]/80 mb-6">
-            Estimate your daily fluid needs and understand when you may need to pay more attention to hydration.
-          </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-[#2C3539]/80 space-y-4">
-            <p>
-              Reduced appetite, changes in eating and drinking habits, exercise, heat, nausea, vomiting and diarrhoea can all affect hydration.
-            </p>
-            <p>
-              This calculator gives you a <strong className="font-medium text-[#2C3539]">practical starting estimate</strong> for your daily fluid intake and helps you understand when additional hydration or electrolyte support may be relevant.
-            </p>
-            <p className="italic text-[15px]">It is not a medical prescription.</p>
-          </div>
-        </header>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-10">
+        <div className="max-w-3xl mx-auto text-center text-[15px] md:text-[17px] leading-relaxed text-[#2C3539]/80 space-y-3 mb-12">
+          <p>
+            Reduced appetite, changes in eating and drinking habits, exercise, heat, nausea, vomiting and diarrhoea can all affect hydration. This calculator gives you a <strong className="font-medium text-[#2C3539]">practical starting estimate</strong>—not a medical prescription.
+          </p>
+        </div>
 
         {/* Calculator Interface */}
         <div className="max-w-4xl mx-auto mb-24 flex flex-col md:flex-row gap-8">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Loader2, Activity, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { ASSESSMENT_QUESTIONS } from '../assessment/questions';
 import { calculateAssessmentResult } from '../assessment/scoring';
 import { AssessmentResult } from '../assessment/types';
@@ -112,43 +113,50 @@ export const Assessment: React.FC = () => {
   // 1. INTRO SCREEN (Step 0)
   if (step === 0) {
     return (
-      <div className="bg-canvas min-h-[90vh] py-14 px-4 sm:px-6 flex flex-col justify-center items-center font-sans selection:bg-spruce-800 selection:text-sand-50">
+      <div className="bg-canvas min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         <SeoHead 
           title="GLP-1 Fitness Assessment | WRK Personal Training"
           description="Take our free GLP-1 Fitness Assessment to evaluate your current routine, identify muscle loss risks, and receive a customised 12-week training recommendation."
         />
-        <div className="w-full max-w-2xl bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm relative text-center">
-          <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-spruce-800 block mb-4">
-            OBJECTIVE EVALUATION · 2-MINUTE DIAGNOSTIC
-          </span>
-          
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal tracking-tight max-w-xl mx-auto mb-4 font-bold leading-tight">
-            The GLP-1 Fitness Assessment.
-          </h1>
-          
-          <p className="text-charcoal/80 text-base sm:text-lg leading-relaxed max-w-lg mx-auto mb-8">
-            Check your lifting habits, daily protein, and recovery to see exactly what you need to change to protect your muscle.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-charcoal/60 mb-8 font-medium">
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells, carafe of water, and training journal in a sunlit studio"
+          align="center"
+          eyebrow="OBJECTIVE EVALUATION · 2-MINUTE DIAGNOSTIC"
+          title="The GLP-1 Fitness Assessment."
+          subtitle="Check your lifting habits, daily protein, and recovery to see exactly what you need to change to protect your muscle."
+        >
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-cream/85 font-medium">
             <span className="flex items-center gap-1.5">⏱ Takes ~2 minutes</span>
             <span>•</span>
-            <span className="flex items-center gap-1.5">🎯 100% Free & Personalised</span>
+            <span className="flex items-center gap-1.5">🎯 100% Free &amp; Personalised</span>
             <span>•</span>
             <span className="flex items-center gap-1.5">🔒 No spam guarantee</span>
           </div>
 
-          <button
-            onClick={() => setStep(1)}
-            className="bg-spruce-800 text-sand-50 hover:bg-spruce-900 w-full sm:w-auto px-8 py-4 rounded-md text-xs uppercase tracking-widest font-semibold transition-all shadow-sm inline-flex items-center justify-center group"
-          >
-            Start Assessment
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          <div className="mt-7">
+            <button
+              onClick={() => setStep(1)}
+              className="bg-citron text-forest hover:brightness-95 border border-forest/20 w-full sm:w-auto px-8 py-4 rounded-md text-xs uppercase tracking-widest font-semibold transition-all shadow-lg inline-flex items-center justify-center group cursor-pointer"
+            >
+              Start Assessment
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        </PageHeroBanner>
 
-          <p className="text-[11px] text-charcoal/50 text-center max-w-md mx-auto leading-relaxed mt-8 pt-6 border-t border-charcoal/5">
-            This assessment provides evidence-informed fitness education. It is not medical advice, diagnosis, or prescription and works alongside guidance from your prescribing clinician.
-          </p>
+        <div className="py-10 px-4 sm:px-6 flex justify-center">
+          <div className="w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-10 border border-charcoal/10 shadow-sm text-center space-y-5">
+            <h2 className="font-serif text-xl sm:text-2xl text-charcoal font-bold tracking-tight">
+              What you'll get in two minutes
+            </h2>
+            <p className="text-sm sm:text-base text-charcoal/80 leading-relaxed max-w-lg mx-auto">
+              Answer a handful of straight-talking questions about how you currently move, lift, eat protein, and recover—and get an immediate Muscle Defence score plus a practical 7-day focus plan.
+            </p>
+            <p className="text-[11px] text-charcoal/60 text-center max-w-md mx-auto leading-relaxed pt-4 border-t border-charcoal/10">
+              This assessment provides evidence-informed fitness education. It is not medical advice, diagnosis, or prescription and works alongside guidance from your prescribing clinician.
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -157,17 +165,27 @@ export const Assessment: React.FC = () => {
   // 2. ANALYZING / LOADING SCREEN
   if (isSubmitting) {
     return (
-      <div className="bg-canvas min-h-[90vh] py-14 px-4 sm:px-6 flex flex-col justify-center items-center font-sans selection:bg-spruce-800 selection:text-sand-50">
-        <div className="w-full max-w-md bg-white rounded-3xl p-10 sm:p-12 border border-charcoal/5 shadow-sm text-center">
-          <div className="w-14 h-14 mx-auto rounded-full bg-sand-100 flex items-center justify-center text-spruce-800 mb-6 animate-pulse">
-            <Activity className="w-7 h-7" />
+      <div className="bg-canvas min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells and training journal in a sunlit studio"
+          align="center"
+          compact
+          eyebrow="ANALYSING RESPONSES"
+          title="Building Your Muscle Defence Profile"
+        />
+        <div className="py-12 px-4 sm:px-6 flex justify-center">
+          <div className="w-full max-w-md bg-white rounded-3xl p-10 sm:p-12 border border-charcoal/5 shadow-sm text-center">
+            <div className="w-14 h-14 mx-auto rounded-full bg-sand-100 flex items-center justify-center text-spruce-800 mb-6 animate-pulse">
+              <Activity className="w-7 h-7" />
+            </div>
+            <h2 className="font-serif text-2xl text-charcoal mb-2 font-bold tracking-tight">
+              Calibrating your baseline...
+            </h2>
+            <p className="text-xs text-charcoal/70 leading-relaxed">
+              Evaluating training consistency, low-appetite fuelling, and protein preservation markers.
+            </p>
           </div>
-          <h2 className="font-serif text-2xl text-charcoal mb-2 font-bold tracking-tight">
-            Calibrating your baseline...
-          </h2>
-          <p className="text-xs text-charcoal/70 leading-relaxed">
-            Evaluating training consistency, low-appetite fuelling, and protein preservation markers.
-          </p>
         </div>
       </div>
     );
@@ -177,8 +195,18 @@ export const Assessment: React.FC = () => {
   // Curiosity preservation: mask numeric score until verified submission
   if (step === ASSESSMENT_QUESTIONS.length + 1) {
     return (
-      <div className="bg-canvas min-h-[90vh] py-14 px-4 sm:px-6 flex flex-col justify-center items-center font-sans selection:bg-spruce-800 selection:text-sand-50">
-        <div className="w-full max-w-xl bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm relative">
+      <div className="bg-canvas min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells and training journal in a sunlit studio"
+          align="center"
+          compact
+          eyebrow="DIAGNOSTIC CALCULATION COMPLETE"
+          title="Your GLP-1 Muscle Defence Profile is Ready."
+          subtitle="We have mapped your responses across strength stimulus, protein pacing, and recovery capacity."
+        />
+        <div className="py-10 px-4 sm:px-6 flex flex-col justify-center items-center">
+          <div className="w-full max-w-xl bg-white rounded-3xl p-8 sm:p-10 border border-charcoal/5 shadow-sm relative">
           <div className="text-center mb-8">
             <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-spruce-800 block mb-3">
               DIAGNOSTIC CALCULATION COMPLETE
@@ -258,6 +286,7 @@ export const Assessment: React.FC = () => {
               🔒 No spam. Just practical guidance for your physical journey. Unsubscribe at any time.
             </p>
           </form>
+          </div>
         </div>
       </div>
     );
@@ -269,27 +298,25 @@ export const Assessment: React.FC = () => {
     const isModerate = result.overallScore >= 50 && result.overallScore < 75;
 
     return (
-      <div className="bg-canvas min-h-screen py-14 px-4 sm:px-6 font-sans selection:bg-spruce-800 selection:text-sand-50">
+      <div className="bg-canvas min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         <SeoHead 
           title="Your GLP-1 Fitness Action Plan | WRK Personal Training"
           description="Your personalised GLP-1 Fitness Assessment results: review your score, pillar breakdowns, and next-step coaching pathway."
         />
 
-        <div className="max-w-3xl mx-auto space-y-12">
-          {submitError && <p role="alert" className="bg-white border border-terracotta p-4 rounded-lg text-sm">{submitError}</p>}
-          
-          {/* Editorial Report Header */}
-          <div className="text-center">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-spruce-800 block mb-3">
-              YOUR GLP-1 ASSESSMENT SUMMARY
-            </span>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal mb-4 font-bold tracking-tight">
-              Your Personalised Action Plan.
-            </h1>
-            <p className="text-charcoal/80 text-base max-w-xl mx-auto leading-relaxed">
-              Based on your responses, here is an objective appraisal of your current routine and actionable steps to safeguard your strength.
-            </p>
-          </div>
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells and training journal in a sunlit studio"
+          align="center"
+          compact
+          eyebrow="YOUR GLP-1 ASSESSMENT SUMMARY"
+          title="Your Personalised Action Plan."
+          subtitle="Based on your responses, here is an objective appraisal of your current routine and actionable steps to safeguard your strength."
+        />
+
+        <div className="py-12 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto space-y-12">
+            {submitError && <p role="alert" className="bg-white border border-terracotta p-4 rounded-lg text-sm">{submitError}</p>}
 
           {/* Score & Readiness Band Card */}
           <div className="bg-sand-100/80 rounded-2xl p-8 border border-charcoal/5 shadow-sm text-center">
@@ -522,6 +549,7 @@ export const Assessment: React.FC = () => {
             </Link>
           </div>
 
+          </div>
         </div>
       </div>
     );
@@ -538,13 +566,23 @@ export const Assessment: React.FC = () => {
   const percentComplete = Math.round((step / ASSESSMENT_QUESTIONS.length) * 100);
 
   return (
-    <div className="bg-canvas min-h-[90vh] py-14 px-4 sm:px-6 flex flex-col justify-center items-center font-sans selection:bg-spruce-800 selection:text-sand-50">
+    <div className="bg-canvas min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
       <SeoHead 
         title={`GLP-1 Fitness Assessment · Step ${step} | WRK`}
         description="Take the free WRK GLP-1 Fitness Assessment to evaluate your resistance training, protein intake, and recovery habits."
       />
 
+      <PageHeroBanner
+        imageSrc="/images/banner-tools.jpg"
+        imageAlt="Kettlebells and training journal in a sunlit studio"
+        align="center"
+        compact
+        eyebrow={`QUESTION ${step} OF ${ASSESSMENT_QUESTIONS.length} · ~2 MIN ASSESSMENT`}
+        title="The GLP-1 Fitness Assessment."
+      />
+
       {/* Main Card Container */}
+      <div className="py-10 px-4 sm:px-6 flex flex-col justify-center items-center">
       <div className="w-full max-w-2xl bg-white rounded-3xl p-8 sm:p-12 border border-charcoal/5 shadow-sm relative">
         
         {/* Top Header Bar & Progress Track */}
@@ -649,6 +687,7 @@ export const Assessment: React.FC = () => {
           )}
         </div>
 
+      </div>
       </div>
     </div>
   );

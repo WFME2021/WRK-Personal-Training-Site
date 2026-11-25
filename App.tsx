@@ -28,6 +28,7 @@ import { ForReferrers } from './pages/ForReferrers';
 import { SummerMomentum } from './pages/SummerMomentum';
 import { Plans } from './pages/Plans';
 import { PlanDetail } from './pages/PlanDetail';
+import { Glp1Hub } from './pages/Glp1Hub';
 import { ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from './constants';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -64,8 +65,10 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/referrers" element={<Navigate to="/for-referrers" replace />} />
             <Route path="/clinicians" element={<Navigate to="/for-referrers" replace />} />
             <Route path="/healthcare" element={<Navigate to="/for-referrers" replace />} />
-            <Route path="/glp1" element={<Navigate to="/programs" replace />} />
+            <Route path="/glp-1" element={<Glp1Hub />} />
+            <Route path="/glp1" element={<Navigate to="/glp-1" replace />} />
             <Route path="/assessment" element={<Assessment />} />
+            <Route path="/coaching" element={<Programs />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/results" element={<Results />} />
@@ -81,7 +84,7 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/hydration-calculator" element={<Navigate to="/tools/hydration-calculator" replace />} />
             
             <Route path="/contact" element={<Contact />} />
-            <Route path="/book" element={<Navigate to="/contact" replace />} />
+            <Route path="/book" element={<Contact />} />
             <Route
               path="/summer-momentum"
               element={ENABLE_SUMMER_MOMENTUM ? <SummerMomentum /> : <Navigate to="/" replace />}
@@ -105,9 +108,11 @@ console.log("App mounted, initialData length:", initialData?.blogs?.length);
             <Route path="/personal-training-christchurch-philosophy" element={<Navigate to="/about" replace />} />
             <Route path="/services" element={<Services />} />
             <Route path="/toolkit" element={<Toolkit />} />
-            <Route path="/glp1-toolkit" element={<Navigate to="/toolkit" replace />} />
+            <Route path="/glp1-toolkit" element={<Toolkit />} />
             
             
+            <Route path="/articles" element={<Blog />} />
+            <Route path="/articles/:slug" element={<BlogPost />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             

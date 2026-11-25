@@ -56,7 +56,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
     stripeUrl: '#stripe-couch-to-5k-placeholder',
     forYouIf: [
       'You are starting from zero or returning after a long break from running.',
-      'You want gradual run-walk progressions capped at 3 sessions per week so your joints and lungs adapt steadily.',
+      'You want gradual run-walk progressions capped at 3 sessions per week so your joints and lungs adapt smoothly.',
       'You prefer clear, structured workouts inside the WRK app rather than guessing how far to push each day.',
     ],
     lookElsewhereIf: [
@@ -84,7 +84,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       {
         question: 'What if I repeat a week before moving on?',
         answer:
-          'Repeating a week whenever life gets busy or legs feel heavy is completely fine. You keep full access to the schedule inside My PT Hub so you can progress at a steady pace.',
+          'Repeating a week whenever life gets busy or legs feel heavy is completely fine. You keep full access to the schedule inside My PT Hub so you can progress at a sustainable pace.',
       },
       {
         question: 'Is there any strength work or nutrition coaching included?',
@@ -188,7 +188,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       { day: 'Sun', label: 'Rest & Recovery', type: 'recovery' },
     ],
     rhythmNote:
-      'Three progressive resistance-band and bodyweight strength sessions spaced across the week to support steady recovery.',
+      'Three progressive resistance-band and bodyweight strength sessions spaced across the week to support consistent recovery.',
     faqs: [
       {
         question: 'What kind of resistance bands do I need?',
@@ -227,7 +227,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
     stripeUrl: '#stripe-gym-strength-placeholder',
     forYouIf: [
       'You have access to a standard commercial gym with machines, cables, and dumbbells.',
-      'You want 3 reliable full-body strength sessions per week, plus the option of 1 steady conditioning session (never exceeding 4 total sessions).',
+      'You want 3 reliable full-body strength sessions per week, plus the option of 1 moderate conditioning session (never exceeding 4 total sessions).',
       'You want structured progression and video demos so you walk onto the gym floor with a clear plan.',
     ],
     lookElsewhereIf: [
@@ -270,7 +270,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
     ],
   },
   {
-    slug: 'upper-lower-split',
+    slug: 'upper-lower',
     title: 'Upper/Lower Split',
     category: 'Gym Strength',
     durationWeeks: 8,
@@ -280,7 +280,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       'Two upper-body and two lower-body strength sessions per week for focused volume and structured progression.',
     fitNote: 'Fit: Next step after full-body training for people ready to commit to 4 lifting days.',
     priceLabel: '$XX NZD',
-    stripeUrl: '#stripe-upper-lower-split-placeholder',
+    stripeUrl: '#stripe-upper-lower-placeholder',
     forYouIf: [
       'You already have a solid base of gym lifting and can consistently commit to 4 strength days per week.',
       'You want higher focused volume split cleanly into two upper-body and two lower-body sessions.',
@@ -326,7 +326,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
     ],
   },
   {
-    slug: '5k-to-half-marathon',
+    slug: '5k-to-half',
     title: '5K to Half Marathon',
     category: 'Running & Dual-Engine',
     durationWeeks: 12,
@@ -336,7 +336,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       'Progressive endurance build taking you safely from a comfortable 5K to 21.1 kilometres.',
     fitNote: 'Fit: Prerequisite: You can already run 5 kilometres comfortably without stopping.',
     priceLabel: '$XX NZD',
-    stripeUrl: '#stripe-5k-to-half-marathon-placeholder',
+    stripeUrl: '#stripe-5k-to-half-placeholder',
     forYouIf: [
       'You can already run 5 kilometres comfortably without stopping and want to build toward 21.1 kilometres.',
       'You want 4 structured runs per week (stepping down to 3 runs in the taper week) balancing easy aerobic work and gradual long runs.',
@@ -351,7 +351,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       { day: 'Mon', label: 'Rest & Recovery', type: 'recovery' },
       { day: 'Tue', label: 'Easy / Quality Run', type: 'run' },
       { day: 'Wed', label: 'Rest / Mobility', type: 'recovery' },
-      { day: 'Thu', label: 'Steady Run', type: 'run' },
+      { day: 'Thu', label: 'Aerobic Run', type: 'run' },
       { day: 'Fri', label: 'Rest & Recovery', type: 'recovery' },
       { day: 'Sat', label: 'Easy Shakeout Run', type: 'run' },
       { day: 'Sun', label: 'Progressive Long Run', type: 'run' },
@@ -410,7 +410,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       { day: 'Wed', label: 'Rest & Recovery', type: 'recovery' },
       { day: 'Thu', label: 'Gym Strength B', type: 'strength' },
       { day: 'Fri', label: 'Rest / Mobility', type: 'recovery' },
-      { day: 'Sat', label: 'Run 2 (Steady / Tempo)', type: 'run' },
+      { day: 'Sat', label: 'Run 2 (Aerobic / Tempo)', type: 'run' },
       { day: 'Sun', label: 'Rest & Recovery', type: 'recovery' },
     ],
     rhythmNote:
@@ -419,7 +419,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       {
         question: 'Is this a marathon or half-marathon preparation plan?',
         answer:
-          'No. Strength & Running is designed for general dual-engine capability—maintaining strength while building steady running fitness without promising a specific race distance.',
+          'No. Strength & Running is designed for general dual-engine capability—maintaining strength while building consistent running fitness without promising a specific race distance.',
       },
       {
         question: 'Why only 2 strength sessions and 2 runs per week?',
@@ -454,7 +454,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
     forYouIf: [
       'You are an independent older adult comfortable moving around a gym floor using dumbbells, TRX straps, cables, and a treadmill.',
       'You want 3 calm, joint-respecting sessions per week focused on posture, balance, carrying strength, and long-term independence.',
-      'You prefer steady progression with clear video guidance over loud, rushed group circuits.',
+      'You prefer consistent progression with clear video guidance over loud, rushed group circuits.',
     ],
     lookElsewhereIf: [
       'You need supervised clinical rehabilitation, fall-prevention physiotherapy, or ACC recovery—seek hands-on clinical care or book a 1:1 studio consult first.',
@@ -471,7 +471,7 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
       { day: 'Sun', label: 'Rest & Recovery', type: 'recovery' },
     ],
     rhythmNote:
-      'Three unhurried gym sessions per week built around strength, stability, and steady recovery for real-life capability.',
+      'Three unhurried gym sessions per week built around strength, stability, and consistent recovery for real-life capability.',
     faqs: [
       {
         question: 'Is Everyday Strength a medical or ACC rehabilitation programme?',
@@ -497,5 +497,13 @@ export const SELF_GUIDED_PLANS: SelfGuidedPlan[] = [
   },
 ];
 
-export const getPlanBySlug = (slug: string | undefined): SelfGuidedPlan | undefined =>
-  SELF_GUIDED_PLANS.find((plan) => plan.slug === slug);
+const PLAN_SLUG_ALIASES: Record<string, string> = {
+  'upper-lower-split': 'upper-lower',
+  '5k-to-half-marathon': '5k-to-half',
+};
+
+export const getPlanBySlug = (slug: string | undefined): SelfGuidedPlan | undefined => {
+  if (!slug) return undefined;
+  const resolved = PLAN_SLUG_ALIASES[slug] || slug;
+  return SELF_GUIDED_PLANS.find((plan) => plan.slug === resolved);
+};

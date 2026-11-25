@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import { BRAND_NAME, ENABLE_SUMMER_MOMENTUM, ENABLE_SELF_GUIDED_PLANS } from '../constants';
+import { Menu, X } from 'lucide-react';
+import { ENABLE_SUMMER_MOMENTUM } from '../constants';
 import { Footer } from './Footer';
 
 const SUMMER_BANNER_DISMISSED_KEY = 'wrk_summer_momentum_banner_dismissed';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBannerDismissed, setIsBannerDismissed] = useState(false);
   const location = useLocation();
-  const isTransparentHero = location.pathname === '/' || location.pathname === '/for-referrers' || location.pathname === '/clinicians';
+  const isTransparentHero = !location.pathname.startsWith('/admin');
 
   // Restore banner dismissal state on client only (safe for SSR/prerender)
   useEffect(() => {
@@ -63,8 +62,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     : 'text-forest/80 hover:text-forest';
 
   const contactBtnClass = isTransparentHero && !isScrolled
-    ? 'bg-forest/85 text-cream hover:bg-forest border border-cream/30'
-    : 'bg-forest text-cream hover:bg-forest-deep border border-forest/20';
+    ? 'bg-citron text-forest hover:brightness-95 border border-forest/20'
+    : 'bg-citron text-forest hover:brightness-95 border border-forest/20';
 
   const showSummerBanner = ENABLE_SUMMER_MOMENTUM && !isBannerDismissed;
 
@@ -111,18 +110,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         </div>
       )}
 
-      {/* Utility Bar (Desktop only — mobile accesses via drawer & footer) */}
-      <div className={`hidden md:block ${isTransparentHero && !isScrolled ? 'bg-forest-deep/90 backdrop-blur-sm' : 'bg-forest-deep'} text-cream/85 py-1.5 px-4 md:px-8 text-right text-[12px] font-medium tracking-wide z-[60] relative transition-colors duration-300 border-b border-cream/10`}>
-        <div className="max-w-7xl mx-auto flex justify-end">
-          <Link to="/for-referrers" className="hover:text-citron transition-colors flex items-center">
-            Healthcare Providers &amp; Referrals <span className="ml-1">→</span>
-          </Link>
-        </div>
-      </div>
-
       {/* Header */}
-      <header className={`sticky top-0 w-full z-50 transition-all duration-300 py-3 md:py-0 md:h-[72px] ${isTransparentHero ? '-mb-14 md:-mb-[72px]' : ''} ${headerBgClass}`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 h-full flex items-center justify-between">
+      <header className={`sticky top-0 w-full z-50 transition-all duration-300 h-14 md:h-[72px] ${isTransparentHero ? '-mb-14 md:-mb-[72px]' : ''} ${headerBgClass}`}>
+        <div className="max-w-7xl mx-auto px-4 md:px-8 h-full flex items-center justify-between gap-4">
           
           {/* Logo / Wordmark */}
           <Link to="/" className="block hover:opacity-80 transition-opacity flex-shrink-0" aria-label="Home">
@@ -131,26 +121,11 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex flex-grow justify-end items-center space-x-6 lg:space-x-8">
-            <Link to="/about" className={`text-sm font-medium transition-colors ${navLinkClass}`}>About</Link>
-            <div className="relative group">
-              <button className={`flex items-center text-sm font-medium transition-colors py-2 ${navLinkClass}`}>
-                Services <ChevronDown className="w-4 h-4 ml-1 opacity-70 group-hover:rotate-180 transition-transform" />
-              </button>
-              <div className="absolute top-full left-0 w-56 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="bg-cream text-forest border border-forest/15 rounded-xl shadow-lg p-2 flex flex-col gap-1">
-                  <Link to="/studio" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">1:1 Studio Coaching</Link>
-                  <Link to="/online" className="text-sm font-medium text-forest/85 hover:text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">1:1 Online Coaching</Link>
-                  <Link to="/toolkit" className="text-sm font-medium text-forest hover:bg-quiet rounded-lg px-3 py-2 transition-colors">GLP-1 Toolkit</Link>
-                </div>
-              </div>
-            </div>
-            <Link to="/programs" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Coaching &amp; Plans</Link>
-            {ENABLE_SELF_GUIDED_PLANS && (
-              <Link to="/plans" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Self-Guided Plans</Link>
-            )}
-            <Link to="/tools" className={`text-sm font-medium transition-colors whitespace-nowrap ${navLinkClass}`}>Tools</Link>
-            <Link to="/blog" className={`text-sm font-medium transition-colors ${navLinkClass}`}>Blog</Link>
-            <Link to="/contact" className={`${contactBtnClass} rounded-md px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-colors`}>Contact</Link>
+            <Link to="/coaching" className={`text-sm font-medium transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4 ${navLinkClass}`}>Coaching</Link>
+            <Link to="/plans" className={`text-sm font-medium transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4 ${navLinkClass}`}>Plans</Link>
+            <Link to="/glp-1" className={`text-sm font-medium transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4 ${navLinkClass}`}>GLP-1</Link>
+            <Link to="/articles" className={`text-sm font-medium transition-colors whitespace-nowrap shrink-0 hover:underline underline-offset-4 ${navLinkClass}`}>Articles</Link>
+            <Link to="/book" className={`${contactBtnClass} rounded-md px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all whitespace-nowrap shrink-0 shadow-sm`}>Book a Chat</Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -188,51 +163,30 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
            <Link onClick={() => setIsMenuOpen(false)} to="/" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
              Home
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/about" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
-             About
+           <Link onClick={() => setIsMenuOpen(false)} to="/coaching" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+             Coaching
            </Link>
-           <div className="flex flex-col">
-             <button 
-               onClick={() => setIsServicesOpen(!isServicesOpen)}
-               className="h-[52px] w-full flex items-center justify-between px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors"
-             >
-               Services
-               <ChevronDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
-             </button>
-             {isServicesOpen && (
-               <div className="flex flex-col bg-quiet/60 pb-2">
-                 <Link onClick={() => setIsMenuOpen(false)} to="/studio" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
-                   1:1 Studio Coaching
-                 </Link>
-                 <Link onClick={() => setIsMenuOpen(false)} to="/online" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest/85 hover:bg-quiet transition-colors">
-                   1:1 Online Coaching
-                 </Link>
-                 <Link onClick={() => setIsMenuOpen(false)} to="/toolkit" className="h-[44px] flex items-center pl-10 pr-6 text-base text-forest font-medium hover:bg-quiet transition-colors">
-                   GLP-1 Toolkit
-                 </Link>
-               </div>
-             )}
-           </div>
-           <Link onClick={() => setIsMenuOpen(false)} to="/programs" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
-             Coaching &amp; Plans
+           <Link onClick={() => setIsMenuOpen(false)} to="/plans" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+             Plans
            </Link>
-           {ENABLE_SELF_GUIDED_PLANS && (
-             <Link onClick={() => setIsMenuOpen(false)} to="/plans" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
-               Self-Guided Plans
-             </Link>
-           )}
-           <Link onClick={() => setIsMenuOpen(false)} to="/tools" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
-             Tools
+           <Link onClick={() => setIsMenuOpen(false)} to="/glp-1" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+             GLP-1
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/blog" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
-             Blog
+           <Link onClick={() => setIsMenuOpen(false)} to="/articles" className="h-[52px] flex items-center px-6 text-lg font-serif text-forest hover:bg-quiet transition-colors">
+             Articles
            </Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/for-referrers" className="h-[52px] flex items-center px-6 text-base font-medium text-forest/85 hover:bg-quiet transition-colors border-t border-forest/10 mt-2">
-             Healthcare Providers &amp; Referrals
+           <Link onClick={() => setIsMenuOpen(false)} to="/for-referrers" className="h-[48px] flex items-center px-6 text-base text-forest/80 hover:bg-quiet transition-colors border-t border-forest/10 mt-2">
+             For Referrers
+           </Link>
+           <Link onClick={() => setIsMenuOpen(false)} to="/about" className="h-[48px] flex items-center px-6 text-base text-forest/80 hover:bg-quiet transition-colors">
+             About Hayden
+           </Link>
+           <Link onClick={() => setIsMenuOpen(false)} to="/tools" className="h-[48px] flex items-center px-6 text-base text-forest/80 hover:bg-quiet transition-colors">
+             Calculators &amp; Tools
            </Link>
            <div className="px-6 pt-4">
-             <Link onClick={() => setIsMenuOpen(false)} to="/contact" className="block text-center bg-forest text-cream hover:bg-forest-deep rounded-md px-4 py-3 text-xs uppercase tracking-wider font-semibold transition-colors">
-               Contact
+             <Link onClick={() => setIsMenuOpen(false)} to="/book" className="block text-center bg-citron text-forest hover:brightness-95 border border-forest/20 rounded-md px-4 py-3 text-xs uppercase tracking-wider font-semibold transition-all shadow-sm">
+               Book a Chat
              </Link>
            </div>
          </div>

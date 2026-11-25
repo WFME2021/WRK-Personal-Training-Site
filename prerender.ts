@@ -45,14 +45,18 @@ const run = async () => {
       const routes = [
     '/',
     '/for-referrers',
+    '/glp-1',
+    '/coaching',
     '/programs',
     '/studio',
     '/online',
     '/personal-training',
     '/online-coaching',
     '/toolkit',
+    '/glp1-toolkit',
     '/assessment',
     '/results',
+    '/book',
     '/contact',
     '/about',
     '/resources',
@@ -60,6 +64,7 @@ const run = async () => {
     '/tools/tdee-calculator',
     '/tools/protein-calculator',
     '/tools/hydration-calculator',
+    '/articles',
     '/blog',
     ...(ENABLE_SUMMER_MOMENTUM ? ['/summer-momentum'] : []),
     ...(ENABLE_SELF_GUIDED_PLANS ? ['/plans', ...SELF_GUIDED_PLANS.map(p => `/plans/${p.slug}`)] : [])
@@ -113,12 +118,27 @@ const run = async () => {
     } else if (url.includes('/results') || url.includes('/assessment/result')) {
       title = "Your Muscular Preservation Report | WRK";
       desc = "Review your GLP-1 Fitness Assessment results. Access your personalized 12-week strength training recommendation to protect muscle during medical weight loss.";
+    } else if (url === '/glp-1') {
+      title = "GLP-1 Strength & Lifestyle Support | Christchurch & Online | WRK Personal Training";
+      desc = "Practical strength training, simple protein habits, and joint-friendly coaching for adults on GLP-1 medications in Christchurch and online across New Zealand.";
+    } else if (url === '/glp1-toolkit') {
+      title = "The WRK GLP-1 App Toolkit ($29 NZD) | WRK Personal Training";
+      desc = "A practical starter toolkit inside the WRK app with structured strength sessions, video demos, and everyday food guidance—one-off $29 NZD access.";
+    } else if (url === '/coaching') {
+      title = "1:1 Coaching | Studio & Online | WRK Personal Training";
+      desc = "Hands-on 1:1 coaching in Addington, Christchurch or online through the WRK app—built around your body, your schedule, and real life.";
+    } else if (url === '/book') {
+      title = "Book a Relaxed 15-Minute Chat | WRK Personal Training Christchurch";
+      desc = "Have a quick, zero-pressure 15-minute chat with Hayden about 1:1 studio coaching in Addington, online coaching, or where to start.";
+    } else if (url === '/articles') {
+      title = "Articles & Guides | Training, Nutrition & Strength | WRK";
+      desc = "Read WRK Personal Training articles for plain-English guidance on strength training, muscle preservation, nutrition, and sustainable habits.";
     } else if (url.match(/\/blog\/([^\/]+)/)) {
       const slug = url.match(/\/blog\/([^\/]+)/)[1];
       const post = initialBlogs.find(p => p.slug === slug);
       if (slug === 'glp-1-strength-training') {
         title = "GLP-1 Strength Training: Stop Sarcopenia & Fatigue | WRK";
-        desc = "Up to 40% of GLP-1 weight loss comes from muscle. Protect your metabolic rate with our 30-minute compound lifting protocol. Start lifting smarter today.";
+        desc = "Up to 40% of GLP-1 weight loss comes from muscle. Protect your metabolic rate with sensible compound lifting. Start lifting smarter today.";
       } else if (post) {
         title = post.seoTitle || post.title || (slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) + " | WRK");
         desc = post.seoDescription || post.excerpt || ("Read our latest insights on " + title + " from WRK Personal Training.");

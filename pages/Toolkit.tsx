@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { Smartphone, Check, ChevronDown, CheckCircle2, XCircle, ShieldCheck, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const Toolkit: React.FC = () => {
@@ -135,63 +136,18 @@ export const Toolkit: React.FC = () => {
       <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
         
         {/* 1. Product Hero Header */}
-        <section className="bg-cream pt-14 pb-16 px-6 max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Left Column (Desktop) / Top (Mobile): Offer & CTA */}
-            <div className="text-left">
-              <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold mb-3">
-                DELIVERED VIA THE WRK TRAINING APP · COMPLETE ACCESS
-              </p>
-              
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-forest tracking-tight leading-tight mb-4">
-                Stop Muscle Loss While the Weight Drops.
-              </h1>
-              
-              <p className="text-forest/80 text-sm sm:text-base mb-6 leading-relaxed">
-                The step-by-step workout routines and low-appetite meal templates built specifically for GLP-1 therapy. Delivered inside the WRK Training App so you know exactly what to lift, how to fuel, and how to protect your metabolism.
-              </p>
-
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="font-serif text-3xl font-bold text-forest">$29 NZD</span>
-                <span className="text-xs text-forest/70">(One-Time Access · Approx. $18 USD / £14 GBP)</span>
-              </div>
-
-              <a
-                href={checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-forest text-cream hover:bg-forest-deep w-full py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest block transition-colors mt-5 mb-3 shadow-sm"
-              >
-                Get Instant App Access — $29 NZD
-              </a>
-
-              <p className="text-xs text-forest/70 mb-6 text-center sm:text-left">
-                One-off payment · Instant iOS & Android login · No subscriptions
-              </p>
-
-              <div className="space-y-2 text-xs text-forest/80 pt-2 border-t border-forest/10">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-forest shrink-0" />
-                  <span>Full access in the WRK App (iOS & Android)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-forest shrink-0" />
-                  <span>Interactive workout logging & HD video demos</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-forest shrink-0" />
-                  <span>Zero monthly subscriptions or hidden fees</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column (Desktop) / Bottom (Mobile): Interactive App Screenshot Carousel */}
-            <div className="bg-quiet rounded-2xl p-4 sm:p-8 border border-forest/15 shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
-              
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells and training notebook in a calm sunlit strength studio"
+          maxWidthClass="max-w-5xl"
+          eyebrow="DELIVERED VIA THE WRK TRAINING APP · COMPLETE ACCESS"
+          title="Stop Muscle Loss While the Weight Drops."
+          subtitle="The step-by-step workout routines and low-appetite meal templates built specifically for GLP-1 therapy. Delivered inside the WRK Training App so you know exactly what to lift, how to fuel, and how to protect your metabolism."
+          rightSlot={
+            <div className="bg-quiet/95 rounded-2xl p-4 sm:p-6 border border-cream/25 shadow-xl flex flex-col items-center justify-center relative overflow-hidden">
               {/* Smartphone Frame */}
               <div 
-                className="w-full max-w-[280px] sm:max-w-[305px] aspect-[9/18.5] rounded-[2.5rem] border-4 border-slate-900 bg-slate-950 shadow-2xl overflow-hidden relative select-none cursor-grab active:cursor-grabbing group"
+                className="w-full max-w-[260px] sm:max-w-[285px] aspect-[9/18.5] rounded-[2.5rem] border-4 border-slate-900 bg-slate-950 shadow-2xl overflow-hidden relative select-none cursor-grab active:cursor-grabbing group"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -255,8 +211,7 @@ export const Toolkit: React.FC = () => {
               </div>
 
               {/* Indicator Dots */}
-              <div className="mt-4 flex flex-col items-center gap-2.5 z-10 w-full">
-                {/* Dots */}
+              <div className="mt-4 flex flex-col items-center gap-2 z-10 w-full">
                 <div className="flex items-center gap-1.5 flex-wrap justify-center px-2" role="tablist" aria-label="Screenshots">
                   {appScreenshots.map((_, idx) => (
                     <button
@@ -273,16 +228,49 @@ export const Toolkit: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-center gap-1.5 text-[10px] text-forest/70 font-medium pt-1">
+                <div className="flex items-center justify-center gap-1.5 text-[10px] text-forest/75 font-medium pt-0.5">
                   <Smartphone size={12} className="text-forest" />
                   <span>Swipe or click arrows to explore app interface</span>
                 </div>
               </div>
-
+            </div>
+          }
+        >
+          <div className="mt-6">
+            <div className="flex flex-wrap items-baseline gap-2 mb-1">
+              <span className="font-serif text-3xl font-bold text-citron">$29 NZD</span>
+              <span className="text-xs text-cream/80">(One-Time Access · Approx. $18 USD / £14 GBP)</span>
             </div>
 
+            <a
+              href={checkoutUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-citron text-forest hover:brightness-95 border border-forest/20 w-full sm:w-auto px-8 py-4 text-center rounded-md font-semibold text-xs uppercase tracking-widest inline-block transition-all mt-4 mb-3 shadow-lg"
+            >
+              Get Instant App Access — $29 NZD
+            </a>
+
+            <p className="text-xs text-cream/80 mb-5">
+              One-off payment · Instant iOS &amp; Android login · No subscriptions
+            </p>
+
+            <div className="space-y-2 text-xs text-cream/90 pt-3 border-t border-cream/20 max-w-md">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={14} className="text-citron shrink-0" />
+                <span>Full access in the WRK App (iOS &amp; Android)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={14} className="text-citron shrink-0" />
+                <span>Interactive workout logging &amp; HD video demos</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={14} className="text-citron shrink-0" />
+                <span>Zero monthly subscriptions or hidden fees</span>
+              </div>
+            </div>
           </div>
-        </section>
+        </PageHeroBanner>
 
         {/* 2. Physical Problem Callout & Agitation */}
         <section className="bg-quiet py-16 px-6 border-y border-forest/10">

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Dumbbell, MessageSquareText, Utensils, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Dumbbell, MessageSquareText, Utensils, ShieldCheck, Calendar, Smartphone } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
+import { ENABLE_SUMMER_MOMENTUM } from '../constants';
 import {
   PLAN_CATEGORIES,
   PlanCategory,
@@ -27,26 +29,20 @@ export const Plans: React.FC = () => {
     <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream overflow-x-hidden">
       <SeoHead
         title="Self-Guided Training Plans | 6–12 Week Programmes | WRK Personal Training"
-        description="Structured 6- to 12-week self-guided strength, home, gym, and running programmes delivered in the WRK app. Every plan is capped at 3 to 4 sessions per week."
+        description="Structured 6- to 12-week self-guided training programmes delivered via My PT Hub with video demos, a 7-day example meal plan with swaps, and scheduled weekly guidance notes."
       />
 
       {/* 1. Plans Hub Hero */}
-      <section className="pt-4 pb-6 md:pt-12 md:pb-10 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div className="max-w-3xl">
-          <span className="text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] font-semibold text-forest block mb-2 leading-snug">
-            WRK TRAINING APP · SELF-GUIDED CATALOGUE
-          </span>
-          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-forest tracking-tight leading-tight">
-            Self-Guided Training Plans
-          </h1>
-          <p className="text-forest/85 text-base sm:text-lg leading-relaxed max-w-2xl mt-3 mb-2">
-            Structured 6- to 12-week programmes delivered straight to the WRK app. Every plan is capped at 3 to 4 sessions per week—no hidden double days, no guesswork.
-          </p>
-        </div>
-      </section>
+      <PageHeroBanner
+        imageSrc="/images/banner-plans.jpg"
+        imageAlt="Everyday adult performing a dumbbell split squat in a calm sunlit home gym"
+        eyebrow="SELF-GUIDED PROGRAMMES · DELIVERED IN THE WRK APP"
+        title="Structured training plans you can follow on your own schedule."
+        subtitle="Practical 6- to 12-week programmes built from 20+ years on the gym floor. Every plan is capped at 3 or 4 sessions per week, delivered via My PT Hub with video demos, a 7-day example meal plan with swaps, and scheduled weekly guidance notes."
+      />
 
       {/* 2. Interactive Category Filter Tabs (Horizontally scrollable on mobile) */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pb-6 md:pb-8">
+      <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-8 pb-6 md:pt-10 md:pb-8">
         <div
           role="tablist"
           aria-label="Filter training plans by category"
@@ -61,7 +57,7 @@ export const Plans: React.FC = () => {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setSelectedCategory(category)}
-                className={`shrink-0 whitespace-nowrap px-4 py-2.5 rounded-md text-xs font-semibold uppercase tracking-wider transition-colors border ${
+                className={`shrink-0 whitespace-nowrap px-4 py-2.5 rounded-md text-xs font-semibold uppercase tracking-wider transition-colors border cursor-pointer ${
                   isActive
                     ? 'bg-forest text-cream border-forest shadow-sm'
                     : 'bg-quiet/70 text-forest border-forest/15 hover:bg-quiet'
@@ -75,7 +71,7 @@ export const Plans: React.FC = () => {
       </section>
 
       {/* 3. 8-Product Catalog Grid */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pb-14 md:pb-20">
+      <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pb-12 md:pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {filteredPlans.map((plan) => (
             <article
@@ -138,7 +134,73 @@ export const Plans: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. What's Included in Every Plan (3-Column Scope Clarity Block) */}
+      {/* 4. Highlighted Specialist App Programmes (GLP-1 Toolkit & Summer Momentum) */}
+      <section className="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pb-14 md:pb-20">
+        <div className="mb-6">
+          <span className="text-xs uppercase tracking-widest font-semibold text-forest/75 block mb-1.5">
+            SPECIALIST APP PROGRAMMES
+          </span>
+          <h2 className="font-serif text-2xl sm:text-3xl text-forest tracking-tight">
+            Focused Support in the WRK App
+          </h2>
+        </div>
+
+        <div className={`grid grid-cols-1 ${ENABLE_SUMMER_MOMENTUM ? 'md:grid-cols-2' : ''} gap-5`}>
+          {/* GLP-1 App Toolkit */}
+          <div className="bg-quiet rounded-2xl border border-forest/15 p-6 sm:p-7 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-forest/75">
+                  <Smartphone className="w-3.5 h-3.5" />
+                  GLP-1 APP TOOLKIT · ONE-OFF
+                </span>
+                <span className="font-serif text-lg font-bold text-forest">$29 NZD</span>
+              </div>
+              <h3 className="font-serif text-2xl text-forest font-semibold mb-2">
+                The WRK GLP-1 App Toolkit
+              </h3>
+              <p className="text-sm text-forest/85 leading-relaxed mb-5">
+                Joint-friendly home and gym strength tracks, protein anchors for lower-appetite days, and hydration guidance inside My PT Hub so you protect muscle without overwhelm.
+              </p>
+            </div>
+            <Link
+              to="/glp1-toolkit"
+              className="inline-flex items-center justify-center bg-forest text-cream hover:bg-forest-deep rounded-xl px-5 py-3 text-xs sm:text-sm font-semibold tracking-wide transition-colors w-full sm:w-auto self-start"
+            >
+              Explore the GLP-1 Toolkit ($29 NZD) →
+            </Link>
+          </div>
+
+          {/* Summer Momentum (when active) */}
+          {ENABLE_SUMMER_MOMENTUM && (
+            <div className="bg-forest text-cream rounded-2xl border border-forest-deep p-6 sm:p-7 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-citron">
+                    <Calendar className="w-3.5 h-3.5" />
+                    6-WEEK COHORT · 30 NOV – 8 JAN
+                  </span>
+                  <span className="font-serif text-lg font-bold text-cream">$149 NZD</span>
+                </div>
+                <h3 className="font-serif text-2xl text-cream font-semibold mb-2">
+                  Summer Momentum (30 Nov – 8 Jan)
+                </h3>
+                <p className="text-sm text-cream/85 leading-relaxed mb-5">
+                  Manageable movement sessions, holiday travel fill-ins, and our Festive Food &amp; BBQ Coping Guide so GLP-1 users keep momentum going over summer without losing progress.
+                </p>
+              </div>
+              <Link
+                to="/summer-momentum"
+                className="inline-flex items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/20 rounded-xl px-5 py-3 text-xs sm:text-sm font-semibold tracking-wide transition-all w-full sm:w-auto self-start shadow-sm"
+              >
+                View Summer Momentum ($149 NZD) →
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* 5. What's Included in Every Plan (3-Column Scope Clarity Block) */}
       <section className="bg-quiet py-12 md:py-20 px-4 sm:px-6 lg:px-8 border-y border-forest/10">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-8 md:mb-12">
@@ -194,7 +256,7 @@ export const Plans: React.FC = () => {
           <div className="mt-6 md:mt-8 bg-cream/80 border border-forest/15 rounded-xl p-4 sm:p-5 flex items-start gap-3 text-xs sm:text-sm text-forest/80">
             <ShieldCheck className="w-5 h-5 text-forest shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              <strong>Clinical boundary:</strong> Self-guided plans provide general fitness programming and everyday nutrition examples only. Always follow your prescribing clinician’s advice regarding GLP-1 medication, medical conditions, or injury rehabilitation. Need individualised coaching?{' '}
+              <strong>Scope clarity:</strong> Personal trainer with 20+ years on the floor—not a medical clinician, physio, or dietitian. Self-guided plans provide general fitness programming and everyday nutrition examples only. Always follow your prescribing clinician’s advice regarding GLP-1 medication, medical conditions, or injury rehabilitation. Need individualised coaching?{' '}
               <Link to="/book" className="underline font-semibold text-forest hover:opacity-75">
                 Book a free 15-minute chat →
               </Link>

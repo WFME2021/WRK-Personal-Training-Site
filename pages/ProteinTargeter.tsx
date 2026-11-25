@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { FatLossFoundationsLeadMagnet } from '../components/FatLossFoundationsLeadMagnet';
 import { Dna, Calculator } from 'lucide-react';
 
@@ -21,46 +22,40 @@ export const ProteinTargeter: React.FC = () => {
   const mealAllocation = Math.round(lowBound / 4);
 
   return (
-    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pt-24 pb-12">
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pb-12">
       <SeoHead 
         title="GLP-1 Protein Calculator | WRK Personal Training"
         description="Use our GLP-1 Protein Calculator to find your precise daily protein targets to support muscle retention and strength during your medical weight loss journey."
       />
       
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
-        {/* Breadcrumbs */}
-        <nav className="flex items-center text-[13px] font-medium text-forest/65 mb-8 max-w-4xl mx-auto">
-          <Link to="/" className="hover:text-forest transition-colors">Home</Link>
-          <span className="mx-2">/</span>
-          <Link to="/tools" className="hover:text-forest transition-colors">Tools</Link>
-          <span className="mx-2">/</span>
-          <span className="text-forest">Protein Calculator</span>
-        </nav>
+      <PageHeroBanner
+        imageSrc="/images/banner-tools.jpg"
+        imageAlt="Kettlebells and training notebook in a calm sunlit studio"
+        align="center"
+        compact
+        eyebrow={
+          <nav className="inline-flex items-center justify-center text-[12px] font-medium text-cream/85">
+            <Link to="/" className="hover:text-citron transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link to="/tools" className="hover:text-citron transition-colors">Tools</Link>
+            <span className="mx-2">/</span>
+            <span className="text-citron">Protein Calculator</span>
+          </nav>
+        }
+        title={
+          <>
+            GLP-1 <span className="wrk-highlight-dark">Protein</span> Calculator
+          </>
+        }
+        subtitle="How much protein should you eat while losing weight? Get a practical starting range based on your target bodyweight and training routine."
+      />
 
-        {/* Hero */}
-        <header className="text-center mb-16 max-w-4xl mx-auto">
-          <div className="w-16 h-16 bg-quiet text-forest border border-forest/15 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Dna size={32} />
-          </div>
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-6">
-            GLP-1 <span className="wrk-highlight">Protein</span> Calculator
-          </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-forest/80 mb-6">
-            How much protein should you eat while losing weight?
-          </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-forest/80 space-y-4">
-            <p>
-              When you're using a GLP-1 medication, reduced appetite can make it harder to eat enough food — including enough protein.
-            </p>
-            <p>
-              Protein is an important part of supporting muscle and strength during weight loss, particularly when combined with regular resistance training.
-            </p>
-            <p className="font-medium text-forest">
-              Use this calculator to get a practical starting range for your daily protein intake based on your target bodyweight and current training routine.
-            </p>
-          </div>
-        </header>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-10">
+        <div className="max-w-3xl mx-auto text-center text-[15px] md:text-[17px] leading-relaxed text-forest/80 space-y-3 mb-12">
+          <p>
+            When you're using a GLP-1 medication, reduced appetite can make it harder to eat enough food—including enough protein to support muscle and strength during weight loss.
+          </p>
+        </div>
 
         {/* Calculator Interface */}
         <div className="max-w-4xl mx-auto mb-24 flex flex-col md:flex-row gap-8">
@@ -111,7 +106,7 @@ export const ProteinTargeter: React.FC = () => {
                     className="w-full h-14 pl-5 pr-12 bg-cream border border-forest/15 rounded-xl focus:ring-2 focus:ring-forest focus:border-transparent outline-none transition-all text-forest text-[16px] appearance-none"
                   >
                     <option value="minimal">Minimal resistance training</option>
-                    <option value="moderate">1–2 steady resistance sessions per week</option>
+                    <option value="moderate">1–2 consistent resistance sessions per week</option>
                     <option value="high">3+ progressive strength sessions per week</option>
                   </select>
                   <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-forest/55">

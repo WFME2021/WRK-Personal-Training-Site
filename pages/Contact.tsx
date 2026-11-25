@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { CheckCircle2, ChevronDown, ChevronUp, Lock, MapPin, ArrowRight } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
@@ -101,19 +102,14 @@ export const Contact: React.FC = () => {
       />
       
       {/* 1. Masthead Header */}
-      <section className="bg-cream pt-10 md:pt-14 pb-10 px-6 max-w-4xl mx-auto text-center">
-        <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest/75 font-semibold mb-4">
-          ADDINGTON STUDIO &amp; ONLINE · ZERO SALES PITCH
-        </p>
-        
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6 leading-tight text-balance">
-          Let's have a relaxed 15-minute chat.
-        </h1>
-        
-        <p className="text-forest/85 max-w-2xl mx-auto text-base sm:text-lg mb-4 leading-relaxed">
-          Think of this like grabbing a quick coffee—no sales pitch, no pressure, and no awkwardness. Tell me what you're working around, what you've tried before, and what you'd love to feel capable of doing, and I'll give you an honest steer on the smartest place to start.
-        </p>
-      </section>
+      <PageHeroBanner
+        imageSrc="/images/banner-coffee-chat.jpg"
+        imageAlt="Warm relaxed coffee chat table inside a sunlit Christchurch setting"
+        align="center"
+        eyebrow="ADDINGTON STUDIO & ONLINE · ZERO SALES PITCH"
+        title="Let's have a relaxed 15-minute chat."
+        subtitle="Think of this like grabbing a quick coffee—no sales pitch, no pressure, and no awkwardness. Tell me what you're working around, what you've tried before, and what you'd love to feel capable of doing, and I'll give you an honest steer on the smartest place to start."
+      />
 
       {/* 2. 2-Column Consultation Split */}
       <section className="py-10 px-6 max-w-6xl mx-auto">
@@ -257,7 +253,7 @@ export const Contact: React.FC = () => {
                       <option value="Looking to build strength & confidence in my 40s/50s+">Looking to build strength &amp; confidence in my 40s/50s+</option>
                       <option value="Getting started again after a break or injury">Getting started again after a break or injury</option>
                       <option value="Currently on a GLP-1 medication and wanting to protect muscle">Currently on a GLP-1 medication and wanting to protect muscle</option>
-                      <option value="Stepping off GLP-1 medication and wanting steady habits">Stepping off GLP-1 medication and wanting steady habits</option>
+                      <option value="Stepping off GLP-1 medication and wanting consistent habits">Stepping off GLP-1 medication and wanting consistent habits</option>
                       <option value="Interested in 1:1 Studio Coaching (Addington) or Online Coaching">Interested in 1:1 Studio Coaching (Addington) or Online Coaching</option>
                       <option value="General personal training enquiry">Just a quick question about coaching or plans</option>
                     </select>
@@ -281,9 +277,9 @@ export const Contact: React.FC = () => {
                       className="w-full bg-cream border border-forest/15 rounded-xl px-4 py-3.5 text-sm text-forest appearance-none focus:outline-none focus:ring-1 focus:ring-forest focus:border-forest transition-all cursor-pointer"
                     >
                       <option value="" disabled>Pick your main focus...</option>
-                      <option value="Building a sustainable, long-term exercise routine">Building a steady 3–4 day/week routine I can actually stick with</option>
+                      <option value="Building a sustainable, long-term exercise routine">Building a consistent 3–4 day/week routine I can actually stick with</option>
                       <option value="Joint-friendly strength & feeling better in everyday life">Joint-friendly strength &amp; feeling better in everyday life</option>
-                      <option value="Protecting my lean muscle and physical strength">Protecting my muscle, strength, and steady energy</option>
+                      <option value="Protecting my lean muscle and physical strength">Protecting my muscle, strength, and everyday energy</option>
                       <option value="Simple everyday protein and hydration habits">Simple everyday protein and eating habits (without strict diets)</option>
                     </select>
                     <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-forest/50">

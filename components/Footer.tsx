@@ -48,26 +48,34 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Address & Info */}
+        {/* Address & Navigation */}
         <div className="md:col-span-5 lg:col-span-5 lg:col-start-8 space-y-8 flex flex-col justify-center">
           <div>
-            <h4 className="font-serif text-lg text-cream font-semibold mb-3">Facility</h4>
-            <p className="text-sm text-cream/80 leading-relaxed">
-              WRK Personal Training · Located at Get Me Fitter, 12 Show Place, Addington, Christchurch 8024
-            </p>
-          </div>
-          <div>
-            <h4 className="font-serif text-lg text-cream font-semibold mb-3">Legal & Privacy</h4>
-            <div className="flex flex-col space-y-2">
-              <Link to="/privacy" className="text-sm text-cream/80 hover:text-citron transition-colors">Privacy Policy (Secure Data Handling)</Link>
-              <Link to="/terms" className="text-sm text-cream/80 hover:text-citron transition-colors">Terms of Service</Link>
-              <Link to="/health-disclaimer" className="text-sm text-cream/80 hover:text-citron transition-colors">Medical Disclaimer</Link>
+            <h4 className="font-serif text-lg text-cream font-semibold mb-3">Explore WRK</h4>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              <Link to="/coaching" className="text-sm text-cream/80 hover:text-citron transition-colors">Coaching</Link>
+              <Link to="/plans" className="text-sm text-cream/80 hover:text-citron transition-colors">Plans</Link>
+              <Link to="/glp-1" className="text-sm text-cream/80 hover:text-citron transition-colors">GLP-1 Support</Link>
+              <Link to="/assessment" className="text-sm text-cream/80 hover:text-citron transition-colors">GLP-1 Assessment</Link>
+              <Link to="/articles" className="text-sm text-cream/80 hover:text-citron transition-colors">Articles</Link>
+              <Link to="/for-referrers" className="text-sm text-cream/80 hover:text-citron transition-colors">For Referrers</Link>
+              <Link to="/book" className="text-sm text-cream/80 hover:text-citron transition-colors">Book a Chat</Link>
+              <Link to="/about" className="text-sm text-cream/80 hover:text-citron transition-colors">About Hayden</Link>
+              <Link to="/tools" className="text-sm text-cream/80 hover:text-citron transition-colors">Calculators &amp; Tools</Link>
             </div>
           </div>
           <div>
-            <h4 className="font-serif text-lg text-cream font-semibold mb-3">Professionals</h4>
-            <div className="flex flex-col space-y-2">
-              <Link to="/for-referrers" className="text-sm text-cream/80 hover:text-citron transition-colors">Clinical & GP Referrals</Link>
+            <h4 className="font-serif text-lg text-cream font-semibold mb-2">Studio</h4>
+            <p className="text-sm text-cream/80 leading-relaxed">
+              1/12 Show Place, Addington (inside Get Me Fitter), Christchurch 8024 · Mon–Fri 6:00 AM – 2:00 PM
+            </p>
+          </div>
+          <div>
+            <h4 className="font-serif text-lg text-cream font-semibold mb-2">Legal &amp; Privacy</h4>
+            <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <Link to="/privacy" className="text-sm text-cream/80 hover:text-citron transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="text-sm text-cream/80 hover:text-citron transition-colors">Terms of Service</Link>
+              <Link to="/health-disclaimer" className="text-sm text-cream/80 hover:text-citron transition-colors">Health Disclaimer</Link>
             </div>
           </div>
         </div>
@@ -78,9 +86,9 @@ export const Footer: React.FC = () => {
           &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
         </p>
         <div className="flex items-center space-x-6">
-           <span>GLP-1 Specialised</span>
+           <span>Addington, Christchurch &amp; Online</span>
            <span className="text-citron">•</span>
-           <span>Evidence-Based</span>
+           <span>20+ Years Coaching</span>
         </div>
       </div>
     </footer>

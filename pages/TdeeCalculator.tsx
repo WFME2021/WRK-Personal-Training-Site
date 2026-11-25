@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { FatLossFoundationsLeadMagnet } from '../components/FatLossFoundationsLeadMagnet';
 import { Calculator, ArrowRight, ArrowLeft, RotateCcw, AlertCircle } from 'lucide-react';
 
@@ -204,18 +205,29 @@ export const TdeeCalculator: React.FC = () => {
 
   if (showResults && results) {
     return (
-      <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pt-24 pb-12" ref={topRef}>
+      <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pb-12" ref={topRef}>
         <SeoHead 
           title="GLP-1 Calorie & Macro Calculator | WRK Personal Training"
           description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalise your protein, carbohydrate, and fat targets during weight loss."
         />
-        <div className="max-w-3xl mx-auto px-4 md:px-8">
-          
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-4 uppercase tracking-wide">
-              YOUR RESULTS
-            </h2>
-          </div>
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells and training notebook in a calm sunlit studio"
+          align="center"
+          compact
+          eyebrow={
+            <nav className="inline-flex items-center justify-center text-[12px] font-medium text-cream/85">
+              <Link to="/" className="hover:text-citron transition-colors">Home</Link>
+              <span className="mx-2">/</span>
+              <Link to="/tools" className="hover:text-citron transition-colors">Tools</Link>
+              <span className="mx-2">/</span>
+              <span className="text-citron">Macro Calculator</span>
+            </nav>
+          }
+          title="Your Macro & Calorie Results"
+          subtitle="Estimated daily energy and protein targets built around muscle protection."
+        />
+        <div className="max-w-3xl mx-auto px-4 md:px-8 pt-12">
 
           <div className="bg-quiet rounded-3xl p-8 md:p-12 shadow-sm border border-forest/15 mb-12 text-center">
             <h2 className="text-[14px] font-bold uppercase tracking-wider text-forest/75 mb-4">ESTIMATED MAINTENANCE</h2>
@@ -411,38 +423,39 @@ export const TdeeCalculator: React.FC = () => {
   }
 
   return (
-    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pt-24 pb-12" ref={topRef}>
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pb-12" ref={topRef}>
       <SeoHead 
         title="GLP-1 Calorie & Macro Calculator | WRK Personal Training"
         description="Use our GLP-1 Calorie & Macro Calculator to estimate your daily energy needs and personalise your protein, carbohydrate, and fat targets during weight loss."
       />
 
-      <div className="max-w-3xl mx-auto px-4 md:px-8">
-        
-        {/* Breadcrumbs */}
-        <nav className="flex items-center text-[13px] font-medium text-forest/65 mb-8 max-w-3xl mx-auto">
-          <Link to="/" className="hover:text-forest transition-colors">Home</Link>
-          <span className="mx-2">/</span>
-          <Link to="/tools" className="hover:text-forest transition-colors">Tools</Link>
-          <span className="mx-2">/</span>
-          <span className="text-forest">Macro Calculator</span>
-        </nav>
+      <PageHeroBanner
+        imageSrc="/images/banner-tools.jpg"
+        imageAlt="Kettlebells and training notebook in a calm sunlit studio"
+        align="center"
+        compact
+        eyebrow={
+          <nav className="inline-flex items-center justify-center text-[12px] font-medium text-cream/85">
+            <Link to="/" className="hover:text-citron transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link to="/tools" className="hover:text-citron transition-colors">Tools</Link>
+            <span className="mx-2">/</span>
+            <span className="text-citron">Macro Calculator</span>
+          </nav>
+        }
+        title={
+          <>
+            GLP-1 <span className="wrk-highlight-dark">Calorie</span> &amp; Macro Calculator
+          </>
+        }
+        subtitle="Estimate your energy needs, set a sensible calorie target and build your macros around protein, strength and sustainable fat loss."
+      />
 
+      <div className="max-w-3xl mx-auto px-4 md:px-8 pt-10">
         {step === 1 && (
-          <header className="text-center mb-16">
-            <div className="w-16 h-16 bg-quiet text-forest border border-forest/15 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Calculator size={32} />
-            </div>
-            <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-6">
-              GLP-1 <span className="wrk-highlight">Calorie</span> & Macro Calculator
-            </h1>
-            <h2 className="font-serif text-[24px] md:text-[28px] text-forest/80 mb-6 max-w-2xl mx-auto">
-              Estimate your energy needs, set a sensible calorie target and build your macros around protein, strength and sustainable fat loss.
-            </h2>
-            <div className="text-[16px] md:text-[18px] leading-relaxed text-forest/80 space-y-4 max-w-2xl mx-auto">
-              <p>Your calorie needs don't suddenly become irrelevant when you start a GLP-1. But appetite, food intake and your ability to maintain adequate nutrition can change significantly.</p>
-            </div>
-          </header>
+          <p className="text-center text-[15px] md:text-[17px] leading-relaxed text-forest/80 max-w-2xl mx-auto mb-10">
+            Your calorie needs don't suddenly become irrelevant when you start a GLP-1. But appetite, food intake and your ability to maintain adequate nutrition can change significantly.
+          </p>
         )}
 
         <div className="bg-quiet rounded-3xl p-8 md:p-12 shadow-sm border border-forest/15 mb-24 relative overflow-hidden">

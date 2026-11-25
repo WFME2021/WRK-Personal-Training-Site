@@ -12,6 +12,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { isCheckoutUrlConfigured } from '../constants';
 import { getPlanBySlug } from '../src/data/selfGuidedPlans';
 
@@ -29,23 +30,30 @@ export const PlanDetail: React.FC = () => {
 
   if (!plan) {
     return (
-      <div className="bg-cream text-forest min-h-[70vh] flex items-center justify-center px-4 py-16">
+      <div className="bg-cream text-forest min-h-screen">
         <SeoHead
           title="Plan Not Found | WRK Personal Training"
           description="Browse WRK Personal Training's structured 6- to 12-week self-guided training plans."
         />
-        <div className="max-w-lg text-center space-y-5 bg-quiet border border-forest/15 rounded-2xl p-6 sm:p-10 shadow-sm">
-          <h1 className="font-serif text-3xl text-forest">Plan Not Found</h1>
-          <p className="text-sm sm:text-base text-forest/80 leading-relaxed">
-            We couldn't find the self-guided programme you were looking for. Browse all 8 plans below.
-          </p>
-          <Link
-            to="/plans"
-            className="inline-flex items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3 text-xs font-semibold uppercase tracking-widest rounded-md transition-all"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to All Self-Guided Plans
-          </Link>
+        <PageHeroBanner
+          imageSrc="/images/banner-plans.jpg"
+          imageAlt="Sunlit home training space with dumbbells"
+          align="center"
+          compact
+          eyebrow="SELF-GUIDED TRAINING PLANS"
+          title="Plan Not Found"
+          subtitle="We couldn't find the self-guided programme you were looking for. Browse all 8 plans below."
+        />
+        <div className="flex items-center justify-center px-4 py-16">
+          <div className="max-w-lg text-center space-y-5 bg-quiet border border-forest/15 rounded-2xl p-6 sm:p-10 shadow-sm">
+            <Link
+              to="/plans"
+              className="inline-flex items-center justify-center bg-citron text-forest hover:brightness-95 border border-forest/20 px-6 py-3 text-xs font-semibold uppercase tracking-widest rounded-md transition-all"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to All Self-Guided Plans
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -71,50 +79,52 @@ export const PlanDetail: React.FC = () => {
         description={`${plan.summary} ${plan.durationBadge} delivered in the WRK app.`}
       />
 
-      {/* Back Link */}
-      <div className="pt-4 md:pt-8 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <Link
-          to="/plans"
-          className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-forest/75 hover:text-forest transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
-          All Self-Guided Plans
-        </Link>
-      </div>
-
-      {/* 1. Plan Header & Primary CTA */}
-      <section className="pt-4 pb-10 md:pt-6 md:pb-14 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
-          <div className="lg:col-span-7 space-y-4">
+      <PageHeroBanner
+        imageSrc="/images/banner-plans.jpg"
+        imageAlt={`${plan.title} — WRK self-guided training programme`}
+        compact
+        maxWidthClass="max-w-5xl"
+        contentMaxWidthClass="max-w-3xl text-left"
+        eyebrow={
+          <div className="space-y-3">
+            <Link
+              to="/plans"
+              className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-cream/85 hover:text-citron transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+              All Self-Guided Plans
+            </Link>
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-[0.2em] font-semibold text-forest">
-                {plan.category}
-              </span>
+              <span>{plan.category}</span>
               {plan.statusBadge && (
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-forest bg-quiet border border-forest/20 px-2.5 py-0.5 rounded">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-forest bg-citron px-2.5 py-0.5 rounded">
                   {plan.statusBadge}
                 </span>
               )}
             </div>
+          </div>
+        }
+        title={plan.title}
+        subtitle={plan.summary}
+      >
+        <div className="flex flex-wrap gap-2 mt-5">
+          <span className="text-xs font-semibold text-cream bg-forest-deep/75 border border-cream/25 px-3 py-1.5 rounded-md backdrop-blur-sm">
+            {plan.durationBadge}
+          </span>
+          <span className="text-xs font-medium text-cream bg-forest-deep/75 border border-cream/25 px-3 py-1.5 rounded-md backdrop-blur-sm">
+            {plan.equipmentTag}
+          </span>
+        </div>
+      </PageHeroBanner>
 
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-forest tracking-tight leading-tight">
-              {plan.title}
-            </h1>
-
-            <p className="text-base sm:text-lg text-forest/85 leading-relaxed">
-              {plan.summary}
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              <span className="text-xs font-semibold text-forest bg-quiet border border-forest/15 px-3 py-1.5 rounded-md">
-                {plan.durationBadge}
+      {/* 1. Plan Details & Primary CTA */}
+      <section className="pt-8 pb-10 md:pt-10 md:pb-14 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="bg-quiet/70 border border-forest/15 rounded-2xl p-5 sm:p-6 text-sm sm:text-base text-forest/85 leading-relaxed">
+              <span className="text-xs uppercase tracking-widest font-semibold text-forest block mb-2">
+                WHO THIS IS BUILT FOR
               </span>
-              <span className="text-xs font-medium text-forest bg-quiet border border-forest/15 px-3 py-1.5 rounded-md">
-                {plan.equipmentTag}
-              </span>
-            </div>
-
-            <div className="bg-quiet/70 border border-forest/15 rounded-xl p-4 text-sm text-forest/85">
               {plan.fitNote}
             </div>
           </div>

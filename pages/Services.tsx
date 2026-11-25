@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Smartphone, User, BookOpen, CheckCircle, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 
 export const Services: React.FC = () => {
   useEffect(() => {
@@ -9,42 +10,33 @@ export const Services: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-citron selection:text-forest pt-24 pb-12">
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-citron selection:text-forest pb-12">
       <SeoHead
         title="Coaching & Programmes | WRK Personal Training"
         description="Compare how we work together at WRK Personal Training—in-person coaching in Addington, Christchurch or 1:1 online coaching wherever you train."
       />
       
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
-        {/* Page Header */}
-        <header className="text-center mb-20 max-w-4xl mx-auto">
-          <h1 className="font-serif text-[42px] md:text-[56px] leading-[1.1] text-forest mb-6">
-            Coaching &amp; <span className="wrk-highlight">Programmes</span>
-          </h1>
-          <h2 className="font-serif text-[24px] md:text-[28px] text-forest/80 mb-6">
-            Choose the level of support that fits your real week.
-          </h2>
-          <div className="text-[16px] md:text-[18px] leading-relaxed text-forest/80 space-y-6">
-            <p>
-              You do not need more fitness noise. You need steady support that fits around work, family, and how your body actually feels.
-            </p>
-            <p>
-              Whether you want to train face-to-face in Addington, work together online from home, or follow a straightforward plan on your own, there is a sensible starting point here.
-            </p>
-            <p>
-              Every WRK programme is built around <strong className="text-forest">lasting strength, everyday energy, joint-friendly movement, and habits you can keep up</strong>—including dedicated support if you are on a GLP-1 medication.
-            </p>
-          </div>
-        </header>
+      <PageHeroBanner
+        imageSrc="/images/banner-coaching.jpg"
+        imageAlt="Personal trainer coaching a client in Christchurch studio"
+        align="center"
+        eyebrow="WRK PERSONAL TRAINING · CHRISTCHURCH & ONLINE"
+        title={
+          <>
+            Coaching &amp; <span className="wrk-highlight-dark">Programmes</span>
+          </>
+        }
+        subtitle="Choose the level of support that fits your real week—face-to-face in Addington, online from home, or a straightforward self-guided plan."
+      />
 
-        <div className="mb-16 max-w-5xl mx-auto rounded-3xl shadow-sm border border-forest/15 wrk-photo-container">
-          <div className="wrk-photo-overlay"></div>
-          <img 
-            src="https://i.postimg.cc/tCHyKN1c/pexels-zeynep-38928850.jpg" 
-            alt="Expert providing Personal Training Services in Christchurch supporting a client" 
-            className="w-full h-auto aspect-[16/9] md:aspect-[2.5/1] wrk-photo"
-          />
+      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-12">
+        <div className="max-w-3xl mx-auto text-center text-[16px] md:text-[18px] leading-relaxed text-forest/80 space-y-4 mb-12">
+          <p>
+            You do not need more fitness noise. You need consistent support that fits around work, family, and how your body actually feels.
+          </p>
+          <p>
+            Every WRK programme is built around <strong className="text-forest">lasting strength, everyday energy, joint-friendly movement, and habits you can keep up</strong>—including dedicated support if you are on a GLP-1 medication.
+          </p>
         </div>
 
         {/* Programs Grid */}
@@ -92,7 +84,7 @@ export const Services: React.FC = () => {
                 <p className="text-[13px] font-bold uppercase tracking-widest text-forest/70 mb-1">Format</p>
                 <p className="text-[22px] font-serif text-forest mb-3">12-Week Guided Blocks</p>
                 <p className="text-[14px] text-forest/75 leading-relaxed">
-                  <strong className="text-forest font-medium">Best for:</strong> Adults who want personalised coaching and steady check-ins while training at home or a local gym. Weekly coaching options are talked through openly on your intro chat.
+                  <strong className="text-forest font-medium">Best for:</strong> Adults who want personalised coaching and consistent check-ins while training at home or a local gym. Weekly coaching options are talked through openly on your intro chat.
                 </p>
               </div>
               <Link 

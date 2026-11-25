@@ -1,5 +1,6 @@
 import React from 'react';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 
 export const Terms: React.FC = () => {
   return (
@@ -10,11 +11,17 @@ export const Terms: React.FC = () => {
       />
 
       <div className="bg-cream text-forest min-h-screen font-sans selection:bg-citron selection:text-forest pb-24 transition-colors duration-300">
-        <section className="pt-32 pb-20 px-6 max-w-3xl mx-auto">
-          <h1 className="font-display text-4xl md:text-5xl uppercase mb-8 text-forest">
-            Terms of Service
-          </h1>
-          <p className="text-forest/70 mb-12">Last updated: 11 March 2026</p>
+        <PageHeroBanner
+          imageSrc="/images/banner-articles.jpg"
+          imageAlt="Sunlit oak study table with notebook and ceramic cup"
+          align="center"
+          compact
+          eyebrow="WRK PERSONAL TRAINING · POLICIES"
+          title="Terms of Service"
+          subtitle="Last updated: 11 March 2026"
+        />
+
+        <section className="pt-12 pb-20 px-6 max-w-3xl mx-auto">
 
           <div className="prose prose-lg text-forest/85 space-y-8 [&_h2]:text-forest">
             <div>

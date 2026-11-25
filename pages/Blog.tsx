@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { useContent } from '../context/ContentContext';
 import { ArrowRight, BookOpen, Clock, Calendar } from 'lucide-react';
 
@@ -87,22 +88,21 @@ export const Blog: React.FC = () => {
       <div className="bg-canvas text-charcoal min-h-screen font-sans selection:bg-spruce-800 selection:text-sand-50">
         
         {/* 1. Masthead Header */}
-        <section className="bg-canvas pt-14 pb-12 px-6 max-w-5xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-[0.2em] font-sans text-spruce-800 font-semibold mb-4">
-            EVIDENCE-BASED GUIDES & ESSAYS
-          </p>
-          
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal tracking-tight max-w-3xl mx-auto mb-4 leading-tight">
-            The GLP-1 Fitness <span className="italic text-spruce-800">Library.</span>
-          </h1>
-          
-          <p className="text-charcoal/80 max-w-xl mx-auto text-base sm:text-lg mb-8 leading-relaxed">
-            Practical guidance for training, low-appetite fuelling, and long-term capability alongside medical weight loss.
-          </p>
-        </section>
+        <PageHeroBanner
+          imageSrc="/images/banner-articles.jpg"
+          imageAlt="Sunlit oak study table with a notebook and ceramic coffee mug"
+          align="center"
+          eyebrow="EVIDENCE-BASED GUIDES & ESSAYS"
+          title={
+            <>
+              The GLP-1 Fitness <span className="italic text-citron">Library.</span>
+            </>
+          }
+          subtitle="Practical guidance for training, low-appetite fuelling, and long-term capability alongside medical weight loss."
+        />
 
         {/* 2. Horizontal Category Filter Bar */}
-        <div className="max-w-6xl mx-auto px-6 mb-12">
+        <div className="max-w-6xl mx-auto px-6 pt-10 mb-12">
           <div className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             {CATEGORIES.map(category => {
               const isActive = activeCategory === category;

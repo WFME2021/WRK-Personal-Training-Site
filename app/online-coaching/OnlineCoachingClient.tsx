@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { trackEvent } from '../../utils/analytics';
+import { PageHeroBanner } from '../../components/PageHeroBanner';
 
 const FAQS = [
   {
@@ -18,7 +19,7 @@ const FAQS = [
   },
   {
     q: 'Is there a long-term lock-in contract?',
-    a: 'No endless lock-ins. We work in straightforward 12-week blocks so your body has enough steady time to build real strength and feel the difference. On our quick intro chat, I will talk you through the simple weekly coaching options before you decide anything.',
+    a: 'No endless lock-ins. We work in straightforward 12-week blocks so your body has enough consistent time to build real strength and feel the difference. On our quick intro chat, I will talk you through the simple weekly coaching options before you decide anything.',
   },
 ];
 
@@ -62,42 +63,42 @@ export default function OnlineCoachingClient() {
   return (
     <div className="relative min-h-screen bg-cream text-forest antialiased selection:bg-forest selection:text-cream pb-24 md:pb-12">
       {/* 1. HERO SECTION */}
-      <section className="relative px-5 pt-12 pb-16 mx-auto max-w-4xl text-center md:pt-20">
-        <span className="inline-block text-xs font-semibold tracking-widest uppercase text-forest/75 mb-4">
-          1:1 Online Coaching · New Zealand &amp; Worldwide
-        </span>
-        <h1 className="font-serif text-3xl font-normal tracking-tight sm:text-5xl md:text-6xl text-forest leading-tight">
-          Real coaching in your pocket, <br className="hidden sm:inline" />
-          <span className="text-forest/85">built around your actual week.</span>
-        </h1>
-        <p className="mt-5 text-base sm:text-lg text-forest/80 max-w-2xl mx-auto leading-relaxed">
-          Whether you train at a local gym, in the garage, or in your lounge, we build a straightforward strength and habit programme that fits your energy and schedule—whether you are getting back into routine or protecting muscle on a GLP-1.
-        </p>
-
-        {/* Proof / Trust Strip */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-forest/75 font-medium">
-          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Tailored to your gear</span>
-          <span className="text-forest/30 hidden sm:inline">•</span>
-          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> No burnout workouts</span>
-          <span className="text-forest/30 hidden sm:inline">•</span>
-          <span className="flex items-center gap-1.5"><strong className="text-forest font-bold">✓</strong> Weekly check-ins with Hayden</span>
+      <PageHeroBanner
+        imageSrc="/images/banner-plans.jpg"
+        imageAlt="Online personal training setup with dumbbells in a warm sunlit home training space"
+        align="center"
+        eyebrow="1:1 ONLINE COACHING · NEW ZEALAND & WORLDWIDE"
+        title={
+          <>
+            Real coaching in your pocket, <br className="hidden sm:inline" />
+            <span className="text-cream/90">built around your actual week.</span>
+          </>
+        }
+        subtitle="Whether you train at a local gym, in the garage, or in your lounge, we build a straightforward strength and habit programme that fits your energy and schedule—whether you are getting back into routine or protecting muscle on a GLP-1."
+      >
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-cream/85 font-medium">
+          <span className="flex items-center gap-1.5"><strong className="text-citron font-bold">✓</strong> Tailored to your gear</span>
+          <span className="text-cream/35 hidden sm:inline">•</span>
+          <span className="flex items-center gap-1.5"><strong className="text-citron font-bold">✓</strong> No burnout workouts</span>
+          <span className="text-cream/35 hidden sm:inline">•</span>
+          <span className="flex items-center gap-1.5"><strong className="text-citron font-bold">✓</strong> Weekly check-ins with Hayden</span>
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
             href="#apply-now"
-            className="w-full sm:w-auto px-8 py-3.5 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg transition-all text-center shadow-sm"
+            className="w-full sm:w-auto px-8 py-3.5 bg-citron hover:brightness-95 text-forest border border-forest/20 font-bold rounded-lg transition-all text-center shadow-lg"
           >
             Chat With Hayden
           </a>
           <a
             href="#how-it-works"
-            className="w-full sm:w-auto px-6 py-3.5 bg-quiet hover:bg-forest/10 text-forest font-semibold rounded-lg border border-forest/20 transition-colors text-center"
+            className="w-full sm:w-auto px-6 py-3.5 bg-forest-deep/65 hover:bg-forest-deep/85 text-cream font-semibold rounded-lg border border-cream/35 transition-colors text-center backdrop-blur-sm"
           >
             See How Online Coaching Works
           </a>
         </div>
-      </section>
+      </PageHeroBanner>
 
       {/* 2. PLAIN-ENGLISH PERSPECTIVE CALLOUT */}
       <section className="px-5 py-12 mx-auto max-w-4xl">
@@ -112,7 +113,7 @@ export default function OnlineCoachingClient() {
           </div>
           <div className="border-t md:border-t-0 md:border-l border-forest/15 pt-4 md:pt-0 md:pl-6 text-sm text-forest/85 leading-relaxed">
             <strong className="text-forest block mb-1">Built for Real Energy Levels</strong>
-            Most online programmes hand you a generic template written for someone with two hours a day and zero responsibilities. Real life does not look like that. Whether you are balancing work and family—or eating less while on a GLP-1—your body needs a clear, steady reason to keep strong muscle and usable energy, not gruelling sessions that wipe you out for three days.
+            Most online programmes hand you a generic template written for someone with two hours a day and zero responsibilities. Real life does not look like that. Whether you are balancing work and family—or eating less while on a GLP-1—your body needs a clear, consistent reason to keep strong muscle and usable energy, not gruelling sessions that wipe you out for three days.
           </div>
         </div>
       </section>
@@ -122,7 +123,7 @@ export default function OnlineCoachingClient() {
         <div className="text-center mb-10">
           <span className="text-xs font-semibold uppercase tracking-widest text-forest">How We Train</span>
           <h2 className="font-serif text-2xl tracking-tight text-forest sm:text-3xl mt-1">
-            Simple, Steady Coaching—Translated to Real Life
+            Simple, Consistent Coaching—Translated to Real Life
           </h2>
           <p className="text-sm text-forest/75 mt-2 max-w-xl mx-auto">
             No fitness-textbook jargon or rigid spreadsheets. Just three practical pillars shaped around your week.
@@ -218,7 +219,7 @@ export default function OnlineCoachingClient() {
           </div>
           <h3 className="font-serif text-2xl text-cream">1:1 Online Coaching with Hayden</h3>
           <p className="text-sm text-cream/80 mt-2 max-w-xl leading-relaxed">
-            Enough steady runway to build lasting strength habits—without locking you into an endless gym contract.
+            Enough consistent runway to build lasting strength habits—without locking you into an endless gym contract.
           </p>
 
           <ul className="space-y-3 text-sm text-cream/90 my-8 border-t border-cream/15 pt-6">

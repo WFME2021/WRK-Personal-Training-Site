@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
+import { PageHeroBanner } from '../components/PageHeroBanner';
 import { Dna, Droplet, Calculator, ArrowRight, Sparkles } from 'lucide-react';
 
 export const ToolsIndex: React.FC = () => {
@@ -25,23 +26,22 @@ export const ToolsIndex: React.FC = () => {
       <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream">
         
         {/* 1. Hero Header */}
-        <section className="bg-cream pt-14 pb-16 px-6 max-w-5xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-[0.2em] font-sans text-forest font-semibold mb-4">
-            PRACTICAL RESOURCES · EVIDENCE-BASED UTILITY
-          </p>
-          
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-forest tracking-tight max-w-3xl mx-auto mb-6 leading-tight">
-            GLP-1 Tools & <span className="italic text-forest">Calculators.</span>
-          </h1>
-          
-          <p className="text-forest/80 max-w-2xl mx-auto text-base sm:text-lg mb-6 leading-relaxed">
-            Simple, objective starting points to help you safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management while your appetite and routine change.
-          </p>
-
-          <div className="inline-block bg-quiet border border-forest/15 rounded-full px-4 py-1.5 text-xs text-forest/80 font-medium">
+        <PageHeroBanner
+          imageSrc="/images/banner-tools.jpg"
+          imageAlt="Kettlebells, carafe of water, and notebook in a calm sunlit studio"
+          align="center"
+          eyebrow="PRACTICAL RESOURCES · EVIDENCE-BASED UTILITY"
+          title={
+            <>
+              GLP-1 Tools &amp; <span className="italic text-citron">Calculators.</span>
+            </>
+          }
+          subtitle="Simple, objective starting points to help you safeguard lean muscle, resting metabolic rate, and physical capability alongside medical weight management while your appetite and routine change."
+        >
+          <div className="mt-6 inline-block bg-forest-deep/75 border border-cream/25 rounded-full px-4 py-1.5 text-xs text-cream/90 font-medium backdrop-blur-sm">
             Note: These tools provide evidence-based starting estimates, not medical prescriptions.
           </div>
-        </section>
+        </PageHeroBanner>
 
         {/* 2. The 3 Core Calculators */}
         <section className="py-16 px-6 max-w-6xl mx-auto">
