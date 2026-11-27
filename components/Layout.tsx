@@ -50,7 +50,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   }, []);
 
   const headerBgClass = isTransparentHero && !isScrolled
-    ? 'bg-transparent border-b border-cream/15 text-cream'
+    ? 'bg-gradient-to-b from-forest-deep/70 to-forest-deep/20 backdrop-blur-[2px] border-b border-cream/15 text-cream'
     : 'bg-cream/95 backdrop-blur-md border-b border-forest/10 text-forest';
 
   const wordmarkClass = isTransparentHero && !isScrolled
@@ -192,7 +192,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
          </div>
       </div>
 
-      <main className={`flex-grow overflow-x-clip ${isTransparentHero ? 'pt-14 md:pt-20' : 'pt-2 md:pt-8'} bg-cream`}>
+      <main className={`flex-grow overflow-x-clip ${isTransparentHero ? 'pt-0' : 'pt-2 md:pt-8'} bg-cream`}>
         {children}
       </main>
 

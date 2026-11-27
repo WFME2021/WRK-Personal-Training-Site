@@ -140,7 +140,7 @@ export const SummerMomentum: React.FC = () => {
   };
 
   return (
-    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream overflow-x-hidden">
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream overflow-x-clip">
       <SeoHead
         title="Summer Momentum | Sustainable Movement & Festive Coping Plan | WRK"
         description="Heading into the holidays on a GLP-1? Summer Momentum (30 Nov – 8 Jan) is a calm 6-week sustainable movement and festive coping plan for $149 NZD."

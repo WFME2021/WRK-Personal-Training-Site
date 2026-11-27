@@ -63,7 +63,7 @@ export const PageHeroBanner: React.FC<PageHeroBannerProps> = ({
 
   return (
     <section
-      className={`relative bg-forest overflow-hidden flex items-center -mt-14 md:-mt-20 ${heightAndPaddingClass}`}
+      className={`relative bg-forest overflow-hidden flex items-center ${heightAndPaddingClass}`}
     >
       {!imageFailed && activeSrc && (
         <img

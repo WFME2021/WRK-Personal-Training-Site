@@ -95,7 +95,7 @@ export const Home: React.FC = () => {
       />
 
       {/* 1. Full-Bleed Hero Section */}
-      <section className="relative bg-forest min-h-[78vh] md:min-h-[88vh] flex items-center overflow-hidden -mt-14 md:-mt-20 pt-14 md:pt-20">
+      <section className="relative bg-forest min-h-[78vh] md:min-h-[88vh] flex items-center overflow-hidden pt-20 md:pt-28">
         <img 
           src="https://i.postimg.cc/XvwrPd0X/Google-Cover-Photo-(1).png" 
           alt="WRK Personal Training coaching space in Addington, Christchurch"

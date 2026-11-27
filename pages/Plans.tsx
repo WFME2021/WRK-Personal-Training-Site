@@ -26,7 +26,7 @@ export const Plans: React.FC = () => {
     cat === 'All' ? `All Plans (${SELF_GUIDED_PLANS.length})` : cat;
 
   return (
-    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream overflow-x-hidden">
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream overflow-x-clip">
       <SeoHead
         title="Self-Guided Training Plans | 6–12 Week Programmes | WRK Personal Training"
         description="Structured 6- to 12-week self-guided training programmes delivered via My PT Hub with video demos, a 7-day example meal plan with swaps, and scheduled weekly guidance notes."

@@ -62,7 +62,7 @@ export const ForReferrers: React.FC = () => {
       <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream pb-24">
         
         {/* Full-Bleed Hero Masthead */}
-        <section className="relative bg-forest min-h-[520px] md:min-h-[580px] flex items-center justify-center -mt-16 md:-mt-20 pt-28 pb-16 px-6 overflow-hidden">
+        <section className="relative bg-forest min-h-[520px] md:min-h-[580px] flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
           <img 
             src="https://i.postimg.cc/cJpTZjWZ/pexels-uriel-mont-6271691.jpg"
             alt="Exercise Referral and Healthcare Provider Overview"

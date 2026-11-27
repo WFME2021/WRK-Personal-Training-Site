@@ -186,7 +186,7 @@ export const Glp1Hub: React.FC = () => {
       />
 
       {/* Section A: Full-Bleed Editorial Hero Banner */}
-      <section className="relative bg-forest min-h-[72vh] md:min-h-[82vh] flex items-center overflow-hidden -mt-14 md:-mt-20 pt-20 pb-12 md:pt-28 md:pb-16">
+      <section className="relative bg-forest min-h-[72vh] md:min-h-[82vh] flex items-center overflow-hidden pt-20 pb-12 md:pt-28 md:pb-16">
         {!heroImageError && (
           <img
             src="/images/glp1-hub-hero.jpg"

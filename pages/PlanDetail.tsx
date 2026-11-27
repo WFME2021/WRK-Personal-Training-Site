@@ -73,7 +73,7 @@ export const PlanDetail: React.FC = () => {
   };
 
   return (
-    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream overflow-x-hidden">
+    <div className="bg-cream text-forest min-h-screen font-sans selection:bg-forest selection:text-cream overflow-x-clip">
       <SeoHead
         title={`${plan.title} | Self-Guided Training Plan | WRK Personal Training`}
         description={`${plan.summary} ${plan.durationBadge} delivered in the WRK app.`}
